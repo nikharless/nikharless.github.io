@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Toggle Button</title>
+	<link rel="stylesheet" type="text/css" href="deque-patterns.min.css">
+</head>
+<body>
+	<div class="deque-wrapper">
+		<p>
+			<button class="deque-button deque-button-toggle" id="toggleHtml">Toggle Button (HTML)</button>
+			<span role="button" class="deque-button deque-button-toggle" id="toggleAria">Toggle Button (ARIA)</span>
+		</p>
+	</div>
+	<script type="text/javascript" src="deque-patterns.min.js"></script>
+	<script type="text/javascript">
+		var toggleHtml = document.getElementById('toggleHtml');
+		var toggleAria = document.getElementById('toggleAria');
+
+		function toggleHandler(e) {
+			var currentlyPressed = e.target.getAttribute('aria-pressed') === 'true'';
+			return !currentlyPressed;
+		}
+
+		deque.button.initializeToggleButton(toggleHtml, toggleHandler);
+		deque.button.initializeToggleButton(toggleAria, toggleHandler);
+	</script>
+</body>
