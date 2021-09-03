@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Progress Bar (Unbounded)</title>
+	<link rel="stylesheet" type="text/css" href="assets/deque-patterns.min.css">
+</head>
+<body>
+	<h1>Progress Bar (Unbounded)</h1>
+	<p>The unbounded progress bar is basically a "busy" indicator. It does not show incremental progress but rather cycles through until it is cancelled.</p>
+
+	<div id="progressbar-unbounded" class="deque-progressbar deque-progressbar-unbounded">
+  		<progress role="progressbar" aria-valuetext="In progress, please wait..." aria-label="An unbounded progress bar which will run like this forever."></progress>
+  		<p>
+    		<button class="deque-button" id="start-progressbar">
+      			Start
+    		</button>
+    		<button class="deque-button" id="stop-progressbar">
+      			Stop
+    		</button>
+  		</p>
+	</div>
+
+	<script type="text/javascript" src="assets/deque-patterns.min.js"></script>
+	<script type="text/javascript">
+		var host = document.getElementById('progressbar-unbounded');
+		var progressBar = host.querySelector('progress');
+		progressBar.classList.add('deque-hidden');
+
+		var unboundedProgressBar = deque.createProgressBar(progressBar, {bounded: false});
+		unboundedProgressBar.id = 'unboundedProgressBar';
+		unboundedProgressBar.setAttribute('aria-label', 'An unbounded progress bar which will run like this forever.');
+
+		var startButton = host.querySelector('#start-progressbar');
+		startButton.addEventListener('click', function() {
+  			unboundedProgressBar.classList.add('deque-progressbar');
+  			unboundedProgressBar.classList.add('deque-progressbar-unbounded');
+  			unboundedProgressBar.classList.remove('deque-hidden');
+  			unboundedProgressBar.setAttribute('aria-busy', 'true');
+		});
+
+		var stopButton = host.querySelector('#stop-progressbar');
+		stopButton.addEventListener('click', function() {
+  			unboundedProgressBar.classList.remove('deque-progressbar');
+  			unboundedProgressBar.classList.remove('deque-progressbar-unbounded');
+  			unboundedProgressBar.classList.add('deque-hidden');
+  			unboundedProgressBar.setAttribute('aria-busy', 'false');
+		});
+  	</script>
+</body>
+</html>
