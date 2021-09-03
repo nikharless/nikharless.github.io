@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Progress Bar (Bounded)</title>
+	<link rel="stylesheet" type="text/css" href="assets/deque-patterns.min.css">
+</head>
+<body>
+	<h1>Progress Bar (Bounded)</h1>
+	<p>
+	</p>
+
+	<div id="progressbar-bounded" class="deque-progressbar deque-progressbar-bounded">
+  		<progress role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="A bounded progress bar from 0 to 100"></progress>
+  		<p>
+    		<button class="deque-button" id="start-progressbar">
+      			Start
+    		</button>
+    		<button class="deque-button" id="reset-progressbar">
+      			Reset
+    		</button>
+  		</p>
+	</div>
+
+	<script type="text/javascript" src="assets/deque-patterns.min.js"></script>
+	<script type="text/javascript">
+		var host = document.getElementById('progressbar-bounded');
+		var progressBar = host.querySelector('progress');
+		progressBar.classList.add('deque-hidden');
+
+		var boundedProgressBar = deque.createProgressBar(progressBar, {bounded: true});
+		boundedProgressBar.id = 'boundedProgressBar';
+
+		var alert = document.createElement('span');
+		alert.id = 'progress-live';
+		alert.setAttribute('aria-live', 'polite');
+		alert.classList.add('deque-visuallyhidden');
+		document.body.appendChild(alert);
+
+		var value = 1;
+
+		function startProgress() {
+  			return setInterval(function() {
+    			if (value > 100) {
+      				value = 100;
+      				learInterval(interval);
+      				interval = null;
+      				boundedProgressBar.setValue(value);
+      				alert.innerHTML = boundedProgressBar.innerHTML;
+      				alert.innerHTML = 'Loading Complete';
+      				return boundedProgressBar.setAttribute('aria-busy', 'false');
+    			}
+    			boundedProgressBar.setValue(value);
+    			alert.innerHTML = boundedProgressBar.innerHTML;
+    			boundedProgressBar.setAttribute('aria-busy', 'true');
+    			value += 10;
+  			}, 1000);
+		}
+
+		var interval;
+
+		var startButton = host.querySelector('#start-progressbar');
+		startButton.addEventListener('click', function() {
+  			boundedProgressBar.classList.add('deque-progressbar');
+  			boundedProgressBar.classList.remove('deque-hidden');
+  			boundedProgressBar.setAttribute('aria-busy', 'true');
+  			interval = startProgress();
+		});
+
+		var resetButton = host.querySelector('#reset-progressbar');
+		resetButton.addEventListener('click', function() {
+  			value = 1;
+  			if (!interval) {
+    			interval = startProgress();
+  			}
+		});
+  	</script>
+</body>
+</html>
