@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"/>
+	<title>Tooltip Dialog</title>
+	<link rel="stylesheet" type="text/css" href="assets/deque-patterns.min.css">
+</head>
+<body>
+	<h1>Tooltip Dialog</h1>
+	<p>The tooltip is triggered by a user action like clicking a button. It functions like a modal dialog.</p>
+
+	<p><strong>Keyboard:</strong> A button triggers the tooltip dialog. The focus moves to the dialog, and focus is constrained within it.</p>
+
+	<p><strong>Screen Reader:</strong> Screen readers will read the tooltip like a regular dialog.</p>
+
+	<div class="deque-wrapper">
+  		<div class="one-wrap">
+    		<label for="targetField">Recipient</label>
+    		<input type="text" id="targetField">
+    		<button class="helper deque-button" id="targetFieldHelper" type="button" aria-label="Prepopulate recipient"></button><div aria-label="Prepopulate Recipients" role="dialog" id="" class="deque tooltip hidden" aria-hidden="true"><div class="tabtrap" tabindex="0"></div><div id="recipients" data-tabtrap="">
+    		<form action="javascript:void(0)">
+      			<fieldset class="deque" tabindex="-1">
+        			<legend>Select a name:</legend>
+        			<label>Alice
+          				<input type="radio" name="contactList" value="Alice" checked="">
+        			</label>
+        			<label>Bob
+          				<input type="radio" name="contactList" value="Bob">
+        			</label>
+        			<label>Paul
+          				<input type="radio" name="contactList" value="Paul" aria-labelledby="radioLabel">
+        			</label>
+      			</fieldset>
+      			<p><button id="confirm" class="deque-button">Confirm</button></p>
+    		</form>
+  		</div>
+  		<div class="tabtrap" tabindex="0"></div>
+  	</div>
+
+	<script type="text/javascript" src="assets/deque-patterns.min.js"></script>
+	<script type="text/javascript">
+		function initiatecreateDialogTooltip() {
+  			var targetField = document.getElementById('targetField');
+  			var targetFieldHelper = document.getElementById('targetFieldHelper');
+  			deque.createDialogTooltip(targetFieldHelper, {
+    			contentID: 'recipients',
+    			submitID: 'confirm',
+    			onSubmit: prepopulateRecipient,
+    			label: 'Prepopulate Recipients'
+  			});
+		}
+
+		function prepopulateRecipient() {
+  			var recipients = document.querySelector('[name="contactList"]:checked').value;
+  			targetField.value = recipients;
+  			targetField.focus();
+		}
+
+
+		if (window.addEventListener)  {
+  			window.addEventListener('load', initiatecreateDialogTooltip, false);
+		} 
+		else if (window.attachEvent) {
+  			window.attachEvent('onload', initiatecreateDialogTooltip);
+		}
+	</script>
+</body>
+</html>
