@@ -4,7 +4,7 @@
  *
  *   Simple accordion pattern example
  */
-<script type="text/javascript">
+
 'use strict';
 
 class Accordion {
@@ -58,4 +58,3 @@ const accordions = document.querySelectorAll('.accordion h3');
 accordions.forEach((accordionEl) => {
   new Accordion(accordionEl);
 });
-</script>
