@@ -6,7 +6,7 @@ title: 1.1.1.a Alternative Text (Active Images)
 
     <p>All linked images must have a descriptive text alternative that serves the same purpose and presents the same information as the linked image.</p>
 
-    <p><strong>Success:</strong> If you replaced the active image with the text alternative, you would still understand the destination, purpose, or function of the control.</p>
+    <p><strong>Success:</strong> If you could not see the image, you would still understand the destination, purpose, or function of the control.</p>
 
     <p>Text alternatives for active images include the following:</p>
     <ul>
@@ -81,4 +81,58 @@ title: 1.1.1.a Alternative Text (Active Images)
             </ol>
         </li>
         <li>No; PASS</li>
+    </ol>
+
+    <h3>Web Test Procedure</h3>
+    <h4>Desktop</h4>
+    <ol>
+        <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> or <a href="https://wave.webaim.org/extension/">WAVE</a> to flag missing text alternatives.</li>
+        <li>Locate each interactive image on the page using one or more of the following methods:
+            <ul>
+                <li>Mouse: Hover over images, noting cursor change if they are interactive.</li>
+                <li>Keyboard: Use the Tab key to focus interactive images.</li>
+                <li>Windows / NVDA: Use the G key to cycle through images.</li>
+                <li>MacOS / VoiceOver: Use VO+Command+G to cycle through images.</li>
+            </ul>
+        </li>
+        <li>Verify that each image has a text alternative which accurately describes its purpose.</li>
+    </ol>
+
+    <h4>Mobile</h4>
+    <ol>
+        <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features</a>.</li>
+        <li>Navigate to each interactive image.</li>
+        <li>Verify that the name spoken by the screen reader accurately describes the purpose of the image.</li>
+    </ol>
+
+    <h3>Mobile App Test Procedure</h3>
+    <ul>
+        <li>Follow the procedure for Web Mobile.</li>
+        <li>iOS: Verify that the button, button image, or link image trait is spoken, AND/OR hint text such as "Double tap to activate" is spoken.</li>
+        <li>Android: Verify that the button role is spoken, AND/OR hint text such as "Double tap to activate" is spoken.</li>
+    </ul>
+
+    <h3>PDF Test Procedure</h3>
+    <p>Find missing text alternatives.</p>
+    <h4>PDF Accessibility Checker</h4>
+    <ol>
+        <li>Look for missing text alternatives under Logical Structure > Alternative Descriptions > Alternative text for "Figure" structure elements.</li>
+    </ol>
+
+    <h4>Adobe Acrobat Pro</h4>
+    <ol>
+        <li>To find missing text alternatives, select Accessibility > Accessibility Check in the Task pane to open the Accessibility Checker Options dialog.</li>
+        <li>Select "Alternate Text and Headings" from the Category drop-down, and make sure "Figures require alternate text" is checked.</li>
+    </ol>
+    <p>Verify the text alternatives are sufficient.</p>
+    <ol>
+        <li>Locate each interactive image in the PDF using one or more of the following methods:
+            <ul>
+                <li>Mouse: Hover over images, noting cursor change if they are interactive.</li>
+                <li>Keyboard: Use the Tab key to focus interactive images.</li>
+                <li>Windows / NVDA: Use the G key to cycle through images.</li>
+                <li>MacOS / VoiceOver: Use VO+Command+G to cycle through images.</li>
+            </ul>
+        </li>
+        <li>Verify that each image has a text alternative which accurately describes its purpose.</li>
     </ol>
