@@ -26,12 +26,50 @@ title: 1.1.1.a Alternative Text (Active Images)
 
     <h3>Basic Requirements and Best Practices</h3>
     <ul>
-        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;"></span> If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</li>
-        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;"></span> If a control is labeled with both an image and text:
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</li>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a control is labeled with both an image and text:
             <ul>
                 <li>If the image provides information not conveyed by the associated text, the image's alternative text along with the visible text must together describe the function or destination of the control.</li>
                 <li>If the image does not provide any information not conveyed by the associated text, check against 1.1.1.d Alternative Text (Decorative Images).</li>
             </ul>
         </li>
-        <li><span class="fa-solid fa-circle-check" style="color: #28a228;"></span> Text alternatives for linked images should not duplicate adjacent link text for the same destination. Combine the image and text into a single link and check the image against 1.1.1.d Alternative Text (Decorative Images).</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> If the image contains meaningful text, the text alternative should contain that exact text.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for linked images should not duplicate adjacent link text for the same destination. Combine the image and text into a single link and check the image against 1.1.1.d Alternative Text (Decorative Images).</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for active images should not include words such as "link" or "button".</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Trademarks, copyright symbols, etc. on an image should be included in the text alternative.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives should be as succinct as possible.</li>
     </ul>
+
+    <h3>Testing Logic</h3>
+    <h4>Are there images on the page which function as interactive controls?</h4>
+    <ul>
+        <li>Yes; Does the image have alternative text?
+            <ul>
+                <li>Yes; Does the alternative text repeat the text that it is programmatically associated with?
+                    <ul>
+                        <li>Yes; Remove the alternative text.</li>
+                        <li>No; Is the alternative text necessary to understand the function of the control?
+                            <ul>
+                                <li>Yes; Does the text alternative sufficiently describe the function of the control?
+                                    <ul>
+                                        <li>Yes; PASS</li>
+                                        <li>No; Change the text to sufficiently describe the function of the control.</li>
+                                    </ul>
+                                </li>
+                                <li>No; Remove the alternative text.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>No; Is alternative text necessary to understand the control's purpose?
+                    <ul>
+                        <li>Yes; Add alternative text to the active image.</li>
+                        <li>No; PASS</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>No; PASS</li>
+    </ul>
+
+    <h4>Is there an image map on the page with an <code>&lt;area&gt;</code> tag?</h4>
