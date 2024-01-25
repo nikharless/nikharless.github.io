@@ -1,0 +1,129 @@
+---
+layout: default
+title: 1.1.1.d Alternative Text (Decorative Images)
+---
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="111.html">1.1.1 Non-text Content</a></p>
+
+    <p>Decorative or redundant images must not have text alternatives.</p>
+
+    <div class="success"><strong>Success:</strong> If you could not see the image, you would not know that it existed.</div>
+
+    <p>Some ways to code images to be ignored by assistive technologies include:</p>
+    <ul>
+        <li>Adding <code>alt=""</code> to an <code>&lt;img&gt;</code> element</li>
+        <li>Using <code>role="none"</code>, <code>role="presentation"</code>, or <code>aria-hidden="true"</code> on the image element</li>
+        <li>Using <code>aria-hidden="true"</code> on an <code>&lt;svg&gt;</code> element.</li>
+        <li>Using CSS background images without adding a text alternative to the container</li>
+    </ul>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+        <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Decorative or redundant images must not have text alternatives.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for linked images should not duplicate adjacent link text for the same destination. Combine the image and text into a single link.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for images inside of links or buttons should not duplicate the text content of the link or button. The alt text should be null.</li>
+    </ul>
+
+    <h2>Testing Logic</h2>
+    <h3>Are there images on the page which are purely decorative or redundant?</h3>
+    <ol>
+        <li><strong>Yes</strong>; Is the image hidden from assistive technologies?
+            <ol>
+                <li><strong>Yes</strong>; PASS</li>
+                <li><strong>No</strong>; Hide the image from assistive technologies.</li>
+            </ol>
+        </li>
+        <li><strong>No</strong>; PASS</li>
+    </ol>
+
+    <h2>Web Test Procedure</h2>
+    <h3>Desktop</h3>
+    <ol>
+        <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> or <a href="https://wave.webaim.org/extension/">WAVE</a> to flag missing <code>alt</code> attributes.</li>
+        <li>Locate each decorative image on the page using one or more of the following methods:
+            <ul>
+                <li>Visually</li>
+                <li>Windows / NVDA: Use the G key to cycle through images.</li>
+                <li>MacOS / VoiceOver: Use VO+Command+G to cycle through images.</li>
+            </ul>
+        </li>
+        <li>Verify that each decorative or redundant image is ignored by assistive technologies.</li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <ol>
+        <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features</a>.</li>
+        <li>Navigate through the page with the screen reader.</li>
+        <li>Verify that decorative images are not focusable and not announced by the screen reader.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <ul>
+        <li>Follow the procedure for Web Mobile.</li>
+    </ul>
+
+    <h2>PDF Test Procedure</h2>
+
+    <ol>
+        <li>Locate each decorative or redundant image in the PDF.</li>
+        <li>Verify that each decorative or redundant image is marked as &lt;Artifact&gt;.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li>F1.1.1.d.a Decorative image is not hidden from screen readers. (Low)</li>
+        <li>F1.1.1.d.b Decorative image has a text alternative. (Low)</li>
+        <li>F1.1.1.d.c Redundant image is not hidden from screen readers. (Low)</li>
+        <li>F1.1.1.d.d Decorative image has a title attribute. (Low)</li>
+        <li>F1.1.1.d.e PDF Artifact is tagged as real content. (Low)</li>
+
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
+        <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
+        <li><a href="https://wave.webaim.org/extension/">WAVE</a></li>
+        <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
+        <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+        <li><a href="https://pauljadam.com/bookmarklets.html">Paul Adam Images bookmarklet</a></li>
+        <li><a href="https://chrispederick.com/work/web-developer/">Web Developer</a></li>
+        <li>Screen reader</li>
+        <li><a href="https://pdfua.foundation/en/pdf-accessibility-checker-pac/">PDF Accessibility Checker</a></li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H67">H67: Using null alt text and no title attribute on img elements for images that assistive technology should ignore</a></li>
+                    </ul>
+                </li>
+                <li>CSS:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C9">C9: Using CSS to include decorative images</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF4">PDF4: Hiding decorative images with the Artifact tag in PDF documents</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://www.w3.org/WAI/tutorials/images/decorative/">W3: Decorative Images</a></li>
+        <li><a href="https://webaim.org/techniques/alttext/#decorative">WebAIM: Alternative Text</a></li>
+        <li><a href="https://fontawesome.com/v4/accessibility/">Font Awesome & Accessibility</a></li>
+        <li><a href="https://learn.levelaccess.com/l/487581/2018-04-18/28w4fc">Level Access: Accessibility Basics Webinar Series #3 - Non-text Elements</a> (0:00 - 13:30)</li>
+    </ul>
