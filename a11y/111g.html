@@ -1,0 +1,92 @@
+---
+layout: default
+title: 1.1.1.g Alternative Text (CAPTCHA)
+---
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="111.html">1.1.1 Non-text Content</a></p>
+
+    <p>CAPTCHAs must have a text alternative that describes its purpose (but not the visual elements), and alternate forms must be provided for different types of sensory perception.</p>
+
+    <div class="success"><strong>Success:</strong> If you could not see the CAPTCHA, you would still know what it was and be able to complete it.</div>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+        <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> CAPTCHAs must have a text alternative that describes its purpose (but not the visual elements).</li>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> CAPTCHAs must have alternate forms for different types of sensory perception.</li>
+    </ul>
+
+    <h2>Testing Logic</h2>
+    <h3>Are there any CAPTCHA widgets on the page?</h3>
+    <ol>
+        <li><strong>Yes</strong>; Does the CAPTCHA widget have a text alternative that describes its purpose?
+            <ol>
+                <li><strong>Yes</strong>; Are alternatives used to address the needs of people with different disabilities?
+                    <ol>
+                        <li>Yes; PASS</li>
+                        <li>No; Ensure alternatives (e.g., audio, etc.) are available to address the needs of people with different disabilities.</li>
+                    </ol>
+                </li>
+                <li><strong>No</strong>; Add alternative text describing the purpose of the CAPTCHA..</li>
+            </ol>
+        </li>
+        <li><strong>No</strong>; PASS</li>
+    </ol>
+
+    <h2>Web Test Procedure</h2>
+    <h3>Desktop</h3>
+    <ol>
+        <li>Locate each CAPTCHA.</li>
+        <li>Verify that it has a text alternative that describes its purpose.</li>
+        <li>Verify that it includes alternate forms for different sensory abilities (e.g., audio).</li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <ol>
+        <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features</a>.</li>
+        <li>Navigate to the CAPTCHA.</li>
+        <li>Verify that it has a text alternative that describes its purpose.</li>
+        <li>Verify that it includes alternate forms for different sensory abilities (e.g., audio).</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li>F1.1.1.g.a CAPTCHA does not have a text alternative. (Medium)</li>
+        <li>F1.1.1.g.b Existing text alternative does not describe the purpose of the CAPTCHA. (Medium)</li>
+        <li>F1.1.1.g.c CAPTCHA has no non-visual version. (High)</li>
+
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
+        <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
+        <li><a href="https://wave.webaim.org/extension/">WAVE</a></li>
+        <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
+        <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+        <li><a href="https://pauljadam.com/bookmarklets.html">Paul Adam Images bookmarklet</a></li>
+        <li><a href="https://chrispederick.com/work/web-developer/">Web Developer</a></li>
+        <li>Screen reader</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G143">G143: Providing a text alternative that describes the purpose of the CAPTCHA</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G144">G144: Ensuring that the Web Page contains another CAPTCHA serving the same purpose using a different modality</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://captcha.com/captcha-accessibility.html">Strict Standards: Introduction to CAPTCHA Accessibility</a></li>
+    </ul>
