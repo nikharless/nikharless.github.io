@@ -1,0 +1,108 @@
+---
+layout: default
+title: 1.1.1.h Alternative Text (Audio or Video)
+---
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="111.html">1.1.1 Non-text Content</a></p>
+
+    <p>Each audio and video element must have a text alternative which summarizes its purpose.</p>
+
+    <div class="success"><strong>Success:</strong> You are able to understand what the audio and video content is before you play it.</div>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+        <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Each audio and video element must have a text alternative which summarizes its purpose.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> If there is text in the audio/video preview, that exact text should be included in the text alternative.</li>
+    </ul>
+
+    <h2>Testing Logic</h2>
+    <h3>Is there audio or video content on the page?</h3>
+    <ol>
+        <li><strong>Yes</strong>; Does the audio or video content have a short text alternative?
+            <ol>
+                <li><strong>Yes</strong>; Does the text alternative sufficiently summarize the content of the media?
+                    <ol>
+                        <li>Yes; PASS</li>
+                        <li>No; Change the text alternative to sufficiently summarize the content of the media.</li>
+                    </ol>
+                </li>
+                <li><strong>No</strong>; Add alternative text summarizing the content of the media.</li>
+            </ol>
+        </li>
+        <li><strong>No</strong>; PASS</li>
+    </ol>
+
+    <h3>Does the text alternative for the audio-only content refer to the accompanying transcript?</h3>
+    <p><em>If a transcript does not exist, see <a href="121.html">1.2.1 Audio-only and Video-only (Prerecorded)</a>.</em></p>
+    <ol>
+        <li><strong>Yes</strong>; PASS</li>
+        <li><strong>No</strong>; Include a reference to the accompanying transcript in the text alternative for the audio content.</li>
+    </ol>
+
+    <h2>Web Test Procedure</h2>
+    <h3>Desktop</h3>
+    <ol>
+        <li>Locate each audio or video element using one or more of the following methods:
+            <ul>
+                <li>Visually</li>
+                <li>Windows / NVDA: Use the O key to cycle through objects.</li>
+                <li>MacOS / VoiceOver: Use VO+Command+O to cycle through objects.</li>
+            </ul>
+        </li>
+        <li>Verify that it has a text alternative that summarizes its content.</li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <ol>
+        <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features</a>.</li>
+        <li>Navigate to each audio or video element.</li>
+        <li>Verify that it has a text alternative that summarizes its content.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <ul>
+        <li>Follow the procedure for Web Mobile.</li>
+    </ul>
+
+    <h2>Failures</h2>
+    <ul>
+        <li>F1.1.1.h.a Audio object does not have a text alternative. (Medium)</li>
+        <li>F1.1.1.h.b Video object does not have a text alternative. (Medium)</li>
+        <li>F1.1.1.h.c Existing text alternative does not adequately summarize the content of the audio. (Medium)</li>
+        <li>F1.1.1.h.d Existing text alternative does not adequately summarize the content of the video. (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
+        <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
+        <li><a href="https://wave.webaim.org/extension/">WAVE</a></li>
+        <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
+        <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+        <li><a href="https://pauljadam.com/bookmarklets.html">Paul Adam Images bookmarklet</a></li>
+        <li><a href="https://chrispederick.com/work/web-developer/">Web Developer</a></li>
+        <li>Screen reader</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G68">G68: Providing a short text alternative that describes the purpose of live audio-only and live video-only content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-teext content</a></li>
+                    </ul>
+                </li>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H53">H53: Using the body of the object element</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
