@@ -83,22 +83,25 @@ nav.mainmenu li {
 	width: 200px;
 	background-color: #f1f1f1;
 	position: fixed;
-	height: 100%;
 	overflow: auto;
 }
-.sidebar a {
+.sidebar a, .checkpoints a {
 	display: block;
 	margin: 0;
 	padding: .5em;
 	border-top: 1px solid;
 	color: black;
 }
-.sidebar a.active {
+.sidebar a.active,
+.checkpoints a.active {
 	background-color: #04aa6d;
 	color: white;
 }
 .sidebar a:hover:not(.active),
-.sidebar a.current{
+.sidebar a.current,
+.checkpoints a:hover:not(.active),
+.checkpoints a.current 
+{
 	background-color: #555;
 	color: white;
 }
@@ -110,7 +113,9 @@ div.content {
 	clear: both;
 }
 .checkpoints {
-	display: block;
+	position: fixed;
+	right: 0;
+	z-index: 1;
 	margin: 50px 0;
 	padding: 0;
 	width: 200px;
