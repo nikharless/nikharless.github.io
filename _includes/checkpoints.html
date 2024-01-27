@@ -1,0 +1,8 @@
+{% assign datafile = "site.data." + scdata %}
+<nav class="checkpoints" aria-label="checkpoints">
+	<ul>
+		{% for item in datafile %}
+			<a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
+		{% endfor %}
+	</ul>
+</nav>
