@@ -1,8 +1,8 @@
 ---
 layout: default
 title: 1.1.1.b Alternative Text (Informative Images)
-scdata: site.data.111-non-text-content
 ---
+<div class="cpcontent">
     <h1>{{ page.title }}</h1>
     <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="111.html">1.1.1 Non-text Content</a></p>
 
@@ -106,7 +106,7 @@ scdata: site.data.111-non-text-content
 
     <h2>Failures</h2>
     <ul>
-        <li>F1.1.1.b.a Informative image is missing a text alternative. (High)
+        <li>F1.1.1.b.a Informative image is missing a text alternative. (High)</li>
         <li>F1.1.1.b.b Existing text alternative does not serve the same purpose as the informative image. (Medium)</li>
         <li>F1.1.1.b.c Existing text alternative does not include informative image text. (Medium)</li>
         <li>F1.1.1.b.d Text alternative does not match dynamic image. (Medium)</li>
@@ -159,3 +159,12 @@ scdata: site.data.111-non-text-content
         <li><a href="https://uxdesign.cc/how-to-write-an-image-description-2f30d3bf5546">How to write an image description</a></li>
         <li><a href="https://18f.gsa.gov/2015/03/24/making-twitter-images-more-accessible/">18F: Making Twitter images accessible</a></li>
     </ul>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints">
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
