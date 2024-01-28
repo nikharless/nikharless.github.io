@@ -1,0 +1,117 @@
+---
+layout: default
+title: 1.2.1.b Text or Audio Description (Prerecorded Video-Only - No Dialogue)
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="121.html">1.2.1 Audio-only and Video-only (Prerecorded)</a></p>
+
+    <p>Prerecorded video-only content must have a text or audio alternative that includes all of the information presented in the video.</p>
+
+    <div class="success"><strong>Success:</strong> You can listen to the audio description along with the video or read the transcript and not miss any important content in the video.</div>
+
+    <p>Video-only content includes the following:</p>
+    <ul>
+        <li>Silent movie</li>
+        <li>Video with only music</li>
+    </ul>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+        <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded video-only content must have a text or audio alternative that includes all of the information presented in the video.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The text or audio description should be presented next to the video and be easy to find.</li>
+    </ul>
+
+    <h2>Testing Logic</h2>
+    <h3>Does the page contain any video-only content?</h3>
+    Is the video purely decorative?
+    <ol>
+        <li><strong>Yes</strong>; Does the video-only content have an audio description?</li>
+            <li><strong>Yes</strong>; Does the audio description include all the important actions, visuals, and text in the video?
+                <ol>
+                    <li><strong>Yes</strong>; If the audio includes more than one speaker, does the transcript identify who is speaking each time it changes?
+                        <ol>
+                            <li><strong>Yes</strong>; PASS</li>
+                            <li><strong>No</strong>; Include all important actions, visuals, and text from the video in the audio description.
+                        </ol>
+                    </li>
+                    <li><strong>No</strong>; Does the video-only content have an accompanying transcript?</li>
+                </ol>
+            </li>
+            <li><strong>No</strong>; Does the video-only content have an accompanying transcript?
+                <ol>
+                    <li><strong>Yes</strong>; Does the transcript include all the important actions, visuals, and text in the video?
+                        <ol>
+                            <li><strong>Yes</strong>; PASS</li>
+                            <li><strong>No</strong>; Include all important actions, visuals, and text from the video in the transcript.</li>
+                        </ol>
+                    </li>
+                    <li><strong>No</strong>; Is the video-only content itself a media alternative for text?
+                        <ol>
+                            <li><strong>Yes</strong>; Is it clearly labeled as such?
+                                <ol>
+                                    <li>Is it clearly labeled as such?
+                                        <ol>
+                                            <li><strong>Yes</strong>; PASS</li>
+                                            <li><strong>No</strong>; Add text making it clear that the video is an alternative for the text content.</li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </li>
+                            <li><strong>No</strong>; Add an audio description or a full transcript (or link to the transcript) adjacent to the video-only content.</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+        <li><strong>No</strong>; PASS</li>
+    </ol>
+
+    <h2>Web Test Procedure</h2>
+    <ol>
+        <li>Locate each video-only object.</li>
+        <li>Verify that there is either an audio description or a text transcript that provides all the information presented visually.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <ul>
+        <li>Follow the procedure for Web.</li>
+    </ul>
+
+    <h2>Failures</h2>
+    <ul>
+        <li>F1.2.1.b.a Audio description or text transcript is missing. (Medium)</li>
+        <li>F1.2.1.b.b Existing description or text transcript is inadequate. (Medium)</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded">Understanding Success Criterion 1.2.1: Audio-only and Video-only (Prerecorded) (Level A)</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G159">G159: Providing an alternative for time-based media for video-only content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G166">G166: Providing audio that describes the important video content and describing it as such</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://webaim.org/techniques/captions/">WebAIM: Captions, Transcripts, and Audio Descriptions</a></li>
+    </ul>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.2.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.121-audio-video-only %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
