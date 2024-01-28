@@ -204,4 +204,10 @@ title: 1.1.1.a Alternative Text (Active Images)
         <li><a href="https://uxdesign.cc/how-to-write-an-image-description-2f30d3bf5546">How to write an image description</a></li>
     </ul>
 
-    {% include checkpoints.html cpdata=site.data.111-non-text-content %}
+    <nav class="checkpoints" aria-label="checkpoints">
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
