@@ -19,21 +19,22 @@ title: 1.1.1.h Alternative Text (Audio or Video)
     </ul>
 
     <h2>Testing Logic</h2>
-    <h3>Is there audio or video content on the page?</h3>
-    <ol>
-        <li><strong>Yes</strong>; Does the audio or video content have a short text alternative?
-            <ol>
-                <li><strong>Yes</strong>; Does the text alternative sufficiently summarize the content of the media?
-                    <ol>
-                        <li>Yes; PASS</li>
-                        <li>No; Change the text alternative to sufficiently summarize the content of the media.</li>
-                    </ol>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Is there audio or video content on the page?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio or video content have a short text alternative?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently summarize the content of the media?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; Change the text alternative to sufficiently summarize the content of the media.</span></li>
+                    </ul>
                 </li>
-                <li><strong>No</strong>; Add alternative text summarizing the content of the media.</li>
-            </ol>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; Add alternative text summarizing the content of the media.</span></li>
+            </ul>
         </li>
-        <li><strong>No</strong>; PASS</li>
-    </ol>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
 
     <h3>Does the text alternative for the audio-only content refer to the accompanying transcript?</h3>
     <p><em>If a transcript does not exist, see <a href="121.html">1.2.1 Audio-only and Video-only (Prerecorded)</a>.</em></p>
