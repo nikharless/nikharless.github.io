@@ -25,48 +25,50 @@ title: 1.2.1.b Text or Audio Description (Prerecorded Video-Only - No Dialogue)
     </ul>
 
     <h2>Testing Logic</h2>
-    <h3>Does the page contain any video-only content?</h3>
-    Is the video purely decorative?
-    <ol>
-        <li><strong>Yes</strong>; Does the video-only content have an audio description?</li>
-            <li><strong>Yes</strong>; Does the audio description include all the important actions, visuals, and text in the video?
-                <ol>
-                    <li><strong>Yes</strong>; If the audio includes more than one speaker, does the transcript identify who is speaking each time it changes?
-                        <ol>
-                            <li><strong>Yes</strong>; PASS</li>
-                            <li><strong>No</strong>; Include all important actions, visuals, and text from the video in the audio description.
-                        </ol>
-                    </li>
-                    <li><strong>No</strong>; Does the video-only content have an accompanying transcript?</li>
-                </ol>
-            </li>
-            <li><strong>No</strong>; Does the video-only content have an accompanying transcript?
-                <ol>
-                    <li><strong>Yes</strong>; Does the transcript include all the important actions, visuals, and text in the video?
-                        <ol>
-                            <li><strong>Yes</strong>; PASS</li>
-                            <li><strong>No</strong>; Include all important actions, visuals, and text from the video in the transcript.</li>
-                        </ol>
-                    </li>
-                    <li><strong>No</strong>; Is the video-only content itself a media alternative for text?
-                        <ol>
-                            <li><strong>Yes</strong>; Is it clearly labeled as such?
-                                <ol>
-                                    <li>Is it clearly labeled as such?
-                                        <ol>
-                                            <li><strong>Yes</strong>; PASS</li>
-                                            <li><strong>No</strong>; Add text making it clear that the video is an alternative for the text content.</li>
-                                        </ol>
-                                    </li>
-                                </ol>
-                            </li>
-                            <li><strong>No</strong>; Add an audio description or a full transcript (or link to the transcript) adjacent to the video-only content.</li>
-                        </ol>
-                    </li>
-                </ol>
-            </li>
-        <li><strong>No</strong>; PASS</li>
-    </ol>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the page contain any video-only content?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the video purely decorative?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><strong>Yes</strong>; PASS</li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the video-only content have an audio description?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio description include all the important actions, visuals, and text in the video?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; If the audio includes more than one speaker, does the transcript identify who is speaking each time it changes?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><strong>Yes</strong>; PASS</li>
+                                        <li role="treeitem"><span><strong>No</strong>; Include all important actions, visuals, and text from the video in the audio description.</span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the video-only content have an accompanying transcript?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the transcript include all the important actions, visuals, and text in the video?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><strong>Yes</strong>; PASS</li>
+                                                <li role="treeitem"><span><strong>No</strong>; Include all important actions, visuals, and text from the video in the transcript.</span></li>
+                                            </ul>
+                                        </li>
+                                        <li role="treeitem"><span><strong>No</strong>; Is the video-only content itself a media alternative for text?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it clearly labeled as such?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="pass"><strong>Yes</strong>; PASS</li>
+                                                        <li role="treeitem"><span><strong>No</strong>; Add text making it clear that the video is an alternative for the text content.</span></li>
+                                                    </ul>
+                                                </li>
+                                                <li role="treeitem"><span><strong>No</strong>; Add an audio description or a full transcript (or link to the transcript) adjacent to the video-only content.</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        <li role="treeitem" class="pass"><strong>No</strong>; PASS</li>
+    </ul>
 
     <h2>Web Test Procedure</h2>
     <ol>
