@@ -4,6 +4,7 @@ title: 1.1.1 Non-text Content
 scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 level: A
 ---
+<div class="cpcontent">
     <h1>{{ page.title }}</h1>
     <p>Success Criterion: <a href=" {{ page.scurl }}">{{ page.title }} (Level {{ page.level }})</a></p>
 
@@ -30,3 +31,12 @@ level: A
         <li><a href="https://www.w3schools.com/accessibility/accessibility_image_text.php">W3Schools: Accessibility Descriptive Texts for Images</a></li>
         <li><a href="https://www.ssa.gov/accessibility/files/SSA_Alternative_Text_Guide.pdf">Social Security Administration Guide: Alternate text for images</a> (PDF)</li>
     </ul>
+</div>
+        <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
