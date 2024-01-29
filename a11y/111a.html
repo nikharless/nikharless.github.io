@@ -46,47 +46,48 @@ title: 1.1.1.a Alternative Text (Active Images)
     </ul>
 
     <h2>Testing Logic</h2>
-    <h3>Are there images on the page which function as interactive controls?</h3>
-    <ol>
-        <li><strong>Yes</strong>; Does the image have alternative text?
-            <ol>
-                <li><strong>Yes</strong>; Does the alternative text repeat the text that it is programmatically associated with?
-                    <ol>
-                        <li><strong>Yes</strong>; Remove the alternative text.</li>
-                        <li><strong>No</strong>; Is the alternative text necessary to understand the function of the control?
-                            <ol>
-                                <li><strong>Yes</strong>; Does the text alternative sufficiently describe the function of the control?
-                                    <ol>
-                                        <li><strong>Yes</strong>; PASS</li>
-                                        <li><strong>No</strong>; Change the text to sufficiently describe the function of the control.</li>
-                                    </ol>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Are there images on the page which function as interactive controls?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image have alternative text?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the alternative text repeat the text that it is programmatically associated with?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; Remove the alternative text.</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the alternative text necessary to understand the function of the control?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently describe the function of the control?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; Change the text to sufficiently describe the function of the control.</span></li>
+                                    </ul>
                                 </li>
-                                <li><strong>No</strong>; Remove the alternative text.</li>
-                            </ol>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; Remove the alternative text.</span></li>
+                            </ul>
                         </li>
-                    </ol>
+                    </ul>
                 </li>
-                <li><strong>No</strong>; Is alternative text necessary to understand the control's purpose?
-                    <ol>
-                        <li><strong>Yes</strong>; Add alternative text to the active image.</li>
-                        <li><strong>No</strong>; PASS</li>
-                    </ol>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is alternative text necessary to understand the control's purpose?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; Add alternative text to the active image.</span></li>
+                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                    </ul>
                 </li>
-            </ol>
+            </ul>
         </li>
-        <li><strong>No</strong>; PASS</li>
-    </ol>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
 
-    <h3>Is there an image map on the page with an <code>&lt;area&gt;</code> tag?</h3>
-    <ol>
-        <li><strong>Yes</strong>; Does the <code>&lt;area&gt;</code> tag have a descriptive text alternative?
-            <ol>
-                <li><strong>Yes</strong>; PASS</li>
-                <li><strong>No</strong>; Change the alternative text to text which succinctly describes the link's purpose.</li>
-            </ol>
+    <h3 id="test2">Is there an image map on the page with an <code>&lt;area&gt;</code> tag?</h3>
+    <ul role="tree" aria-labelledby="test2">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the <code>&lt;area&gt;</code> tag have a descriptive text alternative?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; Change the alternative text to text which succinctly describes the link's purpose.</span></li>
+            </ul>
         </li>
-        <li><strong>No</strong>; PASS</li>
-    </ol>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
 
     <h2>Web Test Procedure</h2>
     <h3>Desktop</h3>
