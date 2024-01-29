@@ -1,0 +1,97 @@
+---
+layout: default
+title: 1.2.3.a Text or Audio Description (Prerecorded Video - with Dialogue)
+---
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="123.html">1.2.3 Audio Description or Media Alternative (Prerecorded)</a></p>
+
+    <p>Prerecorded synchronized media must have a text or audio description of the visual content.</p>
+
+    <div class="success"><strong>Success:</strong> You can get all the information conveyed in the visual portion without being able to see it.</div>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+        <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded synchronized media must have a text or audio description of the visual content.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The text or audio description should be presented next to the audio and be easy to find.</li>
+    </ul>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the page contain synchronized media (e.g., video with dialogue)?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the video content in the synchronized media have an audio description?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio description include all the important actions, visuals, and text in the video?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; Include all important actions, visuals, and text from the video in the audio description.</span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the video itself a media alternative for text?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it clearly labeled as such?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; Add text making it clear that the video is an alternative for the text content.</span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the video accompanied by a text alternative describing all the important actions, visuals, and text in the video?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; Add an alternative for the video content. This could be a link to audio descriptions, an alternative audio track with audio descriptions, an alternative version of the video with audio descriptions, a static text alternative, etc.</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <ol>
+        <li>Locate each video element on the page.</li>
+        <li>Determine whether the video content contains any information not provided through the audio content.</li>
+        <li>If it does, verify that it has a text or audio description that provides the visual information in another form.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <ul>
+        <li>Follow the procedure for Web.</li>
+    </ul>
+
+    <h2>Failures</h2>
+    <ul>
+        <li>F1.2.3.a.a Synchronized media does not have either a text or audio alternative for the video portion. (Medium)</li>
+        <li>F1.2.3.a.b Existing audio description is incorrect. (Medium)</li>
+        <li>F1.2.3.a.c Existing text description is incorrect. (Medium)</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-alternative-prerecorded">Understanding Success Criterion 1.2.3: Audio Description or Media Alternative (Prerecorded)</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G8">G8: Providing a movie with extended audio descriptions</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G58">G58: Placing a link to the alternative for time-based media immediately next to the non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G69">G69: Providing an alternative for time based media</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G78">G78: Providing a second, user-selectable, audio track that includes audio descriptions</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G173">G173: Providing a version of a movie with audio descriptions</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G203">G203: Using a static text alternative to describe a talking head video</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Additional Information
+            <ul>
+                <li><a href="https://webaim.org/techniques/captions/">WebAIM: Captions, Transcripts, and Audio Descriptions</a></li>
+                <li><a href="https://audiodescribe.com/samples/">Audio Descriptions Associates, LLC: Samples</a></li>
+            </ul>
+        </li>
+    </ul>
