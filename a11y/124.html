@@ -4,16 +4,25 @@ title: 1.2.4 Captions (Live)
 scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-live
 level: AA
 ---
-    <h1>{{ page.title }}</h1>
-    <p>Success Criterion: <a href="{{ page.scurl }}">{{ page.title }} (Level {{ page.level }})</a></p>
-
-    <h2>Checkpoints</h2>
-    <ul>
-        <li><a href="124a.html">1.2.4.a: Captions (Live)</a></li>
-    </ul>
+<div class="cpcontent">
+    <h1>{{ page.title }} (Level {{ page.level }})</h1>
+    <div class="sc">
+        <h2><a href=" {{ page.scurl }}">Success Criterion</a></h2>
+        <p>Captions are provided for all live audio content in synchronized media.</p>
+    </div>
 
     <h2>Training</h2>
     <ul>
         <li><a href="https://dequeuniversity.com/class/multimedia/">Deque University: Multimedia, Animations, and Motion</a> (requires account)</li>
         <li><a href="https://www.section508.gov/create/synchronized-media/creating-accessible-media/">Section508.gov: Creating Accessible Media</a></li>
     </ul>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.2.4 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.124-captions-live %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>

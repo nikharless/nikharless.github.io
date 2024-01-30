@@ -2,12 +2,9 @@
 layout: default
 title: 1.2.3.a Text or Audio Description (Prerecorded Video - with Dialogue)
 ---
+<div class="cpcontent">
     <h1>{{ page.title }}</h1>
     <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="123.html">1.2.3 Audio Description or Media Alternative (Prerecorded)</a></p>
-
-    <p>Prerecorded synchronized media must have a text or audio description of the visual content.</p>
-
-    <div class="success"><strong>Success:</strong> You can get all the information conveyed in the visual portion without being able to see it.</div>
 
     <h2>Basic Requirements and Best Practices</h2>
     <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
@@ -16,6 +13,8 @@ title: 1.2.3.a Text or Audio Description (Prerecorded Video - with Dialogue)
         <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded synchronized media must have a text or audio description of the visual content.</li>
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The text or audio description should be presented next to the audio and be easy to find.</li>
     </ul>
+
+    <div class="success"><strong>Success:</strong> You can get all the information conveyed in the visual portion without being able to see it.</div>
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
@@ -95,3 +94,13 @@ title: 1.2.3.a Text or Audio Description (Prerecorded Video - with Dialogue)
             </ul>
         </li>
     </ul>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.2.3 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.123-audio-media-alternative %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>

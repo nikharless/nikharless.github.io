@@ -3,12 +3,9 @@ layout: default
 title: 1.2.4.a Captions (Live)
 scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-live
 ---
+<div class="cpcontent">
     <h1>{{ page.title }}</h1>
     <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="124.html">1.2.4 Captions (Live)</a></p>
-
-    <p>Live video with audio must have synchronized captions.</p>
-
-    <div class="success"><strong>Success:</strong> You can read the captions without the audio and get all the information conveyed in the audio.</div>
 
     <h2>Basic Requirements and Best Practices</h2>
     <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
@@ -16,6 +13,8 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-live
     <ul>
         <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Live video with audio must have synchronized captions.</li>
     </ul>
+
+    <div class="success"><strong>Success:</strong> You can read the captions without the audio and get all the information conveyed in the audio.</div>
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
@@ -82,3 +81,13 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-live
             </ul>
         </li>
     </ul>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.2.4 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.124-captions-live %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
