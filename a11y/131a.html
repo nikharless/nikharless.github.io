@@ -13,10 +13,20 @@ guideline: perceivable
         <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
         <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Elements must be used according to their meaning, not their appearance.</li>
-        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> </li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Error messages should be programmatically associated with the corresponding form field.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> If a field has additional instructions, they should be programmatically associated with the field.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> <code>&lt;strong&gt;</code> should be used instead of <code>&lt;b&gt;</code> to indicate importance. <code>&lt;em&gt;</code> should be used instead of <code>&lt;i&gt;</code> to indicate emphasis.</li>
     </ul>
 
     <div class="success"><strong>Success:</strong> You can understand the semantic roles of elements without being able to see them.</div>
+
+    <p>Examples of scenarios that fall under this checkpoint include:</p>
+    <ul>
+        <li>Page landmarks</li>
+        <li>Blockquotes</li>
+        <li>Inserted and/or deleted text</li>
+        <li>Relationships conveyed by visual characteristics such as color or shape</li>
+    </ul>
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
@@ -73,6 +83,33 @@ guideline: perceivable
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h3 id="test2">Are there parts of the content that have a semantic function not covered by the other 1.3.1 checkpoints?</h3>
+    <ul role="tree" aria-labelledby="test2">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there semantic markup that corresponds to the function of the content part?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the content marked up with the corresponding semantic markup?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; Mark up the content with the appropriate semantic markup.</span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h3 id="test3">Are visual relationships also conveyed either programmatically or in text? Some examples include: comments visually presented as replies using indentation, blockquotes, blocks of elements linking to the same target, and deleted/inserted text.</h3>
+    <ul role="tree" aria-labelledby="test3">
+        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the element's role overridden with <code>role="presentation"</code> or <code>role="none"</code>></span>
+            <ul role="group">
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; Remove the presentation role; add a semantic role if the element does not have one by default.</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; Add semantic HTML tags, ARIA roles, or screen-reader-only text to ensure the relationship is understandable to assistive technology users.</span></li>
+            </ul>
+        </li>
     </ul>
 
     <h2>Web Test Procedure</h2>
