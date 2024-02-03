@@ -1,0 +1,153 @@
+---
+layout: default
+title: 1.3.1.b Data Tables
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
+guideline: perceivable
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="131.html">1.3.1 Info and Relationships</a></p>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+        <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Data tables must be marked up semantically as tables.</li>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #28a228;" aria-label="Requirement"></span> Header cells must be programmatically associated with data cells.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Tables should not be used for layout purposes.
+            <ul>
+                <li><span class="fa-solid fa-circle-exclamation" style="color: #28a228;" aria-label="Requirement"></span> If a table is used for layout, it must use <code>role="presentation"</code> or <code>role="none"</code> to prevent assistive technology from trying to read it as a table.</li>
+            </ul>
+        </li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Tables with both row and column headers should use the <code>scope</code> attribute to identify what each header is for.
+            <ul>
+                <li>The <code>scope</code> attribute is not required for tables with simple row and/or column headers.</li>
+            </ul>
+        </li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Complex tables should be broken down into separate simple tables.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Tables should use the <code>&lt;caption&gt;</code> element to programmatically associate a visual label with the data table.</li>
+    </ul>
+
+    <div class="success"><strong>Success:</strong> You can understand the data in the table without being able to see it.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Are there data tables on the page?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the data tables marked up as tables and read by the screen reader as such?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; Mark up the data tables semantically using the appropriate HTML or ARIA roles.</span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h3 id="test2">Are there any layout tables on the page semantically marked up as tables?</h3>
+    <ul role="tree" aria-labelledby="test2">
+        <li role="treeitem" class="fail"><span><strong>Yes</strong>; Remove any table HTML, <code>summary</code>, <code>headers</code>, or <code>scope</code> attributes, ARIA table roles, and table-related CSS properties.</span></li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <ol>
+        <li>Visually locate any data tables on the page.</li>
+        <li>Verify that they are marked up as tables.</li>
+    </ol>
+
+    <h3>Screen Reader Testing</h3>
+    <h4>NVDA</h4>
+    <ol>
+        <li>Cycle through the tables using the <strong>T</strong> key.</li>
+        <li>Use the up and down arrow keys to navigate through the cells of the table, or use <strong>Control+Alt+</strong> up, down, left, and right arrow keys.</li>
+    </ol>
+
+    <h4>JAWS</h4>
+    <ol>
+        <li>Cycle through the tables using the <strong>T</strong> key.</li>
+        <li>Use <strong>Control+Alt+</strong> up, down, left, and right arrow keys to navigate the table.</li>
+        <li>Use <strong>Control+Alt+5</strong> (on the numeric keypad) to read the row and/or column headers for the current cell.</li>
+    </ol>
+
+    <h4>VoiceOver</h4>
+    <ol>
+        <li>Use <strong>VO+</strong> up, down, left, and right arrow keys to navigate the table.</li>
+        <li>Use <strong>VO+C</strong> to read the column header for the current cell.</li>
+    </ol>
+    <p>Note: VoiceOver does not read row headers, though it will identify the row number.</p>
+
+    <h2>Mobile App Test Procedure</h2>
+    <ul>
+        <li>Locate any data tables on the page.</li>
+        <li>Using the screen reader, navigate through the table and determine whether the content is understandable without being able to see it.</li>
+        <li>If the table has interactive content, verify that it can be used with the screen reader turned on.</li>
+    </ul>
+
+    <h2>PDF Test Procedure</h2>
+    <h3>Adobe Acrobat Pro</h3>
+    <ol>
+        <li></li>
+    </ol>
+
+    <h3>Screen Reader</h3>
+    <ol>
+        <li></li>
+
+    <h2>Failures</h2>
+    <ul>
+        <li>F1.3.1.b.a  (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
+        <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
+        <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+        <li><a href="https://pauljadam.com/bookmarklets.html">Paul Adam Tables bookmarklet</a></li>
+        <li><a href="https://chrispederick.com/work/web-developer/">Web Developer</a>
+        <li>Screen reader</li>
+        <li>Adobe Acrobat Pro</li>
+        <li><a href="https://pdfua.foundation/en/pdf-accessibility-checker-pac/">PDF Accessibility Checker</a></li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.scurl }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H39">H39: Using caption elements to associate data table captions with data tables</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H43">H43: Using id and headers attributes to associate data cells with header cells in data tables</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H51">H51: Using table markup to present tabular information</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H63">H63: Using the scope attribute to associate header cells and data cells in data tables</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H73">H73: Using the summary attribute of the table element to give an overview of data tables</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF6">PDF6: Using table elements for table markup in PDF Documents</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF20">PDF20: Using Adobe Acrobat Pro's Table Editor to repair mistagged tables</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://pauljadam.com/demos/tableA11yTest.html">Paul Adam: Table Accessibility Test Case for VoiceOver</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/table_role">MDN: ARIA: table role</a></li>
+    </ul>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.3.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.131-info-relationships %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
