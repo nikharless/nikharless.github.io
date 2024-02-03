@@ -13,10 +13,15 @@ guideline: perceivable
         <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
         <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Data tables must be marked up semantically as tables.</li>
-        <li><span class="fa-solid fa-circle-exclamation" style="color: #28a228;" aria-label="Requirement"></span> Header cells must be programmatically associated with data cells.</li>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Header cells must be programmatically associated with data cells.
+            <ul>
+                <li>Empty header cells are not a failure.</li>
+            </ul>
+        </li>
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Tables should not be used for layout purposes.
             <ul>
-                <li><span class="fa-solid fa-circle-exclamation" style="color: #28a228;" aria-label="Requirement"></span> If a table is used for layout, it must use <code>role="presentation"</code> or <code>role="none"</code> to prevent assistive technology from trying to read it as a table.</li>
+                <li><span class="fa-solid fa-circle-exclamation" style="color: #28a228;" aria-label="Requirement"></span> If a table is used for layout, it must be marked up to prevent assistive technologies from reading it as a data table.</li>
+                <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Layout tables should use <code>role="presentation"</code> or <code>role="none"</code> to prevent assistive technology from trying to read it as a table.</li>
             </ul>
         </li>
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Tables with both row and column headers should use the <code>scope</code> attribute to identify what each header is for.
@@ -36,7 +41,27 @@ guideline: perceivable
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the data tables marked up as tables and read by the screen reader as such?</span>
             <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the header cells marked up as such?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the table have both row and column headers?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the headers have a <code>scope</code> attribute?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the <code>scope</code> attribute have the correct value?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; Correct the value for the <code>scope</code> attribute.</span></li>
+                                            </ul>
+                                        </li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; Add a <code>scope</code> attribute to each header cell, set to the correct value.</span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; Mark up the header cells as header cells.</span></li>
+                    </ul>
+                </li>
                 <li role="treeitem" class="fail"><span><strong>No</strong>; Mark up the data tables semantically using the appropriate HTML or ARIA roles.</span></li>
             </ul>
         </li>
