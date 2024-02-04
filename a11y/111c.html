@@ -2,10 +2,20 @@
 layout: default
 title: 1.1.1.c Alternative Text (Complex Images)
 guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
 <div class="cpcontent">
     <h1>{{ page.title }}</h1>
     <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="111.html">1.1.1 Non-text Content</a></p>
+
+    <h2>Overview</h2>
+    <h3>Example</h3>
+
+    <p>This is a complex image with a short alt text and a link to the long description below it. Note: this is a sample link and is non-functional.</p>
+
+    <img src="111c-constellations_640.png" alt="Historical chart of constellations" />
+    <p><a href="#">Follow this link for a description of the chart.</a></p>
+
 
     <h2>Basic Requirements and Best Practices</h2>
     <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
@@ -36,23 +46,28 @@ guideline: perceivable
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each complex image have a standard short text alternative?</span>
             <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each complex image also have a long text alternative?</span>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the short text alternative sufficiently summarize the purpose of the complex image?</span>
                     <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the long text alternative provided in context or via an adjacent link to a separate page?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each complex image also have a long text alternative?</span>
                             <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the long text alternative sufficiently describe all visual complexities and relationships conveyed visually?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the long text alternative provided in context or via an adjacent link to a separate page?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; Rewrite the long text alternative to include all details, complexities, and relationships conveyed visually.</span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the long text alternative sufficiently describe all visual complexities and relationships conveyed visually?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111cd.html">F1.1.1.c.d Existing long text alternative does not convey all the information in the complex image.</a></span></li>
+                                            </ul>
+                                        </li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111cc.html">F1.1.1.c.c Complex image is missing a long text description.</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; Provide the long text description in context or via an adjacent link to a separate page.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111cc.html">F1.1.1.c.c Complex image is missing a long text description.</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Add a descriptive long text alternative that sufficiently describes all visual complexities and relationships conveyed visually. It may be provided in context or on a separate page.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111cb.html">F1.1.1.c.b Existing short text alternative does not adequately summarize the purpose of the complex image.</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; Add a text alternative  to the active image.</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111ca.html">F1.1.1.c.a Complex image is missing a short text alternative.</a></span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -81,7 +96,7 @@ guideline: perceivable
     </ul>
 
     <h2>PDF Test Procedure</h2>
-    <h3>Find missing text alternatives.</h3>
+    <h3>Find missing short text alternatives.</h3>
 
     <h4>PDF Accessibility Checker</h4>
     <ol>
@@ -94,7 +109,7 @@ guideline: perceivable
     <h4>Adobe Acrobat Pro</h4>
     <ol>
         <li>Select <strong>Accessibility > Accessibility Check</strong> in the Task pane to open the Accessibility Checker Options dialog.</li>
-        <li>Select "Alternate Text and Headings" from the Category drop-down, and make sure "Figures require alternate text" is checked.</li>
+        <li>Select <strong>Alternate Text and Headings</strong> from the Category drop-down, and make sure <strong>Figures require alternate text</strong> is checked.</li>
     </ol>
 
     <h3>Verify the text alternatives are sufficient.</h3>
@@ -106,10 +121,10 @@ guideline: perceivable
 
     <h2>Failures</h2>
     <ul>
-        <li>F1.1.1.c.a Complex image is missing a short text alternative. (Medium)
-        <li>F1.1.1.c.b Existing short text alternative does not adequately summarize the purpose of the complex image. (Medium)</li>
-        <li>F1.1.1.c.c Complex image is missing a long text description. (High)</li>
-        <li>F1.1.1.c.d Existing long text alternative does not convey all the information in the complex image. (Medium)</li>
+        <li><a href="failures/f111ca.html">F1.1.1.c.a Complex image is missing a short text alternative.</a> (Medium)
+        <li><a href="failures/f111cb.html">F1.1.1.c.b Existing short text alternative does not adequately summarize the purpose of the complex image.</a> (Medium)</li>
+        <li><a href="failures/f111cc.html">F1.1.1.c.c Complex image is missing a long text description.</a> (High)</li>
+        <li><a href="failures/f111cd.html">F1.1.1.c.d Existing long text alternative does not convey all the information in the complex image.</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -128,7 +143,7 @@ guideline: perceivable
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
+        <li><a href="{{ page.scurl }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
