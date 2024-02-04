@@ -7,13 +7,19 @@ guideline: perceivable
     <h1>{{ page.title }}</h1>
     <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="111.html">1.1.1 Non-text Content</a></p>
 
+    <h2>Overview</h2>
+    <p>Text alternatives depend on context. The same image might convey different information in different situations.</p>
+
+    <h3>Example</h3>
+    <img src="assets/images/111b-fallingwater_640.jpg" alt="Frank Lloyd Wright's Fallingwater" />
+    <p>If this image were used in an article about Frank Lloyd Wright, the text alternative might be "Frank Lloyd Wright's Fallingwater". However, if it were in a tutorial about photography, it might include information relevant to the lesson's content.</p>
+
     <h2>Basic Requirements and Best Practices</h2>
     <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
         <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
         <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Meaningful images must have a descriptive text alternative that conveys the same information as the image in context.
             <ul>
-                <li>The same image may have different intentions in different contexts, so it's important to take this into consideration when deciding whether the same information is conveyed by the text alternative.</li>
                 <li>If the image does not provide any information not already conveyed elsewhere on the page, it may be considered redundant. Check against <a href="111d.html">1.1.1.d Alternative Text (Decorative Images)</a>.</li>
             </ul>
         </li>
@@ -42,11 +48,31 @@ guideline: perceivable
             <ul role="group">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative serve the same purpose as the image?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Change the text to convey the same information as the image.</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image contain any informative text?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative include the informative text?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="f111bc.html">F1.1.1.b.c Existing text alternative does not include informative image text.</a></span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                            </ul>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111bb.html">F1.1.1.b.b Existing text alternative does not serve the same purpose as the informative image</a>.</span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; Add a text alternative  to the active image.</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111ba.html">F1.1.1.b.a Informative image is missing a text alternative</a>.</span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h3 id="test2">Are there informative images which change dynamically?</h3>
+    <ul role="tree" aria-labelledby="test2">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative change to match the current image?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111bd.html">F1.1.1.b.d Text alternative does not match dynamic image.</a></span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -58,9 +84,9 @@ guideline: perceivable
         <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> or <a href="https://wave.webaim.org/extension/">WAVE</a> to flag missing text alternatives.</li>
         <li>Locate each informative image on the page using one or more of the following methods:
             <ul>
-                <li>Mouse: Hover over images, noting cursor change if they are interactive.</li>
-                <li>Windows / NVDA: Use the G key to cycle through images.</li>
-                <li>MacOS / VoiceOver: Use VO+Command+G to cycle through images.</li>
+                <li><strong>Mouse</strong>: Hover over images, noting cursor change if they are interactive.</li>
+                <li><strong>Windows / NVDA</strong>: Use the <kbd>G</kbd> key to cycle through images.</li>
+                <li><strong>MacOS / VoiceOver</strong>: Use <kbd>VO+Command+G</kbd> to cycle through images.</li>
             </ul>
         </li>
         <li>Verify that each image has a text alternative which accurately describes its purpose.</li>
@@ -92,7 +118,7 @@ guideline: perceivable
     <h4>Adobe Acrobat Pro</h4>
     <ol>
         <li>Select <strong>Accessibility > Accessibility Check</strong> in the Task pane to open the Accessibility Checker Options dialog.</li>
-        <li>Select "Alternate Text and Headings" from the Category drop-down, and make sure "Figures require alternate text" is checked.</li>
+        <li>Select <strong>Alternate Text and Headings</strong> from the Category drop-down, and make sure <strong>Figures require alternate text</strong> is checked.</li>
     </ol>
 
     <h3>Verify the text alternatives are sufficient.</h3>
@@ -100,8 +126,8 @@ guideline: perceivable
         <li>Locate each informative image in the PDF using one or more of the following methods:
             <ul>
                 <li>Visually</li>
-                <li>Windows / NVDA: Use the G key to cycle through images.</li>
-                <li>MacOS / VoiceOver: Use VO+Command+G to cycle through images.</li>
+                <li><strong>Windows / NVDA</strong>: Use the <kbd>G</kbd> key to cycle through images.</li>
+                <li><strong>MacOS / VoiceOver</strong>: Use <kbd>VO+Command+G</kbd> to cycle through images.</li>
             </ul>
         </li>
         <li>Verify that each image has a text alternative which accurately describes its purpose.</li>
@@ -109,10 +135,10 @@ guideline: perceivable
 
     <h2>Failures</h2>
     <ul>
-        <li>F1.1.1.b.a Informative image is missing a text alternative. (High)</li>
-        <li>F1.1.1.b.b Existing text alternative does not serve the same purpose as the informative image. (Medium)</li>
-        <li>F1.1.1.b.c Existing text alternative does not include informative image text. (Medium)</li>
-        <li>F1.1.1.b.d Text alternative does not match dynamic image. (Medium)</li>
+        <li><a href="f111ba.html">F1.1.1.b.a Informative image is missing a text alternative.</a> (High)</li>
+        <li><a href="f111bb.html">F1.1.1.b.b Existing text alternative does not serve the same purpose as the informative image.</a> (Medium)</li>
+        <li><a href="f111bc.html">F1.1.1.b.c Existing text alternative does not include informative image text.</a> (Medium)</li>
+        <li><a href="f111bd.html">F1.1.1.b.d Text alternative does not match dynamic image.</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
