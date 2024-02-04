@@ -38,12 +38,32 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
-    <h3 id="test1">Are there images on the page which are purely decorative or redundant?</h3>
+    <h3 id="test1">Are there images on the page which are purely decorative?</h3>
     <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the image hidden from assistive technologies?</span>
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the image an <code>&lt;img&gt;</code> element?</span>
             <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; Hide the image from assistive technologies.</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the <code>&lt;img&gt;</code> element have an <code>alt=""</code> attribute?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111da.html">F1.1.1.d.a Decorative &lt;img&gt; does not have null alt attribute</a>.</span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image hidden from assistive technologies?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the image have a text alternative?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="failures/f111db.html">F1.1.1.d.b Decorative image is not hidden from screen readers.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the image have a <code>title</code> attribute?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See F1.1.1.d.d Decorative image has a title attribute.</span></li>
+                                        <li role="treeitem"><span><strong>No</strong>;</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -56,8 +76,8 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
         <li>Locate each decorative image on the page using one or more of the following methods:
             <ul>
                 <li>Visually</li>
-                <li>Windows / NVDA: Use the G key to cycle through images.</li>
-                <li>MacOS / VoiceOver: Use VO+Command+G to cycle through images.</li>
+                <li><strong>Windows / NVDA</strong>: Use the <kbd>G</kbd> key to cycle through images.</li>
+                <li><strong>MacOS / VoiceOver</strong>: Use <kbd>VO+Command+G</kbd> to cycle through images.</li>
             </ul>
         </li>
         <li>Verify that each decorative or redundant image is ignored by assistive technologies.</li>
@@ -79,7 +99,7 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <ol>
         <li>Locate each decorative or redundant image in the PDF.</li>
-        <li>Verify that each decorative or redundant image is marked as &lt;Artifact&gt;.</li>
+        <li>Verify that each decorative or redundant image is tagged as &lt;Artifact&gt;.</li>
     </ol>
 
     <h4>PDF Accessibility Checker</h4>
@@ -98,12 +118,12 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h2>Failures</h2>
     <ul>
-        <li>F1.1.1.d.a Decorative image is not hidden from screen readers. (Low)</li>
-        <li>F1.1.1.d.b Decorative image has a text alternative. (Low)</li>
-        <li>F1.1.1.d.c Redundant image is not hidden from screen readers. (Low)</li>
-        <li>F1.1.1.d.d Decorative image has a title attribute. (Low)</li>
-        <li>F1.1.1.d.e PDF Artifact is tagged as real content. (Low)</li>
-
+        <li><a href="failures/f111da.html">F1.1.1.d.a Decorative <code>&lt;img&gt;</code> does not have null <code>alt</code> attribute.</a> (Low)</li>
+        <li><a href="failures/f111db.html">F1.1.1.d.b Decorative image is not hidden from screen readers.</a> (Low)</li>
+        <li><a href="failures/f111dc.html">F1.1.1.d.c Decorative image has a text alternative.</a> (Low)</li>
+        <li><a href="failures/f111dd.html">F1.1.1.d.d Redundant image is not hidden from screen readers.</a> (Low)</li>
+        <li><a href="failures/f111de.html">F1.1.1.d.e Decorative image has a title attribute.</a> (Low)</li>
+        <li><a href="failures/f111df.html">F1.1.1.d.f PDF Artifact is tagged as real content.</a> (Low)</li>
     </ul>
 
     <h2>Testing Tools</h2>
