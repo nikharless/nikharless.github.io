@@ -10,7 +10,7 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h2>Overview</h2>
 
-    <p>Active images include the following:</p>
+    <p>Functional (active) images include the following:</p>
     <ul>
         <li>Images inside a link</li>
         <li>Images inside a button</li>
@@ -18,9 +18,12 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
         <li><code>&lt;input type="image"&gt;</code> elements</li>
     </ul>
 
-    <h3>Example</h3>
+    <h3>Examples</h3>
+    <h2>Image as Button</h2>
     <p><button style="background-color: transparent; border: 0;"><img src="/a11y/assets/images/111a-shopping-cart.png" alt="Add to Cart" /></button></p>
-    <p>This image is a button.</p>
+    <pre><code><button style="background-color: transparent; border: 0;">
+            <img src="/a11y/assets/images/111a-shopping-cart.png" alt="Add to Cart" />
+        </button></code></pre>
 
     <h2>Basic Requirements and Best Practices</h2>
     <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
@@ -36,14 +39,14 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
         </li>
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> If the image contains meaningful text, the text alternative should contain that exact text.</li>
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for linked images should not duplicate adjacent link text for the same destination. Combine the image and text into a single link and check the image against 1.1.1.d Alternative Text (Decorative Images).</li>
-        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for active images should not include words such as "link" or "button".</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for functional images should not include words such as "link" or "button".</li>
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Trademarks, copyright symbols, etc. on an image should be included in the text alternative.</li>
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives should be as succinct as possible.</li>
     </ul>
 
     <div class="success"><strong>Success:</strong> If you could not see the image, you would still understand the destination, purpose, or function of the control.</div>
 
-    <p>Text alternatives for active images include the following:</p>
+    <p>Text alternatives for functional images include the following:</p>
     <ul>
         <li><code>alt</code> attribute value</li>
         <li><code>title</code> attribute value</li>
@@ -65,7 +68,7 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently describe the function of the control?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111ad.html">F1.1.1.a.d Existing text alternative does not serve the same purpose as the interactive image</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111ad.html">F1.1.1.a.d Existing text alternative does not serve the same purpose as the functional image</a>.</span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="111d.html">1.1.1.d Alternative Text (Decorative Images)</a>.</span></li>
@@ -77,10 +80,10 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                     <ul role="group">
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the image in an <code>&lt;img&gt;</code> element?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="failures/f111aa.html">F1.1.1.a.a Active <code>&lt;img&gt;</code> is missing an <code>alt</code> attribute.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="failures/f111aa.html">F1.1.1.a.a Functional <code>&lt;img&gt;</code> is missing an <code>alt</code> attribute.</a></span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;svg&gt;</code> element?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="failures/f111ab.html">F1.1.1.a.b Active <code>&lt;svg&gt;</code> is missing a <code>title</code> element.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="failures/f111ab.html">F1.1.1.a.b Functional <code>&lt;svg&gt;</code> is missing a <code>title</code> element.</a></span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;input type="image"&gt;</code> element?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="failures/f111ac.html">F1.1.1.a.c <code>&lt;input&gt;</code> image is missing an <code>alt</code> attribute.</a>.</span></li>
@@ -128,9 +131,9 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
     </ul>
 
-    <h3 id="test3">Are there interactive images which change dynamically (e.g., a button that changes from Play to Pause)?</h3>
+    <h3 id="test3">Are there functional images which change dynamically (e.g., a button that changes from Play to Pause)?</h3>
     <ul role="tree" aria-labelledby="test3">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative change to match the current interactive image?</span>
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative change to match the current functional image?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                 <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111bi.html">F1.1.1.b.i Text alternative does not match dynamic image.</a></span></li>
@@ -143,22 +146,22 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     <h3>Desktop</h3>
     <ol>
         <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> or <a href="https://wave.webaim.org/extension/">WAVE</a> to flag missing text alternatives.</li>
-        <li>Locate each interactive image on the page using one or more of the following methods:
+        <li>Locate each functional image on the page using one or more of the following methods:
             <ul>
-                <li><strong>Mouse</strong>: Hover over images, noting cursor change if they are interactive.</li>
-                <li><strong>Keyboard</strong>: Use the <kbd>Tab</kbd> key to focus interactive images.</li>
+                <li><strong>Mouse</strong>: Hover over images, noting cursor change if they are functional.</li>
+                <li><strong>Keyboard</strong>: Use the <kbd>Tab</kbd> key to focus functional images.</li>
                 <li><strong>Windows / NVDA</strong>: Use the <kbd>G</kbd> key to cycle through images.</li>
                 <li><strong>MacOS / VoiceOver</strong>: Use <kbd>VO+Command+G</kbd> to cycle through images.</li>
             </ul>
         </li>
-        <li>Verify that each image has a text alternative which accurately describes its purpose.</li>
+        <li>Verify that each functional image has a text alternative which accurately describes its purpose.</li>
     </ol>
 
     <h3>Mobile</h3>
     <ol>
         <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features</a>.</li>
-        <li>Navigate to each interactive image.</li>
-        <li>Verify that the name spoken by the screen reader accurately describes the purpose of the image.</li>
+        <li>Navigate to each functional image.</li>
+        <li>Verify that the name spoken by the screen reader accurately describes the purpose of the functional image.</li>
     </ol>
 
     <h2>Mobile App Test Procedure</h2>
@@ -188,30 +191,30 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h3>Verify the text alternatives are sufficient.</h3>
     <ol>
-        <li>Locate each interactive image in the PDF using one or more of the following methods:
+        <li>Locate each functional image in the PDF using one or more of the following methods:
             <ul>
-                <li><strong>Mouse</strong>: Hover over images, noting cursor change if they are interactive.</li>
-                <li><strong>Keyboard</strong>: Use the <kbd>Tab</kbd> key to focus interactive images.</li>
+                <li><strong>Mouse</strong>: Hover over images, noting cursor change if they are functional.</li>
+                <li><strong>Keyboard</strong>: Use the <kbd>Tab</kbd> key to focus functional images.</li>
                 <li><strong>Windows / NVDA</strong>: Use the <kbd>G</kbd> key to cycle through images.</li>
                 <li><strong>MacOS / VoiceOver</strong>: Use <kbd>VO+Command+G</kbd> to cycle through images.</li>
             </ul>
         </li>
-        <li>Verify that each image has a text alternative which accurately describes its purpose.</li>
+        <li>Verify that each functional image has a text alternative which accurately describes its purpose.</li>
     </ol>
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="failures/f111aa.html">F1.1.1.a.a Active <code>&lt;img&gt;</code> is missing an <code>alt</code> attribute.</a> (High)</li>
-        <li><a href="failures/f111ab.html">F1.1.1.a.b Active <code>&lt;svg&gt;</code> is missing a <code>title</code> element.</a> (High)</li>
+        <li><a href="failures/f111aa.html">F1.1.1.a.a Functional <code>&lt;img&gt;</code> is missing an <code>alt</code> attribute.</a> (High)</li>
+        <li><a href="failures/f111ab.html">F1.1.1.a.b Funcational <code>&lt;svg&gt;</code> is missing a <code>title</code> element.</a> (High)</li>
         <li><a href="failures/f111ac.html">F1.1.1.a.c <code>&lt;input&gt;</code> image is missing an <code>alt</code> attribute.</a> (High)</li>
         <li><a href="failures/f111ad.html">F1.1.1.a.d CSS background image in interactive element is missing a text alternative.</a> (High)</li>
         <li><a href="failures/f111ae.html">F1.1.1.a.e Image map <code>&lt;area&gt;</code> element is missing a text alternative.</a> (High)</li>
         <li><a href="failures/f111af.html">F1.1.1.a.f Server-side image map is missing a text alternative.</a> (High)</li>
-        <li><a href="failures/f111ag.html">F1.1.1.a.g Existing text alternative does not serve the same purpose as the interactive image.</a> (Medium)</li>
-        <li><a href="failures/f111bh.html">F1.1.1.b.h Existing text alternative does not include informative image text.</a> (Medium)</li>
+        <li><a href="failures/f111ag.html">F1.1.1.a.g Existing text alternative does not serve the same purpose as the functional image.</a> (Medium)</li>
+        <li><a href="failures/f111bh.html">F1.1.1.b.h Existing text alternative does not include informational image text.</a> (Medium)</li>
         <li><a href="failures/f111bi.html">F1.1.1.b.i Text alternative does not match dynamic image.</a> (Medium)</li>
         <li><a href="failures/f111bj.html">F1.1.1.b.j PDF image link is missing Alternate Text.</a> (High)</li>
-        <li><a href="failures/f111bh.html">F1.1.1.b.h Articulate Storyline active image is missing Alternate text.</a> (High)</li>
+        <li><a href="failures/f111bh.html">F1.1.1.b.h Articulate Storyline functional image is missing Alternate text.</a> (High)</li>
     </ul>
 
     <h2>Testing Tools</h2>
