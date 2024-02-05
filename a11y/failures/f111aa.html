@@ -1,0 +1,45 @@
+---
+layout: default
+title: Active <code>&lt;img&gt;</code> is missing an <code>alt</code> attribute
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="/a11y/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/111a.html">1.1.1.a Alternative Text (Active Images)</a></p>
+
+    <table>
+    	<tr>
+    		<th>Expected Result</th>
+    		<td>If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</td>
+    	</tr>
+    	<tr>
+    		<th>Actual Result</th>
+    		<td>The control is labeled with only an image, but the image does not have a text alternative.</td>
+    	</tr>
+    	<tr>
+    		<th>Solution</th>
+    		<td>
+                <ol>
+                    <li>Add a text alternative which describes the purpose of the interactive image using one of the following methods:
+                        <ul>
+                            <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
+                            <li>Add an <code>aria-label</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
+                            <li>Add an <code>aria-labelledby</code> attribute to the <code>&lt;img&gt;</code> tag, set to the <code>id</code> value of the text to use as a label, <strong>OR</strong></li>
+                            <li>Add a <code>title</code> attribute to the <code>&lt;img&gt;</code> tag</li>
+                        </ul>
+                    </li>
+                </ol>
+            </td>
+    	</tr>
+    </table>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
