@@ -2,6 +2,7 @@
 layout: default
 title: 1.1.1.h Alternative Text (Audio or Video)
 guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
 <div class="cpcontent">
     <h1>{{ page.title }}</h1>
@@ -19,17 +20,17 @@ guideline: perceivable
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
-    <h3 id="test1">Is there audio or video content on the page?</h3>
+    <h3 id="test1">Is there audio content on the page?</h3>
     <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio or video content have a short text alternative?</span>
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio have a short text alternative?</span>
             <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently summarize the content of the media?</span>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently summarize the content of the audio?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Change the text alternative to sufficiently summarize the content of the media.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111hc.html">F1.1.1.h.c Existing text alternative does not adequately summarize the content of the audio.</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; Add alternative text summarizing the content of the media.</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111ha.html">F1.1.1.h.a Audio object does not have a text alternative.</span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -39,7 +40,23 @@ guideline: perceivable
     <p><em>If a transcript does not exist, see <a href="121.html">1.2.1 Audio-only and Video-only (Prerecorded)</a>.</em></p>
     <ul role="tree" aria-labelledby="test2">
         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" class="fail"><span><strong>No</strong>; Include a reference to the accompanying transcript in the text alternative for the audio content.</span></li>
+        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111he.html">F1.1.1.h.e Text alternative does not refer to the transcript.</a></span></li>
+    </ul>
+
+    <h3 id="test3">Is there video content on the page?</h3>
+    <ul role="tree" aria-labelledby="test3">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the video content have a short text alternative?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently summarize the content of the video?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111hd.html">F1.1.1.h.d Existing text alternative does not adequately summarize the content of the video.</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111hb.html">F1.1.1.h.b Video object does not have a text alternative.</a></span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
     </ul>
 
     <h2>Web Test Procedure</h2>
@@ -48,8 +65,8 @@ guideline: perceivable
         <li>Locate each audio or video element using one or more of the following methods:
             <ul>
                 <li>Visually</li>
-                <li>Windows / NVDA: Use the O key to cycle through objects.</li>
-                <li>MacOS / VoiceOver: Use VO+Command+O to cycle through objects.</li>
+                <li><strong>Windows / NVDA</strong>: Use the <kbd>O</kbd> key to cycle through objects.</li>
+                <li><strong>MacOS / VoiceOver</strong>: Use <kbd>VO+Command+O</kbd> to cycle through objects.</li>
             </ul>
         </li>
         <li>Verify that it has a text alternative that summarizes its content.</li>
@@ -69,10 +86,11 @@ guideline: perceivable
 
     <h2>Failures</h2>
     <ul>
-        <li>F1.1.1.h.a Audio object does not have a text alternative. (Medium)</li>
-        <li>F1.1.1.h.b Video object does not have a text alternative. (Medium)</li>
-        <li>F1.1.1.h.c Existing text alternative does not adequately summarize the content of the audio. (Medium)</li>
-        <li>F1.1.1.h.d Existing text alternative does not adequately summarize the content of the video. (Medium)</li>
+        <li><a href="failures/f111ha.html">F1.1.1.h.a Audio object does not have a text alternative.</a> (Medium)</li>
+        <li><a href="failures/f111hb.html">F1.1.1.h.b Video object does not have a text alternative.</a> (Medium)</li>
+        <li><a href="failures/f111hc.html">F1.1.1.h.c Existing text alternative does not adequately summarize the content of the audio.</a> (Medium)</li>
+        <li><a href="failures/f111hd.html">F1.1.1.h.d Existing text alternative does not adequately summarize the content of the video.</a> (Medium)</li>
+        <li><a href="failures/f111he.html">F1.1.1.h.e Text alternative does not refer to the transcript.</a> (Low)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -90,7 +108,7 @@ guideline: perceivable
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
+        <li><a href="{{ page.title }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
