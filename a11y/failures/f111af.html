@@ -1,0 +1,72 @@
+---
+layout: default
+title: Failure - F1.1.1.a.f Server-side image map is missing a text alternative.
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="/a11y/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/111a.html">1.1.1.a Alternative Text (Active Images)</a></p>
+
+    <table>
+    	<tr>
+    		<th>Expected Result</th>
+    		<td>If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</td>
+    	</tr>
+    	<tr>
+    		<th>Actual Result</th>
+    		<td>A server-side image map is used, but there is no text alternative for the links.</td>
+    	</tr>
+    	<tr>
+    		<th>Solution</th>
+    		<td>
+                <ol>
+                    <li>Add an <code>&lt;alt&gt;</code> attribute to the <code>&lt;img&gt;</code> tag summarizing the purpose of the image map.</li>
+                    <li>Add an alternate list of text links containing all the same links in the image map.</li>
+                </ol>
+            </td>
+    	</tr>
+        <tr>
+            <th>Example</th>
+            <td>
+                <h4>Server-Side Image Map</h4>
+                <a href="../file-path/ismap.map"><img ismap src="../assets/images/f111af-map_640.jpg" alt="World Map"></a>
+                <ul>
+                    <li><a href="#">North America</a></li>
+                    <li><a href="#">South America</a></li>
+                    <li>etc.</li>
+                </ul>
+                <pre><code>&lt;a href="ismap.map"&gt;&lt;img ismap src="map.jpg" alt="World Map"&gt;&lt;/a&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href="north-america.html"&gt;North America&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="south-america.html"&gt;South America&lt;/a&gt;&lt;/li&gt;
+    ...
+&lt;/ul&gt;</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>
+                <p>Blind and visually impaired users need to have a text alternative to functional images so that they can be interpreted by assistive technology such as screen readers and braille devices.</p>
+                <p>Server-side image maps send the coordinates of mouse clicks to be calculated server-side, after which a link is returned. There is nothing for keyboard users to focus on, and no way to add a text alternative to the areas of the image map.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://osec.doc.gov/webresources/accessibility/ruleef.htm">Server-Side and Client-Side Image Maps</a></li>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
