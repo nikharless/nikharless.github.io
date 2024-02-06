@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Failure - F1.1.1.a.d CSS background image in interactive element is missing a text alternative.
+title: Failure - Image map <code>&lt;area&gt;</code> element is missing a text alternative.
 guideline: perceivable
 scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
@@ -15,34 +15,37 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     	</tr>
     	<tr>
     		<th>Actual Result</th>
-    		<td>The custom control is labeled with only a CSS background image, but the image does not have a text alternative.</td>
+    		<td>The client-side image map is labeled with only images, but each <code>&lt;area&gt;</code> does not have a text alternative.</td>
     	</tr>
     	<tr>
     		<th>Solution</th>
     		<td>Add a text alternative which describes the purpose of the functional image using the following method:
                 <ul>
-                    <li>Add an <code>aria-label</code> attribute to the container tag</li>
+                    <li>Add an <code>alt</code> attribute to each <code>&lt;area&gt;</code> tag in the image map.</li>
+                    <li>Set it to a concise text alternative describing the purpose of the link.</li>
                 </ul>
             </td>
     	</tr>
         <tr>
             <th>Example</th>
             <td>
-                <h4>Custom Button</h4>
-                <style>
-                    #action {
-                        background-image: url("../assets/images/f111ac-submit.png");
-                        width: 113px;
-                        height: 36px;
-                    }
-                </style>
-                <p><div tabindex="0" role="button" id="action" aria-label="Submit"></div></p>
-    <pre><code>&lt;style&gt;
-    #action {
-        background-image: url("submit.png");
-    }
-    &lt;/style&gt;
-&lt;div tabindex="0" role="button" id="action" <strong>aria-label="Submit"</strong>&gt;&lt;/div&gt;</code></pre>
+                <h4>Client-Side Image Map</h4>
+                <img src="assets/images/111a-infographic.png" alt="Steps of the Process" usemap="#csimap">
+                <map id="csimap" name="Sample Image Map">
+                    <area shape="rect" coords="0,0,168,334" href="#" onclick="alert('Step 1')" alt="Step 1 Details">
+                    <area shape="rect" coords="168,0,319,334" href="#" onclick="alert('Step 2')" alt="Step 2 Details">
+                    <area shape="rect" coords="319,0,471,334" href="#" onclick="alert('Step 3')" alt="Step 3 Details">
+                    <area shape="rect" coords="471,0,640,334" href="#" onclick="alert('Step 4')" alt="Step 4 Details">
+                </map>
+                <pre><code>&lt;img src="infographic.png"
+    alt="Steps of the Process"
+    usemap="#csimap"&gt;
+&lt;map id="csimap" name="Sample Image Map"&gt; 
+    &lt;area shape="rect"
+        coords="0,0,168,334"
+        href="#"
+        <strong>alt="Step 1 Details"</strong>&gt;
+&lt;/map&gt;</code></pre>
             </td>
         </tr>
         <tr>
@@ -54,7 +57,8 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <td>
                 <ul>
                     <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H24">H24: Providing text alternatives for the area elements of image maps</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/images/imagemap/">W3: Image Maps</a></li>
             </td>
         </tr>
     </table>
