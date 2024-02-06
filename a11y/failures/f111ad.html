@@ -1,0 +1,66 @@
+---
+layout: default
+title: Failure - F1.1.1.a.d CSS background image in interactive element is missing a text alternative.
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="/a11y/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/111a.html">1.1.1.a Alternative Text (Active Images)</a></p>
+
+    <table>
+    	<tr>
+    		<th>Expected Result</th>
+    		<td>If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</td>
+    	</tr>
+    	<tr>
+    		<th>Actual Result</th>
+    		<td>The control is labeled with only an image, but the image does not have a text alternative.</td>
+    	</tr>
+    	<tr>
+    		<th>Solution</th>
+    		<td>Add a text alternative which describes the purpose of the functional image using the following method:
+                <ul>
+                    <li>Add an <code>aria-label</code> attribute to the container tag</li>
+                </ul>
+            </td>
+    	</tr>
+        <tr>
+            <th>Example</th>
+            <td>
+                <h4>Custom Button</h4>
+                <style>
+                    div.action {
+                        background-image: url("assets/images/f111ac-submit.png");
+                        width: 113px;
+                        height: 36px;
+                    }
+                </style>
+                <p><div tabindex="0" role="button" id="action" aria-label="Submit"></div></p>
+    <pre><code>&lt;input type="image" name="submit" src="submit.png"
+    <strong>alt="Submit"</strong>&gt;</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>Blind and visually impaired users need to have a text alternative to functional images so that they can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not know what the link or control does.</td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
