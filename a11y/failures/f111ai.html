@@ -55,7 +55,7 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                     }
                 </style>
                 <div class="player" role="button" tabindex="0">
-                    <img src="../assets/images/f111ai-play.png" class="play" alt="Play" aria-hidden="true"> 
+                    <img src="../assets/images/f111ai-play.png" class="play" aria-hidden="true" alt="Play"> 
                     <img src="../assets/images/f111ai-pause.png" class="pause" aria-hidden="true" alt="Pause">
                 </div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
@@ -66,11 +66,19 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                         jQuery('.player').on('click', function () {
 
                             if(jQuery(this).hasClass('active')) {
-                                jQuery(this).find('audio').trigger('pause');
                                 jQuery(this).removeClass('active');
                             } else {
-                                jQuery(this).find('audio').trigger('play');
                                 jQuery(this).addClass('active');
+                            }
+                        });
+                        jQuery('.player').on('keypress', function () {
+                            if(e.keyCode==13) {
+
+                                if(jQuery(this).hasClass('active')) {
+                                    jQuery(this).removeClass('active');
+                                } else {
+                                    jQuery(this).addClass('active');
+                                }
                             }
                         });
                     });
