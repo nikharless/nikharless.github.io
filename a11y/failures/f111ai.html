@@ -1,0 +1,101 @@
+---
+layout: default
+title: Failure - F1.1.1.b.i Text alternative does not match dynamic image.
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="/a11y/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/111a.html">1.1.1.a Alternative Text (Active Images)</a></p>
+
+    <table>
+    	<tr>
+    		<th>Expected Result</th>
+    		<td>When the functional image changes dynamically, the text alternative updates to match.</td>
+    	</tr>
+    	<tr>
+    		<th>Actual Result</th>
+    		<td>When the functional image changes dynamically, the text alternative does not update to match.</td>
+    	</tr>
+    	<tr>
+    		<th>Solution</th>
+    		<td>
+                <p>Code the page to update the text alternative whenever the image changes.</p>
+            </td>
+    	</tr>
+        <tr>
+            <th>Example</th>
+            <td>
+                <h4>Play/Pause Button</h4>
+                <!-- Super Simple Custom Audio Control -->
+                <!-- You can replace the play and pause elements for anything really, it can be an img or anything you want -->
+                <!-- Ignore the JQuery Version can be any also -->
+                <div class="player">
+                    <audio src="https://dl.dropbox.com/s/oswkgcw749xc8xs/The-Noisy-Freaks.mp3"></audio>
+                    <button class="play" type="button" aria-hidden="true"><img src="../assets/images/f111ai-play.png" alt="Play"></button>
+                    <button class="pause" type="button" aria-hidden="true"><img src="../assets/images/f111ai-pause.png" alt="Pause"></button>
+                </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+                <style>
+                    .player.active .play {
+                        display: none;
+                    }
+                    .player.active .pause{
+                        display: block;
+                    }
+                    .player .play{
+                        display: block;
+                    }
+                    .player .pause{
+                        display: none;
+                    }
+                </style>
+                <script type="javascript">
+                    $( document ).ready(function() {
+
+                        jQuery('.player').on('click', function () {
+
+                            if(jQuery(this).hasClass('active')) {
+                                jQuery(this).find('audio').trigger('pause');
+                                jQuery(this).removeClass('active');
+                            } else {
+                                jQuery(this).find('audio').trigger('play');
+                                jQuery(this).addClass('active');
+                            }
+                        });
+                    });
+                </script>
+
+                <p></p>
+    <pre><code>&lt;a href="https://www.beavercountypa.gov/"&gt;
+  &lt;img 
+    src="BeaverCountyLogo.png" 
+    <strong>alt="Beaver County, Pennsylvania. Divided by rivers, united by people"</strong> /&gt;
+&lt;/a&gt;</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>
+                <p>Blind and visually impaired users need to hear the same words that the visual user sees.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G94">G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content</a></li>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
