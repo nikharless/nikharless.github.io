@@ -1,0 +1,61 @@
+---
+layout: default
+title: Failure - F1.1.1.b.d Meaningful emoji is missing a text alternative.
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="/a11y/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/111b.html">1.1.1.b Alternative Text (Informative Images)</a></p>
+
+    <table>
+        <tr>
+            <th>Expected Result</th>
+            <td>All meaningful images must have a text alternative that conveys the same information as the image.</td>
+        </tr>
+        <tr>
+            <th>Actual Result</th>
+            <td>The meaningful emoji does not have a text alternative.</td>
+        </tr>
+        <tr>
+            <th>Solution</th>
+            <td>Add a text alternative which describes the purpose of the meaningful emoji using the following method:
+                <ol>
+                    <li>Add a <code>&lt;span&gt;</code> tag around the emoji.</li>
+                    <li>Add <code>role="img"</code> to the <code>&lt;span&gt;</code>.</li>
+                    <li>Add an <code>aria-label</code> attribute to the <code>&lt;span&gt;</code>.</li>
+                    <li>Set the value to a text alternative that makes sense in context.</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <th>Example</th>
+            <td>
+                <h4>World Peace</h4>
+                <p><span aria-label="World">🌏</span><span aria-label="peace">☮️</span></p>
+    <pre><code>&lt;span <strong>aria-label="World"</strong>&gt;🌏&lt;/span&gt;&lt;span <strong>aria-label="Peace"&gt;☮️&lt;/span&gt;</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>Blind and visually impaired users need to have a text alternative to meaningful images so that they can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users might not get the information intended by the emojis.</td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H86">H86: Providing text alternatives for emojis, emoticons, ASCII art, and leetspeak</a></li>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
