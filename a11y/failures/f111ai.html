@@ -54,9 +54,9 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                         display: none;
                     }
                 </style>
-                <div class="player" role="button" tabindex="0">
-                    <img src="../assets/images/f111ai-play.png" class="play" aria-hidden="true" alt="Play"> 
-                    <img src="../assets/images/f111ai-pause.png" class="pause" aria-hidden="true" alt="Pause">
+                <div class="player" role="button" tabindex="0" aria-labelledby="play">
+                    <img id="play" src="../assets/images/f111ai-play.png" class="play" aria-hidden="true" alt="Play"> 
+                    <img id="pause" src="../assets/images/f111ai-pause.png" class="pause" aria-hidden="true" alt="Pause">
                 </div>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
                 
@@ -67,8 +67,10 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
                             if(jQuery(this).hasClass('active')) {
                                 jQuery(this).removeClass('active');
+                                jQuery(this).attr("aria-labelledby","play");
                             } else {
                                 jQuery(this).addClass('active');
+                                jQuery(this).attr("aria-labelledby","pause");
                             }
                         });
                         jQuery('.player').on('keypress', function (e) {
@@ -76,8 +78,10 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
                                 if(jQuery(this).hasClass('active')) {
                                     jQuery(this).removeClass('active');
+                                    jQuery(this).attr("aria-labelledby","play");
                                 } else {
                                     jQuery(this).addClass('active');
+                                    jQuery(this).attr("aria-labelledby","pause");
                                 }
                             }
                         });
