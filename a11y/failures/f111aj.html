@@ -1,0 +1,62 @@
+---
+layout: default
+title: Failure - F1.1.1.a.j PDF image link is missing Alternate Text.
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="/a11y/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/111a.html">1.1.1.a Functional Images (Text Alternative)</a></p>
+
+    <table>
+    	<tr>
+    		<th><h2>Expected Result</h2></th>
+    		<td>If a control is labeled with only an image, the image must have a text alternative which describes the function or destination of the control.</td>
+    	</tr>
+    	<tr>
+    		<th><h2>Actual Result</h2></th>
+    		<td>The control is labeled with only an image, but the image does not have Alternate Text.</td>
+    	</tr>
+    	<tr>
+    		<th><h2>Solution</h2></th>
+    		<td>Add Alternate Text to the image either in the source document or directly in the PDF.
+                <h3>Adobe PDF</h3>
+                <ol>
+                    <li>Select <strong>Accessibility > Reading Order</strong></li>
+                    <li>Right-click on the image and select <strong>Edit Alternate Text...</strong>.</li>
+                    <li>In the dialog, for <strong>Alternate Text</strong>, enter text which describes the function or destination of the control.</li>
+                </ul>
+            </td>
+    	</tr>
+        <tr>
+            <th><h2>Example</h2></th>
+            <td>
+                <h3>Image as Link</h3>
+                <img src="../assets/images/f111aj-search-button.png" alt="Screenshot of Alternate Text dialog for a search button in Acrobat Pro. The alt text is Search document." /></p>
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>Blind and visually impaired users need to have a text alternative to functional images so that they can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not know what the link or control does.</td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF1">PDF1: Applying text alternatives to images with the Alt entry in PDF documents</a></li>
+                    <li><a href="https://helpx.adobe.com/acrobat/using/editing-document-structure-content-tags.html#add_alternate_text_and_supplementary_information_to_tags">Add alternate text and supplementary information to tags</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
