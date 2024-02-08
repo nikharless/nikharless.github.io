@@ -21,18 +21,18 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     <ul>
         <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Meaningful images must have a descriptive text alternative that conveys the same information as the image in context.
             <ul>
-                <li>If the image does not provide any information not already conveyed elsewhere on the page, it may be considered redundant. Check against <a href="111d.html">1.1.1.d Alternative Text (Decorative Images)</a>.</li>
+                <li>If the image does not provide any information not already conveyed elsewhere on the page, it may be considered redundant. Check against <a href="111d.html">1.1.1.d Decorative Images (Text Alternative)</a>.</li>
             </ul>
         </li>
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> If the image contains meaningful text, the text alternative should contain that exact text.</li>
-        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for informative images should not include words such as "image" or "graphic".</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for meaningful images should not include words such as "image" or "graphic".</li>
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Trademarks, copyright symbols, etc. on an image should be included in the text alternative.</li>
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives should be as succinct as possible.</li>
     </ul>
 
     <div class="success"><strong>Success:</strong> If you could not see the image, you would still get all the information intended to be conveyed by the image.</div>
 
-    <p>Text alternatives for informative images include the following:</p>
+    <p>Text alternatives for meaningful images include the following:</p>
     <ul>
         <li><code>alt</code> attribute value</li>
         <li><code>title</code> attribute value</li>
@@ -43,9 +43,9 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
-    <h3 id="test1">Are there informative, non-interactive images on the page?</h3>
+    <h3 id="test1">Are there meaningful, non-interactive images on the page?</h3>
     <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image have alternative text?</span>
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image have a text alternative?</span>
             <ul role="group">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative serve the same purpose as the image?</span>
                     <ul role="group">
@@ -54,21 +54,21 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative include the informative text?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111bc.html">F1.1.1.b.c Existing text alternative does not include informative image text.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111bc.html">F1.1.1.b.c Existing text alternative does not include meaningful image text.</a></span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                             </ul>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111bb.html">F1.1.1.b.b Existing text alternative does not serve the same purpose as the informative image</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111bb.html">F1.1.1.b.b Existing text alternative does not serve the same purpose as the meaningful image</a>.</span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111ba.html">F1.1.1.b.a Informative image is missing a text alternative</a>.</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="failures/f111ba.html">F1.1.1.b.a Meaningful image is missing a text alternative</a>.</span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
     </ul>
 
-    <h3 id="test2">Are there informative images which change dynamically?</h3>
+    <h3 id="test2">Are there meaningful images which change dynamically?</h3>
     <ul role="tree" aria-labelledby="test2">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative change to match the current image?</span>
             <ul role="group">
@@ -83,20 +83,20 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     <h3>Desktop</h3>
     <ol>
         <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> or <a href="https://wave.webaim.org/extension/">WAVE</a> to flag missing text alternatives.</li>
-        <li>Locate each informative image on the page using one or more of the following methods:
+        <li>Locate each meaningful image on the page using one or more of the following methods:
             <ul>
                 <li><strong>Mouse</strong>: Hover over images, noting cursor change if they are interactive.</li>
                 <li><strong>Windows / NVDA</strong>: Use the <kbd>G</kbd> key to cycle through images.</li>
                 <li><strong>MacOS / VoiceOver</strong>: Use <kbd>VO+Command+G</kbd> to cycle through images.</li>
             </ul>
         </li>
-        <li>Verify that each image has a text alternative which accurately describes its purpose.</li>
+        <li>Verify that each meaningful image has a text alternative which accurately describes its purpose.</li>
     </ol>
 
     <h3>Mobile</h3>
     <ol>
         <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features</a>.</li>
-        <li>Navigate to each informative image.</li>
+        <li>Navigate to each meaningful image.</li>
         <li>Verify that the name spoken by the screen reader accurately describes the purpose of the image.</li>
     </ol>
 
@@ -124,7 +124,7 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h3>Verify the text alternatives are sufficient.</h3>
     <ol>
-        <li>Locate each informative image in the PDF using one or more of the following methods:
+        <li>Locate each meaningful image in the PDF using one or more of the following methods:
             <ul>
                 <li>Visually</li>
                 <li><strong>Windows / NVDA</strong>: Use the <kbd>G</kbd> key to cycle through images.</li>
@@ -141,11 +141,11 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
         <li><a href="failures/f111bc.html">F1.1.1.b.c Meaningful CSS background image is missing a text alternative.</a> (High)</li>
         <li><a href="failures/f111bd.html">F1.1.1.b.d Meaningful emoji is missing a text alternative.</a> (Medium)</li>
 
-        <li><a href="failures/f111bb.html">F1.1.1.b.b Existing text alternative does not serve the same purpose as the informative image.</a> (Medium)</li>
-        <li><a href="failures/f111bc.html">F1.1.1.b.c Existing text alternative does not include informative image text.</a> (Medium)</li>
+        <li><a href="failures/f111bb.html">F1.1.1.b.b Existing text alternative does not serve the same purpose as the meaningful image.</a> (Medium)</li>
+        <li><a href="failures/f111bc.html">F1.1.1.b.c Existing text alternative does not include meaningful image text.</a> (Medium)</li>
         <li><a href="failures/f111bd.html">F1.1.1.b.d Text alternative does not match dynamic image.</a> (Medium)</li>
-        <li><a href="failures/f111aj.html">F1.1.1.a.j PDF image link is missing Alternate Text.</a> (High)</li>
-        <li><a href="failures/f111ah.html">F1.1.1.a.h Articulate Storyline functional image is missing Alternate text.</a> (High)</li>
+        <li><a href="failures/f111aj.html">F1.1.1.a.j PDF image is missing Alternate Text.</a> (High)</li>
+        <li><a href="failures/f111ah.html">F1.1.1.a.h Articulate Storyline meaningful image is missing Alternate text.</a> (High)</li>
     </ul>
 
     <h2>Testing Tools</h2>
