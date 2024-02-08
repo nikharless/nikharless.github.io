@@ -1,0 +1,73 @@
+---
+layout: default
+title: Failure - F1.1.1.c.a Complex image is missing a short text alternative.
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="/a11y/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/111c.html">1.1.1.c Complex Images (Text Alternative)</a></p>
+
+    <table>
+    	<tr>
+    		<th><h2>Expected Result</h2></th>
+    		<td>Complex images must have a short descriptive text alternative that summarizes the information provided by the image.</td>
+    	</tr>
+    	<tr>
+    		<th><h2>Actual Result</h2></th>
+    		<td>The complex image does not have a short text alternative.</td>
+    	</tr>
+    	<tr>
+    		<th><h2>Solution</h2></th>
+    		<td>Add a short text alternative which summarizes the information provided by the image using one of the following methods:
+                <ul>
+                    <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
+                    <li>Add an <code>aria-label</code> attribute to the image tag, <strong>OR</strong></li>
+                    <li>Add an <code>aria-labelledby</code> attribute to the image tag, set to the <code>id</code> value of the text to use as a label, <strong>OR</strong></li>
+                    <li>Add a <code>title</code> attribute to the <code>&lt;img&gt;</code> tag</li>
+                </ul>
+            </td>
+    	</tr>
+        <tr>
+            <th><h2>Example</h2></th>
+            <td>
+                <h3>Complex Image with Link to Long Description</h3>
+
+                <figure role="group">
+                    <img src="../assets/images/111c-constellations_640.png" height="300px" width="300px" alt="Historical chart of constellations." />
+                    <figcaption><a href="#">Follow this link for a description of the chart.</a></figcaption>
+                </figure>
+
+                <pre><code>&lt;figure role="group"&gt;
+    &lt;img src="constellations.png" alt="Historical chart of constellations. See link below for details." /&gt;
+    &lt;figcaption&gt;
+        &lt;a href="long-description.html"&gt;Follow this link for a detailed description of the chart.&lt;/a&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>Blind and visually impaired users need to have a short text alternative for complex images so that they can understand the purpose of the image and know whether they want to explore the long description.</td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/images/complex/">W3: Complex Images</a></li>
+                    <li><a href="https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81">Writing Alt Text for Data Visualiztion</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
