@@ -1,0 +1,91 @@
+---
+layout: default
+title: Failure - F1.1.1.b.g Text alternative does not match dynamic image.
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="index.html">WCAG</a> | <a href="/a11y/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/111b.html">1.1.1.b Meaningful Images (Text Alternative)</a></p>
+
+    <table>
+    	<tr>
+    		<th>Expected Result</th>
+    		<td>When the meaningful image changes dynamically, the text alternative updates to match.</td>
+    	</tr>
+    	<tr>
+    		<th>Actual Result</th>
+    		<td>When the meaningful image changes dynamically, the text alternative does not update to match.</td>
+    	</tr>
+    	<tr>
+    		<th>Solution</th>
+    		<td>
+                <p>Code the page to update the text alternative whenever the image changes.</p>
+            </td>
+    	</tr>
+        <tr>
+            <th>Example</th>
+            <td>
+                <h4>Play/Pause Button</h4>
+                <p>This button uses JavaScript and CSS to change the <code>aria-labelledby</code> value along with the displayed image. The text alternative in this case is attached to the swapped images, and <code>aria-labelledby</code> is used to label the control with the image.</p>
+
+                <img src="../assets/images/f111bg-fish.png" id="myImage" alt="Blue fish" width="320px"/>
+                <input type="button" onclick="changeImage()" value="Change Image" />
+                <script>
+                  function changeImage() {
+                    var image=document.getElementById('myImage');
+                    if (image.src.match("../assets/images/f111bg-trout.png")) {
+                      image.src="../assets/images/f111bg-fish.png";
+                      image.alt="Blue fish";
+                    } else {
+                      image.src="../assets/images/f111bg-trout.png";
+                      image.alt="Trout";
+                    }
+                  }
+                </script>
+
+                <pre><code>&lt;img src="fish.png" id="myImage" alt="Blue fish" /&gt;
+&lt;input type="button" onclick="changeImage()" value="Change Image" /&gt;
+&lt;script&gt;
+    function changeImage() {
+        var image=document.getElementById('myImage');
+        if (image.src.match("trout.png")) {
+            image.src="fish.png";
+            image.alt="Blue fish";
+        } else {
+            image.src="trout.png";
+            image.alt="Trout";
+        }
+    }
+&lt;/script&gt;</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>
+                <p>Blind and visually impaired users need to have a text alternative for meaningful images so that they can be interpreted by assistive technology such as screen readers and braille devices. If the text alternative does not match the visible image, these users would not have the correct information.</p>
+            </td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G82">G82: Providing a text alternative that identifies the purpose of the non-text content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
