@@ -23,9 +23,36 @@
 
 		<!-- The flexible grid (content) -->
 		<main id="main" class="row">
-		  <nav id="" class="side">
-		    <h2>Success Criteria</h2>
-		  </nav>
+		  	<nav id="sidebar" class="side" aria-label="side bar">
+				<div id="accordionGroup" class="accordion">
+					<h2>Success Criteria</h2>
+					<h3><button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect1" id="accordion1id"><span class="accordion-title">Perceivable</span></button></h3>
+					<div id="sect1" role="region" aria-labelledby="accordion1id" class="accordion-panel" hidden>
+							{% for item in site.data.perceivable %}
+								<a href="{{ item.link }}" {% if page.url == item.link or page.url == item.parent %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
+							{% endfor %}
+					</div>
+					<h3><button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect2" id="accordion2id"><span class="accordion-title">Operable</span></button></h3>
+					<div id="sect2" role="region" aria-labelledby="accordion2id" class="accordion-panel" hidden>
+							{% for item in site.data.operable %}
+								<a href="{{ item.link }}" {% if page.url == item.link or page.url == item.parent %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
+							{% endfor %}
+					</div>
+					<h3><button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect3" id="accordion3id"><span class="accordion-title">Understandable</span></button></h3>
+					<div id="sect3" role="region" aria-labelledby="accordion3id" class="accordion-panel" hidden>
+							{% for item in site.data.understandable %}
+								<a href="{{ item.link }}" {% if page.url == item.link or page.url == item.parent %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
+							{% endfor %}
+					</div>
+					<h3><button type="button" aria-expanded="false" class="accordion-trigger" aria-controls="sect4" id="accordion4id"><span class="accordion-title">Robust</span></button></h3>
+					<div id="sect4" role="region" aria-labelledby="accordion4id" class="accordion-panel" hidden>
+							{% for item in site.data.robust %}
+								<a href="{{ item.link }}" {% if page.url == item.link or page.url == item.parent %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
+							{% endfor %}
+					</div>
+				</div>
+			</nav>
+			
 		  <div class="content">
 		    <h1>1.1.1 Non-text Content</h1>
 		    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
