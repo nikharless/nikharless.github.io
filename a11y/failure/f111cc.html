@@ -1,0 +1,120 @@
+---
+layout: default
+title: Failure - F1.1.1.c.c Complex image is missing a long text description.
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/checkpoint/111c.html">1.1.1.c Complex Images (Text Alternative)</a></p>
+
+    <table>
+    	<tr>
+    		<th><h2>Expected Result</h2></th>
+    		<td>Complex images have a long text alternative that describes all the information provided by the image.</td>
+    	</tr>
+    	<tr>
+    		<th><h2>Actual Result</h2></th>
+    		<td>The complex image does not have a short text alternative.</td>
+    	</tr>
+    	<tr>
+    		<th><h2>Solution</h2></th>
+    		<td>
+                Add a long text alternative which describes all the information provided by the image using one of the following methods:
+                <ul>
+                    <li>Place a long description directly on the page. Use <code>id</code> and <code>aria-describedby</code> to associate the description with the image. <strong>OR</strong></li>
+                    <li>Place a long description on a separate page, and place the link adjacent to the image. <strong>OR</strong></li>
+                    <li>Add a <code>longdesc</code> attribute to the <code>&lt;img&gt;</code> tag and set it to the location of the long description.</li>
+                </ul>
+            </td>
+    	</tr>
+        <tr>
+            <th><h2>Examples</h2></th>
+            <td>
+                <h3>Adjacent Long Description</h3>
+                <img src="/a11y/assets/images/f111cc-arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" aria-describedby="description">
+                <p id="description">An oil painting of three Egyptian women in white dresses with six naked children in a Mediterranean landscape. The woman on the left is standing, holding a child on her shoulders, and another child stands in front of her pointing off the left side of the canvas. The woman in the center is also standing and holding a child on her shoulders while holding his hand on the top of her head. The woman on the right is sitting cross-legged on the ground breastfeeding a baby while 2 more children play behind her.</p>
+                <pre><code>&lt;img src="/a11y/assets/images/f111cc-arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" aria-describedby="description"&gt;
+&lt;p id="description"&gt;An oil painting of three Egyptian women in white dresses with six naked children in a Mediterranean landscape. The woman on the left is standing, holding a child on her shoulders, and another child stands in front of her pointing off the left side of the canvas. The woman in the center is also standing and holding a child on her shoulders while holding his hand on the top of her head. The woman on the right is sitting cross-legged on the ground breastfeeding a baby while 2 more children play behind her.&lt;/p&gt;</code>
+
+                <h3>Adjacent Link to Long Description</h3>
+                <img src="/a11y/assets/images/111c-constellations_640.png" height="300px" width="300px" alt="Historical chart of constellations" />
+                <p><a href="#">Follow this link for a description of the chart.</a></p>
+                <pre><code>&lt;img src="/a11y/assets/images/111c-constellations_640.png" height="300px" width="300px" alt="Historical chart of constellations" /&gt;
+&lt;p&gt;&lt;a href="#"&gt;Follow this link for a description of the chart.&lt;/a&gt;&lt;/p&gt;</code>
+
+                <h3><code>longdesc</code> Reference to Adjacent Link</h3>
+                <img src="/a11y/assets/images/111c-constellations_640.png" height="300px" width="300px" alt="Historical chart of constellations" longdesc="long-description.html" />
+                <p><a href="#">Follow this link for a description of the chart.</a></p>
+"&gtlFollow this link for a description of the chart.&lt;/a&gt;&lt;/p&gt;</code>
+                <pre><code>&lt;img src="/a11y/assets/images/111c-constellations_640.png" height="300px" width="300px" alt="Historical chart of constellations" longdesc="long-description.html" /&gt;
+&lt;p&gt;&lt;a href="long-description.html"&gt;Follow this link for a description of the chart.&lt;/a&gt;&lt;/p&gt;</code>
+
+                <h3>&lt;figure&gt; and &lt;figcaption&gt; Semantic Association</h3>
+                <figure role="group">
+                    <img src="/a11y/assets/images/f111cc-pie-chart.png" alt="Pie chart showing number of issues filed by priority level, described below." />
+                    <figcaption>Follow this link for a description of the chart.</figcaption>
+                    <p>This chart shows the break-out of issues filed for the Yoyodyne app.</p>
+                    <table>
+                        <caption>Issues Filed by Priority</caption>
+                        <tr>
+                            <th>Level</th>
+                            <th>Issues Filed</th>
+                        </tr>
+                        <tr>
+                            <th>critical</th>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <th>severe</th>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <th>moderate</th>
+                            <td>16</td>
+                        </tr>
+                        <tr>
+                            <th>minor</th>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <th>best practice</th>
+                            <td>5</td>
+                        </tr>
+                    </table>
+                </figure>
+
+                <pre><code>&lt;figure role="group"&gt;
+    &lt;img src="constellations.png" <strong>alt="Historical chart of constellations."</strong> /&gt;
+    &lt;figcaption&gt;
+        &lt;a href="long-description.html"&gt;Follow this link for a detailed description of the chart.&lt;/a&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <th><h2>Why It's Important</h2></th>
+            <td>
+                <p>Blind and visually impaired users need to have a short text alternative for complex images that summarizes its content, so that they can understand the purpose of the image and know whether they want to explore the long description.</p>
+            </td>
+        </tr>
+        <tr>
+            <th><h2>References</h2></th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/images/complex/">W3: Complex Images</a></li>
+                    <li><a href="https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81">Writing Alt Text for Data Visualiztion</a></li>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
