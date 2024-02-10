@@ -1,0 +1,57 @@
+---
+layout: default
+title: Failure - F1.1.1.h.c Existing text alternative does not adequately summarize the content of the audio
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/checkpoint/111h.html">1.1.1.h Audio or Video (Text Alternative)</a></p>
+
+    <table>
+    	<tr>
+    		<th>Expected Result</th>
+    		<td>Each audio element must have a text alternative which summarizes its purpose.</td>
+    	</tr>
+    	<tr>
+    		<th>Actual Result</th>
+    		<td>The audio element has a text alternative, but it does not adequately summarize the content of the audio.</td>
+    	</tr>
+    	<tr>
+    		<th>Solution</th>
+    		<td>Change the text alternative to a summary of the content of the audio.</td>
+    	</tr>
+        <tr>
+            <th>Example</th>
+            <td>
+                <h4>HTML <code>&lt;audio&gt;</code></h4>
+                <p>A text alternative that is something like "audio player" would not tell the user what the audio is. While there is descriptive text nearby, screen reader users do not hear this if they are navigating by focusable elements.</p>
+                <p>What a horse says:</p>
+                <audio controls aria-label="horse neighing">
+                    <source src="/a11y/assets/media/f111ha-horse.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+    <pre><code>What a horse says:
+&lt;audio controls <strong>aria-label="horse neighing"</strong>&gt;
+    &lt;source src="horse.mp3" type="audio/mpeg"&gt;
+    Your browser does not support the audio element.
+&lt;/audio&gt;</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>Blind and visually impaired users need to have a text alternative to embedded audio which summarizes the content so they know what it is without having to play it.</td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-text content</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    {% include 111checkpoints.html %}
