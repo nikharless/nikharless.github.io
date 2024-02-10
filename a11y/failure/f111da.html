@@ -1,0 +1,59 @@
+---
+layout: default
+title: Failure - F1.1.1.d.a Decorative <code>&lt;img&gt;</code> does not have null <code>alt</code> attribute.
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/checkpoint/111d.html">1.1.1.d Decorative Images (Text Alternative)</a></p>
+
+    <table>
+    	<tr>
+    		<th>Expected Result</th>
+    		<td>Decorative images using the <code>&lt;img&gt;</code> tag must have a null <code>alt</code> value.</td>
+    	</tr>
+    	<tr>
+    		<th>Actual Result</th>
+    		<td>The decorative <code>&lt;img&gt;</code> does not have an <code>alt</code> attribute.</td>
+    	</tr>
+    	<tr>
+    		<th>Solution</th>
+    		<td>Add <code>alt=""</code> to the <code>&lt;img&gt;</code> element.</td>
+    	</tr>
+        <tr>
+            <th>Example</th>
+            <td>
+                <h4>JPG Image</h4>
+                <p><img src="/a11y/assets/images/f111da-smiling-child.jpg" alt="" style="float: left;" /></p>
+                <p>If your children need health coverage, they may be eligible for the Children's Health Insurance Program (CHIP).</p>
+                <p>CHIP provides low-cost health coverage to children in families that earn too much money to qualify for Medicaid. In some states, CHIP covers pregnant women. Each state offers CHIP coverage, and works closely with its state Medicaid program.</p>
+    <pre><code>&lt;img src="smiling-child.jpg" <strong>alt=""</strong> /&gt;</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>Blind and visually impaired users need to have a text alternative to meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not get the information conveyed by the image.</td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H65">H65: Using the title attribute to identify form controls when the label element cannot be used</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
