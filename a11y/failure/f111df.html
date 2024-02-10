@@ -1,0 +1,80 @@
+---
+layout: default
+title: Failure - F1.1.1.d.f PDF Artifact is tagged as real content.
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/checkpoint/111d.html">1.1.1.d Decorative Images (Text Alternative)</a></p>
+
+    <table>
+    	<tr>
+    		<th><h2>Expected Result</h2></th>
+    		<td>Decorative or redundant images must be hidden from screen readers.</td>
+    	</tr>
+    	<tr>
+    		<th><h2>Actual Result</h2></th>
+    		<td>The decorative or redundant image is not hidden from screen readers.</td>
+    	</tr>
+    	<tr>
+    		<th><h2>Solution</h2></th>
+    		<td>Set the image as decorative either in the source document or directly in the PDF.
+                <h3>Adobe PDF</h3>
+                <p>In PDF files, decorative elements are tagged as &lt;Artifact&gt;.</p>
+                <p>To find decorative images tagged as &lt;Figure&gt; without alternate text:</p>
+                <ol>
+                    <li>Select <strong>Tools > Accessibility > Accessibility Check</strong>.</li>
+                    <li>Select <strong>Alternate Text and Headings</strong> from the Category drop-down, make sure <strong>Figures require alternate text</strong> is checked, and activate the <strong>Start Checking</strong> button.</li>
+                    <li>In the results, check for failures under <strong>Alternate Text > Figures alternate text</strong>.</li>
+                    <li>Select a figure from the failure list.</li>
+                    <li>Right-click on the figure (or go to the Options menu) and select <strong>Fix</strong> from the menu.</li>
+                    <li>Check the <strong>Decorative figure</strong> checkbox, then activate <strong>Save & Close</strong>.</li>
+                </ol>
+                <p>To manually mark decorative images incorrectly tagged as &lt;Figure&gt; as &lt;Artifact&gt;:</p>
+                <ol>
+                    <li>Locate the decorative image in the Tags panel.</li>
+                    <li>Right-click on the image (or go to the Options menu) and select <strong>Change Tag to Artifact...</strong>.</li>
+                </ol>
+                <p>To mark an untagged image as &lt;Artifact&gt;:</p>
+                <ol>
+                    <li>Locate the decorative image in the PDF document.</li>
+                    <li>Select <strong>Tools > Accessibility > Reading Order</strong>.</li>
+                    <li>Draw a rectangle around the decorative image to select it.</li>
+                    <li>Activate the <strong>Background/Artifact</strong> button in the Reading Order dialog.</li>
+                </ol>
+            </td>
+    	</tr>
+        <tr>
+            <th><h2>Example</h2></th>
+            <td>
+                <h3>Reading Order</h3>
+                <img src="/a11y/assets/images/f111de-pdf-artifact.png" alt="Screenshot of Reading Order dialog with the Background/Artifact button highlighted" />
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>Blind and visually impaired users want decorative or redundant images hidden so they do not get overwhelmed with unimportant screen reader chatter.</td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/pdf/PDF4">PDF4: Hiding decorative images with the Artifact tag in PDF documents</a></li>
+                    <li><a href="https://www.pdfa.org/wp-content/until2016_uploads/2014/06/MatterhornProtocol_1-02.pdf">PDFA: Matterhorn Protocol</a> (PDF)</li>
+                    <li><a href="https://www.pdf-accessible.com/wp-content/uploads/2015/01/making-PDF-accessible-Acrobat.pdf">Making PDF documents accessible with Adobe Acrobat Pro</a> (PDF)</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
