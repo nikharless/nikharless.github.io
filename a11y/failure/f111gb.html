@@ -1,0 +1,65 @@
+---
+layout: default
+title: Failure - F1.1.1.g.b Existing text alternative does not describe the purpose of the CAPTCHA
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/checkpoint/111a.html">1.1.1.g CAPTCHA (Text Alternative)</a></p>
+
+    <table>
+    	<tr>
+    		<th>Expected Result</th>
+    		<td>Each CAPTCHA image must have a text alternative that describes its purpose (but not the visual elements).</td>
+    	</tr>
+    	<tr>
+    		<th>Actual Result</th>
+    		<td>The CAPTCHA image has a text alternative, but it doesn't describe its purpose.</td>
+    	</tr>
+    	<tr>
+    		<th>Solution</th>
+    		<td>
+                <ul>
+                    <li>Consider using an alternative to the CAPTCHA.</li>
+                    <li>Add a text alternative to each challenge image which identifies its purpose but does not give the answer.</li>
+                </ul>
+            </td>
+    	</tr>
+        <tr>
+            <th>Examples</th>
+            <td>
+                <h4>ReCAPTCHA</h4>
+                <p>The current verson of Google's ReCAPTCHA is a simple checkbox. If it is unable to validate, an image test is presented.</p>
+                <img src="/a11y/assets/f111ga-recaptcha-image-test.png" alt="Screenshot of ReCAPTCHA image test which reads, Select all images with an Orange">
+                <p>At this point the user can Tab directly to a button to access an audio version. The image buttons are not visible to screen readers.</p>
+                <img src="/a11y/assets/f111ga-recaptcha-audio-test.png" alt="Screenshot of ReCAPTCHA audio test which reads, Press play and enter the numbers you hear"></td>
+                <p><a href="https://www.google.com/recaptcha/api2/demo">ReCAPTCHA demo</a></p>
+
+                <h4>Image Test</h4>
+                <p>This CAPTCHA has a series of images which cannot be described to blind users without invalidating the purpose. In this case, the button containing each image is described to screen readers as “Challenge Image 1”, “Challenge Image 2”, etc.</p>
+                <img src="/a11y/assets/f111gb-image-captcha.png" alt="Screenshot of CAPTCHA with a block of images. It reads, Please click each image containing a car.">
+                <pre><code>&lt;div class="task-image" tabindex="0" role="button"
+     aria-label="Challenge Image 1" aria-pressed="false"&gt;</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>Blind and visually impaired users need to know the purpose of each button.</td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G143">G143: Providing a text alternative that describes the purpose of the CAPTCHA</a></li>
+                    <li><a href="https://www.boia.org/blog/how-to-make-captcha-accessible-to-everyone">How To Make CAPTCHA Accessible To Everyone</a></li>
+                    <li><a href="https://www.digitala11y.com/the-captcha-conundrum-accessible-alternatives/">The Captcha Conundrum & Accessible Alternatives</a></li>
+                    <li><a href="https://accessibility.psu.edu/captcha/">CAPTCHAs</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    {% include 111checkpoints.html %}
