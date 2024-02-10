@@ -1,0 +1,67 @@
+---
+layout: default
+title: Failure - F1.1.1.d.c Decorative image has a text alternative.
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/checkpoint/111d.html">1.1.1.d Decorative Images (Text Alternative)</a></p>
+
+    <table>
+    	<tr>
+    		<th>Expected Result</th>
+    		<td>Decorative images must not have a text alternative</td>
+    	</tr>
+    	<tr>
+    		<th>Actual Result</th>
+    		<td>The decorative image has a text alternative.</td>
+    	</tr>
+    	<tr>
+    		<th>Solution</th>
+    		<td>Remove the text alternative from the image using one of the following methods:
+                <ul>
+                    <li>Remove any text from the <code>alt</code> value in the <code>&lt;img&gt;</code> tag.</li>
+                    <li>Remove any <code>title</code> attribute from the <code>&lt;img&gt;</code> tag.</li>
+                    <li>Remove any <code>aria-label</code> attribute from the image.</li>
+                    <li>Remove any <code>aria-labelledby</code> attribute from the image.</li>
+                    <li>Remove any <code>&lt;title&gt;</code> tag from the <code>&lt;svg&gt;</code>.</li>
+                </ul>
+            </td>
+    	</tr>
+        <tr>
+            <th>Example</th>
+            <td>
+                <h4>JPG Image</h4>
+                <p>One might be tempted to give this image a text alternative such as "smiling girl with blonde hair and blue eyes," but this information is not relevant to the content. The image has only been added for visual interest.</p>
+                <p><img src="/a11y/assets/images/f111da-smiling-child.jpg" alt="" style="float: left; padding-right: 20px;" /></p>
+                <p>If your children need health coverage, they may be eligible for the Children's Health Insurance Program (CHIP).</p>
+                <p>CHIP provides low-cost health coverage to children in families that earn too much money to qualify for Medicaid. In some states, CHIP covers pregnant women. Each state offers CHIP coverage, and works closely with its state Medicaid program.</p>
+    <pre style="clear: both;"><code>&lt;img src="smiling-child.jpg" alt=<strong>""</strong> /&gt;</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>Blind and visually impaired users want decorative or redundant images hidden so they do not get overwhelmed with unimportant screen reader chatter.</td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H67">Using null alt text and no title attribute on img elements for images that assistive technology should ignore</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/images/decorative/">W3: Decorative Images</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.1.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.111-non-text-content %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
