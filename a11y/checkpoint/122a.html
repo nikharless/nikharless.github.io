@@ -2,20 +2,25 @@
 layout: default
 title: 1.2.2.a Captions (Prerecorded)
 guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded
 ---
 <div class="cpcontent">
     <h1>{{ page.title }}</h1>
     <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/122.html">1.2.2 Captions (Prerecorded)</a></p>
 
+    <h2>Overview</h2>
+
     <h2>Basic Requirements and Best Practices</h2>
-    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
         <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
         <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded video with audio must have synchronized captions.</li>
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> For the benefit of deafblind users, a full text transcript with both audio and visual information should also be available.</li>
     </ul>
 
-    <div class="success"><strong>Success:</strong> You can read the captions without the audio and get all the information conveyed in the audio.</div>
+    <div class="userstory"><strong>User Story:</strong> As a deaf user, I want to read synchronized captions on a video so that I can get all of the same information that is conveyed through the audio.</div>
+
+    <div class="success"><strong>Success:</strong> If you could not hear the video, when you read the captions, you would get all of the information conveyed in the audio part of the content.</div>
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
@@ -30,13 +35,13 @@ guideline: perceivable
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the captions include all dialogue and important sound effects?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; Include all dialogue and important music and sound effects in the captions.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f122ae.html">F1.2.2.a.e Existing captions are missing important sound effect descriptions.</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; Identify the speaker for all dialogue, if it is not apparent visually.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f122af.html">F1.2.2.a.f Existing captions do not identify speakers.</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Synchronize the captions with the video content</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f122ac.html">F1.2.2.a.c Existing captions are not synchronized.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the video itself a media alternative for text?</span>
@@ -47,7 +52,7 @@ guideline: perceivable
                                 <li role="treeitem" class="fail"><span><strong>No</strong>; Add text making it clear that the video is an alternative for the text content.</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Provide synchronized captions which include all dialogue and important sound effects in the video.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="/a11y/failure/f122aa.html">F1.2.2.a.a Synchronized media does not have captions.</a></span></li>
                     </ul>
                 </li>
             </ul>
@@ -72,19 +77,19 @@ guideline: perceivable
 
     <h2>Failures</h2>
     <ul>
-        <li>F1.2.2.a.a Synchronized media does not have captions. (High)</li>
-        <li>F1.2.2.a.b Existing captions are incorrect. (Medium)</li>
-        <li>F1.2.2.a.c Existing captions are not synchronized. (Medium)</li>
-        <li>F1.2.2.a.d Existing captions are missing dialogue. (Medium)</li>
-        <li>F1.2.2.a.e Existing captions are missing important sound effect descriptions. (Medium)</li>
-        <li>F1.2.2.a.f Existing captions do not identify speakers. (Low)</li>
-        <li>F1.2.2.a.g Existing captions are difficult to read. (Medium)</li>
+        <li><a href="/a11y/failure/f122aa/html">F1.2.2.a.a Synchronized media does not have captions.</a> (High)</li>
+        <li><a href="/a11y/failure/f122aa/html">F1.2.2.a.b Existing captions are incorrect.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f122aa/html">F1.2.2.a.c Existing captions are not synchronized.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f122aa/html">F1.2.2.a.d Existing captions are missing dialogue.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f122aa/html">F1.2.2.a.e Existing captions are missing important sound effect descriptions.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f122aa/html">F1.2.2.a.f Existing captions do not identify speakers.</a> (Low)</li>
+        <li><a href="/a11y/failure/f122aa/html">F1.2.2.a.g Existing captions are difficult to read.</a> (Medium)</li>
     </ul>
 
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded">Understanding Success Criterion 1.2.2: Captions (Prerecorded)</a></li>
+        <li><a href="{{ page.scurl }}">Understanding Success Criterion 1.2.2: Captions (Prerecorded)</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -109,7 +114,7 @@ guideline: perceivable
     </ul>
 </div>
 
-    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.2.2 Checkpoints">
+    <nav class="checkpoints" id="checkpoints" aria-label="1.2.2 Checkpoints">
         <h2>Checkpoints</h2>
         <ul>
             {% for item in site.data.122-captions-prerecorded %}
