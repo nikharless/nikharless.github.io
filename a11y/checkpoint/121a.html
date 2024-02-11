@@ -8,6 +8,17 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-pre
     <h1>{{ page.title }}</h1>
     <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/121.html">1.2.1 Audio-only and Video-only (Prerecorded)</a></p>
 
+    <h2>Overview</h2>
+
+    <p>Audio-only content includes the following:</p>
+    <ul>
+        <li>Audio podcasts</li>
+        <li>mp3 files</li>
+    </ul>
+
+    <h3>Example</h3>
+    <img src="/a11y/assets/images/f121a-this-am-life.png" style="max-width: 400px;" alt="Screenshot of an episode of the This American Life podcast with the audio player at the top and the transcript underneath">
+
     <h2>Basic Requirements and Best Practices</h2>
     <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
         <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
@@ -16,13 +27,9 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-pre
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The text transcript should be presented next to the audio and be easy to find.</li>
     </ul>
 
-    <div class="success"><strong>Success:</strong> You can just read the transcript and not miss any important content in the audio.</div>
+    <div class="userstory"><strong>User Story:</strong> As a deaf user, I want to read a transcript of the audio content so that I can get all of the same information.</div>
 
-    <p>Audio-only content includes the following:</p>
-    <ul>
-        <li>Audio podcasts</li>
-        <li>mp3 files</li>
-    </ul>
+    <div class="success"><strong>Success:</strong> If you could hear the audio, when you read the transcript, you would get all of the information conveyed in the audio content.</div>
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
@@ -35,10 +42,10 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-pre
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; If the audio includes more than one speaker, does the transcript identify who is speaking each time it changes?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; Identify the speaker for all dialogue.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f121ac.html">F1.2.1.a.c Existing text transcript does not identify speakers.</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Edit the transcript to exactly match the dialogue in the audio-only content.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f121ab.html">F1.2.1.a.b Existing text transcript does not include all dialogue.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the audio-only content itself a media alternative for text?</span>
@@ -49,7 +56,7 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-pre
                                 <li role="treeitem" class="fail"><span><strong>No</strong>; Add text making it clear that the audio is an alternative for the text content.</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Add a full transcript (or link to the transcript) adjacent to the audio-only content.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f121aa.html">F1.2.1.a.a Text transcript is missing.</a></span></li>
                     </ul>
                 </li>
             </ul>
@@ -71,11 +78,11 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-pre
 
     <h2>Failures</h2>
     <ul>
-        <li>F1.2.1.a.a Text transcript is missing. (High)</li>
-        <li>F1.2.1.a.b Existing text transcript does not include all dialogue. (Medium)</li>
-        <li>F1.2.1.a.c Existing text transcript does not identify speakers. (Low)</li>
-        <li>F1.2.1.a.d Existing transcript does not include important sound effects. (Medium)</li>
-        <li>F1.2.1.a.e Existing transcript is inadequate. (Medium)</li>
+        <li><a href="/a11y/failure/f121aa.html">F1.2.1.a.a Text transcript is missing.</a> (High)</li>
+        <li><a href="/a11y/failure/f121ab.html">F1.2.1.a.b Existing text transcript does not include all dialogue.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f121ac.html">F1.2.1.a.c Existing text transcript does not identify speakers.</a> (Low)</li>
+        <li><a href="/a11y/failure/f121ad.html">F1.2.1.a.d Existing transcript does not include important sound effects.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f121ae.html">F1.2.1.a.e Existing transcript is inadequate.</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -104,11 +111,4 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-pre
     </ul>
 </div>
 
-    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.2.1 Checkpoints">
-        <h2>Checkpoints</h2>
-        <ul>
-            {% for item in site.data.121-audio-video-only %}
-                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
+    {% include 121checkpoints.html %}
