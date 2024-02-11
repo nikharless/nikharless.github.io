@@ -15,7 +15,9 @@ guideline: perceivable
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The text or audio description should be presented next to the video and be easy to find.</li>
     </ul>
 
-    <div class="success"><strong>Success:</strong> You can get all the information conveyed in the visual portion without being able to see it.</div>
+    <div class="userstory"><strong>User Story:</strong> As a blind user, I want to listen to an audio description along with the video or read a transcript with my screen reader so that I can get all of the same information that is conveyed in the visual portion of the video.</div>
+
+    <div class="success"><strong>Success:</strong> If you could not see the video, when you listen to the audio description or read the transcript, you would get all of the information conveyed in the video portion.</div>
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
@@ -26,7 +28,7 @@ guideline: perceivable
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio description include all the important actions, visuals, and text in the video?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Include all important actions, visuals, and text from the video in the audio description.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f123ab.html">F1.2.3.a.b Existing audio description is inadequate.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the video itself a media alternative for text?</span>
@@ -37,10 +39,15 @@ guideline: perceivable
                                 <li role="treeitem" class="fail"><span><strong>No</strong>; Add text making it clear that the video is an alternative for the text content.</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the video accompanied by a text alternative describing all the important actions, visuals, and text in the video?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the video accompanied by a text transcript?</span>
                             <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; Add an alternative for the video content. This could be a link to audio descriptions, an alternative audio track with audio descriptions, an alternative version of the video with audio descriptions, a static text alternative, etc.</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the transcript include all the important actions, visuals, and text in the video?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f123ac.html">F1.2.3.a.c Existing text transcript is inadequate.</a></span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f123aa.html">F1.2.3.a.a Synchronized media does not have either a text or audio alternative for the video portion.</a></span></li>
                             </ul>
                         </li>
                     </ul>
@@ -65,15 +72,15 @@ guideline: perceivable
 
     <h2>Failures</h2>
     <ul>
-        <li>F1.2.3.a.a Synchronized media does not have either a text or audio alternative for the video portion. (Medium)</li>
-        <li>F1.2.3.a.b Existing audio description is incorrect. (Medium)</li>
-        <li>F1.2.3.a.c Existing text description is incorrect. (Medium)</li>
+        <li><a href="/a11y/failure/f123aa.html">F1.2.3.a.a Synchronized media does not have either a text or audio alternative for the video portion.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f123ab.html">F1.2.3.a.b Existing audio description is inadequate.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f123ac.html">F1.2.3.a.c Existing text transcript is inadequate.</a> (Medium)</li>
     </ul>
 
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-alternative-prerecorded">Understanding Success Criterion 1.2.3: Audio Description or Media Alternative (Prerecorded)</a></li>
+        <li><a href="{{ page.scurl }}">Understanding Success Criterion 1.2.3: Audio Description or Media Alternative (Prerecorded)</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -97,11 +104,4 @@ guideline: perceivable
     </ul>
 </div>
 
-    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.2.3 Checkpoints">
-        <h2>Checkpoints</h2>
-        <ul>
-            {% for item in site.data.123-audio-media-alternative %}
-                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
+    {% include 123checkpoints.html %}
