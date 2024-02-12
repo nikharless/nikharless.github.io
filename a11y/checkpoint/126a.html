@@ -1,0 +1,80 @@
+---
+layout: default
+title: 1.2.6.a Sign Language (Prerecorded)
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/sign-language-prerecorded
+guideline: perceivable
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/126.html">1.2.6 Sign Language (Prerecorded)</a></p>
+
+    <h2>Overview</h2>
+    <h3>Example</h3>
+    <p>This video has a British Sign Language (BSL) interpretation.</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/iEiSez9F79o?si=uee3PjD-d4VFn8Fe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+        <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded synchronized media must have a sign language interpretation for the audio content.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The audio description should be presented next to the video and be easy to find.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a deaf user, I want to view a sign language interpretation so that I can get all of the same information that is conveyed in the audio portion of the video.</div>
+
+    <div class="success"><strong>Success:</strong> If you could not hear the video, when you watch the sign language interpretation you would get all of the information conveyed in the audio portion.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the page contain synchronized media (e.g., video with dialogue)?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio content in the synchronized media have a sign language interpretation?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <ol>
+        <li>Locate each video element on the page.</li>
+        <li>Verify that it has a sign language interpretation that provides the audio information.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <ul>
+        <li>Follow the procedure for Web.</li>
+    </ul>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/f126aa.html">F1.2.6.a.a Synchronized media does not have a sign language interpretation for the audio portion.</a> (Medium)</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.scurl }}">Understanding Success Criterion 1.2.6 Sign Language (Prerecorded)</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G54">G54: Including a sign language interpreter in the video stream</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G81">G81: Providing a synchronized video of the sign language interpreter that can be displayed in a different viewport or overlaid on the image by the player</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://tetralogical.com/blog/2023/03/07/adding-sign-language-to-video/">TetraLogical: Adding sign language to videos</a></li>
+        <li><a href="https://www.veed.io/video-accessibility/sign-language-video">Veed.io: Sign Language & Video</a></li>
+    </ul>
+</div>
+
+    {% include 126checkpoints.html %}
