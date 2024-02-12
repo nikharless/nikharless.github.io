@@ -15,7 +15,9 @@ guideline: perceivable
         <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Live video with audio must have synchronized captions.</li>
     </ul>
 
-    <div class="success"><strong>Success:</strong> You can read the captions without the audio and get all the information conveyed in the audio.</div>
+    <div class="userstory"><strong>User Story:</strong> As a deaf user, I want to read synchronized captions on a video so that I can get all of the same information that is conveyed through the audio.</div>
+
+    <div class="success"><strong>Success:</strong> If you could not hear the video, when you read the captions, you would get all of the information conveyed in the audio part of the content.</div>
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
@@ -24,8 +26,38 @@ guideline: perceivable
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the video broadcast have a procedure in place to provide real-time captions?</span>
             <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; Provide a means to generate real-time captions (e.g., CART captioning or automated captioning).</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the captions accurate?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the captions synchronized?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the captions include all dialogue?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the captions include important sound effects?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the captions identify the speakers?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the captions easy to read, or can their appearance be adjusted by the user?</span>
+                                                            <ul role="group">
+                                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f124ag.html">F1.2.4.a.g Existing live captions are difficult to read.</a></span></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f124af.html">F1.2.4.a.f Existing live captions do not identify speakers.</a></span></li>
+                                                    </ul>
+                                                </li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f124ae.html">F1.2.4.a.e Existing live captions are missing important sound effect descriptions.</a></span></li>
+                                            </ul>
+                                        </li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f124ad.html">F1.2.4.a.d Existing live captions are missing dialogue.</a></span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f124ac.html">F1.2.4.a.c Existing live captions are not synchronized.</a></span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f124ab.html">F1.2.4.a.b Existing live captions are not accurate.</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f124aa.html">F1.2.4.a.a Live synchronized media does not have captions.</a></span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -48,13 +80,13 @@ guideline: perceivable
 
     <h2>Failures</h2>
     <ul>
-        <li>F1.2.4.a.a Live synchronized media does not have captions. (High)</li>
-        <li>F1.2.4.a.b Existing live captions are incorrect. (Medium)</li>
-        <li>F1.2.4.a.c Existing live captions are not synchronized. (Medium)</li>
-        <li>F1.2.4.a.d Existing live captions are missing dialogue. (Medium)</li>
-        <li>F1.2.4.a.e Existing live captions are missing important sound effect descriptions. (Medium)</li>
-        <li>F1.2.4.a.f Existing live captions do not identify speakers. (Low)</li>
-        <li>F1.2.4.a.g Existing live captions are difficult to read. (Medium)</li>
+        <li><a href="/a11y/failure/f124aa.html">F1.2.4.a.a Live synchronized media does not have captions.</a> (High)</li>
+        <li><a href="/a11y/failure/f124ab.html">F1.2.4.a.b Existing live captions are not accurate.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f124ac.html">F1.2.4.a.c Existing live captions are not synchronized.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f124ad.html">F1.2.4.a.d Existing live captions are missing dialogue.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f124ae.html">F1.2.4.a.e Existing live captions are missing important sound effect descriptions.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f124af.html">F1.2.4.a.f Existing live captions do not identify speakers.</a> (Low)</li>
+        <li><a href="/a11y/failure/f124ag.html">F1.2.4.a.g Existing live captions are difficult to read.</a> (Medium)</li>
     </ul>
 
     <h2>References</h2>
@@ -72,23 +104,16 @@ guideline: perceivable
                 </li>
             </ul>
         </li>
-        <li>Additional Information
-            <ul>
-                <li><a href="https://webaim.org/techniques/captions/">WebAIM: Captions, Transcripts, and Audio Descriptions</a></li>
-                <li><a href="https://support.zoom.us/hc/en-us/articles/207279736-Getting-started-with-closed-captioning">Zoom: Managing manual captions</a></li>
-                <li><a href="https://help.webex.com/en-us/article/WBX47352/How-Do-I-Enable-Closed-Captions?">WebEx Help Center</a></li>
-                <li><a href="https://blogs.connectusers.com/connectsupport/downloading-and-running-a-closed-captioning-pod-in-a-connect-meeting/">Adobe: Downloading and Running a Closed-captioning Pod in a Connect Meeting</a></li>
-                <li><a href="https://support.microsoft.com/en-us/office/accessibility-tools-for-microsoft-teams-2d4009e7-1300-4766-87e8-7a217496c3d5?ui=en-us&rs=en-us&ad=us">Microsoft: Accessibility tools for Microsoft Teams</a></li>
-            </ul>
-        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://webaim.org/techniques/captions/">WebAIM: Captions, Transcripts, and Audio Descriptions</a></li>
+        <li><a href="https://support.zoom.us/hc/en-us/articles/207279736-Getting-started-with-closed-captioning">Zoom: Managing manual captions</a></li>
+        <li><a href="https://help.webex.com/en-us/article/WBX47352/How-Do-I-Enable-Closed-Captions?">WebEx Help Center</a></li>
+        <li><a href="https://blogs.connectusers.com/connectsupport/downloading-and-running-a-closed-captioning-pod-in-a-connect-meeting/">Adobe: Downloading and Running a Closed-captioning Pod in a Connect Meeting</a></li>
+        <li><a href="https://support.microsoft.com/en-us/office/accessibility-tools-for-microsoft-teams-2d4009e7-1300-4766-87e8-7a217496c3d5?ui=en-us&rs=en-us&ad=us">Microsoft: Accessibility tools for Microsoft Teams</a></li>
     </ul>
 </div>
 
-    <nav class="checkpoints" aria-label="checkpoints" id="checkpoints" aria-label="1.2.4 Checkpoints">
-        <h2>Checkpoints</h2>
-        <ul>
-            {% for item in site.data.124-captions-live %}
-                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
+    {% include 124checkpoints.html %}
