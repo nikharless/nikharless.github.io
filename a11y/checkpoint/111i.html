@@ -1,0 +1,122 @@
+---
+layout: default
+title: 1.1.1.i Text as Non-Text Content (Text Alternative)
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a></p>
+
+    <h2>Overview</h2>
+
+    <h3>Examples</h3>
+    <h4>Text Look-Alikes</h4>
+    <p>&#x03F2;&#x043E;&#x03BF;&#x006B;</p>
+
+    <h4>Emoticons</h4>
+    <p>:)</p>
+    <p>&gt;_&gt;</p>
+
+    <h4>ASCII Art</h4>
+    <pre>      \    /\
+       )  ( ')
+      (  /  )
+       \(__)|</pre>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+        <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text characters used to represent images or other characters must have a text alternative describing their meaning.</li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> ASCII images and emoticons should be marked as images (<code>role="img"</code>), <strong>OR</strong></li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A skip link should be present to allow the user to skip past the ASCII image.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want to hear the intended meaning of the characters rather than the literal reading so that I understand the content.</div>
+
+    <div class="success"><strong>Success:</strong> If you could not see the text, when you read it with a screen reader, you would understand the intended meaning.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Are there text look-alike characters on the page?</h3>
+    <p><em>For example, the characters <code>U+0033</code> (or <code>&#x0033;</code>) and <code>U+04E0</code> (or <code>&#x04E0</code>) both look like the number "3", but the latter is a letter from the Cyrillic alphabet and will not be read as a "3".</em></p>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the characters have a text alternative which represents their meaning?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f111ia.html">F1.1.1.i.a Text look-alike characters do not have a text alternative.</a></span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h3 id="test2">Is there text on the page which represents an image (such as ASCII art or emoticons)?</h3>
+    <ul role="tree" aria-labelledby="test2">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text image have a text alternative which describes its meaning?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f111ib.html">F1.1.1.i.b Text representing image does not have a text alternative.</a></span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <ol>
+        <li>Locate any text characters which visually mimic other characters.</li>
+        <li>Locate any text characters which visually represent an image.</li>
+        <li>Verify that they have a text alternative that conveys the meaning rather than the literal interpretation of the characters.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <ul>
+        <li>Follow the procedure for Web Mobile.</li>
+    </ul>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/f111ia.html">F1.1.1.i.a Text look-alike characters do not have a text alternative.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f111ib.html">F1.1.1.i.b Text representing image does not have a text alternative.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
+        <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
+        <li>Screen reader</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.title }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-text content</a></li>
+                    </ul>
+                </li>
+                <li>ARIA:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                    </ul>
+                </li>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H86">H86: Providing text alternatives for emojis, emoticons, ASCII art, and leetspeak</a></li>
+                    </ul>
+                </li>
+                <li>Failures:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F71">F71: Failure of Success Criterion 1.1.1 due to using text look-alikes to represent text without providing a text alternative</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F72">F72: Failure of Success Criterion 1.1.1 due to using ASCII art without providing a text alternative</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+    {% include 111checkpoints.html %}
