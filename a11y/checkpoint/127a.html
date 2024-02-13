@@ -1,0 +1,98 @@
+---
+layout: default
+title: 1.2.7 Extended Audio Description (Prerecorded)
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/extended-audio-description-prerecorded
+guideline: perceivable
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/127.html">1.2.7 Extended Audio Description (Prerecorded)</a></p>
+
+    <h2>Overview</h2>
+    <h3>Example</h3>
+    <p><a href="https://www.3playmedia.com/learn/how-to-guides/audio-description-how-to-guides/audio-description-examples/#section-extended">See examples from 3PlayMedia under Extended Audio Description.</a></p>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+        <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded synchronized media which does not have sufficient audio pauses to fit all the important visual information must have an extended audio description of the visual content.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a blind user, I want to listen to an audio description along with the video so that I can get all of the same information that is conveyed in the visual portion of the video.</div>
+
+    <div class="success"><strong>Success:</strong> If you could not see the video, when you listen to the audio description you would get all of the information conveyed in the video portion.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the page contain synchronized media (e.g., video with dialogue)?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the video content in the synchronized media have an audio description?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio description include all the important actions, visuals, and text in the video?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the video have sufficient pauses to include all the important actions, visuals, and text in the video?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/f125ab.html">F1.2.5.a.b Existing audio description is incorrect.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f127ab.html">F1.2.7.a.b Existing audio description is inadequate.</a></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the video itself a media alternative for text?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it clearly labeled as such?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; Add text making it clear that the video is an alternative for the text content.</span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f127aa.html">F1.2.7.a.a Synchronized media does not have an extended audio description for the video portion.</a></span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <ol>
+        <li>Locate each video element on the page.</li>
+        <li>Determine whether the video content contains any information not provided through the audio content.</li>
+        <li>If it does, verify that it has an audio description that provides the visual information.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <ul>
+        <li>Follow the procedure for Web.</li>
+    </ul>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/f127aa.html">F1.2.7.a.a Synchronized media does not have an extended audio description for the video portion.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f127ab.html">F1.2.7.a.b Existing audio description is inadequate.</a> (Medium)</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.scurl }}">Understanding Success Criterion 1.2.7 Extended Audio Description (Prerecorded)</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G8">G8: Providing a movie with extended audio descriptions</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://www.3playmedia.com/blog/does-your-video-need-extended-or-standard-description/">3PlayMedia: Does Your Video Need Extended or Standard Description?</a></li>
+    </ul>
+</div>
+
+    {% include 127checkpoints.html %}
