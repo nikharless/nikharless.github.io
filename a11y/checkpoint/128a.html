@@ -1,0 +1,108 @@
+---
+layout: default
+title: 1.2.8.a Text Transcript (Prerecorded)
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/media-alternative-prerecorded
+guideline: perceivable
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/128.html">1.2.8 Media Alternative (Prerecorded)</a></p>
+
+    <h2>Overview</h2>
+
+    <h3>Example</h3>
+    
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+        <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded synchronized media and video-only media must have a text transcript which includes the visual content.</li>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"> If the video itself is an alternative to text, it must be clearly indicated as such.</span></li>
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The text transcript should be presented next to the video and be easy to find.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a deafblind user, I want to read a transcript with my braille device so that I can get all of the same audio and visual information that is conveyed in the video.</div>
+
+    <div class="success"><strong>Success:</strong> If you could not see or hear the video, when you read the transcript with assistive technology, you would get all of the information conveyed in the audio and video portions.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the page contain video-only content or synchronized media (e.g., video with dialogue)?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the video purely decorative?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS (Note: Make sure it's hidden from assistive technology.)</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the media have a text transcript?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the transcript include all the important dialog, sounds, actions, visuals, and text in the video?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f128ab.html">F1.2.8.a.b Existing text transcript is inadequate.</a></span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the video itself a media alternative for text?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it clearly labeled as such?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; Add text making it clear that the video is an alternative for the text content.</span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f128aa.html">F1.2.8.a.a Video media does not have a text transcript.</a></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <ol>
+        <li>Locate each video element on the page.</li>
+        <li>Check whether the video itself is an alternative to text on the page.</li>
+        <li>If it is, verify that it is clearly labeled as such.</li>
+        <li>If it isn't, verify that it has a text transcript that includes both the audio and the visual information.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <ul>
+        <li>Follow the procedure for Web.</li>
+    </ul>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/f128aa.html">F1.2.8.a.a Video media does not have a text transcript.</a> (High)</li>
+        <li><a href="/a11y/failure/f128ab.html">F1.2.8.a.b Existing text transcript is inadequate.</a> (Medium)</li>
+        <li><a href="/a11y/failure/f128ac.html">F1.2.8.a.c Video alternative to text is not labeled as such.</a> (Low)</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.scurl }}">Understanding Success Criterion 1.2.8 Media Alternative (Prerecorded)</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F74">F74: Failure of Success Criterion 1.2.2 and 1.2.8 due to not labeling a synchronized media alternative to text as an alternative</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G69">G69: Providing an alternative for time based media</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G58">G58: Placing a link to the alternative for time-based media immediately next to the non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G159">G159: Providing an alternative for time-based media for video-only content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H53">H53: Using the body of the object element</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://www.w3.org/WAI/media/av/transcripts/">W3: Transcripts</a></li>
+        <li><a href="https://webaim.org/techniques/captions/">WebAIM: Captions, Transcripts, and Audio Descriptions</a></li>
+    </ul>
+</div>
+
+    {% include 128checkpoints.html %}
