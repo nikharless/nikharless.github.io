@@ -12,21 +12,21 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h3>Examples</h3>
     <h4>Text Look-Alikes</h4>
-    <p><span aria-label="cook">&#x03F2;&#x043E;&#x03BF;&#x006B;</span></p>
-    <pre><code><strong>&lt;span aria-label="cook"&gt;</strong>&amp;#x03F2;&amp;#x043E;&amp;#x03BF;&amp;#x006B;<strong>&lt;/span&gt;</strong></code></pre>
+    <p><span role="figure" aria-label="cook">&#x03F2;&#x043E;&#x03BF;&#x006B;</span></p>
+    <pre><code><strong>&lt;span role="figure" aria-label="cook"&gt;</strong>&amp;#x03F2;&amp;#x043E;&amp;#x03BF;&amp;#x006B;<strong>&lt;/span&gt;</strong></code></pre>
 
     <h4>Emoticons</h4>
-    <p><span aria-label="smile">:)</span></p>
-    <p><span aria-label="sideways glance">&gt;_&gt;</span></p>
-    <pre><code><strong>&lt;span aria-label="smile"&gt;</strong> :) <strong>&lt;/span&gt;</strong></p>
-<strong>&lt;span aria-label="sideways glance"&gt;</strong> &gt;_&gt; <strong>&lt;/span&gt;</strong></code></pre>
+    <p><span role="img" aria-label="smile">:)</span></p>
+    <p><span role="img" aria-label="sideways glance">&gt;_&gt;</span></p>
+    <pre><code><strong>&lt;span role="img" aria-label="smile"&gt;</strong> :) <strong>&lt;/span&gt;</strong></p>
+<strong>&lt;span role="img" aria-label="sideways glance"&gt;</strong> &gt;_&gt; <strong>&lt;/span&gt;</strong></code></pre>
 
     <h4>ASCII Art</h4>
     <span aria-label="cat" role="img"><pre>      \    /\
        )  ( ')
       (  /  )
        \(__)|</pre></span>
-    <pre><code><strong>&lt;span aria-label="cat"&gt;</strong>&lt;pre&gt;      \    /\
+    <pre><code><strong>&lt;span role="img" aria-label="cat"&gt;</strong>&lt;pre&gt;      \    /\
        )  ( ')
       (  /  )
        \(__)|&lt;/pre&gt;<strong>&lt;/span&gt;</strong></code></pre>
@@ -36,8 +36,7 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
         <span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
         <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text characters used to represent images or other characters must have a text alternative describing their meaning.</li>
-        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> ASCII images and emoticons should be marked as images (<code>role="img"</code>), <strong>OR</strong></li>
-        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A skip link should be present to allow the user to skip past the ASCII image.</li>
+        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> ASCII images and emoticons must be marked as images (<code>role="img"</code>) so that screen readers will read the text alternative.</li>
     </ul>
 
     <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want to hear the intended meaning of the characters rather than the literal reading so that I understand the content.</div>
