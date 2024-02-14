@@ -1,0 +1,71 @@
+---
+layout: default
+title: Failure - F1.3.1.a.a Landmark region is not marked up semantically
+guideline: perceivable
+scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/131.html">1.3.1 Info and Relationships</a> | <a href="/a11y/checkpoint/131a.html">1.3.1.a Semantics</a></p>
+
+    <table>
+    	<tr>
+    		<th>Expected Result</th>
+    		<td>Visible sections of a web page are marked up semantically as landmarks.</td>
+    	</tr>
+    	<tr>
+    		<th>Actual Result</th>
+    		<td>Visible sections of the web page are not marked up semantically as landmarks.</td>
+    	</tr>
+    	<tr>
+    		<th>Solution</th>
+    		<td>
+                <p>Mark up visible page regions as landmarks:</p>
+                <ul>
+                    <li>Header: <code>&lt;header&gt;</code> or <code>role="header"</code></li>
+                </ul>
+            </td>
+    	</tr>
+        <tr>
+            <th>Example</th>
+            <td>
+                <pre><code>&lt;html&gt;
+    &lt;header&gt;
+        &lt;img src="logo.png" alt="Yoyodyne Home"&gt;
+        &lt;nav aria-label="main&gt;
+            ...
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        ...
+        &lt;aside aria-labelledby="recent"&gt;
+            &lt;h2&gt;Recent Articles&lt;/h2&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &copy; 2024 Yoyodyne Propulsion Systems
+        &lt;nav aria-label="footer"&gt;
+            ...
+        &lt;/nav&gt;
+    &lt;/footer&gt;</code></pre>
+            </td>
+        </tr>
+        <tr>
+            <th>Why It's Important</th>
+            <td>Landmarks allow assistive technology users to easily navigate to different areas of the page.</td>
+        </tr>
+        <tr>
+            <th>References</th>
+            <td>
+                <ul>
+                    <li><a href="{{ page.scurl }}">Understanding SC 1.3.1: Info and Relationships</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA11">ARIA11: Using ARIA landmarks to identify regions of a page</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA20">ARIA20: Using the region role to identify a region of the page</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H101">H101: Using semantic HTML elements to identify regions of a page</a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    {% include 131checkpoints.html %}
