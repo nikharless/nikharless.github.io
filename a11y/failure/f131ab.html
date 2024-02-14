@@ -15,19 +15,32 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
     	</tr>
     	<tr>
     		<th>Actual Result</th>
-    		<td>Visible sections of the web page are not marked up semantically as landmarks.</td>
+    		<td>Visible sections of the web page are marked up as landmarks, but the landmarks are not used correctly.</td>
     	</tr>
     	<tr>
     		<th>Solution</th>
     		<td>
-                <p>Mark up visible page regions as landmarks:</p>
                 <ul>
-                    <li>Header: <code>&lt;header&gt;</code> or <code>role="banner"</code></li>
-                    <li>Footer: <code>&lt;footer&gt;</code> or <code>role="contentinfo"</code></li>
-                    <li>Navigation: <code>&lt;nav&gt;</code> or <code>role="navigation"</code></li>
-                    <li>Main: <code>&lt;main&gt;</code> or <code>role="main"</code></li>
-                    <li>Complementary: <code>&lt;aside&gt;</code> or <code>role="complementary"</code></li>
-                </ul>
+                    <li>Ensure valid tags or roles are used:
+                        <ul>
+                            <li>Header: <code>&lt;header&gt;</code> or <code>role="banner"</code></li>
+                            <li>Footer: <code>&lt;footer&gt;</code> or <code>role="contentinfo"</code></li>
+                            <li>Navigation: <code>&lt;nav&gt;</code> or <code>role="navigation"</code></li>
+                            <li>Main: <code>&lt;main&gt;</code> or <code>role="main"</code></li>
+                            <li>Complementary: <code>&lt;aside&gt;</code> or <code>role="complementary"</code></li>
+                        </ul>
+                    </li>
+                    <li>Ensure regions are nested correctly:
+                        <ul>
+                            <li>The <code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> elements must reside at the top level. If they are nested, they are not recognized as header or footer regions.</li>
+                            <li></li>
+                        </ul>
+                    </li>
+                    <li>Uniquely identify each instance of duplicate region types:
+                        <ul>
+                            <li>Use <code>aria-label</code> or <code>aria-labelledby</code> on &lt;nav&gt; regions so users can tell what kind of links they contain.</li>
+                        </ul>
+                    </li>
             </td>
     	</tr>
         <tr>
