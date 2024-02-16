@@ -10,6 +10,20 @@ cptitle: 1.1.1.a Functional Images (Text Alternative)
 guideline: perceivable
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
+<style>
+    .player.active .play {
+        display: none;
+    }
+    .player.active .pause{
+       display: block;
+    }
+    .player .play{
+        display: block;
+    }
+    .player .pause{
+        display: none;
+    }
+</style>
 <div class="cpcontent">
     <h1>{{ page.title }}</h1>
     <nav aria-label="Breadcrumb" class="breadcrumb">
@@ -40,20 +54,6 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                 <h3>Play/Pause Button</h3>
                 <p>This button uses JavaScript and CSS to change the <code>aria-labelledby</code> value along with the displayed image. The text alternative in this case is attached to the swapped images, and <code>aria-labelledby</code> is used to label the control with the image.</p>
 
-                <style>
-                    .player.active .play {
-                        display: none;
-                    }
-                    .player.active .pause{
-                        display: block;
-                    }
-                    .player .play{
-                        display: block;
-                    }
-                    .player .pause{
-                        display: none;
-                    }
-                </style>
                 <div class="player" role="button" tabindex="0" aria-labelledby="play">
                     <img id="play" src="/a11y/assets/images/f111ai-play.png" class="play" aria-hidden="true" alt="Play"> 
                     <img id="pause" src="/a11y/assets/images/f111ai-pause.png" class="pause" aria-hidden="true" alt="Pause">
