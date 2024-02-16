@@ -25,18 +25,17 @@ guideline: perceivable
         <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Data tables must be marked up semantically as tables.</li>
         <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Header cells must be programmatically associated with data cells.
             <ul>
+                <li>If a table has both row and column headers, the <code>scope</code> attribute must be used.</li>
+                <li>Simple tables with only either row or column headers do not need the <code>scope</code> attribute.</li>
+                <li>If a table has more than one set of either row or column headers, the <code>headers</code> and <code>id</code> attributes must be used to associate them.</li>
                 <li>Empty header cells are not a failure.</li>
             </ul>
         </li>
-        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Tables should not be used for layout purposes.
+        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Tables should not be used for layout purposes. If a table is used for layout purposes, it must be marked up to prevent assistive technologies from reading it as a data table:
             <ul>
-                <li><span class="fa-solid fa-circle-exclamation" style="color: #28a228;" aria-label="Requirement"></span> If a table is used for layout, it must be marked up to prevent assistive technologies from reading it as a data table.</li>
+                <li><span class="fa-solid fa-circle-exclamation" style="color: #28a228;" aria-label="Requirement"></span> Layout tables must not use <code>&lt;th&gt;</code> or <code>&lt;caption&gt;</code> elements.</li>
+                <li><span class="fa-solid fa-circle-exclamation" style="color: #28a228;" aria-label="Requirement"></span> Layout tables must not use <code>headers</code>, <code>scope</code>, or <code>summary</code> attributes.</li>
                 <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Layout tables should use <code>role="presentation"</code> or <code>role="none"</code> to prevent assistive technology from trying to read it as a table.</li>
-            </ul>
-        </li>
-        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Tables with both row and column headers should use the <code>scope</code> attribute to identify what each header is for.
-            <ul>
-                <li>The <code>scope</code> attribute is not required for tables with simple row and/or column headers.</li>
             </ul>
         </li>
         <li><span class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Complex tables should be broken down into separate simple tables.</li>
@@ -44,6 +43,10 @@ guideline: perceivable
     </ul>
 
     <div class="success"><strong>Success:</strong> You can understand the data in the table without being able to see it.</div>
+
+    <div class="userstory"><strong>User Story:</strong> As a blind user, I want to have tables properly marked up so that my screen reader reads the data in a meaningful way.</div>
+
+    <div class="success"><strong>Success:</strong> If you could not see the table, when you read the table with a screen reader, you could navigate from cell to cell and hear the header labels with the data to provide context.</div>
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
@@ -60,29 +63,61 @@ guideline: perceivable
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the <code>scope</code> attribute have the correct value?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; Correct the value for the <code>scope</code> attribute.</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f131bd.html">F1.3.1.b.d  scope attribute value is incorrect</a> or <a href="/a11y/failure/f131be.html">F1.3.1.b.e  scope attribute value is invalid</a>.</span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; Add a <code>scope</code> attribute to each header cell, set to the correct value.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; Does the table have more than one set of either row or column headers?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the headers associated with the data cells using <code>headers</code> and <code>id</code> attributes?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the header and data associations correct?</span>
+                                                            <ul role="group">
+                                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f131bh.html">F1.3.1.b.h  Complex table has incorrect headers/id association.</a></span></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f131bg.html">F1.3.1.b.g  Complex table does not use headers/id association.</a></span></li>
+                                                    </ul>
+                                                </li>
+                                                <li role="treeitem"><span><strong>No</strong>; See <a href="/a11y/failure/f131bc.html">F1.3.1.b.c  scope attribute is missing from table with row and column headers.</a></span></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Mark up the header cells as header cells.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f131bb.html">F1.3.1.b.b  Data header cells are not marked up as such.</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; Mark up the data tables semantically using the appropriate HTML or ARIA roles.</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f131ba.html">F1.3.1.b.a  Data table is not marked up as such.</a></span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
     </ul>
 
-    <h3 id="test2">Are there any layout tables on the page semantically marked up as tables?</h3>
+    <h3 id="test2">Does the data table have a caption?</h3>
     <ul role="tree" aria-labelledby="test2">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the caption marked up as a table header?</span>
+            <ul role="group">
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/f131bj.html">F1.3.1.b.j  Table caption is marked up as header.</a></span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the caption programmatically associated with the table?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/f131bk.html">F1.3.1.b.k Table caption is not programmatically associated with the table.</a></span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS. <em>Note: It's a good idea to give the table a caption summarizing its content if this is not explained elsewhere.</em></span></li>
+    </ul>
+
+    <h3 id="test3">Are there any layout tables on the page semantically marked up as tables?</h3>
+    <p><em>Table markup includes any table HTML, <code>summary</code>, <code>headers</code>, or <code>scope</code> attributes, ARIA table roles, and table-related CSS properties.</em></p>
+    <ul role="tree" aria-labelledby="test3">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the layout tables read by the screen reader as data tables?</span>
             <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; Remove any table HTML, <code>summary</code>, <code>headers</code>, or <code>scope</code> attributes, ARIA table roles, and table-related CSS properties.</span></li>
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/f131bl.html">F1.3.1.b.l  Non-tabular data is marked up as a table.</a></span></li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
             </ul>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -93,6 +128,14 @@ guideline: perceivable
     <ol>
         <li>Visually locate any data tables on the page.</li>
         <li>Verify that they are marked up as tables.</li>
+        <li>Verify that header cells are marked up as such.
+            <ul>
+                <li>If there is more than a single set of headers (one row or one column), verify that the scope is set.</li>
+                <li>If there are multiple levels of headers, verify that all are associated with the correct data cells.</li>
+            </ul>
+        </li>
+        <li>Verify that any captions are not marked up as headers.</li>
+        <li>Locate any layout tables on the page, and verify that they do not use <code>&lt;th&gt;</code>, <code>&lt;caption&gt;</code>, <code>headers</code>, <code>scope</code>, or <code>summary</code>.</li>
     </ol>
 
     <h3>Screen Reader Testing</h3>
@@ -100,6 +143,7 @@ guideline: perceivable
     <ol>
         <li>Cycle through the tables using the <strong>T</strong> key.</li>
         <li>Use the up and down arrow keys to navigate through the cells of the table, or use <strong>Control+Alt+</strong> up, down, left, and right arrow keys.</li>
+        <li>Verify that header context is read with the data cells.</li>
     </ol>
 
     <h4>JAWS</h4>
@@ -107,12 +151,14 @@ guideline: perceivable
         <li>Cycle through the tables using the <strong>T</strong> key.</li>
         <li>Use <strong>Control+Alt+</strong> up, down, left, and right arrow keys to navigate the table.</li>
         <li>Use <strong>Control+Alt+5</strong> (on the numeric keypad) to read the row and/or column headers for the current cell.</li>
+        <li>Verify that header context is read with the data cells.</li>
     </ol>
 
     <h4>VoiceOver</h4>
     <ol>
         <li>Use <strong>VO+</strong> up, down, left, and right arrow keys to navigate the table.</li>
         <li>Use <strong>VO+C</strong> to read the column header for the current cell.</li>
+        <li>Verify that header context is read with the data cells.</li>
     </ol>
     <p>Note: VoiceOver does not read row headers, though it will identify the row number.</p>
 
@@ -157,17 +203,19 @@ guideline: perceivable
 
     <h2>Failures</h2>
     <ul>
-        <li>F1.3.1.b.a  Data table is not marked up as such (High)</li>
-        <li>F1.3.1.b.b  Data header cells are not marked up as such (High)</li>
-        <li>F1.3.1.b.c  scope attribute value is incorrect (High)</li>
-        <li>F1.3.1.b.d  scope attribute value is invalid (High)</li>
-        <li>F1.3.1.b.e  scope attribute is used on data cell (Low)</li>
-        <li>F1.3.1.b.f  Complex table does not use headers/id association (High)</li>
-        <li>F1.3.1.b.g  Complex table has incorrect headers/id association (Medium)</li>
-        <li>F1.3.1.b.h  Tables are nested (High)</li>
-        <li>F1.3.1.b.i  Table caption is marked up as header (Medium)</li>
-        <li>F1.3.1.b.j  Non-tabular data is marked up as a table (Medium)</li>
-        <li>F1.3.1.b.k  Screen reader does not read headers with data cells (High)</li>
+        <li><a href="/a11y/failure/f131ba.html">F1.3.1.b.a Data table is not marked up as such</a> (High)</li>
+        <li><a href="/a11y/failure/f131bb.html">F1.3.1.b.b Data header cells are not marked up as such</a> (High) F91</li>
+        <li><a href="/a11y/failure/f131bc.html">F1.3.1.b.c scope attribute is missing from table with row and column headers</a> (Medium) F91</li>
+        <li><a href="/a11y/failure/f131bd.html">F1.3.1.b.d scope attribute value is incorrect</a> (High)</li>
+        <li><a href="/a11y/failure/f131be.html">F1.3.1.b.e scope attribute value is invalid</a> (High)</li>
+        <li><a href="/a11y/failure/f131bf.html">F1.3.1.b.f scope attribute is used on data cell</a> (Low)</li>
+        <li><a href="/a11y/failure/f131bg.html">F1.3.1.b.g Complex table does not use headers/id association</a> (High) F91</li>
+        <li><a href="/a11y/failure/f131bh.html">F1.3.1.b.h Complex table has incorrect headers/id association</a> (Medium) F90</li>
+        <li><a href="/a11y/failure/f131bi.html">F1.3.1.b.i Tables are nested</a> (High)</li>
+        <li><a href="/a11y/failure/f131bj.html">F1.3.1.b.j Table caption is marked up as header</a> (Medium)</li>
+        <li><a href="/a11y/failure/f131bk.html">F1.3.1.b.k Table caption is not programmatically associated with the table</a> (Medium)</li>
+        <li><a href="/a11y/failure/f131bl.html">F1.3.1.b.l Non-tabular data is marked up as a table</a> (Medium) F46</li>
+        <li><a href="/a11y/failure/f131bm.html">F1.3.1.b.m Screen reader does not read headers with data cells</a> (High)</li>
     </ul>
 
     <h2>Testing Tools</h2>
