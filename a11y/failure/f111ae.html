@@ -1,35 +1,48 @@
 ---
 layout: default
 title: Failure - F1.1.1.a.e Image map <code>&lt;area&gt;</code> element is missing a text alternative.
+current: /a11y/failure/f111ae.html
+root: WCAG 2.2
+scurl: /a11y/sc/111.html
+sctitle: 1.1.1 Non-text Content
+cpurl: /a11y/checkpoint/111a.html
+cptitle: 1.1.1.a Functional Images (Text Alternative)
 guideline: perceivable
-scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
 <div class="cpcontent">
     <h1>{{ page.title }}</h1>
-    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/checkpoint/111a.html">1.1.1.a Functional Images (Text Alternative)</a></p>
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li> 
+        </ol>
+    </nav>
 
-    <table>
-    	<tr>
-    		<th>Expected Result</th>
-    		<td>If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</td>
+    <div id="failure">
+    	<div class="row">
+    		<h2>Expected Result</h2>
+    		<div>If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</div>
     	</tr>
-    	<tr>
-    		<th>Actual Result</th>
-    		<td>The client-side image map is labeled with only images, but each <code>&lt;area&gt;</code> does not have a text alternative.</td>
-    	</tr>
-    	<tr>
-    		<th>Solution</th>
-    		<td>Add a text alternative which describes the purpose of the functional image using the following method:
+    	<div class="row">
+    		<h2>Actual Result</h2>
+    		<div>The client-side image map is labeled with only images, but each <code>&lt;area&gt;</code> does not have a text alternative.</div>
+    	</div>
+    	<div class="row">
+    		<h2>Solution</h2>
+    		<div>Add a text alternative which describes the purpose of the functional image using the following method:
                 <ul>
                     <li>Add an <code>alt</code> attribute to each <code>&lt;area&gt;</code> tag in the image map.</li>
                     <li>Set it to a concise text alternative describing the purpose of the link.</li>
                 </ul>
-            </td>
-    	</tr>
-        <tr>
-            <th>Example</th>
-            <td>
-                <h4>Client-Side Image Map</h4>
+            </div>
+    	</div>
+        <div class="row">
+            <h2>Example</h2>
+            <div>
+                <h3>Client-Side Image Map</h3>
                 <img src="/a11y/assets/images/111a-infographic.png" alt="Steps of the Process" usemap="#csimap">
                 <map id="csimap" name="Sample Image Map">
                     <area shape="rect" coords="0,0,168,334" href="#" onclick="alert('Step 1')" alt="Step 1 Details">
@@ -47,23 +60,24 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
         <strong>alt="Step 1 Details"</strong>&gt;
         ...
 &lt;/map&gt;</code></pre>
-            </td>
-        </tr>
-        <tr>
-            <th>Why It's Important</th>
-            <td>Blind and visually impaired users need to have a text alternative to functional images so that they can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not know what the link or control does.</td>
-        </tr>
-        <tr>
-            <th>References</th>
-            <td>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Why It's Important</h2>
+            <div>Blind and visually impaired users need to have a text alternative to functional images so that they can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not know what the link or control does.</div>
+        </div>
+        <div class="row">
+            <h2>References</h2>
+            <div>
                 <ul>
-                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F65">F65: Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H24">H24: Providing text alternatives for the area elements of image maps</a></li>
                     <li><a href="https://www.w3.org/WAI/tutorials/images/imagemap/">W3: Image Maps</a></li>
-            </td>
-        </tr>
-    </table>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
     {% include 111checkpoints.html %}
