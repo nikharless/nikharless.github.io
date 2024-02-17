@@ -1,35 +1,48 @@
 ---
 layout: default
 title: Failure - F1.1.1.d.b Decorative image is not hidden from screen readers.
+current: /a11y/failure/f111db.html
+root: WCAG 2.2
+scurl: /a11y/sc/111.html
+sctitle: 1.1.1 Non-text Content
+cpurl: /a11y/checkpoint/111d.html
+cptitle: 1.1.1.d Decorative Images (Text Alternative)
 guideline: perceivable
-scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
 <div class="cpcontent">
     <h1>{{ page.title }}</h1>
-    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/checkpoint/111d.html">1.1.1.d Decorative Images (Text Alternative)</a></p>
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li> 
+        </ol>
+    </nav>
 
-    <table>
-    	<tr>
-    		<th>Expected Result</th>
-    		<td>Decorative images must be hidden from screen readers.</td>
-    	</tr>
-    	<tr>
-    		<th>Actual Result</th>
-    		<td>The decorative image is read by screen readers.</td>
-    	</tr>
-    	<tr>
-    		<th>Solution</th>
-    		<td>Hide the image using one of the following methods:
+    <div id="failure">
+    	<div class="row">
+    		<h2>Expected Result</h2>
+    		<div>Decorative images must be hidden from screen readers.</div>
+    	</div>
+    	<div class="row">
+    		<h2>Actual Result</h2>
+    		<div>The decorative image is read by screen readers.</div>
+    	</div>
+    	<div class="row">
+    		<h2>Solution</h2>
+    		<div>Hide the image using one of the following methods:
                 <ul>
                     <li>Add <code>aria-hidden="true"</code> to the image element.</li>
                     <li>Implement the image as a CSS background image.</li>
                 </ul>
-            </td>
-    	</tr>
-        <tr>
-            <th>Examples</th>
-            <td>
-                <h4>ARIA</h4>
+            </div>
+    	</div>
+        <div class="row">
+            <h2>Examples</h2>
+            <div>
+                <h3>ARIA</h3>
                 <svg aria-hidden="true" viewBox="0 0 344.20377 256" xmlns="http://www.w3.org/2000/svg" width="320">
                     <g transform="matrix(1.6329 0 0 1.6329 -233.22 -353.86)">
                         <path d="m277.67 293.6c9.979 9.2424 7.5825 45.952 19.752 40.581 8.5922-3.7921 4.2125-26.335 15.757-39.898 13.278-4.9514 35.919 13.051 39.606 5.3806 6.3075-13.12-24.865-32.276-24.801-35.944 0.0718-4.1001 25.497-26.72 21.237-31.782-6.7254-7.9911-41.131 6.1214-44.919 5.6683-3.2684-0.39092-29.333-23.219-35.281-20.697-7.6326 3.2368 4.2602 36.542 2.5036 39.817-1.8352 3.4215-34.537 20.236-31.003 29.378 3.2547 8.421 22.982 2.36 37.149 7.4962z" fill="#fc0"/>
@@ -42,22 +55,8 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
                 <pre><code>&lt;svg <strong>aria-hidden="true"</strong> viewBox="0 0 344.20377 256" xmlns="http://www.w3.org/2000/svg"&gt;</code></pre>
 
-                <h4>CSS background</h4>
-                <style>
-                    #bg {
-                        background-image: url("/a11y/assets/images/f111db-flower.jpg");
-                        width: 640px;
-                        height: 424px;
-                    }
-                    #divText {
-                        width: 240;
-                        margin-right: 400px;
-                        padding: 80px 0 20px 20px;
-                        color: white;
-                        background-color: rgba(0,0,0,0.5);
-                    }
-                </style>
-                <div id="bg">
+                <h3>CSS background</h3>
+                <div id="bg2">
                     <div id="divText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.</div>
                 </div>
     <pre><code>&lt;style&gt;
@@ -70,24 +69,24 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 &lt;div id="bg"&gt;
     &lt;div id="divText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-            </td>
-        </tr>
-        <tr>
-            <th>Why It's Important</th>
-            <td>Blind and visually impaired users want decorative or redundant images hidden so they do not get overwhelmed with unimportant screen reader chatter.</td>
-        </tr>
-        <tr>
-            <th>References</th>
-            <td>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Why It's Important</h2>
+            <div>Blind and visually impaired users want decorative or redundant images hidden so they do not get overwhelmed with unimportant screen reader chatter.</div>
+        </div>
+        <div class="row">
+            <h2>References</h2>
+            <div>
                 <ul>
-                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F38">Failure of Success Criterion 1.1.1 due to not marking up decorative images in HTML in a way that allows assistive technology to ignore them</a></li>
                     <li><a href="https://www.456bereastreet.com/archive/201609/hiding_inline_svg_icons_from_screen_readers/">Hiding inline SVG icons from screen readers</a></li>
                     <li><a href="https://www.w3schools.com/cssref/pr_background-image.php">W3: CSS background-image Property</a></li>
                 </ul>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+    </div>
 </div>
 
     {% include 111checkpoints.html %}
