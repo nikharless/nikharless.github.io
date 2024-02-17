@@ -36,9 +36,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                 Add a long text alternative which describes all the information provided by the image using one of the following methods:
                 <ul>
                     <li>Place a long description directly on the page, and use <code>id</code> and <code>aria-describedby</code> to associate the description with the image, <strong>OR</strong></li>
-                    <li>Place a long description on a separate page. Add a <code>longdesc</code> attribute to the <code>&lt;img&gt;</code> tag and set it to the location of the long description. Place a visible link adjacent to the image as well for better accessibility, <strong>OR</strong></li>
+                    <li>Place a long description on a separate page. Place a visible link pointing to the long description adjacent to the image, <strong>OR</strong></li>
                     <li>Place the image inside a <code>&lt;figure&gt;</code> element. Wrap the long description in a <code>&lt;figcaption&gt;</code> element inside the <code>&lt;figure&gt;</code> element.</li>
                 </ul>
+                <p><em>Note: The <code>longdesc</code> attribute is deprecated and is not recommended as a solution. It is only visible to screen readers and is not functional as a link.</em></p>
             </div>
     	</div>
         <div class="row">
@@ -50,13 +51,6 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                 <pre><code>&lt;img src="arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" <strong>aria-describedby="description"</strong>&gt;
 
 &lt;p <strong>id="description"</strong>&gt;An oil painting of three Egyptian women in white dresses with six naked children in a Mediterranean landscape. The woman on the left is standing, holding a child on her shoulders, and another child stands in front of her pointing off the left side of the canvas. The woman in the center is also standing and holding a child on her shoulders while holding his hand on the top of her head. The woman on the right is sitting cross-legged on the ground breastfeeding a baby while 2 more children play behind her.&lt;/p&gt;</code></pre>
-
-                <h3>Adjacent Link to Long Description with <code>longdesc</code> Reference</h3>
-                <img src="/a11y/assets/images/111c-constellations_640.png" height="300px" width="300px" alt="Historical chart of constellations" longdesc="long-description.html">
-                <p><a href="#">Follow this link for a description of the chart.</a></p>
-
-                <pre><code>&lt;img src="constellations.png" alt="Historical chart of constellations" <strong>longdesc="long-description.html"</strong> /&gt;
-&lt;p&gt;&lt;a href="long-description.html"&gt;Follow this link for a description of the chart.&lt;/a&gt;&lt;/p&gt;</code></pre>
 
                 <h3><code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> Semantic Association</h3>
                 <figure>
@@ -93,7 +87,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                     </figcaption>
                 </figure>
 
-                <pre><code>&lt;figure role="group"&gt;
+                <pre><code>&lt;figure&gt;
 
     &lt;figcaption&gt;
         &lt;p&gt;This chart shows the break-out of issues filed for the Yoyodyne app.&lt;/p&gt;
