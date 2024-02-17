@@ -40,8 +40,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                 <h3>Button Changes Image</h3>
                 <p>This button uses JavaScript to change the <code>alt</code> value along with the displayed image.</p>
 
-                <img src="/a11y/assets/images/f111bg-fish.png" id="myImage" alt="Blue fish" width="320px"/>
-                <input type="button" onclick="changeImage()" value="Change Image" />
+                <img src="/a11y/assets/images/f111bg-fish.png" id="myImage" alt="Blue fish" width="320px"><br>
+                <input type="button" onclick="changeImage()" value="Change Image">
                 <script>
                   function changeImage() {
                     var image=document.getElementById('myImage');
@@ -55,17 +55,17 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                   }
                 </script>
 
-                <pre><code>&lt;img src="fish.png" id="myImage" alt="Blue fish" /&gt;
-&lt;input type="button" onclick="changeImage()" value="Change Image" /&gt;
+                <pre><code>&lt;img src="fish.png" id="myImage" alt="Blue fish"&gt;
+&lt;input type="button" onclick="changeImage()" value="Change Image"&gt;
 &lt;script&gt;
     function changeImage() {
         var image=document.getElementById('myImage');
         if (image.src.match("trout.png")) {
             image.src="fish.png";
-            image.alt="Blue fish";
+            <strong>image.alt="Blue fish";</strong>
         } else {
             image.src="trout.png";
-            image.alt="Trout";
+            <strong>image.alt="Trout";</strong>
         }
     }
 &lt;/script&gt;</code></pre>
