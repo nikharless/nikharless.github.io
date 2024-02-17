@@ -1,36 +1,49 @@
 ---
 layout: default
 title: Failure - F1.1.1.c.a Complex image is missing a short text alternative.
+current: /a11y/failure/f111ca.html
+root: WCAG 2.2
+scurl: /a11y/sc/111.html
+sctitle: 1.1.1 Non-text Content
+cpurl: /a11y/checkpoint/111c.html
+cptitle: 1.1.1.c Complex Images (Text Alternative)
 guideline: perceivable
-scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
 <div class="cpcontent">
     <h1>{{ page.title }}</h1>
-    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/checkpoint/111c.html">1.1.1.c Complex Images (Text Alternative)</a></p>
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li> 
+        </ol>
+    </nav>
 
-    <table>
-    	<tr>
-    		<th><h2>Expected Result</h2></th>
-    		<td>Complex images have a short descriptive text alternative that summarizes the information provided by the image.</td>
-    	</tr>
-    	<tr>
-    		<th><h2>Actual Result</h2></th>
-    		<td>The complex image does not have a short text alternative.</td>
-    	</tr>
-    	<tr>
-    		<th><h2>Solution</h2></th>
-    		<td>Add a short text alternative which summarizes the information provided by the image using one of the following methods:
+    <div id="failure">
+    	<div class="row">
+    		<h2>Expected Result</h2>
+    		<div>Complex images have a short descriptive text alternative that summarizes the information provided by the image.</div>
+    	</div>
+    	<div class="row">
+    		<h2>Actual Result</h2>
+    		<div>The complex image does not have a short text alternative.</div>
+    	</div>
+    	<div class="row">
+    		<h2>Solution</h2>
+    		<div>Add a short text alternative which summarizes the information provided by the image using one of the following methods:
                 <ul>
                     <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
                     <li>Add an <code>aria-label</code> attribute to the image tag, <strong>OR</strong></li>
                     <li>Add an <code>aria-labelledby</code> attribute to the image tag, set to the <code>id</code> value of the text to use as a label, <strong>OR</strong></li>
                     <li>Add a <code>title</code> attribute to the <code>&lt;img&gt;</code> tag</li>
                 </ul>
-            </td>
-    	</tr>
-        <tr>
-            <th><h2>Example</h2></th>
-            <td>
+            </div>
+    	</div>
+        <div class="row">
+            <h2>Example</h2>
+            <div>
                 <h3>Complex Image with Link to Long Description</h3>
 
                 <figure role="group">
@@ -44,23 +57,23 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
         &lt;a href="long-description.html"&gt;Follow this link for a detailed description of the chart.&lt;/a&gt;
     &lt;/figcaption&gt;
 &lt;/figure&gt;</code></pre>
-            </td>
-        </tr>
-        <tr>
-            <th><h2>Why It's Important</h2></th>
-            <td>Blind and visually impaired users need to have a short text alternative for complex images so that they can understand the purpose of the image and know whether they want to explore the long description.</td>
-        </tr>
-        <tr>
-            <th><h2>References</h2></th>
-            <td>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Why It's Important</h2>
+            <div>Blind and visually impaired users need to have a short text alternative for complex images so that they can understand the purpose of the image and know whether they want to explore the long description.</div>
+        </div>
+        <div class="row">
+            <h2>References</h2>
+            <div>
                 <ul>
-                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/tutorials/images/complex/">W3: Complex Images</a></li>
                     <li><a href="https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81">Writing Alt Text for Data Visualiztion</a></li>
                 </ul>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+    </div>
 </div>
 
     {% include 111checkpoints.html %}
