@@ -1,23 +1,36 @@
 ---
 layout: default
 title: Failure - F1.1.1.b.b Meaningful <code>&lt;svg&gt;</code> is missing a <code>&lt;title&gt;</code> element.
+current: /a11y/failure/f111bb.html
+root: WCAG 2.2
+scurl: /a11y/sc/111.html
+sctitle: 1.1.1 Non-text Content
+cpurl: /a11y/checkpoint/111b.html
+cptitle: 1.1.1.b Meaningful Images (Text Alternative)
 guideline: perceivable
-scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
 <div class="cpcontent">
     <h1>{{ page.title }}</h1>
-    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/checkpoint/111b.html">1.1.1.b Meaningful Images (Text Alternative)</a></p>
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li> 
+        </ol>
+    </nav>
 
-    <table>
-        <tr>
+    <div id="failure">
+        <div class="row">
             <th>Expected Result</th>
             <td>All meaningful images must have a text alternative that conveys the same information as the image.</td>
         </tr>
-        <tr>
+        <div class="row">
             <th>Actual Result</th>
             <td>The meaningful <code>&lt;svg&gt;</code> does not have a text alternative.</td>
         </tr>
-        <tr>
+        <div class="row">
             <th>Solution</th>
             <td>Add a text alternative which describes the purpose of the meaningful image using the following method:
                 <ol>
@@ -28,7 +41,7 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                 </ol>
             </td>
         </tr>
-        <tr>
+        <div class="row">
             <th>Example</th>
             <td>
                 <h4>SVG Image</h4>
@@ -40,11 +53,11 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 &lt;/svg&gt;</code></pre>
             </td>
         </tr>
-        <tr>
+        <div class="row">
             <th>Why It's Important</th>
             <td>Blind and visually impaired users need to have a text alternative to meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not get the information conveyed by the image.</td>
         </tr>
-        <tr>
+        <div class="row">
             <th>References</th>
             <td>
                 <ul>
