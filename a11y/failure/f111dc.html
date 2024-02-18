@@ -1,25 +1,38 @@
 ---
 layout: default
 title: Failure - F1.1.1.d.c Decorative image has a text alternative.
+current: /a11y/failure/f111dc.html
+root: WCAG 2.2
+scurl: /a11y/sc/111.html
+sctitle: 1.1.1 Non-text Content
+cpurl: /a11y/checkpoint/111d.html
+cptitle: 1.1.1.d Decorative Images (Text Alternative)
 guideline: perceivable
-scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
 <div class="cpcontent">
     <h1>{{ page.title }}</h1>
-    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/checkpoint/111d.html">1.1.1.d Decorative Images (Text Alternative)</a></p>
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li> 
+        </ol>
+    </nav>
 
-    <table>
-    	<tr>
-    		<th>Expected Result</th>
-    		<td>Decorative images must not have a text alternative</td>
-    	</tr>
-    	<tr>
-    		<th>Actual Result</th>
-    		<td>The decorative image has a text alternative.</td>
-    	</tr>
-    	<tr>
-    		<th>Solution</th>
-    		<td>Remove the text alternative from the image using one of the following methods:
+    <div id="failure">
+    	<div class="row">
+    		<h2>Expected Result</h2>
+    		<div>Decorative images must not have a text alternative</div>
+    	</div>
+    	<div class="row">
+    		<h2>Actual Result</h2>
+    		<div>The decorative image has a text alternative.</div>
+    	</div>
+    	<div class="row">
+    		<h2>Solution</h2>
+    		<div>Remove the text alternative from the image using one of the following methods:
                 <ul>
                     <li>Remove any text from the <code>alt</code> value in the <code>&lt;img&gt;</code> tag.</li>
                     <li>Remove any <code>title</code> attribute from the <code>&lt;img&gt;</code> tag.</li>
@@ -27,12 +40,12 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                     <li>Remove any <code>aria-labelledby</code> attribute from the image.</li>
                     <li>Remove any <code>&lt;title&gt;</code> tag from the <code>&lt;svg&gt;</code>.</li>
                 </ul>
-            </td>
-    	</tr>
-        <tr>
-            <th>Example</th>
-            <td>
-                <h4>JPG Image</h4>
+            </div>
+    	</div>
+        <div class="row">
+            <h2>Example</h2>
+            <div>
+                <h3>JPG Image</h3>
                 <p>One might be tempted to give this image a text alternative such as "smiling girl with blonde hair and blue eyes," but this information is not relevant to the content. The image has only been added for visual interest.</p>
                 <div style="border: 1px solid black; padding: 5px">
                     <p><img src="/a11y/assets/images/f111da-smiling-child.jpg" alt="" style="float: left; padding-right: 20px;"></p>
@@ -40,24 +53,24 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                     <p>CHIP provides low-cost health coverage to children in families that earn too much money to qualify for Medicaid. In some states, CHIP covers pregnant women. Each state offers CHIP coverage, and works closely with its state Medicaid program.</p>
                 </div>
     <pre style="clear: both;"><code>&lt;img src="smiling-child.jpg" alt=<strong>""</strong>&gt;</code></pre>
-            </td>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Why It's Important</h2>
+            <div>Blind and visually impaired users want decorative or redundant images hidden so they do not get overwhelmed with unimportant screen reader chatter.</div>
         </tr>
-        <tr>
-            <th>Why It's Important</th>
-            <td>Blind and visually impaired users want decorative or redundant images hidden so they do not get overwhelmed with unimportant screen reader chatter.</td>
-        </tr>
-        <tr>
-            <th>References</th>
-            <td>
+        <div class="row">
+            <h2>References</h2>
+            <div>
                 <ul>
-                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F39">Failure of Success Criterion 1.1.1 due to providing a text alternative that is not null (e.g., alt="spacer" or alt="image") for images that should be ignored by assistive technology</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H67">H67: Using null alt text and no title attribute on img elements for images that assistive technology should ignore</a></li>
                     <li><a href="https://www.w3.org/WAI/tutorials/images/decorative/">W3: Decorative Images</a></li>
                 </ul>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+    </div>
 </div>
 
     {% include 111checkpoints.html %}
