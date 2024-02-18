@@ -1,30 +1,43 @@
 ---
 layout: default
 title: Failure - F1.2.2.a.a Synchronized media does not have captions
+current: /a11y/failure/f122aa.html
+root: WCAG 2.2
+scurl: /a11y/sc/122.html
+sctitle: 1.2.2 Captions (Prerecorded)
+cpurl: /a11y/checkpoint/122a.html
+cptitle: 1.2.2.a Captions (Prerecorded)
 guideline: perceivable
-scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded
 ---
 <div class="cpcontent">
     <h1>{{ page.title }}</h1>
-    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/122.html">1.2.2 Captions (Prerecorded)</a> | <a href="/a11y/checkpoint/122a.html">1.2.2.a Captions (Prerecorded)</a></p>
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li> 
+        </ol>
+    </nav>
 
-    <table>
-    	<tr>
-    		<th>Expected Result</th>
-    		<td>Prerecorded video with audio must have synchronized captions.</td>
-    	</tr>
-    	<tr>
-    		<th>Actual Result</th>
-    		<td>The prerecorded synchronized media content does not have synchronized captions.</td>
-    	</tr>
-    	<tr>
-    		<th>Solution</th>
-    		<td>Add captions that include all of the information presented in the audio.</td>
-    	</tr>
-        <tr>
-            <th>Example</th>
-            <td>
-                <h4>HTML video</h4>
+    <div id="failure">
+    	<div class="row">
+    		<h2>Expected Result</h2>
+    		<div>Prerecorded video with audio must have synchronized captions.</div>
+    	</div>
+    	<div class="row">
+    		<h2>Actual Result</h2>
+    		<div>The prerecorded synchronized media content does not have synchronized captions.</div>
+    	</div>
+    	<div class="row">
+    		<h2>Solution</h2>
+    		<div>Add captions that include all of the information presented in the audio.</div>
+    	</div>
+        <div class="row">
+            <h2>Example</h2>
+            <div>
+                <h3>HTML video</h3>
                 <video width="320" height="240" controls>
                     <source src="/a11y/assets/media/f122aa-molly.mp4" type="video/mp4">
                     <track src="/a11y/assets/media/f122aa-molly.vtt" kind="captions" srclang="en" label="english_captions">
@@ -37,17 +50,17 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded
     <strong>&lt;track src="molly.vtt" kind="captions" srclang="en" label="english_captions"&gt;</strong>
     Your browser does not support the video tag.
 &lt;/video&gt;</code></pre>
-            </td>
-        </tr>
-        <tr>
-            <th>Why It's Important</th>
-            <td>People who are deaf, hard of hearing, or have difficulty understanding audio information for any reason, need to be able to access the same information provided in the audio portion of multimedia.</td>
-        </tr>
-        <tr>
-            <th>References</th>
-            <td>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Why It's Important</h2>
+            <div>People who are deaf, hard of hearing, or have difficulty understanding audio information for any reason, need to be able to access the same information provided in the audio portion of multimedia.</div>
+        </div>
+        <div class="row">
+            <h2>References</h2>
+            <div>
                 <ul>
-                    <li><a href="{{ page.scurl }}">Understanding SC 1.2.2 Captions (Prerecorded)</a></li>
+                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.2.2 Captions (Prerecorded)</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F75">F75: Failure of Success Criterion 1.2.2 by providing synchronized media without captions when the synchronized media presents more information than is presented on the page</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G87">G87: Providing closed captions using any readily available media format that has a video player that supports closed captioning</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G93">G93: Providing open (always visible) captions</a></li>
@@ -56,9 +69,9 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded
                     <li><a href="https://www.w3schools.com/tags/tag_track.asp">W3: HTML &lt;track&gt; Tag</a></li>
                     <li><a href="https://support.google.com/youtube/answer/2734796?sjid=12063034337731848597-NC">YouTube Help: Add subtitles & captions</a></li>
                 </ul>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+    </div>
 </div>
 
     {% include 122checkpoints.html %}
