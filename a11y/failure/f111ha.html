@@ -1,35 +1,48 @@
 ---
 layout: default
 title: Failure - F1.1.1.h.a Audio object does not have a text alternative
+current: /a11y/failure/f111ha.html
+root: WCAG 2.2
+scurl: /a11y/sc/111.html
+sctitle: 1.1.1 Non-text Content
+cpurl: /a11y/checkpoint/111h.html
+cptitle: 1.1.1.h Audio or Video (Text Alternative)
 guideline: perceivable
-scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
 <div class="cpcontent">
     <h1>{{ page.title }}</h1>
-    <p class="breadcrumb"><a href="/a11y/index.html">WCAG</a> | <a href="/a11y/sc/111.html">1.1.1 Non-text Content</a> | <a href="/a11y/checkpoint/111h.html">1.1.1.h Audio or Video (Text Alternative)</a></p>
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li> 
+        </ol>
+    </nav>
 
-    <table>
-    	<tr>
-    		<th>Expected Result</th>
-    		<td>Each audio element must have a text alternative which summarizes its purpose.</td>
+    <div id="failure">
+    	<div class="row">
+    		<h2>Expected Result</h2>
+    		<div>Each audio element must have a text alternative which summarizes its purpose.</div>
     	</tr>
-    	<tr>
-    		<th>Actual Result</th>
-    		<td>The audio element does not have a text alternative.</td>
-    	</tr>
-    	<tr>
-    		<th>Solution</th>
-    		<td>Add a text alternative which summarizes the content of the audio:
+    	<div class="row">
+    		<h2>Actual Result</h2>
+    		<div>The audio element does not have a text alternative.</div>
+    	</div>
+    	<div class="row">
+    		<h2>Solution</h2>
+    		<div>Add a text alternative which summarizes the content of the audio:
                 <ul>
                     <li>Add an <code>aria-label</code> attribute to the element, <strong>OR</strong></li>
                     <li>Add an <code>aria-labelledby</code> attribute to the element, set to the <code>id</code> value of the text to use as a label</li>
                 </ul>
-            </td>
-    	</tr>
-        <tr>
-            <th>Example</th>
-            <td>
-                <h4>HTML <code>&lt;audio&gt;</code></h4>
+            </div>
+    	</div>
+        <div class="row">
+            <h2>Example</h2>
+            <div>
+                <h3>HTML <code>&lt;audio&gt;</code></h3>
                 <p>What a horse says:</p>
                 <audio controls aria-label="horse neighing">
                     <source src="/a11y/assets/media/f111ha-horse.mp3" type="audio/mpeg">
@@ -40,24 +53,24 @@ scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     &lt;source src="horse.mp3" type="audio/mpeg"&gt;
     Your browser does not support the audio element.
 &lt;/audio&gt;</code></pre>
-            </td>
-        </tr>
-        <tr>
-            <th>Why It's Important</th>
-            <td>Blind and visually impaired users need to have a text alternative to embedded audio so they know what it is without having to play it.</td>
-        </tr>
-        <tr>
-            <th>References</th>
-            <td>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Why It's Important</h2>
+            <div>Blind and visually impaired users need to have a text alternative to embedded audio so they know what it is without having to play it.</div>
+        </div>
+        <div class="row">
+            <h2>References</h2>
+            <div>
                 <ul>
-                    <li><a href="{{ page.scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-text content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6.html">ARIA6: Using aria-label to provide labels for objects</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
                 </ul>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+    </div>
 </div>
 
     {% include 111checkpoints.html %}
