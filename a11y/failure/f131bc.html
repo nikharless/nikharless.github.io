@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F1.3.1.b.b Data header cells are not marked up as such
-current: /a11y/failure/f131bb.html
+title: Failure - F1.3.1.b.c scope attribute is missing from table with row and column headers
+current: /a11y/failure/f131bc.html
 root: WCAG 2.2
 scurl: /a11y/sc/131.html
 sctitle: 1.3.1 Info and Relationships
@@ -24,77 +24,57 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
     <div id="failure">
     	<div class="row">
     		<h2>Expected Result</h2>
-    		<div>Header cells are marked up semantically as header cells.</div>
+    		<div>When both column and row headers are present, the header cells are marked up with the <code>scope</code> attribute.</div>
     	</div>
     	<div class="row">
     		<h2>Actual Result</h2>
-    		<div>Header cells are not marked up semantically as header cells.</div>
+    		<div>Both column and row headers are present, but the header cells do not have a <code>scope</code> attribute.</div>
     	</div>
     	<div class="row">
     		<h2>Solution</h2>
-    		<div>Mark up table header cells as semantic header cells.
+    		<div>
                 <ul>
-                    <li>Use native <a href="https://www.w3schools.com/html/html_tables.asp">HTML tables</a> (<code>&lt;th&gt;&lt;/th&gt;</code>).</li>
-                    <li>If this is not possible, follow the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">recommended ARIA pattern for tables</a> (<code>role="columnheader"</code> or <code>role="rowheader"</code>).</li>
+                    <li>Add <code>scope="col"</code> to column headers.</li>
+                    <li>Add <code>scope="row"</code> to row headers.</li>
                 </ul>
             </div>
     	</div>
         <div class="row">
             <h2>Example</h2>
             <div>
-                <h3>Simple Table with Column Headers</h3>
+                <h3>Table with Column and Row Headers</h3>
                 <table>
                     <tr>
-                        <th>Name</th>
-                        <th>Time</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Attempts</th>
                     </tr>
                     <tr>
-                        <td>John</td>
+                        <th scope="row">John</th>
                         <td>18 min</td>
+                        <td>3</td>
                     </tr>
                     <tr>
-                        <td>Jane</td>
+                        <th scope="row">Jane</th>
                         <td>20 min</td>
+                        <td>1</td>
                     </tr>
                 </table>
                 <pre><code>&lt;table&gt;
     &lt;tr&gt;
-        <strong>&lt;th&gt;Name&lt;/th&gt;
-        &lt;th&gt;Time&lt;/th&gt;</strong>
+        &lt;th <strong>scope="col"</strong>&gt;Name&lt;/th&gt;
+        &lt;th <strong>scope="col"</strong>&gt;Time&lt;/th&gt;
+        &lt;th <strong>scope="col"</strong>&gt;Attempts&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-        &lt;td&gt;John&lt;/td&gt;
+        &lt;th <strong>scope="row"</strong>&gt;John&lt;/th&gt;
         &lt;td&gt;18 min&lt;/td&gt;
+        &lt;td&gt;3&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-        &lt;td&gt;Jane&lt;/td&gt;
+        &lt;th <strong>scope="row"</strong>&gt;Jane&lt;/th&gt;
         &lt;td&gt;20 min&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;</code></pre>
-
-                <h3>Simple Table with Row Headers</h3>
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <td>John</td>
-                        <td>Jane</td>
-                    </tr>
-                    <tr>
-                        <th>Time</th>
-                        <td>18 min</td>
-                        <td>20 min</td>
-                    </tr>
-                </table>
-                <pre><code>&lt;table&gt;
-    &lt;tr&gt;
-        <strong>&lt;th&gt;Name&lt;/th&gt;</strong>
-        &lt;td&gt;John&lt;/td&gt;
-        &lt;td&gt;Jane&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        <strong>&lt;th&gt;Time&lt;/th&gt;</strong>
-        &lt;td&gt;18 min&lt;/td&gt;
-        &lt;td&gt;20 min&lt;/td&gt;
+        &lt;td&gt;1&lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;</code></pre>
             </div>
@@ -109,7 +89,6 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding SC 1.3.1: Info and Relationships</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F91">F91: Failure of Success Criterion 1.3.1 for not correctly marking up table headers</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H43">H43: Using id and headers attributes to associate data cells with header cells in data tables</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H63">H63: Using the scope attribute to associate header cells and data cells in data tables</a></li>
                     <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">W3: ARIA Table Pattern</a></li>
                 </ul>
