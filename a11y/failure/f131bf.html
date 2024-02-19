@@ -43,9 +43,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
             <h2>Example</h2>
             <div>
                 <h3>Table with Multiple Levels of Headers</h3>
+                <p><em>Note: NVDA will always read the full span headers (in this case, Alaska and Arizona) even when the table is marked up correctly. To avoid this, it's best practice to break the complex table up into simple tables (such as one for each state).</em></p>
                 <table>
+                    <caption>High Temperatures - 2023</caption>
                     <tr>
-                        <td id="blank"></td>
+                        <th id="blank"></th>
                         <th id="jan" headers="blank">January</th>
                         <th id="jun" headers="blank">June</th>
                         <th id="oct" headers="blank">October</th>
@@ -94,21 +96,23 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
                     </tr>
                 </table>
                 <pre><code>&lt;table&gt;
+    &lt;caption&gt;High Temperatures - 2023&lt;/caption&gt;
     &lt;tr&gt;
-        &lt;th <strong>scope="col"</strong>&gt;Name&lt;/th&gt;
-        &lt;th <strong>scope="col"</strong>&gt;Time&lt;/th&gt;
-        &lt;th <strong>scope="col"</strong>&gt;Attempts&lt;/th&gt;
+        &lt;th <strong>id="blank"</strong>&gt;&lt;/th&gt;
+        &lt;th <strong>id="jan" headers="blank"</strong>&gt;January&lt;/th&gt;
+        &lt;th <strong>id="jun" headers="blank"</strong>&gt;June&lt;/th&gt;
+        &lt;th <strong>id="oct" headers="blank"</strong>&gt;October&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-        &lt;th <strong>scope="row"</strong>&gt;John&lt;/th&gt;
-        &lt;td&gt;18 min&lt;/td&gt;
-        &lt;td&gt;3&lt;/td&gt;
+        &lt;th colspan="4" <strong>id="ak" headers="blank"</strong>&gt;Alaska&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-        &lt;th <strong>scope="row"</strong>&gt;Jane&lt;/th&gt;
-        &lt;td&gt;20 min&lt;/td&gt;
-        &lt;td&gt;1&lt;/td&gt;
+        &lt;th <strong>id="anch" headers="ak"</strong>&gt;Anchorage&lt;/th&gt;
+        &lt;td <strong>headers="jan ak anch"</strong>&gt;50&lt;/td&gt;
+        &lt;td <strong>headers="jun ak anch"</strong>&gt;85&lt;/td&gt;
+        &lt;td <strong>headers="oct ak anch"</strong>&gt;64&lt;/td&gt;
     &lt;/tr&gt;
+    ...
 &lt;/table&gt;</code></pre>
             </div>
         </div>
