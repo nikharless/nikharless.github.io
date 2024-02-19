@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F1.3.1.b.f Complex table does not use headers/id association
-current: /a11y/failure/f131bf.html
+title: Failure - F1.3.1.b.g Complex table has incorrect headers/id association
+current: /a11y/failure/f131bg.html
 root: WCAG 2.2
 scurl: /a11y/sc/131.html
 sctitle: 1.3.1 Info and Relationships
@@ -24,96 +24,19 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
     <div id="failure">
     	<div class="row">
     		<h2>Expected Result</h2>
-    		<div>Complex tables use <code>headers</code> and <code>id</code> attributes to associate headers with data.</div>
+    		<div>Complex tables which use <code>headers</code> and <code>id</code> attributes to associate headers with data have the correct associations.</div>
     	</div>
     	<div class="row">
     		<h2>Actual Result</h2>
-    		<div>Table is too complex for the header and data relationships to be identified using <code>&lt;th&gt;</code> and <code>scope</code>, but the <code>headers</code> and <code>id</code> association is not used.</div>
+    		<div>Complex table which uses <code>headers</code> and <code>id</code> attributes to associate headers with data does not have the correct associations.</div>
     	</div>
     	<div class="row">
     		<h2>Solution</h2>
-    		<div>
-                <ul>
-                    <li>Add an <code>id</code> attribute to each header cell, set to a unique value.</li>
-                    <li>Add a <code>headers</code> attribute to each data cell and set the value to a space-separated list of header cell <code>id</code> values that label the cell.</li>
-                </ul>
-            </div>
+    		<div>Ensure that the <code>headers</code> attributes for each cell point to the correct header cell <code>id</code>s.</div>
     	</div>
         <div class="row">
             <h2>Example</h2>
             <div>
-                <h3>Table with Changing Column Headers</h3>
-                <p><em>Note: NVDA will always read both column headers (for example, Freddie and Phillip) even when the table is marked up correctly. To avoid this, it's best practice to restructure the data into a simple table.</em></p>
-                <table>
-                    <caption>Cats</caption>
-                    <tr>
-                        <th id="blank"></th>
-                        <th id="fred" headers="blank">Freddie</th>
-                        <th id="joaq" headers="blank">Joaquin</th>
-                    </tr>
-                    <tr>
-                        <th id="sex1" headers="blank">Sex</th>
-                        <td headers="fred sex1">Female</td>
-                        <td headers="joaq sex1">Male</td>
-                    </tr>
-                    <tr>
-                        <th id="coat1" headers="blank">Color</th>
-                        <td headers="fred coat1">Tortoiseshell</td>
-                        <td headers="joaq coat1">White with gray cap and saddle</td>
-                    </tr>
-                    <tr>
-                        <th id="wgt1" headers="blank">Weight</th>
-                        <td headers="fred wgt1">12 lbs</td>
-                        <td headers="joaq wgt1">18 lbs</td>
-                    </tr>
-                    <tr>
-                        <th id="blank2"></th>
-                        <th id="phil" headers="blank2">Phillip</th>
-                        <th id="myrt" headers="blank2">Myrtle</th>
-                    </tr>
-                    <tr>
-                        <th id="sex2" headers="blank2">Sex</th>
-                        <td headers="phil sex2">Male</td>
-                        <td headers="myrt sex2">Female</td>
-                    </tr>
-                    <tr>
-                        <th id="coat2" headers="blank2">Color</th>
-                        <td headers="phil coat2">Black with white spot on belly</td>
-                        <td headers="myrt coat2">Tortoiseshell</td>
-                    </tr>
-                    <tr>
-                        <th id="wgt2" headers="blank2">Weight</th>
-                        <td headers="phil wgt2">14 lbs</td>
-                        <td headers="myrt wgt2">7 lbs</td>
-                    </tr>
-                </table>
-
-                <pre><code>&lt;table&gt;
-    &lt;caption&gt;Cats&lt;/caption&gt;
-    &lt;tr&gt;
-        &lt;th <strong>id="blank"</strong>&gt;&lt;/th&gt;
-        &lt;th <strong>id="fred" headers="blank"</strong>&gt;Freddie&lt;/th&gt;
-        &lt;th <strong>id="joaq" headers="blank"</strong>&gt;Joaquin&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th <strong>id="sex1" headers="blank"</strong>&gt;Sex&lt;/th&gt;
-        &lt;td <strong>headers="fred sex1"</strong>&gt;Female&lt;/td&gt;
-        &lt;td <strong>headers="joaq sex1"</strong>&gt;Male&lt;/td&gt;
-    &lt;/tr&gt;
-    ...
-     &lt;tr&gt;
-        &lt;th <strong>id="blank2"</strong>&gt;&lt;/th&gt;
-        &lt;th <strong>id="phil" headers="blank2"</strong>&gt;Phillip&lt;/th&gt;
-        &lt;th <strong>id="myrt" headers="blank2"</strong>&gt;Myrtle&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th <strong>id="sex2" headers="blank2"</strong>&gt;Sex&lt;/th&gt;
-        &lt;td <strong>headers="phil sex2"</strong>&gt;Male&lt;/td&gt;
-        &lt;td <strong>headers="myrt sex2"</strong>&gt;Female&lt;/td&gt;
-    &lt;/tr&gt;
-    ...
-&lt;/table&gt;</code></pre>
-
                 <h3>Table with Multiple Levels of Headers</h3>
                 <p><em>Note: NVDA will always read the full span headers (in this case, Alaska and Arizona) even when the table is marked up correctly. To avoid this, it's best practice to break the complex table up into simple tables, such as one for each state.</em></p>
                 <table>
@@ -197,7 +120,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
             <div>
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding SC 1.3.1: Info and Relationships</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F91">F91: Failure of Success Criterion 1.3.1 for not correctly marking up table headers</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F90">F90: Failure of Success Criterion 1.3.1 for incorrectly associating table headers and content via the headers and id attributes</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H43">H43: Using id and headers attributes to associate data cells with header cells in data tables</a></li>
                     <li><a href="https://www.w3.org/WAI/tutorials/tables/multi-level/">W3: Tables with Multi-Level Headers</a></li>
                 </ul>
