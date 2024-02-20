@@ -34,19 +34,19 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
     		<h2>Solution</h2>
     		<div>
                 <h3>Native HTML (Preferred Method)</h3>
-                <p>Use the <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> tags to group the checkboxes.</p>
+                <p>Use the <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> tags to group the radio buttons.</p>
                 <ul>
-                    <li>Enclose the entire group of checkboxes in a <code>&lt;fieldset&gt;</code> element.</li>
+                    <li>Enclose the entire group of radio buttons in a <code>&lt;fieldset&gt;</code> element.</li>
                     <li>Place the group label inside a <code>&lt;legend&gt;</code> element as a child of the <code>&lt;fieldset&gt;</code> element.</li>
                 </ul>
                 <strong>OR</strong>
                 <h3>ARIA</h3>
-                <p>Use ARIA to group the checkboxes.</p>
+                <p>Use ARIA to group the radio buttons.</p>
                 <ul>
-                    <li>Locate or create a parent element for the checkbox group.</li>
-                    <li>Add the <code>role="group"</code> attribute to the parent element.</li>
+                    <li>Locate or create a parent element for the radio group.</li>
+                    <li>Add the <code>role="radiogroup"</code> attribute to the parent element.</li>
                     <li>Add an <code>id</code> attribute to the tag containing the group label text, and set it to a unique value.</li>
-                    <li>Add an <code>aria-labelledby</code> attribute to the parent (group) element and point it to the <code>id</code> of the group label tag.</li>
+                    <li>Add an <code>aria-labelledby</code> attribute to the parent (radiogroup) element and point it to the <code>id</code> of the group label tag.</li>
                 </ul>
             </div>
     	</div>
@@ -84,12 +84,12 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
                   <label for="cream">Whipped cream</label>
                 </div>
                 <pre><code>&lt;p <strong>id="toppingsLabel"</strong>&gt;Pancake Toppings&lt;/p&gt;
-&lt;div <strong>role="group" aria-labelledby="toppingsLabel"</strong>&gt;
-    &lt;input type="checkbox" name="toppings" id="syrup"&gt;
+&lt;div <strong>role="radiogroup" aria-labelledby="toppingsLabel"</strong>&gt;
+    &lt;input type="radio" name="toppings" id="syrup"&gt;
     &lt;label for="syrup"&gt;Maple syrup&lt;/label&gt;&lt;br&gt;
-    &lt;input type="checkbox" name="toppings" id="berries"&gt;
+    &lt;input type="radio" name="toppings" id="berries"&gt;
     &lt;label for="berries"&gt;Blueberries&lt;/label>&lt;br&gt;
-    &lt;input type="checkbox" name="toppings" id="cream"&gt;
+    &lt;input type="radio" name="toppings" id="cream"&gt;
     &lt;label for="cream"&gt;Whipped cream&lt;/label&gt;
 &lt;/div&gt;</code></pre>
             </div>
