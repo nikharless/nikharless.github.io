@@ -1,0 +1,123 @@
+---
+layout: default
+title: Failure - F1.3.1.d.c Form control group is not programmatically associated with group label
+current: /a11y/failure/131/f131dc.html
+root: WCAG 2.2
+scurl: /a11y/sc/131.html
+sctitle: 1.3.1 Info and Relationships
+cpurl: /a11y/checkpoint/131d.html
+cptitle: 1.3.1.d Group Related Form Elements
+guideline: perceivable
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li> 
+        </ol>
+    </nav>
+
+    <div id="failure">
+    	<div class="row">
+    		<h2>Expected Result</h2>
+    		<div>If the label for an individual control in a group of controls does not provide enough context to understand the purpose of the control, the control is programmatically associated with the group label.</div>
+    	</div>
+    	<div class="row">
+    		<h2>Actual Result</h2>
+    		<div>The label for an individual form control in a group of controls does not provide enough context to understand the purpose of the control, and the control is not programmatically associated with the group label.</div>
+    	</div>
+    	<div class="row">
+    		<h2>Solution</h2>
+    		<div>
+                <h3>Native HTML (Preferred Method)</h3>
+                <p>Use the <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> tags to group the controls.</p>
+                <ul>
+                    <li>Enclose the entire group of controls in a <code>&lt;fieldset&gt;</code> element.</li>
+                    <li>Place the group label inside a <code>&lt;legend&gt;</code> element as a child of the <code>&lt;fieldset&gt;</code> element.</li>
+                </ul>
+                <strong>OR</strong>
+                <h3>ARIA</h3>
+                <p>Use ARIA to group the controls.</p>
+                <ul>
+                    <li>Locate or create a parent element for the group of controls.</li>
+                    <li>Add the <code>role="group"</code> attribute to the parent element.</li>
+                    <li>Add an <code>id</code> attribute to the tag containing the group label text, and set it to a unique value.</li>
+                    <li>Add an <code>aria-labelledby</code> attribute to the parent (group) element and point it to the <code>id</code> of the group label tag.</li>
+                </ul>
+            </div>
+    	</div>
+        <div class="row">
+            <h2>Example</h2>
+            <div>
+                <h3>Native HTML (Preferred Method)</h3>
+                <fieldset>
+                    <legend>Shipping Address</legend>
+                    <label for="streetAddress">Street address:</label>
+                    <input type="text" id="streetAddress"><br>
+                    <label for="city">City:</label>
+                    <input type="text" id="city"><br>
+                    <label for="state">State:</label>
+                    <input type="text" id="state"><br>
+                    <label for="zip">Zip:</label>
+                    <input type="text" id="zip">
+                </fieldset>
+                <pre><code><strong>&lt;fieldset&gt;
+    &lt;legend&gt;Shipping Address&lt;/legend&gt;</strong>
+    &lt;label for="streetAddress"&gt;Street address:&lt;/label&gt;
+    &lt;input type="text" id="streetAddress"&gt;&lt;br&gt;
+    &lt;label for="city"&gt;City:&lt;/label>
+    &lt;input type="text" id="city"&gt;&lt;br&gt;
+    &lt;label for="state"&gt;State:&lt;/label&gt;
+    &lt;input type="text" id="state"&gt;&lt;br&gt;
+    &lt;label for="zip"&gt;Zip:&lt;/label&gt;
+    &lt;input type="text" id="zip"&gt;
+<strong>&lt;/fieldset&gt;</strong></code></pre>
+
+                <h3>ARIA</h3>
+                <p id="shippingLabel">Shipping Address</p>
+                <div role="group" aria-labelledby="shippingLabel">
+                    <label for="streetAddress">Street address:</label>
+                    <input type="text" id="streetAddress"><br>
+                    <label for="city">City:</label>
+                    <input type="text" id="city"><br>
+                    <label for="state">State:</label>
+                    <input type="text" id="state"><br>
+                    <label for="zip">Zip:</label>
+                    <input type="text" id="zip">
+                </div>
+                <pre><code>&lt;p <strong>id="shippingLabel"</strong>&gt;Shipping Address&lt;/p&gt;
+&lt;div <strong>role="group" aria-labelledby="shippingLabel"</strong>&gt;
+    &lt;label for="streetAddress"&gt;Street address:&lt;/label&gt;&lt;br&gt;
+    &lt;input type="text" id="streetAddress"&gt;
+    &lt;label for="city"&gt;City:&lt;/label>&lt;br&gt;
+    &lt;input type="text" id="city"&gt;
+    &lt;label for="state"&gt;State:&lt;/label&gt;
+    &lt;input type="text" id="state"&gt;
+    &lt;label for="zip"&gt;Zip:&lt;/label&gt;
+    &lt;input type="text" id="zip"&gt;    
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Why It's Important</h2>
+            <div>Assistive technology users browsing through a form will not hear group labels unless they are programmatically associated. Screen readers in forms mode will ignore any text that is not programmatically associated with form controls.</div>
+        </div>
+        <div class="row">
+            <h2>References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.3.1: Info and Relationships</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H71">H71: Providing a description for groups of form controls using fieldset and legend elements</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA17">ARIA17: Using grouping roles to identify related form controls</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 131checkpoints.html %}
