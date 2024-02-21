@@ -1,0 +1,215 @@
+---
+layout: default
+title: 1.3.1.e Headings
+current: /a11y/checkpoint/131e.html
+root: WCAG 2.2
+scurl: /a11y/sc/131.html
+sctitle: 1.3.1 Info and Relationships
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
+guideline: perceivable
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li>
+        </ol>
+    </nav>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Headings must be marked up semantically as headings.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Headings must be marked up hierarchically.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Heading markup must not be used on text which does not function as a heading.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The page should be divided up into sections with headings.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Headings should not skip levels.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> There should be a level 1 heading (<code>&lt;h1&gt;</code>) on every page.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> There should only be one level 1 heading (<code>&lt;h1&gt;</code>) on each page.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Headings should not be empty.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want headings to be marked up semantically so that I can easily navigate the page and understand the structure of the content.</div>
+
+    <div class="success"><strong>Success:</strong> If you could not see the web page, when you use a screen reader, you could navigate by headings and understand the structure of the page.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Are headings used to visually label content blocks?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the headings marked up semantically as headings?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the headings marked up hierarchically?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/131/f131eb.html">F1.3.1.e.b Headings are not marked up hierarchically.</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/131/f131ea.html">F1.3.1.e.a Headings are not marked up semantically as headings.</a></span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h3 id="test2">Are heading tags used on non-heading text purely for visual formatting purposes?</h3>
+    <ul role="tree" aria-labelledby="test2">
+        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/131/f131ec.html">F1.3.1.e.c Text that is not a heading is marked up as a heading.</a></span></li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <h3>Desktop</h3>
+    <ol>
+        <li>Locate any text that looks and functions as a heading.</li>
+        <li>Verify that every element that functions as a heading is marked up as a heading.</li>
+        <li>Verify that the heading levels match the semantic hierarchy of the content.
+            <ul>
+                <li>Skipping heading levels is not a failure as long as the hierarchical order is maintained.</li>
+            </ul>
+        </li>
+        <li>Verify that content that does not function as a heading is not marked up as a heading.
+            <ul>
+                <li>A subheading can be nested immediately after a heading.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Desktop Screen Reader</h3>
+    <h4>NVDA or JAWS</h4>
+    <ol>
+        <li>Cycle through headings on the page using the <kbd>H</kbd> key (headings), <strong>OR</strong> use the <kbd>1</kbd> to <kbd>6</kbd> keys to find headings of the corresponding levels (if present), <strong>OR</strong>
+            <ul>
+                <li><strong>NVDA</strong>: Use <kbd>NVDA</kbd>+<kbd>F7</kbd> to prompt a dialog box showing all headings available on the page</li>
+                <li><strong>JAWS</strong>: Use <kbd>Insert</kbd>+<kbd>F6</kbd> to prompt a list of all headings</li>
+            </ul>
+        </li>
+        <li>Verify that every element that functions as a heading is spoken as a heading by the screen reader.</li>
+        <li>Verify that content that does not function as a heading is not spoken as a heading.</li>
+    </ol>
+
+    <h4>VoiceOver</h4>
+    <ol>
+        <li>Cycle through headings on the page using <kbd>VO</kbd>+<kbd>Command</kbd>+<kbd>H</kbd> (headings).</li>
+        <li>Verify that every element that functions as a heading is spoken as a heading by the screen reader.</li>
+        <li>Verify that content that does not function as a heading is not spoken as a heading.</li>
+    </ol>
+
+    <h3>Mobile Screen Reader</h3>
+    <h4>VoiceOver or TalkBack</h4>
+    <ol>
+        <li>Locate any text that looks and functions as a heading.</li>
+        <li>Verify that every element that functions as a heading is spoken as a heading.</li>
+        <li>Verify that the heading levels properly convey the structural hierarchy of the content.
+            <ul>
+                <li>Skipping heading levels is not a failure as long as the hierarchical order is maintained.</li>
+            </ul>
+        </li>
+        <li>Verify that content that does not function as a heading is not spoken as a heading.
+            <ul>
+                <li>A subheading can be nested immediately after a heading.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <h3>iOS or Android</h3>
+    <ol>
+        <li>Locate any text that looks and functions as a heading.</li>
+        <li>Verify that every element that functions as a heading is spoken as a heading.
+            <ul>
+                <li>Heading levels are not announced in native app content, but they are announced in WebView content.</li>
+                <li>The screen title may or may not be read as a heading. If not, this is not a failure.</li>
+                <li>Modal titles may not be read as headings. This is not a failure.</li>
+            </ul>
+        </li>
+        <li>Verify that content that does not function as a heading is not spoken as a heading.</li>
+    </ol>
+
+    <h2>PDF Test Procedure</h2>
+    <h3>Adobe Acrobat Pro</h3>
+    <ol>
+        <li>Select <strong>Tools > Accessibility > Reading Order</strong> to open the Reading Order dialog.</li>
+        <li>Make sure the <strong>Show page content groups</strong> checkbox is checked, and select the <strong>Structure types</strong> radio button. This will display the tag value of every tagged object in the Document pane.</li>
+        <li>Scroll through the document and locate all headings.</li>
+        <li>Verify that each element that functions as a heading is tagged as a heading.</li>
+        <li>Verify that the levels of the headings properly convey the structural hierarchy of the content.</li>
+        <li>Verify that elements which are not headings are not tagged as headings.</li>
+    </ol>
+
+    <h3>Screen Reader</h3>
+    <ol>
+        <li>Cycle through headings on the page using the <kbd>H</kbd> key (headings).</li>
+        <li>Verify that every element on the page that functions like a heading is spoken as a heading by the screen reader.</li>
+        <li>Verify that the heading levels properly convey the semantic hierarchy of the content.</li>
+        <li>Verify that content that does not function as a heading is not spoken as a heading.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/131/f131ea.html">F1.3.1.e.a Headings are not marked up semantically as headings.</a> (Medium)</li>
+        <li><a href="/a11y/failure/131/f131eb.html">F1.3.1.e.b Headings are not marked up hierarchically.</a> (Medium)</li>
+        <li><a href="/a11y/failure/131/f131ec.html">F1.3.1.e.c Text that is not a heading is marked up as a heading.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
+        <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
+        <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
+        <li><a href="https://wave.webaim.org/">WAVE Web Accessibility Evaluation Tools</a></li>
+        <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+        <li><a href="https://pauljadam.com/bookmarklets/headings.html">Headings Bookmarklet for Accessibility Testing</a></li>
+        <li><a href="https://chrispederick.com/work/web-developer/">Web Developer</a></li>
+        <li>Screen reader</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G141">G141: Organizing a page using headings</a></li>
+                    </ul>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H42">H42: Using h1-h6 to identify headings</a></li>
+                    </ul>
+                </li>
+                <li>ARIA:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA12">ARIA12: Using role=heading to identify headings</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF9">PDF9: Providing headings by marking content with heading tags in PDF documents</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://learn.levelaccess.com/l/487581/2018-04-18/28w4hr">LevelAccess: Accessibility Basics Webinar Series #4 - Page Structure</a> (9:45 - 15:00)</li>
+        <li><a href="https://webaim.org/techniques/semanticstructure/#contentstructure">WebAIM: Semantic Structure: Regions, Headings, and Lists</a></li>
+        <li><a href="https://www.w3.org/WAI/tutorials/page-structure/headings/">W3: Headings</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/heading_role">MDN: ARIA: heading role</a></li>
+        <li><a href="https://www.tpgi.com/heading-off-confusion-when-do-headings-fail-wcag/">TPGi: Heading off confusion: When do headings fail WCAG?</a></li>
+    </ul>
+</div>
+
+    <nav class="checkpoints" id="checkpoints" aria-label="1.3.1 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.131-info-relationships %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
