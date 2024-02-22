@@ -128,8 +128,29 @@ guideline: perceivable
     </ol>
 
     <h2>PDF Test Procedure</h2>
-    <h3>Adobe Acrobat Pro</h3>
 
+    <h3>PDF Accessibility Checker</h3>
+    <p>This will identify incorrectly structured lists. You must do a manual check to verify that lists have been tagged as lists.</p>
+    <ol>
+        <li>Run PAC on the PDF.</li>
+        <li>Check if <strong>Structure Tree</strong> is marked as a failure.</li>
+        <li>If it is, activate the <strong>Results in Detail</strong> button.</li>
+        <li>Under <strong>PDF/UA > Logical Structure > Structure Tree</strong>, check if <strong>"L" structure elements</strong>, <strong>"LI" structure elements</strong>, <strong>"Lbl" structure elements</strong>, or <strong>"LBody" structure elements</strong> are marked as failures.</li>
+    </ol>
+    <img src="/a11y/assets/images/131f-pac-list-failure.png" style="max-width: 380px;" alt="Screenshot of PAC report with list tag results highlighted">
+
+    <h3>Adobe Acrobat Pro</h3>
+    <h4>Accessibility Check</h4>
+    <p>This will identify incorrectly structured lists. You must do a manual check to verify that lists have been tagged as lists.</p>
+    <ol>
+        <li>Select <strong>Tools > Accessibility > Accessibility Check</strong>.</li>
+        <li>In the Accessibility Checker Options dialog, select <strong>Forms, Tables, and Lists</strong> from the Category drop-down.</li>
+        <li>Make sure <strong>LI must be a child of L</strong> and <strong>Lbl and Body must be children of LI</strong> are checked.</li>
+        <li>Activate the <strong>Start Checking</strong> button.</li>
+        <li>In the Accessibility Checker results pane, check for failures under the <strong>Lists</strong> section.</li>
+    </ol>
+
+    <h4>Manual Check</h4>
     <ol>
         <li>Select <strong>Tools > Accessibility > Reading Order</strong> to open the Reading Order dialog.</li>
         <li>Make sure the <strong>Show page content groups</strong> checkbox is checked, and select the <strong>Structure types</strong> radio button. This will display the tag value of every tagged object in the Document pane.<br>
