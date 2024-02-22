@@ -32,16 +32,27 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
     	</div>
     	<div class="row">
     		<h2>Solution</h2>
-    		<div>Remove invalid child elements from the list.</div>
+    		<div>Enclose all content inside <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> elements within <code>&lt;li&gt;</code> elements.</div>
     	</div>
         <div class="row">
             <h2>Example</h2>
             <div>
+                <pre><code>&lt;ul&gt;
+  &lt;li&gt;&lt;p&gt;Coffee&lt;br&gt;
+    &lt;i&gt;with cream&lt;/i&gt;&lt;/p&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Tea&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Black tea&lt;/li&gt;
+      &lt;li&gt;Green tea&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;img src="milk.png"&gt; Milk&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
             </div>
         </div>
         <div class="row">
             <h2>Why It's Important</h2>
-            <div></div>
+            <div>Screen readers do not correctly read lists when content elements other than <code>&lt;li&gt;</code> are directly below the <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> elements.</div>
         </div>
         <div class="row">
             <h2>References</h2>
