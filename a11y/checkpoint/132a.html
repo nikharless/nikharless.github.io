@@ -22,7 +22,7 @@ guideline: perceivable
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
         <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Screen reader reading order must be logical and intuitive.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The reading order of page content must be logical and intuitive.</li>
         <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Screen reader reading order should match the visual order, but it is not a failure unless the difference changes meaning.</li>
     </ul>
 
@@ -45,7 +45,7 @@ guideline: perceivable
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
             </ul>
         </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+        <li role="treeitem" class="fail"><span><strong>No</strong>; </span></li>
     </ul>
 
     <h3 id="test2">Does the screen reader read content that is meant to be hidden from all users?</h3>
@@ -201,11 +201,4 @@ guideline: perceivable
     </ul>
 </div>
 
-    <nav class="checkpoints" id="checkpoints" aria-label="1.3.2 Checkpoints">
-        <h2>Checkpoints</h2>
-        <ul>
-            {% for item in site.data.132-meaningful-sequence %}
-                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
+    {% include 132checkpoints.html %}
