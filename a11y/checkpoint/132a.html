@@ -1,0 +1,211 @@
+---
+layout: default
+title: 1.3.2.a Meaningful Sequence
+current: /a11y/checkpoint/132a.html
+root: WCAG 2.2
+scurl: /a11y/sc/132.html
+sctitle: 1.3.2 Meaningful Sequence
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence
+guideline: perceivable
+---
+<div class="cpcontent">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li>
+        </ol>
+    </nav>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Screen reader reading order must be logical and intuitive.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Screen reader reading order should match the visual order, but it is not a failure unless the difference changes meaning.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want the content to be read in a meaningful sequence so that I can understand the content.</div>
+
+    <div class="success"><strong>Success:</strong> If you could not see the web page, when you use a screen reader, you would hear the content in an order that makes logical sense.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the screen reader read through the content in a logical order?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are there controls which add or remove content from the screen?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader read through the modified content in a logical order?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h3 id="test2">Does the screen reader read content that is meant to be hidden from all users?</h3>
+    <ul role="tree" aria-labelledby="test2">
+        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See </a></span></li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <h3>Desktop</h3>
+    <p>Screen reader testing should be performed in addition, to verify meaningful sequence of dynamic content.</p>
+    <ol>
+        <li>Use the <a href="https://chrispederick.com/work/web-developer/">Web Developer plugin</a> to view the page without CSS:
+            <ol>
+                <li>Open the Web Developer plugin.</li>
+                <li>Select the <strong>CSS</strong> tab.</li>
+                <li>Check the <strong>Disable All Styles</strong> option.</li>
+                <li>Verify that the reading order of the non-styled content follows the intended meaning of the content.</li>
+            </ol>
+        </li>
+        <li>Use the <a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI bookmarklet</a> to check reading order and reveal dynamic content:
+            <ol>
+                <li>Activate the ANDI bookmarklet.</li>
+                <li>Reading Order:
+                    <ol>
+                        <li>Select <strong>structures</strong> from the drop-down.</li>
+                        <li>Activate <strong>reading order</strong>. Web page elements will be numbered according to reading order.</li>
+                    </ol>
+                </li>
+                <li>Reveal Hidden Content:
+                    <ol>
+                        <li>Select <strong>hidden content</strong> from the drop-down.</li>
+                        <li>Activate <strong>reveal all</strong>.</li>
+                        <li>Verify that the reading order of the content still follows a logical sequence with the hidden content revealed.</li>
+                    </ol>
+                </li>
+            </ol>
+        </li>
+    </ol>
+
+    <h3>Desktop Screen Reader</h3>
+    <ol>
+        <li>Starting at the top of the page, read through the page content with the screen reader.
+            <ul>
+                <li><strong>NVDA and JAWS</strong>: Use <kbd>Down Arrow</kbd> and <kbd>Up Arrow</kbd></li>
+                <li><strong>VoiceOver</strong>: Use <kbd>VO</kbd>+<kbd>Down Arrow</kbd> and <kbd>Up Arrow</kbd></li>
+            </ul>
+            <ol>
+                <li>Verify that the reading order of the static content follows the intended meaning of the content.</li>
+                <li>Verify that all visible text can be read.</li>
+                <li>Verify that content that is meant to be hidden from all users is hidden from the screen reader.</li>
+            </ol>
+        </li>
+        <li>Starting back at the top of the content being tested, navigate to and activate any controls that add or delete content from the page.
+            <ul>
+                <li>Verify that the reading order of the new content is logical in the natural flow of the interaction.</li>
+                <li>Verify that the screen reader does not read outside any modals while they are open.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Mobile Screen Reader</h3>
+    <h4>VoiceOver or TalkBack</h4>
+    <ol>
+        <li>Starting at the top of the page, read through the page content with the screen reader by swiping left to right.
+            <ol>
+                <li>Verify that the reading order of the static content follows the intended meaning of the content.</li>
+                <li>Verify that all visible text can be read.</li>
+                <li>Verify that content that is meant to be hidden from all users is hidden from the screen reader.</li>
+            </ol>
+        </li>
+        <li>Starting back at the top of the content being tested, navigate to and activate any controls that add or delete content from the page.
+            <ul>
+                <li>Verify that the reading order of the new content is logical in the natural flow of the interaction.</li>
+                <li>Verify that the screen reader does not read outside any modals while they are open.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+
+    <h3>iOS or Android</h3>
+    <ol>
+        <li>Starting at the top of the page, read through the page content with the screen reader by swiping left to right.</li>
+        <li>Verify that the reading order of the static content follows the intended meaning of the content.</li>
+        <li>Verify that all visible text can be read.</li>
+        <li>Verify that content that is meant to be hidden from all users is hidden from the screen reader.</li>
+    </ol>
+
+    <h2>PDF Test Procedure</h2>
+
+    <h3>Screen Reader</h3>
+    Follow the procedure for Desktop Web Screen Reader.
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/132/f132aa.html">F1.3.2.a.a Reading order of non-styled content is not logical.</a> (High)</li>
+        <li><a href="/a11y/failure/132/f132ab.html">F1.3.2.a.b The screen reader does not read the content in a logical order.</a> (High)</li>
+        <li><a href="/a11y/failure/132/f132ac.html">F1.3.2.a.c Dynamically inserted or changed content is not in a logical order.</a> (Medium)</li>
+        <li><a href="/a11y/failure/132/f132ad.html">F1.3.2.a.d The screen reader can read content outside of a modal.</a> (Medium)</li>
+        <li><a href="/a11y/failure/132/f132ae.html">F1.3.2.a.e Meaningful content cannot be read by the screen reader.</a> (High)</li>
+        <li><a href="/a11y/failure/132/f132af.html">F1.3.2.a.f The screen reader can read content that is meant to be hidden from all users.</a> (Medium)</li>
+        <li><a href="/a11y/failure/132/f132ag.html">F1.3.2.a.g The content read by the screen reader does not match the visible text, and the meaning is different.</a> (High)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Screen reader</li>
+        <li>Web:
+            <ul>
+                <li><a href="https://chrispederick.com/work/web-developer/">Web Developer plugin</a></li>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI bookmarklet</a></li>
+            </ul>
+        </li>     
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G57">G57: Ordering the content in a meaningful sequence</a></li>
+                    </ul>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H34">H34: Using a Unicode right-to-left mark (RLM) or left-to-right mark (LRM) to mix text direction inline</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H56">H56: Using the dir attribute on an inline element to resolve problems with nested directional runs</a></li>
+                    </ul>
+                </li>
+                <li>CSS:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C6">C6: Positioning content based on structural markup</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C8">C8: Using CSS letter-spacing to control spacing within a word</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C27">C27: Making the DOM order match the visual order</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF3">PDF3: Ensuring correct tab and reading order in PDF documents</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://www.boia.org/blog/what-does-meaningful-sequence-mean-for-web-accessibility">What Does "Meaningful Sequence" Mean for Web Accessibility?</a></li>
+    </ul>
+</div>
+
+    <nav class="checkpoints" id="checkpoints" aria-label="1.3.2 Checkpoints">
+        <h2>Checkpoints</h2>
+        <ul>
+            {% for item in site.data.132-meaningful-sequence %}
+                <li><a href="{{ item.link }}" {% if page.url == item.link %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
