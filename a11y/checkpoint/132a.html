@@ -32,8 +32,14 @@ guideline: perceivable
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
-    <h3 id="test1">Does the screen reader read through the content in a logical order?</h3>
+    <h3 id="test1">Is the content presented in a logical order when CSS is turned off?</h3>
     <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/132/f132aa.html">F1.3.2.a.a Reading order of non-styled content is not logical.</a></span></li>
+    </ul>
+
+    <h3 id="test2">Does the screen reader read through the content in a logical order?</h3>
+    <ul role="tree" aria-labelledby="test2">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are there controls which add or change content on the screen?</span>
             <ul role="group">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader read through the modified content in a logical order?</span>
@@ -48,8 +54,8 @@ guideline: perceivable
         <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="/a11y/failure/132/f132ab.html">F1.3.2.a.b The screen reader does not read the content in a logical order.</a></span></li>
     </ul>
 
-    <h3 id="test2">Does the screen reader read all content that is visible?</h3>
-    <ul role="tree" aria-labelledby="test2">
+    <h3 id="test3">Does the screen reader read all content that is visible?</h3>
+    <ul role="tree" aria-labelledby="test3">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader read content that is meant to be hidden from all users?</span>
             <ul role="group">
                 <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/132/f132af.html">F1.3.2.a.f The screen reader can read content that is meant to be hidden from all users.</a></span></li>
@@ -57,6 +63,12 @@ guideline: perceivable
             </ul>
         </li>
         <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/132/f132ae.html">F1.3.2.a.e Meaningful content cannot be read by the screen reader.</a></span></li>
+    </ul>
+
+    <h3 id="test4">When a modal is opened, can the screen reader read text outside of the modal?</h3>
+    <ul role="tree" aria-labelledby="test4">
+        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/132/f132ad.html">F1.3.2.a.d The screen reader can read content outside of a modal.</a></span></li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
     </ul>
 
     <h2>Web Test Procedure</h2>
