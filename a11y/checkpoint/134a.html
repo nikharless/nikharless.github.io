@@ -1,0 +1,141 @@
+---
+layout: default
+title: 1.3.4.a Device Orientation
+current: /a11y/checkpoint/134a.html
+root: WCAG 2.2
+scurl: /a11y/sc/134.html
+sctitle: 1.3.4 Orientation
+guideline: perceivable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/orientation
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content must not be restricted to portrait or landscape orientation (unless a particular orientation is essential).
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content must display according to the orientation (portrait or landscape) of the device.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content must always respect system-level orientation lock settings.</li>
+                <li>Changes in content or functionality due to the size of display are not covered by this criterion which is focused on restrictions of orientation.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with dexterity impairments who has a mounted device, I want content to be displayed in the orientation of my device so that I can easily view it.</div>
+
+    <div class="success"><strong>Success:</strong> If you could not rotate your device, when you view content, you would see it displayed in the appropriate orientation.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the content open in the current orientation of the device (portrait or landscape)?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When the device is rotated, does the content rotate to accommodate the new orientation?
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is it essential for the content to be restricted to a single display orientation?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/134/f134ab.html">F1.3.4.a.b The web page or app does not rotate when the orientation changes.</a></span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is it essential for the content to be restricted to a single display orientation?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/134/f134aa.html">F1.3.4.a.a The web page or app does not load in the correct orientation.</a></span></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <h3>Desktop</h3>
+    <ol>
+        <li>Open the web page in Chrome.</li>
+        <li>Right-click on the page and select <strong>Inspect</strong> or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd> to open the Developer Tools.</li>
+        <li>Activate the <strong>Toggle device toolbar</strong> button or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>.</li>
+        <li>Select <strong>Responsive</strong> from the Dimensions drop-down, and set the width to <strong>1366</strong>. The page should display in landscape mode.</li>
+        <li>Activate the <strong>Rotate</strong> button in the device toolbar.</li>
+        <li>Verify that the page adjusts to display in portrait orientation.</li>
+        <li>Activate the <strong>Rotate</strong> button again, and verify that the page adjusts to display in landscape orientation.</li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <ol>
+        <li>Unlock the device rotation to allow the screen to automatically rotate with the device's orientation:
+            <ul>
+                <li>Android: Turn on the <strong>Auto rotate</strong> setting.</li>
+                <li>iOS: Turn off the <strong>Portrait Orientation Lock</strong> setting.</li>
+            </ul>
+        </li>
+        <li>With the device in portrait orientation, open the web page.</li>
+        <li>Verify that the web page loads in portrait orientation.</li>
+        <li>Rotate the device to landscape orientation, and verify that the web page rotates to accommodate it.</li>
+        <li>Close the web page, and while holding the device in landscape orientation, re-open it.</li>
+        <li>Verify that the web page loads in landscape orientation.</li>
+        <li>Rotate the device to portrait orientation, and verify that the web page rotates to accommodate it.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+
+    <h3>Android or iOS</h3>
+    <ol>
+        <li>Unlock the device rotation to allow the screen to automatically rotate with the device's orientation:
+            <ul>
+                <li>Android: Turn on the <strong>Auto rotate</strong> setting.</li>
+                <li>iOS: Turn off the <strong>Portrait Orientation Lock</strong> setting.</li>
+            </ul>
+        </li>
+        <li>With the device in portrait orientation, open the app.</li>
+        <li>Verify that the app loads in portrait orientation.</li>
+        <li>Rotate the device to landscape orientation, and verify that the app rotates to accommodate it.</li>
+        <li>Close the app, and while holding the device in landscape orientation, re-open it.</li>
+        <li>Verify that the app loads in landscape orientation.</li>
+        <li>Rotate the device to portrait orientation, and verify that the app rotates to accommodate it.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/134/f134aa.html">F1.3.4.a.a The web page or app does not load in the correct orientation.</a> (Medium)</li>
+        <li><a href="/a11y/failure/134/f134ab.html">F1.3.4.a.b The web page or app does not rotate when the orientation changes.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion 1.3.4 Orientation</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G214">G214: Using a control to allow access to content in different orientations which is otherwise restricted</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+
+    </ul>
+</div>
+
+    {% include 134checkpoints.html %}
