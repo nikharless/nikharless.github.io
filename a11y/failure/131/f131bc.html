@@ -8,30 +8,31 @@ sctitle: 1.3.1 Info and Relationships
 cpurl: /a11y/checkpoint/131b.html
 cptitle: 1.3.1.b Tables
 guideline: perceivable
+level: a
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
 ---
-<div class="cpcontent">
+<div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
         <ol>
             <li><a href="/a11y/index.html">{{ page.root }}</a></li>
             <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
             <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li> 
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
         </ol>
     </nav>
 
     <div id="failure">
     	<div class="row">
-    		<h2>Expected Result</h2>
+    		<h2 class="{{ page.level }}">Expected Result</h2>
     		<div>When both column and row headers are present, the header cells are marked up with the <code>scope</code> attribute.</div>
     	</div>
     	<div class="row">
-    		<h2>Actual Result</h2>
+    		<h2 class="{{ page.level }}">Actual Result</h2>
     		<div>Both column and row headers are present, but the header cells do not have a <code>scope</code> attribute.</div>
     	</div>
     	<div class="row">
-    		<h2>Solution</h2>
+    		<h2 class="{{ page.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Add <code>scope="col"</code> to column headers.</li>
@@ -42,7 +43,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
             </div>
     	</div>
         <div class="row">
-            <h2>Example</h2>
+            <h2 class="{{ page.level }}">Example</h2>
             <div>
                 <h3>Table with Column and Row Headers</h3>
                 <table>
@@ -131,11 +132,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
             </div>
         </div>
         <div class="row">
-            <h2>Why It's Important</h2>
+            <h2 class="{{ page.level }}">Why It's Important</h2>
             <div>Table relationships are visible at a glance for sighted users. Assistive technology users need to get this relationship information from the semantic structure and to be able to easily navigate the data.</div>
         </div>
         <div class="row">
-            <h2>References</h2>
+            <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding SC 1.3.1: Info and Relationships</a></li>
