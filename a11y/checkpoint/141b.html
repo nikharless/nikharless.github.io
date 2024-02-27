@@ -1,0 +1,121 @@
+---
+layout: default
+title: 1.4.1.b Link Color Contrast
+current: /a11y/checkpoint/141b.html
+root: WCAG 2.2
+scurl: /a11y/sc/141.html
+sctitle: 1.4.1 Use of Color
+guideline: perceivable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Color alone must not be used to distinguish links from regular text.
+            <ul>
+                <li>If links have a contrast ratio of at least 3:1 with regular text, this counts as an additional visual distinction.</li>
+            </ul>
+        </li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Links should not be indistinguishable from surrounding text. However, this scenario would not fail this success criterion, because no users are able to distinguish the links.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a color blind user, I want to have an alternative non-color-related means to distinguish links so that I get the same information that non-color blind users get.</div>
+
+    <div class="success"><strong>Success:</strong> If you could not see colors, when you view the page, you would be able to distinguish the links from surrounding text.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Is font color alone being used to distinguish links from regular text content?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there at least a 3:1 contrast ratio between link text and regular text?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there any additional meaning to the link color? (For example, a wiki with different color links for existing and non-existing pages)</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there another means besides color to convey this meaning?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/141/f141bb.html">F1.4.1.b.b Color alone is used to convey additional meaning between links.</a>.</span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/141/f141ba.html">F1.4.1.b.a Color alone is used to distinguish links from text.</a></span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <ol>
+        <li>Locate any links on the page.</li>
+        <li>Verify that there is a means other than color to distinguish them from regular text.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <ol>
+        <li>Follow the procedure for Web.</li>
+    </ol>
+
+    <h2>PDF Test Procedure</h2>
+    <ol>
+        <li>Follow the procedure for Web.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/141/f141ba.html">F1.4.1.b.a Color alone is used to distinguish links from text.</a> (Medium)</li>
+        <li><a href="/a11y/failure/141/f141bb.html">F1.4.1.b.b Color alone is used to convey additional meaning between links.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Web:
+            <ul>
+                <li>Chrome Developer tools > More tools > Rendering > Emulate vision deficiencies</li>
+                <li><a href="https://www.tpgi.com/color-contrast-checker/">TPGi: Colour Contrast Analyzer (CCA)</a></li>
+                <li><a href="https://dequeuniversity.com/color-contrast">Deque Color Contrast Analyzer</a></li>
+                <li><a href="https://accessible-colors.com/">Accessible Colors</a></li>
+                <li><a href="https://coolors.co/contrast-checker/ffffff-a2b9bc">Coolors: Color Contrast Checker</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion 1.4.1: Use of Color</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G183">G183: Using a contrast ratio of 3:1 with surrounding text and providing additional visual cues on hover for links or controls where color alone is used to identify them</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://www.w3schools.com/accessibility/accessibility_color_meaning.php">W3: Accessibility Color Alone as Meaning</a></li>
+        <li><a href="https://learn.levelaccess.com/l/487581/2018-04-18/28w48t">LevelAccess: Accessibility Basics Webinar #2 - Use of Color</a> (0:00 - 25:00)</li>
+    </ul>
+</div>
+
+    {% include 141checkpoints.html %}
