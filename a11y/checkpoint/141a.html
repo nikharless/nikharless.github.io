@@ -34,84 +34,23 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
-    <h3 id="test1">Is the page visually divided into distinct regions such as header, footer, navigation, and main content?</h3>
+    <h3 id="test1">Is color used as the only means to convey information?</h3>
     <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the essential regions (header, footer, navigation, and main) marked up as landmarks?</span>
+        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/141/f141aa.html">F1.4.1.a.a Color is used as the only means of conveying information.</a></span></li>
+        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is color used as the only means to indicate an action?</span>
             <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the landmarks used according to their semantic meaning?</span>
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/141/f141ab.html">F1.4.1.a.b Color is used as the only means of indicating an action.</a></span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is color used as the only means to prompt a response?</span>
                     <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are header, main, aside, and footer regions top-level landmarks and not nested within other landmarks?</span>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/141/f141ac.html">F1.4.1.a.c Color is used as the only means of prompting a response.</a></span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is color used as the only means to distinguish a visual element?</span>
                             <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there more than one of a particular type of landmark?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the landmark a header, footer, or main content area?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; Remove or combine any multiples of these. There must be only one of each.</span></li>
-                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does each instance have a unique label?</span>
-                                                    <ul role="group">
-                                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; Give each instance a unique label.</span></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-                                    </ul>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; Move header, main, aside, and footer landmarks to the top level beneath the <code>&lt;body&gt;</code> tag.</span></li>
-                            </ul>
-                        </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Ensure correct and valid tags or ARIA roles are used.</span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the region a header?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; Use <code>&lt;header&gt;</code> or <code>role="banner"</code> to mark the region as a header.</span>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the region a footer?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; Use <code>&lt;footer&gt;</code> or <code>role="contentinfo"</code> to mark the region as a footer.</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the region a navigation area?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; Use <code>&lt;nav&gt;</code> or <code>role="navigation"</code> to mark the region as a navigation area.</span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the region the main content area?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; Use <code>&lt;main&gt;</code> or <code>role="main"</code> to mark the region as the main content area.</span></li>
-                                                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/141/f141ad.html">F1.4.1.a.d Color is used as the only means of distinguishing a visual element.</a></span></li>
+                                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    <h3 id="test2">Are there parts of the content that have a semantic function not covered by the other 1.3.1 checkpoints?</h3>
-    <ul role="tree" aria-labelledby="test2">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there semantic markup that corresponds to the function of the content part?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the content marked up with the corresponding semantic markup?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Mark up the content with the appropriate semantic markup.</span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    <h3 id="test3">Are visual relationships also conveyed either programmatically or in text? Some examples include: comments visually presented as replies using indentation, blockquotes, blocks of elements linking to the same target, and deleted/inserted text.</h3>
-    <ul role="tree" aria-labelledby="test3">
-        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the element's role overridden with <code>role="presentation"</code> or <code>role="none"</code>></span>
-            <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; Remove the presentation role; add a semantic role if the element does not have one by default.</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; Add semantic HTML tags, ARIA roles, or screen-reader-only text to ensure the relationship is understandable to assistive technology users.</span></li>
             </ul>
         </li>
     </ul>
@@ -119,7 +58,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
     <h2>Web Test Procedure</h2>
 
     <ol>
-        <li>Examine the page for any elements where color is used to convey information.</li>
+        <li>Examine the page for any elements where color is used to convey information, indicate an action, prompt a response, or distinguish a visual element.</li>
         <li>Verify that the information conveyed by color is also conveyed visually without relying on color.</li>
     </ol>
 
@@ -135,9 +74,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/141/f141aa.html">F1.4.1.a.a Landmark region is not marked up semantically.</a> (Medium)</li>
-        <li><a href="/a11y/failure/141/f141ab.html">F1.4.1.a.b Landmark regions are marked up incorrectly.</a> (Medium)</li>
-        <li><a href="/a11y/failure/141/f141ac.html">F1.4.1.a.c Quotation is not marked up semantically.</a> (Low)</li>
+        <li><a href="/a11y/failure/141/f141aa.html">F1.4.1.a.a Color is used as the only means of conveying information.</a> (Medium)</li>
+        <li><a href="/a11y/failure/141/f141ab.html">F1.4.1.a.b Color is used as the only means of indicating an action.</a> (Medium)</li>
+        <li><a href="/a11y/failure/141/f141ac.html">F1.4.1.a.c Color is used as the only means of prompting a response.</a> (Medium)</li>
+        <li><a href="/a11y/failure/141/f141ad.html">F1.4.1.a.d Color is used as the only means of distinguishing a visual element.</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -145,10 +85,6 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
         <li>Web:
             <ul>
                 <li>Chrome Developer tools > More tools > Rendering > Emulate vision deficiencies</li>
-                <li><a href="https://www.tpgi.com/color-contrast-checker/">TPGi: Colour Contrast Analyzer (CCA)</a></li>
-                <li><a href="https://dequeuniversity.com/color-contrast">Deque Color Contrast Analyzer</a></li>
-                <li><a href="https://accessible-colors.com/">Accessible Colors</a></li>
-                <li><a href="https://coolors.co/contrast-checker/ffffff-a2b9bc">Coolors: Color Contrast Checker</a></li>
             </ul>
         </li>
     </ul>
