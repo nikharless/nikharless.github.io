@@ -1,0 +1,71 @@
+---
+layout: default
+title: Failure - F1.4.1.a.b Color is used as the only means of indicating an action
+current: /a11y/failure/141/f141ab.html
+root: WCAG 2.2
+scurl: /a11y/sc/141.html
+sctitle: 1.4.1 Use of Color
+cpurl: /a11y/checkpoint/141a.html
+cptitle: 1.4.1.a Color as Information
+guideline: perceivable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div id="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>Color is not used as the only visual means of indicating an action.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>Color is used as the only visual means of indicating an action.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Provide an additional means of indicating an action in addition to color.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>Link Behavior</h3>
+                <form>
+                    <p>In addition to the magenta color, links that open in a new window also have an icon to indicate this action.</p>
+                    <ul>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Site Map</a></li>
+                        <li><a href="#" style="color: #cf3476">Privacy Policy</a> <span role="img" alt="opens in new window" class="fa-solid fa-arrow-up-right-from-square"></span></li>
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>People who are color blind or have low vision need an alternate means besides color of getting the information.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.4.1 Use of Color</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G14">G14: Ensuring that information conveyed by color differences is also available in text</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G182">G182: Ensuring that additional visual cues are available when text color differences are used to convey information</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 141checkpoints.html %}
