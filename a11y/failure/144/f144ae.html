@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F1.4.4.a.d Access to clipped, truncated, or obscured text content is not obvious
-current: /a11y/failure/144/f144ad.html
+title: Failure - F1.4.4.a.e Text-based form controls do not resize
+current: /a11y/failure/144/f144ae.html
 root: WCAG 2.2
 scurl: /a11y/sc/144.html
 sctitle: 1.4.4 Resize Text
@@ -25,11 +25,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
     <div id="failure">
     	<div class="row">
     		<h2 class="{{ page.level }}">Expected Result</h2>
-    		<div>Text content is readable and functional when resized up to 200%.</div>
+    		<div>Text content is resizable to 200%.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>Text content is clipped, truncated or obscured when resized to 200%. The content can still be accessed, but it is not obvious that content is missing and can be accessed.</div>
+    		<div>Text-based form controls do not resize.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
@@ -39,8 +39,24 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
                 <h3>Single Line</h3>
-                <p>In this example, a tooltip shows the full text, and an ellipsis alerts the user that the text is truncated.</p>
-                <div style="font-size:150%; font-weight: bold; width:200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border: thin solid gray;" title="Ellipsis for Single Line Text">Ellipsis for Single Line Text</div>
+                <div>
+  <label for="fname" style="font-size: 1em;">First Name</label>
+  <input type="text" name="fname" id="fname" style="font-size: 12pt;">
+</div>
+<div>
+  <label for="lname" style="font-size: 1em;">Last Name</label>
+  <input type="text" name="lname" id="lname" style="font-size: 12pt;">
+</div>
+<div>
+  <label for="phone" style="font-size: 1em;">Telephone</label>
+  <input type="text" name="phone" id="phone" style="font-size: 12pt;">
+</div>
+<div>
+  <label for="email" style="font-size: 1em;">Email</label>
+  <input type="text" name="email" id="email" style="font-size: 12pt;">
+</div>  
+<input type="submit" name="Submit" value="Submit" id="Submit" style="font-size: 12pt;">
+
                 <pre><code>.title {
     font-size:150%; 
     font-weight: bold;
@@ -51,31 +67,18 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
     border: thin solid gray;
 }
 &lt;h2 class="title" title="Ellipsis for Single Line Text"&gt;Ellipsis for Single Line Text&lt;/h2&gt;</code></pre>
-
-                <h3>Multiline</h3>
-                <p>This example works with multiline text.</p>
-                <div style="width: 150px; border: thin solid gray; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;" title="The chief obstacle to the progress of the human race is the human race.">The chief obstacle to the progress of the human race is the human race.</div>
-                <pre><code>.quote {
-    width: 150px;
-    border: thin solid gray;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-&lt;div class="quote" title="The chief obstacle to the progress of the human race is the human race."&gt;The chief obstacle to the progress of the human race is the human race.&lt;/div&gt;</code></pre>
             </div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Why It's Important</h2>
-            <div>Vision impaired users need to be able to read and use the content when zoomed.</div>
+            <div>Vision impaired users need to be able to zoom the content so they can read it.</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding SC {{ page.sctitle }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F69">F69: Failure of Success Criterion 1.4.4 when resizing visually rendered text up to 200 percent causes the text, image or controls to be clipped, truncated or obscured</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F80">F80: Failure of Success Criterion 1.4.4 when text-based form controls do not resize when visually rendered text is resized up to 200%</a></li>
                     <li><a href="https://www.w3schools.com/cssref/css3_pr_text-overflow.php">W3: CSS text-overflow Property</a></li>
                     <li><a href="https://css-tricks.com/line-clampin/">Line Clampin’ (Truncating Multiple Line Text)</a></li>
                 </ul>
