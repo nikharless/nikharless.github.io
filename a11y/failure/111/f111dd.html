@@ -8,30 +8,31 @@ sctitle: 1.1.1 Non-text Content
 cpurl: /a11y/checkpoint/111d.html
 cptitle: 1.1.1.d Decorative Images (Text Alternative)
 guideline: perceivable
+level: a
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
-<div class="cpcontent">
+<div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
         <ol>
             <li><a href="/a11y/index.html">{{ page.root }}</a></li>
             <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
             <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li> 
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
         </ol>
     </nav>
 
     <div id="failure">
     	<div class="row">
-    		<h2>Expected Result</h2>
+    		<h2 class="{{ page.level }}">Expected Result</h2>
     		<div>Redundant images must be hidden from screen readers.</div>
     	</div>
     	<div class="row">
-    		<h2>Actual Result</h2>
+    		<h2 class="{{ page.level }}">Actual Result</h2>
     		<div>The redundant image is read by screen readers.</div>
     	</div>
     	<div class="row">
-    		<h2>Solution</h2>
+    		<h2 class="{{ page.level }}">Solution</h2>
     		<div>Hide the image using one of the following methods:
                 <ul>
                     <li>Add <code>alt=""</code> to the <code>&lt;img&gt;</code> tag.</li>
@@ -41,7 +42,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             </div>
     	</div>
         <div class="row">
-            <h2>Examples</h2>
+            <h2 class="{{ page.level }}">Examples</h2>
             <div>
                 <h3>Combined Image and Text Link</h3>
                 <p>Flag images are used in a list of country links simply to illustrate each one. Since the name of the country is already provided in text, the image is redundant. The link and image should be combined within a single link and the image hidden from screen readers.</p>
@@ -59,11 +60,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             </div>
         </div>
         <div class="row">
-            <h2>Why It's Important</h2>
+            <h2 class="{{ page.level }}">Why It's Important</h2>
             <div>Blind and visually impaired users want decorative or redundant images hidden so they do not get overwhelmed with unimportant screen reader chatter.</div>
         </div>
         <div class="row">
-            <h2>References</h2>
+            <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>

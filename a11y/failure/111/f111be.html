@@ -8,34 +8,35 @@ sctitle: 1.1.1 Non-text Content
 cpurl: /a11y/checkpoint/111b.html
 cptitle: 1.1.1.b Meaningful Images (Text Alternative)
 guideline: perceivable
+level: a
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
-<div class="cpcontent">
+<div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
         <ol>
             <li><a href="/a11y/index.html">{{ page.root }}</a></li>
             <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
             <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a></li> 
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
         </ol>
     </nav>
 
     <div id="failure">
     	<div class="row">
-    		<h2>Expected Result</h2>
+    		<h2 class="{{ page.level }}">Expected Result</h2>
     		<div>The text alternative for the meaningful image conveys the same information as the image in context.</div>
     	</div>
     	<div class="row">
-    		<h2>Actual Result</h2>
+    		<h2 class="{{ page.level }}">Actual Result</h2>
     		<div>The meaningful image has a text alternative, but it does not convey the same information as the image in context.</div>
     	</div>
     	<div class="row">
-    		<h2>Solution</h2>
+    		<h2 class="{{ page.level }}">Solution</h2>
     		<div>Change the text alternative to text which sufficiently conveys the same information as the image in context.</div>
     	</div>
         <div class="row">
-            <h2>Examples</h2>
+            <h2 class="{{ page.level }}">Examples</h2>
             <div>
                 <p>The image in the following examples might literally be described as "an old photograph of a mustached man in a cap driving an old car with no roof or windows". However, that may not convey the information intended by its context.</p>
                 <h3>In an article about old cars</h3>
@@ -48,11 +49,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             </div>
         </div>
         <div class="row">
-            <h2>Why It's Important</h2>
+            <h2 class="{{ page.level }}">Why It's Important</h2>
             <div>Blind and visually impaired users need to have a text alternative that describes the information intended to be conveyed by the image in context.</div>
         </div>
         <div class="row">
-            <h2>References</h2>
+            <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
