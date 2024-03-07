@@ -1,0 +1,169 @@
+---
+layout: default
+title: 1.4.5.a Images of Text
+current: /a11y/checkpoint/145a.html
+root: WCAG 2.2
+scurl: /a11y/sc/145.html
+sctitle: 1.4.5 Images of Text
+guideline: perceivable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <p>Images of text are not just a problem for screen reader users which can be solved with text alternatives. Users with vision or reading disabilities often need to adjust the text in order to read it. This could include enlarging the text, changing the spacing, or changing the colors. Images of text are generally not adjustable. For this reason, real text must be used whenever possible.</p>
+
+    <p>Exceptions include:</p>
+    <ul>
+        <li>Essential images of text, such as:
+            <ul>
+                <li>Logotypes, branding, type/font samples</li>
+                <li>Graphs, screenshots, and diagrams which visually convey important information through more than just text</li>
+                <li>Photos or graphical representations of actual objects</li>
+            </ul>
+        </li>
+        <li>Incidental text in images, such as:
+            <ul>
+                <li>A photo of a person speaking at a conference with their name visible on their nametag</li>
+                <li>A photo of a car at an intersection with a stop sign visible in the background</li>
+            </ul>
+        </li>
+        <li>Redundant images: If the text in the image is available elsewhere on the page, then the image is redundant and should be tested against <a href="111d.html">checkpoint 1.1.1.d Decorative Images (Text Alternative).</a></li>
+    </ul>
+
+    <h3>SVG Images</h3>
+    <p>Text in an SVG may or may not be considered real text:</p>
+    <ul>
+        <li>Text in a <code>&lt;text&gt;</code> element within an <code>&lt;svg&gt;</code>: PASS</li>
+        <li>Text drawn with a <code>&lt;path&gt;</code> element within an <code>&lt;svg&gt;</code>: FAIL</li>
+        <li>Text in a .svg file: FAIL</li>
+    </ul>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If it is possible to use real text, real text must be used instead of images of text.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with a visual impairment, I want text to be zoomable and customizable so that I can adjust it to be more easy for me to read.</div>
+
+    <div class="success"><strong>Success:</strong> If you had a visual impairment, when you encountered text, you would be able to enlarge or adjust it to make it more easy to read.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Are there any images of text on the page?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the visual equivalent of the image of text be achieved using actual text (e.g., with CSS styling)?</span></li>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes;</strong> Can the image of text be visually customized to meet the user’s requirements?</span></li>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the presentation of the text essential (e.g., a logo)?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/145/f145aa.html">F1.4.5.a.a Image of text is used where real text is possible.</a></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="pass"><span><strong>No;</strong> PASS</span>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <h3>Desktop</h3>
+    <p>Use the <a href="http://chrispederick.com/work/web-developer/">Web Developer browser extension</a> for Firefox or Chrome to check for images of text.</p>
+    
+    <ol>
+        <li>Open the Web Developer extension, and select <strong>Images > Outline All Images</strong>.</li>
+        <li>Verify that none of the outlined images are images of text.</li>
+    </ol>
+
+    <h3>Mobile Screen Reader</h3>
+    <ol>
+        <li>Turn on the screen reader and read through the page.</li>
+        <li>Verify that none of the text is identified as an image.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <h3>iOS</h3>
+    <ol>
+        <li>In the OS Accessibility settings, select <strong>Display & Text Size > Larger Text</strong>.</li>
+        <li>Set the slider to the largest text size (far right).</li>
+        <li>View the app screen and verify that all text has resized.</li>
+        <li>If it has not, turn on VoiceOver and check whether the text is identified as an image.</li>
+    </ol>
+
+    <h3>Android</h3>
+    <ol>
+        <li>In the OS Accessibility settings, select <strong>Text and Display > Font size</strong>.</li>
+        <li>Set the slider to the largest text size (far right).</li>
+        <li>View the app screen and verify that all text has resized.</li>
+        <li>If it has not, turn on TalkBack and check whether the text is identified as an image.</li>
+    </ol>
+
+    <h2>PDF Test Procedure</h2>
+    <ol>
+        <li>Select all text in the document:
+            <ul>
+                <li><strong>Windows</strong>: <kbd>Ctrl</kbd>+<kbd>A</kbd></li>
+                <li><strong>MacOS</strong>: <kbd>Command</kbd>+<kbd>A</kbd></li>
+            </ul>
+        </li>
+        <li>Verify that all text is selected.</li>
+        <li>Check if any unselected text is embedded in an image.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/145/f145aa.html">F1.4.5.a.a Image of text is used where real text is possible.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li><a href="https://chrispederick.com/work/web-developer/">Web Developer browser extension</a></li>
+        <li>Screen reader</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G140">G140: Separating information and structure from presentation to enable different presentations</a></li>
+                    </ul>
+                </li>
+                <li>CSS:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C22">C22: Using CSS to control visual presentation of text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C30">C30: Using CSS to replace text with images of text and providing user interface controls to switch</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF7">PDF7: Performing OCR on a scanned PDF document to provide actual text</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+    {% include 145checkpoints.html %}
