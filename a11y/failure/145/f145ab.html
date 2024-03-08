@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F1.4.5.a.a Image of text is used where real text is possible
-current: /a11y/failure/145/f145aa.html
+title: Failure - F1.4.5.a.b Pages of text in PDF are images
+current: /a11y/failure/145/f145ab.html
 root: WCAG 2.2
 scurl: /a11y/sc/145.html
 sctitle: 1.4.5 Images of Text
@@ -29,40 +29,38 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>An image of text is used where real text is possible.</div>
+    		<div>Pages of text in PDF are images.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
-    		<div>Replace the image of text with real text, using CSS styling to retain the desired visual appearance.</div>
+    		<div>Use OCR to generate actual text from an image.
+            <h3>Adobe Acrobat Pro</h3>
+            <ol>
+                <li>Open the document in Adobe Acrobat Pro.</li>
+                <li>Activate <strong>Scan & OCR</strong>.</li>
+                <li>Under Recognize Text, activate <strong>In this file</strong>.</li>
+                <li>Select <strong>All pages</strong> and activate the <strong>Recognize text</strong> button.</li>
+                <li>Select <strong>Correct recognized text</strong> to review any text that Acrobat is not sure about. Depending on the quality of the file, the text may need significant editing.</li>
+            </ol>
+            </div>
     	</div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <div style="background-color: #010a00;">
-                    <div style="padding: 1rem; font-family: Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif; font-size: 2rem; font-weight: 400; letter-spacing: 5px; text-align: center; text-transform: uppercase; color: #fff; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;">Accessibility Matters</div>
-                </div>
-                <pre><code>.neon {
-    font-family: Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif; 
-    font-size: 2rem;
-    font-weight: 400; 
-    letter-spacing: 5px;
-    text-align: center; 
-    text-transform: uppercase; 
-    color: #fff; 
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
-}</code></pre>
+                <img src="/a11y/assets/images/f145ab-pdf-ocr.png" alt="Screenshot of Acrobat Scan & OCR panel with Recognize Text In this file dialog open">
             </div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Why It's Important</h2>
-            <div>Users with vision or reading disabilities often need to adjust the text in order to read it.</div>
+            <div>Pages of text cannot be interpreted by screen readers.</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C22">C22: Using CSS to control visual presentation of text</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF7">PDF7: Performing OCR on a scanned PDF document to provide actual text</a></li>
+                    <li><a href="https://www.adobe.com/acrobat/hub/use-ocr-to-read-text-from-image.html">How to scan and get text from an image with OCR</a></li>
                 </ul>
             </div>
         </div>
