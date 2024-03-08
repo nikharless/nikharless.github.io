@@ -1,0 +1,185 @@
+---
+layout: default
+title: 1.4.6.b Large Text Color Contrast (Enhanced)
+current: /a11y/checkpoint/146b.html
+root: WCAG 2.2
+scurl: /a11y/sc/146.html
+sctitle: 1.4.6 Contrast (Enhanced)
+guideline: perceivable
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Large text, including images of large text, must have a contrast ratio of at least 4.5:1 with the background. The following are exceptions:
+            <ul>
+                <li>Text on disabled controls</li>
+                <li>Incidental text in images</li>
+                <li>Text in purely decorative images</li>
+                <li>Logos</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with a visual impairment, I want text to have good contrast so that I can more easily read it.</div>
+
+    <div class="success"><strong>Success:</strong> If you had a visual impairment, when you viewed text, you would be able to see it well enough to read it.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the page have text that is at least 18pt (24px) or 14pt (19px) bold?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the text background an image or gradient?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes;</strong> Does the text have a contrast ratio of at least 4.5:1 with the area of the background with the least contrast?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/146/f146bc.html">F1.4.6.b.c Large text over an image or gradient does not have at least a 4.5:1 contrast ratio with the background on the area of least contrast.</a></span></li>
+                    </ul>
+                <li role="treeitem" aria-expanded="false"><span><strong>No;</strong> Is the text placeholder text?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the placeholder text have a contrast ratio of at least 4.5:1 with its background?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes;</strong> PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="/a11y/failure/146/f146bd.html">F1.4.6.b.d Large placeholder text does not have at least a 4.5:1 contrast ratio with the background.</a></span></li>
+                            </ul>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the text a link?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the link text have a contrast ratio of at least 4.5:1 with its background?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text in the hover and focus states have a contrast ratio of at least 4.5:1 with its background?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/146/f146bb.html">F1.4.6.b.b Large link text does not have at least a 4.5:1 contrast ratio with the background on hover or focus.</a></span></li>
+                                            </ul>
+                                        </li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/146/f146ba.html">F1.4.6.b.a Large text does not have at least a 4.5:1 contrast ratio with the background.</a></span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the text have a contrast ratio of at least 4.5:1 with its background?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/146/f146ba.html">F1.4.6.b.a Large text does not have at least a 4.5:1 contrast ratio with the background.</a></span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <h3>Desktop</h3>
+    <ol>
+        <li>Use <a href="https://deque.com/axe/devtools/">axe DevTools</a>, <a href="https://wave.webaim.org/">WAVE</a>, or <a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a> to automatically check for text contrast issues.</li>
+        <li>Use a tool such as one listed in the Testing Tools below to manually check any text not covered by the automated tool. For example:
+            <ul>
+                <li>Text in hover states</li>
+                <li>Meaningful text embedded in images (check the area with the least contrast)</li>
+                <li>Text over images or gradients</li>
+                <li>Text in modal and modeless dialogs</li>
+                <li>Text in menus</li>
+                <li>Placeholder text</li>
+            </ul>
+            <p><em>Note: Check hex codes rather than using an eyedropper tool whenever possible to ensure you're checking the exact color.</em></p>
+        </li>
+        <li>Verify that all large size text has a contrast ratio of at least 4.5:1 with its background.</li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <ol>
+        <li>Open the page on a desktop computer in Chrome.</li>
+        <li>Right-click on the page and select <strong>Inspect</strong> or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd> to open the Developer Tools.</li>
+        <li>Activate the <strong>Toggle device toolbar</strong> button or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>.</li>
+        <li>Select a mobile device from the <strong>Dimensions</strong> drop-down menu.</li>
+        <li>Follow the procedure for Desktop Web.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <h3>iOS and Android</h3>
+    <ol>
+        <li>Ensure that any contrast enhancements, such as <a href="https://www.supportyourtech.com/iphone/enhancing-iphone-display-ios-17-contrast-settings/">Increase Contrast</a> on iOS, are turned OFF.</li>
+        <li>Visually check for large text which appears to have poor contrast with its background.</li>
+        <li>Take a screenshot on the device and open it on a desktop computer.</li>
+        <li>Use a manual tool such as one listed in the Testing Tools below to check the contrast ratio of the colors in the screenshot.</li>
+        <li>Verify that the contrast ratio between the large text and its background is at least 4.5:1.</li>
+        <li>If the app supports Dark Mode, test both Light and Dark Mode.</li>
+        <li>If the app has any alternate themes that affect text and background colors, test each of these.</li>
+    </ol>
+
+    <h2>PDF Test Procedure</h2>
+    <p>Use a manual tool such as one listed in the Testing Tools below to manually check any large size text.</p>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/146/f146ba.html">F1.4.6.b.a Large text does not have at least a 4.5:1 contrast ratio with the background.</a> (Medium)</li>
+        <li><a href="/a11y/failure/146/f146bb.html">F1.4.6.b.b Large link text does not have at least a 4.5:1 contrast ratio with the background on hover or focus.</a> (Medium)</li>
+        <li><a href="/a11y/failure/146/f146bc.html">F1.4.6.b.c Large text over an image or gradient does not have at least a 4.5:1 contrast ratio with the background on the area of least contrast.</a> (Medium)</li>
+        <li><a href="/a11y/failure/146/f146bd.html">F1.4.6.b.d Large placeholder text does not have at least a 4.5:1 contrast ratio with the background.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Automated Contrast Checkers for Web:
+            <ul>
+                <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
+                <li><a href="https://wave.webaim.org/">WAVE</a></li>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+            </ul>
+        </li>
+        <li>Manual Constrast Checkers:
+            <ul>
+                <li><a href="https://www.tpgi.com/color-contrast-checker/">TPGi Colour Contrast Analyzer</a></li>
+                <li><a href="https://dequeuniversity.com/color-contrast">Deque Color Contrast Analyzer</a></li>
+                <li><a href="https://coolors.co/contrast-checker/112a46-acc8e5">Coolors Color Contrast Checker</a></li>
+                <li><a href="https://accessible-colors.com/">Accessible Colors</a></li>
+                <li><a href="https://www.siegemedia.com/contrast-ratio">SiegeMedia Contrast Ratio</a></li>
+                <li><a href="https://webaim.org/resources/contrastchecker/">WebAIM Contrast Checker</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G18">G18: Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://webaim.org/articles/contrast/">WebAIM: Contrast and Color Accessibility</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast">MDN: Color contrast</a></li>
+        <li><a href="https://bootcamp.uxdesign.cc/mastering-color-contrast-a-beginners-guide-to-wcag-guidelines-and-contrast-checkers-d6cd7de6c373">Mastering Color Contrast: A Beginner's Guide to WCAG Guidelines and Contrast Checkers</a></li>
+    </ul>
+</div>
+
+    {% include 146checkpoints.html %}
