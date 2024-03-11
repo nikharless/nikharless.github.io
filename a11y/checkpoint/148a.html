@@ -1,0 +1,104 @@
+---
+layout: default
+title: 1.4.8.a Visual Presentation
+current: /a11y/checkpoint/148a.html
+root: WCAG 2.2
+scurl: /a11y/sc/148.html
+sctitle: 1.4.8 Visual Presentation
+guideline: perceivable
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
+        Audio that is mostly speech must have low or no background sound or the background sound must be able to be turned off.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user who is hard of hearing, I want dialog to have low or no background sounds so that I can understand the dialog.</div>
+
+    <div class="success"><strong>Success:</strong> If you were hard of hearing, when you listen to audio that is mostly speech, you would be able to understand the dialog.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the page have prerecorded audio that is mostly speech?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio contain background sounds?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes;</strong> Is the background sound at least 20 decibels (4 times) quieter than the foreground speech?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism to turn off the background sounds?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/147/f147aa.html">F1.4.7.a.a Prerecorded audio has background sounds that are too loud.</a></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                <li role="treeitem" class="pass"><span><strong>No;</strong> PASS</span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Test Procedure</h2>
+
+    <h3>Desktop</h3>
+    <h4>Audacity</h4>
+    <ol>
+        <li>Open the audio file in Audacity.</li>
+        <li>Select a section of the foreground audio.</li>
+        <li>Select <strong>Analyze > Contrast...</strong>.</li>
+        <li>In the Contrast Analysis (WCAG 2 compliance) dialog, activate the <strong>Measure selection</strong> button in the Foreground row.</li>
+        <li>Select a section of the background audio.</li>
+        <li>In the Contrast Analysis (WCAG 2 compliance) dialog, activate the <strong>Measure selection</strong> button in the Background row.</li>
+        <li>Verify that the result is 20 or greater.</li>
+    </ol>
+    <img src="/a11y/assets/images/147-audio-contrast.png" alt="Screenshot of Audacity Contrast Analysis dialog showing Contrast Result WCAG2 Fail with a difference of 16.29 decibels" style="max-width: 350px;">
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/147/f147aa.html">F1.4.7.a.a Prerecorded audio has background sounds that are too loud.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li><a href="https://www.audacityteam.org/download/">Audacity</a></li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G56">G56: Mixing audio files so that non-speech sounds are at least 20 decibels lower than the speech audio content</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://manual.audacityteam.org/man/contrast.html">Audacity: Contrast</a></li>
+    </ul>
+</div>
+
+    {% include 147checkpoints.html %}
