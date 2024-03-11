@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 1.4.8.a Visual Presentation
+title: 1.4.8.a Adjustable Color
 current: /a11y/checkpoint/148a.html
 root: WCAG 2.2
 scurl: /a11y/sc/148.html
@@ -26,58 +26,46 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
         <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
         <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
-        Audio that is mostly speech must have low or no background sound or the background sound must be able to be turned off.</li>
+        Foreground and background colors must be adjustable by the user.</li>
     </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a user who is hard of hearing, I want dialog to have low or no background sounds so that I can understand the dialog.</div>
+    <div class="userstory"><strong>User Story:</strong> As a user with a visual or cognitive disability, I want to be able to adjust the colors on a web page so that I can more easily read the content.</div>
 
-    <div class="success"><strong>Success:</strong> If you were hard of hearing, when you listen to audio that is mostly speech, you would be able to understand the dialog.</div>
+    <div class="success"><strong>Success:</strong> If you had low vision, when you encountered text that you found difficult to read, you would be able to adjust the foreground and background colors to suit your specific needs.</div>
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
-    <h3 id="test1">Does the page have prerecorded audio that is mostly speech?</h3>
+    <h3 id="test1">Is the page content styled with non-default colors?</h3>
     <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio contain background sounds?</span>
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the foreground and background colors both be overridden with user-specified colors from the user agent?</span>
             <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes;</strong> Is the background sound at least 20 decibels (4 times) quieter than the foreground speech?</span>
+                <li role="treeitem" class="pass"><span><strong>Yes;</strong> PASS</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No;</strong> Is there a mechanism on the web page that allows the user to change the colors?</span></li>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism to turn off the background sounds?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/147/f147aa.html">F1.4.7.a.a Prerecorded audio has background sounds that are too loud.</a></span></li>
-                            </ul>
-                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/148/f148aa.html">F1.4.8.a.a Web page colors cannot be adjusted by the user.</a></span></li>
                     </ul>
-                <li role="treeitem" class="pass"><span><strong>No;</strong> PASS</span></li>
+                </li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
     </ul>
 
-    <h2>Test Procedure</h2>
+    <h2>Web Test Procedure</h2>
 
     <h3>Desktop</h3>
-    <h4>Audacity</h4>
     <ol>
-        <li>Open the audio file in Audacity.</li>
-        <li>Select a section of the foreground audio.</li>
-        <li>Select <strong>Analyze > Contrast...</strong>.</li>
-        <li>In the Contrast Analysis (WCAG 2 compliance) dialog, activate the <strong>Measure selection</strong> button in the Foreground row.</li>
-        <li>Select a section of the background audio.</li>
-        <li>In the Contrast Analysis (WCAG 2 compliance) dialog, activate the <strong>Measure selection</strong> button in the Background row.</li>
-        <li>Verify that the result is 20 or greater.</li>
+
     </ol>
-    <img src="/a11y/assets/images/147-audio-contrast.png" alt="Screenshot of Audacity Contrast Analysis dialog showing Contrast Result WCAG2 Fail with a difference of 16.29 decibels" style="max-width: 350px;">
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/147/f147aa.html">F1.4.7.a.a Prerecorded audio has background sounds that are too loud.</a> (Medium)</li>
+        <li><a href="/a11y/failure/148/f148aa.html">F1.4.8.a.a Web page colors cannot be adjusted by the user.</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
     <ul>
-        <li><a href="https://www.audacityteam.org/download/">Audacity</a></li>
+        <li></li>
     </ul>
 
     <h2>References</h2>
@@ -88,7 +76,15 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
             <ul>
                 <li>General:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G56">G56: Mixing audio files so that non-speech sounds are at least 20 decibels lower than the speech audio content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G156">G156: Using a technology that has commonly-available user agents that can change the foreground and background of blocks of text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G175">G175: Providing a multi color selection tool on the page for foreground and background colors</a></li>
+                    </ul>
+                </li>
+                <li>CSS:
+                    <ul>
+                        <li><a hr3ef="https://www.w3.org/WAI/WCAG22/Techniques/css/C23">C23: Specifying text and background colors of secondary content such as banners, features and navigation in CSS while not specifying text and background colors of the main content</a></li>
+                        <li><a hr3ef="https://www.w3.org/WAI/WCAG22/Techniques/css/C25">C25: Specifying borders and layout in CSS to delineate areas of a Web page while not specifying text and text-background colors</a></li>
                     </ul>
                 </li>
             </ul>
@@ -97,8 +93,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
 
     <h3>Additional Information</h3>
     <ul>
-        <li><a href="https://manual.audacityteam.org/man/contrast.html">Audacity: Contrast</a></li>
+        <li></li>
     </ul>
 </div>
 
-    {% include 147checkpoints.html %}
+    {% include 148checkpoints.html %}
