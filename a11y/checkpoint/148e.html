@@ -1,0 +1,109 @@
+---
+layout: default
+title: 1.4.8.e No Horizontal Scroll
+current: /a11y/checkpoint/148e.html
+root: WCAG 2.2
+scurl: /a11y/sc/148.html
+sctitle: 1.4.8 Visual Presentation
+guideline: perceivable
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
+        When text is resized up to 200%, it must not require horizontal scrolling.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with a visual or cognitive disability, I want to be able to increase the size of text without having to scroll horizontally so that I don't become disoriented.</div>
+
+    <div class="success"><strong>Success:</strong> If you had low vision, when you resized the text up to 200%, you would be able to read the full line of text without having to scroll horizontally.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Can the text be resized without assistive technology up to 200%?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When resized to 200%, is horizontal scrolling required to read a full line of text on a full-screen window?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the text an item not meant for reading, such as a long url?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/148/f148da.html">F1.4.8.e.a Text resized to 200% requires horizontal scrolling.</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/sc/144.html">1.4.4 Resize Text</a>.</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <h3>Desktop</h3>
+    <ol>
+        <li>Resize the browser window to full screen.</li>
+        <li>Zoom the text to 200%.</li>
+        <li>Verify that horizontal scrolling is not required to read a full line of text.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/148/f148da.html">F1.4.8.e.a Text resized to 200% requires horizontal scrolling.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Web browser</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G146">G146: Using liquid layout</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G204">G204: Not interfering with the user agent's reflow of text as the viewing window is narrowed</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G206">G206: Providing options within the content to switch to a layout that does not require the user to scroll horizontally to read a line of text</a></li>
+                    </ul>
+                </li>
+                <li>CSS:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C12">C12: Using percent for font sizes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C13">C13: Using named font sizes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C14">C14: Using em units for font sizes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C24">C24: Using percentage values in CSS for container sizes</a></li>
+                    </ul>
+                </li>
+                <li>JavaScript:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR34">SCR34: Calculating size and position in a way that scales with text size</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li></li>
+    </ul>
+</div>
+
+    {% include 148checkpoints.html %}
