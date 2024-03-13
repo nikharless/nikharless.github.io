@@ -1,0 +1,138 @@
+---
+layout: default
+title: 1.4.10.a Reflow
+current: /a11y/checkpoint/1410a.html
+root: WCAG 2.2
+scurl: /a11y/sc/1410.html
+sctitle: 1.4.10 Reflow
+guideline: perceivable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/reflow
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <p>The content must be viewable without scrolling horizontally when the viewport is set to 320 CSS pixels wide.</p>
+
+    <p>Exceptions may include:</p>
+    <ul>
+        <li>Maps</li>
+        <li>Diagrams</li>
+        <li>Video</li>
+        <li>Games</li>
+        <li>Presentations</li>
+        <li>Data tables (not individual cells)</li>
+        <li>Interfaces where it’s necessary to keep toolbars in view while manipulating content</li>
+    </ul>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The content must be viewable without scrolling horizontally when the viewport is set to 320 CSS pixels wide.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Videos should resize to fit within the viewport.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Images should resize to fit within the viewport.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with low vision, I want to be able to zoom the content without having to scroll horizontally so that I don't become disoriented.</div>
+
+    <div class="success"><strong>Success:</strong> If you had low vision, when you enlarged page content, you would be able to read it without having to scroll in more than one direction.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">When the content is presented at an equivalent width of 320 CSS pixels or an equivalent height of 256 CSS pixels, does the content require scrolling in more than one direction?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the presentation of the text essential (e.g., a logo)?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is two-dimensional scrolling required for the content (e.g., maps, games, presentations, etc.)?</span></li>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is any content cropped or unreachable due to not being able to scroll in a second dimension?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See </span></li>
+                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS </span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <h3>Desktop</h3>
+    
+    <ol>
+        <li>Open the page in Chrome at the actual size (e.g., no zoom, magnification, or user-supplied CSS features are turned on).</li>
+        <li>Resize the browser viewport to either:
+            <ul>
+                <li>640px width by 512px height at 200% zoom, <strong>OR</strong></li>
+                <li>1280px width by 1024px height at 400% zoom</li>
+            </ul>
+        <li>Verify that you can see all the content on the page without scrolling horizontally.</li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <p>This checkpoint does not apply to mobile, as horizontal scrolling with pinch-zoom is not something the developer can control.</p>
+
+    <h2>PDF Test Procedure</h2>
+    <ol>
+        <li>View the document at 200%.</li>
+        <li>Select <strong>View > Zoom > Reflow</strong>.</li>
+        <li>Verify that the content remains readable when reflowed.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/1410/f1410aa.html">F1.4.10.a.a Content cannot be accessed when resized.</a> (Medium)</li>
+        <li><a href="/a11y/failure/1410/f1410ab.html">F1.4.10.a.b Content requires two-dimensional scrolling when resized.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Chrome or Edge Developer Tools (Windows or macOS)</li>
+        <li><a href="https://chrispederick.com/work/web-developer/">Web Developer browser extension</a></li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G206">G206: Providing options within the content to switch to a layout that does not require the user to scroll horizontally to read a line of text</a></li>
+                    </ul>
+                </li>
+                <li>CSS:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C31">C31: Using CSS Flexbox to reflow content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C32">C32: Using media queries and grid CSS to reflow columns</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C33">C33: Allowing for Reflow with Long URLs and Strings of Text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C38">C38: Using CSS width, max-width and flexbox to fit labels and inputs</a></li>
+                    </ul>
+                </li>
+                <li>JavaScript:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR34">SCR34: Calculating size and position in a way that scales with text size</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+    {% include 1410checkpoints.html %}
