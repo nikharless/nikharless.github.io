@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 1.4.5.a Images of Text
-current: /a11y/checkpoint/145a.html
+title: 1.4.9.a Images of Text (No Exception)
+current: /a11y/checkpoint/149a.html
 root: WCAG 2.2
-scurl: /a11y/sc/145.html
-sctitle: 1.4.5 Images of Text
+scurl: /a11y/sc/149.html
+sctitle: 1.4.9 Images of Text (No Exception)
 guideline: perceivable
-level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text-no-exception
 ---
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
@@ -21,7 +21,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
 
     <h2>Overview</h2>
 
-    <p>Images of text are not just a problem for screen reader users which can be solved with text alternatives. Users with vision or reading disabilities often need to adjust the text in order to read it. This could include enlarging the text, changing the spacing, or changing the colors. Images of text are generally not adjustable. For this reason, real text must be used whenever possible.</p>
+    <p>Images of text are not just a problem for screen reader users which can be solved with text alternatives. Users with vision or reading disabilities often need to adjust the text in order to read it. This could include enlarging the text, changing the spacing, or changing the colors. Images of text are generally not adjustable. For this reason, real text must be used.</p>
 
     <p>Exceptions include:</p>
     <ul>
@@ -53,7 +53,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
         <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If it is possible to use real text, real text must be used instead of images of text.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Real text must be used instead of images of text, unless it is purely decorative or essential.</li>
     </ul>
 
     <div class="userstory"><strong>User Story:</strong> As a user with a visual impairment, I want text to be zoomable and customizable so that I can adjust it to be more easy for me to read.</div>
@@ -64,20 +64,15 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
     <script src="/a11y/assets/js/tree.js"></script>
     <h3 id="test1">Are there any images of text on the page?</h3>
     <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the visual equivalent of the image of text be achieved using actual text (e.g., with CSS styling)?</span>
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the presentation of the text essential (e.g., a logo)?</span>
             <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes;</strong> Can the image of text be visually customized to meet the user’s requirements?</span>
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image of text purely decorative?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the presentation of the text essential (e.g., a logo)?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/145/f145aa.html">F1.4.5.a.a Image of text is used where real text is possible.</a></span></li>
-                            </ul>
-                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/145/f145aa.html">F1.4.5.a.a Image of text is used where real text is possible.</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="pass"><span><strong>No;</strong> PASS</span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -130,8 +125,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/145/f145aa.html">F1.4.5.a.a Image of text is used where real text is possible.</a> (Medium)</li>
-        <li><a href="/a11y/failure/145/f145ab.html">F1.4.5.a.b Pages of text in PDF are images.</a> (High)</li>
+        <li><a href="/a11y/failure/149/f149aa.html">F1.4.9.a.a Image of text is used for meaningful text.</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -167,4 +161,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
     </ul>
 </div>
 
-    {% include 145checkpoints.html %}
+    {% include 149checkpoints.html %}
