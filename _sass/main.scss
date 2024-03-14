@@ -437,6 +437,75 @@ ul[role="tree"] li {
   background-color: rgba(0,0,0,0.5);
 }
 
+/* 1.4.11.a custom checkboxes */
+/* The container */
+.ccbContainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.ccbContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.ccbCheckmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #949494;
+}
+
+/* On mouse-over, add a grey background color */
+.ccbContainer:hover input ~ .ccbCheckmark {
+  background-color: #888;
+}
+
+/* When the checkbox is checked, add a blue background */
+.ccbContainer input:checked ~ .ccbCheckmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.ccbCheckmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.ccbContainer input:checked ~ .ccbCheckmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.ccbContainer .ccbCheckmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
   	.row, .navbar {   
