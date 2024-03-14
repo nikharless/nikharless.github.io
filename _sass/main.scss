@@ -536,70 +536,71 @@ ul[role="tree"] li {
   border-radius: 50%;
   background: white;
 }
+
 /****************************/
 /* 1.4.11.a custom switches */
 /****************************/
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.switch input { 
+label input[role="switch"] {
   opacity: 0;
-  width: 0;
-  height: 0;
 }
 
-.swSlider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #949494;
-  -webkit-transition: .4s;
-  transition: .4s;
+label input[role="switch"] ~ .swState {
+  display: inline-block;
+  user-select: none;
 }
 
-.swSlider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .swSlider {
-  background-color: #2196F3;
-}
-
-input:focus + .swSlider {
-  box-shadow: 0 0 1px #2196F3;
+label input[role="switch"] ~ .swState > .swContainer {
+  position: relative;
+  top: 2px;
+  display: inline-block;
   border: 2px solid black;
-  box-sizing: border-box;
+  width: 40px;
+  height: 20px;
+  border-radius: 11px;
 }
 
-input:checked + .swSlider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+label input[role="switch"] ~ .swState > .swContainer > .swPosition {
+  position: relative;
+  top: 1px;
+  left: 2px;
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 9px;
+  width: 14px;
+  height: 14px;
+  background: black;
+  opacity: 0.6;
 }
 
-/* Rounded sliders */
-.swSlider.round {
-  border-radius: 34px;
+label input[role="switch"]:not(:checked) ~ .swState span.on {
+  display: none;
 }
 
-.swSlider.round:before {
-  border-radius: 50%;
+label input[role="switch"]:checked ~ .swState > span.off {
+  display: none;
 }
+
+label input[role="switch"]:checked ~ .swState > .swContainer > .swPosition {
+  left: 20px;
+  border-color: green;
+  background: green;
+  opacity: 1;
+}
+
+/*label.focus,
+label:hover {
+  padding: 2px 2px 4px 4px;
+  border-width: 2px;
+  outline: none;
+  background-color: #def;
+  cursor: pointer;
+}
+
+label.focus span.container,
+label:hover span.container {
+  background-color: white;
+}*/
+
 /************************/
 /* 1.4.11 custom slider */
 /************************/
