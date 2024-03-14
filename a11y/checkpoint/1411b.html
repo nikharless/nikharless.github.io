@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 1.4.11.a Active User Interface Components (Non-text Contrast)
-current: /a11y/checkpoint/1411a.html
+title: 1.4.11.b States of User Interface (Non-text Contrast)
+current: /a11y/checkpoint/1411b.html
 root: WCAG 2.2
 scurl: /a11y/sc/1411.html
 sctitle: 1.4.11 Non-text Contrast
@@ -21,9 +21,13 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
 
     <h2>Overview</h2>
 
-    <p>Visual indicators of a control's boundaries must have at least 3:1 contrast with the background. This includes both internal and external boundaries. For example, a slider button must have sufficient contrast with the slider bar, and the slider bar must have sufficient contrast with the page background.</p>
+    <p>Visual indicators of a control's state must have at least 3:1 contrast with adjacent colors. This includes both internal and external boundaries. For example, a switch button must have sufficient contrast with the switch bar, and the switch bar must have sufficient contrast with the page background.</p>
 
-    <p><em>Note: Visual indicators of the boundaries are not required. This checkpoint only applies if the boundaries are the only way to identify the control.</em></p>
+    <p><em>Note: Visual indicators of the boundaries are not required. This checkpoint only applies if the boundaries are the only way to identify the state.</em></p>
+
+    <p><em>Note: There is no contrast requirement between different states of a control except when the different states appear simultaneously next to each other, such as in the case of checked and unchecked checkboxes or selected and unselected buttons.</em></p>
+
+    <p><em>In the case of focused vs non-focused controls, this checkpoint does not apply to contrast between states. However, a case where there is insufficient contrast between these states likely would fail <a href="/a11y/sc/141.html">1.4.1 Use of Color</a>.</em></p>
 
     <p>Exceptions include:</p>
     <ul>
@@ -35,30 +39,30 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
 
     <h3>Examples</h3>
 
-    <h4>Custom Checkboxes</h4>
-    <label class="ccbContainer">Check this box
+    <h4>Custom Checkboxes (focus, hover, checked)</h4>
+    <label class="ccbContainer" checked="checked">Check this box
         <input type="checkbox">
         <span class="ccbCheckmark"></span>
     </label>
 
-    <h4>Custom Radio Buttons</h4>
-    <label class="ccbContainer">Check this radio button
+    <h4>Custom Radio Buttons (focus, hover, checked)</h4>
+    <label class="ccbContainer" checked>Check this radio button
         <input type="radio">
         <span class="ccbRadio"></span>
     </label>
 
     <h4>Text Fields</h4>
-    <label for="firstName"> First Name</label><br>
+    <label for="firstName"> First Name (focus, hover)</label><br>
         <input type="text" id="firstName" style="border: 2px solid #2196F3; height: 2em;">
     </label>
 
-    <h4>Switches</h4>
+    <h4>Switches (focus, hover, checked)</h4>
     <label class="switch">
-        <input type="checkbox">
+        <input type="checkbox" checked="checked">
         <span class="swSlider round"></span>
     </label>
 
-    <h4>Sliders</h4>
+    <h4>Sliders (focus, hover)</h4>
     <div class="slidecontainer">
         <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
     </div>
@@ -67,13 +71,13 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
         <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Visual indicators of a control's boundaries must have at least 3:1 contrast with the background.</li>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> User controls should have visual boundaries to distinguish the hit area.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Visual indicators of a control's states must have at least 3:1 contrast with the background.</li>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> User controls should have visual indicators to distinguish all states.</li>
     </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with low vision, I want controls to have sufficient contrast so that I can distinguish them.</div>
+    <div class="userstory"><strong>User Story:</strong> As a user with low vision, I want controls to have sufficient contrast in all states so that I can distinguish them.</div>
 
-    <div class="success"><strong>Success:</strong> If you had low vision, when you encountered controls, you would be able to distinguish them from surrounding content.</div>
+    <div class="success"><strong>Success:</strong> If you had low vision, when you encountered controls in various states, you would be able to distinguish them from surrounding content.</div>
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
