@@ -436,8 +436,9 @@ ul[role="tree"] li {
   color: white;
   background-color: rgba(0,0,0,0.5);
 }
-
+/******************************/
 /* 1.4.11.a custom checkboxes */
+/******************************/
 /* The container */
 .ccbContainer {
   display: block;
@@ -528,8 +529,9 @@ ul[role="tree"] li {
   border-radius: 50%;
   background: white;
 }
-
+/****************************/
 /* 1.4.11.a custom switches */
+/****************************/
 .switch {
   position: relative;
   display: inline-block;
@@ -543,7 +545,7 @@ ul[role="tree"] li {
   height: 0;
 }
 
-.slider {
+.swSlider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -555,7 +557,7 @@ ul[role="tree"] li {
   transition: .4s;
 }
 
-.slider:before {
+.swSlider:before {
   position: absolute;
   content: "";
   height: 26px;
@@ -567,27 +569,69 @@ ul[role="tree"] li {
   transition: .4s;
 }
 
-input:checked + .slider {
+input:checked + .swSlider {
   background-color: #2196F3;
 }
 
-input:focus + .slider {
+input:focus + .swSlider {
   box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked + .swSlider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
 
 /* Rounded sliders */
-.slider.round {
+.swSlider.round {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.swSlider.round:before {
   border-radius: 50%;
+}
+/************************/
+/* 1.4.11 custom slider */
+/************************/
+.slidecontainer {
+  width: 80%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  box-sizing: border-box;
+  border: 2px solid #949494; /* Grey border */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #2196F3; /* Blue background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #2196F3; /* Blue background */
+  cursor: pointer; /* Cursor on hover */
 }
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
