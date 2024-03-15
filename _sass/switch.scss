@@ -1,0 +1,83 @@
+#switchExample fieldset {
+  width: 22em;
+}
+
+#switchExample legend {
+  font-size: 110%;
+}
+
+#switchExample label {
+  display: block;
+  margin: 0.5em;
+  padding: 4px 4px 6px 6px;
+  border: 0 solid #005a9c;
+  border-radius: 5px;
+  width: 16em;
+}
+
+#switchExample label .label {
+  display: inline-block;
+  width: 9em;
+  user-select: none;
+}
+
+#switchExample label input[role="switch"] {
+  opacity: 0;
+}
+
+#switchExample label input[role="switch"] ~ .state {
+  display: inline-block;
+  user-select: none;
+}
+
+#switchExample label input[role="switch"] ~ .state > .container {
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  border: 2px solid black;
+  width: 40px;
+  height: 20px;
+  border-radius: 11px;
+}
+
+#switchExample label input[role="switch"] ~ .state > .container > .position {
+  position: relative;
+  top: 1px;
+  left: 2px;
+  display: inline-block;
+  border: 2px solid black;
+  border-radius: 9px;
+  width: 14px;
+  height: 14px;
+  background: black;
+  opacity: 0.6;
+}
+
+#switchExample label input[role="switch"]:not(:checked) ~ .state span.on {
+  display: none;
+}
+
+#switchExample label input[role="switch"]:checked ~ .state > span.off {
+  display: none;
+}
+
+#switchExample label input[role="switch"]:checked ~ .state > .container > .position {
+  left: 20px;
+  border-color: green;
+  background: green;
+  opacity: 1;
+}
+
+#switchExample label.focus,
+#switchExample label:hover {
+  padding: 2px 2px 4px 4px;
+  border-width: 2px;
+  outline: none;
+  background-color: #def;
+  cursor: pointer;
+}
+
+#switchExample label.focus span.container,
+#switchExample label:hover span.container {
+  background-color: white;
+}

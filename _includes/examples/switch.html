@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Switch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/a11y/assets/css/styles.css">
+    <link rel="stylesheet" href="/a11y/assets/css/switch.css">
+    <script src="/a11y/assets/js/switch.js"></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <a href="#main" class="skip-link">Skip to main content</a>
+        <p class="siteTitle">Web Accessibility Testing</p>
+    </header>
+
+    <!-- Navigation Bar -->
+        {% include navigation.html %}
+
+    <!-- The flexible grid (content) -->
+    <main id="main" class="row">
+      {% include sidebar.html %}
+
+      <div class="content row">
+        {{ content }}
+      </div>
+      <script src="/a11y/assets/js/accordion.js"></script>
+      <script>
+        var button1 = document.getElementById("accordion1id");
+        var button2 = document.getElementById("accordion2id");
+        var button3 = document.getElementById("accordion3id");
+        var button4 = document.getElementById("accordion4id");
+        {% if page.guideline == "perceivable" %}
+          button1.click();
+        {% endif %}
+        {% if page.guideline == "operable" %}
+          button2.click();
+        {% endif %}
+        {% if page.guideline == "understandable" %}
+          button3.click();
+        {% endif %}
+        {% if page.guideline == "robust" %}
+          button4.click();
+        {% endif %}
+      </script>
+    </main>
+    <footer class="footer">{% include footer.html %}</footer>
+  </body>
+</html>
