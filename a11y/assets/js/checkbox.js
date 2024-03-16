@@ -26,8 +26,12 @@ class Checkbox {
   toggleCheckbox() {
     if (this.domNode.getAttribute('aria-checked') === 'true') {
       this.domNode.setAttribute('aria-checked', 'false');
+      this.domNode.ccbCheckmark.style.backgroundColor = "#eee";
+      this.domNode.ccbCheckmark.style.borderColor = "black";
     } else {
       this.domNode.setAttribute('aria-checked', 'true');
+      this.domNode.ccbCheckmark.style.backgroundColor = "#1C7AC7";
+      this.domNode.ccbCheckmark.style.borderColor = "#1C7AC7";
     }
   }
 
