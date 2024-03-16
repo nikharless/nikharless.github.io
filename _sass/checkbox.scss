@@ -63,16 +63,18 @@
   background-color: #eee;
 }
 
-/* On focus, add a grey background color and darker border */
+/* On focus, add a grey background color and darker border 
 .cbExample label input:focus ~ .ccbCheckmark,
-.cbExample label input:focus ~ .ccbRadio {
+.cbExample label input:focus ~ .ccbRadio*/ 
+.ccbNotChecked{
   background-color: #eee;
   border: 2px solid black;
 }
 
-/* When the checkbox is checked, add a blue background */
+/* When the checkbox is checked, add a blue background 
 .cbExample label[aria-checked="true"] ~ .ccbCheckmark,
-.cbExample label[aria-checked="true"] ~ .ccbRadio {
+.cbExample label[aria-checked="true"] ~ .ccbRadio */
+.ccbChecked {
   background-color: #1C7AC7;
   border-color: #1C7AC7;
 }
@@ -82,20 +84,23 @@
 .ccbRadio:after {
   content: "";
   position: absolute;
-  display: none;
 }
 
 /* Show the checkmark when checked */
-.cbExample label[aria-checked="true"] ~ .ccbCheckmark:after,
-.cbExample label[aria-checked="true"] ~ .ccbRadio:after {
+.cbExample label[aria-checked="true"] ~ .ccbChecked {
   display: block;
 }
+.cbExample label[aria-checked="true"] ~ .ccbNotChecked {
+  display: none;
+}
 
-/*[role="checkbox"][aria-checked="true"]::before {
-  position: relative;
-  top: 1px;
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='16' width='16' style='forced-color-adjust: auto;'%3E%3Crect x='2' y='2' height='13' width='13' rx='2' stroke='currentcolor' stroke-width='1' fill-opacity='0' /%3E%3Cpolyline points='4,8 7,12 12,5' fill='none' stroke='currentcolor' stroke-width='2' /%3E%3C/svg%3E");
-}*/
+/* Hide the checkmark when not checked */
+.cbExample label[aria-checked="false"] ~ .ccbChecked {
+  display: none;
+}
+.cbExample label[aria-checked="true"] ~ .ccbNotChecked {
+  display: block;
+}
 
 /* Style the checkmark/indicator */
 .cbExample label .ccbCheckmark:after {
