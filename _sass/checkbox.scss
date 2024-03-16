@@ -3,16 +3,23 @@
 /******************************/
 /* The container */
 
-.cbExample label {
+.cbExample label { /*.ccbContainer*/
   display: block;
   margin: 0.5em;
-  /* padding: 4px 4px 6px 6px;*/
+  padding: 4px 4px 6px 35px;
   border: 0 solid .005a9c;
   border-radius: 5px;
   width: 16em;
+
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.cbExample label.focus,
+.cbExample label:focus,
 .cbExample label:hover {
   /* padding: 2px 2px 4px 4px;*/
   border-width: 2px;
@@ -21,20 +28,8 @@
   cursor: pointer;
 }
 
-.ccbContainer {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 /* Hide the browser's default checkbox */
-.ccbContainer input {
+.cbExample label input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -63,21 +58,21 @@
 }
 
 /* On mouse-over, add a grey background color */
-.ccbContainer:hover input ~ .ccbCheckmark,
-.ccbContainer:hover input ~ .ccbRadio {
+.cbExample label:hover input ~ .ccbCheckmark,
+.cbExample label:hover input ~ .ccbRadio {
   background-color: #eee;
 }
 
 /* On focus, add a grey background color and darker border */
-.ccbContainer input:focus ~ .ccbCheckmark,
-.ccbContainer input:focus ~ .ccbRadio {
+.cbExample label input:focus ~ .ccbCheckmark,
+.cbExample label input:focus ~ .ccbRadio {
   background-color: #eee;
   border: 2px solid black;
 }
 
 /* When the checkbox is checked, add a blue background */
-.ccbContainer input:checked ~ .ccbCheckmark,
-.ccbContainer input:checked ~ .ccbRadio {
+.cbExample label input:checked ~ .ccbCheckmark,
+.cbExample label input:checked ~ .ccbRadio {
   background-color: #1C7AC7;
   border-color: #1C7AC7;
 }
@@ -91,13 +86,13 @@
 }
 
 /* Show the checkmark when checked */
-.ccbContainer input:checked ~ .ccbCheckmark:after,
-.ccbContainer input:checked ~ .ccbRadio:after {
+.cbExample label input:checked ~ .ccbCheckmark:after,
+.cbExample label input:checked ~ .ccbRadio:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.ccbContainer .ccbCheckmark:after {
+.cbExample label .ccbCheckmark:after {
   left: 7px;
   top: 0;
   width: 7px;
@@ -109,7 +104,7 @@
   transform: rotate(45deg);
 }
 /* Style the indicator (dot/circle) */
-.ccbContainer .ccbRadio:after {
+.cbExample label .ccbRadio:after {
   top: 5px;
   left: 5px;
   width: 12px;
