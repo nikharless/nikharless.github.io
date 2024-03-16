@@ -3,14 +3,14 @@
 /******************************/
 /* The container */
 
-.cbExample label { /*.ccbContainer*/
+.cbExample label,
+.radioExample label { /*.ccbContainer*/
   display: block;
   margin: 0.5em;
   padding: 4px 4px 6px 35px;
   border: 0 solid .005a9c;
   border-radius: 5px;
   width: 16em;
-
   position: relative;
   cursor: pointer;
   -webkit-user-select: none;
@@ -20,21 +20,13 @@
 }
 
 .cbExample label:focus,
-.cbExample label:hover {
-  /* padding: 2px 2px 4px 4px;*/
+.cbExample label:hover, 
+.radioExample label:focus,
+.radioExample label:hover {
   border-width: 2px;
   outline: none;
   background-color: #def;
   cursor: pointer;
-}
-
-/* Hide the browser's default checkbox */
-.cbExample label input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
 }
 
 /* Create a custom checkbox */
@@ -47,7 +39,7 @@
   border: 2px solid #949494;
 }
 /* Create a custom radio button */
-.ccbRadio {
+.crbRadio {
   position: absolute;
   top: 0;
   left: 0;
@@ -59,12 +51,12 @@
 
 /* On mouse-over, add a grey background color */
 .cbExample label:hover input ~ .ccbNotChecked,
-.cbExample label:hover input ~ .ccbRadio {
+.cbExample label:hover input ~ .crbRadio {
   background-color: #eee;
 }
 
 /* On focus, add a grey background color and darker border */ 
-.ccbNotChecked{
+.ccbNotChecked {
   background-color: #eee;
   border: 2px solid black;
 }
@@ -77,26 +69,10 @@
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .ccbChecked:after,
-.ccbRadio:after {
+.crbRadio:after {
   content: "";
   position: absolute;
 }
-
-/* Show the checkmark when checked 
-.cbExample label[aria-checked="true"] ~ .ccbChecked {
-  display: block;
-}
-.cbExample label[aria-checked="true"] ~ .ccbNotChecked {
-  display: none;
-}*/
-
-/* Hide the checkmark when not checked 
-.cbExample label[aria-checked="false"] ~ .ccbChecked {
-  display: none;
-}
-.cbExample label[aria-checked="true"] ~ .ccbNotChecked {
-  display: block;
-}*/
 
 /* Style the checkmark/indicator */
 .cbExample label .ccbChecked:after {
@@ -110,8 +86,8 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/* Style the indicator (dot/circle) */
-.cbExample label .ccbRadio:after {
+/* Style the radio indicator (dot/circle) */
+.cbExample label .crbRadio:after {
   top: 5px;
   left: 5px;
   width: 12px;
