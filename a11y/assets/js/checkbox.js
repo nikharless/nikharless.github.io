@@ -13,8 +13,9 @@ class Checkbox {
   constructor(domNode) {
     this.domNode = domNode;
     this.domNode.tabIndex = 0;
-    this.ccbChecked = document.getElementById('ccbChecked');
-    this.ccbNotChecked = document.getElementById('ccbNotChecked');
+    /* Find a way to cycle through checkboxes */
+    this.ccbChecked = document.getElementById('ccbChecked1');
+    this.ccbNotChecked = document.getElementById('ccbNotChecked1');
 
     if (!this.domNode.getAttribute('aria-checked')) {
       this.domNode.setAttribute('aria-checked', 'false');
