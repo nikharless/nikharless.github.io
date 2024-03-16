@@ -26,10 +26,6 @@ class RadioGroup {
       rb.tabIndex = -1;
       rb.setAttribute('aria-checked', 'false');
       rb.rbChecked = getElementById('crbChecked' + (i+1));
-      rb.rbChecked.style.display = "none";
-      alert(rb.rbChecked);
-      /*rb.getElementById('crbChecked' + (i+1)).style.display = "none";
-      rb.getElementById('crbNotChecked' + (i+1)).style.display = "block";*/
 
       rb.addEventListener('keydown', this.handleKeydown.bind(this));
       rb.addEventListener('click', this.handleClick.bind(this));
@@ -50,13 +46,13 @@ class RadioGroup {
     for (var i = 0; i < this.radioButtons.length; i++) {
       var rb = this.radioButtons[i];
       rb.setAttribute('aria-checked', 'false');
-      /*rb.getElementById('crbChecked' + (i+1)).style.display = "none";
-      rb.getElementById('crbNotChecked' + (i+1)).style.display = "block";*/
+      rb.firstElementChild.setAttribute('style', 'display="none"');
+      rb.lastElementChild.setAttribute('style', 'display="block"');
       rb.tabIndex = -1;
     }
     currentItem.setAttribute('aria-checked', 'true');
-    /*currentItem.getElementById('crbChecked' + (i+1)).style.display = "block";
-    currentItem.getElementById('crbNotChecked' + (i+1)).style.display = "none";*/
+    currentItem.firstElementChild.setAttribute('style', 'display="block"');
+    currentItem.lastElementChild.setAttribute('style', 'display="none"');
     currentItem.tabIndex = 0;
     currentItem.focus();
   }
