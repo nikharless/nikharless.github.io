@@ -45,13 +45,13 @@ class RadioGroup {
     for (var i = 0; i < this.radioButtons.length; i++) {
       var rb = this.radioButtons[i];
       rb.setAttribute('aria-checked', 'false');
-      rb.firstElementChild.setAttribute('style', 'display="none"');
-      rb.lastElementChild.setAttribute('style', 'display="block"');
+      rb.firstElementChild.setAttribute('style', 'display: none;');
+      rb.lastElementChild.setAttribute('style', 'display: block;');
       rb.tabIndex = -1;
     }
     currentItem.setAttribute('aria-checked', 'true');
-    currentItem.firstElementChild.setAttribute('style', 'display="block"');
-    currentItem.lastElementChild.setAttribute('style', 'display="none"');
+    currentItem.firstElementChild.setAttribute('style', 'display: block;');
+    currentItem.lastElementChild.setAttribute('style', 'display: none;');
     currentItem.tabIndex = 0;
     currentItem.focus();
   }
