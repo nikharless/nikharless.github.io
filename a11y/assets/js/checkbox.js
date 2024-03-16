@@ -29,10 +29,10 @@ class Checkbox {
     if (this.domNode.getAttribute('aria-checked') === 'true') {
       this.domNode.setAttribute('aria-checked', 'false');
       this.ccbChecked.style.display = "none";
-      this.ccbNotChecked.style.display = "display";
+      this.ccbNotChecked.style.display = "block";
     } else {
       this.domNode.setAttribute('aria-checked', 'true');
-      this.ccbChecked.style.display = "display";
+      this.ccbChecked.style.display = "block";
       this.ccbNotChecked.style.display = "none";
     }
   }
