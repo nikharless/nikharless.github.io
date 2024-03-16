@@ -25,6 +25,9 @@ class RadioGroup {
 
       rb.tabIndex = -1;
       rb.setAttribute('aria-checked', 'false');
+      rb.rbChecked = getElementById('crbChecked' + (i+1));
+      rb.rbChecked.style.display = "none";
+      alert(rb.rbChecked);
       /*rb.getElementById('crbChecked' + (i+1)).style.display = "none";
       rb.getElementById('crbNotChecked' + (i+1)).style.display = "block";*/
 
