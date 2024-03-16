@@ -13,8 +13,8 @@ class Checkbox {
   constructor(domNode) {
     this.domNode = domNode;
     this.domNode.tabIndex = 0;
-    this.ccbChecked = this.domNode.firstChild;
-    this.ccbNotChecked = this.domNode.lastChild;
+    this.ccbChecked = document.getElementById('ccbChecked');
+    this.ccbNotChecked = document.getElementById('ccbNotChecked');
 
     if (!this.domNode.getAttribute('aria-checked')) {
       this.domNode.setAttribute('aria-checked', 'false');
