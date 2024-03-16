@@ -58,29 +58,27 @@
 }
 
 /* On mouse-over, add a grey background color */
-.cbExample label:hover input ~ .ccbCheckmark,
+.cbExample label:hover input ~ .ccbNotChecked,
 .cbExample label:hover input ~ .ccbRadio {
   background-color: #eee;
 }
 
-/* On focus, add a grey background color and darker border 
-.cbExample label input:focus ~ .ccbCheckmark,
-.cbExample label input:focus ~ .ccbRadio*/ 
+/* On focus, add a grey background color and darker border */ 
 .ccbNotChecked{
   background-color: #eee;
   border: 2px solid black;
+  display: none;
 }
 
-/* When the checkbox is checked, add a blue background 
-.cbExample label[aria-checked="true"] ~ .ccbCheckmark,
-.cbExample label[aria-checked="true"] ~ .ccbRadio */
+/* When the checkbox is checked, add a blue background */
 .ccbChecked {
   background-color: #1C7AC7;
   border-color: #1C7AC7;
+  display: none;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
-.ccbCheckmark:after,
+.ccbChecked:after,
 .ccbRadio:after {
   content: "";
   position: absolute;
@@ -103,7 +101,7 @@
 }
 
 /* Style the checkmark/indicator */
-.cbExample label .ccbCheckmark:after {
+.cbExample label .ccbChecked:after {
   left: 7px;
   top: 0;
   width: 7px;
