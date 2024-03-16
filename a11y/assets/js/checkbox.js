@@ -13,7 +13,6 @@ class Checkbox {
   constructor(domNode) {
     this.domNode = domNode;
     this.domNode.tabIndex = 0;
-    alert(this.domNode.children.length)
     this.ccbCheckmark = this.domNode.firstChild;
 
     if (!this.domNode.getAttribute('aria-checked')) {
@@ -28,8 +27,12 @@ class Checkbox {
   toggleCheckbox() {
     if (this.domNode.getAttribute('aria-checked') === 'true') {
       this.domNode.setAttribute('aria-checked', 'false');
+      this.ccbCheckmark.style.backgroundColor = "#eee";
+      this.ccbCheckmark.style.borderColor = "black";
     } else {
       this.domNode.setAttribute('aria-checked', 'true');
+      this.ccbCheckmark.style.backgroundColor = "#1C7AC7";
+      this.ccbCheckmark.style.borderColor = "#1C7AC7";
     }
   }
 
