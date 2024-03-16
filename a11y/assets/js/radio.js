@@ -25,7 +25,6 @@ class RadioGroup {
 
       rb.tabIndex = -1;
       rb.setAttribute('aria-checked', 'false');
-      rb.rbChecked = getElementById('crbChecked' + (i+1));
 
       rb.addEventListener('keydown', this.handleKeydown.bind(this));
       rb.addEventListener('click', this.handleClick.bind(this));
