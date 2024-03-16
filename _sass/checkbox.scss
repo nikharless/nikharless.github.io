@@ -1,52 +1,100 @@
-.cbExample, 
-.cbExample * {
-  box-sizing: content-box;
-}
-
-.cbExample ul.checkboxes {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  padding-left: 1em;
-}
-
-.cbExample ul.checkboxes li {
-  list-style: none;
-  margin: 1px;
-  padding: 0;
-}
-
-.cbExample [role="checkbox"] {
-  display: inline-block;
-  padding: 4px 8px;
-  cursor: pointer;
-}
-
-.cbExample [role="checkbox"]::before {
+/******************************/
+/* 1.4.11.a custom checkboxes */
+/******************************/
+/* The container */
+.ccbContainer {
   display: block;
   position: relative;
-  top: 1px;
-  left: -4px;
-  width: 25px;
-  height: 25px;
-  border: 2px solid #949494;
-  /*content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' width='24' style='forced-color-adjust: auto;'%3E%3Crect x='2' y='2' height='21' width='21' rx='2' stroke='currentcolor' stroke-width='1' fill-opacity='0' /%3E%3C/svg%3E");*/
-}
-
-.cbExample [role="checkbox"][aria-checked="true"]::before {
-  position: relative;
-  top: 1px;
-  content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' width='24' style='forced-color-adjust: auto;'%3E%3Crect x='2' y='2' height='21' width='21' rx='2' stroke='currentcolor' stroke-width='1' fill-opacity='0' /%3E%3Cpolyline points='4,8 7,12 12,5' fill='none' stroke='currentcolor' stroke-width='2' /%3E%3C/svg%3E");
-}
-
-.cbExample [role="checkbox"]:focus,
-.cbExample [role="checkbox"]:hover {
-  padding: 2px 6px;
-  border: 2px solid #005a9c;
-  border-radius: 5px;
-  background-color: #def;
-}
-
-.cbExample [role="checkbox"]:hover {
+  padding-left: 35px;
+  margin-bottom: 12px;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.ccbContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.ccbCheckmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border: 2px solid #949494;
+}
+/* Create a custom radio button */
+.ccbRadio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border: 2px solid #949494;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.ccbContainer:hover input ~ .ccbCheckmark,
+.ccbContainer:hover input ~ .ccbRadio {
+  background-color: #eee;
+}
+
+/* On focus, add a grey background color and darker border */
+.ccbContainer input:focus ~ .ccbCheckmark,
+.ccbContainer input:focus ~ .ccbRadio {
+  background-color: #eee;
+  border: 2px solid black;
+}
+
+/* When the checkbox is checked, add a blue background */
+.ccbContainer input:checked ~ .ccbCheckmark,
+.ccbContainer input:checked ~ .ccbRadio {
+  background-color: #1C7AC7;
+  border-color: #1C7AC7;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.ccbCheckmark:after,
+.ccbRadio:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.ccbContainer input:checked ~ .ccbCheckmark:after,
+.ccbContainer input:checked ~ .ccbRadio:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.ccbContainer .ccbCheckmark:after {
+  left: 7px;
+  top: 0;
+  width: 7px;
+  height: 15px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* Style the indicator (dot/circle) */
+.ccbContainer .ccbRadio:after {
+  top: 5px;
+  left: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
 }
