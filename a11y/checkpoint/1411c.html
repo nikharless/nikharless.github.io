@@ -1,0 +1,129 @@
+---
+layout: default
+title: 1.4.11.c Graphical Objects (Non-text Contrast)
+current: /a11y/checkpoint/1411c.html
+root: WCAG 2.2
+scurl: /a11y/sc/1411.html
+sctitle: 1.4.11 Non-text Contrast
+guideline: perceivable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
+css: 1411
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <p>Exceptions include:</p>
+    <ul>
+        <li>Decorative graphics</li>
+        <li>Graphics with accompanying text that conveys the same information</li>
+        <li>Graphics where the colors are essential (such as logos)</li>
+    </ul>
+
+    <h3>Examples</h3>
+
+    <h4>Single-color Icon</h4>
+    <div role="button"><img src="/a11y/assets/images/111a-shopping-cart.png" alt="Add to cart"></div>
+
+    <h4>Multi-color Icon</h4>
+    <div role="button"><img src="/a11y/assets/images/1411c-thumbs-up.png" style="max-width: 64px" alt="Like"></div>
+
+    <h4>Pie Chart</h4>
+
+    <h4>Line Chart</h4>
+
+    <h4>Text Character Used as a Graphic Symbol</h4>
+    <button aria-label="Close">X</button>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Parts of graphics required to understand the content must have a contrast ratio of 3:1 against adjacent colors.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The color contrast of non-text visual information in icons should have a 4.5:1 contrast.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with low vision, I want graphical objects to have sufficient contrast so that I can tell what they are.</div>
+
+    <div class="success"><strong>Success:</strong> If you had low vision, when you encountered graphical objects such as icons or graphs, you would be able to distinguish them and understand their purpose.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the page include graphics which convey meaningful information?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do parts of the graphic that are required to understand the content have a contrast ratio of at least 3:1 against adjacent colors?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See See </span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+ 
+    <ol>
+        <li>Identify each graphic on the page that includes information required for understanding the content.</li>
+        <li>Mentally break down each graphic into its smallest meaningful pieces. Each meaningful piece is a graphical object.</li>
+        <li>For each graphical object, verify that the contrast against adjacent colors is at least 3:1.</li>
+        <li>If there are multiple colors and/or a gradient, choose the least contrasting area to test.</li>
+        <li>If the area with the least contrast is less than 3:1, assume that area is invisible.</li>
+        <li>Verify that the meaning of the graphical object is understandable without the invisible area.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <p>Follow the web test procedure.</p>
+
+    <h2>PDF Test Procedure</h2>
+    <p>Follow the web test procedure.</p>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/1411/f1411ca.html">F1.4.11.c.a Icon does not have 3:1 contrast with its background.</a> (Medium)</li>
+        <li><a href="/a11y/failure/1411/f1411cb.html">F1.4.11.c.b Part of graphic does not have 3:1 contrast against adjacent colors.</a> (Medium)</li>
+        <li><a href="/a11y/failure/1411/f1411cchtml">F1.4.11.c.c Adjacent parts of a graph do not have 3:1 contrast.</a> (Medium)</li>
+        <li><a href="/a11y/failure/1411/f1411cdhtml">F1.4.11.c.d Text characters used as graphic symbols do not have 3:1 contrast.</a> (Medium)</li>
+
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li><a href="https://www.tpgi.com/color-contrast-checker/">TPGi Colour Contrast Analyzer</a></li>
+        <li><a href="https://dequeuniversity.com/color-contrast">Deque Color Contrast Analyzer</a></li>
+        <li><a href="https://coolors.co/contrast-checker/112a46-acc8e5">Coolors Color Contrast Checker</a></li>
+        <li><a href="https://webaim.org/resources/contrastchecker/">WebAIM Contrast Checker</a></li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G207">G207: Ensuring that a contrast ratio of 3:1 is provided for icons</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G209">G209: Provide sufficient contrast at the boundaries between adjoining colors</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://webaim.org/articles/contrast/">WebAIM: Contrast and Color Accessibility</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast">MDN: Color contrast</a></li>
+    </ul>
+</div>
+
+    {% include 1411checkpoints.html %}
