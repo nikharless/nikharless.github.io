@@ -32,9 +32,11 @@ css: 1411
     <h3>Examples</h3>
 
     <h4>Single-color Icon</h4>
+    <p>A single-color icon must have 3:1 contrast with the background.</p>
     <div role="button"><img src="/a11y/assets/images/111a-shopping-cart.png" alt="Add to cart"></div>
 
     <h4>Multi-color Icon</h4>
+    <p>The hand in this icon has more than one color. However, the shape of the hand is understandable without contrast between those colors. The contrast between the hand and the background is sufficient, so the icon passes.</p>
     <div role="button"><img src="/a11y/assets/images/1411c-thumbs-up.png" style="max-width: 64px" alt="Like"></div>
 
     <h4>Pie Chart</h4>
@@ -42,7 +44,8 @@ css: 1411
     <h4>Line Chart</h4>
 
     <h4>Text Character Used as a Graphic Symbol</h4>
-    <button aria-label="Close">X</button>
+    <p>Text characters such as x, <, and > are often used as graphic symbols. As such, the non-text contrast rule of 3:1 applies.</p>
+    <button aria-label="Close"><b>X</b></button>
 
     <h2>Basic Requirements and Best Practices</h2>
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
@@ -63,7 +66,21 @@ css: 1411
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do parts of the graphic that are required to understand the content have a contrast ratio of at least 3:1 against adjacent colors?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See See </span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the graphic have more than one color?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the graphic a chart or graph?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1411/f1411cchtml">F1.4.11.c.c Adjacent parts of a graph do not have 3:1 contrast.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; Is the graphic a text character used as a symbol?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1411/f1411cdhtml">F1.4.11.c.d Text characters used as graphic symbols do not have 3:1 contrast.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1411/f1411cb.html">F1.4.11.c.b Part of graphic does not have 3:1 contrast against adjacent colors.</a></span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
