@@ -4,27 +4,66 @@
 
 /* The slider itself */
 .slider {
-  -webkit-appearance: none;  /* Override default CSS styles */
+  --c: #2C97EE; /* active color */
+  --l: 8px; /* line thickness*/
+  --h: 30px; /* thumb height */
+  --w: 10px; /* thumb width */
+
+  width: 400px;
+  height: var(--h); /* needed for Firefox*/
+  --_c: color-mix(in srgb, var(--c), #000 var(--p,0%));
+
+  -webkit-appearance: none;
+  -moz-appearance :none;
   appearance: none;
-  width: 100%; /* Full-width */
-  height: 25px; /* Specified height */
-  box-sizing: border-box;
-  border: 2px solid #949494; /* Grey border */
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.slider:focus-visible,
+.slider:hover {
+  --p: 25%;
 }
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
 .slider::-webkit-slider-thumb {
+  height: var(--h);
+  width: var(--w);
+  background: var(--_c);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.slider::-moz-range-thumb {
+  height: var(--h);
+  width: var(--w);
+  background: var(--_c);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+@supports not (color: color-mix(in srgb,red,red)) {
+  input {
+    --_c: var(--c);
+  }
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider2::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: #2C97EE; /* Blue background */
+  background: white; /* White background */
+  border: 2px solid #949494; /* Grey border */
   cursor: pointer; /* Cursor on hover */
 }
 
-.slider::-moz-range-thumb {
+.slider2::-moz-range-thumb {
   width: 25px; /* Set a specific slider handle width */
   height: 25px; /* Slider handle height */
-  background: #2C97EE; /* Blue background */
+  background: white; /* White background */
+  border: 2px solid #949494; /* Grey border */
   cursor: pointer; /* Cursor on hover */
 }
