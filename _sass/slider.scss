@@ -13,8 +13,8 @@
   height: var(--h); /* needed for Firefox*/
   --_c: color-mix(in srgb, var(--c), #000 var(--p,0%));
 
-  -webkit-appearance: none;
-  -moz-appearance :none;
+  -webkit-appearance: none !important;
+  -moz-appearance :none !important;
   appearance: none;
   background: none;
   cursor: pointer;
@@ -22,12 +22,36 @@
 }
 
 .slider:focus-visible,
-.slider:hover {
+.slider:hover,
+.slider2:focus-visible,
+.slider2:hover {
   --p: 25%;
 }
 
+.slider2 {
+  --c: #2C97EE; /* active color */
+  --g: 8px; /* the gap */
+  --l: 5px; /* line thickness*/
+  --s: 30px; /* thumb size*/
+  
+  width: 400px;
+  height: var(--s); /* needed for Firefox*/
+  --_c: color-mix(in srgb, var(--c), #000 var(--p,0%));
+  -webkit-appearance :none !important;
+  -moz-appearance :none !important;
+  appearance :none;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.slider2:active,
+.slider2:focus-visible{
+  --_b: var(--s)
+}
+
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-input[type="range" i]::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb {
   height: var(--h);
   width: var(--w);
   background: var(--_c);
@@ -37,18 +61,42 @@ input[type="range" i]::-webkit-slider-thumb {
   transition: .3s;
 }
 
-input[type="range"]::-moz-range-thumb {
+.slider2::-webkit-slider-thumb{
+  height: var(--s);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 0 0 0 var(--_b,var(--l)) inset var(--_c);
+  border-image: linear-gradient(90deg,var(--_c) 50%,#ababab 0) 0 1/calc(50% - var(--l)/2) 100vw/0 calc(100vw + var(--g));
+  -webkit-appearance: none;
+  appearance: none;
+  transition: .3s;
+}
+
+.slider::-moz-range-thumb {
   height: var(--h);
   width: var(--w);
   background: var(--_c);
   border-image: linear-gradient(90deg,var(--_c) 50%,#ababab 0) 0 1/calc(50% - var(--l)/2) 100vw/0 100vw;
   -webkit-appearance: none;
+  appearance: none;
+  transition: .3s;
+}
+
+.slider2::-moz-range-thumb {
+  height: var(--s);
+  width: var(--s);
+  background: none;
+  border-radius: 50%;
+  box-shadow: 0 0 0 var(--_b,var(--l)) inset var(--_c);
+  border-image: linear-gradient(90deg,var(--_c) 50%,#ababab 0) 0 1/calc(50% - var(--l)/2) 100vw/0 calc(100vw + var(--g));
+  -moz-appearance: none;
   appearance: none;
   transition: .3s;
 }
 
 @supports not (color: color-mix(in srgb,red,red)) {
-  .slider {
+  .slider,
+  .slider2 {
     --_c: var(--c);
   }
 }
