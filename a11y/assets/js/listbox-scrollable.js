@@ -21,5 +21,5 @@ var aria = aria || {};
  */
 
 window.addEventListener('load', function () {
-  new aria.Listbox(document.getElementById('ss_elem_list'));
+  new aria.Listbox(document.getElementById('ss_sr_list'));
 });
