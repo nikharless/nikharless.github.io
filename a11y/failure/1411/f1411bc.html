@@ -1,0 +1,78 @@
+---
+layout: default
+title: Failure - F1.4.11.b.c Visual boundary of checked state of control does not have 3:1 contrast with background
+current: /a11y/failure/1411/f1411bc.html
+root: WCAG 2.2
+scurl: /a11y/sc/1411.html
+sctitle: 1.4.11 Non-text Contrast
+cpurl: /a11y/checkpoint/1411b.html
+cptitle: 1.4.11.b States of User Interface (Non-text Contrast)
+guideline: perceivable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
+css: 1411
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div id="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>Visual indicators of a control's checked state must have at least 3:1 contrast with adjacent colors.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>Visual indicators of a control's checked state do not have at least 3:1 contrast with adjacent colors.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Change the color of the checked state boundaries to have at least 3:1 contrast with adjacent colors.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h4>Checked Checkbox</h4>
+                <p>The checkbox background has at least a 3:1 contrast with the external background, and the checkmark has at least a 3:1 contrast with the checkbox background.</p>
+                <div class="cbExample">
+                    <div role="checkbox" tabindex="0" aria-checked="true">Check this box
+                        <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: block;"></span>
+                        <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: none;"></span>
+                    </div>
+                </div>
+                <script src="/a11y/assets/js/checkbox.js"></script>
+
+                <h4>Checked Radio Button</h4>
+                <p>The radio button background has at least a 3:1 contrast with the external background, and the radio button dot has at least a 3:1 contrast with the radio button background.</p>
+                <div class="radioExample" role="radiogroup" id="rg1">
+                    <div role="radio" tabindex="0" aria-checked="true">Check this radio button
+                        <span id="crbChecked1" class="crbRadio crbChecked" style="display: block;"></span>
+                        <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: none;"></span>
+                    </div>
+                </div>
+                <script src="/a11y/assets/js/radio.js"></script>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Color blind and visually impaired users need to be able to distinguish the control in the checked state.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 1411checkpoints.html %}
