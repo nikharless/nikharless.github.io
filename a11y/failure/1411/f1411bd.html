@@ -42,7 +42,7 @@ css: 1411
                 <h3>Background</h3>
                 <p>The invalid checkbox and label background has at least a 3:1 contrast with the external background and the checkbox background.</p>
                 <div class="cbExample">
-                    <div role="checkbox" tabindex="0" aria-checked="false" required aria-invalid="true">Check this box
+                    <div role="checkbox" tabindex="0" aria-checked="false" required aria-invalid="true">Check this box (required)
                         <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
                         <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
                     </div>
@@ -51,9 +51,10 @@ css: 1411
 
                 <h3>Border</h3>
                 <p>The invalid text box border has at least a 3:1 contrast with the external background. The internal background is not required to distinguish the control, so it doesn't need to meet the contrast requirement.</p>
-                <label for="firstName"> First Name<br>
-                    <input type="text" id="firstName" required>
+                <label for="firstName"> First Name (required)<br>
+                    <input type="text" id="firstName" required aria-describedby="reqError">
                 </label>
+                <p id="reqError" style="color:#c00000;">First name is required.</p>
             </div>
         </div>
         <div class="row">
