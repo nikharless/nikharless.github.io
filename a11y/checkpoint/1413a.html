@@ -1,0 +1,141 @@
+---
+layout: default
+title: 1.4.13.a Content on Hover or Focus
+current: /a11y/checkpoint/1413a.html
+root: WCAG 2.2
+scurl: /a11y/sc/1413.html
+sctitle: 1.4.13 Content on Hover or Focus
+guideline: perceivable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <p>When additional content is triggered on pointer hover or on keyboard focus, that additional content can be visually perceived. The additional content must also be dismissible.</p>
+
+    <p><em>Note: If there is additional content that can only be triggered on hover, it should be marked as a failure of <a href="/a11y/sc/211.html">2.1.1: Keyboard.</a></em></p>
+
+    <p><em>Note: Modal dialogs by definition must take keyboard focus and therefore should not appear on hover or focus. See <a href="/a11y/sc/321.html">3.2.1: On Focus.</a></em></p>
+
+    <h3>Examples</h3>
+    <ul>
+        <li>Custom tooltips</li>
+        <li>Sub-menus</li>
+        <li>Non-modal popups</li>
+    </ul>
+
+    <h3>Exceptions</h3>
+    <ul>
+        <li>Additional content controlled by the user agent, such as browser tooltips</li>
+        <li>The trigger components themselves</li>
+    </ul>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When additional content is triggered on pointer hover or on keyboard focus, that additional content:
+            <ul>
+                <li>Can be dismissed without moving the mouse or keyboard focus</li>
+                <li>Does not disappear when the mouse pointer is moved over it</li>
+                <li>Remains visible until dismissed, hover or focus is removed, or its information is no longer valid</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with a vision impairment, I want to be able to move around the screen without losing the popup so that I don't have to reduce my preferred magnification.</div>
+
+    <div class="success"><strong>Success:</strong> If you had a vision impairment, when you triggered popup content, you would be able to view it without losing it and dismiss it without having to relocate the trigger.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the page have additional content that is triggered by mouse hover or keyboard focus?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the additional content be dismissed without moving the mouse hover or keyboard focus?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the mouse pointer be moved over the additional content without it disappearing?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the additional content remain visible until the mouse hover or keyboard focus is removed, the user dismisses it, or its information is no longer valid?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1413/f1413ac.html">F1.4.13.a.c Hover/focus content is not persistent.</a></span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1413/f1413ab.html">F1.4.13.a.b Hover/focus content is not hoverable.</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the additional content communicate an input error?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the additional content obscure or replace other content?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1413/f1413aa.html">F1.4.13.a.a Hover/focus content is not dismissible.</a></span></li>
+                                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <h3>Desktop</h3>
+ 
+    <ol>
+        <li>With the page in its default state, locate any additional content that appears on mouse hover or keyboard focus.</li>
+        <li>Verify that each instance of additional content:
+            <ul>
+                <li>Can be dismissed without moving the mouse hover or keyboard focus</li>
+                <li>Can be hovered over without disappearing</li>
+                <li>Remains visible until the mouse hover or keyboard focus is removed</li>
+            </ul>
+        <li>Repeat with any content inside expanded menus, expanded content, modal dialogs, and other dynamic features.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/1413/f1413aa.html">F1.4.13.a.a Hover/focus content is not dismissible.</a> (Medium)</li>
+        <li><a href="/a11y/failure/1413/f1413ab.html">F1.4.13.a.b Hover/focus content is not hoverable.</a> (Medium)</li>
+        <li><a href="/a11y/failure/1413/f1413ac.html">F1.4.13.a.c Hover/focus content is not persistent.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Mouse</li>
+        <li>Keyboard</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>JavaScript:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR39">SCR39: Making content on focus or hover hoverable, dismissible, and persistent</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+    </ul>
+</div>
+
+    {% include 1413checkpoints.html %}
