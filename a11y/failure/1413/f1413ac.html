@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F1.4.13.a.a Hover/focus content is not dismissible
-current: /a11y/failure/1413/f1413aa.html
+title: Failure - F1.4.13.a.c Hover/focus content is not persistent
+current: /a11y/failure/1413/f1413ac.html
 root: WCAG 2.2
 scurl: /a11y/sc/1413.html
 sctitle: 1.4.13 Content on Hover or Focus
@@ -26,20 +26,20 @@ css: tooltips
     <div id="failure">
     	<div class="row">
     		<h2 class="{{ page.level }}">Expected Result</h2>
-    		<div>When additional content is triggered on pointer hover or on keyboard focus, that additional content can be dismissed without moving the mouse hover or keyboard focus.</div>
+    		<div>When additional content is triggered on pointer hover or on keyboard focus, that additional content remains visible until dismissed, hover or focus is removed, or its information is no longer valid.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>When additional content is triggered on pointer hover or on keyboard focus, that additional content cannot be dismissed without moving the mouse hover or keyboard focus.</div>
+    		<div>When additional content is triggered on pointer hover or on keyboard focus, that additional content disappears automatically.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
-    		<div>Code the popup to be dismissible using the <kbd>Esc</kbd> key and/or the mobile dismiss gesture.</div>
+    		<div>Code the popup to remain visible until the user dismisses it or its information is no longer valid.</div>
     	</div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <p>The tooltip popup can be dismissed using the <kbd>Esc</kbd> key.
+                <p>The tooltip remains visible until it is explicitly dismissed.</p>
                 <div class="tooltip-container">
                     <button class="infoButton" type="button" aria-describedby="description">i</button>
                     <p id="description" role="tooltip" class="hidden">Informational tooltip</p>
@@ -48,7 +48,7 @@ css: tooltips
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Why It's Important</h2>
-            <div>Visually impaired users, when using a magnifier or zoomed text, may have troubles with triggered additional content (like custom tooltips). Mouse users frequently move the pointer to pan the magnified viewport. Almost the entire portion of the page visible in the restricted viewport may trigger the additional content, making it difficult for a user to pan without re-triggering the content. Keyboard users may also have trouble with triggered additional text obstructing the user’s view of other content. Both use cases need a keyboard method of dismissing something that is obscuring the current focal area.</div>
+            <div>Users with disabilities may require more time to read the content, to change magnification, to move the pointer, or to bring the content into view.</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">References</h2>
