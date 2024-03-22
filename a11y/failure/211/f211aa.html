@@ -33,24 +33,35 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
-    		<div></div>
+    		<div>
+            <ul>
+                <li>Use standard HTML for links and controls. The following elements pass this checkpoint by default.
+                    <ul>
+                        <li><code>&lt;a&gt;</code></li>
+                        <li><code>&lt;button&gt;</code></li>
+                        <li><code>&lt;fieldset&gt;</code></li>
+                        <li><code>&lt;input&gt;</code></li>
+                        <li><code>&lt;select&gt;</code></li>
+                        <li><code>&lt;textarea&gt;</code></li>
+                    </ul>
+                    <strong>OR</strong>
+                </li>
+                <li>Use <code>tabindex="0"</code> to add custom controls to the tab order, <strong>AND</strong></li>
+                <li>Provide keyboard event handlers alongside all mouse event handlers, <strong>OR</strong></li>
+                <li>Provide alternate, keyboard accessible controls that accomplish the same function</li>
+            </div>
     	</div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <div style="background-color: #010a00;">
-                    <div style="padding: 1rem; font-family: Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif; font-size: 2rem; font-weight: 400; letter-spacing: 5px; text-align: center; text-transform: uppercase; color: #fff; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;">Accessibility Matters</div>
-                </div>
-                <pre><code>.neon {
-    font-family: Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif; 
-    font-size: 2rem;
-    font-weight: 400; 
-    letter-spacing: 5px;
-    text-align: center; 
-    text-transform: uppercase; 
-    color: #fff; 
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
-}</code></pre>
+                <h3>Native HTML</h3>
+                <button onclick="window.alert('Doing Stuff');">HTML Button</button>
+                <pre><code>&lt;button onclick="doStuff();"&gt;HTML Button&lt;/button&gt;</code></pre>
+
+                <h3>Custom Control</h3>
+                <p>Using <code>onclick</code> (vs <code>onmousedown</code>) allows activation with both the mouse and the keyboard.</p>
+                <div role="button" tabindex="0" onclick="window.alert('Doing Stuff');">Custom Button</div>
+                <pre><code>&lt;div role="button" tabindex="0" onclick="doStuff();"&gt;Custom Button&lt;/div&gt;</code></pre>
             </div>
         </div>
         <div class="row">
