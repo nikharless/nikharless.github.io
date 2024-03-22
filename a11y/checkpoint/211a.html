@@ -1,0 +1,218 @@
+---
+layout: default
+title: 2.1.1.a Keyboard Navigation
+current: /a11y/checkpoint/211a.html
+root: WCAG 2.2
+scurl: /a11y/sc/211.html
+sctitle: 2.1.1 Keyboard
+guideline: perceivable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <h3>Examples</h3>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All functionality must be available through the keyboard interface.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Keyboard functionality must not require specific timings for individual keystrokes.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Modals must be dismissable with the keyboard without having to submit anything.
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Modals should be dismissable using the <kbd>Esc</kbd> key.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Modals should be dismissable using a button.</li>
+            </ul>
+        </li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Instructions should be provided to explain any non-standard keyboard interaction required to use the functionality.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a keyboard user, I want to be able to access all functionality with the keyboard so that I can use the page.</div>
+
+    <div class="success"><strong>Success:</strong> If you used only a keyboard, when you access a page, you could use all functionality.</div>
+
+    <p>Exception: Function where input depends on the path of the user's movement</p>
+
+    <p>Examples that can and must be made accessible include:</p>
+    <ul>
+        <li>Drag and drop</li>
+        <li>Resizing</li>
+        <li>Drawing a straight line</li>
+        <li>Drawing preset geometric shapes (circle, square, triangle, star, spiral)</li>
+    </ul>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Is all page functionality available using the keyboard?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the underlying function require input that depends on the path of the user's movement?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 id="test2">Is there an image map on the page?</h3> 
+    <ul role="tree" aria-labelledby="test2">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it a client-side image map?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the page also include redundant text links for each active region within the server-side image map?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the links easily located by users (for example, immediately following the image map)?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h3 id="test3">Can all interactive elements (including all scrollable regions) receive keyboard focus?</h3>
+    <ul role="tree" aria-labelledby="test3">
+        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an accessible version of the same functionality on the same page?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <h3>Desktop Keyboard</h3>
+    <ol>
+        <li>Using only the keyboard (no mouse or screen reader), navigate through the page.
+            <ul>
+                <li>Press the <kbd>Tab</kbd> key to navigate the focus through menu items, form inputs, links, help items, and other interactive UI elements.</li>
+                <li>Press <kbd>Shift</kbd>+<kbd>Tab</kbd> to navigate the focus in the reverse direction through all interactive UI elements.</li>
+                <li>In grouped inputs, menus, or list item elements, press the <kbd>up</kbd>, <kbd>down</kbd>, <kbd>right</kbd>, or <kbd>left arrow</kbd> keys to move between items inside the element.</li>
+                <li>Press the <kbd>Enter</kbd> key or the <kbd>Space bar</kbd> to select or activate the interactive UI element that has focus.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Desktop Screen Reader</h3>
+    <ol>
+        <li>Turn on the screen reader.</li>
+        <li>Follow the process for Desktop Keyboard.</li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <ol>
+        <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features</a>.</li>
+        <li>Navigate to each functional image.</li>
+        <li>Verify that the name spoken by the screen reader accurately describes the purpose of the functional image.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <ul>
+        <li>Follow the procedure for Web Mobile.</li>
+        <li>iOS: Verify that the button, button image, or link image trait is spoken, AND/OR hint text such as "Double tap to activate" is spoken.</li>
+        <li>Android: Verify that the button role is spoken, AND/OR hint text such as "Double tap to activate" is spoken.</li>
+    </ul>
+
+    <h2>PDF Test Procedure</h2>
+
+    <h3>Find missing text alternatives.</h3>
+
+    <h4>PDF Accessibility Checker</h4>
+    <ol>
+        <li>Run PAC on the PDF.</li>
+        <li>Select the <strong>WCAG</strong> tab and check if <strong>1.3 Adaptable</strong> is marked as a failure.</li>
+        <li>If it is, activate the <strong>Results in Detail</strong> button.</li>
+        <li>Check if <strong>Alternative text for "Figure" structure elements</strong> is marked as a failure.</li>
+    </ol>
+
+    <h4>Adobe Acrobat Pro</h4>
+    <ol>
+        <li>To find missing text alternatives, select <strong>Accessibility > Accessibility Check</strong> in the Task pane to open the Accessibility Checker Options dialog.</li>
+        <li>Select <strong>Alternate Text and Headings</strong> from the Category drop-down, and make sure <strong>Figures require alternate text</strong> is checked.</li>
+    </ol>
+
+    <h3>Verify the text alternatives are sufficient.</h3>
+    <ol>
+        <li>Locate each functional image in the PDF using one or more of the following methods:
+            <ul>
+                <li><strong>Mouse</strong>: Hover over images, noting cursor change if they are functional.</li>
+                <li><strong>Keyboard</strong>: Use the <kbd>Tab</kbd> key to focus functional images.</li>
+                <li><strong>Windows / NVDA</strong>: Use the <kbd>G</kbd> key to cycle through images.</li>
+                <li><strong>MacOS / VoiceOver</strong>: Use <kbd>VO+Command+G</kbd> to cycle through images.</li>
+            </ul>
+        </li>
+        <li>Verify that each functional image has a text alternative which accurately describes its purpose.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/211/f211aa.html">F2.1.1.a.a The functionality cannot be accessed using only a keyboard.</a> (High)</li>
+        <li><a href="/a11y/failure/211/f211ab.html">F2.1.1.a.b The element uses mouse event handlers but does not have equivalent keyboard event handlers.</a> (High)</li>
+        <li><a href="/a11y/failure/211/f211ac.html">F2.1.1.a.c The link does not have an href value.</a> (High)</li>
+        <li><a href="/a11y/failure/211/f211ad.html">F2.1.1.a.d The modal cannot be dismissed using the keyboard without submitting data.</a> (High)</li>
+        <li><a href="/a11y/failure/211/f211ae.html">F2.1.1.a.e The server-side image map does not have redundant text links for keyboard users.</a> (High)</li>
+        <li><a href="/a11y/failure/211/f211af.html">F2.1.1.a.f The drag and drop feature does not have keyboard functionality.</a> (High)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Keyboard</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G90">G90: Providing keyboard-triggered event handlers</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                    </ul>
+                </li>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
+                    </ul>
+                </li>
+                <li>JavaScript:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR2">SCR2: Using redundant keyboard and mouse event handlers</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR35">SCR35: Making actions keyboard accessible by using the onclick event of anchors and buttons</a></li>
+                    </ul>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF3">PDF3: Ensuring correct tab and reading order in PDF documents</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF11">PDF11: Providing links and link text using the Link annotation and the /Link structure element in PDF documents</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF23">PDF23: Providing interactive form controls in PDF documents</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h3>Additional Information</h3>
+    <ul>
+
+    </ul>
+</div>
+
+    {% include 211checkpoints.html %}
