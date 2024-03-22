@@ -21,30 +21,16 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
 
     <h2>Overview</h2>
 
-    <h3>Examples</h3>
+    <p>This checkpoint applies to literal keyboards, but it also applies to any technology which uses the keyboard interface, such as switch controls, voice control, sip-and-puff controls, on-screen keyboards, and screen readers.</p> 
 
-    <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <p>"Specific timings for individual keystrokes" refers to things such as multiple keystrokes within a short period of time or holding down a key for a length of time.</p>
+
+    <p>Examples of exceptions which depend on the path of the user's movement:</p>
     <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All functionality must be available through the keyboard interface.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Keyboard functionality must not require specific timings for individual keystrokes.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Modals must be dismissable with the keyboard without having to submit anything.
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Modals should be dismissable using the <kbd>Esc</kbd> key.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Modals should be dismissable using a button.</li>
-            </ul>
-        </li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Instructions should be provided to explain any non-standard keyboard interaction required to use the functionality.</li>
+        <li>Free hand drawing or painting</li>
     </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a keyboard user, I want to be able to access all functionality with the keyboard so that I can use the page.</div>
-
-    <div class="success"><strong>Success:</strong> If you used only a keyboard, when you access a page, you could use all functionality.</div>
-
-    <p>Exception: Function where input depends on the path of the user's movement</p>
-
-    <p>Examples that can and must be made accessible include:</p>
+    <p>Examples that are <em>not</em> path-dependent and must be made accessible:</p>
     <ul>
         <li>Drag and drop</li>
         <li>Resizing</li>
@@ -52,22 +38,66 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
         <li>Drawing preset geometric shapes (circle, square, triangle, star, spiral)</li>
     </ul>
 
-    <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
-    <h3 id="test1">Is all page functionality available using the keyboard?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the underlying function require input that depends on the path of the user's movement?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
-            </ul>
-        </li>
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All functionality must be available through the keyboard interface.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Keyboard functionality must not require specific timings for individual keystrokes.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Content should use the standard and expected keyboard interaction for the platform/user agent.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Instructions should be provided to explain any non-standard keyboard interaction required to use the functionality.</li>
     </ul>
 
-    <h3 id="test2">Is there an image map on the page?</h3> 
+    <div class="userstory"><strong>User Story:</strong> As a keyboard user, I want to be able to access all functionality with the keyboard so that I can use the page.</div>
+
+    <div class="success"><strong>Success:</strong> If you used only a keyboard, when you access a page, you could use all functionality.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Can all page functionality be reached using only the keyboard?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can all page functionality be activated using only the keyboard?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the underlying function require input that depends on the path of the user's movement?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the functionality be activated with a mouse?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the control a link?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/211/f211ac.html">F2.1.1.a.c Link does not have an href value.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control an image map?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/211/f211af.html">F2.1.1.a.f Server-side image map does not have redundant text links for keyboard users.</a></span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a drag and drop?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/211/f211ag.html">F2.1.1.a.g Drag and drop feature does not have keyboard functionality.</a></span></li>
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a scrollable region?</span>
+                                                            <ul role="group">
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/211/f211ah.html">F2.1.1.a.h Scrollable region cannot be accessed with a keyboard.</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/211/f211ab.html">F2.1.1.a.b Element uses mouse event handlers but does not have equivalent keyboard event handlers.</a></span></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
+    </ul>
+
+    <h3 id="test2">Is there additional modal or non-modal content on the page?</h3> 
     <ul role="tree" aria-labelledby="test2">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it a client-side image map?</span>
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the additional content contain interactive controls?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the page also include redundant text links for each active region within the server-side image map?</span>
@@ -84,17 +114,6 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    <h3 id="test3">Can all interactive elements (including all scrollable regions) receive keyboard focus?</h3>
-    <ul role="tree" aria-labelledby="test3">
-        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an accessible version of the same functionality on the same page?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
-            </ul>
-        </li>
     </ul>
 
     <h2>Web Test Procedure</h2>
@@ -179,8 +198,9 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
         <li><a href="/a11y/failure/211/f211ab.html">F2.1.1.a.b The element uses mouse event handlers but does not have equivalent keyboard event handlers.</a> (High)</li>
         <li><a href="/a11y/failure/211/f211ac.html">F2.1.1.a.c The link does not have an href value.</a> (High)</li>
         <li><a href="/a11y/failure/211/f211ad.html">F2.1.1.a.d The modal cannot be dismissed using the keyboard without submitting data.</a> (High)</li>
-        <li><a href="/a11y/failure/211/f211ae.html">F2.1.1.a.e The server-side image map does not have redundant text links for keyboard users.</a> (High)</li>
-        <li><a href="/a11y/failure/211/f211af.html">F2.1.1.a.f The drag and drop feature does not have keyboard functionality.</a> (High)</li>
+        <li><a href="/a11y/failure/211/f211ae.html">F2.1.1.a.e The modal cannot be dismissed using the keyboard.</a> (High)</li>
+        <li><a href="/a11y/failure/211/f211af.html">F2.1.1.a.f The server-side image map does not have redundant text links for keyboard users.</a> (High)</li>
+        <li><a href="/a11y/failure/211/f211ag.html">F2.1.1.a.g The drag and drop feature does not have keyboard functionality.</a> (High)</li>
     </ul>
 
     <h2>Testing Tools</h2>
