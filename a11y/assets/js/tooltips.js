@@ -173,9 +173,9 @@ class Tooltip {
 
   // Reset the changes made by the bounding box functions
   resetBoundingBox() {
-    if (tooltip.style.left || tooltip.style.transform) {
-      tooltip.style.left = null
-      tooltip.style.transform = null
+    if (this.tooltip.style.left || this.tooltip.style.transform) {
+      this.tooltip.style.left = null
+      this.tooltip.style.transform = null
     }
 
     this.initialiseClassList()
