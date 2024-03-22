@@ -1,0 +1,92 @@
+---
+layout: default
+title: 2.1.1.c Custom Gestures
+current: /a11y/checkpoint/211c.html
+root: WCAG 2.2
+scurl: /a11y/sc/211.html
+sctitle: 2.1.1 Keyboard
+guideline: perceivable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <p>All functionalities based on custom gestures must also be available when a screen reader is turned on.</p> 
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All functionalities based on custom gestures must also be available when a screen reader is turned on.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a keyboard and screen reader user, I want to be able to access all functionality with the keyboard so that I can use the page.</div>
+
+    <div class="success"><strong>Success:</strong> If you used a screen reader along with the keyboard, when you attempt to use the functionality on the page, it does not conflict with screen reader shortcuts.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the app/web page have any functionalities that are based upon custom gestures?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the custom gestures function properly with a screen reader activated?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/211/f211ca.html">F2.1.1.c.a Custom gesture is not accessible when the screen reader is turned on.</a></span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Mobile App Test Procedure</h2>
+    <h3>iOS</h3>
+    <ol>
+        <li>Using VoiceOver, swipe to a control which accepts custom gestures.</li>
+        <li>Verify that VoiceOver announces “Actions available” for custom gestures.
+            <ol>
+                <li>If VoiceOver does not say “Actions available,” open the Rotor.</li>
+                <li>Actions should become an available option in the Rotor, and the Rotor should automatically be set to Actions when it opens.</li>
+            </ol>
+        </li>
+        <li>Verify that you can activate the action with VoiceOver.</li>
+    </ol>
+
+    <h3>Android</h3>
+    <ol>
+        <li>Using TalkBack, swipe to a control which accepts custom gestures.</li>
+        <li>Verify that TalkBack announces “Actions available” for custom gestures.</li>
+        <li>Verify that you can swipe up and right to open the context menu for the available actions.</li>
+        <li>Verify that you can activate the action.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/211/f211ca.html">F2.1.1.c.a Custom gesture is not accessible when the screen reader is turned on.</a> (High)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Screen reader</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+    </ul>
+    <h3>Additional Information</h3>
+    <ul>
+
+    </ul>
+</div>
+
+    {% include 211checkpoints.html %}
