@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F2.1.1.a.a Control cannot be accessed using only a keyboard
-current: /a11y/failure/211/f211aa.html
+title: Failure - F2.1.1.a.b Element uses mouse event handlers but does not have equivalent keyboard event handlers
+current: /a11y/failure/211/f211ab.html
 root: WCAG 2.2
 scurl: /a11y/sc/211.html
 sctitle: 2.1.1 Keyboard
@@ -29,48 +29,19 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>A control cannot be accessed using only a keyboard</div>
+    		<div>A control cannot be accessed using only a keyboard, because it's coded with only mouse event handlers.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
     		<div>
             <ul>
-                <li>Use standard HTML for links and controls. The following elements pass this checkpoint by default.
-                    <ul>
-                        <li><code>&lt;a&gt;</code></li>
-                        <li><code>&lt;button&gt;</code></li>
-                        <li><code>&lt;fieldset&gt;</code></li>
-                        <li><code>&lt;input&gt;</code></li>
-                        <li><code>&lt;select&gt;</code></li>
-                        <li><code>&lt;textarea&gt;</code></li>
-                    </ul>
-                    <strong>OR</strong>
-                </li>
-                <li>Use <code>tabindex="0"</code> to add custom controls to the tab order, <strong>AND</strong></li>
                 <li>Provide keyboard event handlers alongside all mouse event handlers, <strong>OR</strong></li>
-                <li>Provide alternate, keyboard accessible controls that accomplish the same function</li>
+                <li>Provide alternate, keyboard accessible controls that accomplish the same function.</li>
             </div>
     	</div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                
-                <h3>Native HTML</h3>
-                <p>Native HTML is keyboard accessible by default.</p>
-                <a href="#">Click this link</a><br>
-                <label for "firstName"> First Name<br>
-                    <input type="text">
-                </label><br>
-                <fieldset>
-                    <input type="radio"> Option 1<br>
-                    <input type="radio"> Option 2
-                </fieldset>
-                <pre><code>&lt;a href="page.html"&gt;Click this link&lt;/a&gt;
-&lt;script&gt;
-    htmlButton.onclick = function (e) { doStuff(); };
-    htmlButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-&lt;/script&gt;</code></pre>
-
                 <h3>Custom Control</h3>
                 <p>Using <code>onclick</code> and <code>onkeyup</code> allows activation with both the mouse and the keyboard.</p>
                 <div id="customButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
