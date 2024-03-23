@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F2.1.1.a.b Element uses mouse event handlers but does not have equivalent keyboard event handlers
-current: /a11y/failure/211/f211ab.html
+title: Failure - F2.1.1.a.c Link does not have an href value
+current: /a11y/failure/211/f211ac.html
 root: WCAG 2.2
 scurl: /a11y/sc/211.html
 sctitle: 2.1.1 Keyboard
@@ -29,34 +29,32 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>A control cannot be accessed using only a keyboard, because it's coded with only mouse event handlers.</div>
+    		<div>A link cannot be activated using only a keyboard, because it's coded without an <code>href</code> attribute.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
     		<div>
             <ul>
-                <li>Provide keyboard event handlers alongside all mouse event handlers, <strong>OR</strong></li>
-                <li>Provide alternate, keyboard accessible controls that accomplish the same function.</li>
+                <li>Provide an <code>href</code> attribute pointing to the target url, <strong>AND</strong></li>
+                <li>Provide keyboard event handlers alongside all mouse event handlers.</li>
             </div>
     	</div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <h3>Custom Control</h3>
+                <h3>Custom Link</h3>
                 <p>Using <code>onclick</code> and <code>onkeyup</code> allows activation with both the mouse and the keyboard.</p>
-                <div id="customButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
-                <pre><code>&lt;div id="customButton" role="button" tabindex="0"&gt;Do Stuff&lt;/div&gt;
+                <a id="customLink" role="link" tabindex="0" style="text-decoration: underline;">Click this link</a>
+                <pre><code>&lt;div id="customLink" role="link" tabindex="0"&gt;Click this link&lt;/div&gt;
 &lt;script&gt;
-    customButton.onclick = function (e) { doStuff(); };
-    customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
+    customLink.onclick = function (e) { doStuff(); };
+    customLink.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
 &lt;/script&gt;</code></pre>
 
                 <script>
                     function doStuff() {
-                        window.alert('Doing Stuff');
+                        window.open('http://w3.org/WAI/');
                     }
-                    htmlButton.onclick = function (e) { doStuff(); };
-                    htmlButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
                     customButton.onclick = function (e) { doStuff(); };
                     customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
                 </script>
@@ -71,9 +69,9 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
             <div>
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G90">G90: Providing keyboard-triggered event handlers</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F42">F42: Failure of Success Criteria 1.3.1, 2.1.1, 2.1.3, or 4.1.2 when emulating links</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR35">SCR35: Making actions keyboard accessible by using the onclick event of anchors and buttons</a></li>
                 </ul>
             </div>
         </div>
