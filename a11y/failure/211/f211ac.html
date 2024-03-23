@@ -44,20 +44,14 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
             <div>
                 <h3>Custom Link</h3>
                 <p>Using <code>onclick</code> and <code>onkeyup</code> allows activation with both the mouse and the keyboard.</p>
-                <a href="#" id="customLink" role="link" style="text-decoration: underline;">Click this link</a>
-                <pre><code>&lt;a id="customLink" role="link"&gt;Click this link&lt;/a&gt;
-&lt;script&gt;
-    customLink.onclick = function (e) { doStuff(); };
-    customLink.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-&lt;/script&gt;</code></pre>
-
+                <a href="#" onclick="return doStuff();">Click this link to go to WAI</a>
                 <script>
                     function doStuff() {
-                        window.open('http://w3.org/WAI/');
+                        window.alert('Doing Stuff');
+                        return false;
                     }
-                    customButton.onclick = function (e) { doStuff(); };
-                    customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
                 </script>
+                <pre><code>&lt;a href="#" onclick="return doStuff();"&gt;Click this link&lt;/a&gt;</code></pre>
             </div>
         </div>
         <div class="row">
