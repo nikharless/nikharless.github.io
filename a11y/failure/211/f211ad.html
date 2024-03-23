@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F2.1.1.a.c Link does not have an href value
-current: /a11y/failure/211/f211ac.html
+title: Failure - F2.1.1.a.d Modal cannot be dismissed using the keyboard without submitting data
+current: /a11y/failure/211/f211ad.html
 root: WCAG 2.2
 scurl: /a11y/sc/211.html
 sctitle: 2.1.1 Keyboard
@@ -10,6 +10,7 @@ cptitle: 2.1.1.a Keyboard Navigation
 guideline: perceivable
 level: a
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
+css: dialog
 ---
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
@@ -29,14 +30,14 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>A link cannot be activated using only a keyboard, because it's coded without an <code>href</code> attribute.</div>
+    		<div>The modal cannot be dismissed using only the keyboard without submitting data.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
     		<div>
             <ul>
-                <li>Provide an <code>href</code> attribute pointing to the target url, <strong>AND</strong></li>
-                <li>Provide keyboard event handlers.</li>
+                <li>Ensure any close buttons in the modal can be activated with the keyboard.</li>
+                <li>Enable the use of the <kbd>Esc</kbd> key to close the modal.</li>
             </div>
     	</div>
         <div class="row">
@@ -44,13 +45,23 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
             <div>
                 <h3>Scripted Link</h3>
                 <p>Using <code>onclick</code> allows activation with both the mouse and the keyboard.</p>
-                <a href="#" onclick="return doStuff();">Click this link</a>
-                <script>
-                    function doStuff() {
-                        window.alert('Doing Stuff');
-                        return false;
-                    }
-                </script>
+                <button type="button" onclick="openDialog('dialog1', this)">Open Modal</button>
+                <div id="dialog_layer" class="dialogs">
+                    <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
+                        <h2 id="dialog1_label" class="dialog_label">Example Modal</h2>
+                        <div class="dialog_form">
+                            <div class="dialog_form_item">
+                                <label>
+                                  <span>Name: </span>
+                                  <input type="text">
+                                </label>
+                            </div>
+                            <div class="dialog_form_actions">
+                                <button type="button">Submit</button>
+                            </div>
+                            <button type="button" onclick="closeDialog(this)">Cancel</button>
+                        </div>
+                
                 <pre><code>&lt;a href="#" onclick="return doStuff();"&gt;Click this link&lt;/a&gt;</code></pre>
             </div>
         </div>
