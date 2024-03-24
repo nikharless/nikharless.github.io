@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F2.1.1.a.h Scrollable region cannot be accessed with a keyboard
-current: /a11y/failure/211/f211ah.html
+title: Failure - F2.1.1.a.i Hover content not available on keyboard focus
+current: /a11y/failure/211/f211ai.html
 root: WCAG 2.2
 scurl: /a11y/sc/211.html
 sctitle: 2.1.1 Keyboard
@@ -10,6 +10,7 @@ cptitle: 2.1.1.a Keyboard Navigation
 guideline: operable
 level: a
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
+css: tooltips
 ---
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
@@ -29,27 +30,19 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>Content in scrollable area is not viewable with keyboard.</div>
+    		<div>Content that displays on mouse hover does not display on keyboard focus.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Make the scrollable area focusable with <code>tabindex="0"</code>, <strong>OR</strong></li>
-                    <li>Include focusable elements inside the scrollable area.</li>
-                </ul>      
-            </div>
+    		<div></div>
     	</div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <h3>Scrollable Area is Focusable</h3>
-                <div tabindex="0" style="width:15em; height:15em; overflow: auto; border: 1px solid #888;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula eros nec pellentesque fermentum. Donec diam neque, varius ac tellus at, ornare fringilla neque. Proin odio urna, sollicitudin vel est sed, cursus tristique libero. Donec vulputate interdum tellus a gravida. Suspendisse blandit elit ipsum, quis consectetur sem dictum convallis. Sed vehicula vel massa et dapibus. Ut blandit tincidunt neque, sit amet dapibus dolor iaculis quis. Aliquam vitae aliquam metus. Aenean interdum ex non elementum interdum.</div>
-
-                <h3>Scrollable Area Contains Focusable Element</h3>
-                <div style="width:15em; height:15em; overflow: auto; border: 1px solid #888;"><button>Focusable Button</button><br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula eros nec pellentesque fermentum. Donec diam neque, varius ac tellus at, ornare fringilla neque. Proin odio urna, sollicitudin vel est sed, cursus tristique libero. Donec vulputate interdum tellus a gravida. Suspendisse blandit elit ipsum, quis consectetur sem dictum convallis. Sed vehicula vel massa et dapibus. Ut blandit tincidunt neque, sit amet dapibus dolor iaculis quis. Aliquam vitae aliquam metus. Aenean interdum ex non elementum interdum.</div>
-
+                <div class="tooltip-container">
+                    <button class="infoButton" type="button" aria-describedby="description">i</button>
+                    <p id="description" role="tooltip" class="hidden">Informational tooltip</p>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -62,6 +55,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR2">SCR2: Using redundant keyboard and mouse event handlers</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
                 </ul>
             </div>
         </div>
