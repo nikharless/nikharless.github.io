@@ -11,8 +11,9 @@ const shortcutClickedTextRef = document.getElementsByClassName(
 
 // Keep track of clicked keys
 var isKeyPressed = {
-  a: false, // ASCII code for 'a'
-  b: false // ASCII code for 'b'
+  s: false
+  /*a: false, // ASCII code for 'a'
+  b: false // ASCII code for 'b'*/
   // ... Other keys to check for custom key combinations
 };
 
@@ -24,7 +25,8 @@ document.onkeydown = keyDownEvent => {
   isKeyPressed[keyDownEvent.key] = true;
 
   // Check described custom shortcut
-  if (isKeyPressed["a"] && isKeyPressed["b"]) {
+  if (keyDownEvent.shiftKey && keyDownEvent.altKey && isKeyPressed["s"]) {
+  // if (isKeyPressed["a"] && isKeyPressed["b"]) {
     //for example we want to check if a and b are clicked at the same time
     //do something as custom shortcut (a & b) is clicked
 
@@ -43,7 +45,8 @@ document.onkeyup = keyUpEvent => {
 
   // when one of the keys is released, show text indicating
   // text is no longer clicked
-  if (!isKeyPressed["a"] || !isKeyPressed["b"]) {
+  // if (!isKeyPressed["a"] || !isKeyPressed["b"]) {
+  if (!keyDownEvent.shiftKey || !keyDownEvent.altKey || !isKeyPressed["s"]) {
     shortcutClickedTextRef.style.display = "none";
     shortcutNotClickedTextRef.style.display = "flex";
   }
