@@ -1,4 +1,4 @@
-var shortcutPressed = document.getElementsById("searchField");
+var shortcutPressed = document.getElementById("searchField");
 
 document.addEventListener ("keydown", openSearch);
 
