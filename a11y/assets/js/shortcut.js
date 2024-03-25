@@ -4,7 +4,7 @@ alert(shortcutPressed);
 document.addEventListener ("keydown", openSearch);
 
 function openSearch (zEvent) {
-    if (zEvent.shiftKey  &&  zEvent.altKey  &&  zEvent.key === "s") {  // case sensitive
+    if (zEvent.shiftKey  &&  zEvent.altKey  &&  zEvent.key === "S") {  // case sensitive
       alert(shortcutPressed.style.display);
       if(shortcutPressed.style.display === "none") {
         // show search field
