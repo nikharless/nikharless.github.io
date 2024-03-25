@@ -1,16 +1,19 @@
-const shortcutPressedTextRef = document.getElementsByClassName(
-  "search-field-activated"
-)[0];
+var shortcutPressed = document.getElementsById("searchField");
 
-document.addEventListener ("keydown", function (zEvent) {
+document.addEventListener ("keydown", openSearch);
+
+function openSearch (zEvent) {
     if (zEvent.shiftKey  &&  zEvent.altKey  &&  zEvent.key === "s") {  // case sensitive
-      if(shortcutPressedTextRef.style.display == "none") {
+      if(shortcutPressed.style.display == "none") {
         // show search field
-        shortcutPressedTextRef.style.display = "flex";
+        shortcutPressed.style.display = "flex";
       }
       else {
         // hide search field
-        shortcutPressedTextRef.style.display = "none";
+        shortcutPressed.style.display = "none";
       }
     }
-} );
+
+    zEvent.stopPropagation();
+    zEvent.preventDefault();
+}
