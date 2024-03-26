@@ -1,0 +1,104 @@
+---
+layout: default
+title: 2.1.4.a Character Key Shortcuts
+current: /a11y/checkpoint/214a.html
+root: WCAG 2.2
+scurl: /a11y/sc/214.html
+sctitle: 2.1.4 Character Key Shortcuts
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/character-key-shortcuts
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a single character key shortcut exists, then it can be turned off, remapped, or are only active when the relevant user interface component is in focus.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a speech input user, I want to be able to access all functionality without accidentally triggering a shortcut.</div>
+
+    <div class="success"><strong>Success:</strong> If you used speech input, when you use a page, you cannot accidentally trigger a single-character shortcut.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Are there any keyboard shortcuts in the content that use a single letter (upper or lower case), punctuation, number, or symbol character?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the shortcut only active when the component has focus?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism available to turn the shortcut off?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism available to remap the shortcut to include non-printable keys (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, etc.)?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/214/f214aa.html">F2.1.4.a.a Single-character shortcut is always active and cannot be turned off or remapped.</a></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <h3>Desktop</h3>
+    <ol>
+        <li>Identify all keyboard shorcuts implemented on the page. (Consult the developer or documentation rather than relying on discovering them.)</li>
+        <li>Locate any keyboard shortcuts that are a single character, including upper and lower case letters, numbers, punctuation, and symbols.</li>
+        <li>Verify that:
+            <ul>
+                <li>The shortcut is only active when the appropriate control is in focus, <strong>OR</strong></li>
+                <li>The shortcut can be remapped to include non-printable keys (e.g., Ctrl, Alt), <strong>OR</strong></li>
+                <li>The shortcut can be turned off.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/214/f214aa.html">F2.1.4.a.a Single-character shortcut is always active and cannot be turned off or remapped.</a> (High)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Keyboard</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>Related Techniques:
+            <ul>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G217">G217: Providing a mechanism to allow users to remap or turn off character key shortcuts</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+    </ul>
+</div>
+
+    {% include 214checkpoints.html %}
