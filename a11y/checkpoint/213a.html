@@ -1,0 +1,139 @@
+---
+layout: default
+title: 2.1.3.a No Path-Based Input
+current: /a11y/checkpoint/213a.html
+root: WCAG 2.2
+scurl: /a11y/sc/213.html
+sctitle: 2.1.3 Keyboard (No Exception)
+guideline: operable
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard-no-exception
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <p>This criteron is the same as <a href="/a11y/sc/211.html">2.1.1 Keyboard</a>, except that it allows no exceptions. If the content requires path-dependent input, it cannot pass this checkpoint.</p>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All functionality must be available through the keyboard interface.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Keyboard functionality must not require specific timings for individual keystrokes.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Content should use the standard and expected keyboard interaction for the platform/user agent.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Instructions should be provided to explain any non-standard keyboard interaction required to use the functionality.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a keyboard user, I want to be able to access all functionality with the keyboard so that I can use the page.</div>
+
+    <div class="success"><strong>Success:</strong> If you used only a keyboard, when you access a page, you could use all functionality.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Is there any content that requires path-based input (i.e., drawing) and cannot be implemented any other way?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/213/f213aa.html">F2.1.3.a.a Content requires path-dependent input.</a></span></li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <h3>Desktop Keyboard</h3>
+    <ol>
+        <li>Using only the keyboard (no mouse or screen reader), navigate through the page.
+            <ul>
+                <li>Press the <kbd>Tab</kbd> key to navigate the focus through menu items, form inputs, links, help items, and other interactive UI elements.</li>
+                <li>Press <kbd>Shift</kbd>+<kbd>Tab</kbd> to navigate the focus in the reverse direction through all interactive UI elements.</li>
+                <li>In grouped inputs, menus, or list item elements, press the <kbd>up</kbd>, <kbd>down</kbd>, <kbd>right</kbd>, or <kbd>left arrow</kbd> keys to move between items inside the element.</li>
+                <li>Press the <kbd>Enter</kbd> key or the <kbd>Space bar</kbd> to select or activate the interactive UI element that has focus.</li>
+            </ul>
+        </li>
+        <li>Verify that all controls can be navigated to and activated using only the keyboard.</li>
+    </ol>
+
+    <h3>Mobile</h3>
+
+    <h4>Screen Reader (iOS and Android)</h4>
+    <ol>
+        <li>Turn on the screen reader.</li>
+        <li>Swipe to each interactive element on the page.</li>
+        <li>Verify that you are able to reach and use each interactive element.</li>
+    </ol>
+
+    <h4>Bluetooth Keyboard (Android)</h4>
+    <ol>
+        <li>Pair a Bluetooth keyboard with your device.</li>
+        <li>With TalkBack off, navigate through the screen using <kbd>Tab</kbd> and <kbd>Arrow</kbd> keys.</li>
+        <li>Verify that you are able to reach and use all interactive elements.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+
+    <h3>Screen Reader (iOS and Android)</h3>
+    <ul>
+        <li>Follow the procedure for Web Mobile.</li>
+    </ul>
+
+    <h3>iOS</h3>
+
+    <h4>Voice Control</h4>
+    <ol>
+        <li>Turn on Voice Control.</li>
+        <li>Say “Show numbers.”</li>
+        <li>Verify that a number appears next to all active (non-disabled) controls.
+            <ul>
+                <li>If you are unsure if a button is active or disabled, turn off Voice Control and try to activate the button with no assistive technology.</li>
+            </ul>
+        </li>
+        <li>If a number does not appear next to a link, turn off Voice Control and test with VoiceOver to ensure the link role is announced and the link can be activated with VoiceOver turned on.</li>
+    </ol>
+
+    <h4>Switch Control (optional)</h4>
+    <ol>
+        <li>Using Switch Control, navigate through the app.</li>
+        <li>Verify that you are able to reach and use all active (non-disabled) controls.</li>
+    </ol>
+
+    <h4>Keyboard (optional)</h4>
+    <p>As of iOS 13, full keyboard support was enabled on iOS devices. To see the full range of keyboard commands for operating content, access the Help menu by pressing <kbd>Tab</kbd>+<kbd>H</kbd>.</p>
+
+    <h3>Android</h3>
+
+    <h4>Switch Control</h4>
+    <ol>
+        <li>Using Switch Control, navigate through the app. (See link under Additional Information.)</li>
+        <li>Verify that you are able to reach and use all active (non-disabled) controls.</li>
+    </ol>
+
+    <h2>PDF Test Procedure</h2>
+    <p>Follow the procedure for Desktop Web.</p>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/213/f213aa.html">F2.1.3.a.a Content requires path-dependent input.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Keyboard</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+    </ul>
+    <h3>Additional Information</h3>
+    <ul>
+    </ul>
+</div>
+
+    {% include 213checkpoints.html %}
