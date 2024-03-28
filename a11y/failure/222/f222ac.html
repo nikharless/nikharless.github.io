@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F2.2.2.a.b Blinking content has no means to pause, stop, or hide it
-current: /a11y/failure/222/f222ab.html
+title: Failure - F2.2.2.a.c Scrolling content has no means to pause, stop, or hide it
+current: /a11y/failure/222/f222ac.html
 root: WCAG 2.2
 scurl: /a11y/sc/222.html
 sctitle: 2.2.2 Pause, Stop, Hide
@@ -10,6 +10,7 @@ cptitle: 2.2.2.a Pause, Stop, or Hide Content
 guideline: operable
 level: a
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide
+css: scrolling-text
 ---
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
@@ -25,42 +26,39 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide
     <div id="failure">
     	<div class="row">
     		<h2 class="{{ page.level }}">Expected Result</h2>
-    		<div>The user is able to pause, stop, or hide blinking content that lasts more than 5 seconds.</div>
+    		<div>The user is able to pause, stop, or hide scrolling content that lasts more than 5 seconds.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>Blinking content lasts more than 5 seconds, and there is no means to pause, stop, or hide it.</div>
+    		<div>Scrolling content lasts more than 5 seconds, and there is no means to pause, stop, or hide it.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
     		<div>
                 <ul>
-                    <li>Provide a mechanism to pause, stop, or hide the blinking element, <strong>OR</strong>
+                    <li>Provide a mechanism to pause, stop, or hide the scrolling element, <strong>OR</strong>
                         <ul>
                             <li><em>Note: The mechanism must allow the user to interact with other content while it is paused. Therefore, pausing on focus does not meet this criterion.</em></li>
                         </ul>
                     </li>
-                    <li>Shorten the blinking to last 5 seconds or less.</li>
+                    <li>Shorten the scrolling to last 5 seconds or less.</li>
                 </ul>
             </div>
     	</div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <h3>3-Second Blink</h3>
-                <div id="blinkMe" style="display: block; border: 1px solid #1C7AC7; border-radius: 4px;">I will blink for 3 seconds</div>
-                <script>
-                    function blinkElement(elm, interval, duration) {
-                        elm.style.visibility = (elm.style.visibility === "hidden" ? "visible" : "hidden");
-                        if (duration > 0) {
-                            setTimeout(blinkElement, interval, elm, interval, duration - interval);
-                        } else {
-                            elm.style.visibility = "visible";
-                        }
-                    }
-
-                    blinkElement(document.getElementById("blinkMe"), 200, 3000);
-                </script>
+                <h3>Ticker Tape Style Scrolling</h3>
+                <input type="checkbox" data-animation-pause id="css-toggle"> <label for="css-toggle" class="chk">Pause scroll</label><br>
+                <div class="scrolling-text-container">
+                    <div class="scrolling-text-inner" style="--marquee-speed: 20s; --direction:scroll-left" role="marquee">
+                        <div class="scrolling-text">
+                            <div class="scrolling-text-item">Your First Announcement</div>
+                            <div class="scrolling-text-item">Your Second Announcement</div>
+                            <!-- Add More Items Here -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
