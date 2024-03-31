@@ -25,7 +25,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/timeouts
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
         <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> A warning about the length of a time limit that could result in loss of data must be provided.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> A warning must be provided about the length of a time limit that could result in loss of data.</li>
     </ul>
 
     <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to know how long it will be before my session times out if I am inactive so that I do not lose data unexpectedly.</div>
@@ -38,8 +38,17 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/timeouts
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a warning notifying users of the length of time they can be inactive before the time limit expires?</span>
             <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/226/f226aa.html">F2.2.6.a.a No warning of session time limit length.</a></span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the time limit at least 20 hours?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the data stored at least 20 hours?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/226/f226aa.html">F2.2.6.a.a No warning of session time limit length.</a></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>

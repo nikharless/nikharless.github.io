@@ -1,0 +1,69 @@
+---
+layout: default
+title: Failure - F2.2.6.a.a No warning of session time limit length
+current: /a11y/failure/226/f226aa.html
+root: WCAG 2.2
+scurl: /a11y/sc/226.html
+sctitle: 2.2.6 Timeouts
+cpurl: /a11y/checkpoint/226a.html
+cptitle: 2.2.6.a Timeouts
+guideline: operable
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/timeouts
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>A warning is provided about the length of a time limit that could result in loss of data.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>The site has a time limit for inactivity which results in loss of data, but there is no warning informing the user of the length of time they have.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Provide a warning notifying the user of how much time they have before the site times out from inactivity.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>Form with Warning</h3>
+                <p>For security purposes, you will be logged out after 30 minutes of inactivity.</p>
+                <form>
+                    <label> First Name<br>
+                        <input type="text" id="fName" autocomplete="given-name">
+                    </label><br>
+                    <label> Last Name<br>
+                        <input type="text" id="lName" autocomplete="family-name">
+                    </label>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Users with various disabilities often need more time to complete activities.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G105">G105: Saving data so that it can be used after a user re-authenticates</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G181">G181: Encoding user data as hidden or encrypted data in a re-authorization page</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 225checkpoints.html %}
