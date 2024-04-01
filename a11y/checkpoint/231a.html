@@ -20,6 +20,14 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-thre
     </nav>
 
     <h2>Overview</h2>
+    <p>This criterion only applies to web content, not flashing caused by user agents. Examples include:</p>
+    <ul>
+        <li>Video</li>
+        <li>Animations</li>
+        <li>Blinking elements</li>
+    </ul>
+
+    <p><em>Note: Though this checkpoint technically passes if the flashing area is small enough, the size is calculated using standard screen size and viewing distance. A user who is closer to their screen or who zooms in to view content could cause the content to then fail. Therefore, it's safer to ensure flashing is no more than 3 times per second.</em></p>
 
     <h2>Basic Requirements and Best Practices</h2>
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
@@ -40,7 +48,12 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-thre
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the flash below the general flash and red flash thresholds? (This can be measured with <a href="https://trace.umd.edu/peat/">PEAT.</a>)</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/231/f231aa.html">F2.3.1.a.a Content flashes more than 3 times per second and is not below flash threshold.</a></span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the flashing area smaller than 341 x 256 pixels?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/231/f231aa.html">F2.3.1.a.a Content flashes more than 3 times per second and is not below flash thresholds.</a></span></li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -50,7 +63,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-thre
     <h3>Desktop</h3>
     <ol>
         <li>Locate any flashing content.</li>
-        <li>Count the number of flashes per second.</li>
+        <li>Determine the size of the flashing area.</li>
+        <li>If the area is bigger than 341 x 256 pixels, count the number of flashes per second.</li>
         <li>If the content flashes more than 3 times per second, test using PEAT.
             <ol>
                 <li>Open the web page in Firefox on Windows.</li>
@@ -71,7 +85,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-thre
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/231/f231aa.html">F2.3.1.a.a Content flashes more than 3 times per second and is not below flash threshold.</a> (Critical)</li>
+        <li><a href="/a11y/failure/231/f231aa.html">F2.3.1.a.a Content flashes more than 3 times per second and is not below flash thresholds.</a> (Critical)</li>
     </ul>
 
     <h2>Testing Tools</h2>
