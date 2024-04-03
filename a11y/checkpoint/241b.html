@@ -1,0 +1,115 @@
+---
+layout: default
+title: 2.4.1.b Titles on Frames
+current: /a11y/checkpoint/241b.html
+root: WCAG 2.2
+scurl: /a11y/sc/241.html
+sctitle: 2.4.1 Bypass Blocks
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+    <p>When page content is presented in <code>&lt;iframe&gt;</code>s, screen reader users can navigate to these in the same way they can navigate to section headings.</p>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> <code>&lt;iframe&gt;s must have a <code>title</code> attribute set to a unique, descriptive name for the content.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a keyboard or screen reader user, I want to be able to skip blocks of repeated content so that I do not have to navigate through it each time I encounter it.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a keyboard-only user, when blocks of content are repeated across pages, you would be able to skip past them to the content you want.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the page use <code>&lt;iframe&gt;</code> elements to group blocks of repeated material?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each <code>&lt;iframe&gt;</code> have a <code>title</code> attribute?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the title describe the <code>&lt;iframe&gt;</code>'s content?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the title unique?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/241/f241bc.html">F2.4.1.b.c <code>&lt;iframe&gt; title</code> is not unique.</a></span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/241/f241bb.html">F2.4.1.b.b <code>title</code> does not describe the <code>&lt;iframe&gt;</code>'s content.</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/241/f241ba.html">F2.4.1.b.a <code>&lt;iframe&gt;</code> does not have a <code>title</code> attribute.</a></span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <h3>Desktop</h3>
+    <ol>
+        <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> to flag any <code>&lt;iframe&gt;</code> with a missing <code>title</code> attribute.</li>
+        <li>Verify that every <code>&lt;iframe&gt;</code> on the page has <code>title</code> text that describes its purpose.</li>
+        <li>Verify that each <code>&lt;iframe&gt; title</code> is unique.</li>
+    </ol>
+
+    <h3>Desktop Screen Reader (NVDA)</h3>
+    <ol>
+        <li>Open web page in Chrome with NVDA turned on.</li>
+        <li>Press the <kbd>M</kbd> key and listen for occurrences of <code>&lt;iframe&gt;</code>s.</li>
+        <li>Press the <kbd>M</kbd> key for each <code>&lt;iframe&gt;</code> found.</li>
+        <li>Verify that the text description provided for each <code>&lt;iframe&gt;</code> properly describes its purpose.</li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <ol>
+        <li>Open the page in Chrome on a desktop computer.</li>
+        <li>Press <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>, OR right-click in the page and select <strong>Inspect</strong>, OR from the 3-vertical-dot menu on the top right, select <strong>More tools > Developer tools</strong>.</li>
+        <li>Within Developer Tools, activate <strong>Toggle device toolbar</strong> to on.</li>
+        <li>From the Dimensions drop-down, select the appropriate iPhone or Android device.</li>
+        <li>Follow the procedure for Desktop.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/241/f241ba.html">F2.4.1.b.a <code>&lt;iframe&gt;</code> does not have a <code>title</code> attribute.</a> (Medium)</li>
+        <li><a href="/a11y/failure/241/f241bb.html">F2.4.1.b.b <code>title</code> does not describe the <code>&lt;iframe&gt;</code>'s content.</a> (Medium)</li>
+        <li><a href="/a11y/failure/241/f241bc.html">F2.4.1.b.c <code>&lt;iframe&gt; title</code> is not unique.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
+        <li>Chrome Developer Tools</li>
+        <li>Screen reader</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>HTML:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H64">H64: Using the title attribute of the iframe element</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://www.boia.org/blog/why-are-iframe-titles-important-for-accessibility">BOIA: Why Are iFrame Titles Important for Accessibility?</a></li>
+    </ul>
+</div>
+
+    {% include 241checkpoints.html %}
