@@ -1,0 +1,69 @@
+---
+layout: default
+title: Failure - F2.4.2.a.g PDF document title is not displayed in tab
+current: /a11y/failure/242/f242ag.html
+root: WCAG 2.2
+scurl: /a11y/sc/242.html
+sctitle: 2.4.2 Page Titled
+cpurl: /a11y/checkpoint/242a.html
+cptitle: 2.4.2.a Titles on Pages
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/page-titled
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>PDF file has a title describing the content.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>PDF file has a title describing the content, but it is not displayed in the title bar.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>
+                <p>Set the PDF preferences to display the title in the title bar.</p>
+                <h3>Adobe Acrobat Pro</h3>
+                <ol>
+                    <li>Select <strong>Menu > Document properties...</strong>.</li>
+                    <li>In the Document Properties dialog, select the <strong>Initial View</strong> tab.</li>
+                    <li>Under Window Options, select <strong>Document Title</strong> from the Show menu.</li>
+                    <li>Activate the <strong>OK</strong> button.</li>
+                </ol>
+            </div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <img src="/a11y/assets/images/f242ag-pdf-initial-view.png" alt="Screenshot of Document Properties Initial View tab in Adobe Acrobat Pro with Document Title selected" style="max-width: 480px;">
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Screen reader users, as well as people with cognitive, memory, or reading disabilities benefit from the ability to identify content by its title.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF18">PDF18: Specifying the document title using the Title entry in the document information dictionary of a PDF document</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 242checkpoints.html %}
