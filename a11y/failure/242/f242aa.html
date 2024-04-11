@@ -1,0 +1,68 @@
+---
+layout: default
+title: Failure - F2.4.2.a.a Web page does not have a <code>&lt;title&gt;</code>
+current: /a11y/failure/242/f242aa.html
+root: WCAG 2.2
+scurl: /a11y/sc/242.html
+sctitle: 2.4.2 Page Titled
+cpurl: /a11y/checkpoint/242a.html
+cptitle: 2.4.2.a Titles on Pages
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/page-titled
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>The <code>&lt;head&gt;</code> element of the web page has a <code>&lt;title&gt;</code> element which contains a descriptive title for the web page.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>The <code>&lt;head&gt;</code> element does not contain a <code>&lt;title&gt;</code> element.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Add a descriptive title within the <code>&lt;title&gt;</code> element.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;
+      Understanding Success Criterion 2.4.2: Page Titled
+    &lt;/title&gt;
+  &lt;/head&gt;
+  ...
+&lgt;/html&gt;</code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Screen reader users, as well as people with cognitive, memory, or reading disabilities benefit from the ability to identify content by its title.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G88">G88: Providing descriptive titles for Web pages</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H25">H25: Providing a title using the title element</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 242checkpoints.html %}
