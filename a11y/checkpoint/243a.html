@@ -1,0 +1,185 @@
+---
+layout: default
+title: 2.4.3.a Focus Order
+current: /a11y/checkpoint/243a.html
+root: WCAG 2.2
+scurl: /a11y/sc/243.html
+sctitle: 2.4.3 Focus Order
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-order
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The navigation order of focusable elements must be logical and intuitive.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Modeless dialogs must appear immediately after the trigger element.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Focus must move to modal dialogs when they are opened.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Focus must be restricted within modal dialogs while they are open.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When a modal is closed, focus must be returned to the trigger element or to the most logical location.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Focus order and visual order should match.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a keyboard-only user, I want the focus order to be logical so that I can easily navigate the content.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a keyboard user, when you navigate a web page, the focus order would be logical and intuitive.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Is the navigation order of focusable elements logical and intuitive?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the focus lost after user interaction or content update?</span>
+            <ul role="group">
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/243/f243ab.html">F2.4.3.a.b Focus is lost or incorrectly placed during interaction or content update.</a></span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the issue involve a modeless dialog?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/243/f243ac.html">F2.4.3.a.c Focus does not go to modeless dialog immediately after the trigger.</a></span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the issue involve a modal dialog?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the focus move to the modal when it is opened?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the focus remain within the modal while it is open?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the focus return to the trigger element when it is closed?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/243/f243aa.html">F2.4.3.a.a Focus order does not preserve the meaning or operability of the content.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/243/f243af.html">F2.4.3.a.f When modal is closed, focus is not returned to trigger or next logical location.</a></span></li>
+                                                    </ul>
+                                                </li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/243/f243ae.html">F2.4.3.a.e Focus is not maintained within modal while it is open.</a></span></li>
+                                            </ul>
+                                        </li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/243/f243ad.html">F2.4.3.a.d Focus does not move to modal when it is opened.</a></span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the focus not follow a scripted visual scroll?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/243/f243ag.html">F2.4.3.a.g Focus does not follow visual scroll.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the focus move to a hidden element?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/243/f243ah.html">F2.4.3.a.h Focus moves to hidden element.</a></span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the element use a positive tabindex value?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/243/f243ai.html">F2.4.3.a.i Positive tabindex value causes illogical focus order.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/243/f243aa.html">F2.4.3.a.a Focus order does not preserve the meaning or operability of the content.</a></span></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <h3>Desktop</h3>
+    <ol>
+        <li>Starting at the top of the page, press <kbd>Tab</kbd> to navigate through the page.</li>
+        <li>Verify that focus moves through the page in a logical and predictable manner.</li>
+        <li>Navigate to interactive elements such as buttons, links, or tabs that show or hide content within the page.</li>
+        <li>Activate or interact with the elements using <kbd>Enter</kbd>, <kbd>Space bar</kbd>, or <kbd>arrow</kbd> keys, as appropriate.</li>
+        <li>When content is added or removed, navigate through the content using the <kbd>Tab</kbd> or <kbd>arrow</kbd> keys as appropriate.</li>
+        <li>Verify that the focus order preserves meaning and operability.</li>
+        <li>Repeat the above steps if the interactive content introduces additional interactive functionality.</li>
+        <li>Activate in-page links or interactions, such as back to top links, skip to main content links, links to and from footnotes, etc.</li>
+        <li>Verify that when visual focus is moved (i.e., the viewport is shifted), keyboard focus is also moved to the intended target.</li>
+    </ol>
+
+    <h3>Mobile Screen Reader</h3>
+    <ol>
+        <li>Turn VoiceOver or TalkBack on.</li>
+        <li>Starting at the top of the page, swipe to navigate through the page.</li>
+        <li>Verify that focus moves through the page in a logical and predictable manner.</li>
+        <li>Interact with elements such as buttons, links, or tabs that show or hide content within the page.</li>
+        <li>When content is added or removed, verify that the focus order preserves meaning and operability.</li>
+        <li>Repeat the above steps if the interactive content introduces additional interactive functionality.</li>
+        <li>Activate in-page links or interactions, such as back to top links, skip to main content links, links to and from footnotes, etc.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <p>Follow Mobile Web procedure.</p>
+
+    <h2>PDF Testing</h2>
+    <ol>
+        <li>Tab through all the active elements in the document (links and form controls).</li>
+        <li>Verify that the tabbing order through active elements is logical and predictable.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/243/f243aa.html">F2.4.3.a.a Focus order does not preserve the meaning or operability of the content.</a> (Medium)</li>
+        <li><a href="/a11y/failure/243/f243ab.html">F2.4.3.a.b Focus is lost or incorrectly placed during interaction or content update.</a> (Medium)</li>
+        <li><a href="/a11y/failure/243/f243ac.html">F2.4.3.a.c Focus does not go to modeless dialog immediately after the trigger.</a> (Medium)</li>
+        <li><a href="/a11y/failure/243/f243ad.html">F2.4.3.a.d Focus does not move to modal when it is opened.</a> (Medium)</li>
+        <li><a href="/a11y/failure/243/f243ae.html">F2.4.3.a.e Focus is not maintained within modal while it is open.</a> (Medium)</li>
+        <li><a href="/a11y/failure/243/f243af.html">F2.4.3.a.f When modal is closed, focus is not returned to trigger or next logical location.</a> (Medium)</li>
+        <li><a href="/a11y/failure/243/f243ag.html">F2.4.3.a.g Focus does not follow visual scroll.</a> (Medium)</li>
+        <li><a href="/a11y/failure/243/f243ah.html">F2.4.3.a.h Focus moves to hidden element.</a> (Medium)</li>
+        <li><a href="/a11y/failure/243/f243ai.html">F2.4.3.a.i Positive tabindex value causes illogical focus order.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Keyboard</li>
+        <li>Screen reader</li>
+        <li><a href="https://pauljadam.com/bookmarklets/focus.html">Paul J Adam: Force Show Keyboard Focus Bookmarklet for Accessibility Testing</a></li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>General:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">G59: Placing the interactive elements in an order that follows sequences and relationships within the content</a></li>
+            </ul>
+        </li>
+        <li>HTML:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H102">H102: Creating modal dialogs with the HTML dialog element</a></li>
+            </ul>
+        </li>
+        <li>CSS:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C27">C27: Making the DOM order match the visual order</a></li>
+            </ul>
+        </li>
+        <li>JavaScript:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR26">SCR26: Inserting dynamic content into the Document Object Model immediately following its trigger element</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR27">SCR27: Reordering page sections using the Document Object Model</a></li>
+            </ul>
+        </li>
+        <li>PDF:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF3">PDF3: Ensuring correct tab and reading order in PDF documents</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://www.deque.com/blog/aria-modal-alert-dialogs-a11y-support-series-part-2/">Deque: How to Build WAI-ARIA Modal Alert Dialogs: A11y Support Series</a></li>
+    </ul>
+</div>
+
+    {% include 243checkpoints.html %}
