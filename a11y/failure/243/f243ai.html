@@ -1,0 +1,66 @@
+---
+layout: default
+title: Failure - F2.4.3.a.i Positive tabindex value causes illogical focus order
+current: /a11y/failure/243/f243ai.html
+root: WCAG 2.2
+scurl: /a11y/sc/243.html
+sctitle: 2.4.3 Focus Order
+cpurl: /a11y/checkpoint/243a.html
+cptitle: 2.4.3.a Focus Order
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-order
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>Positive tabindex values do not result in illogical focus order.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>Positive tabindex values are used, resulting in an illogical focus order.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>
+                <ul>
+                    <li>Do not use positive tabindex values, <strong>OR</strong></li>
+                    <li>Ensure that the focus order is logical.</li>
+                </ul>      
+            </div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Navigating a site or application with only the keyboard will make sense.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F44">F44: Failure of Success Criterion 2.4.3 due to using tabindex to create a tab order that does not preserve meaning and operability</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">G59: Placing the interactive elements in an order that follows sequences and relationships within the content</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 243checkpoints.html %}
