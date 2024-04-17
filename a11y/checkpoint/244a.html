@@ -1,0 +1,189 @@
+---
+layout: default
+title: 2.4.4.a Link Purpose (In Context)
+current: /a11y/checkpoint/244a.html
+root: WCAG 2.2
+scurl: /a11y/sc/244.html
+sctitle: 2.4.4 Link Purpose (In Context)
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The purpose of each link must be determinable from the link text alone, or from the link text and its context.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Link text should be clear from the link text alone.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Link text and target page titles should match or be very similar.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Context for link purpose should be located before the link text.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Links to the same destination should have constistent text.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Links to different destinations should have different text.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Links to conforming alternate versions should indicate that they are for more accessible pages.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with a motion impairment, I want links to clearly indicate their purpose so that I don't have to navigate to them in order to see what they are.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a user with a motion impairment, when links appear on the page, you can know what they are for without having to take extra steps to explore them.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Can the purpose of each link be determined from the link text alone?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the purpose of the link be determined from the link text together with the text in the same sentence, paragraph, list item, or table cell?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the purpose of the link be determined from the link text together with additional text provided by aria-label or aria-labelledby attributes?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the purpose of the link ambiguous to users in general?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <h3>Desktop</h3>
+    <ol>
+        <li>For each link on the page, check if the visible link text (or text alternative for an image link or image map link) alone is sufficient to describe the purpose of the link.</li>
+        <li>If not, check if the visible link text (or text alternative for an image link or image map link) plus the text in the same sentence, paragraph, list item, table cell, or table header for the cell is sufficient to describe the purpose of the link.</li>
+        <li>If not, check the accessible name for the link to see if the visible link text has been supplemented by an ARIA or <code>title</code> attribute or screen-reader-only text.</li>
+    </ol>
+
+    <h3>Desktop Screen Reader</h3>
+    <ol>
+        <li>Using a screen reader like NVDA or JAWS, pull up a list of links.
+            <ul>
+                <li>NVDA: <kbd>NVDA (Insert)</kbd>+<kbd>F7</kbd></li>
+                <li>JAWS: <kbd>F7</kbd></li>
+            </ul>
+        </li>
+        <li>Check if the link text for each link adequately describes its purpose, without other contextual information.</li>
+        <li>If not, check if tabbing to it announces contextual information. (This should happen if ARIA attributes are used.)</li>
+        <li>If not, use screen reader keys to check if the immediate context of the link (sentence, paragraph, list item, associated row/column header cells) provides supplemental text properly describing the purpose of the link.
+            <ul>
+                <li>NVDA and JAWS
+                    <ul>
+                        <li>Read current line: <kbd>NVDA</kbd>+<kbd>up arrow</kbd></li>
+                        <li>Read current sentence: <kbd>Alt</kbd>+<kbd>Numpad 5</kbd></li>
+                    </ul>
+                </li>
+                <li>JAWS
+                    <ul>
+                        <li>Read current paragraph: <kbd>Ctrl</kbd>+<kbd>Numpad 5</kbd></li>
+                    </ul>
+                </li>
+                <li>VoiceOver
+                    <ul>
+                        <li>Read current line: <kbd>VO</kbd>+<kbd>L</kbd></li>
+                        <li>Read current sentence: <kbd>VO</kbd>+<kbd>S</kbd></li>
+                        <li>Read current paragraph: <kbd>VO</kbd>+<kbd>P</kbd></li>
+                        <li>Read current table row: <kbd>VO</kbd>+<kbd>R</kbd></li>
+                        <li>Read current table column header: <kbd>VO</kbd>+<kbd>C</kbd></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Mobile Screen Reader</h3>
+    <ol>
+        <li>For each link on the page, check if the visible link text (or text alternative for an image link or image map link) alone is sufficient to describe the purpose of the link.</li>
+        <li>If not, check if swiping to it announces contextual information. (This should happen if ARIA attributes are used.)</li>
+        <li>If not, check if the visible link text (or text alternative for an image link or image map link) plus the text in the same sentence, paragraph, list item, table cell, or table header for the cell is sufficient to describe the purpose of the link.</li>
+    </ol>
+
+    <h2>PDF Testing</h2>
+    <h3>Adobe Acrobat Pro</h3>
+    <ol>
+        <li>For each link in the document, check if the link text itself provides enough information, within its immediate context (the link’s parent container), to understand the purpose of the link.</li>
+        <li>If not, locate the &lt;Link&gt; elements in the Tags tree.</li>
+        <li>Right-click the &lt;Link&gt; elements to show their properties.</li>
+        <li>Check if a more meaningful Alternate Text is provided for links that are not meaningful enough.</li>
+    </ol>
+    <p><strong>OR</strong></p>
+    <p>Use the Read Out Loud feature (<strong>Menu > View > Read out loud</strong>) to have the link text read out.</p>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/244/f244aa.html">F2.4.4.a.a The purpose of the link cannot be determined without leaving the link.</a> (Medium)</li>
+        <li><a href="/a11y/failure/244/f244ab.html">F2.4.4.a.b Image link does not have alternative text describing purpose.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Screen reader</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>General:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G53">G53: Identifying the purpose of a link using link text combined with the text of the enclosing sentence</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G91">G91: Providing link text that describes the purpose of a link</a></li>
+            </ul>
+        </li>
+        <li>HTML:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H24">H24: Providing text alternatives for the area elements of image maps</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H30">H30: Providing link text that describes the purpose of a link for anchor elements</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H33">H33: Supplementing link text with the title attribute</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H77">H77: Identifying the purpose of a link using link text combined with its enclosing list item</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H78">H78: Identifying the purpose of a link using link text combined with its enclosing paragraph</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H79">H79: Identifying the purpose of a link in a data table using the link text combined with its enclosing table cell and associated table header cells</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H81">H81: Identifying the purpose of a link in a nested list using link text combined with the parent list item under which the list is nested</a></li>
+            </ul>
+        </li>
+        <li>CSS:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C7">C7: Using CSS to hide a portion of the link text</a></li>
+            </ul>
+        </li>
+        <li>ARIA:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA7">ARIA7: Using aria-labelledby for link purpose</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA8">ARIA8: Using aria-label for link purpose</a></li>
+            </ul>
+        <li>JavaScript:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR30">SCR30: Using scripts to change the link text</a></li>
+            </ul>
+        </li>
+        <li>PDF:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF11">PDF11: Providing links and link text using the Link annotation and the /Link structure element in PDF documents</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF13">PDF13: Providing replacement text using the /Alt entry for links in PDF documents</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://webaim.org/techniques/hypertext/link_text">WebAIM: Links and Hypertext: Link Text and Appearance</a></li>
+        <li><a href="https://webaim.org/techniques/hypertext/hypertext_links">WebAIM: Links and Hypertext: Hypertext</a></li>
+        <li><a href="https://webaim.org/techniques/css/invisiblecontent/">WebAIM: CSS in Action: Invisible Content Just for Screen Reader Users</a></li>
+    </ul>
+</div>
+
+    {% include 244checkpoints.html %}
