@@ -1,0 +1,89 @@
+---
+layout: default
+title: 2.4.6.b Descriptive Labels
+current: /a11y/checkpoint/246b.html
+root: WCAG 2.2
+scurl: /a11y/sc/246.html
+sctitle: 2.4.6 Headings and Labels
+guideline: operable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+    <p><em>Note: A label is available to all users, as opposed to the programmatic name which may only be available to assistive technology.</em></p>
+    <p>An icon with an appropriate text alternative may serve as a label. Some common examples are:</p>
+    <ul>
+        <li>Magnifying glass for search</li>
+        <li>3 horizontal lines on top of each other for a menu</li>
+        <li>Gear icon for preferences or settings</li>
+        <li>Trash can for delete</li>
+    </ul>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Labels must describe the purpose of the associated control(s) or input(s).</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A control's label and programmatic name should be the same. (See <a href="/a11y/sc/253.html">2.5.3 Label in Name</a>.)</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want labels to be descriptive so that I can easily understand how to use the controls.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a user with a disability, when using a website, you could understand the purpose of controls by their labels.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the page contain control or input labels?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the labels clearly describe the purpose of the associated controls or inputs?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/246/f246ba.html">F2.4.6.b.a Label does not clearly describe the purpose of the associated control.</a></span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <p>For each label on the page, verify that it clearly describes the purpose of the associated control or input.</p>
+
+    <h2>PDF Test Procedure</h2>
+    <p>Follow the same procedure as web.</p>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/246/f246ba.html">F2.4.6.b.a Label does not clearly describe the purpose of the associated control.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>General:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+    </ul>
+</div>
+
+    {% include 246checkpoints.html %}
