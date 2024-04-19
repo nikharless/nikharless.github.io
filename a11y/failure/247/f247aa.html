@@ -10,7 +10,7 @@ cptitle: 2.4.7.a Focus Visible
 guideline: operable
 level: aa
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-visible
-css: focus-indicator
+css: 247
 ---
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
@@ -88,11 +88,17 @@ css: focus-indicator
                 <div class="example" style="width: 80%;">
                     <h4>Color Change on Focus</h4>
                     <p><label for="email">Email <input type="text" id="email" class="bgFI"></label></p>
-                    <p><label for="cb"><input type="checkbox" id="cb" class="bgFI"> Check this box</label></p>
+                    <div class="cbExample">
+                        <div role="checkbox" tabindex="0" aria-checked="false">Check this box
+                            <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                            <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
+                        </div>
+                    </div>
+                    <script src="/a11y/assets/js/checkbox.js"></script>
                     <fieldset>
                         <legend>Radio button set</legend>
-                        <label for="rb1" class="bgFI"><input type="radio" id="rb1"> Radio option 1</label>
-                        <label for="rb2" class="bgFI"><input type="radio" id="rb2"> Radio option 2</label>
+                        <label for="rb1"><input type="radio" id="rb1" class="bgFI"> Radio option 1</label>
+                        <label for="rb2"><input type="radio" id="rb2" class="bgFI"> Radio option 2</label>
                     </fieldset>
                     <label for="select">Select</label>
                     <select id="select" class="bgFI">
