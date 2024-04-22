@@ -1,0 +1,100 @@
+---
+layout: default
+title: 2.4.11.a Focus Not Obscured (Minimum)
+current: /a11y/checkpoint/2411a.html
+root: WCAG 2.2
+scurl: /a11y/sc/2411.html
+sctitle: 2.4.11 Focus Not Obscured (Minimum)
+guideline: operable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+    <p>Some examples of content that may obscure focus include:</p>
+    <ul>
+        <li>Sticky footers</li>
+        <li>Sticky headers</li>
+        <li>Modeless dialogs</li>
+    </ul> 
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Focus must not be entirely hidden by other content.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Focus should not be obscured by other content at all. (See <a href="/a11y/sc/2412.html">2.4.12 Focus Not Obscured (Enhanced).</a>)</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a sighted keyboard user, I want the focus indictor to not be hidden so that I can see where I'm at on the page.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a sighted keyboard user, when navigate through a page, you could see what element was in focus.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">As you navigate through the page using the keyboard, is any part of the keyboard focus hidden behind other content?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are you still able to tell what the element is that has focus?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; Is the content that is obscuring the focused element in its initial position (e.g., it hasn't been opened or moved by the user)? </span>
+                    <ul role="group">
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/2411/f2411aa.html">F2.4.11.a.a Focused element is entirely hidden by author-created content.</a></span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the content be removed without changing keyboard focus?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/2411/f2411ab.html">F2.4.11.a.b Focused element is entirely hidden by user-opened content that cannot be dismissed.</a></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; </span>
+        </li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <ol>
+        <li>Using only the keyboard, navigate to and interact with all interactive elements and widgets.</li>
+        <li>Verify that the element in focus is never entirely hidden behind other content.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/2411/f2411aa.html">F2.4.11.a.a Focused element is entirely hidden by author-created content.</a> (Medium)</li>
+        <li><a href="/a11y/failure/2411/f2411ab.html">F2.4.11.a.b Focused element is entirely hidden by user-opened content that cannot be dismissed.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Keyboard</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>CSS:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C43">C43: Using CSS scroll-padding to un-obscure content</a></li>
+            </ul>
+        </li>
+     </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://knowbility.org/blog/2020/accessible-slide-menus">Knowbility: Let’s Focus on Slide-Out Navigation</a></li>
+    </ul>
+</div>
+
+    {% include 2411checkpoints.html %}
