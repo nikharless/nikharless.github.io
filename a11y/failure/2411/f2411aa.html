@@ -1,0 +1,70 @@
+---
+layout: default
+title: Failure - F2.4.11.a.a Focused element is entirely hidden by author-created content
+current: /a11y/failure/2411/f2411aa.html
+root: WCAG 2.2
+scurl: /a11y/sc/2411.html
+sctitle: 2.4.11 Focus Not Obscured (Minimum)
+cpurl: /a11y/checkpoint/2411a.html
+cptitle: 2.4.11.a Focus Not Obscured (Minimum)
+guideline: operable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>Focus is not entirely hidden by author-created content.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>Focus is entirely hidden by author-created content.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>
+                <p>Ensure focusable content is not entirely hidden by author-created content. Some ways of avoiding overlap include:</p>
+                <ul>
+                    <li>Use CSS <code>scroll-padding</code> to make room for sticky content.</li>
+                    <li>Put the overlapping content into a modal which can be dismissed.</li>
+                    <li>Remove overlapping content when focus is removed.</li>
+                </ul>      
+            </div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <ul>
+                    <li>Working example: <a href="https://www.w3.org/WAI/WCAG22/working-examples/css-padding-focus-not-obscured/">Using CSS scroll-padding to un-obscure content.</a></li>
+                </ul>                
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>People who can't use a mouse need to see what has keyboard focus.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F110">F110: Failure of Success Criterion 2.4.11 Focus Not Obscured (Minimum) due to a sticky footer or header completely hiding focused elements</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C43">C43: Using CSS scroll-padding to un-obscure content</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 2411checkpoints.html %}
