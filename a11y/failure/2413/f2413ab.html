@@ -1,0 +1,71 @@
+---
+layout: default
+title: Failure - F2.4.13.a.b Element does not have at least 3:1 contrast between focused and unfocused states
+current: /a11y/failure/2413/f2413ab.html
+root: WCAG 2.2
+scurl: /a11y/sc/2413.html
+sctitle: 2.4.13 Focus Appearance
+cpurl: /a11y/checkpoint/2413a.html
+cptitle: 2.4.13.a Focus Appearance
+guideline: operable
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance
+css: focus-indicator
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>The focused state has at least a 3:1 contrast with the unfocused state.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>The focused state does not have at least a 3:1 contrast with the unfocused state.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Adjust the colors so that the focus state has at least a 3:1 contrast with the same pixels in the unfocused state.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <p>Tab to each element to see the focus indicator.</p>
+
+                <h3>Solid Line</h3>
+                <div class="example" style="width: 80%;">
+                    <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;">
+                        <li style="float: left;"><a href="#home" aria-current="page" style="display: block; color: #fff; text-align: center; padding: 14px 16px; text-decoration: none; background-color: #04AA6D;">Home</a></li>
+                        <li style="float: left;"><a href="#news" style="display: block; color: #fff; text-align: center; padding: 14px 16px; text-decoration: none;">News</a></li>
+                        <li style="float: left;"><a href="#contact" style="display: block; color: #fff; text-align: center; padding: 14px 16px; text-decoration: none;">Contact</a></li>
+                        <li style="float: left;"><a href="#about" style="display: block; color: #fff; text-align: center; padding: 14px 16px; text-decoration: none;">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Users with visual impairments, including older people, can't see small changes in visual appearance.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G195">G195: Using an author-supplied, visible focus indicator</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 2413checkpoints.html %}
