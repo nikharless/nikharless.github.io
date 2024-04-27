@@ -25,37 +25,46 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/pointer-cancellation
     <div class="failure">
     	<div class="row">
     		<h2 class="{{ page.level }}">Expected Result</h2>
-    		<div>All functionality that can be operated with a pointer can be operated with single-pointer actions.</div>
+    		<div>Single-pointer functionality doesn't use the down-event or it can be aborted or undone.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>Functionality requires a multi-point gesture.</div>
+    		<div>Irreversible action is executed on the down-even with no mechanism to undo it.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
-    		<div>Provide single-point controls that achieve the same result as the multi-point gesture.</div>
+    		<div>
+                <ul>
+                    <li>Execute the function on the up-event, <strong>OR</strong></li>
+                    <li>Provide a mechanism to cancel the action before completion, <strong>OR</strong></li>
+                    <li>Provide a mechanism to undo the action after completion, <strong>OR</strong></li>
+                    <li>Reverse the action of the down-event with the up-event.</li>
+                </ul>
+
+                <p>The Javascript <code>click()</code> event activates on the up-event.</p>
+            </div>
     	</div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <p>A map uses pinch gestures to zoom in and out, but it also has buttons which perform the same function.</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d806536.6090520973!2d-120.799728032834!3d37.84780259896719!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8096f09df58aecc5%3A0x2d249c2ced8003fe!2sYosemite%20National%20Park!5e0!3m2!1sen!2sus!4v1714063190402!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                
             </div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Why It's Important</h2>
-            <div>Not everyone can perform multi-touch gestures.</div>
+            <div>Users can recover from something they didn’t mean to do.</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G215">G215: Providing controls to achieve the same result as path based or multipoint gestures</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F101">F101: Failure of Success Criterion 2.5.2 due to activating a control on the down-event</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G212">G212: Using native controls to ensure functionality is triggered on the up-event</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-    {% include 251checkpoints.html %}
+    {% include 252checkpoints.html %}
