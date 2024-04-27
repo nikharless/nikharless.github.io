@@ -1,0 +1,107 @@
+---
+layout: default
+title: 2.5.2.a Pointer Cancellation
+current: /a11y/checkpoint/252a.html
+root: WCAG 2.2
+scurl: /a11y/sc/252.html
+sctitle: 2.5.2 Pointer Cancellation
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/pointer-cancellation
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Single-pointer functionality must not use the down-event, must have a mechanism to abort or undo the function, or must be reversed on the up-event.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to be able to abort or undo an action so that I can avoid accidental activations.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a user with a disability, when you activated a function, you could abort or undo it.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does activating a control perform an action that cannot be undone?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the action triggered on the down-event?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is completing the function on the down-event essential?</span></li>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the up-event reverse the action of the down-event?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is it possible to abort the action before completion (such as by dragging the pointer off of the control)?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
+        </li>
+        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <ol>
+        <li>Find all controls on the page with actions that cannot be undone.</li>
+        <li>If that control can be triggered by a single-pointer touch, verify that at least one of the following is true:
+            <ul>
+                <li>The action is not triggered on the down-event.</li>
+                <li>The action triggers on the up-event, and a mechanism is available to abort the function before completion or to undo the function after completion.</li>
+                <li>The up-event reverses any outcome of the preceding down-event.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <p>Follow the Web test procedure.</p>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/252/f252aa.html">F2.5.2.a.a Irreversible action is executed on the down-event.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Mouse</li>
+        <li>Touchscreen</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>General:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G210">G210: Ensuring that drag-and-drop actions can be cancelled</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G212">G212: Using native controls to ensure functionality is triggered on the up-event</a></li>
+            </ul>
+        </li>
+     </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        
+    </ul>
+</div>
+
+    {% include 252checkpoints.html %}
