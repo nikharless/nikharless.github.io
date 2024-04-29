@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 2.5.5.a Target Size (Enhanced)
-current: /a11y/checkpoint/255a.html
+title: 2.5.8.a Target Size (Minimum)
+current: /a11y/checkpoint/258a.html
 root: WCAG 2.2
-scurl: /a11y/sc/255.html
-sctitle: 2.5.5 Target Size (Enhanced)
+scurl: /a11y/sc/258.html
+sctitle: 2.5.8 Target Size (Minimum)
 guideline: operable
-level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum
 ---
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
@@ -22,6 +22,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
     <h2>Overview</h2>
     <p>Exceptions to this criterion include:</p>
     <ul>
+        <li>Undersized targets which are spaced so that a 24 CSS pixel diameter circle is centered on the bounding box of each, the circles do not intersect</li>
         <li>When there is another control on the same page that performs the same function and meets the criterion</li>
         <li>The control is inline with text</li>
         <li>The control is the user agent default</li>
@@ -32,7 +33,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
         <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The target size for controls must be at least 44 x 44 CSS pixels.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The target size for controls must be at least 24 x 24 CSS pixels.</li>
     </ul>
 
     <div class="userstory"><strong>User Story:</strong> As a user with a movement disability, I want controls to have a larger target size so that I can more easily use them.</div>
@@ -41,7 +42,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
-    <h3 id="test1">Is the target size of all interactive elements at least 44 x 44 CSS pixels?</h3>
+    <h3 id="test1">Is the target size of all interactive elements at least 24 x 24 CSS pixels?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the size of the target determined by the user agent and not the author?</span>
@@ -50,13 +51,18 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the target inline with a sentence or otherwise constrained by the line-height of non-target text?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the function be achieved using a different control on the same page which passes this criterion?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there sufficient spacing between targets to make up for the size?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the presentation of the target essential or legally required?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the function be achieved using a different control on the same page which passes this criterion?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/255/f255aa.html">F2.5.5.a.a Target size is less than 44x44 CSS pixels.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the presentation of the target essential or legally required?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/255/f255aa.html">F2.5.8.a.a Target size is less than 24 x 24 CSS pixels.</a></span></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -79,7 +85,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
                 <li>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></li>
             </ul>
         </li>
-        <li>Verify that each control has a target area of at least 44 x 44 CSS pixels.</li>
+        <li>Verify that each control has a target area of at least 24 x 24 CSS pixels or falls under one of the exceptions.</li>
     </ol>
 
     <h3>Mobile</h3>
@@ -99,7 +105,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/255/f255aa.html">F2.5.5.a.a Target size is less than 44 x 44 CSS pixels.</a> (Medium)</li>
+        <li><a href="/a11y/failure/258/f258aa.html">F2.5.8.a.a Target size is less than 24 x 24 CSS pixels.</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -127,4 +133,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
     </ul>
 </div>
 
-    {% include 255checkpoints.html %}
+    {% include 258checkpoints.html %}
