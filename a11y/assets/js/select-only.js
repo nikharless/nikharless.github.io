@@ -401,19 +401,13 @@ Select.prototype.updateMenuState = function (open, callFocus = true) {
 // init select
 window.addEventListener('load', function () {
   const options = [
-    'Choose a Fruit',
-    'Apple',
-    'Banana',
-    'Blueberry',
-    'Boysenberry',
-    'Cherry',
-    'Cranberry',
-    'Durian',
-    'Eggplant',
-    'Fig',
-    'Grape',
-    'Guava',
-    'Huckleberry',
+    'Select a Language',
+    'English',
+    'French',
+    'German',
+    'Portuguese',
+    'Russian',
+    'Spanish',
   ];
   const selectEls = document.querySelectorAll('.js-select');
 
