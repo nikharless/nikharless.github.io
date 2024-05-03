@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F3.1.2.a.a The language of foreign text is not set
-current: /a11y/failure/312/f312aa.html
+title: Failure - F3.1.2.a.d The language for foreign text in the PDF file is not set
+current: /a11y/failure/312/f312ad.html
 root: WCAG 2.2
 scurl: /a11y/sc/312.html
 sctitle: 3.1.2 Language of Parts
@@ -25,20 +25,27 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts
     <div class="failure">
     	<div class="row">
     		<h2 class="{{ page.level }}">Expected Result</h2>
-    		<div>The foreign text has a <code>lang</code> attribute set to the correct language.</div>
+    		<div>The foreign text container tag has the language set to the appropriate language.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>The foreign text does not have a <code>lang</code> attribute on its container tag.</div>
+    		<div>The foreign text container tag does not have the language set to the appropriate language.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
-    		<div>Add a <code>lang</code> attribute to the foreign text's container tag and set it to the appropriate language code.</div>
+            <div>
+        		<ol>
+                    <li>For each instance, locate and select the corresponding tag in the Tags tree.</li>
+                    <li>Right-click the tag or activate the Options menu, and select <strong>Properties…</strong>.</li>
+                    <li>In the Object Properties modal, select the <strong>Tag</strong> tab.</li>
+                    <li>Select the correct language from the <strong>Language</strong> drop-down.</li>
+                </ol>
+            </div>
     	</div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <pre>You’re not coming? <code>&lt;span <strong>lang="es"</strong>&gt;¡Qué chafa!&lt;/span&gt;</code></pre>
+                <img src="/a11y/assets/images/312-pdf-object-properties-language.png" alt="Screenshot of Adobe Acrobat Object Properties dialog Tag tab for a Span tag with German selected from the Language drop-down." style="max-width: 480px; border: 1px solid #ccc;">
             </div>
         </div>
         <div class="row">
@@ -50,8 +57,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts
             <div>
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H58">H58: Using language attributes to identify changes in the human language. </a></li>
-                    <li><a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML Language Code Reference</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF19">PDF19: Specifying the language for a passage or phrase with the Lang entry in PDF documents</a></li>
                 </ul>
             </div>
         </div>
