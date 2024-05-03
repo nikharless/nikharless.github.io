@@ -1,0 +1,136 @@
+---
+layout: default
+title: 3.1.2.a Language of Parts
+current: /a11y/checkpoint/312a.html
+root: WCAG 2.2
+scurl: /a11y/sc/312.html
+sctitle: 3.1.2 Language of Parts
+guideline: understandable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/language-of-parts
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The language of text that is in a different language than the default page language must be marked up with the correct language code.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the language of text set so that I my screen reader knows how to pronounce the page content.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a screen reader user, when you read the page, the screen reader would pronounce the content correctly.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Is there any text on the page that is in a different language from the default page language?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the text a proper name, technical term, in an indeterminate language, or a phrase that has become part of the vernacular of the default language?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the element containing only the alternate language text have a <code>lang</code> attribute?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the <code>lang</code> attribute valid?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the <code>lang</code> attribute set to the correct language?</span>
+                                    <ul role="group">
+                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/312/f312ac.html">F3.1.2.a.c The language code for foreign text is incorrect.</a></span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/312/f312ab.html">F3.1.2.a.b The language code for foreign text is invalid.</a></span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/312/f312aa.html">F3.1.2.a.a The language of foreign text is not set.</a></span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <h3>Desktop</h3>
+
+    <ol>
+        <li>Read the text of the page to identify any changes of language in the page which are not proper names, technical terms, words of indeterminate language, or words or phrases that have become part of the vernacular of the default language.</li>
+        <li>Inspect the code to ensure that any changes in language within the document are properly marked with a <code>lang</code> attribute set to a valid value.</li>
+        <li>Verify that the <code>lang</code> attribute value matches the actual language of the text.</li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <ol>
+        <li>Open the page on a desktop computer in Chrome.</li>
+        <li>Open the Developer tools:
+            <ul>
+                <li>Right-click the control and select <strong>Inspect</strong>, OR</li>
+                <li>From the Customize and control Google Chrome menu, select <strong>More tools > Developer tools</strong>, OR</li>
+                <li>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></li>
+            </ul>
+        </li>
+        <li>Activate <strong>Toggle device toolbar</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>) to view the page as a mobile device.</li>
+        <li>Select a device from the <strong>Dimensions</strong> drop-down.</li>
+        <li>Follow the procedure for Desktop Web.</li>
+    </ol>
+
+    <h2>PDF Test Procedure</h2>
+
+    <h3>Adobe Acrobat Pro</h3>
+    <ol>
+        <li>Identify passages of text whose language differs from the default document language.</li>
+        <li>For each instance, locate and select the corresponding tag in the Tags tree.</li>
+        <li>Right-click the tag or activate the Options menu, and select <strong>Properties…</strong>.</li>
+        <li>In the Object Properties modal, select the <strong>Tag</strong> tab.</li>
+        <li>Verify that the correct language is selected from the <strong>Language</strong> field.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/312/f312aa.html">F3.1.2.a.a The language of foreign text is not set.</a> (Medium)</li>
+        <li><a href="/a11y/failure/312/f312ab.html">F3.1.2.a.b The language code for foreign text is invalid.</a> (Medium)</li>
+        <li><a href="/a11y/failure/312/f312ac.html">F3.1.2.a.c The language code for foreign text is incorrect.</a> (Medium)</li>
+        <li><a href="/a11y/failure/312/f312ad.html">F3.1.2.a.d The language for foreign text in the PDF file is not set.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Chrome Developer Tools > <a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Accessibility Pane</a></li>
+        <li>Firefox Web Developer Tools > <a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Accessibility Inspector</a></li>
+        <li>Adobe Acrobat Pro</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>HTML:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H58">H58: Using language attributes to identify changes in the human language. </a></li>
+            </ul>
+        </li>
+        <li>PDF:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF19">PDF19: Specifying the language for a passage or phrase with the Lang entry in PDF documents</a></li>
+            </ul>
+        </li>
+     </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML Language Code Reference</a></li>
+    </ul>
+</div>
+
+    {% include 311checkpoints.html %}
