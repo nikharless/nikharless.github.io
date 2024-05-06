@@ -1,0 +1,85 @@
+---
+layout: default
+title: 3.1.5.a Reading Level
+current: /a11y/checkpoint/315a.html
+root: WCAG 2.2
+scurl: /a11y/sc/315.html
+sctitle: 3.1.5 Reading Level
+guideline: understandable
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/reading-level
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When text requires more than a 9th grade reading level to understand, supplemental content must be provided.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with a reading disability, I want a version of difficult text that is easier to read so that I can understand the content.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a user with a reading disability, when you encountered difficult text, you would have additional or alternate content that is easier to understand.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the content, excluding any proper names and titles, contain any difficult text which requires more than a 9th grade reading level?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there supplemental content such as explanatory graphics, audio, or an alternate version of the text that is easier to read?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/315/f315aa.html">F3.1.5.a.a Difficult text does not have supplemental content.</a></span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <ol>
+        <li>Remove proper nouns and titles from the text.</li>
+        <li>Evaluate the text for reading level.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/315/f315aa.html">F3.1.5.a.a Difficult text does not have supplemental content.</a> (Low)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>General:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G79">G79: Providing a spoken version of the text</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G86">G86: Providing a text summary that can be understood by people with lower secondary education level reading ability</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G103">G103: Providing visual illustrations, pictures, and symbols to help explain ideas, events, and processes</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G153">G153: Making the text easier to read</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G160">G160: Providing sign language versions of information, ideas, and processes that must be understood in order to use the content</a></li>
+            </ul>
+        </li>
+     </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://readabilityformulas.com/readability-scoring-system.php">Readability Scoring System</a></li>
+    </ul>
+</div>
+
+    {% include 315checkpoints.html %}
