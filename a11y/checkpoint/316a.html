@@ -1,0 +1,95 @@
+---
+layout: default
+title: 3.1.6.a Pronunciation
+current: /a11y/checkpoint/316a.html
+root: WCAG 2.2
+scurl: /a11y/sc/316.html
+sctitle: 3.1.6 Pronunciation
+guideline: understandable
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/pronunciation
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When the meaning of words depends on the pronunciation, the intended pronunciation must be provided.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with a cognitive disability, I want pronunciations of ambiguous words so that I can understand the content.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a user with a cognitive disability, when you encountered a word where the meaning depends on the pronunciation, you would have access to a mechanism providing the intended pronunciation.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the content contain any words where the meaning depends on the pronunciation?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the pronunciation be determined from the context?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the pronunciation provided?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/316/f316aa.html">F3.1.6.a.a Pronunciation is not provided for ambiguous words.</a></span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <ol>
+        <li>Evaluate the text for words where the meaning depends on the pronunciation.</li>
+        <li>If the pronunciation cannot be determined from the context, verify that the pronunciation is provided.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/316/f316aa.html">F3.1.6.a.a Pronunciation is not provided for ambiguous words.</a> (Low)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>General:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G62">G62: Providing a glossary</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G120">G120: Providing the pronunciation immediately following the word</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G121">G121: Linking to pronunciations</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G163">G163: Using standard diacritical marks that can be turned off</a></li>
+            </ul>
+        </li>
+        <li>HTML:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H62">H62: Using the ruby element</a></li>
+            </ul>
+        </li>
+     </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        
+    </ul>
+</div>
+
+    {% include 316checkpoints.html %}
