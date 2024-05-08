@@ -1,0 +1,111 @@
+---
+layout: default
+title: 3.2.1.a Context Changes (On Focus)
+current: /a11y/checkpoint/321a.html
+root: WCAG 2.2
+scurl: /a11y/sc/321.html
+sctitle: 3.2.1 On Focus
+guideline: understandable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/on-focus
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When a control gains focus, it must not result in a change of context.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the context to not change unexpectedly so that I know where I am.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a screen reader user, when you navigate to a control, the context would not unexpectedly change.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Is there a change of context when a control gains focus?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the focus automatically removed or redirected?</span>
+            <ul role="group">
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/321/f321aa.html">F3.2.1.a.a On focus, focus is removed or redirected.</a></span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a new window, tab, or dialog launched?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/321/f321ab.html">F3.2.1.a.b On focus, a new window is launched.</a></span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a significant change of content before the current focus?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/321/f321ac.html">F3.2.1.a.c On focus, there is a significant change of content before the focus.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a form automatically submitted?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/321/f321ad.html">F3.2.1.a.d On focus, a form is automatically submitted.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <h3>Desktop</h3>
+    <ol>
+        <li>Using only the keyboard, navigate through all controls on the page.</li>
+        <li>Verify that there is no unexpected change of context when any control gains focus.</li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <ol>
+        <li>Turn on the screen reader.</li>
+        <li>Swipe to navigate through all controls on the page.</li>
+        <li>Verify that there is no unexpected change of context when any control gains focus.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <p>Follow the procedure for Desktop Mobile.</p>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/321/f321aa.html">F3.2.1.a.a On focus, focus is removed or redirected.</a> (Medium)</li>
+        <li><a href="/a11y/failure/321/f321ab.html">F3.2.1.a.b On focus, a new window is launched.</a> (Medium)</li>
+        <li><a href="/a11y/failure/321/f321ac.html">F3.2.1.a.c On focus, there is a significant change of content before the focus.</a> (Medium)</li>
+        <li><a href="/a11y/failure/321/f321ad.html">F3.2.1.a.d On focus, a form is automatically submitted.</a> (Medium)</li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Keyboard</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>HTML:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G107">G107: Using "activate" rather than "focus" as a trigger for changes of context</a></li>
+            </ul>
+        </li>
+     </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+
+    </ul>
+</div>
+
+    {% include 321checkpoints.html %}
