@@ -1,0 +1,136 @@
+---
+layout: default
+title: 3.2.2.a Context Changes (On Input)
+current: /a11y/checkpoint/322a.html
+root: WCAG 2.2
+scurl: /a11y/sc/322.html
+sctitle: 3.2.2 On Input
+guideline: understandable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/on-input
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+    <p>This checkpoint does not apply to the results of activating a:</p>
+    <ul>
+        <li>Button</li>
+        <li>Link</li>
+        <li>Tab in a tab control</li>
+    </ul>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When the value or state of a control is changed, it must not result in a change of context unless there is a warning beforehand.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #e00000;" aria-label="Requirement"></span> A submit button should be provided on forms, even if the form can be implicitly submitted.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the context to not change unexpectedly so that I know where I am.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a screen reader user, when you change the state or value of a control, the context would not unexpectedly change.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Is there a change of context when the state or value of a control is changed?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the focus automatically removed or redirected?</span>
+            <ul role="group">
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/322/f322aa.html">F3.2.2.a.a When a control state or value changes, focus is removed or redirected.</a></span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a new window, tab, or dialog launched?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/322/f322ab.html">F3.2.2.a.b When a control state or value changes, a new window is launched.</a></span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a significant change of content before the current focus?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/322/f322ac.html">F3.2.2.a.c When a control state or value changes, there is a significant change of content before the focus.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a form automatically submitted?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/322/f322ad.html">F3.2.2.a.d When a control state or value changes, a form is automatically submitted.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/322/f322ae.html">F3.2.2.a.e When a control state or value changes, a change of context occurs.</a></span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+
+    <h3>Desktop</h3>
+    <ol>
+        <li>Using only the keyboard, change the setting or enter text for each control.</li>
+        <li>Verify that there is no unexpected change of context when any control state or value changes.</li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <ol>
+        <li>Turn on the screen reader.</li>
+        <li>Change the setting or enter text for each control.</li>
+        <li>Verify that there is no unexpected change of context when any control state or value changes.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <p>Follow the procedure for Desktop Mobile.</p>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/322/f322aa.html">F3.2.2.a.a When a control state or value changes, focus is removed or redirected.</a></li>
+        <li><a href="/a11y/failure/322/f322ab.html">F3.2.2.a.b When a control state or value changes, a new window is launched.</a></li>
+        <li><a href="/a11y/failure/322/f322ac.html">F3.2.2.a.c When a control state or value changes, there is a significant change of content before the focus.</a></li>
+        <li><a href="/a11y/failure/322/f322ad.html">F3.2.2.a.d When a control state or value changes, a form is automatically submitted.</a></li>
+        <li><a href="/a11y/failure/322/f322ae.html">F3.2.2.a.e When a control state or value changes, a change of context occurs.</a></li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Keyboard</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>General:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G13">G13: Describing what will happen before a change to a form control that causes a change of context to occur is made</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G80">G80: Providing a submit button to initiate a change of context</a></li>
+            </ul>
+        </li>
+        <li>HTML:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H32">H32: Providing submit buttons</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H84">H84: Using a button with a select element to perform an action</a></li>
+            </ul>
+        </li>
+        <li>JavaScript:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR19">SCR19: Using an onchange event on a select element without causing a change of context</a></li>
+            </ul>
+        </li>
+        <li>PDF:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF15">PDF15: Providing submit buttons with the submit-form action in PDF forms</a></li>
+            </ul>
+        </li>
+     </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+
+    </ul>
+</div>
+
+    {% include 322checkpoints.html %}
