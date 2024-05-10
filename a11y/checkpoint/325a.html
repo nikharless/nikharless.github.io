@@ -1,0 +1,144 @@
+---
+layout: default
+title: 3.2.5.a Change on Request
+current: /a11y/checkpoint/325a.html
+root: WCAG 2.2
+scurl: /a11y/sc/324.html
+sctitle: 3.2.5 Change on Request
+guideline: understandable
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/change-on-request
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Changes of context must only be initiated by the user, unless there is a means to turn off automatic changes of context.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the context to not change unexpectedly so that I know where I am.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a screen reader user, when you interacted with a web page, the context would not unexpectedly change.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Is there an automatic change of context anywhere on the page?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a mechanism available to turn off such changes?</span>
+            <ul role="group">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the focus automatically removed or redirected?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/325/f325aa.html">F3.2.5.a.a Focus is removed or redirected without user request.</a></span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a new window, tab, or dialog launched?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the window, tab, or dialog have an error message and a button that closes it returning the focus to the triggering component?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/325/f325ab.html">F3.2.5.a.b A new window is launched without user request.</a></span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a significant change of content, especially before the current focus?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/325/f325ac.html">F3.2.5.a.c There is a significant change of content without user request.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a form automatically submitted?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/325/f325ad.html">F3.2.5.a.d A form is automatically submitted without user request.</a></span></li>
+                                                <li role="treeitem"aria-expanded="false"><span><strong>No</strong>; Is the page content automatically refreshed?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/325/f325ae.html">F3.2.5.a.e Page content is refreshed without user request.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/325/f325af.html">F3.2.5.a.f A change of context occurs without user request.</a></span></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <h3>Desktop</h3>
+    <ol>
+        <li>Verify that there is no unexpected change of context when the page loads.</li>
+        <li>Using only the keyboard, focus on each control.</li>
+        <li>Verify that there is no unexpected change of context when any control gains or loses focus.</li>
+        <li>Using only the keyboard, change the setting or enter text for each control.</li>
+        <li>Verify that there is no unexpected change of context when any control state or value changes.</li>
+        <li>If there are any unexpected changes of context, verify that there is a mechanism available to turn them off.</li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <ol>
+        <li>Turn on the screen reader.</li>
+        <li>Follow the procedure for Desktop by swiping through the content.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <p>Follow the procedure for Mobile Web</p>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/325/f325aa.html">F3.2.5.a.a Focus is removed or redirected without user request.</a></li>
+        <li><a href="/a11y/failure/325/f325ab.html">F3.2.5.a.b A new window is launched without user request.</a></li>
+        <li><a href="/a11y/failure/325/f325ac.html">F3.2.5.a.c There is a significant change of content without user request.</a></li>
+        <li><a href="/a11y/failure/325/f325ad.html">F3.2.5.a.d A form is automatically submitted without user request.</a></li>
+        <li><a href="/a11y/failure/325/f325ae.html">F3.2.5.a.e Page content is refreshed without user request.</a></li>
+        <li><a href="/a11y/failure/325/f325af.html">F3.2.5.a.f A change of context occurs without user request.</a></li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Keyboard</li>
+        <li>Screen reader</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>General:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G76">G76: Providing a mechanism to request an update of the content instead of updating automatically</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G110">G110: Using an instant client-side redirect</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G200">G200: Opening new windows and tabs from a link only when necessary</a></li>
+            </ul>
+        </li>
+        <li>HTML:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H76">H76: Using meta refresh to create an instant client-side redirect</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H83">H83: Using the target attribute to open a new window on user request and indicating this in link text</a></li>
+            </ul>
+        </li>
+        <li>JavaScript:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR19">SCR19: Using an onchange event on a select element without causing a change of context</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR24">SCR24: Using progressive enhancement to open new windows on user request</a></li>
+            </ul>
+        </li>
+     </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+
+    </ul>
+</div>
+
+    {% include 325checkpoints.html %}
