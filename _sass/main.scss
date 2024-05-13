@@ -452,19 +452,33 @@ ul[role="tree"] li {
 [role="treeitem"].fail {
 	background-color: #ffe9e4;
 }
-[role="treeitem"].pass span {
-	display: inline-block;
-	text-decoration: none;
+[role="treeitem"].na {
+	background-color: #f1f1f1;
 }
-[role="treeitem"].fail span {
+[role="treeitem"].pass span,
+[role="treeitem"].fail span,
+[role="treeitem"].na {
 	display: inline-block;
 	text-decoration: none;
 }
 
-.pass::before {
+.pass::before,
+.na::before {
 	font: var(--fa-font-solid);
 	font-size: 12px;
 	content: "\f005";
+	display: inline-block;
+	text-rendering: auto;
+	padding-right: 3px;
+	vertical-align: middle;
+	font-weight: 900;
+	-webkit-font-smoothing: antialiased;
+}
+
+.fail::before {
+	font: var(--fa-font-solid);
+	font-size: 12px;
+	content: "\f057";
 	display: inline-block;
 	text-rendering: auto;
 	padding-right: 3px;
