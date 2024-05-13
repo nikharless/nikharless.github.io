@@ -25,15 +25,24 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/error-identification
     <div class="failure">
     	<div class="row">
     		<h2 class="{{ page.level }}">Expected Result</h2>
-    		<div>Help mechanisms which appear on multiple web pages appear in the same relative order on each page.</div>
+    		<div>Error messages identify the items with the error.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>Help mechanisms which appear on multiple web pages do not appear in the same relative order on each page.</div>
+    		<div>Error message does not identify the item with the error.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
-    		<div>Place help mechanisms in the same relative order to other content on each page that they appear</div>
+    		<div>
+                <p>Multiple methods are encouraged.</p>
+                <ul>
+                    <li>Identify the item with the error in the error message text, <strong>OR</strong></li>
+                    <li>Modify the label of the item in error to indicate it has an error, <strong>OR</strong></li>
+                    <li>Set the <code>aria-invalid</code> attribute to "true" on the item with the error, <strong>OR</strong></li>
+                    <li>Use an icon with a text alternative next to the item in error, <strong>OR</strong></li>
+                    <li>Use color to highlight the item in error. <em>Note: See <a href="/sc/141.html">1.4.1 Use of Color</a> for requirement.</em></li>
+                </ul>      
+            </div>
     	</div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
@@ -43,18 +52,22 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/error-identification
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Why It's Important</h2>
-            <div>People who need help can find it more easily if it's in the same place.</div>
+            <div>Flagging errors helps people with reduced sight and cognitive disabilities resolve them.</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G220">G220: Provide a contact-us link in a consistent location</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G83">G83: Providing text descriptions to identify required fields that were not completed</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA2">ARIA2: Identifying a required field with the aria-required property</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA21">ARIA21: Using aria-invalid to Indicate An Error Field</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-    {% include 326checkpoints.html %}
+    {% include 331checkpoints.html %}
