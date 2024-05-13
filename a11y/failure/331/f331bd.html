@@ -1,0 +1,69 @@
+---
+layout: default
+title: Failure - F3.3.1.b.d Error is not visible to assistive technology
+current: /a11y/failure/331/f331bd.html
+root: WCAG 2.2
+scurl: /a11y/sc/331.html
+sctitle: 3.3.1 Error Identification
+cpurl: /a11y/checkpoint/331b.html
+cptitle: 3.3.1.b Error Identification
+guideline: understandable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/error-identification
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>When an error is automatically detected, the error message is readable by assistive technology.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>An error message is visible, but it is not read by assistive technology.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>
+                <ul>
+                    <li>Use an alert dialog to provide the error message, <strong>OR</strong></li>
+                    <li>Display the error message in an <code>aria-live</code> region, <strong>OR</strong></li>
+                    <li>Move focus to the error message.</li>
+                </ul>      
+            </div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Flagging errors helps people with reduced sight and cognitive disabilities resolve them.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR32">SCR32: Providing client-side validation and adding error text via the DOM</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 331checkpoints.html %}
