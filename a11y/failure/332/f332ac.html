@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F3.3.2.a.a Form input has no visible label
-current: /a11y/failure/332/f332aa.html
+title: Failure - F3.3.2.a.c Visible label is not persistent
+current: /a11y/failure/332/f332ac.html
 root: WCAG 2.2
 scurl: /a11y/sc/332.html
 sctitle: 3.3.2 Labels or Instructions
@@ -25,35 +25,34 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
     <div class="failure">
     	<div class="row">
     		<h2 class="{{ page.level }}">Expected Result</h2>
-    		<div>Form inputs have visible labels.</div>
+    		<div>Form inputs have persistent visible labels.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>Form inputs do not have visible labels.</div>
+    		<div>Form inputs have visible labels which are not persistent.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
-    		<div>Provide visible labels for each form input.</div>
+    		<div>Provide labels which remain visible when data is entered in the input.</div>
     	</div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <h3>Individual Labels</h3>
+                <h3>Floating Labels</h3>
                 <div class="example">
-                    <form>
-                        <label for="fname">First Name<br>
-                            <input type="text">
-                        </label>
-                        <label for="gender">Gender<br>
-                            <select id="gender" name="gender">
-                                <option>Select</option>
-                                <option value="female">Female</option>
-                                <option value="male">Male</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </label>
-                        <label for="agree"><input type="checkbox"> I agree to the terms.</label>
-                        <input type="submit" value="Submit">
+                    <form class="float go-right">
+                        <div>
+                            <input id="name" name="name" type="text" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div>
+                            <input id="phone" name="phone" type="tel" required>
+                            <label for="phone">Primary Phone</label>
+                        </div>
+                        <div>
+                            <textarea id="message" name="phone" required></textarea>
+                            <label for="message">Message</label>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -66,12 +65,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G89">G89: Providing expected data format and example</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G162">G162: Positioning labels to maximize predictability of relationships</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G167">G167: Using an adjacent button to label the purpose of a field</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H44">H44: Using label elements to associate text labels with form controls</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF10">PDF10: Providing labels for interactive form controls in PDF documents</a></li>
+
                     <li><a href="https://www.w3.org/WAI/tutorials/forms/instructions/">W3C: Form Instructions</a></li>
                     <li><a href="https://www.digitala11y.com/anatomy-of-accessible-forms-placeholder-is-a-mirage/">DigitalA11y: Can Placeholder Make a Difference in Form Accessibility?</a></li>
                 </ul>
