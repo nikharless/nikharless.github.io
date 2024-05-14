@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F3.3.2.b.c Form input instructions are inaccurate
-current: /a11y/failure/332/f332bc.html
+title: Failure - F3.3.2.b.d Form input instructions are not communicated to assistive technology
+current: /a11y/failure/332/f332bd.html
 root: WCAG 2.2
 scurl: /a11y/sc/332.html
 sctitle: 3.3.2 Labels or Instructions
@@ -29,11 +29,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Actual Result</h2>
-    		<div>Form input instructions are provided, but they are not accurate.</div>
+    		<div>Form input instructions are provided, but they are not read by assistive technology.</div>
     	</div>
     	<div class="row">
     		<h2 class="{{ page.level }}">Solution</h2>
-    		<div>Ensure the instructions for completing the form inputs are accurate.</div>
+    		<div>Ensure the instructions for completing the form inputs are accessible to assistive technology.</div>
     	</div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
@@ -41,11 +41,12 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
                 <p>The format indicated in the label matches the format actually accepted by the form validation.</p>
                 <div class="example">
                     <form>
+                        <legend>All fields are required.</legend>
                         <label for="dob">Date of Birth (<em>MM/DD/YYYY</em>)<br>
-                            <input type="text" id="dob">
+                            <input type="text" id="dob" required>
                         </label>
                         <label for="zip">Postal Code (<em>XXXXX</em> or <em>XXXXX-XXXX</em>)<br>
-                            <input type="text" id="zip">
+                            <input type="text" id="zip" required>
                         </label>
                     </form>
                 </div>
@@ -59,7 +60,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA1">ARIA1: Using the aria-describedby property to provide a descriptive label for user interface controls</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA9">ARIA9: Using aria-labelledby to concatenate a label from several text nodes</a></li>
                 </ul>
             </div>
         </div>
