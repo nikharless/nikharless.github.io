@@ -38,6 +38,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
+                <h3>Required Fields</h3>
                 <p>The required status of the fields is communicated both visually and programmatically.</p>
                 <div class="example">
                     <form>
@@ -60,6 +61,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
 &lt;/form&gt;</code></pre>
                 </div>
 
+                <h3>Associating Instructions with <code>aria-describedby</code></h3>
                 <div class="example">
                     <form>
                         <label for="email">Email Address</label>
@@ -67,6 +69,12 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
                         <p id="info" style="font-style: italic;">This should be your company email.</p>
                         <input type="submit" value="Submit">
                     </form>
+                    <pre><code>&lt;form&gt;
+    &lt;label for="email"&gt;Email Address&lt;/label&gt;
+    &lt;input type="email" id="email" aria-describedby="info"&gt;
+    &lt;p id="info"&gt;This should be your company email.&lt;/p&gt;
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;</code></pre>
                 </div>
             </div>
         </div>
