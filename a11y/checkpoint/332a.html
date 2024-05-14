@@ -1,0 +1,160 @@
+---
+layout: default
+title: 3.3.2.a Visible Labels
+current: /a11y/checkpoint/332a.html
+root: WCAG 2.2
+scurl: /a11y/sc/332.html
+sctitle: 3.3.2 Labels or Instructions
+guideline: understandable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+    <p>This criterion applies to form inputs:</p>
+    <ul>
+        <li>&lt;input type="button"&gt;</li>
+        <li>&lt;input type="checkbox"&gt;</li>
+        <li>&lt;input type="color"&gt;</li>
+        <li>&lt;input type="date"&gt;</li>
+        <li>&lt;input type="datetime-local"&gt;</li>
+        <li>&lt;input type="email"&gt;</li>
+        <li>&lt;input type="file"&gt;</li>
+        <li>&lt;input type="image"&gt;</li>
+        <li>&lt;input type="month"&gt;</li>
+        <li>&lt;input type="number"&gt;</li>
+        <li>&lt;input type="password"&gt;</li>
+        <li>&lt;input type="radio"&gt;</li>
+        <li>&lt;input type="range"&gt;</li>
+        <li>&lt;input type="reset"&gt;</li>
+        <li>&lt;input type="search"&gt;</li>
+        <li>&lt;input type="submit"&gt;</li>
+        <li>&lt;input type="tel"&gt;</li>
+        <li>&lt;input type="text"&gt;</li>
+        <li>&lt;input type="time"&gt;</li>
+        <li>&lt;input type="url"&gt;</li>
+        <li>&lt;input type="week"&gt;</li>
+    </ul>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Form inputs must have visible labels.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Form input options must have visible labels.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Labels should specify data format if it isn't clear.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Labels should be close to the form input.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Labels should always be visible for single select inputs, even when a selection is made and the single select element is collapsed.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Labels should be correctly marked up and associated with the form inputs. (<em>For the requirement, see <a href="/a11y/sc/131.html">1.3.1 Info and Relationships</a>.</em>)</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Form inputs should have accessible names. (<em>For the requirement, see <a href="/a11y/sc/412.html">4.1.2 Name, Role, Value</a>.</em>)</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with a cognitive disability, I want form inputs to have visible labels so that I know what data is expected.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a user with a cognitive disability, when you encounter form inputs, labels are provided describing the expected input.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Are there form inputs on the page?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each form input have a visible label?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the label remain visible when the input has a value?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the form input part of a group of inputs?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the group of inputs require a group label in order to be understood?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the group of inputs have a visible group label?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/332/f332ab.html">F3.3.2.a.b Input group has no visible label and individual labels are insufficient.</a></span></li>
+                                            </ul>
+                                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                                    </li>
+                                </li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/332/f332ac.html">F3.3.2.a.c Visible label is not persistent.</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/332/f332aa.html">F3.3.2.a.a Form input has no visible label.</a></span></li>
+            </ul>
+        </li>
+        <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <ol>
+        <li>Locate any form inputs in the content.</li>
+        <li>Verify that each individual form input has a visible label.</li>
+        <li>If the purpose of individual inputs in a group of inputs is not clear from the individual labels alone, verify that there is a visible group label.</li>
+        <li>Enter data for each control, and verify that the label remains visible.</li>
+    </ol>
+
+    <h2>Mobile App Test Procedure</h2>
+    <p>Follow the procedure for Web.</p>
+
+    <h2>PDF Test Procedure</h2>
+    <ol>
+        <li>Locate any form inputs in the content.</li>
+        <li>Verify that each individual form input has a visible label.</li>
+        <li>If the purpose of individual inputs in a group of inputs is not clear from the individual labels alone, verify that there is a visible group label.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/332/f332aa.html">F3.3.2.a.a Form input has no visible label.</a></li>
+        <li><a href="/a11y/failure/332/f332ab.html">F3.3.2.a.b Input group has no visible label and individual labels are insufficient.</a></li>
+        <li><a href="/a11y/failure/332/f332ac.html">F3.3.2.a.c Visible label is not persistent.</a></li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>General:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G89">G89: Providing expected data format and example</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G162">G162: Positioning labels to maximize predictability of relationships</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G167">G167: Using an adjacent button to label the purpose of a field</a></li>
+            </ul>
+        </li>
+        <li>HTML:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H44">H44: Using label elements to associate text labels with form controls</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H71">H71: Providing a description for groups of form controls using fieldset and legend elements</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H90">H90: Indicating required form controls using label or legend</a></li>
+            </ul>
+        </li>
+        <li>PDF:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF10">PDF10: Providing labels for interactive form controls in PDF documents</a></li>
+            </ul>
+        </li>
+     </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://www.w3.org/WAI/tutorials/forms/instructions/">W3C: Form Instructions</a></li>
+        <li><a href="https://www.digitala11y.com/anatomy-of-accessible-forms-placeholder-is-a-mirage/">DigitalA11y: Can Placeholder Make a Difference in Form Accessibility?</a></li>
+    </ul>
+</div>
+
+    {% include 332checkpoints.html %}
