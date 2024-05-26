@@ -1,0 +1,159 @@
+---
+layout: default
+title: 3.3.4.a Error Prevention (Legal, Financial, Data)
+current: /a11y/checkpoint/334a.html
+root: WCAG 2.2
+scurl: /a11y/sc/334.html
+sctitle: 3.3.4 Error Prevention (Legal, Financial, Data)
+guideline: understandable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If the user can carry out legal or financial transactions, submit test responses, or change or delete stored data, the submissions must be reversible, verifiable, or confirmable.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to be able to check, confirm, or reverse transactions so that I can avoid serious consequences of mistakes.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a user with a disability, when submitting transactions with serious consequences, you would have the opportunity to check, confirm, or reverse the transaction.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Does the page functionality cause transactions with serious consequences to occur?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the page cause legal commitments or financial transactions to occur?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the data entered by the user checked for input errors and the user given the opportunity to correct them?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the user given the opportunity to review, confirm, and correct information before finalizing the transaction?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the submission reversible?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="/a11y/failure/334/f334aa.html">F3.3.4.a.a Legal transaction occurs without the ability to reverse, check, or confirm it.</a></span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the page cause user-controllable data to be changed or deleted?</span>
+            <ul role="group">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user given the opportunity to confirm the action before finalizing it?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the submission reversible?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="/a11y/failure/334/f334ab.html">F3.3.4.a.b Data is deleted without the ability to recover or confirm.</a></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the web page submit test answers?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user given the opportunity to review and confirm the answers before final submission?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="/a11y/failure/334/f334ac.html">F3.3.4.a.c Test answers are submitted without the ability to check or confirm.</a></span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem"><span><strong>No</strong>;</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <h3>Desktop</h3>
+    <ol>
+        <li>Locate any pages where a user action can cause an important legal, financial, test/exam or unrecoverable/unchangeable user data transaction to occur.</li>
+        <li>Verify that the transaction can be either:
+            <ul>
+                <li>Reversed by the user, <strong>OR</strong>
+                    <ul>
+                        <li>Instructions are provided explaining how to reverse or cancel the transaction.</li>
+                        <li>A keyboard-only user can reverse or cancel the transaction.</li>
+                    </ul>
+                </li>
+                <li>Verified by the user, <strong>OR</strong>
+                    <ul>
+                        <li>Data entered by the user is provided for review before final submission, and the user is able to make changes to this data.</li>
+                    </ul>
+                </li>
+                <li>Confirmed by the user
+                    <ul>
+                        <li>A mechanism (such as a checkbox) is provided for the user to confirm the transaction.</li>
+                        <li>Validate that if the checkbox is left unchecked, the transaction is not processed.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Mobile</h3>
+    <p>Using VoiceOver or TalkBack, follow the Desktop Web procedure.</p>
+
+    <h2>Mobile App Test Procedure</h2>
+    <p>Follow the procedure for Mobile Web.</p>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/334/f334aa.html">F3.3.4.a.a Legal transaction occurs without the ability to reverse, check, or confirm it.</a></li>
+        <li><a href="/a11y/failure/334/f334ab.html">F3.3.4.a.b Data is deleted without the ability to recover or confirm.</a></li>
+        <li><a href="/a11y/failure/334/f334ac.html">F3.3.4.a.c Test answers are submitted without the ability to check or confirm.</a></li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+        <li>Screen reader</li>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>General:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G98">G98: Providing the ability for the user to review and correct answers before submitting</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G99">G99: Providing the ability to recover deleted information</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G155">G155: Providing a checkbox in addition to a submit button</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G164">G164: Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G168">G168: Requesting confirmation to continue with selected action</a></li>
+            </ul>
+        </li>
+        <li>JavaScript:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
+            </ul>
+        </li>
+     </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+    </ul>
+</div>
+
+    {% include 334checkpoints.html %}
