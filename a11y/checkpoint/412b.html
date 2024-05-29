@@ -1,0 +1,146 @@
+---
+layout: default
+title: 4.1.2.b Custom Controls
+current: /a11y/checkpoint/412b.html
+root: WCAG 2.2
+scurl: /a11y/sc/412.html
+sctitle: 4.1.2 Name, Role, Value
+guideline: robust
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
+        </ol>
+    </nav>
+
+    <h2>Overview</h2>
+    <p>In general, name, role, state, or value issues under this checkpoint relate to more complex widgets, especially ones that relate to existing ARIA authoring patterns such as tabpanels, dialogs, listboxes, sliders, carousels, etc.</p>
+
+    <p>For issues related to simpler components that have an HTML equivalent such as links, buttons, checkboxes, radio buttons, and selects, see the issues under checkpoint 4.1.2.a: Name, Role, Value.</a></p>
+
+    <p>For issues related to complex interactions that don’t have HTML or ARIA widget equivalents and are so broken that breaking them down into individual issues is not effective or productive, see checkpoint <a href="/a11y/checkpoint/413b.html">4.1.3.c: Compatibility.</a></p>
+
+    <p>Name:</p>
+    <ul>
+        <li>A label for a component</li>
+        <li>The name of a tab</li>
+        <li>The name of a dialog</li>
+        <li>The name of a carousel</li>
+        <li>The name of a slider</li>
+    </ul>
+
+    <p>Role:</p>
+    <ul>
+        <li>Tab</li>
+        <li>Dialog</li>
+        <li>Slider</li>
+        <li>Menu/menu item</li>
+    </ul>
+
+    <p>Value or State:</p>
+    <ul>
+        <li>Expanded/collapsed</li>
+        <li>Selected</li>
+        <li>Current</li>
+        <li>Disabled</li>
+        <li>Text in textfield</li>
+        <li>[x] of [x]</li>
+        <li>Slider’s value</li>
+        <li>etc.</li>
+    </ul>
+
+    <h2>Basic Requirements and Best Practices</h2>
+    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+    <ul>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The name and role of custom user interface components must be programmatically determinable by assistive technologies.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The states, properties, and values of custom user interface components which can be set by the user must be programmatically determinable by assistive technologies.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Notifications of changes to states, properties, and values of user interface components must be communicated to assistive technologies.</li>
+        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> HTML markup must meet W3C specifications and facilitate accessibility support with assistive technologies.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> ARIA should be used to indicate name, role, and value for tabs, modals, or other dynamic widgets.</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The tabpanel (content section) of the tab should have an accessible name.</li>
+    </ul>
+
+    <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the name, role, and value of user interface components to be programmatically determinable so that I can get this information via my screen reader.</div>
+
+    <div class="success"><strong>Success:</strong> If you were a screen reader user, when accessing user interface components, you would be able to determine the role, purpose, and state of the components.</div>
+
+    <h2>Testing Logic</h2>
+    <script src="/a11y/assets/js/tree.js"></script>
+    <h3 id="test1">Is the name of the component read by a screen reader when the component receives focus?</h3>
+    <ul role="tree" aria-labelledby="test1">
+        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+        <li role="treeitem" class="fail"><span><strong>No</strong>; See a href="/a11y/failure/412/f412ba.html">F4.1.2.b.a Component does not have an accessible name.</a></span></li>
+    </ul>
+
+    <h2>Web Test Procedure</h2>
+    <ol>
+        <li>Using a screen reader, navigate to every user interface component in the page.</li>
+        <li>Verify that the screen reader speaks a name for each component.</li>
+        <li>Verify that the screen reader speaks a valid role for each component.</li>
+        <li>Verify that the screen reader speaks any state, property, or value that can be set by the user.</li>
+        <li>Verify that the screen reader notifies the user of any changes to states, properties, or values.</li>
+    </ol>
+
+    <h2>Failures</h2>
+    <ul>
+        <li><a href="/a11y/failure/412/f412ba.html">F4.1.2.b.a Component does not have an accessible name.</a></li>
+        <li><a href="/a11y/failure/412/f412bb.html">F4.1.2.b.b Component has an invalid ARIA attribute or value.</a></li>
+        <li><a href="/a11y/failure/412/f412bc.html">F4.1.2.b.c Component is missing a role.</a></li>
+        <li><a href="/a11y/failure/412/f412bd.html">F4.1.2.b.d Component has an incorrect role.</a></li>
+        <li><a href="/a11y/failure/412/f412be.html">F4.1.2.b.e Accordion is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bf.html">F4.1.2.b.f Breadcrumb is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bg.html">F4.1.2.b.g Carousel is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bh.html">F4.1.2.b.h Combobox is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bi.html">F4.1.2.b.i Dialog is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bj.html">F4.1.2.b.j Grid is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bk.html">F4.1.2.b.k Listbox is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bl.html">F4.1.2.b.l Menu is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bm.html">F4.1.2.b.m Meter is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bn.html">F4.1.2.b.n Slider is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bo.html">F4.1.2.b.o Tab panel is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bp.html">F4.1.2.b.p Toolbar is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bq.html">F4.1.2.b.q Tooltip is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412br.html">F4.1.2.b.r Tree view is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bs.html">F4.1.2.b.s Tree grid is missing appropriate roles and/or attributes.</a></li>
+        <li><a href="/a11y/failure/412/f412bt.html">F4.1.2.b.t Component is missing required parent element.</a></li>
+        <li><a href="/a11y/failure/412/f412bu.html">F4.1.2.b.u Component is missing required child element.</a></li>
+    </ul>
+
+    <h2>Testing Tools</h2>
+    <ul>
+    </ul>
+
+    <h2>References</h2>
+    <h3>WCAG</h3>
+    <ul>
+        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li>General:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G10">G10: Creating components using a technology that supports the accessibility notification of changes</a></li>
+            </ul>
+        </li>
+        <li>ARIA:
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA4">ARIA4: Using a WAI-ARIA role to expose the role of a user interface component</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+            </ul>
+        </li>
+     </ul>
+
+    <h3>Additional Information</h3>
+    <ul>
+        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/">W3 APG: Patterns</a></li>
+        <li><a href="https://tetralogical.com/blog/2022/07/07/android-accessibility-roles-and-talkback/">TetraLogical: Android accessibility: roles and TalkBack</a></li>
+        <li><a href="https://a11ysupport.io/">Accessibility Support</a></li>
+    </ul>
+</div>
+
+    {% include 412checkpoints.html %}
