@@ -282,6 +282,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
     </ul>
 
     <h2>Web Test Procedure</h2>
+
+    <h3>Desktop</h3>
     <ol>
         <li>Using a screen reader, navigate to every user interface component in the page.</li>
         <li>Verify that the screen reader speaks a name for each component.</li>
@@ -289,6 +291,188 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
         <li>Verify that the screen reader speaks any state, property, or value that can be set by the user.</li>
         <li>Verify that the screen reader notifies the user of any changes to states, properties, or values.</li>
     </ol>
+
+    <h3>Mobile</h3>
+    <ol>
+        <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features.</a></li>
+        <li>Follow the procedure for Desktop Web.</li>
+    </ol>
+    <p>Note that default screen reader behavior may not include all information. For example, TalkBack does not read the currently selected value in <code>&lt;select&gt;</code> controls. These cases would fall out of the control of the developer and therefore are not considered failures.</p>
+
+    <h2>Mobile App Test Procedure</h2>
+
+    <h3>iOS</h3>
+    <ol>
+        <li><a href="https://support.apple.com/en-us/111799">Turn off image recognition features.</a></li>
+        <li>Follow the procedure for Desktop Web.</li>
+    </ol>
+    <p>Note that iOS VoiceOver does not read roles for all elements (such as dialogs), so verify that the issue is, in fact, one that the developer likely has control over before filing a bug. See <a href="https://a11ysupport.io/">Accessibility Support</a> for more information.</p>
+
+    <dl class="faq">
+        <dt>
+            <button type="button" aria-expanded="false" aria-controls="faq1_desc">iOS VoiceOver name/role expectations:</button>
+        </dt>
+        <dd>
+            <div id="faq1_desc" class="desc">
+                <ul>
+                    <li><strong>Buttons:</strong> “[visible text or accessible name], button”</li>
+                    <li><strong>Links:</strong> “[visible text or accessible name], link”</li>
+                    <li><strong>Listview or tableview cells containing an interactive element:</strong> If no role such as “button” is spoken, use Voice Control to check for a number to appear when using the “Show numbers” command. VoiceOver is not required to announce a role such as “button” as long as a number appears with Voice Control.</li>
+                    <li><strong>Custom action menus:</strong> “Actions available”. If VoiceOver does not say “Actions available,” open the Rotor. Actions should become an available option in the Rotor, and the Rotor should automatically be set to Actions when it opens.</li>
+                    <li><strong>Page controls:</strong>
+                        <ul>
+                            <li>When focused on the page control, “Page [x] of [x], adjustable. Swipe up or down to adjust the value.” or similar.</li>
+                            <li>After swiping up or down to switch pages: “Page [x] of [x]” and will continue to focus the page control.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Segmented controls:</strong> “[visible text or accessible name], button, [x] of [x]” or similar</li>
+                    <li><strong>Sliders:</strong> “[accessible name], [value of slider], adjustable. Swipe up or down to adjust the value.”</li>
+                    <li><strong>Steppers:</strong>
+                        <ul>
+                            <li>If buttons are separately focusable:
+                                <ul>
+                                    <li>Decrement: “decrement, button” or similar</li>
+                                    <li>Increment: “increment, button” or similar</li>
+                                </ul>
+                            </li>
+                            <li>If buttons are focusable at the same time:
+                                <ul>
+                                    <li>“[accessible name], [value], adjustable. Swipe up or down to adjust the value” or similar</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Switches:</strong> “[accessible name], Switch button, off. Double tap to toggle switch” or similar</li>
+                    <li><strong>Text fields:</strong> “[accessible name], [entered value or placeholder text], text field, Double tap to edit. Actions available” or similar</li>
+                    <li><strong>Navigation bars:</strong> “[visible text only]”</li>
+                    <li><strong>Search bars:</strong> “[accessible name], [entered value or placeholder text], Search field, Double tap to edit” or similar</li>
+                    <li><strong>Tab bars:</strong> “[visible text or accessible name], Tab, [x] of [x]” or similar</li>
+                    <li><strong>Alerts:</strong> “Alert, [alert title]” or similar</li>
+                    <li><strong>Editable Text View:</strong> “[visible text or accessible name], Text field, Double tap to edit. Actions available” or similar</li>
+                </ul>
+            </div>
+        </dd>
+        <dt>
+            <button type="button" aria-expanded="false" aria-controls="faq2_desc">iOS VoiceOver state/value expectations:</button>
+        </dt>
+        <dd>
+            <div id="faq2_desc" class="desc">
+                <ul>
+                    <li><strong>Selected:</strong> “[accessible name], button, selected”
+                        <ul>
+                            <li>Note: “button” may be optional, depending on whether the selected item is within a listview.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Expanded:</strong> “[accessible name], button, expanded [or] collapsed”
+                        <ul>
+                            <li>Note: “button may be optional, depending on whether the selected item is within a listview.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Disabled:</strong> “[accessible name], dimmed, button”</li>
+                </ul>
+            </div>
+        </dd>
+    </dl>
+    <script src="/a11y/assets/js/disclosureButton.js"></script>
+
+    <h3>Android</h3>
+    <ol>
+        <li>Follow the procedure for Desktop Web.</li>
+    </ol>
+    <p>Note that TalkBack does not read roles for all elements (such as dialogs), so verify that the issue is, in fact, one that the developer likely has control over before filing a bug. See <a href="https://tetralogical.com/blog/2022/07/07/android-accessibility-roles-and-talkback/">Android accessibility: roles and TalkBack</a> and <a href="https://a11ysupport.io/">Accessibility Support</a> for more information.</p>
+
+    <dl class="faq">
+        <dt>
+            <button type="button" aria-expanded="false" aria-controls="faq3_desc">Android TalkBack name/role expectations:</button>
+        </dt>
+        <dd>
+            <div id="faq3_desc" class="desc">
+                <ul>
+                    <li><strong>Buttons</strong> (including text, image, and floating action buttons): 
+                        <ul>
+                            <li>“[accessible name], button”, <strong>OR</strong></li>
+                            <li>“[accessible name] (pause), Double tap to activate”, <strong>OR</strong></li>
+                            <li>“[accessible name], button (pause), Double tap to activate” or similar</li>
+                        </ul>
+                    </li>
+                    <li><strong>Links:</strong>
+                        <ul>
+                            <li>An earcon plays identifying the text span as a link (“link” is NOT spoken), <strong>AND</strong></li>
+                            <li>“[accessible name], Double tap to activate” or similar</li>
+                        </ul>
+                    </li>
+                    <li><strong>Alert or popup:</strong> “Alert” or “Popup”, then:
+                        <ul>
+                            <li>First text block, <strong>OR</strong></li>
+                            <li>Pane title as set by <code>accessibilityPaneTitle</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Badge:</strong> “[accessible name], has [x] notifications, [rest of announcement]”</li>
+                    <li><strong>Bottom navigation:</strong>
+                        <ul>
+                            <li>Selected state for currently active top-level destination, <strong>AND</strong></li>
+                            <li>“[accessible name], Double tap to activate” or similar</li>
+                        </ul>
+                    </li>
+                    <li><strong>Checkbox or radio button:</strong>
+                        <ul>
+                            <li>“Checked” or “Not checked”, then “[accessible name], Double tap to activate” or similar
+                                <ul>
+                                    <li>May or may not say “checkbox” or “radio button” before “Double tap to activate” or similar</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Compound button or toggle button</strong> (i.e., a button with a “pressed” state):
+                        <ul>
+                            <li>“Checked” or “Not checked”, then [accessible name], Double tap to activate” or similar (no “checkbox” or “button” role is read)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Text field:</strong>
+                        <ul>
+                            <li>“[accessible name], Edit box”, <strong>OR</strong></li>
+                            <li>“[accessible name], Edit box for [accessible name]”, <strong>OR</strong></li>
+                            <li>“[entered value], Edit box for [accessible name]”, <strong>OR</strong></li>
+                            <li>“Editing Edit box for [accessible name]”, <strong>OR</strong></li>
+                            <li>“Editing [entered value], Edit box for [accessible name]”<br>
+                                <strong>AND</strong></li>
+                            <li>“(pause) Double tap to enter text. Double tap and hold to long press”, <strong>OR</strong></li>
+                            <li>“(pause) Double tap and hold to long press” or similar</li>
+                        </ul>
+                    </li>
+                    <li><strong>Expandable list view:</strong> “[accessible name], Collapsed (or) Expanded, Double tap to activate” or similar</li>
+                    <li><strong>Menu (various types):</strong> “[role], [accessible name of first menu item]</li>
+                    <li><strong>Progress bar:</strong>
+                        <ul>
+                            <li>Indeterminate: “Loading… [accessible name]”</li>
+                            <li>Determinate: “Loading… [accessible name], [current %]”</li>
+                        </ul>
+                    </li>
+                    <li><strong>Rating bar:</strong> “[Percentage], [accessible name], rating”</li>
+                    <li><strong>Seek bar:</strong> 
+                        <ul>
+                            <li>“[Percentage], [accessible name], Seek control (pause), Use volume keys to adjust”, <strong>OR</strong></li>
+                            <li>“[Percentage], Seek control for [accessible name] (pause), Use volume keys to adjust” or similar</li>
+                        </ul>
+                    </li>
+                    <li><strong>Snackbar or toast:</strong> A polite accessibility announcement of the text in the snackbar or toast</li>
+                    <li><strong>Spinner:</strong>
+                        <ul>
+                            <li>Collapsed state: “Drop-down list, [value] for [accessible name], Double tap to change, <strong>OR</strong></li>
+                            <li>“Drop-down list, [value], Double tap to change” or similar (may or may not say “drop-down list”<br>
+                                <strong>AND/OR</strong></li>
+                            <li>Expanded state: “[accessible name], [x] of [x]” for each list item</li>
+                        </ul>
+                    </li>
+                    <li><strong>Switch:</strong>
+                        <ul>
+                            <li>“[accessible name], [state], Switch (pause), Double tap to activate, <strong>OR</strong></li>
+                            <li>“[state], Switch for [accessible name] (pause), Double tap to toggle” or similar</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </dd>
 
     <h2>Failures</h2>
     <ul>
