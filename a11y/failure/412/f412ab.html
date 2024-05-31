@@ -10,6 +10,7 @@ cptitle: 4.1.2.a Name, Role, Value
 guideline: robust
 level: a
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
+css: 1411
 ---
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
@@ -25,7 +26,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
     <div class="failure">
         <div class="row">
             <h2 class="{{ page.level }}">Expected Result</h2>
-            <div>Form fields have accessible names</div>
+            <div>Form fields (checkboxes, radio buttons, select elements, textboxes, listboxes, searchboxes, sliders, spinbuttons, switches) have accessible names.</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Actual Result</h2>
@@ -55,6 +56,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
             <div>
                 <h3>Labels</h3>
                 <div class="example">
+                    <label><input type="checkbox"> Subscribe to the mailing list</label>
+
                     <label>Email<br>
                         <input type="email"></label>
 
@@ -62,7 +65,9 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
     &lt;input type="email"&gt;
 &lt;/label&gt;</code></pre>
 
-                    <label for="email">Email</label><br>
+                    
+                    <input type="checkbox" id="checkbox1"> <label for="checkbox1">Subscribe to the mailing list</label>
+                    <label for="email">Email</label>
                     <input type="email" id="email">
 
                      <pre><code><strong>&lt;label for="email"&gt;Email&lt;/label&gt;</strong>
@@ -71,8 +76,9 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
 
                 <h3><code>&lt;aria-label&gt;</code></h3>
                 <div class="example">
-                    <p>Email</p>
-                    <input type="email" aria-label="Email">
+                    <p><input type="checkbox" aria-label="Subscribe to the mailing list"> Subscribe to the mailing list</p>
+                    <p>Email<br>
+                    <input type="email" aria-label="Email"></p>
 
                     <pre><code>&lt;p&gt;Email&lt;/p&gt;
 &lt;input type="email" <strong>aria-label="Email"</strong>&gt;</code></pre>
@@ -80,8 +86,9 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
 
                 <h3><code>&lt;aria-labelledby&gt;</code></h3>
                 <div class="example">
-                    <p id="email2">Email</p>
-                    <input type="email" aria-labelledby="email2">
+                    <input type="checkbox" aria-labelledby="checkbox2"> <span id="checkbox2"> Subscribe to the mailing list</span>
+                    <p id="email2">Email<br>
+                    <input type="email" aria-labelledby="email2"></p>
 
                     <pre><code>&lt;p id="email"&gt;Email&lt;/p&gt;
 &lt;input type="email" <strong>aria-labelledby="email"</strong>&gt;</code></pre>
@@ -91,12 +98,18 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
                 <div class="example">
                     <input type="text" placeholder="Email">
 
-                    <pre><code>&lt;input type="email" placeholder="Email"&gt;</code></pre>
+                    <pre><code>&lt;input type="email" <strong>placeholder="Email"</strong>&gt;</code></pre>
                 </div>
 
                 <h3>Custom form fields</h3>
                 <div class="example">
-                    <div role="textbox" contenteditable="true">Email</div>
+                    <div role="checkbox" tabindex="0" aria-checked="false">Check this box
+                        <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                        <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
+                    </div>
+                    <script src="/a11y/assets/js/checkbox.js"></script>
+
+                    <div role="textbox" contenteditable="true" style="border: 1px solid black;">Email</div>
                 </div>
             </div>
         </div>
