@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F4.1.2.a.a Button does not have an accessible name
-current: /a11y/failure/412/f412aa.html
+title: Failure - F4.1.2.a.c Image button does not have an accessible name
+current: /a11y/failure/412/f412ac.html
 root: WCAG 2.2
 scurl: /a11y/sc/412.html
 sctitle: 4.1.2 Name, Role, Value
@@ -29,18 +29,18 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Actual Result</h2>
-            <div>A button does not have an accessible name.</div>
+            <div>An image button does not have an accessible name.</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Solution</h2>
             <div>
                 <h3>HTML</h3>
-                <p>Provide an accessible name for the button, using one of the following methods:</p>
+                <p>Provide an accessible name for the image button, using one of the following methods:</p>
                 <ul>
-                    <li>Use <code>&lt;button&gt;</code> and place the name between the start and end tags, <strong>OR</strong></li>
-                    <li>Use <code>&lt;input type="button"&gt;</code> and place the title in the <code>value</code> attribute, <strong>OR</strong></li>
-                    <li>Use <code>&lt;input type="submit"&gt;</code> or <code>&lt;input type="reset"&gt;</code> and use the default accessible name, <strong>OR</strong></li>
-                    <li>Use <code>role="button"</code> to create a custom button, and use text within the button element as the accessible name</li>
+                    <li>Place an <code>alt</code> attribute on the <code>&lt;input type="image"&gt;</code> tag and set it to the accessible name, <strong>OR</strong></li>
+                    <li>Place an<code>aria-label</code> attribute on the <code>&lt;input type="image"&gt;</code> tag and set it to the accessible name, <strong>OR</strong></li>
+                    <li>Place a <code>title</code> attribute on the <code>&lt;input type="image"&gt;</code> tag and set it to the accessible name, <strong>OR</strong></li>
+                    <li>Use the <code>aria-labelledby</code> attribute on the <code>&lt;input type="image"&gt;</code> tag and point it to the id of a text element to use as the accessible name</li>
                 </ul>
 
                 <h3>PDF</h3>
@@ -50,29 +50,33 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <h3><code>&lt;button&gt;</code></h3>
+                <h3><code>alt</code></h3>
                 <div class="example">
-                    <button>Next</button>
+                    <input type="image" src="/a11y/assets/images/f111ag-search.png" alt="Search">
 
-                    <pre><code>&lt;button&gt;<strong>Next</strong>&lt;/button&gt;</code></pre>
+                    <pre><code>&lt;input type="image" src="search.png" <strong>alt="Search"</strong>&gt;</code></pre>
                 </div>
 
-                <h3>Input buttons</h3>
+                <h3><code>aria-label</code></h3>
                 <div class="example">
-                    <input type="button" value="Next">
+                    <input type="image" src="/a11y/assets/images/f111ag-search.png" aria-label="Search">
 
-                    <pre><code>&lt;input type="button" <strong>value="Next"</strong>&gt;</code></pre>
-
-                    <input type="submit"> <input type="reset">
-
-                    <pre><code>&lt;input <strong>type="submit"</strong>&gt; &lt;input <strong>type="reset"</strong>&gt;</code></pre>
+                    <pre><code>&lt;input type="image" src="search.png" <strong>aria-label="Search"</strong>&gt;</code></pre>
                 </div>
 
-                <h3>Custom buttons</h3>
+                <h3><code>title</code></h3>
                 <div class="example">
-                    <div role="button" tabindex="0" style="border: 1px solid black; padding: 5px; width: 50px;">Next</div>
+                    <input type="image" src="/a11y/assets/images/f111ag-search.png" title="Search">
 
-                    <pre><code>&lt;div role="button" tabindex="0"&gt;<strong>Next</strong>&lt;/div&gt;</code></pre>
+                    <pre><code>&lt;input type="image" src="search.png" <strong>title="Search"</strong>&gt;</code></pre>
+                </div>
+
+                <h3><code>aria-labelledby</code></h3>
+                <div class="example">
+                    <label id="srch"><input type="search"></label>
+                    <input type="image" src="/a11y/assets/images/f111ag-search.png" aria-labelledby="srch">
+
+                    <pre><code>&lt;input type="image" src="search.png" <strong>title="Search"</strong>&gt;</code></pre>
                 </div>
             </div>
         </div>
@@ -94,7 +98,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF10">PDF10: Providing labels for interactive form controls in PDF documents</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/97a4e1/">Button has non-empty accessible name</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/59796f/">Image button has non-empty accessible name</a></li>
                 </ul>
             </div>
         </div>
