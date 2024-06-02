@@ -10,6 +10,7 @@ cptitle: 4.1.2.a Name, Role, Value
 guideline: robust
 level: a
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
+css: radio
 ---
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
@@ -54,7 +55,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
                         <label><input type="checkbox"> Extra cheese</label>
                     </fieldset> 
 
-                    <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="/a11y/assets/docs/topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                    <pre><code>&lt;fieldset&gt;
+    <strong>&lt;legend&gt;Pizza Toppings&lt;/legend&gt;</strong>
+    &lt;label&gt;&lt;input type="checkbox"&gt; Pepperoni&lt;/label&gt;
+    ...
+&lt;/fieldset&gt;</code></pre>
                 </div>
 
                 <h3>Radiogroup role</h3>
@@ -66,7 +71,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
                       <div role="radio" tabindex="-1" aria-checked="false">Text</div>
                     </div>
 
-                    <pre><code>&lt;iframe <strong>aria-label="Top Ten Songs of 1972"</strong> src="/a11y/assets/docs/topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                    <pre><code>&lt;p id="radio_group_label"&gt;Preferred Contact Method&lt;/p&gt;
+&lt;div role="radiogroup" <strong>aria-labelledby="radio_group_label"</strong>&gt;
+    &lt;div role="radio" tabindex="0" aria-checked="false"&gt;Email
+    ...
+&lt;/div&gt;</code></pre>
                 </div>
 
                 <h3>Group role</h3>
@@ -85,7 +94,12 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
                            <input type="text" id="zip"></p>
                     </div>
 
-                    <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="/a11y/assets/docs/topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                    <pre><code>&lt;p id="group_label"&gt;Contact Information&lt;/p&gt;
+&lt;div role="group" <strong>aria-labelledby="group_label"</strong>&gt;
+    &lt;label for="name"&gt;Name: &lt;/label&gt;
+    &lt;input type="text" id="name"&gt;
+    ...
+&lt;/div&gt;</code></pre>
                 </div>
             </div>
         </div>
