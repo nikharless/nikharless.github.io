@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F4.1.2.a.i Link has an incorrect role
-current: /a11y/failure/412/f412ai.html
+title: Failure - F4.1.2.a.j Link is missing the href attribute
+current: /a11y/failure/412/f412aj.html
 root: WCAG 2.2
 scurl: /a11y/sc/412.html
 sctitle: 4.1.2 Name, Role, Value
@@ -30,33 +30,20 @@ css: radio
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Actual Result</h2>
-            <div>A link does not have the role of "link".</div>
+            <div>A link does not have an <code>href</code> attribute, and therefore does not have the role of "link".</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Solution</h2>
-            <div>
-                <p>Assign the correct role to the control, using one of the following methods:</p>
-                <ul>
-                    <li>Use the <code>&lt;a href=""&gt;</code> element to create the link, <strong>OR</strong></li>
-                    <li>Use the <code>role="link"</code> attribute on the element.</li>
-                </ul>
-            </div>
+            <div>Add an <code>href</code> attribute to the <code>&lt;a&gt;</code> tag, even if the link is scripted. This also provides a fallback for users who do not have JavaScript enabled.</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <h3>HTML anchor tag</h3>
+                <h3>Redundant href value</h3>
                 <div class="example">
-                    <a href="https://www.w3schools.com/tags/tag_a.asp">HTML &lt;a&gt; Tag</a>
+                    <a href="https://www.w3schools.com/tags/tag_a.asp" onclick="goHere(event);">HTML &lt;a&gt; Tag</a>
 
-                    <pre><code><strong>&lt;a href="https://www.w3schools.com/tags/tag_a.asp"&gt;</strong>&lt;HTML &lt;a&gt; Tag&lt;/a&gt;</code></pre>
-                </div>
-
-                <h3>Role of "link"</h3>
-                <div class="example">
-                    <button role="link" onclick="openLink(event)">Web Accessibility Initiative (WAI)</button>
-
-                    <pre><code>&lt;button <strong>role="link</strong>" onclick="openLink(event)"&gt;Web Accessibility Initiative (WAI)&lt;/button&gt;</code></pre>
+                    <pre><code><strong>&lt;a href="https://www.w3schools.com/tags/tag_a.asp" onclick="goHere(event);"&gt;</strong>&lt;HTML &lt;a&gt; Tag&lt;/a&gt;</code></pre>
                 </div>
             </div>
         </div>
