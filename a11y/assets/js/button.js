@@ -110,7 +110,7 @@ function toggleButtonState(button) {
 
   var icon = button.querySelector('use');
   icon.setAttribute(
-    'xlink:href',
+    'href',
     isAriaPressed ? ICON_SOUND_URL : ICON_MUTE_URL
   );
 }
