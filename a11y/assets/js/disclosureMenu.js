@@ -23,7 +23,7 @@ class DisclosureNav {
       // handle button + menu
       if (
         node.tagName.toLowerCase() === 'button' &&
-        node.hasAttribute('aria-controls')
+        node.hasAttribute('aria-expanded')
       ) {
         const menu = node.parentNode.querySelector('ul');
         if (menu) {
