@@ -76,7 +76,8 @@ window.addEventListener(
   'load',
   function () {
     var buttons = document.querySelectorAll(
-      'button[aria-expanded][aria-controls]'
+      // 'button[aria-expanded][aria-controls]'
+      '#disclosure_faq'
     );
 
     for (var i = 0; i < buttons.length; i++) {
