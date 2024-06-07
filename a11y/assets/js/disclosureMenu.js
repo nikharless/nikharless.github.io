@@ -204,7 +204,7 @@ window.addEventListener(
     // fake link behavior
     disclosureMenus.forEach((disclosureNav, i) => {
       var links = menus[i].querySelectorAll('[href="#"]');
-      var examplePageHeading = document.getElementById('mythical-page-heading');
+      var examplePageHeading = document.getElementById('mpage-heading');
       for (var k = 0; k < links.length; k++) {
         // The codepen export script updates the internal link href with a full URL
         // we're just manually fixing that behavior here
