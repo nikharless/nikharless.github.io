@@ -1,0 +1,80 @@
+---
+layout: default
+title: Failure - F4.1.2.a.s Select component is missing required states or properties
+current: /a11y/failure/412/f412as.html
+root: WCAG 2.2
+scurl: /a11y/sc/412.html
+sctitle: 4.1.2 Name, Role, Value
+cpurl: /a11y/checkpoint/412a.html
+cptitle: 4.1.2.a Name, Role, Value
+guideline: robust
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
+css: select-only
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+        <div class="row">
+            <h2 class="{{ page.level }}">Expected Result</h2>
+            <div>If a control functions as a combobox (select), it has the <code>aria-controls</code> property and an expanded state.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Actual Result</h2>
+            <div>A combobox does not have the required attributes.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Solution</h2>
+            <div>
+                <ul>
+                    <li>Use the <code>aria-controls</code> attribute to identify the element that serves as the popup.</li>
+                    <li>Use the <code>aria-expanded</code> attribute and set it to "true" when expanded and "false" when collapsed.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                {% include examples/select-only.html %}
+                <script src="/a11y/assets/js/select-only.js"></script>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Hidden</strong>:<br>
+                        <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Assistive technology only works well when code is done properly.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4e8ab6/proposed/">Element with role attribute has required states and properties</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 412checkpoints.html %}
