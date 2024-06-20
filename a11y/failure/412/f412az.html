@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F4.1.2.a.u Text input component is missing appropriate property
-current: /a11y/failure/412/f412au.html
+title: Failure - F4.1.2.a.z State change is not spoken by screen reader
+current: /a11y/failure/412/f412az.html
 root: WCAG 2.2
 scurl: /a11y/sc/412.html
 sctitle: 4.1.2 Name, Role, Value
@@ -25,25 +25,25 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
     <div class="failure">
         <div class="row">
             <h2 class="{{ page.level }}">Expected Result</h2>
-            <div>Custom text input has the <code>contenteditable</code> attribute.</div>
+            <div>State changes are spoken by the screen reader.</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Actual Result</h2>
-            <div>Custom text input does not have the <code>contenteditable</code> attribute.</div>
+            <div>A state change is not spoken by the screen reader.</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Solution</h2>
-            <div>Use the <code>contenteditable</code> attribute on the custom text input, even if it is marked up as read-only.</div>
+            <div>
+                <ul>
+                    <li>Update the value of the attribute to match the current state of the control.</li>
+                    <li>Ensure state changes are spoken by the screen reader.</li>
+                </ul>
+            </div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <h3>Custom form fields</h3>
-                <div class="example">
-                    <div role="textbox" contenteditable="true" style="border: 1px solid black;">Email</div>
 
-                    <pre><code>&lt;div role="textbox" <strong>contenteditable="true"</strong> style="border: 1px solid black;"&gt;Email&lt;/div&gt;</code></pre>
-                </div>
             </div>
         </div>
         <div class="row">
@@ -52,10 +52,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
                 <p>The following items are not applicable to this failure:</p>
                 <ul>
                     <li><strong>Hidden with CSS</strong>:<br>
-                        <code>&lt;div role="textbox" style="display:none;"&gt;</code><br>
+                        <code>&lt;input type="textbox" style="display:none;"&gt;</code><br>
                         Does not appear in accessibility tree</li>
                     <li><strong>Hidden with ARIA</strong>:<br>
-                        <code>&lt;div role="textbox" aria-hidden="true"&gt;</code><br>
+                        <code>&lt;input type="textbox" aria-hidden="true"&gt;</code><br>
                         Does not appear in accessibility tree</li>
                 </ul>
             </div>
@@ -70,9 +70,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
                 <ul>
                     <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4e8ab6/proposed/">Element with role attribute has required states and properties</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
                 </ul>
             </div>
         </div>
