@@ -1,0 +1,113 @@
+---
+layout: default
+title: Failure - F4.1.2.b.h Combobox is missing appropriate roles and/or attributes
+current: /a11y/failure/412/f412bh.html
+root: WCAG 2.2
+scurl: /a11y/sc/412.html
+sctitle: 4.1.2 Name, Role, Value
+cpurl: /a11y/checkpoint/412b.html
+cptitle: 4.1.2.b Custom Controls
+guideline: robust
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
+css: combobox-autocomplete
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+        <div class="row">
+            <h2 class="{{ page.level }}">Expected Result</h2>
+            <div>Comboboxes have all appropriate roles and attributes.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Actual Result</h2>
+            <div>A combobox does not have all the appropriate roles or attributes.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Solution</h2>
+            <div>
+                <h3>Editable combobox with list and inline autocomplete</h3> 
+                <ul>
+                    <li>Use the "combobox" role on the textbox.</li>
+                    <li>Use <code>aria-autocomplete="both"</code> on the textbox to indicate that it has both inline completion and a list of suggested values.</li>
+                    <li>Use <code>aria-controls</code> on the textbox and set it to the id of the popup element.</li>
+                    <li>Use <code>aria-expanded</code> on the textbox. Set it to "true" when expanded and to "false" when collapsed.</li>
+                    <li>Use <code>aria-activedescendant</code> on the textbox and set it to the id of the element currently focused in the popup.</li>
+                    <li>Use the "listbox" role on the listbox popup element.</li>
+                    <li>Use <code>aria-label</code> to provide an accessible name for the popup.</li>
+                    <li>Use the "option" role on each list option.</li>
+                    <li>Use <code>aria-selected="true"</code> on the element currently focused in the popup.</li>
+                    <li>Use <code>tabindex="-1"</code> on the button to remove it from the tab sequence. (It is redundant with keyboard operation.)</li>
+                    <li>Use <code>aria-label</code> to provide an accessible name for the button.</li>
+                    <li>Use <code>aria-controls</code> on the button and set it to the id of the popup element.</li>
+                    <li>Use <code>aria-expanded</code> on the button. Set it to "true" when the popup is expanded and to "false" when collapsed.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <div class="example">
+                    {% include examples/combobox-autocomplete.html %}
+                    <script src="/a11y/assets/js/combobox-autocomplete.js"></script>
+
+                    <pre><code><strong>&lt;section id="myCarousel" aria-roledescription="carousel" aria-label="Cats of House Harless"&gt;</strong>
+...
+&lt;div <strong>role="tablist" aria-label="Slides"</strong>&gt;
+    &lt;button <strong>role="tab" aria-label="Slide 1" aria-selected="true" aria-controls="carousel-item-1"</strong>&gt;
+    ...
+&lt;div id="myCarousel-items" <strong>aria-live="off"</strong>&gt;
+    &lt;div id="carousel-item-1" <strong>role="tabpanel" aria-roledescription="slide" aria-label="1 of 4"</strong>&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Native HTML controls</strong>:<br>
+                        <code>&lt;input type="checkbox"&gt; Subscribe to the mailing list</code><br>
+                        File under <a href="/a11y/checkpoint/412a.html">4.1.2.a Name, Role, Value</a></li>
+                    <li><strong>Custom controls that function as native HTML controls</strong>:<br>
+                        <code>&lt;div role="checkbox" tabindex="0" aria-checked="false"&gt;Subscribe to the mailing list</code><br>
+                        File under <a href="/a11y/checkpoint/412a.html">4.1.2.a Name, Role, Value</a></li>
+                    <li><strong>Hidden</strong>:<br>
+                        <code>&lt;div style="display:none;"&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                    <li><strong>Role of "none"</strong>:<br>
+                        <code>&lt;div role="none"&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Assistive technology only works well when code is done properly.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/">W3: Combobox Pattern</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 412checkpoints.html %}
