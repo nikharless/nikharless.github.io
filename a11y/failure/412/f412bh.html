@@ -10,7 +10,7 @@ cptitle: 4.1.2.b Custom Controls
 guideline: robust
 level: a
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
-css: combobox-autocomplete
+css: comboboxes
 ---
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
@@ -35,17 +35,51 @@ css: combobox-autocomplete
         <div class="row">
             <h2 class="{{ page.level }}">Solution</h2>
             <div>
-                <h3>Editable combobox with list and inline autocomplete</h3> 
                 <ul>
                     <li>Use the "combobox" role on the textbox.</li>
-                    <li>Use <code>aria-autocomplete="both"</code> on the textbox to indicate that it has both inline completion and a list of suggested values.</li>
+                    <li>Use <code>aria-autocomplete</code> on the textbox.
+                        <ul>
+                            <li>Set it to "list" if it pops up a list of suggestions.</li>
+                            <li>Set it to "inline" if it displays suggestions in the textbox as you type.</li>
+                            <li>Set it to "both" to indicate that it has both inline completion and a list of suggested values.</li>
+                            <li>Set it to "none" if it does not support autocomplete.</li>
+                        </ul>
+                    </li>
                     <li>Use <code>aria-controls</code> on the textbox and set it to the id of the popup element.</li>
                     <li>Use <code>aria-expanded</code> on the textbox. Set it to "true" when expanded and to "false" when collapsed.</li>
                     <li>Use <code>aria-activedescendant</code> on the textbox and set it to the id of the element currently focused in the popup.</li>
-                    <li>Use the "listbox" role on the listbox popup element.</li>
+                    <li>Use <code>aria-hoaspopup</code> on the textbox.
+                        <ul>
+                            <li>Set it to "grid" if the popup contains a grid.</li>
+                            <li>Set it to "dialog" if the popup contains a dialog.</li>
+                        </ul>
+                    </li>
+                    <li>Assign the appropriate role to the popup element.
+                        <ul>
+                            <li>Use the "listbox" role if the popup contains a list.
+                                <ul>
+                                    <li>Use the "option" role on each list option.</li>
+                                </ul>
+                            </li>
+                            <li>Use the "dialog" role if the popup contains a dialog.
+                                <ul>
+                                    <li>Use <code>aria-modal="true"</code> on the dialog element.</li>
+                                    <li>Use <code>aria-live="polite"</code> on the elements in the dialog which change when the selection changes.</li>
+                                    <li>Use the "grid" role on the grid element if the popup contains a grid.
+                                        <ul>
+                                            <li>Use the "gridcell" role on each cell of the grid.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                     <li>Use <code>aria-label</code> to provide an accessible name for the popup.</li>
-                    <li>Use the "option" role on each list option.</li>
-                    <li>Use <code>aria-selected="true"</code> on the element currently focused in the popup.</li>
+                    <li>Use <code>aria-selected="true"</code> on the element currently focused in the popup.
+                        <ul>
+                            <li>If the popup contains a grid, set <code>tabindex="0"</code> on the currently selected gridcell and <code>tabindex="-1"</code> on all others.</li>
+                        </ul>
+                    </li>
                     <li>Use <code>tabindex="-1"</code> on the button to remove it from the tab sequence. (It is redundant with keyboard operation.)</li>
                     <li>Use <code>aria-label</code> to provide an accessible name for the button.</li>
                     <li>Use <code>aria-controls</code> on the button and set it to the id of the popup element.</li>
@@ -56,6 +90,7 @@ css: combobox-autocomplete
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
+                <h3>Combobox with List and Inline Autocomplete</h3>
                 <div class="example">
                     {% include examples/combobox-autocomplete.html %}
                     <script src="/a11y/assets/js/combobox-autocomplete.js"></script>
@@ -71,6 +106,12 @@ css: combobox-autocomplete
 &lt;ul id="cb1-listbox" role="listbox" aria-label="States"&gt;
     &lt;li id="lb1-al" role="option"&gt;Alabama&lt;/li&gt;
 ...</code></pre>
+                </div>
+
+                <h3>Date picker</h3>
+                <div class="example">
+                    {% include examples/combobox-datepicker.html %}
+                    <script src="/a11y/assets/js/combobox-datepicker.js"></script>
                 </div>
             </div>
         </div>
