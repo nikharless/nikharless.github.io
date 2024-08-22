@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Failure - F4.1.2.b.j Grid is missing appropriate roles and/or attributes
-current: /a11y/failure/412/f412bj.html
+title: Failure - F4.1.2.b.k Listbox is missing appropriate roles and/or attributes
+current: /a11y/failure/412/f412bk.html
 root: WCAG 2.2
 scurl: /a11y/sc/412.html
 sctitle: 4.1.2 Name, Role, Value
@@ -26,41 +26,43 @@ css: grid-sortable
     <div class="failure">
         <div class="row">
             <h2 class="{{ page.level }}">Expected Result</h2>
-            <div>Grids have all appropriate roles and attributes.</div>
+            <div>Listboxes have all appropriate roles and attributes.</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Actual Result</h2>
-            <div>A grid does not have all the appropriate roles or attributes.</div>
+            <div>A listbox does not have all the appropriate roles or attributes.</div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Solution</h2>
             <div>
                 <ul>
-                    <li>Use the "grid" role on the table element.</li>
-                    <li>If rows or columns can be hidden or if all are not displayed at the same time:
+                    <li>Use the "listbox" role on the list (<code>&lt;ul&gt;</code>) element.</li>
+                    <li>Use <code>tabindex="0"</code> on the listbox element to allow it to have keyboard focus.</li>
+                    <li>Use <code>aria-multiselectable="true"</code> on the listbox element if the listbox allows multiple selections.</li>
+                    <li>Use <code>aria-activedescendant</code> on the listbox element.
                         <ul>
-                            <li>Use <code>aria-rowcount</code> on the table to set the total number of rows in the table.</li>
-                            <li>Use <code>aria-colcount</code> on the table  to set the total number of columns in the table.</li>
-                            <li>Use <code>aria-rowindex</code> on each row (<code>&lt;tr&gt;</code>) to set the row number.</li>
-                            <li>Use <code>aria-colindex</code> on each column (<code>&lt;th&gt; or &lt;td&gt;</code>) to set the columnn number.</li>
+                            <li>If the listbox is empty, set it to null (<code>aria-activedescendant=""</code>).</li>
+                            <li>If an option in the listbox has visual keyboard focus, set it to the id of the option.</li>
+                            <li>When navigation keys such as arrow keys are pressed, change the value with JavaScript.</li>
                         </ul>
                     </li>
-                    <li>Use <code>aria-sort</code> to set the sort order of a column.
+                    <li>Use the "option" role on each list option (<code>&lt;li&gt;</code>) element.</li>
+                    <li>Use <code>aria-selected</code> on the currently selected option and on each option in listboxes that allow multiple selections.
                         <ul>
-                            <li>Set to "ascending" if the column is sorted in ascending order.</li>
-                            <li>Set to "descending" if the column is sorted in descending order.</li>
-                            <li>Set to "none" if the column is not sorted.</li>
+                            <li>Set <code>aria-selected="true"</code> on the currently selected option.</li>
+                            <li>If the listbox allows multiple selections, set <code>aria-selected="false"</code> on each option that is not selected.</li>
                         </ul>
                     </li>
+                    <li>Use <code>aria-hidden="true"</code> on any checkmark visuals to prevent them from being spoken with the accessible name.</li>
                 </ul>
             </div>
         </div>
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <h3>Sortable Data Grid with Editable Cells</h3>
+                <h3>Multi-select listbox</h3>
                 <div class="example">
-                    {% include examples/grid-sortable.html %}
+                    {% include examples/listbox-multi-select.html %}
                 </div>
             </div>
         </div>
@@ -88,7 +90,7 @@ css: grid-sortable
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
                     <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
                     <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
-                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/grid/">W3: Grid (Interactive Tabular Data and Layout Containers) Pattern</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/listbox/">W3: Listbox Pattern</a></li>
                 </ul>
             </div>
         </div>
