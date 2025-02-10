@@ -10,6 +10,7 @@ cptitle: 4.1.2.b Custom Controls
 guideline: robust
 level: a
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
+css: listbox
 ---
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ page.title }}</h1>
@@ -44,16 +45,13 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <h3>ARIA</h3>
+                <h3>Listbox</h3>
                 <div class="example">
-                    <ul id="myaccount" role="listbox" aria-label="My Account">
-                        <li role="option"><a href="#" tabindex="0">Profile</a></li>
-                        <li role="option"><a href="#" tabindex="0">Preferences </a></li>
-                    </ul>
+                    {% include examples/listbox-multi-select.html %}
 
-                    <pre><code>&lt;ul id="myaccount" <strong>role="menu"</strong> aria-label="My Account"&gt;
-    &lt;li role="none"&gt;&lt;a role="menuitem" href="#" tabindex="0"&gt;Profile&lt;/a&gt;&lt;/li&gt;
-    &lt;li role="none"&gt;&lt;a role="menuitem" href="#" tabindex="0"&gt;Preferences&lt;/a&gt;&lt;/li&gt;
+                    <pre><code>&lt;ul role="listbox" aria-multiselectable="true">
+    &lt;li role="option" aria-selected="false">Leather seats&lt;/li&gt;
+    &lt;li role="option" aria-selected="false">Front seat warmers&gt;&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
                 </div>
             </div>
