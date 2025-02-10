@@ -1,0 +1,87 @@
+---
+layout: default
+title: F4.1.2.b.u Component is missing required child role
+current: /a11y/failure/412/f412bu.html
+root: WCAG 2.2
+scurl: /a11y/sc/412.html
+sctitle: 4.1.2 Name, Role, Value
+cpurl: /a11y/checkpoint/412b.html
+cptitle: 4.1.2.b Custom Controls
+guideline: robust
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+        <div class="row">
+            <h2 class="{{ page.level }}">Expected Result</h2>
+            <div>Elements contain any required child roles.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Actual Result</h2>
+            <div>An element requires a particular child role, but the child role is missing.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Solution</h2>
+            <div>
+                Ensure that any required child roles are present. 
+                <ul>
+                    <li><code>role="listbox"</code> must contain one or more <code>role="option"</code> elements</li>
+                    <li><code>role="tablist"</code> must contain one or more <code>role="tab"</code> elements</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>ARIA</h3>
+                <div class="example">
+                    <ul id="myaccount" role="listbox" aria-label="My Account">
+                        <li role="option"><a href="#" tabindex="0">Profile</a></li>
+                        <li role="option"><a href="#" tabindex="0">Preferences </a></li>
+                    </ul>
+
+                    <pre><code>&lt;ul id="myaccount" <strong>role="menu"</strong> aria-label="My Account"&gt;
+    &lt;li role="none"&gt;&lt;a role="menuitem" href="#" tabindex="0"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+    &lt;li role="none"&gt;&lt;a role="menuitem" href="#" tabindex="0"&gt;Preferences&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Assistive technology only works well when code is done properly.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 412checkpoints.html %}
