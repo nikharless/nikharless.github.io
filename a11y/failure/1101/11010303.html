@@ -1,0 +1,118 @@
+---
+layout: default
+title: Failure - 1.1.1.3.3 Complex image is missing a long text description.
+current: /a11y/failure/1101/11010303.html
+root: WCAG 2.2
+scurl: /a11y/sc/1101.html
+sctitle: 1.1.1 Non-text Content
+cpurl: /a11y/checkpoint/110103.html
+cptitle: 1.1.1.3 Complex Images (Text Alternative)
+guideline: perceivable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>Complex images have a long text alternative that describes all the information provided by the image.</div>
+    	</div>
+    	<div class="row">
+    	   <h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>The complex image does not have a short text alternative.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>
+                Add a long text alternative which describes all the information provided by the image using one of the following methods:
+                <ul>
+                    <li>Place a long description directly on the page, and use <code>id</code> and <code>aria-describedby</code> to associate the description with the image, <strong>OR</strong></li>
+                    <li>Place a long description on a separate page. Place a visible link pointing to the long description adjacent to the image, <strong>OR</strong></li>
+                    <li>Place the image inside a <code>&lt;figure&gt;</code> element. Wrap the long description in a <code>&lt;figcaption&gt;</code> element inside the <code>&lt;figure&gt;</code> element.</li>
+                </ul>
+                <p><em>Note: The <code>longdesc</code> attribute is deprecated and is not recommended as a solution. It is only visible to screen readers and is not functional as a link.</em></p>
+            </div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>Adjacent Long Description</h3>
+                <img src="/a11y/assets/images/f111cc-arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" aria-describedby="description">
+                <p id="description">An oil painting of three Egyptian women in white dresses with six naked children in a Mediterranean landscape. The woman on the left is standing, holding a child on her shoulders, and another child stands in front of her pointing off the left side of the canvas. The woman in the center is also standing and holding a child on her shoulders while holding his hand on the top of her head. The woman on the right is sitting cross-legged on the ground breastfeeding a baby while 2 more children play behind her.</p>
+                <pre><code>&lt;img src="arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" <strong>aria-describedby="description"</strong>&gt;
+
+&lt;p <strong>id="description"</strong>&gt;An oil painting of three Egyptian women in white dresses with six naked children in a Mediterranean landscape. The woman on the left is standing, holding a child on her shoulders, and another child stands in front of her pointing off the left side of the canvas. The woman in the center is also standing and holding a child on her shoulders while holding his hand on the top of her head. The woman on the right is sitting cross-legged on the ground breastfeeding a baby while 2 more children play behind her.&lt;/p&gt;</code></pre>
+
+                <h3><code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> Semantic Association</h3>
+                <figure>
+                    <img src="/a11y/assets/images/f111cc-pie-chart.png" alt="Pie chart showing number of issues filed by priority level, described below." style="max-width: 480px;">
+                    <figcaption>
+                        <p>This chart shows the break-out of issues filed for the Yoyodyne app.</p>
+                        <table>
+                            <caption>Issues Filed by Priority</caption>
+                            <tr>
+                                <th style="border: 1px solid black; padding: 10px;">Level</th>
+                                <th style="border: 1px solid black; padding: 10px;">Issues Filed</th>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black; padding: 10px;">critical</th>
+                                <td style="border: 1px solid black; padding: 10px;">5</td>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black; padding: 10px;">severe</th>
+                                <td style="border: 1px solid black; padding: 10px;">12</td>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black; padding: 10px;">moderate</th>
+                                <td style="border: 1px solid black; padding: 10px;">16</td>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black; padding: 10px;">minor</th>
+                                <td style="border: 1px solid black; padding: 10px;">5</td>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black; padding: 10px;">best practice</th>
+                                <td style="border: 1px solid black; padding: 10px;">5</td>
+                            </tr>
+                        </table>
+                    </figcaption>
+                </figure>
+
+                <pre><code>&lt;figure&gt;
+    &lt;figcaption&gt;
+        &lt;p&gt;This chart shows the break-out of issues filed for the Yoyodyne app.&lt;/p&gt;
+        &lt;table&gt;
+            ...
+        &lt;/table&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Blind and visually impaired users need to have a long text alternative for complex images so that they get all the information conveyed visually by the image itself.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/images/complex/">W3: Complex Images</a></li>
+                    <li><a href="https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81">Writing Alt Text for Data Visualization</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 1101checkpoints.html %}

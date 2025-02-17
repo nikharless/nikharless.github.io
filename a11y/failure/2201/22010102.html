@@ -1,0 +1,69 @@
+---
+layout: default
+title: Failure - 2.2.1.1.2 Session time-out cannot be turned off, adjusted, or extended
+current: /a11y/failure/2201/22010102.html
+root: WCAG 2.2
+scurl: /a11y/sc/2201.html
+sctitle: 2.2.1 Timing Adjustable
+cpurl: /a11y/checkpoint/220101.html
+cptitle: 2.2.1.1 Timing Adjustable
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>Session time limits can be turned off, adjusted, or extended.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>The session time limit gives a warning when it is about to expire. However, the session time limit is not essential or required and cannot be turned off, adjusted, or extended.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>
+                <ul>
+                    <li>Extend the time limit to at least 20 hours, <strong>OR</strong></li>
+                    <li>Provide a means to turn off the time limit before it occurs, <strong>OR</strong></li>
+                    <li>Provide a means to extend the time limit with a simple action at least 10 times, and give the user at least 20 seconds to do so.</li>
+                </ul>
+            </div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <ul>
+                    <li>A site logs the user out after a period of inactivity to protect their data. The site provides a dialog asking if the user needs more time. The user can extend the time limit an indefinite number of times. After 30 seconds, if there is no response, the user is logged out.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Users with various disabilities often need more time to complete activities.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G133">G133: Providing a checkbox on the first page of a multipart form that allows users to ask for longer session time limit or no session time limit</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G198">G198: Providing a way for the user to turn the time limit off</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 2201checkpoints.html %}

@@ -1,0 +1,69 @@
+---
+layout: default
+title: Failure - 1.4.13.1.3 Hover/focus content is not persistent
+current: /a11y/failure/1413/14130103.html
+root: WCAG 2.2
+scurl: /a11y/sc/1413.html
+sctitle: 1.4.13 Content on Hover or Focus
+cpurl: /a11y/checkpoint/141301.html
+cptitle: 1.4.13.1 Content on Hover or Focus
+guideline: perceivable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus
+css: tooltips
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>When additional content is triggered on pointer hover or on keyboard focus, that additional content remains visible until dismissed, hover or focus is removed, or its information is no longer valid.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>When additional content is triggered on pointer hover or on keyboard focus, that additional content disappears automatically.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Code the popup to remain visible until the user dismisses it or its information is no longer valid.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <p>The tooltip remains visible until it is explicitly dismissed.</p>
+                <div class="tooltip-container">
+                    <button class="infoButton" type="button" aria-describedby="description" data-tooltip-trigger>i</button>
+                    <p id="description" role="tooltip" class="hidden">Informational tooltip</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Users with disabilities may require more time to read the content, to change magnification, to move the pointer, or to bring the content into view.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR39">SCR39: Making content on focus or hover hoverable, dismissible, and persistent</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/">W3: Tooltip Pattern</a></li>
+                    <li><a href="https://github.com/ZoeBijl/apg-tooltip?tab=readme-ov-file">GitHub: Tooltip code example for APG</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 1413checkpoints.html %}
+
+    <script src="/a11y/assets/js/tooltips.js" defer></script>

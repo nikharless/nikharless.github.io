@@ -1,0 +1,58 @@
+---
+layout: default
+title: Failure - 2.1.1.3.1 Custom gesture is not accessible when the screen reader is turned on
+current: /a11y/failure/2101/21010301.html
+root: WCAG 2.2
+scurl: /a11y/sc/2101.html
+sctitle: 2.1.1 Keyboard
+cpurl: /a11y/checkpoint/210103.html
+cptitle: 2.1.1.3 Custom Gestures
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>All functionalities based on custom gestures are also available when a screen reader is turned on.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>An action cannot be performed using a screen reader, because the custom gesture conflicts with an existing assistive technology shortcut, and there is no equivalent means of achieving the action.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Change the custom gesture to one that does not conflict with existing assistive technology gestures.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Screen readers provide users with gestures for browsing the web. These gestures will override any conflicting custom gestures on a web page.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 2101checkpoints.html %}

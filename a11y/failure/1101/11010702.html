@@ -1,0 +1,82 @@
+---
+layout: default
+title: Failure - 1.1.1.7.2 Text representing image does not have a text alternative.
+current: /a11y/failure/1101/11010702.html
+root: WCAG 2.2
+scurl: /a11y/sc/1101.html
+sctitle: 1.1.1 Non-text Content
+cpurl: /a11y/checkpoint/110107.html
+cptitle: 1.1.1.7 Text as Non-Text (Text Alternative)
+guideline: perceivable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>Text characters used to represent images have a text alternative describing their meaning.</div>
+    	</div>
+    	<div class="row">
+    		<h2>Actual Result</h2>
+    		<div>Text characters used to represent images do not have a text alternative describing their meaning.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>
+                <ol>
+                    <li>Enclose the text image in a <code>&lt;span&gt;</code> element and give it <code>role="img"</code>.</li>
+                    <li>Add an <code>aria-label</code> attribute to the <code>&lt;span&gt;</code> element and set it to a text alternative which describes its meaning.</li>
+                </ol>
+            </div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>Emoticons</h3>
+                <p><span role="img" aria-label="smile">:)</span></p>
+                <p><span role="img" aria-label="sideways glance">&gt;_&gt;</span></p>
+                <pre><code><strong>&lt;span role="img" aria-label="smile"&gt;</strong> :) <strong>&lt;/span&gt;</strong>
+<strong>&lt;span role="img" aria-label="sideways glance"&gt;</strong> &gt;_&gt; <strong>&lt;/span&gt;</strong></code></pre>
+
+                <h3>ASCII Art</h3>
+                <pre aria-label="cat" role="img">      \    /\
+       )  ( ')
+      (  /  )
+       \(__)|</pre>
+                <pre><code>&lt;pre <strong>aria-label="cat" role="img"&gt;</strong>      \    /\
+       )  ( ')
+      (  /  )
+       \(__)|&lt;/pre&gt;</code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Without a text alternative, blind and visually impaired users would hear the actual text characters rather than what the author intended them to mean.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F72">F72: Failure of Success Criterion 1.1.1 due to using ASCII art without providing a text alternative</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-text content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H86">H86: Providing text alternatives for emojis, emoticons, ASCII art, and leetspeak</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 1101checkpoints.html %}

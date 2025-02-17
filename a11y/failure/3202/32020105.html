@@ -1,0 +1,70 @@
+---
+layout: default
+title: Failure - 3.2.2.1.5 When a control state or value changes, a change of context occurs
+current: /a11y/failure/3202/32020105.html
+root: WCAG 2.2
+scurl: /a11y/sc/3202.html
+sctitle: 3.2.2 On Input
+cpurl: /a11y/checkpoint/320201.html
+cptitle: 3.2.2.1 Context Changes (On Input)
+guideline: understandable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/on-input
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>When a control state or value changes, a change of context does not occur, unless a warning is provided beforehand.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>When a control state or value changes, a change of context occurs without warning.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>
+                <ul>
+                    <li>Do not initiate a change of context on focus, <strong>OR</strong></li>
+                    <li>Provide instructions warning that the change will occur.</li>
+                </ul>
+            </div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Content that behaves predictably is especially important to people with disabilities.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G13">G13: Describing what will happen before a change to a form control that causes a change of context to occur is made</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G80">G80: Providing a submit button to initiate a change of context</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H32">H32: Providing submit buttons</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H84">H84: Using a button with a select element to perform an action</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR19">SCR19: Using an onchange event on a select element without causing a change of context</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF15">PDF15: Providing submit buttons with the submit-form action in PDF forms</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 3202checkpoints.html %}

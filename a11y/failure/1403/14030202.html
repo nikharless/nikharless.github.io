@@ -1,0 +1,62 @@
+---
+layout: default
+title: Failure - 1.4.3.2.2 Large link text does not have at least a 3:1 contrast ratio with the background on hover or focus
+current: /a11y/failure/1403/14030202.html
+root: WCAG 2.2
+scurl: /a11y/sc/1403.html
+sctitle: 1.4.3 Contrast (Minimum)
+cpurl: /a11y/checkpoint/140302.html
+cptitle: 1.4.3.2 Large Text Color Contrast (Minimum)
+guideline: perceivable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>Large size link text, including all states of the link, has a contrast ratio of at least 3:1 with the background.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>Large link text does not have a contrast ratio of at least 3:1 with the background on hover or focus.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Change the text or background color so that the contrast ratio between the text and the background is at least 3:1 in all states.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Example</h2>
+            <div style="background-color: #F5FFF2">
+                <p><a href="#" style="color: #253F00; font-size: 24px;" onmouseover="this.style.color='#5fa200'" onmouseout="this.style.color='#253F00'" onfocus="this.style.color='#5fa200'; this.style.outline='none';"; onblur="this.style.color='#253F00'">This link text has passing contrast with the background at 3:1 in the hover state.</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Vision impaired and color blind users need sufficient contrast in order to be able to read text.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding SC {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G145">G145: Ensuring that a contrast ratio of at least 3:1 exists between text (and images of text) and background behind the text</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 1403checkpoints.html %}

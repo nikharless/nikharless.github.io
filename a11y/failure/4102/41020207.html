@@ -1,0 +1,116 @@
+---
+layout: default
+title: Failure - 4.1.2.2.7 Carousel is missing appropriate roles and/or attributes
+current: /a11y/failure/4102/41020207.html
+root: WCAG 2.2
+scurl: /a11y/sc/4102.html
+sctitle: 4.1.2 Name, Role, Value
+cpurl: /a11y/checkpoint/410202.html
+cptitle: 4.1.2.2 Custom Controls
+guideline: robust
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
+css: carousel-tablist
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+        <div class="row">
+            <h2 class="{{ page.level }}">Expected Result</h2>
+            <div>Carousels have all appropriate roles and attributes.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Actual Result</h2>
+            <div>A carousel does not have all the appropriate roles or attributes.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Solution</h2>
+            <div>Assign the appropriate roles and attributes:
+                <ul>
+                    <li>Use the "region" role on the carousel (<code>&lt;section&gt;</code> or <code>role="region"</code>).</li>
+                    <li>Use <code>aria-roledescription="carousel"</code> on the carousel so that the screen reader identifies it as a carousel but preserves the region functionality.</li>
+                    <li>Use <code>aria-label</code> or <code>aria-labelledby</code> on the carousel to give it an accessible name.</li>
+                    <li>Use the <code>aria-live</code> property on the carousel. Set it to "off" when the carousel is automatically rotating. Set it to "polite" when it is not.</li>
+                    <li>Use the "tablist" role on the element which contains the slides.</li>
+                    <li>Use <code>aria-label</code> on the tablist to provide an accessible name.</li>
+                    <li>Use the "tab" role on each slide button.</li>
+                    <li>Use <code>aria-label</code> on each slide button to provide an accessible name (e.g., "slide 1").</li>
+                    <li>Use the <code>aria-selected</code> attribute on each slide button. Set it to "true" for the current slide and to "false" for all other slides.</li>
+                    <li>Set <code>tabindex="-1"</code> on each slide button when it is not currently selected.</li>
+                    <li>Use the <code>aria-controls</code> attribute on each button and set it to the id of the corresponding tabpanel.</li>
+                    <li>Use the "tabpanel" role on the slide content element.</li>
+                    <li>Use <code>aria-roledescription="slide"</code> on the slide content element so that the screen reader identifies it as a slide but preserves the tabpanel functionality.</li>
+                    <li>Use <code>aria-label="X of Y"</code> on each slide content element to provide an accessible name.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <div class="example">
+                    {% include examples/carousel.html %}
+                    <script src="/a11y/assets/js/carousel-tablist.js"></script>
+
+                    <pre><code><strong>&lt;section id="myCarousel" aria-roledescription="carousel" aria-label="Cats of House Harless"&gt;</strong>
+...
+&lt;div <strong>role="tablist" aria-label="Slides"</strong>&gt;
+    &lt;button <strong>role="tab" aria-label="Slide 1" aria-selected="true" aria-controls="carousel-item-1"</strong>&gt;
+    ...
+&lt;div id="myCarousel-items" <strong>aria-live="off"</strong>&gt;
+    &lt;div id="carousel-item-1" <strong>role="tabpanel" aria-roledescription="slide" aria-label="1 of 4"</strong>&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Native HTML controls</strong>:<br>
+                        <code>&lt;input type="checkbox"&gt; Subscribe to the mailing list</code><br>
+                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
+                    <li><strong>Custom controls that function as native HTML controls</strong>:<br>
+                        <code>&lt;div role="checkbox" tabindex="0" aria-checked="false"&gt;Subscribe to the mailing list</code><br>
+                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
+                    <li><strong>Hidden</strong>:<br>
+                        <code>&lt;div style="display:none;"&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                    <li><strong>Role of "none"</strong>:<br>
+                        <code>&lt;div role="none"&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Assistive technology only works well when code is done properly.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls">MDN: aria-controls</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-live">MDN: aria-live</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected">MDN: aria-selected</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-roledescription">MDN: aria-roledescription</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 4102checkpoints.html %}

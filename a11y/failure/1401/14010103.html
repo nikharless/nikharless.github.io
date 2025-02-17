@@ -1,0 +1,77 @@
+---
+layout: default
+title: Failure - 1.4.1.1.3 Color is used as the only means of prompting a response
+current: /a11y/failure/1401/14010103.html
+root: WCAG 2.2
+scurl: /a11y/sc/1401.html
+sctitle: 1.4.1 Use of Color
+cpurl: /a11y/checkpoint/140101.html
+cptitle: 1.4.1.1 Color as Information
+guideline: perceivable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>Color is not used as the only visual means of prompting a response.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>Color is used as the only visual means of prompting a response.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Provide a visual means of conveying the information in addition to color.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>Highlighted Fields</h3>
+                <p>In addition to the yellow highlighting, instructions name the field.</p>
+                <div style="border: 2px solid black; padding: 1em;">
+                    <p>Begin by entering the 6-digit ID number into the ID field and clicking Search.</p>
+                    <form>
+                        <label for="idno">ID <span style="color: #888;"><em>(e.g. 123456)</em></span><br>
+                            <input type="text" id="idno" style="background-color: #ffffb3; border: 2px solid #cccc00; border-radius: 4px;">
+                        </label>
+                        <button>Search</button><br>
+                        <label for="owner">Owner<br>
+                            <input type="text" id="owner" style="border-radius: 4px;">
+                        </label><br>
+                        <label for="dept">Department<br>
+                            <input type="text" id="dept" style="border-radius: 4px;">
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>People who are color blind or have low vision need an alternate means besides color of getting the information.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.4.1 Use of Color</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F81">F81: Failure of Success Criterion 1.4.1 due to identifying required or error fields using color differences only</a>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G14">G14: Ensuring that information conveyed by color differences is also available in text</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 1401checkpoints.html %}

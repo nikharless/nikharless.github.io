@@ -1,0 +1,73 @@
+---
+layout: default
+title: Failure - 2.4.9.1.1 The purpose of the link cannot be determined by the link text alone
+current: /a11y/failure/2409/24090101.html
+root: WCAG 2.2
+scurl: /a11y/sc/2409.html
+sctitle: 2.4.9 Link Purpose (Link Only)
+cpurl: /a11y/checkpoint/240901.html
+cptitle: 2.4.9.1 Link Purpose (Link Only)
+guideline: operable
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>The purpose of the link can be determined from the link text alone.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>The purpose of the link cannot be determined from the link text alone.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>
+                <ul>
+                    <li>Change the link text to describe the purpose of the link, <strong>OR</strong></li>
+                    <li>Provide an alternate version of the page where the link text meets this requirement.</li>
+                </ul>      
+            </div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>Link Text</h3>
+                <a href="#">How to Make Links Accessible</a>              
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Descriptive link text is more understandable for all users, especially when using assistive technology.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F84">F84: Failure of Success Criterion 2.4.9 due to using a non-specific link such as "click here" or "more" without a mechanism to change the link text to specific text.</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G91">G91: Providing link text that describes the purpose of a link</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G189">G189: Providing a control near the beginning of the Web page that changes the link text</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H24">H24: Providing text alternatives for the area elements of image maps</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H30">H30: Providing link text that describes the purpose of a link for anchor elements</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C7">C7: Using CSS to hide a portion of the link text</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA8">ARIA8: Using aria-label for link purpose</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR30">SCR30: Using scripts to change the link text</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 2409checkpoints.html %}

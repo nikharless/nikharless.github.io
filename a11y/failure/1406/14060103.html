@@ -1,0 +1,66 @@
+---
+layout: default
+title: Failure - 1.4.6.1.3 Regular text over an image or gradient does not have at least a 7:1 contrast ratio with the background on the area of least contrast
+current: /a11y/failure/1406/14060103.html
+root: WCAG 2.2
+scurl: /a11y/sc/1406.html
+sctitle: 1.4.6 Contrast (Enhanced)
+cpurl: /a11y/checkpoint/140601.html
+cptitle: 1.4.6.1 Regular Text Color Contrast (Enhanced)
+guideline: perceivable
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>Regular size text has a contrast ratio of at least 7:1 with all parts of the background.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>Regular size text does not have a contrast ratio of at least 7:1 with all parts of the background.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Change the text or background so that the contrast ratio between the text and the background is at least 7:1 in all areas.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Example</h2>
+            <div>
+                <p>Adding a background color behind text that's over an image can help ensure that the text maintains enough contrast when the background image or the flow of the text changes.</p>
+                <div id="bg2">
+                    <div id="divText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Vision impaired and color blind users need sufficient contrast in order to be able to read text.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F83">F83: Failure of Success Criterion 1.4.3 and 1.4.6 due to using background images that do not provide sufficient contrast with foreground text (or images of text)</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G17">G17: Ensuring that a contrast ratio of at least 7:1 exists between text (and images of text) and background behind the text</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 1406checkpoints.html %}

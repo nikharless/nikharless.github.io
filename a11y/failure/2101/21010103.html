@@ -1,0 +1,75 @@
+---
+layout: default
+title: Failure - 2.1.1.1.3 Link does not have an href value
+current: /a11y/failure/2101/21010103.html
+root: WCAG 2.2
+scurl: /a11y/sc/2101.html
+sctitle: 2.1.1 Keyboard
+cpurl: /a11y/checkpoint/210101.html
+cptitle: 2.1.1.1 Keyboard Navigation
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>All functionality is available through the keyboard interface.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>A link cannot be activated using only a keyboard, because it's coded without an <code>href</code> attribute.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>
+            <ul>
+                <li>Provide an <code>href</code> attribute pointing to the target url, <strong>AND</strong></li>
+                <li>Provide keyboard event handlers.</li>
+            </div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>Scripted Link</h3>
+                <p>Using <code>onclick</code> allows activation with both the mouse and the keyboard.</p>
+                <a href="#" onclick="return doStuff();">Click this link</a>
+                <script>
+                    function doStuff() {
+                        window.alert('Doing Stuff');
+                        return false;
+                    }
+                </script>
+                <pre><code>&lt;a href="#" onclick="return doStuff();"&gt;Click this link&lt;/a&gt;</code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Some users with vision disabilities or hand tremors are unable to use a mouse well or at all.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F42">F42: Failure of Success Criteria 1.3.1, 2.1.1, 2.1.3, or 4.1.2 when emulating links</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR35">SCR35: Making actions keyboard accessible by using the onclick event of anchors and buttons</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 2101checkpoints.html %}

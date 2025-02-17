@@ -1,0 +1,104 @@
+---
+layout: default
+title: Failure - 2.4.13.1.2 Element does not have at least 3:1 contrast between focused and unfocused states
+current: /a11y/failure/2413/24130102.html
+root: WCAG 2.2
+scurl: /a11y/sc/2413.html
+sctitle: 2.4.13 Focus Appearance
+cpurl: /a11y/checkpoint/241301.html
+cptitle: 2.4.13.1 Focus Appearance
+guideline: operable
+level: aaa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance
+css: focus-indicator
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>The focused state has at least a 3:1 contrast with the unfocused state.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>The focused state does not have at least a 3:1 contrast with the unfocused state.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Adjust the colors so that the focus state has at least a 3:1 contrast with the same pixels in the unfocused state.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <p>Tab to each element to see the focus indicator.</p>
+
+                <h3>Background Color</h3>
+                <p>The green focus state background has a 4.2:1 contrast with the unfocused state background.</p>
+                <div class="example" style="width: 80%;">
+                    <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;">
+                        <li style="float: left;"><a href="#home" class="bgContrastFI" style="display: block; color: #fff; text-align: center; padding: 10px 16px; text-decoration: none;">Home</a></li>
+                        <li style="float: left;"><a href="#news" class="bgContrastFI" style="display: block; color: #fff; text-align: center; padding: 10px 16px; text-decoration: none;">News</a></li>
+                        <li style="float: left;"><a href="#contact" class="bgContrastFI" style="display: block; color: #fff; text-align: center; padding: 10px 16px; text-decoration: none;">Contact</a></li>
+                        <li style="float: left;"><a href="#about" class="bgContrastFI" style="display: block; color: #fff; text-align: center; padding: 10px 16px; text-decoration: none;">About</a></li>
+                    </ul>
+                </div>
+
+                <h3>Bottom Border</h3>
+                <p>The green focus state bottom border has a 4.2:1 contrast with the same pixels in the unfocused state background.</p>
+                <div class="example" style="width: 80%;">
+                    <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;">
+                        <li style="float: left;"><a href="#home" class="bottomBorderContrastFI" style="display: block; color: #fff; text-align: center; padding: 10px 16px 4px 16px; text-decoration: none; border-bottom: 12px solid #333;">Home</a></li>
+                        <li style="float: left;"><a href="#news" class="bottomBorderContrastFI" style="display: block; color: #fff; text-align: center; padding: 10px 16px 4px 16px; text-decoration: none; border-bottom: 12px solid #333;">News</a></li>
+                        <li style="float: left;"><a href="#contact" class="bottomBorderContrastFI" style="display: block; color: #fff; text-align: center; padding: 10px 16px 4px 16px; text-decoration: none; border-bottom: 12px solid #333;">Contact</a></li>
+                        <li style="float: left;"><a href="#about" class="bottomBorderContrastFI" style="display: block; color: #fff; text-align: center; padding: 10px 16px 4px 16px; text-decoration: none; border-bottom: 12px solid #333;">About</a></li>
+                    </ul>
+                </div>
+
+                <h3>Outline</h3>
+                <p>The focus state outline has a 4.5:1 contrast with the same pixels (white) in the unfocused state.</p>
+                <div class="example" style="width: 80%;">
+                    <button class="exampleButton solidOutlineFI">Outline</button> <button class="exampleButton solidOutlineFI">Outline</button>
+                </div>
+
+                <h3>Inset Border</h3>
+                <p>The focus state border has a 3.48:1 contrast with the same pixels in the unfocused state background.</p>
+                <div class="example" style="width: 80%;">
+                    <button class="exampleButton solidInsetFI">Inset</button> <button class="exampleButton solidInsetFI">Inset</button>
+                </div>
+
+                <h3>Double Border</h3>
+                <p>Using a two-color border can be useful for ensuring adequate contrast on light and dark backgrounds. Since each border is at least 2px thick, only one of them needs to contrast with adjacent colors.</p>
+                <div class="example" style="width: 80%;">
+                    <button class="exampleButton doubleBorderContrastFI">Double</button> <button class="exampleButton doubleBorderContrastFI">Double</button>
+                </div>
+                <div class="example" style="width: 80%; background-color: #333;">
+                    <button class="exampleButton doubleBorderContrastFI">Double</button> <button class="exampleButton doubleBorderContrastFI">Double</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Users with visual impairments, including older people, can't see small changes in visual appearance.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G195">G195: Using an author-supplied, visible focus indicator</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 2413checkpoints.html %}

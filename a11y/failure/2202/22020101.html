@@ -1,0 +1,75 @@
+---
+layout: default
+title: Failure - 2.2.2.1.1 Animated content has no means to pause, stop, or hide it
+current: /a11y/failure/2202/22020101.html
+root: WCAG 2.2
+scurl: /a11y/sc/2202.html
+sctitle: 2.2.2 Pause, Stop, Hide
+cpurl: /a11y/checkpoint/220201.html
+cptitle: 2.2.2.1 Pause, Stop, or Hide Content
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide
+css: animation-pause
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>The user is able to pause, stop, or hide automatically moving content that lasts more than 5 seconds.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>Automatically moving content lasts more than 5 seconds, and there is no means to pause, stop, or hide it.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>
+                <ul>
+                    <li>Provide a mechanism to pause, stop, or hide the animation, <strong>OR</strong>
+                        <ul>
+                            <li><em>Note: The mechanism must allow the user to interact with other content while it is paused. Therefore, pausing on focus does not meet this criterion.</em></li>
+                        </ul>
+                    </li>
+                    <li>Shorten the animation to last 5 seconds or less.</li>
+                </ul>
+            </div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>CSS Animation</h3>
+                <input type="checkbox" data-animation-pause id="css-toggle"> <label for="css-toggle" class="chk">Pause animations</label><br>
+                <div class="circle a-pulse" data-animation="alternate" style="--bgc:purple;">I will play/pause</div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Some people with cognitive disabilities and attention deficits cannot concentrate with continual movement.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G4">G4: Allowing the content to be paused and restarted from where it was paused</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G152">G152: Setting animated gif images to stop blinking after n cycles (within 5 seconds)</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G186">G186: Using a control in the Web page that stops moving, blinking, or auto-updating content</a></li>
+                    <li><a href="https://css-tricks.com/how-to-play-and-pause-css-animations-with-css-custom-properties/">CSS-Tricks: How to Play and Pause CSS Animations with CSS Custom Properties</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 2202checkpoints.html %}

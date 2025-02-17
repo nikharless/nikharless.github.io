@@ -1,0 +1,113 @@
+---
+layout: default
+title: Failure - 1.4.11.1.1 Visual boundary of checkbox or radio button does not have 3:1 contrast with background
+current: /a11y/failure/1411/14110101.html
+root: WCAG 2.2
+scurl: /a11y/sc/1411.html
+sctitle: 1.4.11 Non-text Contrast
+cpurl: /a11y/checkpoint/141101.html
+cptitle: 1.4.11.1 Active User Interface Components (Non-text Contrast)
+guideline: perceivable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
+css: 1411
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>Visual indicators of a checkbox or radio button's boundaries must have at least 3:1 contrast with the background.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>Visual indicators of a checkbox or radio button's boundaries do not have at least 3:1 contrast with the background.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Change the color of the boundary to have at least 3:1 contrast with the background.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>Border</h3>
+                <p>The border has a contrast ratio of at least 3:1 with both the internal and external background.</p>
+                <div class="cbExample">
+                    <div role="checkbox" tabindex="0" aria-checked="false">Check this box
+                        <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                        <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
+                    </div>
+                </div>
+                <script src="/a11y/assets/js/checkbox.js"></script>
+
+                <div class="radioExample" role="radiogroup">
+                    <div role="radio" tabindex="0" aria-checked="false">Check this radio button
+                        <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
+                        <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
+                    </div>
+                </div>
+                <script src="/a11y/assets/js/radio.js"></script>
+
+                <h3>Background</h3>
+                <p>The background of the checkbox or radio button has a contrast ratio of at least 3:1 with the external background.</p>
+                <div style="background-color:#5499D1;">
+                    <div class="cbExample">
+                        <div role="checkbox" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this box
+                            <span id="ccbChecked2" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                            <span id="ccbNotChecked2" class="ccbCheckbox ccbNotChecked" style="display: block; border:0;"></span>
+                        </div>
+                    </div>
+
+                    <div class="radioExample" role="radiogroup">
+                        <div role="radio" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this radio button
+                            <span id="crbChecked2" class="crbRadio crbChecked" style="display: none;"></span>
+                            <span id="crbNotChecked2" class="crbRadio crbNotChecked" style="display: block; border:0;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Background and Border</h3>
+                <p>The background of the checkbox or radio button has a contrast ratio of at least 3:1 with the external background. The border isn't required to distinguish the control, so it doesn't need to meet the contrast ratio.</p>
+                <div style="background-color:#5499D1;">
+                    <div class="cbExample">
+                        <div role="checkbox" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this box
+                            <span id="ccbChecked3" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                            <span id="ccbNotChecked3" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
+                        </div>
+                    </div>
+
+                    <div class="radioExample" role="radiogroup">
+                        <div role="radio" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this radio button
+                            <span id="crbChecked3" class="crbRadio crbChecked" style="display: none;"></span>
+                            <span id="crbNotChecked3" class="crbRadio crbNotChecked" style="display: block;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Color blind and visually impaired users need to be able to distinguish non-text user controls.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 1411checkpoints.html %}

@@ -1,0 +1,84 @@
+---
+layout: default
+title: Failure - 1.4.12.1.2 Content is cut off when spacing is adjusted by the user
+current: /a11y/failure/1412/14120102.html
+root: WCAG 2.2
+scurl: /a11y/sc/1412.html
+sctitle: 1.4.12 Text Spacing
+cpurl: /a11y/checkpoint/141201.html
+cptitle: 1.4.12.1 Text Spacing
+guideline: perceivable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/text-spacing
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>The spacing between letters, words, lines of text, and paragraphs can be adjusted without being clipped.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>Text is cut off when the spacing between letters, words, lines of text, and paragraphs is adjusted.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Code the text so that the spacing can be adjusted without clipping content.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <p>Use <a href="https://dylanb.github.io/bookmarklets.html">Dylan Barrell’s 1.4.12 Text Spacing Bookmarklet</a> to change the spacing.</p>            
+                
+                <h3 style="color: #EE0000;">Bad Example: Fixed Box Size and Overflow Hidden</h3>
+                <p>Note that when you run the text spacing bookmarklet, the content is cut off.</p>
+                <div style="font-size:100%; width:130px; height:125px; border: 1px solid #EE0000; overflow: hidden;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <p style="margin:0;">Nulla porta maximus tempus.</p>
+                <pre><code>div {
+    font-size: 100%;
+    width: 130px;
+    height: 125px;
+    border: 1px solid #888;
+    overflow: hidden;
+}</code></pre>
+
+                <h3 style="color: #008900;">Good Example: Box Expands in Height</h3>
+                <div style="font-size: 100%; max-width: 8.125em; min-height: 7.8em; border: 1px solid #888;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <p style="margin:0;">Nulla porta maximus tempus.</p>
+                <pre><code>div {
+    font-size: 100%;
+    max-width: 8.125em;
+    min-height: 7.8em;
+    border: 1px solid #888;
+}</code></pre>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>People with low vision or dyslexia may need to adjust text spacing in order to read the text.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F104">F104: Failure of Success Criterion 1.4.12 due to clipped or overlapped content when text spacing is adjusted</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C35">C35: Allowing for text spacing without wrapping</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C36">C36: Allowing for text spacing override</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 1412checkpoints.html %}

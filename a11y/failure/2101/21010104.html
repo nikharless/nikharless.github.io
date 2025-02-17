@@ -1,0 +1,88 @@
+---
+layout: default
+title: Failure - 2.1.1.1.4 Modal cannot be dismissed using the keyboard without submitting data
+current: /a11y/failure/2101/21010104.html
+root: WCAG 2.2
+scurl: /a11y/sc/2101.html
+sctitle: 2.1.1 Keyboard
+cpurl: /a11y/checkpoint/210101.html
+cptitle: 2.1.1.1 Keyboard Navigation
+guideline: operable
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
+css: dialog
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>All functionality is available through the keyboard interface.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>The modal cannot be dismissed using only the keyboard without submitting data.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>
+                <ul>
+                    <li>Ensure any close buttons in the modal can be activated with the keyboard.</li>
+                    <li>Enable the use of the <kbd>Esc</kbd> key to close the modal.</li>
+                </ul>
+            </div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>Modal with Cancel Button and Esc Functionality</h3>
+                <p>This modal has two methods to close it using only the keyboard.</p>
+                
+                <button type="button" onclick="openDialog('dialog1', this)">Open Modal</button>
+                <div id="dialog_layer" class="dialogs">
+                    <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
+                        <h2 id="dialog1_label" class="dialog_label">Example Modal</h2>
+                        <div class="dialog_form">
+                            <div class="dialog_form_item">
+                                <label>
+                                    <span>Name: </span>
+                                    <input type="text">
+                                </label>
+                            </div>
+                            <div class="dialog_form_actions">
+                                <button type="button">Submit</button>
+                                <button type="button" onclick="closeDialog(this)">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="/a11y/assets/js/dialog.js"></script>
+                <script src="/a11y/assets/js/utils.js"></script>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Some users with vision disabilities or hand tremors are unable to use a mouse well or at all.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 2101checkpoints.html %}

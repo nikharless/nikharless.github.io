@@ -1,0 +1,98 @@
+---
+layout: default
+title: Failure - 1.4.11.2.5 Visual boundary of selected state of control does not have 3:1 contrast with background
+current: /a11y/failure/1411/14110205.html
+root: WCAG 2.2
+scurl: /a11y/sc/1411.html
+sctitle: 1.4.11 Non-text Contrast
+cpurl: /a11y/checkpoint/141102.html
+cptitle: 1.4.11.2 States of User Interface (Non-text Contrast)
+guideline: perceivable
+level: aa
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
+css: 1411
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<div>Visual indicators of a control's selected state must have at least 3:1 contrast with adjacent colors.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<div>Visual indicators of a control's selected state do not have at least 3:1 contrast with adjacent colors.</div>
+    	</div>
+    	<div class="row">
+    		<h2 class="{{ page.level }}">Solution</h2>
+    		<div>Change the color of the selected state boundaries to have at least 3:1 contrast with adjacent colors.</div>
+    	</div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>Background</h3>
+                <p>The background of the selected tab has a contrast ratio of at least 3:1 with the external background.</p>
+                <script src="/a11y/assets/js/tabs-manual.js"></script>
+                <div class="tabs">
+                    <div role="tablist" class="manual">
+                        <button id="tab-1" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1">
+                          <span class="focus">Screen Reader</span>
+                        </button>
+                        <button id="tab-2" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2" tabindex="-1">
+                          <span class="focus">Braille Device</span>
+                        </button>
+                        <button id="tab-3" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-3" tabindex="-1">
+                          <span class="focus">Switch Device</span>
+                        </button>
+                        <button id="tab-4" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-4" tabindex="-1">
+                          <span class="focus">Voice Recognition</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">Screen Reader</div>
+                <div id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">Braille Device</div>
+                <div id="tabpanel-3" role="tabpanel" aria-labelledby="tab-3">Switch Device</div>
+                <div id="tabpanel-4" role="tabpanel" aria-labelledby="tab-4">Voice Recognition</div>
+
+                <h3>Border</h3>
+                <p>The border of the selected list item has a contrast ratio of at least 3:1 with the external background. The internal background is not required to distinguish the state, so it doesn't need to meet a contrast minimum.</p>
+                <script src="/a11y/assets/js/listbox.js"></script>
+                <script src="/a11y/assets/js/listbox-scrollable.js"></script>
+                <div class="listbox-area">
+                    <div><span id="ss_sr" class="listbox-label">Screen Readers:</span>
+                        <ul id="ss_sr_list" tabindex="0" role="listbox" aria-labelledby="ss_sr">
+                          <li id="ss_sr_jaws" role="option"><span class="checkmark" aria-hidden="true"></span>JAWS</li>
+                          <li id="ss_sr_nvda" role="option"><span class="checkmark" aria-hidden="true"></span>NVDA</li>
+                          <li id="ss_sr_vo" role="option"><span class="checkmark" aria-hidden="true"></span>VoiceOver</li>
+                          <li id="ss_sr_tb" role="option"><span class="checkmark" aria-hidden="true"></span>TalkBack</li>
+                          <li id="ss_sr_orca" role="option"><span class="checkmark" aria-hidden="true"></span>Orca</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Color blind and visually impaired users need to be able to distinguish the control in the selected state.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 1411checkpoints.html %}

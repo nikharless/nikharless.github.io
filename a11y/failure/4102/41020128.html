@@ -1,0 +1,111 @@
+---
+layout: default
+title: Failure - 4.1.2.1.28 Component is missing required child element
+current: /a11y/failure/4102/41020128.html
+root: WCAG 2.2
+scurl: /a11y/sc/4102.html
+sctitle: 4.1.2 Name, Role, Value
+cpurl: /a11y/checkpoint/410201.html
+cptitle: 4.1.2.1 Name, Role, Value
+guideline: robust
+level: a
+w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
+---
+<div class="cpcontent {{ page.level }}link">
+    <h1>{{ page.title }}</h1>
+    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
+        <ol>
+            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
+            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
+        </ol>
+    </nav>
+
+    <div class="failure">
+        <div class="row">
+            <h2 class="{{ page.level }}">Expected Result</h2>
+            <div>Elements contain any required child elements.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Actual Result</h2>
+            <div>An element requires a particular child element, but the child element is missing.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Solution</h2>
+            <div>
+                <h3>HTML</h3>
+                <p>Ensure that any required child elements are present.</p>
+                <ul>
+                    <li><code>&lt;head&gt;</code> must contain a <code>&lt;title&gt;</code> element</li>
+                    <li><code>&lt;table&gt;</code> must contain one or more <code>&lt;tr&gt;</code> elements</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Examples</h2>
+            <div>
+                <h3>Table</h3>
+                <div class="example">
+                    <p>Types of paint</p>
+                    <table>
+                        <tr>
+                            <th>Watercolor</th>
+                            <td>water-based</td>
+                        </tr>
+                        <tr>
+                            <th>Acrylic</th>
+                            <td>water-based</td>
+                        </tr>
+                        <tr>
+                            <th>Oil</th>
+                            <td>oil-based</td>
+                        </tr>
+                    </table>
+
+                    <pre><code>&lt;p&gt;Types of paint&lt;/p&gt;
+&lt;table&gt;</strong>
+    <strong>&lt;tr&gt;</strong>
+        &lt;th&gt;Watercolor&lt;/th&gt;
+        &lt;td&gt;water-based&lt;/td&gt;
+    <strong>&lt;/tr&gt;
+    &lt;tr&gt;</strong>
+        &lt;th&gt;Acrylic&lt;/th&gt;
+        &lt;td&gt;water-based&lt;/td&gt;
+    <strong>&lt;/tr&gt;
+    &lt;tr&gt;</strong>
+        &lt;th&gt;Oil&lt;/th&gt;
+        &lt;td&gt;oil-based&lt;/td&gt;
+    <strong>&lt;/tr&gt;</strong>
+&lt;/table&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Role of "none"</strong>:<br>
+                        <code>&lt;li role="none"&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <div>Assistive technology only works well when code is done properly.</div>
+        </div>
+        <div class="row">
+            <h2 class="{{ page.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include 4102checkpoints.html %}
