@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 1.3.1.1 Semantics
+title: 1.3.1.1 Regions
 current: /a11y/checkpoint/130101.html
 root: WCAG 2.2
 scurl: /a11y/sc/1301.html
@@ -33,17 +33,13 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
         <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Elements must be used according to their meaning, not their appearance.</li>
         <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Landmark regions should be marked up with native HTML elements if possible. Adding the ARIA role in addition to these is no longer necessary.</li>
         <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> All page content should be included in landmarks.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Error messages should be programmatically associated with the corresponding form field.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> If a field has additional instructions, they should be programmatically associated with the field.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> <code>&lt;strong&gt;</code> should be used instead of <code>&lt;b&gt;</code> to indicate importance. <code>&lt;em&gt;</code> should be used instead of <code>&lt;i&gt;</code> to indicate emphasis.</li>
     </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a blind user, I want to hear the roles of elements so that I know their purpose.</div>
+    <div class="userstory"><strong>User Story:</strong> As a blind user, I want to understand the structure of the page.</div>
 
-    <div class="success"><strong>Success:</strong> If you could not see the structure of a page, when you read the page with a screen reader, you would understand the purpose of each element.</div>
+    <div class="success"><strong>Success:</strong> If you could not see the structure of a page, when you read the page with a screen reader, you would be able to distinguish the regions.</div>
 
     <h2>Testing Logic</h2>
     <script src="/a11y/assets/js/tree.js"></script>
@@ -102,74 +98,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
     </ul>
 
-    <h3 id="test2">Are there parts of the content that have a semantic function not covered by the other 1.3.1 checkpoints?</h3>
-    <ul role="tree" aria-labelledby="test2">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there semantic markup that corresponds to the function of the content part?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the content marked up with the corresponding semantic markup?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Mark up the content with the appropriate semantic markup.</span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    <h3 id="test3">Are visual relationships also conveyed either programmatically or in text? Some examples include: comments visually presented as replies using indentation, blockquotes, blocks of elements linking to the same target, and deleted/inserted text.</h3>
-    <ul role="tree" aria-labelledby="test3">
-        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the element's role overridden with <code>role="presentation"</code> or <code>role="none"</code>></span>
-            <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; Remove the presentation role; add a semantic role if the element does not have one by default.</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; Add semantic HTML tags, ARIA roles, or screen-reader-only text to ensure the relationship is understandable to assistive technology users.</span></li>
-            </ul>
-        </li>
-    </ul>
-
-    <h2>Web Test Procedure</h2>
-
-    <ol>
-        <li>Examine the page for information and relationships that are presented visually.</li>
-        <li>Verify that these are also presented programmatically <strong>OR</strong> in text.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <ul>
-        <li>Follow the procedure for Web.</li>
-    </ul>
-
-    <h2>PDF Test Procedure</h2>
-    <h3>Adobe Acrobat Pro</h3>
-    <ol>
-        <li>Select <strong>Accessibility > Accessibility Check</strong> from the Task pane toolbar.</li>
-        <li>Ensure all Checking Options are selected, and activate the <strong>Start Checking</strong> button.</li>
-        <li>In the Accessibility Checker results, check for any failures related to untagged content.</li>
-        <li>Select <strong>Tags</strong> from the Navigation pane toolbar.</li>
-        <li>In the Options menu, verify that <strong>Document is Tagged PDF</strong> is selected.</li>
-        <li>Go through the Tags tree, and make sure every element is tagged with the appropriate semantic tag.</li>
-    </ol>
-
-    <h3>Screen Reader</h3>
-    <ol>
-        <li>Examine the page for information and relationships that are presented visually.</li>
-        <li>Verify that these are identified correctly by the screen reader.</li>
-        <li>Verify that the page numbering is consistent.</li>
-    </ol>
-
     <h2>Failures</h2>
     <ul>
         <li><a href="/a11y/failure/1301/13010101.html">1.3.1.1.1 Landmark region is not marked up semantically.</a> (Medium)</li>
         <li><a href="/a11y/failure/1301/13010102.html">1.3.1.1.2 Landmark regions are marked up incorrectly.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1301/13010103.html">1.3.1.1.3 Quotation is not marked up semantically.</a> (Low)</li>
-
-        <li>1.3.1.1.4 Content with semantic function is not marked up with corresponding semantic markup. (High)</li>
-        <li>1.3.1.1.5 Semantic markup is incorrect. (Medium)</li>
-        <li>1.3.1.1.6 Semantic markup is used for visual appearance. (Medium)</li>
-        <li>1.3.1.1.7 Semantic information is suppressed with role="presentation" or role="none". (High)</li>
-        <li>1.3.1.1.8 Important visual relationship is not conveyed programmatically. (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -179,12 +111,6 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
             <ul>
                 <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
                 <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
-            </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://pac.pdf-accessibility.org">PAC PDF Accessibility Checker</a></li>
-                <li>Adobe Acrobat Pro</li>
             </ul>
         </li>
     </ul>
@@ -198,18 +124,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
                 <li>General:
                     <ul>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G115">G115: Using semantic elements to mark up structure</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G138">G138: Using semantic markup whenever color cues are used</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G140">G140: Separating information and structure from presentation to enable different presentations</a></li>
-                    </ul>
-                </li>
-                <li>HTML:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H49">H49: Using semantic markup to mark emphasized or special text</a></li>
-                    </ul>
-                </li>
-                <li>PDF:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF11">PDF11: Providing links and link text using the Link annotation and the /Link structure element in PDF documents</a></li>
                     </ul>
                 </li>
             </ul>
