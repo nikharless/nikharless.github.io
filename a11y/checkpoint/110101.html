@@ -2,7 +2,8 @@
 layout: default
 current: 110101
 root: WCAG 2.2
-scurl: /a11y/sc/1101.html
+baseurl: /a11y
+scurl: /sc/1101.html
 sctitle: 1.1.1 Non-text Content
 guideline: perceivable
 level: a
@@ -14,9 +15,9 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     <h1>{{ currentpg.name }}</h1>
     <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
         <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ currentpg.link }}" aria-current="page">{{ currentpg.name }}</a> - Level {{ page.level | upcase }}</li>
+            <li><a href="{{ page.baseurl }}/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.scurl | prepend: page.baseurl }}">{{ page.sctitle }}</a></li>
+            <li><a href="{{ currentpg.link | prepend: page.baseurl }}" aria-current="page">{{ currentpg.name }}</a> - Level {{ page.level | upcase }}</li>
         </ol>
     </nav>
 
@@ -26,7 +27,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     <p>Functional images include the following:</p>
     <h4>Image as Link</h4>
     <p>This link's function on the site is to view the home page, so this is what the text alternative should describe. The fact that it is a logo is not relevant and should not be included in the text alternative.</p>
-    <p><a href="#"><img src="/a11y/assets/images/110101-github-mark.png" width="60" height="60" alt="GitHub home" /></a></p>
+    <p><a href="#"><img src="{{ page.baseurl }}/assets/images/110101-github-mark.png" width="60" height="60" alt="GitHub home" /></a></p>
     <pre><code>&lt;a href="http://github.com"&gt;
   &lt;img 
     src="github-mark.png" 
@@ -35,7 +36,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
 <h4>Informational Image within Link</h4>
     <p>This link's function is to open a PDF file. The image's function within the link is to convey the file type. Since the link already contains text describing its target, the image's text alternative only needs to identify the target as a PDF.</p>
-    <p><a href="#">Download the User Guide <img src="/a11y/assets/images/110101-pdf-icon_60.png" width="24" height="24" alt="PDF" /></a></p>
+    <p><a href="#">Download the User Guide <img src="{{ page.baseurl }}/assets/images/110101-pdf-icon_60.png" width="24" height="24" alt="PDF" /></a></p>
     <pre><code>&lt;a href="user-guide.pdf"&gt;
   Download the User Guide 
   &lt;img 
@@ -45,7 +46,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h4>Image as Button</h4>
     <p>This button's function is to add an item to the cart, so this is what the text alternative should convey. Using "Shopping Cart" would be inappropriate, as that does not describe the actual function, and the user would assume that they are going to a page displaying their cart contents.</p>
-    <p><button style="background-color: transparent; border: 0;"><img src="/a11y/assets/images/110101-shopping-cart.png" alt="Add to Cart" /></button></p>
+    <p><button style="background-color: transparent; border: 0;"><img src="{{ page.baseurl }}/assets/images/110101-shopping-cart.png" alt="Add to Cart" /></button></p>
     <pre><code>&lt;button&gt;
   &lt;img 
     src="shopping-cart.png" 
@@ -54,7 +55,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h4>Input Image</h4>
     <p>This button's function is to submit a form and continue to the next step in a process, so this is what the text alternative should convey.</p>
-    <p><input type="image" src="/a11y/assets/images/110101-next-arrow_60.png" alt="Submit and continue" /></button></p>
+    <p><input type="image" src="{{ page.baseurl }}/assets/images/110101-next-arrow_60.png" alt="Submit and continue" /></button></p>
     <pre><code>&lt;button&gt;
   &lt;img 
     src="next-button.png" 
@@ -63,7 +64,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
    <h4>Client-side Image Map</h4>
     <p>Each circle on this example image is an <code>&lt;area&gt;</code> which is a link. The alt text for each area must describe the target of the link.</p>
-    <img src="/a11y/assets/images/110101-infographic.png"
+    <img src="{{ page.baseurl }}/assets/images/110101-infographic.png"
      alt="Steps of the Process"
      usemap="#csimap">
     <map id="csimap" name="Sample Image Map">
@@ -122,7 +123,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             </ul>
         </li>
         <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> If the image contains meaningful text, the text alternative should contain that exact text.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for linked images should not duplicate adjacent link text for the same destination. Combine the image and text into a single link and check the image against 1.1.1.d Alternative Text (Decorative Images).</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for linked images should not duplicate adjacent link text for the same destination. Combine the image and text into a single link and check the image against 1.1.1.4 Alternative Text (Decorative Images).</li>
         <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for functional images should not include words such as "link" or "button".</li>
         <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Trademarks, copyright symbols, etc. on an image should be included in the text alternative.</li>
         <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives should be as succinct as possible.</li>
@@ -141,7 +142,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </ul>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ page.baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Are there images on the page which function as interactive controls?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image have a text alternative?</span>
@@ -154,7 +155,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently describe the function of the control?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1101/11010107.html">1.1.1.1.7 Existing text alternative does not serve the same purpose as the functional image</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ page.baseurl }}/failure/1101/11010107.html">1.1.1.1.7 Existing text alternative does not serve the same purpose as the functional image</a>.</span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="110104.html">1.1.1.4 Decorative Images (Text Alternative)</a>.</span></li>
@@ -166,16 +167,16 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                     <ul role="group">
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the image in an <code>&lt;img&gt;</code> element?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1101/11010101.html">1.1.1.1.1 Functional <code>&lt;img&gt;</code> is missing an <code>alt</code> attribute.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ page.baseurl }}/failure/1101/11010101.html">1.1.1.1.1 Functional <code>&lt;img&gt;</code> is missing an <code>alt</code> attribute.</a></span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;svg&gt;</code> element?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1101/11010102.html">1.1.1.1.2 Functional <code>&lt;svg&gt;</code> is missing a <code>title</code> element.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ page.baseurl }}/failure/1101/11010102.html">1.1.1.1.2 Functional <code>&lt;svg&gt;</code> is missing a <code>title</code> element.</a></span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;input type="image"&gt;</code> element?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1101/11010103.html">1.1.1.1.3 <code>&lt;input&gt;</code> image is missing an <code>alt</code> attribute.</a>.</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ page.baseurl }}/failure/1101/11010103.html">1.1.1.1.3 <code>&lt;input&gt;</code> image is missing an <code>alt</code> attribute.</a>.</span></li>
                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image a CSS background element for an interactive element?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1101/11010104.html">1.1.1.1.4 CSS background image in interactive element is missing a text alternative.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ page.baseurl }}/failure/1101/11010104.html">1.1.1.1.4 CSS background image in interactive element is missing a text alternative.</a></span></li>
                                                         <li role="treeitem" class="fail"><span><strong>No</strong>; Add a text alternative.</span></li>
                                                     </ul>
                                                 </li>
@@ -198,7 +199,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the <code>&lt;area&gt;</code> tag have a descriptive text alternative?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1101/11010105.html">1.1.1.1.5 Image map <code>&lt;area&gt;</code> element is missing a text alternative.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ page.baseurl }}/failure/1101/11010105.html">1.1.1.1.5 Image map <code>&lt;area&gt;</code> element is missing a text alternative.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an alternative to the image map, such as a list of links?</span>
@@ -209,7 +210,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                                 <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="110103.html">1.1.1.3 Complex Images (Text Alternative)</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1101/11010106.html">1.1.1.1.6 Server-side image map is missing a text alternative.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ page.baseurl }}/failure/1101/11010106.html">1.1.1.1.6 Server-side image map is missing a text alternative.</a></span></li>
                     </ul>
                 </li>
             </ul>
@@ -222,7 +223,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative change to match the current functional image?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1101/11010207.html">1.1.1.2.7 Text alternative does not match dynamic image.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ page.baseurl }}/failure/1101/11010207.html">1.1.1.2.7 Text alternative does not match dynamic image.</a></span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -290,7 +291,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1101/11010101.html">1.1.1.1.1 Functional <code>&lt;img&gt;</code> is missing an <code>alt</code> attribute.</a> (High)</li>
+        <li><a href="{{ site.data.1101.1101-failures.11010101.link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures.11010101.name }}</a> (High)</li>
         <li><a href="/a11y/failure/1101/11010102.html">1.1.1.1.2 Functional <code>&lt;svg&gt;</code> is missing a <code>title</code> element.</a> (High)</li>
         <li><a href="/a11y/failure/1101/11010103.html">1.1.1.1.3 <code>&lt;input&gt;</code> image is missing an <code>alt</code> attribute.</a> (High)</li>
         <li><a href="/a11y/failure/1101/11010104.html">1.1.1.1.4 CSS background image in interactive element is missing a text alternative.</a> (High)</li>
