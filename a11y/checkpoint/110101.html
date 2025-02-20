@@ -2,22 +2,22 @@
 layout: default
 current: 110101
 root: WCAG 2.2
-
+base: base
 sc: site.data.1101.1101[1101]
 guideline: perceivable
 level: a
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
 {% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.1101.1101.base %}
+{% assign baseurl=site.data.1101.1101[page.base] %}
 
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ currentpg.name }}</h1>
     <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
         <ol>
-            <li><a href="{{ page.baseurl }}/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.sc.link | prepend: page.baseurl }}">{{ page.sc.name }}</a></li>
-            <li><a href="{{ currentpg.link | prepend: page.baseurl }}" aria-current="page">{{ currentpg.name }}</a> - Level {{ page.level | upcase }}</li>
+            <li><a href="{{ baseurl }}/index.html">{{ page.root }}</a></li>
+            <li><a href="{{ page.sc.link | prepend: baseurl }}">{{ page.sc.name }}</a></li>
+            <li><a href="{{ currentpg.link | prepend: baseurl }}" aria-current="page">{{ currentpg.name }}</a> - Level {{ page.level | upcase }}</li>
         </ol>
     </nav>
 
