@@ -9,7 +9,7 @@ guideline: perceivable
 level: a
 w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
-{% assign currentpg=site.data.1101.1101-failures[page.current] %}
+{% assign currentpg=site.data.1101.1101[page.current] %}
 
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ currentpg.name }}</h1>
@@ -119,11 +119,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
         <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a control is labeled with both an image and text:
             <ul>
                 <li>If the image provides information not conveyed by the associated text, the image's alternative text along with the visible text must together describe the function or destination of the control.</li>
-                <li>If the image does not provide any information not conveyed by the associated text, check against <a href="110104.html">1.1.1.4 Decorative Images (Text Alternative)</a>.</li>
+                <li>If the image does not provide any information not conveyed by the associated text, check against <a href="{{ site.data.1101.1101[110104].link | prepend: page.baseurl }}">{{ site.data.1101.1101[110104].name }}</a>.</li>
             </ul>
         </li>
         <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> If the image contains meaningful text, the text alternative should contain that exact text.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for linked images should not duplicate adjacent link text for the same destination. Combine the image and text into a single link and check the image against 1.1.1.4 Alternative Text (Decorative Images).</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for linked images should not duplicate adjacent link text for the same destination. Combine the image and text into a single link and check the image against {{ site.data.1101.1101[110104].name }}.</li>
         <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for functional images should not include words such as "link" or "button".</li>
         <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Trademarks, copyright symbols, etc. on an image should be included in the text alternative.</li>
         <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives should be as succinct as possible.</li>
@@ -149,13 +149,13 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <ul role="group">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative repeat the text that it is programmatically associated with?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="110104.html">1.1.1.4 Decorative Images (Text Alternative)</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[110104].link | prepend: page.baseurl }}">{{ site.data.1101.1101[110104].name }}</a>.</span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the text alternative necessary to understand the function of the control?</span>
                             <ul role="group">
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently describe the function of the control?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101-failures[11010107].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010107].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010107].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010107].name }}</a></span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="110104.html">1.1.1.4 Decorative Images (Text Alternative)</a>.</span></li>
@@ -167,16 +167,16 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                     <ul role="group">
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the image in an <code>&lt;img&gt;</code> element?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101-failures[11010101].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010101].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010101].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010101].name }}</a></span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;svg&gt;</code> element?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101-failures[11010102].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010102].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010102].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010102].name }}</a></span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;input type="image"&gt;</code> element?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101-failures[11010103].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010103].name }}</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010103].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010103].name }}</a></span></li>
                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image a CSS background element for an interactive element?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101-failures[11010104].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010104].name }}</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010104].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010104].name }}</a></span></li>
                                                         <li role="treeitem" class="fail"><span><strong>No</strong>; Add a text alternative.</span></li>
                                                     </ul>
                                                 </li>
@@ -199,7 +199,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the <code>&lt;area&gt;</code> tag have a descriptive text alternative?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101-failures[11010105].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010105].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010105].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010105].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an alternative to the image map, such as a list of links?</span>
@@ -207,10 +207,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image map have a short text alternative summarizing its purpose?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="110103.html">1.1.1.3 Complex Images (Text Alternative)</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[110103].link | prepend: page.baseurl }}">{{ site.data.1101.1101[110103].name }}</a>.</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101-failures[11010106].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010106].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010106].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010106].name }}</a></span></li>
                     </ul>
                 </li>
             </ul>
@@ -223,7 +223,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative change to match the current functional image?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ page.baseurl }}/failure/1101/11010207.html">1.1.1.2.7 Text alternative does not match dynamic image.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010207].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010207].name }}</a></span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -291,16 +291,16 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="{{ site.data.1101.1101-failures[11010101].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010101].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1101.1101-failures[11010102].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010102].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1101.1101-failures[11010103].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010103].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1101.1101-failures[11010104].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010104].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1101.1101-failures[11010105].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010105].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1101.1101-failures[11010106].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010106].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1101.1101-failures[11010107].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010107].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1101.1101-failures[11010108].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010108].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1101.1101-failures[11010109].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010109].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1101.1101-failures[11010110].link | prepend: page.baseurl }}">{{ site.data.1101.1101-failures[11010110].name }}</a> (High)</li>
+        <li><a href="{{ site.data.1101.1101[11010101].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010101].name }}</a> (High)</li>
+        <li><a href="{{ site.data.1101.1101[11010102].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010102].name }}</a> (High)</li>
+        <li><a href="{{ site.data.1101.1101[11010103].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010103].name }}</a> (High)</li>
+        <li><a href="{{ site.data.1101.1101[11010104].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010104].name }}</a> (High)</li>
+        <li><a href="{{ site.data.1101.1101[11010105].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010105].name }}</a> (High)</li>
+        <li><a href="{{ site.data.1101.1101[11010106].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010106].name }}</a> (High)</li>
+        <li><a href="{{ site.data.1101.1101[11010107].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010107].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1101.1101[11010108].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010108].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1101.1101[11010109].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010109].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1101.1101[11010110].link | prepend: page.baseurl }}">{{ site.data.1101.1101[11010110].name }}</a> (High)</li>
     </ul>
 
     <h2>Testing Tools</h2>
