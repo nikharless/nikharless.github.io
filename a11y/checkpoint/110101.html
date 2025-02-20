@@ -14,13 +14,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ currentpg.name }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="{{ baseurl }}/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ sc.link | prepend: baseurl }}">{{ sc.name }}</a></li>
-            <li><a href="{{ currentpg.link | prepend: baseurl }}" aria-current="page">{{ currentpg.name }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -361,4 +355,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </ul>
 </div>
 
-    {% include 1101checkpoints.html %}
+    {% include checkpoints/1101checkpoints.html %}
