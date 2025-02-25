@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 1.4.1.1 Color as Information
-current: /a11y/checkpoint/140101.html
+current: 140101
 root: WCAG 2.2
-scurl: /a11y/sc/1401.html
-sctitle: 1.4.1 Use of Color
+base: base
+criterion: 1401
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
 ---
+{% assign currentpg=site.data.1401.1401[page.current] %}
+{% assign baseurl=site.data.1401.1401[page.base] %}
+{% assign sc=site.data.1401.1401[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -43,19 +39,19 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
     <div class="success"><strong>Success:</strong> If you could not see colors, when you view the page, you would get all the same information as non-color blind users.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Is color used as the only means to convey information?</h3>
     <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1401/14010101.html">1.4.1.1.1 Color is used as the only means of conveying information.</a></span></li>
+        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1401.1401[14010101].link | prepend: baseurl }}">{{ site.data.1401.1401[14010101].name }}</a></span></li>
         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is color used as the only means to indicate an action?</span>
             <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1401/14010102.html">1.4.1.1.2 Color is used as the only means of indicating an action.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1401.1401[14010102].link | prepend: baseurl }}">{{ site.data.1401.1401[14010102].name }}</a></span></li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is color used as the only means to prompt a response?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1401/14010103.html">1.4.1.1.3 Color is used as the only means of prompting a response.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1401.1401[14010103].link | prepend: baseurl }}">{{ site.data.1401.1401[14010103].name }}</a></span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is color used as the only means to distinguish a visual element?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1401/14010104.html">1.4.1.1.4 Color is used as the only means of distinguishing a visual element.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1401.1401[14010104].link | prepend: baseurl }}">{{ site.data.1401.1401[14010104].name }}</a></span></li>
                                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                             </ul>
                         </li>
@@ -84,10 +80,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1401/14010101.html">1.4.1.1.1 Color is used as the only means of conveying information.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1401/14010102.html">1.4.1.1.2 Color is used as the only means of indicating an action.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1401/14010103.html">1.4.1.1.3 Color is used as the only means of prompting a response.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1401/14010104.html">1.4.1.1.4 Color is used as the only means of distinguishing a visual element.</a> (Medium)</li>
+        <li><a href="{{ site.data.1401.1401[14010101].link | prepend: baseurl }}">{{ site.data.1401.1401[14010101].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1401.1401[14010102].link | prepend: baseurl }}">{{ site.data.1401.1401[14010102].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1401.1401[14010103].link | prepend: baseurl }}">{{ site.data.1401.1401[14010103].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1401.1401[14010104].link | prepend: baseurl }}">{{ site.data.1401.1401[14010104].name }}</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -106,7 +102,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion 1.4.1: Use of Color</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.4.1: Use of Color</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -127,4 +123,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
     </ul>
 </div>
 
-    {% include 1401checkpoints.html %}
+    {% include checkpoints/1401checkpoints.html %}

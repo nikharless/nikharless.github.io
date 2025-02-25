@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 2.3.1.1.1 Content flashes more than 3 times per second and is not below flash threshold
-current: /a11y/failure/2301/23010101.html
+current: 23010101
 root: WCAG 2.2
-scurl: /a11y/sc/2301.html
-sctitle: 2.3.1 Three Flashes or Below Threshold
-cpurl: /a11y/checkpoint/230101.html
-cptitle: 2.3.1.1 Flashing Content
-guideline: operable
+base: base
+criterion: 2301
+checkpoint: 230101
+guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold
 ---
+{% assign currentpg=site.data.2301.2301[page.current] %}
+{% assign baseurl=site.data.2301.2301[page.base] %}
+{% assign sc=site.data.2301.2301[page.criterion] %}
+{% assign cp=site.data.2301.2301[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -55,7 +50,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-thre
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G15">G15: Using a tool to ensure that content does not violate the general flash threshold or red flash threshold</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G19">G19: Ensuring that no component of the content flashes more than three times in any 1-second period</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G176">G176: Keeping the flashing area small enough</a></li>
@@ -65,4 +60,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-thre
     </div>
 </div>
 
-    {% include 2301checkpoints.html %}
+    {% include checkpoints/2301checkpoints.html %}

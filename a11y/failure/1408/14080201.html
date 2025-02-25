@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.4.8.2.1 Text block cannot be resized to be no wider than 80 characters without clipping
-current: /a11y/failure/1408/14080201.html
+current: 14080201
 root: WCAG 2.2
-scurl: /a11y/sc/1408.html
-sctitle: 1.4.8 Visual Presentation
-cpurl: /a11y/checkpoint/140802.html
-cptitle: 1.4.8.2 Column width
+base: base
+criterion: 1408
+checkpoint: 140802
 guideline: perceivable
-level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
+level: a
 ---
+{% assign currentpg=site.data.1408.1408[page.current] %}
+{% assign baseurl=site.data.1408.1408[page.base] %}
+{% assign sc=site.data.1408.1408[page.criterion] %}
+{% assign cp=site.data.1408.1408[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -59,7 +54,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G204">G204: Not interfering with the user agent's reflow of text as the viewing window is narrowed</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C20">C20: Using relative measurements to set column widths so that lines can average 80 characters or less when the browser is resized</a></li>
                 </ul>
@@ -68,4 +63,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
     </div>
 </div>
 
-    {% include 1408checkpoints.html %}
+    {% include checkpoints/1408checkpoints.html %}

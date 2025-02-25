@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 2.4.13.1 Focus Appearance
-current: /a11y/checkpoint/241301.html
+current: 241301
 root: WCAG 2.2
-scurl: /a11y/sc/2413.html
-sctitle: 2.4.13 Focus Appearance
+base: base
+criterion: 2413
 guideline: operable
-level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance
+level: a
 ---
+{% assign currentpg=site.data.2413.2413[page.current] %}
+{% assign baseurl=site.data.2413.2413[page.base] %}
+{% assign sc=site.data.2413.2413[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <p>The minimum area can be calculated as follows:</p>
@@ -42,7 +38,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance
     <div class="success"><strong>Success:</strong> If you were a sighted keyboard user, when you navigate through a page, you could easily see what element was in focus.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">As you navigate through the page using the keyboard, is it visually apparent which element has focus?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the area of the focus indicator at least as large as the area of a 2 CSS pixel thick perimeter around the element?</span>
@@ -50,13 +46,13 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the focus state have a contrast ratio of at least 3:1 with the unfocused state?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/2413/24130102.html">2.4.13.1.2 Element does not have at least 3:1 contrast between focused and unfocused states.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2413.2413[24130102].link | prepend: baseurl }}">{{ site.data.2413.2413[24130102].name }}</a>.</span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/2413/24130101.html">2.4.13.1.1 Focus indicator is too small.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2413.2413[24130101].link | prepend: baseurl }}">{{ site.data.2413.2413[24130101].name }}</a>.</span></li>
             </ul>
         </li>
-        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/sc/2407.html">2.4.7 Focus Visible.</a></span></li>
+        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2407.2407[2407].link | prepend: baseurl }}">{{ site.data.2407.2407[2407].name }}</a>.</span></li>
     </ul>
 
     <h2>Web Test Procedure</h2>
@@ -69,8 +65,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/2413/24130101.html">2.4.13.1.1 Focus indicator is too small.</a> (Medium)</li>
-        <li><a href="/a11y/failure/2413/24130102.html">2.4.13.1.2 Element does not have at least 3:1 contrast between focused and unfocused states.</a> (Medium)</li>
+        <li><a href="{{ site.data.2413.2413[24130101].link | prepend: baseurl }}">{{ site.data.2413.2413[24130101].name }}</a>. (Medium)</li>
+        <li><a href="{{ site.data.2413.2413[24130102].link | prepend: baseurl }}">{{ site.data.2413.2413[24130102].name }}</a>. (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -85,7 +81,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G195">G195: Using an author-supplied, visible focus indicator</a></li>
@@ -105,4 +101,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance
     </ul>
 </div>
 
-    {% include 2413checkpoints.html %}
+    {% include checkpoints/2413checkpoints.html %}

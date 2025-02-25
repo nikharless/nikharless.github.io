@@ -1,27 +1,22 @@
 ---
 layout: default
-title: Failure - 2.1.1.1.9 Hover content not available on keyboard focus
-current: /a11y/failure/2101/21010109.html
+current: 21010109
 root: WCAG 2.2
-scurl: /a11y/sc/2101.html
-sctitle: 2.1.1 Keyboard
-cpurl: /a11y/checkpoint/210101.html
-cptitle: 2.1.1.1 Keyboard Navigation
-guideline: operable
+base: base
+criterion: 2101
+checkpoint: 210101
+guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
 css: tooltips
 ---
+{% assign currentpg=site.data.2101.2101[page.current] %}
+{% assign baseurl=site.data.2101.2101[page.base] %}
+{% assign sc=site.data.2101.2101[page.criterion] %}
+{% assign cp=site.data.2101.2101[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -43,7 +38,7 @@ css: tooltips
                     <button class="infoButton" type="button" aria-describedby="description" data-tooltip-trigger>i</button>
                     <p id="description" role="tooltip" class="hidden">Informational tooltip</p>
                 </div>
-                <script src="/a11y/assets/js/tooltips.js" defer></script>
+                <script src="{{ baseurl }}/assets/js/tooltips.js" defer></script>
             </div>
         </div>
         <div class="row">
@@ -54,7 +49,7 @@ css: tooltips
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR2">SCR2: Using redundant keyboard and mouse event handlers</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
@@ -64,4 +59,4 @@ css: tooltips
     </div>
 </div>
 
-    {% include 2101checkpoints.html %}
+    {% include checkpoints/2101checkpoints.html %}

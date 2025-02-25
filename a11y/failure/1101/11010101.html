@@ -7,12 +7,12 @@ criterion: 1101
 checkpoint: 110101
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
 {% assign currentpg=site.data.1101.1101[page.current] %}
 {% assign baseurl=site.data.1101.1101[page.base] %}
 {% assign sc=site.data.1101.1101[page.criterion] %}
 {% assign cp=site.data.1101.1101[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
@@ -41,7 +41,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <h2 class="{{ page.level }}">Example</h2>
             <div>
                 <h3>Image as Link</h3>
-                <p><a href="#"><img src="/a11y/assets/images/11010101-BeaverCountyLogo.png" alt="Beaver County, Pennsylvania. Divided by rivers, united by people"></a></p>
+                <p><a href="#"><img src="{{ baseurl }}/assets/images/11010101-BeaverCountyLogo.png" alt="Beaver County, Pennsylvania. Divided by rivers, united by people"></a></p>
     <pre><code>&lt;a href="https://www.beavercountypa.gov/"&gt;
   &lt;img 
     src="BeaverCountyLogo.png" 
@@ -57,7 +57,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F65">F65: Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
@@ -69,4 +69,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </div>
 </div>
 
-    {% include 1101checkpoints.html %}
+    {% include checkpoints/1101checkpoints.html %}

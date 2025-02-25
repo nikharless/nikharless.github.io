@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 2.4.9.1.3 The purpose of the PDF link cannot be determined by the link text alone
-current: /a11y/failure/2409/24090103.html
+current: 24090103
 root: WCAG 2.2
-scurl: /a11y/sc/2409.html
-sctitle: 2.4.9 Link Purpose (Link Only)
-cpurl: /a11y/checkpoint/240901.html
-cptitle: 2.4.9.1 Link Purpose (Link Only)
+base: base
+criterion: 2409
+checkpoint: 240901
 guideline: operable
 level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only
 ---
+{% assign currentpg=site.data.2409.2409[page.current] %}
+{% assign baseurl=site.data.2409.2409[page.base] %}
+{% assign sc=site.data.2409.2409[page.criterion] %}
+{% assign cp=site.data.2409.2409[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -46,7 +41,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <img src="/a11y/assets/images/24040103-pdf-link-alt-text.png" alt="Screenshot of Adobe Acrobat Object Properties dialog Tag tab with Alternate Description for Links field highlighted" style="max-width: 480px;">   
+                <img src="{{ baseurl }}/assets/images/24040103-pdf-link-alt-text.png" alt="Screenshot of Adobe Acrobat Object Properties dialog Tag tab with Alternate Description for Links field highlighted" style="max-width: 480px;">   
             </div>
         </div>
         <div class="row">
@@ -57,7 +52,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G91">G91: Providing link text that describes the purpose of a link</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF11">PDF11: Providing links and link text using the Link annotation and the /Link structure element in PDF documents</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF13">PDF13: Providing replacement text using the /Alt entry for links in PDF documents</a></li>
@@ -67,4 +62,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only
     </div>
 </div>
 
-    {% include 2409checkpoints.html %}
+    {% include checkpoints/2409checkpoints.html %}

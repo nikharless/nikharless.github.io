@@ -1,27 +1,22 @@
 ---
 layout: default
-title: Failure - 2.5.8.1.1 Target size is less than 24 x 24 CSS pixels
-current: /a11y/failure/2508/25080101.html
+current: 25080101
 root: WCAG 2.2
-scurl: /a11y/sc/2508.html
-sctitle: 2.5.8 Target Size (Minimum)
-cpurl: /a11y/checkpoint/250801.html
-cptitle: 2.5.8.1 Target Size (Minimum)
+base: base
+criterion: 2508
+checkpoint: 250801
 guideline: operable
-level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum
+level: aaa
 css: 2508
 ---
+{% assign currentpg=site.data.2508.2508[page.current] %}
+{% assign baseurl=site.data.2508.2508[page.base] %}
+{% assign sc=site.data.2508.2508[page.criterion] %}
+{% assign cp=site.data.2508.2508[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -70,7 +65,7 @@ margin: 0 10px 0 0;</code></pre>
                 <p>Menu options are also subject to this criterion.</p>
                 <div class="example">
                     {% include examples/select-only.html %}
-                    <script src="/a11y/assets/js/select-only.js"></script>
+                    <script src="{{ baseurl }}/assets/js/select-only.js"></script>
                     <pre><code>/* menu options */
 .combo-option {
     padding: 10px 12px 12px;
@@ -87,7 +82,7 @@ margin: 0 10px 0 0;</code></pre>
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C42">C42: Using min-height and min-width to ensure sufficient target spacing</a></li>
                 </ul>
             </div>
@@ -95,4 +90,4 @@ margin: 0 10px 0 0;</code></pre>
     </div>
 </div>
 
-    {% include 2508checkpoints.html %}
+    {% include checkpoints/2508checkpoints.html %}

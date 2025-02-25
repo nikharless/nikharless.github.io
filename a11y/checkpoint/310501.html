@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 3.1.5.1 Reading Level
-current: /a11y/checkpoint/310501.html
+current: 310501
 root: WCAG 2.2
-scurl: /a11y/sc/3105.html
-sctitle: 3.1.5 Reading Level
-guideline: understandable
-level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/reading-level
+base: base
+criterion: 3105
+guideline: operable
+level: a
 ---
+{% assign currentpg=site.data.3105.3105[page.current] %}
+{% assign baseurl=site.data.3105.3105[page.base] %}
+{% assign sc=site.data.3105.3105[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <p>In order to reduce the complexity of text and lower the required reading level, you can implement the following:</p>
@@ -53,13 +49,13 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/reading-level
     <div class="success"><strong>Success:</strong> If you were a user with a reading disability, when you encountered difficult text, you would have additional or alternate content that is easier to understand.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Does the content, excluding any proper names and titles, contain any difficult text which requires more than a 9th grade reading level?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there supplemental content such as explanatory graphics, audio, or an alternate version of the text that is easier to read?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/3105/31050101.html">3.1.5.1.1 Difficult text does not have supplemental content.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3105.3105[31050101].link | prepend: baseurl }}">{{ site.data.3105.3105[31050101].name }}</a>.</span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -75,7 +71,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/reading-level
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/3105/31050101.html">3.1.5.1.1 Difficult text does not have supplemental content.</a> (Low)</li>
+        <li><a href="{{ site.data.3105.3105[31050101].link | prepend: baseurl }}">{{ site.data.3105.3105[31050101].name }}</a>. (Low)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -85,7 +81,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/reading-level
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G79">G79: Providing a spoken version of the text</a></li>
@@ -103,4 +99,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/reading-level
     </ul>
 </div>
 
-    {% include 3105checkpoints.html %}
+    {% include  checkpoints/3105checkpoints.html %}

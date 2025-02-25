@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 1.3.1.4 Headings
-current: /a11y/checkpoint/130104.html
+current: 130104
 root: WCAG 2.2
-scurl: /a11y/sc/1301.html
-sctitle: 1.3.1 Info and Relationships
+base: base
+criterion: 1301
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
 ---
+{% assign currentpg=site.data.1209.1209[page.current] %}
+{% assign baseurl=site.data.1209.1209[page.base] %}
+{% assign sc=site.data.1209.1209[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Basic Requirements and Best Practices</h2>
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
@@ -38,7 +34,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
     <div class="success"><strong>Success:</strong> If you could not see the web page, when you use a screen reader, you could navigate by headings and understand the structure of the page.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Are headings used to visually label content blocks?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the headings marked up semantically as headings?</span>
@@ -46,10 +42,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the headings marked up hierarchically?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1301/13010402.html">1.3.1.4.2 Headings are not marked up hierarchically.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010402].link | prepend: baseurl }}">{{ site.data.1301.1301[13010402].name }}</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1301/13010401.html">1.3.1.4.1 Headings are not marked up semantically as headings.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010401].link | prepend: baseurl }}">{{ site.data.1301.1301[13010401].name }}</a></span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -57,7 +53,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
 
     <h3 id="test2">Are heading tags used on non-heading text purely for visual formatting purposes?</h3>
     <ul role="tree" aria-labelledby="test2">
-        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1301/13010403.html">1.3.1.4.3 Text that is not a heading is marked up as a heading.</a></span></li>
+        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010403].link | prepend: baseurl }}">{{ site.data.1301.1301[13010403].name }}</a></span></li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
     </ul>
 
@@ -135,7 +131,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
     <ol>
         <li>Select <strong>Tools > Accessibility > Reading Order</strong> to open the Reading Order dialog.</li>
         <li>Make sure the <strong>Show page content groups</strong> checkbox is checked, and select the <strong>Structure types</strong> radio button. This will display the tag value of every tagged object in the Document pane.<br>
-            <img src="/a11y/assets/images/130104-pdf-headings-reading-order.png" alt="Screenshot of Acrobat Reading Order panel with Structure types selected and tags displayed in the document pane" style="max-width: 480px;">
+            <img src="{{ baseurl }}/assets/images/130104-pdf-headings-reading-order.png" alt="Screenshot of Acrobat Reading Order panel with Structure types selected and tags displayed in the document pane" style="max-width: 480px;">
         </li>
         <li>Scroll through the document and locate all headings.</li>
         <li>Verify that each element that functions as a heading is tagged as a heading.</li>
@@ -153,12 +149,12 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1301/13010401.html">1.3.1.4.1 Headings are not marked up semantically as headings.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1301/13010402.html">1.3.1.4.2 Headings are not marked up hierarchically.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1301/13010403.html">1.3.1.4.3 Text that is not a heading is marked up as a heading.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1301/13010404.html">1.3.1.4.4 Headings in PDF are not tagged as headings.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1301/13010405.html">1.3.1.4.5 Headings in PDF are tagged with the incorrect heading level tag.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1301/13010406.html">1.3.1.4.6 Text that is not a heading is incorrectly tagged as a heading in PDF.</a> (Medium)</li>
+        <li><a href="{{ site.data.1301.1301[13010401].link | prepend: baseurl }}">{{ site.data.1301.1301[13010401].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1301.1301[13010402].link | prepend: baseurl }}">{{ site.data.1301.1301[13010402].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1301.1301[13010403].link | prepend: baseurl }}">{{ site.data.1301.1301[13010403].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1301.1301[13010404].link | prepend: baseurl }}">{{ site.data.1301.1301[13010404].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1301.1301[13010405].link | prepend: baseurl }}">{{ site.data.1301.1301[13010405].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1301.1301[13010406].link | prepend: baseurl }}">{{ site.data.1301.1301[13010406].name }}</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -186,7 +182,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -227,4 +223,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships
     </ul>
 </div>
 
-    {% include 1301checkpoints.html %}
+    {% include checkpoints/1301checkpoints.html %}

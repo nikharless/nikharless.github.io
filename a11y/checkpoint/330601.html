@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 3.3.6.1 Error Prevention (All)
-current: /a11y/checkpoint/330601.html
+current: 330601
 root: WCAG 2.2
-scurl: /a11y/sc/3306.html
-sctitle: 3.3.6 Error Prevention (All)
-guideline: understandable
-level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-all
+base: base
+criterion: 3306
+guideline: operable
+level: a
 ---
+{% assign currentpg=site.data.3306.3306[page.current] %}
+{% assign baseurl=site.data.3306.3306[page.base] %}
+{% assign sc=site.data.3306.3306[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -34,7 +30,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-all
     <div class="success"><strong>Success:</strong> If you were a user with a disability, when submitting transactions, you would have the opportunity to check, confirm, or reverse the transaction.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/js/tree.js"></script>
     <h3 id="test1">Does the page content include submittable forms?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the data entered by the user checked for input errors and the user given the opportunity to correct them?</span>
@@ -46,7 +42,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-all
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the submission reversible?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="/a11y/failure/3306/33060101.html">3.3.6.1.1 Form submission has no ability to reverse, check, or confirm.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="{{ site.data.3306.3306[33060101].link | prepend: baseurl }}">{{ site.data.3306.3306[33060101].name }}</a>.</span></li>
                             </ul>
                         </li>
                     </ul>
@@ -91,7 +87,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-all
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/3306/33060101.html">3.3.6.1.1 Form submission has no ability to reverse, check, or confirm.</a></li>
+        <li><a href="{{ site.data.3306.3306[33060101].link | prepend: baseurl }}">{{ site.data.3306.3306[33060101].name }}</a>.</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -102,7 +98,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-all
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G98">G98: Providing the ability for the user to review and correct answers before submitting</a></li>
@@ -124,4 +120,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-all
     </ul>
 </div>
 
-    {% include 3306checkpoints.html %}
+    {% include checkpoints/3306checkpoints.html %}

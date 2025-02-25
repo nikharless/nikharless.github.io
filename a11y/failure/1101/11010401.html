@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.1.1.4.1 Decorative <code>&lt;img&gt;</code> does not have null <code>alt</code> attribute.
-current: /a11y/failure/1101/11010401.html
+current: 11010401
 root: WCAG 2.2
-scurl: /a11y/sc/1101.html
-sctitle: 1.1.1 Non-text Content
-cpurl: /a11y/checkpoint/110104.html
-cptitle: 1.1.1.4 Decorative Images (Text Alternative)
+base: base
+criterion: 1101
+checkpoint: 110104
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
+{% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign cp=site.data.1101.1101[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -45,7 +40,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <div>
                 <h3>JPG Image</h3>
                 <div style="border: 1px solid black; padding: 5px">
-                    <p><img src="/a11y/assets/images/11010401-smiling-child.jpg" alt="" style="float: left; padding-right: 20px;"></p>
+                    <p><img src="{{ baseurl }}/assets/images/11010401-smiling-child.jpg" alt="" style="float: left; padding-right: 20px;"></p>
                     <p>If your children need health coverage, they may be eligible for the Children's Health Insurance Program (CHIP).</p>
                     <p>CHIP provides low-cost health coverage to children in families that earn too much money to qualify for Medicaid. In some states, CHIP covers pregnant women. Each state offers CHIP coverage, and works closely with its state Medicaid program.</p>
                 </div>
@@ -60,7 +55,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F38">Failure of Success Criterion 1.1.1 due to not marking up decorative images in HTML in a way that allows assistive technology to ignore them</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H67">Using null alt text and no title attribute on img elements for images that assistive technology should ignore</a></li>
                     <li><a href="https://www.w3.org/WAI/tutorials/images/decorative/">W3: Decorative Images</a></li>
@@ -70,4 +65,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </div>
 </div>
 
-    {% include 1101checkpoints.html %}
+    {% include checkpoints/1101checkpoints.html %}

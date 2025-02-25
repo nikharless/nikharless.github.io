@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.4.1.2.2 Color alone is used to convey additional meaning between links
-current: /a11y/failure/1401/14010202.html
+current: 14010202
 root: WCAG 2.2
-scurl: /a11y/sc/1401.html
-sctitle: 1.4.1 Use of Color
-cpurl: /a11y/checkpoint/140102.html
-cptitle: 1.4.1.2 Link Color Contrast
+base: base
+criterion: 1401
+checkpoint: 140102
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
 ---
+{% assign currentpg=site.data.1401.1401[page.current] %}
+{% assign baseurl=site.data.1401.1401[page.base] %}
+{% assign sc=site.data.1401.1401[page.criterion] %}
+{% assign cp=site.data.1401.1401[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -53,7 +48,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.4.1 Use of Color</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding SC 1.4.1 Use of Color</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G182">G182: Ensuring that additional visual cues are available when text color differences are used to convey information</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G183">G183: Using a contrast ratio of 3:1 with surrounding text and providing additional visual cues on hover for links or controls where color alone is used to identify them</a></li>
                 </ul>
@@ -62,4 +57,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/use-of-color
     </div>
 </div>
 
-    {% include 1401checkpoints.html %}
+    {% include checkpoints/1401checkpoints.html %}

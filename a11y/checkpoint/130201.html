@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 1.3.2.1 Meaningful Sequence
-current: /a11y/checkpoint/130201.html
+current: 130201
 root: WCAG 2.2
-scurl: /a11y/sc/1302.html
-sctitle: 1.3.2 Meaningful Sequence
+base: base
+criterion: 1302
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence
 ---
+{% assign currentpg=site.data.1302.1302[page.current] %}
+{% assign baseurl=site.data.1302.1302[page.base] %}
+{% assign sc=site.data.1302.1302[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Basic Requirements and Best Practices</h2>
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
@@ -32,11 +28,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence
     <div class="success"><strong>Success:</strong> If you could not see the web page, when you use a screen reader, you would hear the content in an order that makes logical sense.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Is the content presented in a logical order when CSS is turned off?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1302/13020101.html">1.3.2.1.1 Reading order of non-styled content is not logical.</a></span></li>
+        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1302.1302[13020101].link | prepend: baseurl }}">{{ site.data.1302.1302[13020101].name }}</a></span></li>
     </ul>
 
     <h3 id="test2">Does the screen reader read through the content in a logical order?</h3>
@@ -46,29 +42,29 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader read through the modified content in a logical order?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1302/13020103.html">1.3.2.1.3 Dynamically inserted or changed content is not in a logical order.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1302.1302[13020103].link | prepend: baseurl }}">{{ site.data.1302.1302[13020103].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
             </ul>
         </li>
-        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="/a11y/failure/1302/13020102.html">1.3.2.1.2 The screen reader does not read the content in a logical order.</a></span></li>
+        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data.1302.1302[13020102].link | prepend: baseurl }}">{{ site.data.1302.1302[13020102].name }}</a></span></li>
     </ul>
 
     <h3 id="test3">Does the screen reader read all content that is visible?</h3>
     <ul role="tree" aria-labelledby="test3">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader read content that is meant to be hidden from all users?</span>
             <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1302/13020106.html">1.3.2.1.6 The screen reader can read content that is meant to be hidden from all users.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1302.1302[13020106].link | prepend: baseurl }}">{{ site.data.1302.1302[13020106].name }}</a></span></li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
             </ul>
         </li>
-        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1302/13020105.html">1.3.2.1.5 Meaningful content cannot be read by the screen reader.</a></span></li>
+        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1302.1302[13020105].link | prepend: baseurl }}">{{ site.data.1302.1302[13020105].name }}</a></span></li>
     </ul>
 
     <h3 id="test4">When a modal is opened, can the screen reader read text outside of the modal?</h3>
     <ul role="tree" aria-labelledby="test4">
-        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1302/13020104.html">1.3.2.1.4 The screen reader can read content outside of a modal.</a></span></li>
+        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1302.1302[130201014].link | prepend: baseurl }}">{{ site.data.1302.1302[13020104].name }}</a></span></li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
     </ul>
 
@@ -162,20 +158,20 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence
         <li>In the Reading Order dialog, check <strong>Show page content groups</strong> and <strong>Page content order</strong>. This displays numbers on tagged elements showing the reading order.</li>
         <li>Verify that the reading order follows the intended meaning of the content.</li>
     </ol>
-    <img src="/a11y/assets/images/130201-pdf-reading-order.png" alt="Screenshot of Acrobat Reading Order dialog with indicated options selected and numbers on tagged elements in the document pane" style="max-width: 380px;">
+    <img src="{{ baseurl }}/assets/images/130201-pdf-reading-order.png" alt="Screenshot of Acrobat Reading Order dialog with indicated options selected and numbers on tagged elements in the document pane" style="max-width: 380px;">
 
     <h3>Screen Reader</h3>
     Follow the procedure for Desktop Web Screen Reader.
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1302/13020101.html">1.3.2.1.1 Reading order of non-styled content is not logical.</a> (High)</li>
-        <li><a href="/a11y/failure/1302/13020102.html">1.3.2.1.2 The screen reader does not read the content in a logical order.</a> (High)</li>
-        <li><a href="/a11y/failure/1302/13020103.html">1.3.2.1.3 Dynamically inserted or changed content is not in a logical order.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1302/13020104.html">1.3.2.1.4 The screen reader can read content outside of a modal.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1302/13020105.html">1.3.2.1.5 Meaningful content cannot be read by the screen reader.</a> (High)</li>
-        <li><a href="/a11y/failure/1302/13020106.html">1.3.2.1.6 The screen reader can read content that is meant to be hidden from all users.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1302/13020107.html">1.3.2.1.7 The content read by the screen reader does not match the visible text, and the meaning is different.</a> (High)</li>
+        <li><a href="{{ site.data.1302.1302[13020101].link | prepend: baseurl }}">{{ site.data.1302.1302[13020101].name }}</a> (High)</li>
+        <li><a href="{{ site.data.1302.1302[13020102].link | prepend: baseurl }}">{{ site.data.1302.1302[13020102].name }}</a> (High)</li>
+        <li><a href="{{ site.data.1302.1302[13020103].link | prepend: baseurl }}">{{ site.data.1302.1302[13020103].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1302.1302[13020104].link | prepend: baseurl }}">{{ site.data.1302.1302[13020104].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1302.1302[13020105].link | prepend: baseurl }}">{{ site.data.1302.1302[13020105].name }}</a> (High)</li>
+        <li><a href="{{ site.data.1302.1302[13020106].link | prepend: baseurl }}">{{ site.data.1302.1302[13020106].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1302.1302[13020107].link | prepend: baseurl }}">{{ site.data.1302.1302[13020107].name }}</a> (High)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -192,7 +188,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion 1.3.2 Meaningful Sequence</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.2 Meaningful Sequence</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -228,4 +224,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence
     </ul>
 </div>
 
-    {% include 1302checkpoints.html %}
+    {% include checkpoints/1302checkpoints.html %}

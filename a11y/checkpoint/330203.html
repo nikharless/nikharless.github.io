@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 3.3.2.3 Required Form Fields
-current: /a11y/checkpoint/330203.html
+current: 330203
 root: WCAG 2.2
-scurl: /a11y/sc/3302.html
-sctitle: 3.3.2 Labels or Instructions
-guideline: understandable
+base: base
+criterion: 3302
+guideline: operable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
 ---
+{% assign currentpg=site.data.3302.3302[page.current] %}
+{% assign baseurl=site.data.3302.3302[page.base] %}
+{% assign sc=site.data.3302.3302[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <p>Users need to know what form fields are required. This applies to both visible labels and accessible names.</p>
@@ -38,7 +34,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
     <div class="success"><strong>Success:</strong> If you were a user with a cognitive disability, when you encountered required form inputs, labels and instructions would provide enough information for me to know they were required.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/js/tree.js"></script>
     <h3 id="test1">Are there required form inputs on the page?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the required form inputs include the required status in the label?</span>
@@ -53,7 +49,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an inline error message that indicates which fields are required?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/3302/33020301.html">3.3.2.3.1 Required form input does not indicate that it is required.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3302.3302[33020301].link | prepend: baseurl }}">{{ site.data.3302.3302[33020301].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -80,7 +76,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/3302/33020301.html">3.3.2.3.1 Required form input does not indicate that it is required.</a></li>
+        <li><a href="{{ site.data.3302.3302[33020301].link | prepend: baseurl }}">{{ site.data.3302.3302[33020301].name }}</a>.</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -91,7 +87,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G83">G83: Providing text descriptions to identify required fields that were not completed</a></li>
@@ -116,4 +112,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions
     </ul>
 </div>
 
-    {% include 3302checkpoints.html %}
+    {% include checkpoints/3302checkpoints.html %}

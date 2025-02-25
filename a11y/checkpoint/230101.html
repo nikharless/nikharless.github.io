@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 2.3.1.1 Flashing Content
-current: /a11y/checkpoint/230101.html
+current: 230101
 root: WCAG 2.2
-scurl: /a11y/sc/2301.html
-sctitle: 2.3.1 Three Flashes or Below Threshold
+base: base
+criterion: 2301
 guideline: operable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold
 ---
+{% assign currentpg=site.data.2301.2301[page.current] %}
+{% assign baseurl=site.data.2301.2301[page.base] %}
+{% assign sc=site.data.2301.2301[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <p>This criterion only applies to web content, not flashing caused by user agents. Examples include:</p>
@@ -42,7 +38,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-thre
     <div class="success"><strong>Success:</strong> If you had a seizure disorder, when viewing flashing content, you would not have seizures.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Is there any flashing content on the page?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the flash below the general flash and red flash thresholds? (This can be measured with <a href="https://trace.umd.edu/peat/">PEAT.</a>)</span>
@@ -51,7 +47,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-thre
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the flashing area smaller than 341 x 256 pixels?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/2301/23010101.html">2.3.1.1.1 Content flashes more than 3 times per second and is not below flash thresholds.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2301.2301[23010101].link | prepend: baseurl }}">{{ site.data.2301.2301[23010101].name }}</a>.</span></li>
                     </ul>
                 </li>
             </ul>
@@ -85,7 +81,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-thre
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/2301/23010101.html">2.3.1.1.1 Content flashes more than 3 times per second and is not below flash thresholds.</a> (Critical)</li>
+        <li><a href="{{ site.data.2301.2301[23010101].link | prepend: baseurl }}">{{ site.data.2301.2301[23010101].name }}</a>. (Critical)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -96,7 +92,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-thre
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G15">G15: Using a tool to ensure that content does not violate the general flash threshold or red flash threshold</a></li>
         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G19">G19: Ensuring that no component of the content flashes more than three times in any 1-second period</a></li>
         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G176">G176: Keeping the flashing area small enough</a></li>
@@ -107,4 +103,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-thre
     </ul>
 </div>
 
-    {% include 2301checkpoints.html %}
+    {% include checkpoints/2301checkpoints.html %}

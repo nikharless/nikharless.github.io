@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 1.4.8.4 Line and Paragraph Spacing
-current: /a11y/checkpoint/140804.html
+current: 140804
 root: WCAG 2.2
-scurl: /a11y/sc/1408.html
-sctitle: 1.4.8 Visual Presentation
+base: base
+criterion: 1408
 guideline: perceivable
 level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
 ---
+{% assign currentpg=site.data.1408.1408[page.current] %}
+{% assign baseurl=site.data.1408.1408[page.base] %}
+{% assign sc=site.data.1408.1408[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -36,7 +32,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
     <div class="success"><strong>Success:</strong> If you had difficulty reading tightly spaced text, when you encountered blocks of text with line spacing of less than 1.5, you would be able to adjust the line spacing.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Does the page have blocks of text with line spacing less than 1.5?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a mechanism on the page to adjust the line spacing?</span>
@@ -47,12 +43,12 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism on the page to adjust the paragraph spacing?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1408/14080402.html">1.4.8.4.2 Paragraph spacing cannot be set to at least 1.5 times the line spacing.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1408.1408[14080402].link | prepend: baseurl }}">{{ site.data.1408.1408[14080402].name }}</a></span></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1408/14080401.html">1.4.8.4.1 Line spacing cannot be set to at least 1.5.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1408.1408[14080401].link | prepend: baseurl }}">{{ site.data.1408.1408[14080401].name }}</a></span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -70,8 +66,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1408/14080401.html">1.4.8.4.1 Line spacing cannot be set to at least 1.5.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1408/14080402.html">1.4.8.4.2 Paragraph spacing cannot be set to at least 1.5 times the line spacing.</a> (Medium)</li>
+        <li><a href="{{ site.data.1408.1408[14080401].link | prepend: baseurl }}">{{ site.data.1408.1408[14080401].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1408.1408[14080402].link | prepend: baseurl }}">{{ site.data.1408.1408[14080402].name }}</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -82,7 +78,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -105,4 +101,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
     </ul>
 </div>
 
-    {% include 1408checkpoints.html %}
+    {% include checkpoints/1408checkpoints.html %}

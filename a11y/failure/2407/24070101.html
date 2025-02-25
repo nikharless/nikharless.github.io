@@ -1,27 +1,22 @@
 ---
 layout: default
-title: Failure - 2.4.7.1.1 There is no visible focus indicator
-current: /a11y/failure/2407/24070101.html
+current: 24070101
 root: WCAG 2.2
-scurl: /a11y/sc/2407.html
-sctitle: 2.4.7 Focus Visible
-cpurl: /a11y/checkpoint/240701.html
-cptitle: 2.4.7.1 Focus Visible
+base: base
+criterion: 2407
+checkpoint: 240701
 guideline: operable
 level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-visible
 css: 2407
 ---
+{% assign currentpg=site.data.2407.2407[page.current] %}
+{% assign baseurl=site.data.2407.2407[page.base] %}
+{% assign sc=site.data.2407.2407[page.criterion] %}
+{% assign cp=site.data.2407.2407[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -95,7 +90,7 @@ css: 2407
                             <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
                         </div>
                     </div>
-                    <script src="/a11y/assets/js/checkbox.js"></script>
+                    <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
                     <div class="radioExample" role="radiogroup">
                         <div role="radio" tabindex="0" aria-checked="false" class="bgFI">Check this radio button
                             <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
@@ -106,7 +101,7 @@ css: 2407
                             <span id="crbNotChecked2" class="crbRadio crbNotChecked" style="display: block;"></span>
                         </div>
                     </div>
-                    <script src="/a11y/assets/js/radio.js"></script>
+                    <script src="{{ baseurl }}/assets/js/radio.js"></script>
                     <label for="select">Select</label>
                     <select id="select" class="bgFI">
                         <option value="1">Option 1</option>
@@ -125,7 +120,7 @@ css: 2407
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G149">G149: Using user interface components that are highlighted by the user agent when they receive focus</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G165">G165: Using the default focus indicator for the platform so that high visibility default focus indicators will carry over</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G195">G195: Using an author-supplied, visible focus indicator</a></li>
@@ -138,4 +133,4 @@ css: 2407
     </div>
 </div>
 
-    {% include 2407checkpoints.html %}
+    {% include checkpoints/2407checkpoints.html %}

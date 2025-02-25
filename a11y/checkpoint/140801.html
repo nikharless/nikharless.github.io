@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 1.4.8.1 Adjustable Color
-current: /a11y/checkpoint/140801.html
+current: 140801
 root: WCAG 2.2
-scurl: /a11y/sc/1408.html
-sctitle: 1.4.8 Visual Presentation
+base: base
+criterion: 1408
 guideline: perceivable
 level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
 ---
+{% assign currentpg=site.data.1408.1408[page.current] %}
+{% assign baseurl=site.data.1408.1408[page.base] %}
+{% assign sc=site.data.1408.1408[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -38,7 +34,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
     <div class="success"><strong>Success:</strong> If you had low vision, when you encountered text that you found difficult to read, you would be able to adjust the foreground and background colors to suit your specific needs.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Is the page content styled with non-default colors?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the foreground and background colors both be overridden with user-specified colors from the user agent?</span>
@@ -47,7 +43,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
                 <li role="treeitem" aria-expanded="false"><span><strong>No;</strong> Is there a mechanism on the web page that allows the user to change the colors?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1408/14080101.html">1.4.8.1.1 Web page colors cannot be adjusted by the user.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1408.1408[14080101].link | prepend: baseurl }}">{{ site.data.1408.1408[14080101].name }}</a></span></li>
                     </ul>
                 </li>
             </ul>
@@ -66,7 +62,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1408/14080101.html">1.4.8.1.1 Web page colors cannot be adjusted by the user.</a> (Medium)</li>
+        <li><a href="{{ site.data.1408.1408[14080101].link | prepend: baseurl }}">{{ site.data.1408.1408[14080101].name }}</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -77,7 +73,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -104,4 +100,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation
     </ul>
 </div>
 
-    {% include 1408checkpoints.html %}
+    {% include checkpoints/1408checkpoints.html %}

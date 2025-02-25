@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 2.4.4.1.2 Image link does not have alternative text describing purpose
-current: /a11y/failure/2404/24040102.html
+current: 24040102
 root: WCAG 2.2
-scurl: /a11y/sc/2404.html
-sctitle: 2.4.4 Link Purpose (In Context)
-cpurl: /a11y/checkpoint/240401.html
-cptitle: 2.4.4.1 Link Purpose (In Context)
+base: base
+criterion: 2404
+checkpoint: 240401
 guideline: operable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context
 ---
+{% assign currentpg=site.data.2404.2404[page.current] %}
+{% assign baseurl=site.data.2404.2404[page.base] %}
+{% assign sc=site.data.2404.2404[page.criterion] %}
+{% assign cp=site.data.2404.2404[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -45,19 +40,19 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
                 <h3>Image Alternative Text</h3>
-                <p><a href="#"><img src="/a11y/assets/images/110101-github-mark.png" width="60" height="60" alt="GitHub home"></a></p>
+                <p><a href="#"><img src="{{ baseurl }}/assets/images/110101-github-mark.png" width="60" height="60" alt="GitHub home"></a></p>
                 <pre><code>&lt;a href="http://github.com"&gt;
   &lt;img src="github-mark.png" <strong>alt="GitHub home"</strong>&gt;
 &lt;/a&gt;</code></pre>
 
                 <h3>Link Alternative Text</h3>
-                <p><a href="#" aria-label="Add to Cart"><img src="/a11y/assets/images/110101-shopping-cart.png" alt=""></a></p>
+                <p><a href="#" aria-label="Add to Cart"><img src="{{ baseurl }}/assets/images/110101-shopping-cart.png" alt=""></a></p>
     <pre><code>&lt;a href="#" <strong>aria-label="Add to Cart"</strong>&gt;
   &lt;img src="shopping-cart.png" alt=""&gt;
 &lt;/a&gt;</code></pre>
 
                 <h3>Image and Text in Single Link</h3>
-                <p><a href="#"><img src="/a11y/assets/images/110101-pdf-icon_60.png" width="24" height="24" alt=""> Download the PDF User Guide</a></p>
+                <p><a href="#"><img src="{{ baseurl }}/assets/images/110101-pdf-icon_60.png" width="24" height="24" alt=""> Download the PDF User Guide</a></p>
     <pre><code>&lt;a href="user-guide.pdf"&gt;
   &lt;img src="pdf-icon.png" <strong>alt=""</strong>&gt; Download the PDF User Guide
 &lt;/a&gt;</code></pre>
@@ -71,7 +66,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F89">F89: Failure of Success Criteria 2.4.4, 2.4.9 and 4.1.2 due to not providing an accessible name for an image which is the only content in a link</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G53">G53: Identifying the purpose of a link using link text combined with the text of the enclosing sentence</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G91">G91: Providing link text that describes the purpose of a link</a></li>
@@ -91,4 +86,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context
     </div>
 </div>
 
-    {% include 2404checkpoints.html %}
+    {% include checkpoints/2404checkpoints.html %}

@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.1.1.4.2 Decorative image is not hidden from screen readers.
-current: /a11y/failure/1101/11010402.html
+current: 11010402
 root: WCAG 2.2
-scurl: /a11y/sc/1101.html
-sctitle: 1.1.1 Non-text Content
-cpurl: /a11y/checkpoint/110104.html
-cptitle: 1.1.1.4 Decorative Images (Text Alternative)
+base: base
+criterion: 1101
+checkpoint: 110104
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
+{% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign cp=site.data.1101.1101[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -58,7 +53,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
                 <h3>ARIA and <code>&lt;img&gt;</code> SVG</h3>
                 <p>When a .svg file is the <code>src</code> for an <code>&lt;img&gt;</code> element and it has a <code>&lt;title&gt;</code> element inside it, even if it has an <code>alt=""</code> attribute, VoiceOver will still read it. In this case, you must use <code>aria-hidden="true"</code> to truly hide it.</p>
-                <img src="/a11y/assets/images/11010102-handicap.svg" alt="" aria-hidden="true" style="max-width: 250px;">
+                <img src="{{ baseurl }}/assets/images/11010102-handicap.svg" alt="" aria-hidden="true" style="max-width: 250px;">
                 <pre><code>&lt;img src="handicap.svg" alt="" <strong>aria-hidden="true"</strong>&gt;</code></pre>
 
                 <h3>CSS background</h3>
@@ -85,7 +80,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F38">Failure of Success Criterion 1.1.1 due to not marking up decorative images in HTML in a way that allows assistive technology to ignore them</a></li>
                     <li><a href="https://www.456bereastreet.com/archive/201609/hiding_inline_svg_icons_from_screen_readers/">Hiding inline SVG icons from screen readers</a></li>
                     <li><a href="https://www.w3schools.com/cssref/pr_background-image.php">W3: CSS background-image Property</a></li>
@@ -95,4 +90,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </div>
 </div>
 
-    {% include 1101checkpoints.html %}
+    {% include checkpoints/1101checkpoints.html %}

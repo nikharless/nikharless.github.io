@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 2.4.2.1.6 PDF does not have a descriptive title
-current: /a11y/failure/2402/24020106.html
+current: 24020106
 root: WCAG 2.2
-scurl: /a11y/sc/2402.html
-sctitle: 2.4.2 Page Titled
-cpurl: /a11y/checkpoint/240201.html
-cptitle: 2.4.2.1 Titles on Pages
-guideline: operable
+base: base
+criterion: 2402
+checkpoint: 240201
+guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/page-titled
 ---
+{% assign currentpg=site.data.2402.2402[page.current] %}
+{% assign baseurl=site.data.2402.2402[page.base] %}
+{% assign sc=site.data.2402.2402[page.criterion] %}
+{% assign cp=site.data.2402.2402[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -47,7 +42,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/page-titled
         <div class="row">
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
-                <img src="/a11y/assets/images/24020106-pdf-title.png" alt="Screenshot of Document Properties Description tab in Adobe Acrobat Pro" style="max-width: 480px;">
+                <img src="{{ baseurl }}/assets/images/24020106-pdf-title.png" alt="Screenshot of Document Properties Description tab in Adobe Acrobat Pro" style="max-width: 480px;">
             </div>
         </div>
         <div class="row">
@@ -58,7 +53,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/page-titled
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF18">PDF18: Specifying the document title using the Title entry in the document information dictionary of a PDF document</a></li>
                 </ul>
             </div>
@@ -66,4 +61,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/page-titled
     </div>
 </div>
 
-    {% include 2402checkpoints.html %}
+    {% include checkpoints/2402checkpoints.html %}

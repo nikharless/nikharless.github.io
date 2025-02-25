@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 2.4.12.1.1 Focused element is obscured by author-created content
-current: /a11y/failure/2412/24120101.html
+current: 24120101
 root: WCAG 2.2
-scurl: /a11y/sc/2412.html
-sctitle: 2.4.12 Focus Not Obscured (Enhanced)
-cpurl: /a11y/checkpoint/241201.html
-cptitle: 2.4.12.1 Focus Not Obscured (Enhanced)
+base: base
+criterion: 2412
+checkpoint: 241201
 guideline: operable
-level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-enhanced
+level: aa
 ---
+{% assign currentpg=site.data.2412.2412[page.current] %}
+{% assign baseurl=site.data.2412.2412[page.base] %}
+{% assign sc=site.data.2412.2412[page.criterion] %}
+{% assign cp=site.data.2412.2412[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -58,7 +53,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-enhanced
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C43">C43: Using CSS scroll-padding to un-obscure content</a></li>
                 </ul>
             </div>
@@ -66,4 +61,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-enhanced
     </div>
 </div>
 
-    {% include 2412checkpoints.html %}
+    {% include checkpoints/2412checkpoints.html %}

@@ -1,28 +1,24 @@
 ---
 layout: default
-title: 4.1.2.2 Custom Controls
-current: /a11y/checkpoint/410202.html
+current: 410202
 root: WCAG 2.2
-scurl: /a11y/sc/4102.html
-sctitle: 4.1.2 Name, Role, Value
-guideline: robust
+base: base
+criterion: 4102
+guideline: operable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
 ---
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.4102.4102[page.base] %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <p>In general, name, role, state, or value issues under this checkpoint relate to more complex widgets, especially ones that relate to existing ARIA authoring patterns such as tabpanels, dialogs, listboxes, sliders, carousels, etc.</p>
 
-    <p>For issues related to simpler components that have an HTML equivalent such as links, buttons, checkboxes, radio buttons, and selects, see the issues under checkpoint <a href="/a11y/checkpoint/410201.html">4.1.2.1: Name, Role, Value.</a></p>
+    <p>For issues related to simpler components that have an HTML equivalent such as links, buttons, checkboxes, radio buttons, and selects, see the issues under checkpoint <a href="/a11y/checkpoint/410202.html">4.1.2.1: Name, Role, Value.</a></p>
 
     <p>For issues related to complex interactions that don’t have HTML or ARIA widget equivalents and are so broken that breaking them down into individual issues is not effective or productive, see checkpoint <a href="/a11y/checkpoint/410203.html">4.1.2.3: Compatibility.</a></p>
 
@@ -78,11 +74,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
     <div class="success"><strong>Success:</strong> If you were a screen reader user, when accessing user interface components, you would be able to determine the role, purpose, and state of the components.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/js/tree.js"></script>
     <h3 id="test1">TEST 1: Is the name of the component read by a screen reader when the component receives focus?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/4102/41020201.html">4.1.2.2.1 Component does not have an accessible name.</a></span></li>
+        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020201].link | prepend: baseurl }}">{{ site.data.4102.4102[41020201].name }}</a>.</span></li>
     </ul>
 
     <h3 id="test2">TEST 2: Is the role of the component spoken by the screen reader?</h3>
@@ -90,52 +86,52 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the role match the function of the component?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/4102/41020204.html">4.1.2.2.4 Component has an incorrect role.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020204].link | prepend: baseurl }}">{{ site.data.4102.4102[41020204].name }}</a>.</span></li>
             </ul>
         </li>
         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component an accordion?</span>
             <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020205.html">4.1.2.2.5 Accordion is missing appropriate roles and/or attributes.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020205].link | prepend: baseurl }}">{{ site.data.4102.4102[41020205].name }}</a>.</span></li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a breadcrumb?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020206.html">4.1.2.2.6 Breadcrumb is missing appropriate roles and/or attributes.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020206].link | prepend: baseurl }}">{{ site.data.4102.4102[41020206].name }}</a>.</span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a carousel?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020207.html">4.1.2.2.7 Carousel is missing appropriate roles and/or attributes.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020207].link | prepend: baseurl }}">{{ site.data.4102.4102[41020207].name }}</a>.</span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a combobox?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020208.html">4.1.2.2.8 Combobox is missing appropriate roles and/or attributes.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020208].link | prepend: baseurl }}">{{ site.data.4102.4102[41020208].name }}</a>.</span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a dialog?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020209.html">4.1.2.2.9 Dialog is missing appropriate roles and/or attributes.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020209].link | prepend: baseurl }}">{{ site.data.4102.4102[41020209].name }}</a>.</span></li>
                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a grid?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020210.html">4.1.2.2.10 Grid is missing appropriate roles and/or attributes.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020210].link | prepend: baseurl }}">{{ site.data.4102.4102[41020210].name }}</a>.</span></li>
                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a listbox?</span>
                                                             <ul role="group">
-                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020211.html">4.1.2.2.11 Listbox is missing appropriate roles and/or attributes.</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020211].link | prepend: baseurl }}">{{ site.data.4102.4102[41020211].name }}</a>.</span></li>
                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a menu?</span>
                                                                     <ul role="group">
-                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020212.html">4.1.2.2.12 Menu is missing appropriate roles and/or attributes.</a></span></li>
+                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020212].link | prepend: baseurl }}">{{ site.data.4102.4102[41020212].name }}</a>.</span></li>
                                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a meter?</span>
                                                                             <ul role="group">
-                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020213.html">4.1.2.2.13 Meter is missing appropriate roles and/or attributes.</a></span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020213].link | prepend: baseurl }}">{{ site.data.4102.4102[41020213].name }}</a>.</span></li>
                                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a slider?</span>
                                                                                     <ul role="group">
-                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020214.html">4.1.2.2.14 Slider is missing appropriate roles and/or attributes.</a></span></li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020214].link | prepend: baseurl }}">{{ site.data.4102.4102[41020214].name }}</a>.</span></li>
                                                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a tab panel?</span>
                                                                                             <ul role="group">
-                                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020215.html">4.1.2.2.15 Tab panel is missing appropriate roles and/or attributes.</a></span></li>
+                                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020215].link | prepend: baseurl }}">{{ site.data.4102.4102[41020215].name }}</a>.</span></li>
                                                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a toolbar?</span>
                                                                                                     <ul role="group">
-                                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020216.html">4.1.2.2.16 Toolbar is missing appropriate roles and/or attributes.</a></span></li>
+                                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020216].link | prepend: baseurl }}">{{ site.data.4102.4102[41020216].name }}</a>.</span></li>
                                                                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a tree view?</span>
                                                                                                             <ul role="group">
-                                                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020218.html">4.1.2.2.18 Tree view is missing appropriate roles and/or attributes.</a></span></li>
+                                                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020218].link | prepend: baseurl }}">{{ site.data.4102.4102[41020218].name }}</a>.</span></li>
                                                                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a tree grid?</span>
                                                                                                                     <ul role="group">
-                                                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020219.html">4.1.2.2.19 Tree grid is missing appropriate roles and/or attributes.</a></span></li>
-                                                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/4102/41020203.html">4.1.2.2.3 Component is missing a role.</a></span></li>
+                                                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020219].link | prepend: baseurl }}">{{ site.data.4102.4102[41020219].name }}</a>.</span></li>
+                                                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020203].link | prepend: baseurl }}">{{ site.data.4102.4102[41020203].name }}</a>.</span></li>
                                                                                                                     </ul>
                                                                                                                 </li>
                                                                                                             </ul>
@@ -177,27 +173,27 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/4102/41020201.html">4.1.2.2.1 Component does not have an accessible name.</a></li>
-        <li><a href="/a11y/failure/4102/41020202.html">4.1.2.2.2 Component has an invalid ARIA attribute or value.</a></li>
-        <li><a href="/a11y/failure/4102/41020203.html">4.1.2.2.3 Component is missing a role.</a></li>
-        <li><a href="/a11y/failure/4102/41020204.html">4.1.2.2.4 Component has an incorrect role.</a></li>
-        <li><a href="/a11y/failure/4102/41020205.html">4.1.2.2.5 Accordion is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020206.html">4.1.2.2.6 Breadcrumb is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020207.html">4.1.2.2.7 Carousel is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020208.html">4.1.2.2.8 Combobox is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020209.html">4.1.2.2.9 Dialog is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020210.html">4.1.2.2.10 Grid is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020211.html">4.1.2.2.11 Listbox is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020212.html">4.1.2.2.12 Menu is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020213.html">4.1.2.2.13 Meter is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020214.html">4.1.2.2.14 Slider is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020215.html">4.1.2.2.15 Tab panel is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020216.html">4.1.2.2.16 Toolbar is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020217.html">4.1.2.2.17 Tooltip is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020218.html">4.1.2.2.18 Tree view is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020219.html">4.1.2.2.19 Tree grid is missing appropriate roles and/or attributes.</a></li>
-        <li><a href="/a11y/failure/4102/41020220.html">4.1.2.2.20 Component is missing required parent role.</a></li>
-        <li><a href="/a11y/failure/4102/41020221.html">4.1.2.2.21 Component is missing required child role.</a></li>
+        <li><a href="{{ site.data.4102.4102[41020201].link | prepend: baseurl }}">{{ site.data.4102.4102[41020201].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020202].link | prepend: baseurl }}">{{ site.data.4102.4102[41020202].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020203].link | prepend: baseurl }}">{{ site.data.4102.4102[41020203].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020204].link | prepend: baseurl }}">{{ site.data.4102.4102[41020204].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020205].link | prepend: baseurl }}">{{ site.data.4102.4102[41020205].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020206].link | prepend: baseurl }}">{{ site.data.4102.4102[41020206].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020207].link | prepend: baseurl }}">{{ site.data.4102.4102[41020207].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020208].link | prepend: baseurl }}">{{ site.data.4102.4102[41020208].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020208].link | prepend: baseurl }}">{{ site.data.4102.4102[41020209].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020210].link | prepend: baseurl }}">{{ site.data.4102.4102[41020210].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020211].link | prepend: baseurl }}">{{ site.data.4102.4102[41020211].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020212].link | prepend: baseurl }}">{{ site.data.4102.4102[41020212].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020213].link | prepend: baseurl }}">{{ site.data.4102.4102[41020213].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020214].link | prepend: baseurl }}">{{ site.data.4102.4102[41020214].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020215].link | prepend: baseurl }}">{{ site.data.4102.4102[41020215].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020216].link | prepend: baseurl }}">{{ site.data.4102.4102[41020216].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020217].link | prepend: baseurl }}">{{ site.data.4102.4102[41020217].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020218].link | prepend: baseurl }}">{{ site.data.4102.4102[41020218].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020219].link | prepend: baseurl }}">{{ site.data.4102.4102[41020219].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020220].link | prepend: baseurl }}">{{ site.data.4102.4102[41020220].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020221].link | prepend: baseurl }}">{{ site.data.4102.4102[41020221].name }}</a>.</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -207,7 +203,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G10">G10: Creating components using a technology that supports the accessibility notification of changes</a></li>
@@ -230,4 +226,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
     </ul>
 </div>
 
-    {% include 4102checkpoints.html %}
+    {% include checkpoints/4102checkpoints.html %}

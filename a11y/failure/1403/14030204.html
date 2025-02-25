@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.4.3.2.4 Large placeholder text does not have at least a 3:1 contrast ratio with the background
-current: /a11y/failure/1403/14030204.html
+current: 14030204
 root: WCAG 2.2
-scurl: /a11y/sc/1403.html
-sctitle: 1.4.3 Contrast (Minimum)
-cpurl: /a11y/checkpoint/140302.html
-cptitle: 1.4.3.2 Large Text Color Contrast (Minimum)
+base: base
+criterion: 1403
+checkpoint: 140302
 guideline: perceivable
-level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum
+level: a
 ---
+{% assign currentpg=site.data.1403.1403[page.current] %}
+{% assign baseurl=site.data.1403.1403[page.base] %}
+{% assign sc=site.data.1403.1403[page.criterion] %}
+{% assign cp=site.data.1403.1403[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -53,7 +48,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding SC {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G145">G145: Ensuring that a contrast ratio of at least 3:1 exists between text (and images of text) and background behind the text</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
@@ -64,4 +59,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum
     </div>
 </div>
 
-    {% include 1403checkpoints.html %}
+    {% include checkpoints/1403checkpoints.html %}

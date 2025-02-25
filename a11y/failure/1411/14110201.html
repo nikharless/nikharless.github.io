@@ -1,27 +1,21 @@
 ---
 layout: default
-title: Failure - 1.4.11.2.1 Visual boundary of focus state of control does not have 3:1 contrast with background
-current: /a11y/failure/1411/14110201.html
+current: 14110201
 root: WCAG 2.2
-scurl: /a11y/sc/1411.html
-sctitle: 1.4.11 Non-text Contrast
-cpurl: /a11y/checkpoint/141102.html
-cptitle: 1.4.11.2 States of User Interface Component Contrast
+base: base
+criterion: 1411
+checkpoint: 141102
 guideline: perceivable
-level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
-css: 1411
+level: a
 ---
+{% assign currentpg=site.data.1411.1411[page.current] %}
+{% assign baseurl=site.data.1411.1411[page.base] %}
+{% assign sc=site.data.1411.1411[page.criterion] %}
+{% assign cp=site.data.1411.1411[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -65,7 +59,7 @@ css: 1411
                         <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
                     </div>
                 </div>
-                <script src="/a11y/assets/js/checkbox.js"></script>
+                <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
 
                 <h3>Internal Border</h3>
                 <p>The focus indicator has a contrast ratio of at least 3:1 with the internal background.</p>
@@ -80,7 +74,7 @@ css: 1411
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F78">F78: Failure of Success Criterion 2.4.7 due to styling element outlines and borders in a way that removes or renders non-visible the visual focus indicator</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G195">G195: Using an author-supplied, visible focus indicator</a></li>
                 </ul>
@@ -89,4 +83,4 @@ css: 1411
     </div>
 </div>
 
-    {% include 1411checkpoints.html %}
+    {% include checkpoints/1411checkpoints.html %}

@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 3.3.9.1.1 A cognitive function test is required and no alternative or assistance is provided
-current: /a11y/failure/3309/33090101.html
+current: 33090101
 root: WCAG 2.2
-scurl: /a11y/sc/3309.html
-sctitle: 3.3.9 Accessible Authentication (Enhanced)
-cpurl: /a11y/checkpoint/330901.html
-cptitle: 3.3.9.1 Accessible Authentication (Enhanced)
+base: base
+criterion: 3309
+checkpoint: 330901
 guideline: understandable
 level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-enhanced
 ---
+{% assign currentpg=site.data.3309.3309[page.current] %}
+{% assign baseurl=site.data.3309.3309[page.base] %}
+{% assign sc=site.data.3309.3309[page.criterion] %}
+{% assign cp=site.data.3309.3309[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
         <div class="row">
@@ -60,7 +55,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-e
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F109">F109: Failure of Success Criterion 3.3.8 and 3.3.9 due to preventing password or code re-entry in the same format</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G218">G218: Email link authentication</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H100">H100: Providing properly marked up email and password inputs</a></li>
@@ -70,4 +65,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-e
     </div>
 </div>
 
-    {% include 3309checkpoints.html %}
+    {% include checkpoints/3309checkpoints.html %}

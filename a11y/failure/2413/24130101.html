@@ -1,27 +1,22 @@
 ---
 layout: default
-title: Failure - 2.4.13.1.1 Focus indicator is too small
-current: /a11y/failure/2413/24130101.html
+current: 24130101
 root: WCAG 2.2
-scurl: /a11y/sc/2413.html
-sctitle: 2.4.13 Focus Appearance
-cpurl: /a11y/checkpoint/241301.html
-cptitle: 2.4.13.1 Focus Appearance
+base: base
+criterion: 2413
+checkpoint: 241301
 guideline: operable
-level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance
+level: aa
 css: focus-indicator
 ---
+{% assign currentpg=site.data.2413.2413[page.current] %}
+{% assign baseurl=site.data.2413.2413[page.base] %}
+{% assign sc=site.data.2413.2413[page.criterion] %}
+{% assign cp=site.data.2413.2413[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -68,7 +63,7 @@ css: focus-indicator
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G195">G195: Using an author-supplied, visible focus indicator</a></li>
                 </ul>
             </div>
@@ -76,4 +71,4 @@ css: focus-indicator
     </div>
 </div>
 
-    {% include 2413checkpoints.html %}
+    {% include checkpoints/2413checkpoints.html %}

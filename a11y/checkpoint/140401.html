@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 1.4.4.1 Resize Text (200%)
-current: /a11y/checkpoint/140401.html
+current: 140401
 root: WCAG 2.2
-scurl: /a11y/sc/1404.html
-sctitle: 1.4.4 Resize Text
+base: base
+criterion: 1404
 guideline: perceivable
 level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
 ---
+{% assign currentpg=site.data.1404.1404[page.current] %}
+{% assign baseurl=site.data.1404.1404[page.base] %}
+{% assign sc=site.data.1404.1404[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -36,7 +32,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
     <div class="success"><strong>Success:</strong> If you had a visual impairment, when you enlarged text up to 200%, you would be able to read it and use its functionality.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Can the text be resized without assistive technology up to 200%?</h3>
     <p><em>Note: This includes text the user enters into text fields.</em></p>
     <ul role="tree" aria-labelledby="test1">
@@ -46,10 +42,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
                 <li role="treeitem" class="pass"><span><strong>Yes;</strong> PASS</span></li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No;</strong> Is the font size set in viewport units (vw)?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1404/14040101.html">1.4.4.1.1 Text does not resize due to the use of viewport units.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1404.1404[14040101].link | prepend: baseurl }}">{{ site.data.1404.1404[14040101].name }}</a></span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the viewport <code>meta</code> element prevent user scaling (<code>user-scalable=no</code> or <code>maximum-scale</code> set to yes or a number less than 2)?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1404/14040102.html">1.4.4.1.2 Meta viewport settings do not allow for zoom.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1404.1404[14040102].link | prepend: baseurl }}">{{ site.data.1404.1404[14040102].name }}</a></span></li>
                                 <li role="treeitem" class="fail"><span><strong>No</strong>; </span></li>
                             </ul>
                         </li>
@@ -66,10 +62,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes;</strong> Is there an indication that this information can be accessed (other than the fact that it is truncated, such as “…”)?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1404/14040104.html">1.4.4.1.4 Clipped, truncated, or obscured text content is not obvious.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1404.1404[14040104].link | prepend: baseurl }}">{{ site.data.1404.1404[14040104].name }}</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="/a11y/failure/1404/14040103.html">1.4.4.1.3 Text content is clipped, truncated or obscured when resized to 200% and cannot be accessed.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="{{ site.data.1404.1404[14040103].link | prepend: baseurl }}">{{ site.data.1404.1404[14040103].name }}</a></span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -81,7 +77,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Has the functionality been moved to an area that is one click away (such as in a pop-up menu)?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="/a11y/failure/1404/14040106.html">1.4.4.1.6 Functionality is removed entirely when resized to 200%.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="{{ site.data.1404.1404[14040106].link | prepend: baseurl }}">{{ site.data.1404.1404[14040106].name }}</a></span></li>
             </ul>
         </li>
     </ul>
@@ -156,12 +152,12 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1404/14040101.html">1.4.4.1.1 Text does not resize due to the use of viewport units.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1404/14040102.html">1.4.4.1.2 Meta viewport settings do not allow for zoom.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1404/14040103.html">1.4.4.1.3 Text content is clipped, truncated or obscured when resized to 200% and cannot be accessed.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1404/14040104.html">1.4.4.1.4 Access to clipped, truncated, or obscured text content is not obvious.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1404/14040105.html">1.4.4.1.5 Text-based form controls do not resize.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1404/14040106.html">1.4.4.1.6 Functionality is removed entirely when resized to 200%.</a> (Medium)</li>
+        <li><a href="{{ site.data.1404.1404[14040101].link | prepend: baseurl }}">{{ site.data.1404.1404[14040101].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1404.1404[14040102].link | prepend: baseurl }}">{{ site.data.1404.1404[14040102].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1404.1404[14040103].link | prepend: baseurl }}">{{ site.data.1404.1404[14040103].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1404.1404[14040104].link | prepend: baseurl }}">{{ site.data.1404.1404[14040104].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1404.1404[14040105].link | prepend: baseurl }}">{{ site.data.1404.1404[14040105].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1404.1404[14040106].link | prepend: baseurl }}">{{ site.data.1404.1404[14040106].name }}</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -173,7 +169,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -207,4 +203,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
     </ul>
 </div>
 
-    {% include 1404checkpoints.html %}
+    {% include checkpoints/1404checkpoints.html %}

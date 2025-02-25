@@ -1,24 +1,20 @@
 ---
 layout: default
-title: 1.4.11.2 States of User Interface Component Contrast
-current: /a11y/checkpoint/141102.html
+current: 141102
 root: WCAG 2.2
-scurl: /a11y/sc/1411.html
-sctitle: 1.4.11 Non-text Contrast
+base: base
+criterion: 1411
 guideline: perceivable
 level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast
 css: 1411
 ---
+{% assign currentpg=site.data.1411.1411[page.current] %}
+{% assign baseurl=site.data.1411.1411[page.base] %}
+{% assign sc=site.data.1411.1411[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -47,7 +43,7 @@ css: 1411
             <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: none;"></span>
         </div>
     </div>
-    <script src="/a11y/assets/js/checkbox.js"></script>
+    <script src="{{ baseurl }}/js/checkbox.js"></script>
 
     <h4>Custom Radio Buttons (focus, hover, checked)</h4>
     <div class="radioExample" role="radiogroup" id="rg1">
@@ -60,7 +56,7 @@ css: 1411
             <span id="crbNotChecked2" class="crbRadio crbNotChecked" style="display: block;"></span>
         </div>
     </div>
-    <script src="/a11y/assets/js/radio.js"></script>
+    <script src="{{ baseurl }}/assets/js/radio.js"></script>
 
     <h4>Text Fields</h4>
     <label for="firstName"> First Name (focus, hover)<br>
@@ -69,7 +65,7 @@ css: 1411
 
 
     <h4>Switches (focus, hover, checked)</h4>
-    <script src="/a11y/assets/js/switch.js"></script>
+    <script src="{{ baseurl }}/assets/js/switch.js"></script>
     <div class="switchExample">
         <label>
             <span class="label">Toggle this switch</span>
@@ -103,7 +99,7 @@ css: 1411
     <div class="success"><strong>Success:</strong> If you had low vision, when you encountered controls in various states, you would be able to distinguish them from surrounding content.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Does the page include active user interface components which have visual boundaries indicating the hit area?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the visual boundaries the only means of distinguishing the control (e.g., no text or icon inside it)?</span>
@@ -117,7 +113,7 @@ css: 1411
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control the default appearance for the user agent?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See See <a href="/a11y/failure/1411/14110101.html">1.4.11.1.1 Visual boundary of control does not have 3:1 contrast with background.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1411.1411[14110101].link | prepend: baseurl }}">{{ site.data.1411.1411[14110101].name }}</a></span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -177,11 +173,11 @@ css: 1411
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1411/14110201.html">1.4.11.2.1 Visual boundary of focus state of control does not have 3:1 contrast with background.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1411/14110202.html">1.4.11.2.2 Visual boundary of hover state of control does not have 3:1 contrast with background.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1411/14110203.html">1.4.11.2.3 Visual boundary of checked state of control does not have 3:1 contrast with background.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1411/14110204.html">1.4.11.2.4 Visual boundary of invalid state of control does not have 3:1 contrast with background.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1411/14110205.html">1.4.11.2.5 Visual boundary of selected state of control does not have 3:1 contrast with background.</a> (Medium)</li>
+        <li><a href="{{ site.data.1411.1411[14110201].link | prepend: baseurl }}">{{ site.data.1411.1411[14110201].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1411.1411[14110202].link | prepend: baseurl }}">{{ site.data.1411.1411[14110202].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1411.1411[14110203].link | prepend: baseurl }}">{{ site.data.1411.1411[14110203].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1411.1411[14110204].link | prepend: baseurl }}">{{ site.data.1411.1411[14110204].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1411.1411[14110205].link | prepend: baseurl }}">{{ site.data.1411.1411[14110205].name }}</a> (Medium)</li>
 
     </ul>
 
@@ -196,7 +192,7 @@ css: 1411
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -215,4 +211,4 @@ css: 1411
     </ul>
 </div>
 
-    {% include 1411checkpoints.html %}
+    {% include checkpoints/1411checkpoints.html %}

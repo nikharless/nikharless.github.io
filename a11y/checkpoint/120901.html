@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 1.2.9.1 Audio-only (Live)
-current: /a11y/checkpoint/120901.html
+current: 120901
 root: WCAG 2.2
-scurl: /a11y/sc/1209.html
-sctitle: 1.2.9 Audio-only (Live)
+base: base
+criterion: 1209
 guideline: perceivable
 level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-live
 ---
+{% assign currentpg=site.data.1209.1209[page.current] %}
+{% assign baseurl=site.data.1209.1209[page.base] %}
+{% assign sc=site.data.1209.1209[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Basic Requirements and Best Practices</h2>
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
@@ -31,7 +27,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-live
     <div class="success"><strong>Success:</strong> If you could not hear the audio, when you read the text equivalent, you would get all of the information conveyed in the audio.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Does the page contain any live audio broadcasts?</h3>
     <p>Note: This criterion does not apply to two-way audio calls between multiple individuals.</p>
     <ul role="tree" aria-labelledby="test1">
@@ -48,22 +44,22 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-live
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the text alternatives easy to read, or can their appearance be adjusted by the user?</span>
                                                     <ul role="group">
                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1209/12090106.html">1.2.9.1.6 Existing live text alternatives are difficult to read.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1209.1209[12090106].link | prepend: baseurl }}">{{ site.data.1209.1209[12090106].name }}</a></span></li>
                                                     </ul>
                                                 </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1209/12090105.html">1.2.9.1.5 Existing live text alternatives do not identify speakers.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1209.1209[12090105].link | prepend: baseurl }}">{{ site.data.1209.1209[12090105].name }}</a></span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1209/12090104.html">1.2.9.1.4 Existing live text alternatives are missing important sound effect descriptions.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1209.1209[12090104].link | prepend: baseurl }}">{{ site.data.1209.1209[12090104].name }}</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1209/12090103.html">1.2.9.1.3 Existing live text alternatives are missing dialogue.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1209.1209[12090103].link | prepend: baseurl }}">{{ site.data.1209.1209[12090103].name }}</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1209/12090102.html">1.2.9.1.2 Existing live text alternatives are not accurate.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1209.1209[12090102].link | prepend: baseurl }}">{{ site.data.1209.1209[12090102].name }}</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1209/12090101.html">1.2.9.1.1 Live audio broadcast does not have a text equivalent.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1209.1209[12090101].link | prepend: baseurl }}">{{ site.data.1209.1209[12090101].name }}</a></span></li>
             </ul>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
     </ul>
@@ -85,18 +81,18 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-live
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1209/12090101.html">1.2.9.1.1 Live audio broadcast does not have a text equivalent.</a> (High)</li>
-        <li><a href="/a11y/failure/1209/12090102.html">1.2.9.1.2 Existing live text alternatives are not accurate.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1209/12090103.html">1.2.9.1.3 Existing live text alternatives are missing dialogue.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1209/12090104.html">1.2.9.1.4 Existing live text alternatives are missing important sound effect descriptions.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1209/12090105.html">1.2.9.1.5 Existing live text alternatives do not identify speakers.</a> (Low)</li>
-        <li><a href="/a11y/failure/1209/12090106.html">1.2.9.1.6 Existing live text alternatives are difficult to read.</a> (Medium)</li>
+        <li><a href="{{ site.data.1209.1209[12090101].link | prepend: baseurl }}">{{ site.data.1209.1209[12090101].name }}</a> (High)</li>
+        <li><a href="{{ site.data.1209.1209[12090102].link | prepend: baseurl }}">{{ site.data.1209.1209[12090102].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1209.1209[12090103].link | prepend: baseurl }}">{{ site.data.1209.1209[12090103].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1209.1209[12090104].link | prepend: baseurl }}">{{ site.data.1209.1209[12090104].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1209.1209[12090105].link | prepend: baseurl }}">{{ site.data.1209.1209[12090105].name }}</a> (Low)</li>
+        <li><a href="{{ site.data.1209.1209[12090106].link | prepend: baseurl }}">{{ site.data.1209.1209[12090106].name }}</a> (Medium)</li>
     </ul>
 
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion 1.2.9 Audio-only (Live)</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.2.9 Audio-only (Live)</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -117,4 +113,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-live
     </ul>
 </div>
 
-    {% include 1209checkpoints.html %}
+     {% include checkpoints/1209checkpoints.html %}

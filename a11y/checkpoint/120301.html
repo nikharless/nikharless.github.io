@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 1.2.3.1 Text or Audio Description (Prerecorded Video - with Dialogue)
-current: /a11y/checkpoint/120301.html
+current: 120301
 root: WCAG 2.2
-scurl: /a11y/sc/1203.html
-sctitle: 1.2.3 Audio Description or Media Alternative (Prerecorded)
+base: base
+criterion: 1203
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-alternative-prerecorded
 ---
+{% assign currentpg=site.data.1203.1203[page.current] %}
+{% assign baseurl=site.data.1203.1203[page.base] %}
+{% assign sc=site.data.1203.1203[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <h3>Example</h3>
@@ -37,7 +33,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-
     <div class="success"><strong>Success:</strong> If you could not see the video, when you listen to the audio description or read the transcript, you would get all of the information conveyed in the video portion.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Does the page contain synchronized media (e.g., video with dialogue)?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the video content in the synchronized media have an audio description?</span>
@@ -45,7 +41,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio description include all the important actions, visuals, and text in the video?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1203/12030102.html">1.2.3.1.2 Existing audio description is inadequate.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1203.1203[12030102].link | prepend: baseurl }}">{{ site.data.1203.1203[12030102].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the video itself a media alternative for text?</span>
@@ -61,10 +57,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the transcript include all the important actions, visuals, and text in the video?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1203/12030103.html">1.2.3.1.3 Existing text transcript is inadequate.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1203.1203[12030103].link | prepend: baseurl }}">{{ site.data.1203.1203[12030103].name }}</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1203/12030101.html">1.2.3.1.1 Synchronized media does not have either a text or audio alternative for the video portion.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1203.1203[12030101].link | prepend: baseurl }}">{{ site.data.1203.1203[12030101].name }}</a></span></li>
                             </ul>
                         </li>
                     </ul>
@@ -89,15 +85,15 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1203/12030101.html">1.2.3.1.1 Synchronized media does not have either a text or audio alternative for the video portion.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1203/12030102.html">1.2.3.1.2 Existing audio description is inadequate.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1203/12030103.html">1.2.3.1.3 Existing text transcript is inadequate.</a> (Medium)</li>
+        <li><a href="{{ site.data.1203.1203[12030101].link | prepend: baseurl }}">{{ site.data.1203.1203[12030101].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1203.1203[12030101].link | prepend: baseurl }}">{{ site.data.1203.1203[12030102].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1203.1203[12030101].link | prepend: baseurl }}">{{ site.data.1203.1203[12030103].name }}</a> (Medium)</li>
     </ul>
 
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion 1.2.3: Audio Description or Media Alternative (Prerecorded)</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.2.3: Audio Description or Media Alternative (Prerecorded)</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -121,4 +117,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-description-or-media-
     </ul>
 </div>
 
-    {% include 1203checkpoints.html %}
+    {% include checkpoints/1203checkpoints.html %}

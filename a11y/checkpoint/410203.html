@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 4.1.2.3 Compatibility
-current: /a11y/checkpoint/410203.html
+current: 410203
 root: WCAG 2.2
-scurl: /a11y/sc/4102.html
-sctitle: 4.1.2 Name, Role, Value
-guideline: robust
+base: base
+criterion: 4102
+guideline: operable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
 ---
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.4102.4102[page.base] %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -34,11 +30,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
     <div class="success"><strong>Success:</strong> If you were a screen reader user, when accessing user interface components, you would be able to determine the role, purpose, and state of the components.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/js/tree.js"></script>
     <h3 id="test1">Does the component work with a screen reader?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/4102/41020301.html">4.1.2.3.1 Custom user interface component is not compatible with assistive technology.</a></span></li>
+        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}</a>.</span></li>
     </ul>
 
     <h2>Web Test Procedure</h2>
@@ -52,10 +48,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/4102/41020301.html">4.1.2.3.1 Automatically updated content is not announced.</a></li>
-        <li><a href="/ally/failure/4102/41020302.html">4.1.2.3.2 Form change is not announced.</a></li>
-        <li><a href="/ally/failure/4102/41020303.html">4.1.2.3.3 User initiated change of content is not announced.</a></li>
-        <li><a href="/ally/failure/4102/41020304.html">4.1.2.3.4 Custom user interface component is not compatible with assistive technology.</a></li>
+        <li><a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020302].link | prepend: baseurl }}">{{ site.data.4102.4102[41020302].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020303].link | prepend: baseurl }}">{{ site.data.4102.4102[41020303].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020304].link | prepend: baseurl }}">{{ site.data.4102.4102[41020304].name }}</a>.</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -65,7 +61,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G10">G10: Creating components using a technology that supports the accessibility notification of changes</a></li>
@@ -86,4 +82,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
     </ul>
 </div>
 
-    {% include 4102checkpoints.html %}
+    {% include checkpoints/4102checkpoints.html %}

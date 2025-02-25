@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.1.1.2.3 Meaningful CSS background image is missing a text alternative.
-current: /a11y/failure/1101/11010203.html
+current: 11010203
 root: WCAG 2.2
-scurl: /a11y/sc/1101.html
-sctitle: 1.1.1 Non-text Content
-cpurl: /a11y/checkpoint/110102.html
-cptitle: 1.1.1.2 Meaningful Images (Text Alternative)
+base: base
+criterion: 1101
+checkpoint: 110102
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
+{% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign cp=site.data.1101.1101[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
         <div class="row">
@@ -58,7 +53,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F3">Failure of Success Criterion 1.1.1 due to using CSS to include images that convey important information</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
                 </ul>
@@ -67,4 +62,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </div>
 </div>
 
-    {% include 1101checkpoints.html %}
+    {% include checkpoints/1101checkpoints.html %}

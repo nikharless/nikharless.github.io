@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 2.1.3.1.1 Content requires path-dependent input
-current: /a11y/failure/2103/21030101.html
+current: 21030101
 root: WCAG 2.2
-scurl: /a11y/sc/2103.html
-sctitle: 2.1.3 Keyboard (No Exception)
-cpurl: /a11y/checkpoint/210301.html
-cptitle: 2.1.3.1 No Path-Based Input
-guideline: operable
-level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard-no-exception
+base: base
+criterion: 2103
+checkpoint: 210301
+guideline: perceivable
+level: a
 ---
+{% assign currentpg=site.data.2103.2103[page.current] %}
+{% assign baseurl=site.data.2103.2103[page.base] %}
+{% assign sc=site.data.2103.2103[page.criterion] %}
+{% assign cp=site.data.2103.2103[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -52,11 +47,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard-no-exception
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-    {% include 2103checkpoints.html %}
+    {% include checkpoints/2103checkpoints.html %}

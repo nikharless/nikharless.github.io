@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 2.2.3.1 No Timing
-current: /a11y/checkpoint/220301.html
+current: 220301
 root: WCAG 2.2
-scurl: /a11y/sc/2203.html
-sctitle: 2.2.3 No Timing
+base: base
+criterion: 2203
 guideline: operable
-level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/no-timing
+level: a
 ---
+{% assign currentpg=site.data.2203.2203[page.current] %}
+{% assign baseurl=site.data.2203.2203[page.base] %}
+{% assign sc=site.data.2203.2203[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -35,7 +31,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/no-timing
     <div class="success"><strong>Success:</strong> If you had a physical disability, when you use a web page, you are not subject to time limits on your interaction.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Is there a time limit controlled by a script on the page?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the time limit required as part of a real-time event?</span>
@@ -44,7 +40,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/no-timing
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content video?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/2203/22030101.html">2.2.3.1.1 Content requires timed interaction.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2203.2203[22030101].link | prepend: baseurl }}">{{ site.data.2203.2203[22030101].name }}</a>.</span></li>
                     </ul>
                 </li>
             </ul>
@@ -67,7 +63,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/no-timing
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/2203/22030101.html">2.2.3.1.1 Content requires timed interaction.</a> (Medium)</li>
+        <li><a href="{{ site.data.2203.2203[22030101].link | prepend: baseurl }}">{{ site.data.2203.2203[22030101].name }}</a>. (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -77,7 +73,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/no-timing
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -91,4 +87,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/no-timing
     <h3>Additional Information</h3>
 </div>
 
-    {% include 2203checkpoints.html %}
+    {% include checkpoints/2203checkpoints.html %}

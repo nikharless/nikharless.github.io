@@ -1,31 +1,26 @@
 ---
 layout: default
-title: 4.1.2.1 Name, Role, Value
-current: /a11y/checkpoint/410201.html
+current: 410201
 root: WCAG 2.2
-scurl: /a11y/sc/4102.html
-sctitle: 4.1.2 Name, Role, Value
-guideline: robust
+base: base
+criterion: 4102
+guideline: operable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
-css: disclosure-faq
 ---
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.4102.4102[page.base] %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <p>In general, name, role, state, or value issues under this checkpoint relate to components that have an HTML equivalent, such as links, buttons, checkboxes, radio buttons, and selects.</p>
 
-    <p>For issues related to more complex widgets, especially ones that relate to existing ARIA authoring patterns such as tabpanels, dialogs, listboxes, sliders, carousels, etc., see the issues under checkpoint <a href="/a11y/checkpoint/410202.html">4.1.2.2: Custom Controls.</a></p>
+    <p>For issues related to more complex widgets, especially ones that relate to existing ARIA authoring patterns such as tabpanels, dialogs, listboxes, sliders, carousels, etc., see the issues under checkpoint <a href="{{ site.data.4102.4102[410202].link | prepend: baseurl }}">{{ site.data.4102.4102[410202].name }}</a>.</p>
 
-    <p>For issues related to complex interactions that don’t have HTML or ARIA widget equivalents and are so broken that breaking them down into individual issues is not effective or productive, see checkpoint <a href="/a11y/checkpoint/410203.html">4.1.2.3: Compatibility.</a></p>
+    <p>For issues related to complex interactions that don’t have HTML or ARIA widget equivalents and are so broken that breaking them down into individual issues is not effective or productive, see checkpoint <a href="{{ site.data.4102.4102[410203].link | prepend: baseurl }}">{{ site.data.4102.4102[410203].name }}</a>.</p>
 
     <p>Name:</p>
     <ul>
@@ -79,28 +74,28 @@ css: disclosure-faq
     <div class="success"><strong>Success:</strong> If you were a screen reader user, when accessing user interface components, you would be able to determine the role, purpose, and state of the components.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/js/tree.js"></script>
     <h3 id="test1">TEST 1: Is the name of the component spoken by a screen reader when the component receives focus?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a button?</span>
             <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020101.html">4.1.2.1.1 Button does not have an accessible name.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020101].link | prepend: baseurl }}">{{ site.data.4102.4102[41020101].name }}</a>.</span></li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a text field, checkbox, radio button, or select?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020102.html">4.1.2.1.2 Form field does not have an accessible name.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020102].link | prepend: baseurl }}">{{ site.data.4102.4102[41020102].name }}</a>.</span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component an image button?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020103.html">4.1.2.1.3 Image button does not have an accessible name.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020103].link | prepend: baseurl }}">{{ site.data.4102.4102[41020103].name }}</a>.</span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a link?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020104.html">4.1.2.1.4 Link does not have an accessible name.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020104].link | prepend: baseurl }}">{{ site.data.4102.4102[41020104].name }}</a>.</span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component an iframe?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020105.html">4.1.2.1.5 Iframe does not have an accessible name.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020105].link | prepend: baseurl }}">{{ site.data.4102.4102[41020105].name }}</a>.</span></li>
                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component part of a group of components?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020106.html">4.1.2.1.6 Form element group does not have an accessible group name.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020106].link | prepend: baseurl }}">{{ site.data.4102.4102[41020106].name }}</a>.</span></li>
                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>;</span></li>
                                                     </ul>
                                                 </li>
@@ -123,21 +118,21 @@ css: disclosure-faq
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a button?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020107.html">4.1.2.1.7 Button does not have a valid role.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}</a>.</span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a link?</span>
                             <ul role="group">
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the link have an <code>href</code> attribute?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020109.html">4.1.2.1.9 Link has an incorrect role.</a></span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/4102/41020110.html">4.1.2.1.10 Link is missing the href attribute.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select field?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020111.html">4.1.2.1.11 Select (combobox) has an incorrect role.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020111].link | prepend: baseurl }}">{{ site.data.4102.4102[41020111].name }}</a>.</span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select option?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020112.html">4.1.2.1.12 Select option is missing the option role.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020112].link | prepend: baseurl }}">{{ site.data.4102.4102[41020112].name }}</a>.</span></li>
                                                 <li role="treeitem"><span><strong>No</strong>; </span></li>
                                             </ul>
                                         </li>
@@ -151,24 +146,24 @@ css: disclosure-faq
         </li>
         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a button?</span>
             <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020107.html">4.1.2.1.7 Button does not have a valid role.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}</a>.</span></li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a text field?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020108.html">4.1.2.1.8 Form field has an incorrect role.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020108].link | prepend: baseurl }}">{{ site.data.4102.4102[41020108].name }}</a>.</span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a link?</span>
                             <ul role="group">
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the link have an <code>href</code> attribute?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020109.html">4.1.2.1.9 Link has an incorrect role.</a></span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/4102/41020110.html">4.1.2.1.10 Link is missing the href attribute.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select field?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020111.html">4.1.2.1.11 Select component is missing required states or properties.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020111].link | prepend: baseurl }}">{{ site.data.4102.4102[41020111].name }}</a>.</span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select option?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020112.html">4.1.2.1.12 Select option is missing the option role.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020112].link | prepend: baseurl }}">{{ site.data.4102.4102[41020112].name }}</a>.</span></li>
                                                 <li role="treeitem"><span><strong>No</strong>; </span></li>
                                             </ul>
                                         </li>
@@ -189,16 +184,16 @@ css: disclosure-faq
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the checked state spoken when changed?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/4102/41020126.html">4.1.2.1.26 State change is not spoken by screen reader.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020126].link | prepend: baseurl }}">{{ site.data.4102.4102[41020126].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a checkbox?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020116.html">4.1.2.1.16 Checkbox is missing the checked state.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020116].link | prepend: baseurl }}">{{ site.data.4102.4102[41020116].name }}</a>.</span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a radio button?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/4102/41020117.html">4.1.2.1.17 Radio button is missing the checked state.</a></span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/4102/41020118.html">4.1.2.1.18 Switch is missing the checked state.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020117].link | prepend: baseurl }}">{{ site.data.4102.4102[41020117].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020118].link | prepend: baseurl }}">{{ site.data.4102.4102[41020118].name }}</a>.</span></li>
                             </ul>
                         </li>
                     </ul>
@@ -215,7 +210,7 @@ css: disclosure-faq
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the pressed state spoken by the screen reader?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/4102/41020113.html">4.1.2.1.13 Toggle button is missing the pressed state.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020113].link | prepend: baseurl }}">{{ site.data.4102.4102[41020113].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the button control expandable content?</span>
@@ -229,16 +224,16 @@ css: disclosure-faq
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the button identified as a menu button?</span>
                                                     <ul role="group">
                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/4102/41020115.html">4.1.2.1.15 Menu button is missing the aria-haspopup attribute.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020115].link | prepend: baseurl }}">{{ site.data.4102.4102[41020115].name }}</a>.</span></li>
                                                     </ul>
                                                 </li>
                                                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/4102/41020126.html">4.1.2.1.26 State change is not spoken by screen reader.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020126].link | prepend: baseurl }}">{{ site.data.4102.4102[41020126].name }}</a>.</span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/4102/41020114.html">4.1.2.1.14 Disclosure button is missing the expanded state.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020114].link | prepend: baseurl }}">{{ site.data.4102.4102[41020114].name }}</a>.</span></li>
                             </ul>
                         </li>
                         <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -254,7 +249,7 @@ css: disclosure-faq
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader announce the disabled state?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="/a11y/failure/4102/41020122.html">4.1.2.1.22 Disabled component is missing the disabled state.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data.4102.4102[41020122].link | prepend: baseurl }}">{{ site.data.4102.4102[41020122].name }}</a>.</span></li>
             </ul>
         </li>
         <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -265,7 +260,7 @@ css: disclosure-faq
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader announce the required state?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="/a11y/failure/4102/41020123.html">4.1.2.1.23 Required component is missing the required property.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data.4102.4102[41020123].link | prepend: baseurl }}">{{ site.data.4102.4102[41020123].name }}</a>.</span></li>
             </ul>
         </li>
         <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -276,7 +271,7 @@ css: disclosure-faq
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader announce the read-only state?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="/a11y/failure/4102/41020124.html">4.1.2.1.24 Read-only component is missing the read-only property.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data.4102.4102[41020124].link | prepend: baseurl }}">{{ site.data.4102.4102[41020124].name }}</a>.</span></li>
             </ul>
         </li>
         <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -374,7 +369,7 @@ css: disclosure-faq
             </div>
         </dd>
     </dl>
-    <script src="/a11y/assets/js/disclosureButton.js"></script>
+    <script src="{{ baseurl }}/js/disclosureButton.js"></script>
 
     <h3>Android</h3>
     <ol>
@@ -477,34 +472,34 @@ css: disclosure-faq
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/4102/41020101.html">4.1.2.1.1 Button does not have an accessible name.</a></li>
-        <li><a href="/a11y/failure/4102/41020102.html">4.1.2.1.2 Form field does not have an accessible name.</a></li>
-        <li><a href="/a11y/failure/4102/41020103.html">4.1.2.1.3 Image button does not have an accessible name.</a></li>
-        <li><a href="/a11y/failure/4102/41020104.html">4.1.2.1.4 Link does not have an accessible name.</a></li>
-        <li><a href="/a11y/failure/4102/41020105.html">4.1.2.1.5 Iframe does not have an accessible name.</a></li>
-        <li><a href="/a11y/failure/4102/41020106.html">4.1.2.1.6 Form element group does not have an accessible group name.</a></li>
-        <li><a href="/a11y/failure/4102/41020107.html">4.1.2.1.7 Button does not have a valid role.</a></li>
-        <li><a href="/a11y/failure/4102/41020108.html">4.1.2.1.8 Form field has an incorrect role.</a></li>
-        <li><a href="/a11y/failure/4102/41020109.html">4.1.2.1.9 Link has an incorrect role.</a></li>
-        <li><a href="/a11y/failure/4102/41020110.html">4.1.2.1.10 Link is missing the href attribute.</a></li>
-        <li><a href="/a11y/failure/4102/41020111.html">4.1.2.1.11 Select (combobox) has an incorrect role.</a></li>
-        <li><a href="/a11y/failure/4102/41020112.html">4.1.2.1.12 Select option is missing the option role.</a></li>
-        <li><a href="/a11y/failure/4102/41020113.html">4.1.2.1.13 Toggle button is missing the pressed state.</a></li>
-        <li><a href="/a11y/failure/4102/41020114.html">4.1.2.1.14 Disclosure button is missing the expanded state.</a></li>
-        <li><a href="/a11y/failure/4102/41020115.html">4.1.2.1.15 Menu button is missing the aria-haspopup attribute.</a></li>
-        <li><a href="/a11y/failure/4102/41020116.html">4.1.2.1.16 Checkbox is missing the checked state.</a></li>
-        <li><a href="/a11y/failure/4102/41020117.html">4.1.2.1.17 Radio button is missing the checked state.</a></li>
-        <li><a href="/a11y/failure/4102/41020118.html">4.1.2.1.18 Switch is missing the checked state.</a></li>
-        <li><a href="/a11y/failure/4102/41020119.html">4.1.2.1.19 Select component is missing required states or properties.</a></li>
-        <li><a href="/a11y/failure/4102/41020120.html">4.1.2.1.20 Select option is missing the selected state.</a></li>
-        <li><a href="/a11y/failure/4102/41020121.html">4.1.2.1.21 Text input component is missing appropriate property.</a></li>
-        <li><a href="/a11y/failure/4102/41020122.html">4.1.2.1.22 Disabled component is missing the disabled state.</a></li>
-        <li><a href="/a11y/failure/4102/41020123.html">4.1.2.1.23 Required component is missing the required property.</a></li>
-        <li><a href="/a11y/failure/4102/41020124.html">4.1.2.1.24 Read-only component is missing the read-only property.</a></li>
-        <li><a href="/a11y/failure/4102/41020125.html">4.1.2.1.25 Component has invalid state, propery, or value.</a></li>
-        <li><a href="/a11y/failure/4102/41020126.html">4.1.2.1.26 State change is not spoken by screen reader.</a></li>
-        <li><a href="/a11y/failure/4102/41020127.html">4.1.2.1.27 Component is missing required parent element.</a></li>
-        <li><a href="/a11y/failure/4102/41020128.html">4.1.2.1.28 Component is missing required child element.</a></li>
+        <li><a href="{{ site.data.4102.4102[41020101].link | prepend: baseurl }}">{{ site.data.4102.4102[41020101].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020102].link | prepend: baseurl }}">{{ site.data.4102.4102[41020102].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020103].link | prepend: baseurl }}">{{ site.data.4102.4102[41020103].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020104].link | prepend: baseurl }}">{{ site.data.4102.4102[41020104].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020105].link | prepend: baseurl }}">{{ site.data.4102.4102[41020105].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020106].link | prepend: baseurl }}">{{ site.data.4102.4102[41020106].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020108].link | prepend: baseurl }}">{{ site.data.4102.4102[41020108].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020111].link | prepend: baseurl }}">{{ site.data.4102.4102[41020111].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020112].link | prepend: baseurl }}">{{ site.data.4102.4102[41020112].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020113].link | prepend: baseurl }}">{{ site.data.4102.4102[41020113].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020114].link | prepend: baseurl }}">{{ site.data.4102.4102[41020114].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020115].link | prepend: baseurl }}">{{ site.data.4102.4102[41020115].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020116].link | prepend: baseurl }}">{{ site.data.4102.4102[41020116].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020117].link | prepend: baseurl }}">{{ site.data.4102.4102[41020117].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020118].link | prepend: baseurl }}">{{ site.data.4102.4102[41020118].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020119].link | prepend: baseurl }}">{{ site.data.4102.4102[41020119].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020120].link | prepend: baseurl }}">{{ site.data.4102.4102[41020120].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020121].link | prepend: baseurl }}">{{ site.data.4102.4102[41020121].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020122].link | prepend: baseurl }}">{{ site.data.4102.4102[41020122].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020123].link | prepend: baseurl }}">{{ site.data.4102.4102[41020123].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020124].link | prepend: baseurl }}">{{ site.data.4102.4102[41020124].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020125].link | prepend: baseurl }}">{{ site.data.4102.4102[41020125].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020126].link | prepend: baseurl }}">{{ site.data.4102.4102[41020126].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020127].link | prepend: baseurl }}">{{ site.data.4102.4102[41020127].name }}</a>.</li>
+        <li><a href="{{ site.data.4102.4102[41020128].link | prepend: baseurl }}">{{ site.data.4102.4102[41020128].name }}</a>.</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -515,7 +510,7 @@ css: disclosure-faq
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
@@ -554,4 +549,4 @@ css: disclosure-faq
     </ul>
 </div>
 
-    {% include 4102checkpoints.html %}
+    {% include checkpoints/4102checkpoints.html %}

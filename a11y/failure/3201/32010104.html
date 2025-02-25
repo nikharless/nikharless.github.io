@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 3.2.1.1.4 On focus, a form is automatically submitted
-current: /a11y/failure/3201/32010104.html
+current: 32010104
 root: WCAG 2.2
-scurl: /a11y/sc/3201.html
-sctitle: 3.2.1 On Focus
-cpurl: /a11y/checkpoint/320101.html
-cptitle: 3.2.1.1 Context Changes (On Focus)
+base: base
+criterion: 3201
+checkpoint: 320101
 guideline: understandable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/on-focus
 ---
+{% assign currentpg=site.data.3201.3201[page.current] %}
+{% assign baseurl=site.data.3201.3201[page.base] %}
+{% assign sc=site.data.3201.3201[page.criterion] %}
+{% assign cp=site.data.3201.3201[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -53,7 +48,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/on-focus
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G107">G107: Using "activate" rather than "focus" as a trigger for changes of context</a></li>
                 </ul>
             </div>
@@ -61,4 +56,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/on-focus
     </div>
 </div>
 
-    {% include 3201checkpoints.html %}
+    {% include  checkpoints/3201checkpoints.html %}

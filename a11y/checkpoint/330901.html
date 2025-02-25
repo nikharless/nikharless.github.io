@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 3.3.9.1 Accessible Authentication (Enhanced)
-current: /a11y/checkpoint/330901.html
+current: 330901
 root: WCAG 2.2
-scurl: /a11y/sc/3309.html
-sctitle: 3.3.9 Accessible Authentication (Enhanced)
-guideline: understandable
-level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-enhanced
+base: base
+criterion: 3309
+guideline: operable
+level: a
 ---
+{% assign currentpg=site.data.3309.3309[page.current] %}
+{% assign baseurl=site.data.3309.3309[page.base] %}
+{% assign sc=site.data.3309.3309[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -46,7 +42,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-e
     <div class="success"><strong>Success:</strong> If you were a user with a cognitive impairment, when logging in, a cognitive function test would not be required.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/js/tree.js"></script>
     <h3 id="test1">Is a cognitive function test (e.g., remembering a password or solving a puzzle) required for any step in an authentication process?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there an alternative authentication method that does not require a cognitive function test (e.g., one-use codes, biometrics, etc.)?</span>
@@ -55,7 +51,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-e
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism available to assist the user in completing the cognitive function test (e.g., support for password managers, copy and paste, etc.)?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/3309/33090101.html">3.3.9.1.1 A cognitive function test is required and no alternative or assistance is provided.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3309.3309[33090101].link | prepend: baseurl }}">{{ site.data.3309.3309[33090101].name }}</a>.</span></li>
                     </ul>
                 </li>
             </ul>
@@ -72,7 +68,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-e
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/3309/33090101.html">3.3.9.1.1 A cognitive function test is required and no alternative or assistance is provided.</a></li>
+        <li><a href="{{ site.data.3309.3309[33090101].link | prepend: baseurl }}">{{ site.data.3309.3309[33090101].name }}</a>.</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -82,7 +78,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-e
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G218">G218: Email link authentication</a></li>
@@ -100,4 +96,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-e
     </ul>
 </div>
 
-    {% include 3309checkpoints.html %}
+    {% include checkpoints/3309checkpoints.html %}

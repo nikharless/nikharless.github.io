@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 3.2.4.1.1 Form control with same function is named or labeled differently between pages
-current: /a11y/failure/3204/32040101.html
+current: 32040101
 root: WCAG 2.2
-scurl: /a11y/sc/3204.html
-sctitle: 3.2.4 Consistent Identification
-cpurl: /a11y/checkpoint/320401.html
-cptitle: 3.2.4.1 Consistent Identification
+base: base
+criterion: 3204
+checkpoint: 320401
 guideline: understandable
 level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification
 ---
+{% assign currentpg=site.data.3204.3204[page.current] %}
+{% assign baseurl=site.data.3204.3204[page.base] %}
+{% assign sc=site.data.3204.3204[page.criterion] %}
+{% assign cp=site.data.3204.3204[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -89,7 +84,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F31">F31: Failure of Success Criterion 3.2.4 due to using two different labels for the same function on different Web pages within a set of Web pages </a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G197">G197: Using labels, names, and text alternatives consistently for content that has the same functionality</a></li>
                 </ul>
@@ -98,4 +93,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification
     </div>
 </div>
 
-    {% include 3204checkpoints.html %}
+    {% include  checkpoints/3204checkpoints.html %}

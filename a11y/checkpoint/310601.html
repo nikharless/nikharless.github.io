@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 3.1.6.1 Pronunciation
-current: /a11y/checkpoint/310601.html
+current: 310601
 root: WCAG 2.2
-scurl: /a11y/sc/3106.html
-sctitle: 3.1.6 Pronunciation
-guideline: understandable
-level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/pronunciation
+base: base
+criterion: 3106
+guideline: operable
+level: a
 ---
+{% assign currentpg=site.data.3106.3106[page.current] %}
+{% assign baseurl=site.data.3106.3106[page.base] %}
+{% assign sc=site.data.3106.3106[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -34,7 +30,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/pronunciation
     <div class="success"><strong>Success:</strong> If you were a user with a cognitive disability, when you encountered a word where the meaning depends on the pronunciation, you would have access to a mechanism providing the intended pronunciation.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Does the content contain any words where the meaning depends on the pronunciation?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the pronunciation be determined from the context?</span>
@@ -43,7 +39,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/pronunciation
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the pronunciation provided?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/3106/31060101.html">3.1.6.1.1 Pronunciation is not provided for ambiguous words.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3106.3106[31060101].link | prepend: baseurl }}">{{ site.data.3106.3106[31060101].name }}</a>.</span></li>
                     </ul>
                 </li>
             </ul>
@@ -60,7 +56,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/pronunciation
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/3106/31060101.html">3.1.6.1.1 Pronunciation is not provided for ambiguous words.</a> (Low)</li>
+        <li><a href="{{ site.data.3106.3106[31060101].link | prepend: baseurl }}">{{ site.data.3106.3106[31060101].name }}</a>. (Low)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -70,7 +66,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/pronunciation
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G62">G62: Providing a glossary</a></li>
@@ -92,4 +88,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/pronunciation
     </ul>
 </div>
 
-    {% include 3106checkpoints.html %}
+    {% include  checkpoints/3106checkpoints.html %}

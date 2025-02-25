@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 2.4.5.1 Multiple Ways
-current: /a11y/checkpoint/240501.html
+current: 240501
 root: WCAG 2.2
-scurl: /a11y/sc/2405.html
-sctitle: 2.4.5 Multiple Ways
+base: base
+criterion: 2405
 guideline: operable
-level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/multiple-ways
+level: a
 ---
+{% assign currentpg=site.data.2405.2405[page.current] %}
+{% assign baseurl=site.data.2405.2405[page.base] %}
+{% assign sc=site.data.2405.2405[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <p>Examples include:</p>
@@ -42,14 +38,14 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/multiple-ways
     <div class="success"><strong>Success:</strong> If you were a user with a disability, when trying to locate a page on a website, you can use a method that is easier for you.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Is there more than one way to locate the web page within a set of web pages?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the page a step in or the result of a process?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/2405/24050101.html">2.4.5.1.1 There are fewer than two ways to locate a web page on the site.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2405.2405[24050101].link | prepend: baseurl }}">{{ site.data.2405.2405[24050101].name }}</a>.</span></li>
             </ul>
         </li>
     </ul>
@@ -72,7 +68,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/multiple-ways
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/2405/24050101.html">2.4.5.1.1 There are fewer than two ways to locate a web page on the site.</a> (Low)</li>
+        <li><a href="{{ site.data.2405.2405[24050101].link | prepend: baseurl }}">{{ site.data.2405.2405[24050101].name }}</a>. (Low)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -83,7 +79,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/multiple-ways
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G63">G63: Providing a site map</a></li>
@@ -106,4 +102,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/multiple-ways
     </ul>
 </div>
 
-    {% include 2405checkpoints.html %}
+    {% include checkpoints/2405checkpoints.html %}

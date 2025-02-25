@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 2.5.5.1 Target Size (Enhanced)
-current: /a11y/checkpoint/250501.html
+current: 250501
 root: WCAG 2.2
-scurl: /a11y/sc/2505.html
-sctitle: 2.5.5 Target Size (Enhanced)
+base: base
+criterion: 2505
 guideline: operable
-level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
+level: a
 ---
+{% assign currentpg=site.data.2505.2505[page.current] %}
+{% assign baseurl=site.data.2505.2505[page.base] %}
+{% assign sc=site.data.2505.2505[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <p>Exceptions to this criterion include:</p>
@@ -40,7 +36,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
     <div class="success"><strong>Success:</strong> If you were a user with a movement disability, when you interact with controls, you can easily hit the target area.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Is the target size of all interactive elements at least 44 x 44 CSS pixels?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
@@ -56,7 +52,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the presentation of the target essential or legally required?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/2505/25050101.html">2.5.5.1.1 Target size is less than 44x44 CSS pixels.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2505.2505[25050101].link | prepend: baseurl }}">{{ site.data.2505.2505[25050101].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -99,7 +95,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/2505/25050101.html">2.5.5.1.1 Target size is less than 44 x 44 CSS pixels.</a> (Medium)</li>
+        <li><a href="{{ site.data.2505.2505[25050101].link | prepend: baseurl }}">{{ site.data.2505.2505[25050101].name }}</a>. (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -111,7 +107,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>CSS:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C42">C42: Using min-height and min-width to ensure sufficient target spacing</a></li>
@@ -127,4 +123,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced
     </ul>
 </div>
 
-    {% include 2505checkpoints.html %}
+    {% include checkpoints/2505checkpoints.html %}

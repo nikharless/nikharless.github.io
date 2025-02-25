@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 4.1.2.1.4 Link does not have an accessible name
-current: /a11y/failure/4102/41020104.html
+current: 41020104
 root: WCAG 2.2
-scurl: /a11y/sc/4102.html
-sctitle: 4.1.2 Name, Role, Value
-cpurl: /a11y/checkpoint/410201.html
-cptitle: 4.1.2.1 Name, Role, Value
-guideline: robust
+base: base
+criterion: 4102
+checkpoint: 410201
+guideline: understandable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
 ---
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.4102.4102[page.base] %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+{% assign cp=site.data.4102.4102[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
         <div class="row">
@@ -73,16 +68,16 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
 
                 <h3>aria-label</h3>
                 <div class="example">
-                    <a href="https://github.com/" aria-label="github"><img src="/a11y/assets/images/110101-github-mark.png" alt="" style="max-width: 48px; max-height: 48px;"></a>
+                    <a href="https://github.com/" aria-label="github"><img src="{{ baseurl }}/assets/images/110101-github-mark.png" alt="" style="max-width: 48px; max-height: 48px;"></a>
 
                     <pre><code>&lt;a href="https://github.com/" <strong>aria-label="github"</strong>&gt;&lt;img src="github.png" alt=""&gt;&lt;/a&gt;</code></pre>
                 </div>
 
                 <h3>Title attribute</h3>
                 <div class="example">
-                    <a href="https://github.com/" title="github"><img src="/a11y/assets/images/110101-github-mark.png" alt="" style="max-width: 48px; max-height: 48px;"></a>
+                    <a href="https://github.com/" title="github"><img src="{{ baseurl }}/assets/images/110101-github-mark.png" alt="" style="max-width: 48px; max-height: 48px;"></a>
 
-                    <pre><code>&lt;a href="https://github.com/" <strong>title="github"</strong>&gt;&lt;img src="/a11y/assets/images/github.png" alt=""&gt;&lt;/a&gt;</code></pre>
+                    <pre><code>&lt;a href="https://github.com/" <strong>title="github"</strong>&gt;&lt;img src="{{ baseurl }}/assets/images/github.png" alt=""&gt;&lt;/a&gt;</code></pre>
                 </div>
 
                 <h3>Image map area element</h3>
@@ -131,7 +126,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G135">G135: Using the accessibility API features of a technology to expose names and notification of changes</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
@@ -145,4 +140,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
     </div>
 </div>
 
-    {% include 4102checkpoints.html %}
+    {% include checkpoints/4102checkpoints.html %}

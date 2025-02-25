@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.1.1.6.1 Audio object does not have a text alternative
-current: /a11y/failure/1101/11010601.html
+current: 11010601
 root: WCAG 2.2
-scurl: /a11y/sc/1101.html
-sctitle: 1.1.1 Non-text Content
-cpurl: /a11y/checkpoint/110106.html
-cptitle: 1.1.1.6 Audio or Video (Text Alternative)
+base: base
+criterion: 1101
+checkpoint: 110106
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
+{% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign cp=site.data.1101.1101[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -46,7 +41,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                 <h3>HTML <code>&lt;audio&gt;</code></h3>
                 <p>What a horse says:</p>
                 <audio controls aria-label="horse neighing">
-                    <source src="/a11y/assets/media/11010601-horse.mp3" type="audio/mpeg">
+                    <source src="{{ baseurl }}/assets/media/11010601-horse.mp3" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
     <pre><code>What a horse says:
@@ -64,7 +59,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-text content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6.html">ARIA6: Using aria-label to provide labels for objects</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
@@ -74,4 +69,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </div>
 </div>
 
-    {% include 1101checkpoints.html %}
+    {% include checkpoints/1101checkpoints.html %}

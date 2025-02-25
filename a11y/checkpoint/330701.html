@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 3.3.7.1 Redundant Entry
-current: /a11y/checkpoint/330701.html
+current: 330701
 root: WCAG 2.2
-scurl: /a11y/sc/3307.html
-sctitle: 3.3.7 Redundant Entry
-guideline: understandable
+base: base
+criterion: 3307
+guideline: operable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry
 ---
+{% assign currentpg=site.data.3307.3307[page.current] %}
+{% assign baseurl=site.data.3307.3307[page.base] %}
+{% assign sc=site.data.3307.3307[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -34,7 +30,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry
     <div class="success"><strong>Success:</strong> If you were a user with a motor impairment, when having to re-enter previously entered information, the information would be auto-populated or available for selection.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/js/tree.js"></script>
     <h3 id="test1">Is the same information required to be re-entered by the user in the same process?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the previously entered or provided information auto-populated?</span>
@@ -51,7 +47,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry
                                         <li role="treeitem" class="na"><span><strong>Yes</strong>; Not applicable</span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the previous information still valid?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/3307/33070101.html">3.3.7.1.1 Previously entered information is not auto-populated or available for selection.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3307.3307[33070101].link | prepend: baseurl }}">{{ site.data.3307.3307[33070101].name }}</a>.</span></li>
                                                 <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
                                             </ul>
                                         </li>
@@ -77,7 +73,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/3307/33070101.html">3.3.7.1.1 Previously entered information is not auto-populated or available for selection.</a></li>
+        <li><a href="{{ site.data.3307.3307[33070101].link | prepend: baseurl }}">{{ site.data.3307.3307[33070101].name }}</a>.</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -88,7 +84,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G221">G221: Provide data from a previous step in a process</a></li>
@@ -101,4 +97,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry
     </ul>
 </div>
 
-    {% include 3307checkpoints.html %}
+    {% include checkpoints/3307checkpoints.html %}

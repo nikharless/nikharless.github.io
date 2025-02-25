@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.2.2.1.1 Synchronized media does not have captions
-current: /a11y/failure/1202/12020101.html
+current: 12020101
 root: WCAG 2.2
-scurl: /a11y/sc/1202.html
-sctitle: 1.2.2 Captions (Prerecorded)
-cpurl: /a11y/checkpoint/120201.html
-cptitle: 1.2.2.1 Captions (Prerecorded)
+base: base
+criterion: 1202
+checkpoint: 120201
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded
 ---
+{% assign currentpg=site.data.1201.1201[page.current] %}
+{% assign baseurl=site.data.1201.1201[page.base] %}
+{% assign sc=site.data.1201.1201[page.criterion] %}
+{% assign cp=site.data.1201.1201[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -40,8 +35,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded
             <div>
                 <h3>HTML video</h3>
                 <video width="320" height="240" controls>
-                    <source src="/a11y/assets/media/12020101-molly.mp4" type="video/mp4">
-                    <track src="/a11y/assets/media/12020101-molly.vtt" kind="captions" srclang="en" label="english_captions">
+                    <source src="{{ baseurl }}/assets/media/12020101-molly.mp4" type="video/mp4">
+                    <track src="{{ baseurl }}/assets/media/12020101-molly.vtt" kind="captions" srclang="en" label="english_captions">
                     Your browser does not support the video tag.
                 </video>
                 <p><a href="https://www.youtube.com/@TheAppalachianStoryteller">The Appalachian Storyteller</a></p>
@@ -61,7 +56,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.2.2 Captions (Prerecorded)</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding SC 1.2.2 Captions (Prerecorded)</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F75">F75: Failure of Success Criterion 1.2.2 by providing synchronized media without captions when the synchronized media presents more information than is presented on the page</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G87">G87: Providing closed captions using any readily available media format that has a video player that supports closed captioning</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G93">G93: Providing open (always visible) captions</a></li>
@@ -75,4 +70,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded
     </div>
 </div>
 
-    {% include 1202checkpoints.html %}
+    {% include checkpoints/1202checkpoints.html %}

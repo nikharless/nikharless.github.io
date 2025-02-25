@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 2.4.6.2 Descriptive Labels
-current: /a11y/checkpoint/240602.html
+current: 240602
 root: WCAG 2.2
-scurl: /a11y/sc/2406.html
-sctitle: 2.4.6 Headings and Labels
+base: base
+criterion: 2406
 guideline: operable
-level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels
+level: a
 ---
+{% assign currentpg=site.data.2406.2406[page.current] %}
+{% assign baseurl=site.data.2406.2406[page.base] %}
+{% assign sc=site.data.2406.2406[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <p><em>Note: A label is available to all users, as opposed to the programmatic name which may only be available to assistive technology.</em></p>
@@ -34,7 +30,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels
         <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
         <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Labels must describe the purpose of the associated control(s) or input(s).</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A control's label and programmatic name should be the same. (See <a href="/a11y/sc/2503.html">2.5.3 Label in Name</a>.)</li>
+        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A control's label and programmatic name should be the same. (See <a href="{{ site.data.2503.2503[2503].link | prepend: baseurl }}">{{ site.data.2503.2503[2503].name }}</a>.)</li>
     </ul>
 
     <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want labels to be descriptive so that I can easily understand how to use the controls.</div>
@@ -42,13 +38,13 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels
     <div class="success"><strong>Success:</strong> If you were a user with a disability, when using a website, you could understand the purpose of controls by their labels.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Does the page contain control or input labels?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the labels clearly describe the purpose of the associated controls or inputs?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/2406/24060201.html">2.4.6.2.1 Label does not clearly describe the purpose of the associated control.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2406.2406[24060201].link | prepend: baseurl }}">{{ site.data.2406.2406[24060201].name }}</a>.</span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -62,7 +58,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/2406/24060201.html">2.4.6.2.1 Label does not clearly describe the purpose of the associated control.</a> (Medium)</li>
+        <li><a href="{{ site.data.2406.2406[24060201].link | prepend: baseurl }}">{{ site.data.2406.2406[24060201].name }}</a>. (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -73,7 +69,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
@@ -86,4 +82,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels
     </ul>
 </div>
 
-    {% include 2406checkpoints.html %}
+    {% include checkpoints/2406checkpoints.html %}

@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.1.1.5.3 CAPTCHA has no non-visual version
-current: /a11y/failure/1101/11010503.html
+current: 11010503
 root: WCAG 2.2
-scurl: /a11y/sc/1101.html
-sctitle: 1.1.1 Non-text Content
-cpurl: /a11y/checkpoint/110105.html
-cptitle: 1.1.1.5 CAPTCHA (Text Alternative)
+base: base
+criterion: 1101
+checkpoint: 110105
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
+{% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign cp=site.data.1101.1101[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -45,9 +40,9 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <div>
                 <h3>ReCAPTCHA</h3>
                 <p>The current verson of Google's ReCAPTCHA is a simple checkbox. If it is unable to validate, an image test is presented.</p>
-                <img src="/a11y/assets/images/11010501-recaptcha-image-test.png" style="max-width: 400px" alt="Screenshot of ReCAPTCHA image test which reads, Select all images with an Orange">
+                <img src="{{ baseurl }}/assets/images/11010501-recaptcha-image-test.png" style="max-width: 400px" alt="Screenshot of ReCAPTCHA image test which reads, Select all images with an Orange">
                 <p>At this point the user can Tab to a button to access an audio version.</p>
-                <img src="/a11y/assets/images/11010501-recaptcha-audio-test.png" alt="Screenshot of ReCAPTCHA audio test which reads, Press play and enter the numbers you hear">
+                <img src="{{ baseurl }}/assets/images/11010501-recaptcha-audio-test.png" alt="Screenshot of ReCAPTCHA audio test which reads, Press play and enter the numbers you hear">
                 <p><a href="https://www.google.com/recaptcha/api2/demo">ReCAPTCHA demo</a></p>
 
                 <h3>Embedded Text</h3>
@@ -63,7 +58,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G144"> G144: Ensuring that the Web Page contains another CAPTCHA serving the same purpose using a different modality</a></li>
                     <li><a href="https://www.boia.org/blog/how-to-make-captcha-accessible-to-everyone">How To Make CAPTCHA Accessible To Everyone</a></li>
                     <li><a href="https://www.digitala11y.com/the-captcha-conundrum-accessible-alternatives/">The Captcha Conundrum & Accessible Alternatives</a></li>
@@ -74,4 +69,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </div>
 </div>
 
-    {% include 1101checkpoints.html %}
+    {% include checkpoints/1101checkpoints.html %}

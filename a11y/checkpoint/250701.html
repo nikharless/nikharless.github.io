@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 2.5.7.1 Dragging Movements
-current: /a11y/checkpoint/250701.html
+current: 250701
 root: WCAG 2.2
-scurl: /a11y/sc/2507.html
-sctitle: 2.5.7 Dragging Movements
+base: base
+criterion: 2507
 guideline: operable
-level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements
+level: a
 ---
+{% assign currentpg=site.data.2507.2507[page.current] %}
+{% assign baseurl=site.data.2507.2507[page.base] %}
+{% assign sc=site.data.2507.2507[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <p>Examples of dragging movement alternatives:</p>
@@ -47,7 +43,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements
     <div class="success"><strong>Success:</strong> If you were a user with a movement disability, when you encounter functionality that uses dragging movements, you could interact with it using a single pointer.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Is there any functionality that uses dragging movements?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there an alternate single point means of operation for the same functionality?</span>
@@ -56,7 +52,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the dragging movement essential for the functionality?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/2507/25070101.html">2.5.7.1.1 No single pointer alternative is available for dragging movement.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2507.2507[25070101].link | prepend: baseurl }}">{{ site.data.2507.2507[25070101].name }}</a>.</span></li>
                     </ul>
                 </li>
             </ul>
@@ -76,7 +72,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/2507/25070101.html">2.5.7.1.1 No single pointer alternative is available for dragging movement.</a></li>
+        <li><a href="{{ site.data.2507.2507[25070101].link | prepend: baseurl }}">{{ site.data.2507.2507[25070101].name }}</a>.</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -89,7 +85,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G219">G219: Ensuring that an alternative is available for dragging movements that operate on content</a></li>
@@ -104,4 +100,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements
     </ul>
 </div>
 
-    {% include 2507checkpoints.html %}
+    {% include checkpoints/2507checkpoints.html %}

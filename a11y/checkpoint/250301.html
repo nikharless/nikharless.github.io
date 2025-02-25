@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 2.5.3.1 Label in Name
-current: /a11y/checkpoint/250301.html
+current: 250301
 root: WCAG 2.2
-scurl: /a11y/sc/2503.html
-sctitle: 2.5.3 Label in Name
+base: base
+criterion: 2503
 guideline: operable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/label-in-name
 ---
+{% assign currentpg=site.data.2503.2503[page.current] %}
+{% assign baseurl=site.data.2503.2503[page.base] %}
+{% assign sc=site.data.2503.2503[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <p>For the purpose of this criterion, the label is only a single string of text next to the control. Any other text that should be read along with the control, such as instructions and group labels, is part of the description.</p>
@@ -60,7 +56,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/label-in-name
     <div class="success"><strong>Success:</strong> If you were a voice control user, when you wanted to activate a control, you would know the name of the control by the visible label.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Are there controls on the page with visible labels made up of human language text (not symbols) or images of text?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the control have an accessible name?</span>
@@ -68,10 +64,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/label-in-name
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the accessible name include the text that is presented visually?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/2503/25030101.html">2.5.3.1.1 Accessible name does not contain the visible label text.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2503.2503[25030101].link | prepend: baseurl }}">{{ site.data.2503.2503[25030101].name }}</a>.</span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/2503/25030102.html">2.5.3.1.2 Control with visible label does not have an accessible name.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2503.2503[25030102].link | prepend: baseurl }}">{{ site.data.2503.2503[25030102].name }}</a>.</span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -114,8 +110,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/label-in-name
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/2503/25030101.html">2.5.3.1.1 Accessible name does not contain the visible label text.</a> (High)</li>
-        <li><a href="/a11y/failure/2503/25030102.html">2.5.3.1.2 Control with visible label does not have an accessible name.</a> (High)</li>
+        <li><a href="{{ site.data.2503.2503[25030101].link | prepend: baseurl }}">{{ site.data.2503.2503[25030101].name }}</a>. (High)</li>
+        <li><a href="{{ site.data.2503.2503[25030102].link | prepend: baseurl }}">{{ site.data.2503.2503[25030102].name }}</a>. (High)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -127,7 +123,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/label-in-name
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G208">G208: Including the text of the visible label as part of the accessible name</a></li>
@@ -142,4 +138,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/label-in-name
     </ul>
 </div>
 
-    {% include 2503checkpoints.html %}
+    {% include checkpoints/2503checkpoints.html %}

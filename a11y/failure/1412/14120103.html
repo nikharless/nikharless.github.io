@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.4.12.1.2 Content overlaps when spacing is adjusted by the user
-current: /a11y/failure/1412/14120103.html
+current: 14120103
 root: WCAG 2.2
-scurl: /a11y/sc/1412.html
-sctitle: 1.4.12 Text Spacing
-cpurl: /a11y/checkpoint/141201.html
-cptitle: 1.4.12.1 Text Spacing
+base: base
+criterion: 1412
+checkpoint: 141201
 guideline: perceivable
-level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/text-spacing
+level: a
 ---
+{% assign currentpg=site.data.1412.1412[page.current] %}
+{% assign baseurl=site.data.1412.1412[page.base] %}
+{% assign sc=site.data.1412.1412[page.criterion] %}
+{% assign cp=site.data.1412.1412[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -70,7 +65,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/text-spacing
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F104">F104: Failure of Success Criterion 1.4.12 due to clipped or overlapped content when text spacing is adjusted</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C35">C35: Allowing for text spacing without wrapping</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C36">C36: Allowing for text spacing override</a></li>
@@ -80,4 +75,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/text-spacing
     </div>
 </div>
 
-    {% include 1412checkpoints.html %}
+    {% include checkpoints/1412checkpoints.html %}

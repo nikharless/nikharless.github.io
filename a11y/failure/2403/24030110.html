@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 2.4.3.1.10 PDF tab order does not follow document structure
-current: /a11y/failure/2403/24030110.html
+current: 24030110
 root: WCAG 2.2
-scurl: /a11y/sc/2403.html
-sctitle: 2.4.3 Focus Order
-cpurl: /a11y/checkpoint/240301.html
-cptitle: 2.4.3.1 Focus Order
+base: base
+criterion: 2403
+checkpoint: 240301
 guideline: operable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-order
 ---
+{% assign currentpg=site.data.2403.2403[page.current] %}
+{% assign baseurl=site.data.2403.2403[page.base] %}
+{% assign sc=site.data.2403.2403[page.criterion] %}
+{% assign cp=site.data.2403.2403[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -50,7 +45,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-order
                     <li>Right-click a page thumbnail or open the Options menu and select <strong>Page Properties</strong>.</li>
                     <li>In the Page Properties dialog, select the <strong>Tab Order</strong> tab.</li>
                     <li>Select the <strong>Use Document Structure</strong> radio button and activate the <strong>OK</strong> button.<br>
-                        <img src="/a11y/assets/images/f243aj-pdf-tab-order.png" alt="Screenshot of Adobe Acrobat Page Properties dialog with Use Document Structure selected" style="max-width: 480px;"></li>
+                        <img src="{{ baseurl }}/assets/images/f243aj-pdf-tab-order.png" alt="Screenshot of Adobe Acrobat Page Properties dialog with Use Document Structure selected" style="max-width: 480px;"></li>
                 </ol>
             </div>
     	</div>
@@ -68,7 +63,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-order
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF3">PDF3: Ensuring correct tab and reading order in PDF documents</a></li>
                     <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro) - TAB ORDER section</a></li>
                 </ul>
@@ -77,4 +72,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/focus-order
     </div>
 </div>
 
-    {% include 2403checkpoints.html %}
+    {% include checkpoints/2403checkpoints.html %}

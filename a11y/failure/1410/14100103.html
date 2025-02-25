@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.4.10.1.3 Content requires two-dimensional scrolling when resized to 320 CSS pixels wide
-current: /a11y/failure/1410/14100103.html
+current: 14100103
 root: WCAG 2.2
-scurl: /a11y/sc/1410.html
-sctitle: 1.4.10 Reflow
-cpurl: /a11y/checkpoint/141001.html
-cptitle: 1.4.10.1 Reflow
+base: base
+criterion: 1410
+checkpoint: 141001
 guideline: perceivable
-level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/reflow
+level: a
 ---
+{% assign currentpg=site.data.1410.1410[page.current] %}
+{% assign baseurl=site.data.1410.1410[page.base] %}
+{% assign sc=site.data.1410.1410[page.criterion] %}
+{% assign cp=site.data.1410.1410[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -60,7 +55,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/reflow
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C31">C31: Using CSS Flexbox to reflow content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C32">C32: Using media queries and grid CSS to reflow columns</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C33">C33: Allowing for Reflow with Long URLs and Strings of Text</a></li>
@@ -72,4 +67,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/reflow
     </div>
 </div>
 
-    {% include 1410checkpoints.html %}
+    {% include checkpoints/1410checkpoints.html %}

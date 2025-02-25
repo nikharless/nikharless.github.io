@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 1.4.5.1 Images of Text
-current: /a11y/checkpoint/140501.html
+current: 140501
 root: WCAG 2.2
-scurl: /a11y/sc/1405.html
-sctitle: 1.4.5 Images of Text
+base: base
+criterion: 1405
 guideline: perceivable
 level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
 ---
+{% assign currentpg=site.data.1405.1405[page.current] %}
+{% assign baseurl=site.data.1405.1405[page.base] %}
+{% assign sc=site.data.1405.1405[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -38,8 +34,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
                 <li>A photo of a car at an intersection with a stop sign visible in the background</li>
             </ul>
         </li>
-        <li>Decorative images: This checkpoint does not apply to decorative images. They should be tested against <a href="110104.html">checkpoint 1.1.1.4 Decorative Images (Text Alternative).</a></li>
-        <li>Redundant images: If the text in the image is available elsewhere on the page, then the image is redundant and should be tested against <a href="110104.html">checkpoint 1.1.1.4 Decorative Images (Text Alternative).</a></li>
+        <li>Decorative images: This checkpoint does not apply to decorative images. They should be tested against <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}</a>.</li>
+        <li>Redundant images: If the text in the image is available elsewhere on the page, then the image is redundant and should be tested against <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}</a>.</li>
     </ul>
 
     <h3>SVG Images</h3>
@@ -62,7 +58,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
     <div class="success"><strong>Success:</strong> If you had a visual impairment, when you encountered text, you would be able to enlarge or adjust it to make it more easy to read.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Are there any images of text on the page?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the image purely decorative or redundant?</span>
@@ -76,7 +72,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the presentation of the text essential (e.g., a logo)?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1405/14050101.html">1.4.5.1.1 Image of text is used where real text is possible.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1405.1405[14050101].link | prepend: baseurl }}">{{ site.data.1405.1405[14050101].name }}</a></span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -136,8 +132,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1405/14050101.html">1.4.5.1.1 Image of text is used where real text is possible.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1405/14050102.html">1.4.5.2.2 Pages of text in PDF are images.</a> (High)</li>
+        <li><a href="{{ site.data.1405.1405[14050101].link | prepend: baseurl }}">{{ site.data.1405.1405[14050101].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1405.1405[14050102].link | prepend: baseurl }}">{{ site.data.1405.1405[14050102].name }}</a> (High)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -149,7 +145,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -173,4 +169,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/images-of-text
     </ul>
 </div>
 
-    {% include 1405checkpoints.html %}
+    {% include checkpoints/1405checkpoints.html %}

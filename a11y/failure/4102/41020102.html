@@ -1,27 +1,22 @@
 ---
 layout: default
-title: Failure - 4.1.2.1.2 Form field does not have an accessible name
-current: /a11y/failure/4102/41020102.html
+current: 41020102
 root: WCAG 2.2
-scurl: /a11y/sc/4102.html
-sctitle: 4.1.2 Name, Role, Value
-cpurl: /a11y/checkpoint/410201.html
-cptitle: 4.1.2.1 Name, Role, Value
-guideline: robust
+base: base
+criterion: 4102
+checkpoint: 410201
+guideline: understandable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value
 css: 1411
 ---
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.4102.4102[page.base] %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+{% assign cp=site.data.4102.4102[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
         <div class="row">
@@ -152,7 +147,7 @@ css: 1411
                             <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
                         </div>
                     </div>
-                    <script src="/a11y/assets/js/checkbox.js"></script>
+                    <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
 
                     <div class="radioExample" role="radiogroup" aria-labelledby="grp">
                         <p id="grp">Types of emails</p>
@@ -167,7 +162,7 @@ css: 1411
                     </div>
 
                     <pre><code>&lt;div role="textbox" contenteditable="true" style="border: 1px solid black;"&gt;<strong>Email</strong>&lt;/div&gt;</code></pre>
-                <script src="/a11y/assets/js/radio.js"></script>
+                <script src="{{ baseurl }}/assets/js/radio.js"></script>
                 </div>
             </div>
         </div>
@@ -196,7 +191,7 @@ css: 1411
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F68">F68: Failure of Success Criterion 4.1.2 due to a user interface control not having a programmatically determined name</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G135">G135: Using the accessibility API features of a technology to expose names and notification of changes</a></li>
@@ -213,4 +208,4 @@ css: 1411
     </div>
 </div>
 
-    {% include 4102checkpoints.html %}
+    {% include checkpoints/4102checkpoints.html %}

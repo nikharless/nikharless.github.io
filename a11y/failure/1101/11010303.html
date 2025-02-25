@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.1.1.3.3 Complex image is missing a long text description.
-current: /a11y/failure/1101/11010303.html
+current: 11010303
 root: WCAG 2.2
-scurl: /a11y/sc/1101.html
-sctitle: 1.1.1 Non-text Content
-cpurl: /a11y/checkpoint/110103.html
-cptitle: 1.1.1.3 Complex Images (Text Alternative)
+base: base
+criterion: 1101
+checkpoint: 110103
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
+{% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign cp=site.data.1101.1101[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -47,7 +42,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <h2 class="{{ page.level }}">Examples</h2>
             <div>
                 <h3>Adjacent Long Description</h3>
-                <img src="/a11y/assets/images/11010303-arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" aria-describedby="description">
+                <img src="{{ baseurl }}/assets/images/11010303-arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" aria-describedby="description">
                 <p id="description">An oil painting of three Egyptian women in white dresses with six naked children in a Mediterranean landscape. The woman on the left is standing, holding a child on her shoulders, and another child stands in front of her pointing off the left side of the canvas. The woman in the center is also standing and holding a child on her shoulders while holding his hand on the top of her head. The woman on the right is sitting cross-legged on the ground breastfeeding a baby while 2 more children play behind her.</p>
                 <pre><code>&lt;img src="arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" <strong>aria-describedby="description"</strong>&gt;
 
@@ -55,7 +50,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
                 <h3><code>&lt;figure&gt;</code> and <code>&lt;figcaption&gt;</code> Semantic Association</h3>
                 <figure>
-                    <img src="/a11y/assets/images/11010303-pie-chart.png" alt="Pie chart showing number of issues filed by priority level, described below." style="max-width: 480px;">
+                    <img src="{{ baseurl }}/assets/images/11010303-pie-chart.png" alt="Pie chart showing number of issues filed by priority level, described below." style="max-width: 480px;">
                     <figcaption>
                         <p>This chart shows the break-out of issues filed for the Yoyodyne app.</p>
                         <table>
@@ -106,7 +101,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/tutorials/images/complex/">W3: Complex Images</a></li>
                     <li><a href="https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81">Writing Alt Text for Data Visualization</a></li>
                 </ul>
@@ -115,4 +110,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </div>
 </div>
 
-    {% include 1101checkpoints.html %}
+    {% include checkpoints/1101checkpoints.html %}

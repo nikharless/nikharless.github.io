@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.1.1.2.8 PDF image is missing Alternate Text.
-current: /a11y/failure/1101/11010208.html
+current: 11010208
 root: WCAG 2.2
-scurl: /a11y/sc/1101.html
-sctitle: 1.1.1 Non-text Content
-cpurl: /a11y/checkpoint/110102.html
-cptitle: 1.1.1.2 Meaningful Images (Text Alternative)
+base: base
+criterion: 1101
+checkpoint: 110102
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
+{% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign cp=site.data.1101.1101[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -46,7 +41,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <h2 class="{{ page.level }}">Example</h2>
             <div>
                 <h3>Image with Caption</h3>
-                <img src="/a11y/assets/images/11010208-clock.png" width="400" alt="Screenshot of Alternate Text dialog for an image of a clock">
+                <img src="{{ baseurl }}/assets/images/11010208-clock.png" width="400" alt="Screenshot of Alternate Text dialog for an image of a clock">
                 <p>This image has a &lt;Caption&gt; nested within the &lt;Figure&gt; tag. While this is the recommended structure, screen readers do not appear to read both the Alternate Text and the Caption, but the PDF fails the accessibility check if there is no Alternate Text. A workaround is to include the Caption text in the Alternate Text.</p>
             </div>
         </div>
@@ -58,7 +53,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF1">PDF1: Applying text alternatives to images with the Alt entry in PDF documents</a></li>
                     <li><a href="https://helpx.adobe.com/acrobat/using/editing-document-structure-content-tags.html#add_alternate_text_and_supplementary_information_to_tags">Add alternate text and supplementary information to tags</a></li>
                     <li><a href="https://www.pdf-accessible.com/wp-content/uploads/2015/01/making-PDF-accessible-Acrobat.pdf">Making PDF documents accessible with Adobe Acrobat Pro</a> (PDF)</li>
@@ -68,4 +63,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </div>
 </div>
 
-    {% include 1101checkpoints.html %}
+    {% include checkpoints/1101checkpoints.html %}

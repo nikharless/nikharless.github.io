@@ -1,31 +1,27 @@
 ---
 layout: default
-title: 1.1.1.4 Decorative Images (Text Alternative)
-current: /a11y/checkpoint/110104.html
+current: 110104
 root: WCAG 2.2
-scurl: /a11y/sc/1101.html
-sctitle: 1.1.1 Non-text Content
+base: base
+criterion: 1101
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
+{% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign sc=site.data.1101.1101[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <h3>Decorative Example</h3>
-    <img src="/a11y/assets/images/110104-fake-website.png" alt="Website with a decorative graphic of 3-D shapes">
+    <img src="{{ baseurl }}/assets/images/110104-fake-website.png" alt="Website with a decorative graphic of 3-D shapes">
     <p>The image of 3-D shapes is purely decorative and must be hidden from assistive technology.</p>
 
     <h3>Redundant Example</h3>
-    <img src="/a11y/assets/images/110104-bates-pettet.jpg" alt="">
+    <img src="{{ baseurl }}/assets/images/110104-bates-pettet.jpg" alt="">
     <p style="font-weight: bold;">Alan Bates and Joanna Pettet on Broadway in "Poor Richard"</p>
     <p>This image has adjacent text describing its content. Repeating this in the alt text would be redundant, so <code>alt=""</code> is appropriate here.</p>
 
@@ -52,7 +48,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </ul>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Are there images on the page which are purely decorative?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the image an <code>&lt;img&gt;</code> element?</span>
@@ -66,7 +62,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the <code>&lt;img&gt;</code> element have an <code>aria-hidden="true"</code> property?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1101/11010402.html">1.1.1.4.2 Decorative image is not hidden from screen readers.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010402].link | prepend: baseurl }}">{{ site.data.1101.1101[11010402].name }}</a></span></li>
                                             </ul>
                                         </li>
                                         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -75,7 +71,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1101/11010401.html">1.1.1.4.1 Decorative &lt;img&gt; does not have null alt attribute</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010401].link | prepend: baseurl }}">{{ site.data.1101.1101[11010401].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image hidden from assistive technologies?</span>
@@ -83,11 +79,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the image have a text alternative?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1101/11010403.html">1.1.1.4.3 Decorative image has a text alternative.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010403].link | prepend: baseurl }}">{{ site.data.1101.1101[11010403].name }}</a></span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the image have a <code>title</code> attribute?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1101/11010405.html">1.1.1.4.5 Decorative image has a <code>title</code> attribute.</a></span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1101/11010402.html">1.1.1.4.2 Decorative image is not hidden from screen readers.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010405].link | prepend: baseurl }}">{{ site.data.1101.1101[11010405].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010402].link | prepend: baseurl }}">{{ site.data.1101.1101[11010402].name }}</a></span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -105,11 +101,11 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
             <ul role="group">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image have a text alternative?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/1101/11010404.html">1.1.1.4.4 Redundant image is not hidden from screen readers.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010404].link | prepend: baseurl }}">{{ site.data.1101.1101[11010404].name }}</a></span></li>
                         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="110104.html">1.1.1.4 Meaningful Images (Text Alternative)</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}</a></span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -164,12 +160,12 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1101/11010401.html">1.1.1.4.1 Decorative <code>&lt;img&gt;</code> does not have null <code>alt</code> attribute.</a> (Low)</li>
-        <li><a href="/a11y/failure/1101/11010402.html">1.1.1.4.2 Decorative image is not hidden from screen readers.</a> (Low)</li>
-        <li><a href="/a11y/failure/1101/11010403.html">1.1.1.4.3 Decorative image has a text alternative.</a> (Low)</li>
-        <li><a href="/a11y/failure/1101/11010404.html">1.1.1.4.4 Redundant image is not hidden from screen readers.</a> (Low)</li>
-        <li><a href="/a11y/failure/1101/11010405.html">1.1.1.4.5 Decorative image has a <code>title</code> attribute.</a> (Low)</li>
-        <li><a href="/a11y/failure/1101/11010406.html">1.1.1.4.6 PDF Artifact is tagged as real content.</a> (Low)</li>
+        <li><a href="{{ site.data.1101.1101[11010401].link | prepend: baseurl }}">{{ site.data.1101.1101[11010401].name }}</a> (Low)</li>
+        <li><a href="{{ site.data.1101.1101[11010402].link | prepend: baseurl }}">{{ site.data.1101.1101[11010402].name }}</a> (Low)</li>
+        <li><a href="{{ site.data.1101.1101[11010403].link | prepend: baseurl }}">{{ site.data.1101.1101[11010403].name }}</a> (Low)</li>
+        <li><a href="{{ site.data.1101.1101[11010404].link | prepend: baseurl }}">{{ site.data.1101.1101[11010404].name }}</a> (Low)</li>
+        <li><a href="{{ site.data.1101.1101[11010405].link | prepend: baseurl }}">{{ site.data.1101.1101[11010405].name }}</a> (Low)</li>
+        <li><a href="{{ site.data.1101.1101[11010406].link | prepend: baseurl }}">{{ site.data.1101.1101[11010406].name }}</a> (Low)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -197,7 +193,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
         <li>Related Techniques:
             <ul>
                 <li>HTML:
@@ -229,4 +225,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </ul>
 </div>
 
-    {% include 1101checkpoints.html %}
+    {% include checkpoints/1101checkpoints.html %}

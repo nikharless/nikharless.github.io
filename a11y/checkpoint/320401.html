@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 3.2.4.1 Consistent Identification
-current: /a11y/checkpoint/320401.html
+current: 320401
 root: WCAG 2.2
-scurl: /a11y/sc/3204.html
-sctitle: 3.2.4 Consistent Identification
-guideline: understandable
-level: aa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification
+base: base
+criterion: 3204
+guideline: operable
+level: a
 ---
+{% assign currentpg=site.data.3204.3204[page.current] %}
+{% assign baseurl=site.data.3204.3204[page.base] %}
+{% assign sc=site.data.3204.3204[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
     <p><em>Consistent</em> doesn't have to mean <em>identical</em>. An arrow icon might be named "Go to page 2" on one page and "Go to page 3" on another. This is consistent.</p>
@@ -44,7 +40,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification
     <div class="success"><strong>Success:</strong> If you were a user with a disability, when components with the same function appear on multiple web pages in a set, they are named consistently each time.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/js/tree.js"></script>
     <h3 id="test1">Are there components with the same function that are repeated across multiple web pages in a set of pages?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are they identified consistently each time they appear?</span>
@@ -52,14 +48,14 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are they form controls?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/3204/32040101.html">3.2.4.1.1 Form control with same function is named or labeled differently between pages.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3204.3204[32040101].link | prepend: baseurl }}">{{ site.data.3204.3204[32040101].name }}</a>.</span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are they links?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/3204/32040102.html">3.2.4.1.2 Link with same target is named or labeled differently between pages.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3204.3204[32040102].link | prepend: baseurl }}">{{ site.data.3204.3204[32040102].name }}</a>.</span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are they icons?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/3204/32040103.html">3.2.4.1.3 Icon with same function is named or labeled differently between pages.</a></span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/3204/32040104.html">3.2.4.1.4 Component with same function is named or labeled differently between pages.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3204.3204[32040103].link | prepend: baseurl }}">{{ site.data.3204.3204[32040103].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3204.3204[32040104].link | prepend: baseurl }}">{{ site.data.3204.3204[32040104].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -92,10 +88,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/3204/32040101.html">3.2.4.1.1 Form control with same function is named or labeled differently between pages.</a></li>
-        <li><a href="/a11y/failure/3204/32040102.html">3.2.4.1.2 Link with same target is named or labeled differently between pages.</a></li>
-        <li><a href="/a11y/failure/3204/32040103.html">3.2.4.1.3 Icon with same purpose is named differently between pages.</a></li>
-        <li><a href="/a11y/failure/3204/32040104.html">3.2.4.1.4 Component with same function is named or labeled differently between pages.</a></li>
+        <li><a href="{{ site.data.3204.3204[32040101].link | prepend: baseurl }}">{{ site.data.3204.3204[32040101].name }}</a>.</li>
+        <li><a href="{{ site.data.3204.3204[32040102].link | prepend: baseurl }}">{{ site.data.3204.3204[32040102].name }}</a>.</li>
+        <li><a href="{{ site.data.3204.3204[32040103].link | prepend: baseurl }}">{{ site.data.3204.3204[32040103].name }}</a>.</li>
+        <li><a href="{{ site.data.3204.3204[32040104].link | prepend: baseurl }}">{{ site.data.3204.3204[32040104].name }}</a>.</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -106,7 +102,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>General:
             <ul>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G197">G197: Using labels, names, and text alternatives consistently for content that has the same functionality</a></li>
@@ -120,4 +116,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification
     </ul>
 </div>
 
-    {% include 3204checkpoints.html %}
+    {% include checkpoints/3204checkpoints.html %}

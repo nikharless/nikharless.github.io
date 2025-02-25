@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 1.4.6.1 Regular Text Color Contrast (Enhanced)
-current: /a11y/checkpoint/140601.html
+current: 140601
 root: WCAG 2.2
-scurl: /a11y/sc/1406.html
-sctitle: 1.4.6 Contrast (Enhanced)
+base: base
+criterion: 1406
 guideline: perceivable
 level: aaa
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced
 ---
+{% assign currentpg=site.data.1406.1406[page.current] %}
+{% assign baseurl=site.data.1406.1406[page.base] %}
+{% assign sc=site.data.1406.1406[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -40,7 +36,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced
     <div class="success"><strong>Success:</strong> If you had a visual impairment, when you viewed text, you would be able to see it well enough to read it.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Does the page have text that is smaller than 18pt (24px) or 14pt (19px) bold?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the text background an image or gradient?</span>
@@ -48,14 +44,14 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes;</strong> Does the text have a contrast ratio of at least 7:1 with the area of the background with the least contrast?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1406/14060103.html">1.4.6.1.3 Regular text over an image or gradient does not have at least a 7:1 contrast ratio with the background on the area of least contrast.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1406.1406[14060103].link | prepend: baseurl }}">{{ site.data.1406.1406[14060103].name }}</a></span></li>
                     </ul>
                 <li role="treeitem" aria-expanded="false"><span><strong>No;</strong> Is the text placeholder text?</span>
                     <ul role="group">
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the placeholder text have a contrast ratio of at least 7:1 with its background?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes;</strong> PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="/a11y/failure/1406/14060104.html">1.4.6.1.4 Regular placeholder text does not have at least a 7:1 contrast ratio with the background.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="{{ site.data.1406.1406[14060104].link | prepend: baseurl }}">{{ site.data.1406.1406[14060104].name }}</a></span></li>
                             </ul>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the text a link?</span>
                             <ul role="group">
@@ -64,16 +60,16 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text in the hover and focus states have a contrast ratio of at least 7:1 with its background?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1406/14060102.html">1.4.6.1.2 Regular link text does not have at least a 7:1 contrast ratio with the background on hover or focus.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1406.1406[14060102].link | prepend: baseurl }}">{{ site.data.1406.1406[14060102].name }}</a></span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1406/14060101.html">1.4.6.1.1 Regular text does not have at least a 7:1 contrast ratio with the background.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1406.1406[14060101].link | prepend: baseurl }}">{{ site.data.1406.1406[14060101].name }}</a></span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the text have a contrast ratio of at least 7:1 with its background?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1406/14060101.html">1.4.6.1.1 Regular text does not have at least a 7:1 contrast ratio with the background.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1406.1406[14060101].link | prepend: baseurl }}">{{ site.data.1406.1406[14060101].name }}</a></span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -130,10 +126,10 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1406/14060101.html">1.4.6.1.1 Regular text does not have at least a 7:1 contrast ratio with the background.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1406/14060102.html">1.4.6.1.2 Regular link text does not have at least a 7:1 contrast ratio with the background on hover or focus.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1406/14060103.html">1.4.6.1.3 Regular text over an image or gradient does not have at least a 7:1 contrast ratio with the background on the area of least contrast.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1406/14060104.html">1.4.6.1.4 Regular placeholder text does not have at least a 7:1 contrast ratio with the background.</a> (Medium)</li>
+        <li><a href="{{ site.data.1406.1406[14060101].link | prepend: baseurl }}">{{ site.data.1406.1406[14060101].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1406.1406[14060102].link | prepend: baseurl }}">{{ site.data.1406.1406[14060102].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1406.1406[14060103].link | prepend: baseurl }}">{{ site.data.1406.1406[14060103].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1406.1406[14060104].link | prepend: baseurl }}">{{ site.data.1406.1406[14060104].name }}</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -160,7 +156,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -182,4 +178,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced
     </ul>
 </div>
 
-    {% include 1406checkpoints.html %}
+    {% include checkpoints/1406checkpoints.html %}

@@ -1,26 +1,21 @@
 ---
 layout: default
-title: Failure - 1.2.1.1.4 Existing transcript does not include important sound effects
-current: /a11y/failure/1201/12010104.html
+current: 12010104
 root: WCAG 2.2
-scurl: /a11y/sc/1201.html
-sctitle: 1.2.1 Audio-only and Video-only (Prerecorded)
-cpurl: /a11y/checkpoint/120104.html
-cptitle: 1.2.1.4 Text Transcript (Prerecorded Audio-only)
+base: base
+criterion: 1201
+checkpoint: 120101
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-prerecorded
 ---
+{% assign currentpg=site.data.1201.1201[page.current] %}
+{% assign baseurl=site.data.1201.1201[page.base] %}
+{% assign sc=site.data.1201.1201[page.criterion] %}
+{% assign cp=site.data.1201.1201[page.checkpoint] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.cpurl }}">{{ page.cptitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li> 
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
@@ -60,7 +55,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-p
             <h2 class="{{ page.level }}">References</h2>
             <div>
                 <ul>
-                    <li><a href="{{ page.w3scurl }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F67">F67: Failure of Success Criterion 1.1.1 and 1.2.1 due to providing long descriptions for non-text content that does not serve the same purpose or does not present the same information</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G158">G158: Providing an alternative for time-based media for audio-only content</a></li>
                     <li><a href="https://www.w3.org/WAI/media/av/transcripts/">W3: Transcripts</a></li>
@@ -70,4 +65,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/audio-only-and-video-only-p
     </div>
 </div>
 
-    {% include 1201checkpoints.html %}
+    {% include checkpoints/1201checkpoints.html %}

@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 2.1.1.2 Shortcut Keys
-current: /a11y/checkpoint/210102.html
+current: 210102
 root: WCAG 2.2
-scurl: /a11y/sc/2101.html
-sctitle: 2.1.1 Keyboard
+base: base
+criterion: 2101
 guideline: operable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
 ---
+{% assign currentpg=site.data.2101.2101[page.current] %}
+{% assign baseurl=site.data.2101.2101[page.base] %}
+{% assign sc=site.data.2101.2101[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -35,16 +31,16 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
     <div class="success"><strong>Success:</strong> If you used a screen reader along with the keyboard, when you attempt to use the functionality on the page, it does not conflict with screen reader shortcuts.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Does the page contain any page-specified shortcut keys and/or <code>accesskey</code> attributes?</h3>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the shortcut key and/or <code>accesskey</code> attribute conflict with browser or screen reader preset keys/shortcuts?</span>
             <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="/a11y/failure/2101/21010201.html">2.1.1.2.1 Keyboard shortcut conflicts with user agent or assistive technology shortcut.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010201].link | prepend: baseurl }}">{{ site.data.2101.2101[21010201].name }}</a>.</span></li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; If it's an <code>accesskey</code>, does the attribute have a unique value?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/2101/21010202.html">2.1.1.2.2 <code>accesskey</code> attribute does not have a unique value.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010202].link | prepend: baseurl }}">{{ site.data.2101.2101[21010202].name }}</a>.</span></li>
                     </ul>
                 </li>
             </ul>
@@ -66,8 +62,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/2101/21010201.html">2.1.1.2.1 Keyboard shortcut conflicts with user agent or assistive technology shortcut.</a> (Medium)</li>
-        <li><a href="/a11y/failure/2101/21010202.html">2.1.1.2.2 <code>accesskey</code> attribute does not have a unique value.</a> (Low)</li>
+        <li><a href="{{ site.data.2101.2101[21010201].link | prepend: baseurl }}">{{ site.data.2101.2101[21010201].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.2101.2101[21010202].link | prepend: baseurl }}">{{ site.data.2101.2101[21010202].name }}</a> (Low)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -79,7 +75,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
     </ul>
     <h3>Additional Information</h3>
     <ul>
@@ -88,4 +84,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/keyboard
     </ul>
 </div>
 
-    {% include 2101checkpoints.html %}
+    {% include checkpoints/2101checkpoints.html %}

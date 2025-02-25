@@ -1,23 +1,19 @@
 ---
 layout: default
-title: 1.1.1.7 Text as Non-Text Content (Text Alternative)
-current: /a11y/checkpoint/110107.html
+current: 110107
 root: WCAG 2.2
-scurl: /a11y/sc/1101.html
-sctitle: 1.1.1 Non-text Content
+base: base
+criterion: 1101
 guideline: perceivable
 level: a
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 ---
+{% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign sc=site.data.1101.1101[page.criterion] %}
+
 <div class="cpcontent {{ page.level }}link">
-    <h1>{{ page.title }}</h1>
-    <nav aria-label="Breadcrumb" class="breadcrumb {{ page.level }}lite">
-        <ol>
-            <li><a href="/a11y/index.html">{{ page.root }}</a></li>
-            <li><a href="{{ page.scurl }}">{{ page.sctitle }}</a></li>
-            <li><a href="{{ page.current }}" aria-current="page">{{ page.title }}</a> - Level {{ page.level | upcase }}</li>
-        </ol>
-    </nav>
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-checkpoint.html %}
 
     <h2>Overview</h2>
 
@@ -41,14 +37,14 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     <div class="success"><strong>Success:</strong> If you could not see the text, when you read it with a screen reader, you would understand the intended meaning.</div>
 
     <h2>Testing Logic</h2>
-    <script src="/a11y/assets/js/tree.js"></script>
+    <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Are there text look-alike characters on the page?</h3>
     <p><em>For example, the characters <code>U+0033</code> (or <code>&amp;#x0033;</code>) and <code>U+04E0</code> (or <code>&amp;#x04E0</code>) both look like the number "3", but the latter is a letter from the Cyrillic alphabet and will not be read as a "3".</em></p>
     <ul role="tree" aria-labelledby="test1">
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the characters have a text alternative which represents their meaning?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1101/11010701.html">1.1.1.7.1 Text look-alike characters do not have a text alternative.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010701].link | prepend: baseurl }}">{{ site.data.1101.1101[11010701].name }}</a></span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -59,7 +55,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text image have a text alternative which describes its meaning?</span>
             <ul role="group">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="/a11y/failure/1101/11010702.html">1.1.1.7.2 Text representing image does not have a text alternative.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010702].link | prepend: baseurl }}">{{ site.data.1101.1101[11010702].name }}</a></span></li>
             </ul>
         </li>
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -79,8 +75,8 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
 
     <h2>Failures</h2>
     <ul>
-        <li><a href="/a11y/failure/1101/11010701.html">1.1.1.7.1 Text look-alike characters do not have a text alternative.</a> (Medium)</li>
-        <li><a href="/a11y/failure/1101/11010702.html">1.1.1.7.2 Text representing image does not have a text alternative.</a> (Medium)</li>
+        <li><a href="{{ site.data.1101.1101[11010701].link | prepend: baseurl }}">{{ site.data.1101.1101[11010701].name }}</a> (Medium)</li>
+        <li><a href="{{ site.data.1101.1101[11010702].link | prepend: baseurl }}">{{ site.data.1101.1101[11010702].name }}</a> (Medium)</li>
     </ul>
 
     <h2>Testing Tools</h2>
@@ -93,7 +89,7 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
-        <li><a href="{{ page.w3scurl }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
+        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
         <li>Related Techniques:
             <ul>
                 <li>General:
@@ -116,4 +112,4 @@ w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/non-text-content
     </ul>
 </div>
 
-    {% include 1101checkpoints.html %}
+    {% include checkpoints/1101checkpoints.html %}
