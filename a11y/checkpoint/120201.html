@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 120201
-root: WCAG 2.2
-base: base
 criterion: 1202
-guideline: perceivable
-level: a
 ---
 {% assign currentpg=site.data.1202.1202[page.current] %}
-{% assign baseurl=site.data.1202.1202[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1202.1202[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -131,6 +129,7 @@ level: a
             <li><a href="https://subtitleo.com/blog/guide-to-video-captions/">SubtitleO: The Ultimate Guide to Video Captions</a></li>
             <li><a href="https://ableplayer.github.io/ableplayer/">Able Player</a></li>
         </ul>
+    </div>
 </div>
 
     {% include checkpoints/1202checkpoints.html %}

@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 130501
-root: WCAG 2.2
-base: base
 criterion: 1305
-guideline: perceivable
-level: aa
 ---
 {% assign currentpg=site.data.1305.1305[page.current] %}
-{% assign baseurl=site.data.1305.1305[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1305.1305[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -98,6 +96,7 @@ level: aa
     <ul>
         <li><a href="https://www.w3.org/TR/WCAG22/#input-purposes">W3: Input Purposes for User Interface Components</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/1305checkpoints.html %}

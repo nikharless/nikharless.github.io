@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 240801
-root: WCAG 2.2
-base: base
 criterion: 2408
-guideline: operable
-level: a
 ---
 {% assign currentpg=site.data.2408.2408[page.current] %}
-{% assign baseurl=site.data.2408.2408[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2408.2408[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -83,6 +81,7 @@ level: a
     <ul>
         <li><a href="https://www.standards-schmandards.com/2004/title-text-separators/">Standards Schmandards: The Sound of the Accessible Title Text Separator</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/2408checkpoints.html %}

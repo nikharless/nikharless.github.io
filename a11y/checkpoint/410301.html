@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 410301
-root: WCAG 2.2
-base: base
 criterion: 4103
-guideline: operable
-level: a
 ---
 {% assign currentpg=site.data.4103.4103[page.current] %}
-{% assign baseurl=site.data.4103.4103[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.4103.4103[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -119,6 +117,7 @@ level: a
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a></li>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA22">ARIA22: Using role=status to present status messages</a></li>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA23">ARIA23: Using role=log to identify sequential information updates</a></li>
+            </ul>
         </li>
      </ul>
 
@@ -126,6 +125,7 @@ level: a
     <ul>
         
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/4103checkpoints.html %}

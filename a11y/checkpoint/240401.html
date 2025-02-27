@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 240401
-root: WCAG 2.2
-base: base
 criterion: 2404
-guideline: operable
-level: a
 ---
 {% assign currentpg=site.data.2404.2404[page.current] %}
-{% assign baseurl=site.data.2404.2404[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2404.2404[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -191,6 +189,7 @@ level: a
         <li><a href="https://webaim.org/techniques/hypertext/hypertext_links">WebAIM: Links and Hypertext: Hypertext</a></li>
         <li><a href="https://webaim.org/techniques/css/invisiblecontent/">WebAIM: CSS in Action: Invisible Content Just for Screen Reader Users</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/2404checkpoints.html %}

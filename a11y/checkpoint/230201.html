@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 230201
-root: WCAG 2.2
-base: base
 criterion: 2302
-guideline: operable
-level: a
 ---
 {% assign currentpg=site.data.2302.2302[page.current] %}
-{% assign baseurl=site.data.2302.2302[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2302.2302[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -76,6 +74,7 @@ level: a
     <ul>
         <li><a href="https://trace.umd.edu/photosensitive-epilepsy-analysis-tool-peat-user-guide/">Photosensitive Epilepsy Analysis Tool (PEAT) User Guide</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/2302checkpoints.html %}

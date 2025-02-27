@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 140401
-root: WCAG 2.2
-base: base
 criterion: 1404
-guideline: perceivable
-level: aa
 ---
 {% assign currentpg=site.data.1404.1404[page.current] %}
-{% assign baseurl=site.data.1404.1404[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1404.1404[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -201,6 +199,7 @@ level: aa
     <ul>
         <li><a href="https://www.w3schools.com/accessibility/accessibility_page_zoom.php">W3: Accessibility Page Zoom</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/1404checkpoints.html %}

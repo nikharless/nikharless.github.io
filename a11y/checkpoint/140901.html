@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 140901
-root: WCAG 2.2
-base: base
 criterion: 1409
-guideline: perceivable
-level: aaa
 ---
 {% assign currentpg=site.data.1409.1409[page.current] %}
-{% assign baseurl=site.data.1409.1409[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1409.1409[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -156,6 +154,7 @@ level: aaa
             </ul>
         </li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/1409checkpoints.html %}

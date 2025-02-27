@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 250501
-root: WCAG 2.2
-base: base
 criterion: 2505
-guideline: operable
-level: a
 ---
 {% assign currentpg=site.data.2505.2505[page.current] %}
-{% assign baseurl=site.data.2505.2505[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2505.2505[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -121,6 +119,7 @@ level: a
         <li><a href="https://learn.microsoft.com/en-us/windows/apps/design/input/guidelines-for-targeting">Microsoft: Guidelines for touch targets</a></li>
         <li><a href="https://material.io/design/layout/spacing-methods.html#touch-targets">Google Material Design Touch targets</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/2505checkpoints.html %}

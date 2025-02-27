@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 130201
-root: WCAG 2.2
-base: base
 criterion: 1302
-guideline: perceivable
-level: a
 ---
 {% assign currentpg=site.data.1302.1302[page.current] %}
-{% assign baseurl=site.data.1302.1302[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1302.1302[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -222,6 +220,7 @@ level: a
         <li><a href="https://www.boia.org/blog/what-does-meaningful-sequence-mean-for-web-accessibility">What Does "Meaningful Sequence" Mean for Web Accessibility?</a></li>
         <li><a href="https://helpx.adobe.com/acrobat/using/touch-reading-order-tool-pdfs.html">Adobe: Reading Order tool for PDFS (Acrobat Pro)</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/1302checkpoints.html %}

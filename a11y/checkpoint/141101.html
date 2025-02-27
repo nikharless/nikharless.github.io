@@ -1,18 +1,18 @@
 ---
 layout: default
 current: 141101
-root: WCAG 2.2
-base: base
 criterion: 1411
 guideline: perceivable
 level: aa
 css: 1411
 ---
 {% assign currentpg=site.data.1411.1411[page.current] %}
-{% assign baseurl=site.data.1411.1411[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1411.1411[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -224,6 +224,7 @@ css: 1411
         <li><a href="https://webaim.org/articles/contrast/">WebAIM: Contrast and Color Accessibility</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast">MDN: Color contrast</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/1411checkpoints.html %}

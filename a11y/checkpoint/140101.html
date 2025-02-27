@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 140101
-root: WCAG 2.2
-base: base
 criterion: 1401
-guideline: perceivable
-level: a
 ---
 {% assign currentpg=site.data.1401.1401[page.current] %}
-{% assign baseurl=site.data.1401.1401[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1401.1401[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -121,6 +119,7 @@ level: a
         <li><a href="https://www.w3schools.com/accessibility/accessibility_color_meaning.php">W3: Accessibility Color Alone as Meaning</a></li>
         <li><a href="https://learn.levelaccess.com/l/487581/2018-04-18/28w48t">LevelAccess: Accessibility Basics Webinar #2 - Use of Color</a> (0:00 - 25:00)</li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/1401checkpoints.html %}

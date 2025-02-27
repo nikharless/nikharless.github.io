@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 210102
-root: WCAG 2.2
-base: base
 criterion: 2101
-guideline: operable
-level: a
 ---
 {% assign currentpg=site.data.2101.2101[page.current] %}
-{% assign baseurl=site.data.2101.2101[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2101.2101[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -82,6 +80,7 @@ level: a
         <li><a href="https://pauljadam.com/demos/accesskey.html">Paul J Adam: Accesskey Accessibility Demo</a></li>
         <li><a href="https://www.w3.org/TR/html401/interact/forms.html#adef-accesskey">W3: Forms: Access keys</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/2101checkpoints.html %}

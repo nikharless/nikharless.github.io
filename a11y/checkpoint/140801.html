@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 140801
-root: WCAG 2.2
-base: base
 criterion: 1408
-guideline: perceivable
-level: aaa
 ---
 {% assign currentpg=site.data.1408.1408[page.current] %}
-{% assign baseurl=site.data.1408.1408[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1408.1408[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -98,6 +96,7 @@ level: aaa
         <li><a href="https://support.mozilla.org/en-US/kb/change-fonts-and-colors-websites-use">Mozilla: Change the fonts and colors websites use</a></li>
         <li><a href="https://www.makeuseof.com/edge-chrome-firefox-change-website-background-color/">How to Change Website Background Colors in Edge, Chrome, and Firefox</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/1408checkpoints.html %}

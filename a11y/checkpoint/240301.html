@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 240301
-root: WCAG 2.2
-base: base
 criterion: 2403
-guideline: operable
-level: a
 ---
 {% assign currentpg=site.data.2403.2403[page.current] %}
-{% assign baseurl=site.data.2403.2403[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2403.2403[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -178,6 +176,7 @@ level: a
         <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro) - TAB ORDER section</a></li>
         <li><a href="https://www.deque.com/blog/aria-modal-alert-dialogs-a11y-support-series-part-2/">Deque: How to Build WAI-ARIA Modal Alert Dialogs: A11y Support Series</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/2403checkpoints.html %}

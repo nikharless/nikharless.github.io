@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 130601
-root: WCAG 2.2
-base: base
 criterion: 1306
-guideline: perceivable
-level: aaa
 ---
 {% assign currentpg=site.data.1306.1306[page.current] %}
-{% assign baseurl=site.data.1306.1306[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1306.1306[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -75,6 +73,7 @@ level: aaa
     <ul>
         <li><a href="https://www.youtube.com/watch?v=b9bOQDwVKJ0">webforeveryone: How to implement WCAG 2.1 Success Criteria 1.3.6 Identify Purpose in code with examples</a> (YouTube)</li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/1306checkpoints.html %}

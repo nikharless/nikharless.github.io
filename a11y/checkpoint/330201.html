@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 330201
-root: WCAG 2.2
-base: base
 criterion: 3302
-guideline: operable
-level: a
 ---
 {% assign currentpg=site.data.3302.3302[page.current] %}
-{% assign baseurl=site.data.3302.3302[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.3302.3302[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -153,6 +151,7 @@ level: a
         <li><a href="https://www.w3.org/WAI/tutorials/forms/instructions/">W3C: Form Instructions</a></li>
         <li><a href="https://www.digitala11y.com/anatomy-of-accessible-forms-placeholder-is-a-mirage/">DigitalA11y: Can Placeholder Make a Difference in Form Accessibility?</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/3302checkpoints.html %}

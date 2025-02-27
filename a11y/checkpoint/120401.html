@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 120401
-root: WCAG 2.2
-base: base
 criterion: 1204
-guideline: perceivable
-level: aa
 ---
 {% assign currentpg=site.data.1204.1204[page.current] %}
-{% assign baseurl=site.data.1204.1204[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1204.1204[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -123,6 +121,7 @@ level: aa
         <li><a href="https://blogs.connectusers.com/connectsupport/downloading-and-running-a-closed-captioning-pod-in-a-connect-meeting/">Adobe: Downloading and Running a Closed-captioning Pod in a Connect Meeting</a></li>
         <li><a href="https://support.microsoft.com/en-us/office/accessibility-tools-for-microsoft-teams-2d4009e7-1300-4766-87e8-7a217496c3d5?ui=en-us&rs=en-us&ad=us">Microsoft: Accessibility tools for Microsoft Teams</a></li>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/1204checkpoints.html %}

@@ -1,17 +1,15 @@
 ---
 layout: default
 current: 330701
-root: WCAG 2.2
-base: base
 criterion: 3307
-guideline: operable
-level: a
 ---
 {% assign currentpg=site.data.3307.3307[page.current] %}
-{% assign baseurl=site.data.3307.3307[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.3307.3307[page.criterion] %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
@@ -95,6 +93,7 @@ level: a
     <h3>Additional Information</h3>
     <ul>
     </ul>
+    </div>
 </div>
 
     {% include checkpoints/3307checkpoints.html %}
