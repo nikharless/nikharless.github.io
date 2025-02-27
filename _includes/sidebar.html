@@ -10,19 +10,19 @@
 		<h3><button type="button" aria-expanded="false" class="accordion-trigger {{ sc.level }} {% if sc.guideline == "operable" %}glselect{% endif %}" aria-controls="sect2" id="accordion2id"><span class="accordion-title">Operable</span></button></h3>
 		<div id="sect2" role="region" aria-labelledby="accordion2id" class="accordion-panel" hidden>
 				{% for item in site.data.operable %}
-					<a href="{{ item.link | prepend: baseurl }}" {% if currentpg.link == item.link or currentpg.link == item.parent %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
+					<a href="{{ item.link | prepend: baseurl }}" {% if currentpg.link == item.link | prepend: baseurl or currentpg.link == item.parent %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
 				{% endfor %}
 		</div>
 		<h3><button type="button" aria-expanded="false" class="accordion-trigger {{ sc.level }} {% if sc.guideline == "understandable" %}glselect{% endif %}" aria-controls="sect3" id="accordion3id"><span class="accordion-title">Understandable</span></button></h3>
 		<div id="sect3" role="region" aria-labelledby="accordion3id" class="accordion-panel" hidden>
 				{% for item in site.data.understandable %}
-					<a href="{{ item.link | prepend: baseurl }}" {% if currentpg.link == item.link or currentpg.link == item.parent %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
+					<a href="{{ item.link | prepend: baseurl }}" {% if currentpg.link == item.link | prepend: baseurl or currentpg.link == item.parent %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
 				{% endfor %}
 		</div>
 		<h3><button type="button" aria-expanded="false" class="accordion-trigger {{ sc.level }} {% if sc.guideline == "robust" %}glselect{% endif %}" aria-controls="sect4" id="accordion4id"><span class="accordion-title">Robust</span></button></h3>
 		<div id="sect4" role="region" aria-labelledby="accordion4id" class="accordion-panel" hidden>
 				{% for item in site.data.robust %}
-					<a href="{{ item.link | prepend: baseurl }}" {% if currentpg.link == item.link or currentpg.link == item.parent %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
+					<a href="{{ item.link | prepend: baseurl }}" {% if currentpg.link == item.link | prepend: baseurl or currentpg.link == item.parent %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
 				{% endfor %}
 		</div>
 	</div>
