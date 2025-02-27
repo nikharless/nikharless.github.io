@@ -1,29 +1,31 @@
 ---
 layout: default
 current: 1407
-level: aaa
-guideline: perceivable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.1407.1407[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>For prerecorded audio-only content that (1) contains primarily speech in the foreground, (2) is not an audio CAPTCHA or audio logo, and (3) is not vocalization intended to be primarily musical expression such as singing or rapping, at least one of the following is true:</p>
-        <dl>
-            <dt><strong>No Background</strong></dt>
-            <dd>The audio does not contain background sounds.</dd>
-            <dt><strong>Turn Off</strong></dt>
-            <dd>The background sounds can be turned off.</dd>
-            <dt><strong>20 dB</strong></dt>
-            <dd>The background sounds are at least 20 decibels lower than the foreground speech content, with the exception of occasional sounds that last for only one or two seconds.<br>
-                <strong>Note</strong>: Per the definition of "decibel," background sound that meets this requirement will be approximately four times quieter than the foreground speech content.</dd>
-        </dl>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>For prerecorded audio-only content that (1) contains primarily speech in the foreground, (2) is not an audio CAPTCHA or audio logo, and (3) is not vocalization intended to be primarily musical expression such as singing or rapping, at least one of the following is true:</p>
+            <dl>
+                <dt><strong>No Background</strong></dt>
+                <dd>The audio does not contain background sounds.</dd>
+                <dt><strong>Turn Off</strong></dt>
+                <dd>The background sounds can be turned off.</dd>
+                <dt><strong>20 dB</strong></dt>
+                <dd>The background sounds are at least 20 decibels lower than the foreground speech content, with the exception of occasional sounds that last for only one or two seconds.<br>
+                    <strong>Note</strong>: Per the definition of "decibel," background sound that meets this requirement will be approximately four times quieter than the foreground speech content.</dd>
+            </dl>
+        </div>
+
+        <h2>Training</h2>
     </div>
-
-    <h2>Training</h2>
 </div>
     {% include checkpoints/1407checkpoints.html %}

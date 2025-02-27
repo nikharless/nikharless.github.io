@@ -1,24 +1,26 @@
 ---
 layout: default
 current: 3303
-level: aa
-guideline: understandable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.3303.3303[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>If an input error is automatically detected and suggestions for correction are known, then the suggestions are provided to the user, unless it would jeopardize the security or purpose of the content.</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>If an input error is automatically detected and suggestions for correction are known, then the suggestions are provided to the user, unless it would jeopardize the security or purpose of the content.</p>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+            <li><a href="https://dequeuniversity.com/class/forms/">Deque University: Form Labels, Instructions, and Validation</a> (account required)</li>
+            <li><a href="https://webdesign.tutsplus.com/best-practices-for-displaying-form-errors--CRS-200950c">Envato: Best Practices for Displaying Form Errors</a></li>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-        <li><a href="https://dequeuniversity.com/class/forms/">Deque University: Form Labels, Instructions, and Validation</a> (account required)</li>
-        <li><a href="https://webdesign.tutsplus.com/best-practices-for-displaying-form-errors--CRS-200950c">Envato: Best Practices for Displaying Form Errors</a></li>
-    </ul>
 </div>
     {% include checkpoints/3303checkpoints.html %}

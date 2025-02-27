@@ -1,20 +1,21 @@
 ---
 layout: default
 current: 1209
-level: aaa
-guideline: perceivable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.1209.1209[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
 
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>An alternative for time-based media that presents equivalent information for live audio-only content is provided.</p>
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>An alternative for time-based media that presents equivalent information for live audio-only content is provided.</p>
+        </div>
+        
     </div>
-    
 </div>
-
      {% include checkpoints/1209checkpoints.html %}

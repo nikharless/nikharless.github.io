@@ -1,13 +1,14 @@
 ---
 layout: default
 current: 2302
-level: aaa
-guideline: operable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.2302.2302[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
     <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
     
     <div class="sc {{ page.level }}">
@@ -21,5 +22,6 @@ guideline: operable
         <li><a href="https://www.section508.gov/training/presentations/aed-cop-pptx12/">Section508.gov: Module 12: Excluding Flashing Objects (From: How to Author and Test Microsoft PowerPoint Presentations for Accessibility)</a></li>
         <li><a href="https://www.section508.gov/training/spreadsheets/aed-cop-xlsx09/">Section508.gov: Module 9: Excluding Flashing Objects (From: How to Author and Test Microsoft Excel Worksheets for Accessibility)</a></li>
     </ul>
+    </div>
 </div>
     {% include checkpoints/2302checkpoints.html %}

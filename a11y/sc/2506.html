@@ -1,22 +1,24 @@
 ---
 layout: default
 current: 2506
-level: aaa
-guideline: operable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.2506.2506[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>Web content does not restrict use of input modalities available on a platform except where the restriction is essential, required to ensure the security of the content, or required to respect user settings.</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>Web content does not restrict use of input modalities available on a platform except where the restriction is essential, required to ensure the security of the content, or required to respect user settings.</p>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-    </ul>
 </div>
     {% include checkpoints/2506checkpoints.html %}

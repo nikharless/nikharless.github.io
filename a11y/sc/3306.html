@@ -1,31 +1,33 @@
 ---
 layout: default
 current: 3306
-level: aaa
-guideline: understandable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.3306.3306[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>For Web pages that require the user to submit information, at least one of the following is true:</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>For Web pages that require the user to submit information, at least one of the following is true:</p>
 
-        <dl>
-            <dt><strong>Reversible</strong></dt>
-            <dd>Submissions are reversible.</dd>
-            <dt><strong>Checked</strong></dt>
-            <dd>Data entered by the user is checked for input errors and the user is provided an opportunity to correct them.</dd>
-            <dt><strong>Confirmed</strong></dt>
-            <dd>A mechanism is available for reviewing, confirming, and correcting information before finalizing the submission.</dd>
-        </dl>
+            <dl>
+                <dt><strong>Reversible</strong></dt>
+                <dd>Submissions are reversible.</dd>
+                <dt><strong>Checked</strong></dt>
+                <dd>Data entered by the user is checked for input errors and the user is provided an opportunity to correct them.</dd>
+                <dt><strong>Confirmed</strong></dt>
+                <dd>A mechanism is available for reviewing, confirming, and correcting information before finalizing the submission.</dd>
+            </dl>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-    </ul>
 </div>
     {% include checkpoints/3306checkpoints.html %}

@@ -1,28 +1,30 @@
 ---
 layout: default
 current: 1402
-level: a
-guideline: perceivable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.1402.1402[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.</p>
 
-        <dl>
-            <dt><strong>Note</strong></dt>
-            <dd>Since any content that does not meet this success criterion can interfere with a user's ability to use the whole page, all content on the Web page (whether or not it is used to meet other success criteria) must meet this success criterion. See <a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-control#cc5">Conformance Requirement 5: Non-Interference</a>.</dd>
-        </dl>
+            <dl>
+                <dt><strong>Note</strong></dt>
+                <dd>Since any content that does not meet this success criterion can interfere with a user's ability to use the whole page, all content on the Web page (whether or not it is used to meet other success criteria) must meet this success criterion. See <a href="https://www.w3.org/WAI/WCAG22/Understanding/audio-control#cc5">Conformance Requirement 5: Non-Interference</a>.</dd>
+            </dl>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+            <li><a href="https://dequeuniversity.com/class/multimedia/">Deque University: Multimedia, Animation, and Motion</a> (requires account)</li>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-        <li><a href="https://dequeuniversity.com/class/multimedia/">Deque University: Multimedia, Animation, and Motion</a> (requires account)</li>
-    </ul>
 </div>
     {% include checkpoints/1402checkpoints.html %}

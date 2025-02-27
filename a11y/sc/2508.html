@@ -1,39 +1,41 @@
 ---
 layout: default
 current: 2508
-level: aa
-guideline: operable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.2508.2508[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>The size of the target for pointer inputs is at least 24 by 24 CSS pixels, except where:</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>The size of the target for pointer inputs is at least 24 by 24 CSS pixels, except where:</p>
 
-        <dl>
-            <dt><strong>Spacing</strong></dt>
-            <dd>Undersized targets (those less than 24 by 24 CSS pixels) are positioned so that if a 24 CSS pixel diameter circle is centered on the bounding box of each, the circles do not intersect another target or the circle for another undersized target;</dd>
-            <dt><strong>Equivalent</strong></dt>
-            <dd>The function can be achieved through a different control on the same page that meets this criterion;</dd>
-            <dt><strong>Inline</strong></dt>
-            <dd>The target is in a sentence or its size is otherwise constrained by the line-height of non-target text;</dd>
-            <dt><strong>User agent control</strong></dt>
-            <dd>The size of the target is determined by the user agent and is not modified by the author;</dd>
-            <dt><strong>Essential</strong></dt>
-            <dd>A particular presentation of the target is essential or is legally required for the information being conveyed.</dd>
-        </dl>
+            <dl>
+                <dt><strong>Spacing</strong></dt>
+                <dd>Undersized targets (those less than 24 by 24 CSS pixels) are positioned so that if a 24 CSS pixel diameter circle is centered on the bounding box of each, the circles do not intersect another target or the circle for another undersized target;</dd>
+                <dt><strong>Equivalent</strong></dt>
+                <dd>The function can be achieved through a different control on the same page that meets this criterion;</dd>
+                <dt><strong>Inline</strong></dt>
+                <dd>The target is in a sentence or its size is otherwise constrained by the line-height of non-target text;</dd>
+                <dt><strong>User agent control</strong></dt>
+                <dd>The size of the target is determined by the user agent and is not modified by the author;</dd>
+                <dt><strong>Essential</strong></dt>
+                <dd>A particular presentation of the target is essential or is legally required for the information being conveyed.</dd>
+            </dl>
 
-        <p><strong>Note</strong>: Targets that allow for values to be selected spatially based on position within the target are considered one target for the purpose of the success criterion. Examples include sliders, color pickers displaying a gradient of colors, or editable areas where you position the cursor.</p>
+            <p><strong>Note</strong>: Targets that allow for values to be selected spatially based on position within the target are considered one target for the purpose of the success criterion. Examples include sliders, color pickers displaying a gradient of colors, or editable areas where you position the cursor.</p>
 
-        <p><strong>Note</strong>: For inline targets the line-height should be interpreted as perpendicular to the flow of text. For example, in a language displayed vertically, the line-height would be horizontal.</p>
+            <p><strong>Note</strong>: For inline targets the line-height should be interpreted as perpendicular to the flow of text. For example, in a language displayed vertically, the line-height would be horizontal.</p>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-    </ul>
 </div>
     {% include checkpoints/2508checkpoints.html %}

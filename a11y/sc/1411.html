@@ -1,30 +1,32 @@
 ---
 layout: default
 current: 1411
-level: aa
-guideline: perceivable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.1411.1411[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>The visual presentation of the following have a contrast ratio of at least 3:1 against adjacent color(s):</p>
-        <dl>
-            <dt><strong>User Interface Components</strong></dt>
-            <dd>Visual information required to identify user interface components and states, except for inactive components or where the appearance of the component is determined by the user agent and not modified by the author;</dd>
-            <dt><strong>Graphical Objects</strong></dt>
-            <dd>Parts of graphics required to understand the content, except when a particular presentation of graphics is essential to the information being conveyed.</dd>
-        </dl>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>The visual presentation of the following have a contrast ratio of at least 3:1 against adjacent color(s):</p>
+            <dl>
+                <dt><strong>User Interface Components</strong></dt>
+                <dd>Visual information required to identify user interface components and states, except for inactive components or where the appearance of the component is determined by the user agent and not modified by the author;</dd>
+                <dt><strong>Graphical Objects</strong></dt>
+                <dd>Parts of graphics required to understand the content, except when a particular presentation of graphics is essential to the information being conveyed.</dd>
+            </dl>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+            <li><a href="https://dequeuniversity.com/class/visual-design/">Deque University: Visual Design and Colors</a> (requires account)</li>
+            <li><a href="https://www.w3schools.com/accessibility/accessibility_color_contrast.php">W3: Accessibility Color Contrast</a></li>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-        <li><a href="https://dequeuniversity.com/class/visual-design/">Deque University: Visual Design and Colors</a> (requires account)</li>
-        <li><a href="https://www.w3schools.com/accessibility/accessibility_color_contrast.php">W3: Accessibility Color Contrast</a></li>
-    </ul>
 </div>
     {% include checkpoints/1411checkpoints.html %}

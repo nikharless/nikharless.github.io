@@ -1,33 +1,35 @@
 ---
 layout: default
 current: 2505
-level: aaa
-guideline: operable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.2505.2505[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>The size of the target for pointer inputs is at least 44 by 44 CSS pixels except when:</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>The size of the target for pointer inputs is at least 44 by 44 CSS pixels except when:</p>
 
-        <dl>
-            <dt><strong>Equivalent</strong></dt>
-            <dd>The target is available through an equivalent link or control on the same page that is at least 44 by 44 CSS pixels;</dd>
-            <dt><strong>Inline</strong></dt>
-            <dd>The target is in a sentence or block of text;</dd>
-            <dt><strong>User Agent Control</strong></dt>
-            <dd>The size of the target is determined by the user agent and is not modified by the author;</dd>
-            <dt><strong>Essential</strong></dt>
-            <dd>A particular presentation of the target is essential to the information being conveyed.</dd>
-        </dl>
+            <dl>
+                <dt><strong>Equivalent</strong></dt>
+                <dd>The target is available through an equivalent link or control on the same page that is at least 44 by 44 CSS pixels;</dd>
+                <dt><strong>Inline</strong></dt>
+                <dd>The target is in a sentence or block of text;</dd>
+                <dt><strong>User Agent Control</strong></dt>
+                <dd>The size of the target is determined by the user agent and is not modified by the author;</dd>
+                <dt><strong>Essential</strong></dt>
+                <dd>A particular presentation of the target is essential to the information being conveyed.</dd>
+            </dl>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-    </ul>
 </div>
     {% include checkpoints/2505checkpoints.html %}

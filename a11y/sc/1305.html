@@ -1,28 +1,29 @@
 ---
 layout: default
 current: 1305
-level: aa
-guideline: perceivable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.1305.1305[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    <div class="sc {{ page.level }}">
-        <h2><a href="{{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>The purpose of each input field collecting information about the user can be programmatically determined when:</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        <div class="sc {{ page.level }}">
+            <h2><a href="{{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>The purpose of each input field collecting information about the user can be programmatically determined when:</p>
+            <ul>
+                <li>The input field serves a purpose identified in the Input Purposes for user interface components section; and</li>
+                <li>The content is implemented using technologies with support for identifying the expected meaning for form input data.</li>
+            </ul>
+        </div>
+
+        <h2>Training</h2>
         <ul>
-            <li>The input field serves a purpose identified in the Input Purposes for user interface components section; and</li>
-            <li>The content is implemented using technologies with support for identifying the expected meaning for form input data.</li>
+            <li><a href="https://dequeuniversity.com/class/forms/?lang=en">Deque University: Form Labels, Instructions, and Validation</a> (requires account)</li>
+            <li><a href="https://www.w3schools.com/accessibility/accessibility_autocomplete.php">W3: Accessibility Autocomplete</a></li>
         </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-        <li><a href="https://dequeuniversity.com/class/forms/?lang=en">Deque University: Form Labels, Instructions, and Validation</a> (requires account)</li>
-        <li><a href="https://www.w3schools.com/accessibility/accessibility_autocomplete.php">W3: Accessibility Autocomplete</a></li>
-    </ul>
 </div>
-
     {% include checkpoints/1305checkpoints.html %}

@@ -1,30 +1,32 @@
 ---
 layout: default
 current: 2504
-level: a
-guideline: operable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.2504.2504[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>Functionality that can be operated by device motion or user motion can also be operated by user interface components and responding to the motion can be disabled to prevent accidental actuation, except when:</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>Functionality that can be operated by device motion or user motion can also be operated by user interface components and responding to the motion can be disabled to prevent accidental actuation, except when:</p>
 
-        <dl>
-            <dt><strong>Supported Interface</strong></dt>
-            <dd>The motion is used to operate functionality through an accessibility supported interface;</dd>
-            <dt><strong>Essential</strong></dt>
-            <dd>The motion is essential for the function and doing so would invalidate the activity.</dd>
-        </dl>
+            <dl>
+                <dt><strong>Supported Interface</strong></dt>
+                <dd>The motion is used to operate functionality through an accessibility supported interface;</dd>
+                <dt><strong>Essential</strong></dt>
+                <dd>The motion is essential for the function and doing so would invalidate the activity.</dd>
+            </dl>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+            <li><a href="https://dequeuniversity.com/class/input-methods/">Deque University: Device-Independent User Input Methods</a> (account required)</li>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-        <li><a href="https://dequeuniversity.com/class/input-methods/">Deque University: Device-Independent User Input Methods</a> (account required)</li>
-    </ul>
 </div>
     {% include checkpoints/2504checkpoints.html %}

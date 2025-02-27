@@ -1,13 +1,14 @@
 ---
 layout: default
 current: 2205
-level: aaa
-guideline: operable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.2205.2205[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
     <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
     
     <div class="sc {{ page.level }}">
@@ -19,5 +20,6 @@ guideline: operable
     <ul>
         <li></li>
     </ul>
+    </div>
 </div>
     {% include checkpoints/2205checkpoints.html %}

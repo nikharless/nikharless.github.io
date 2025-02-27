@@ -1,32 +1,34 @@
 ---
 layout: default
 current: 2104
-level: a
-guideline: operable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.2104.2104[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>If a keyboard shortcut is implemented in content using only letter (including upper- and lower-case letters), punctuation, number, or symbol characters, then at least one of the following is true:</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>If a keyboard shortcut is implemented in content using only letter (including upper- and lower-case letters), punctuation, number, or symbol characters, then at least one of the following is true:</p>
 
-        <dl>
-            <dt><strong>Turn off</strong></dt>
-            <dd>A mechanism is available to turn the shortcut off;</dd>
-            <dt><strong>Remap</strong></dt>
-            <dd>A mechanism is available to remap the shortcut to include one or more non-printable keyboard keys (e.g., <kbd>Ctrl</kbd>, <kbd>Alt</kbd>);</dd>
-            <dt><strong>Active only on focus</strong></dt>
-            <dd>The keyboard shortcut for a user interface component is only active when that component has focus.</dd>
-        </dl>
+            <dl>
+                <dt><strong>Turn off</strong></dt>
+                <dd>A mechanism is available to turn the shortcut off;</dd>
+                <dt><strong>Remap</strong></dt>
+                <dd>A mechanism is available to remap the shortcut to include one or more non-printable keyboard keys (e.g., <kbd>Ctrl</kbd>, <kbd>Alt</kbd>);</dd>
+                <dt><strong>Active only on focus</strong></dt>
+                <dd>The keyboard shortcut for a user interface component is only active when that component has focus.</dd>
+            </dl>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+            <li><a href="https://dequeuniversity.com/class/input-methods/">Deque: Device-Independent User Input Methods</a> (account required)</li>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-        <li><a href="https://dequeuniversity.com/class/input-methods/">Deque: Device-Independent User Input Methods</a> (account required)</li>
-    </ul>
 </div>
     {% include checkpoints/2104checkpoints.html %}

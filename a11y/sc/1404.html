@@ -1,26 +1,28 @@
 ---
 layout: default
 current: 1404
-level: aa
-guideline: perceivable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.1404.1404[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality.</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality.</p>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+            <li><a href="https://dequeuniversity.com/class/responsive-zoom/">Deque University: Responsive Design and Zoom</a> (requires account)</li>
+            <li><a href="https://www.w3schools.com/accessibility/accessibility_zoom_intro.php">W3: Accessibility Zoom Introduction</a></li>
+            <li><a href="https://www.w3schools.com/accessibility/accessibility_text_size.php">W3: Accessibility Text Size</a></li>
+            <li><a href="https://www.w3schools.com/accessibility/accessibility_page_zoom.php">W3: Accessibility Page Zoom</a></li>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-        <li><a href="https://dequeuniversity.com/class/responsive-zoom/">Deque University: Responsive Design and Zoom</a> (requires account)</li>
-        <li><a href="https://www.w3schools.com/accessibility/accessibility_zoom_intro.php">W3: Accessibility Zoom Introduction</a></li>
-        <li><a href="https://www.w3schools.com/accessibility/accessibility_text_size.php">W3: Accessibility Text Size</a></li>
-        <li><a href="https://www.w3schools.com/accessibility/accessibility_page_zoom.php">W3: Accessibility Page Zoom</a></li>
-    </ul>
 </div>
     {% include checkpoints/1404checkpoints.html %}

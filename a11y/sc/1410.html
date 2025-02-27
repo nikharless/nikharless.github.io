@@ -1,31 +1,33 @@
 ---
 layout: default
 current: 1410
-level: aa
-guideline: perceivable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.1410.1410[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>Content can be presented without loss of information or functionality, and without requiring scrolling in two dimensions for:</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>Content can be presented without loss of information or functionality, and without requiring scrolling in two dimensions for:</p>
+            <ul>
+                <li>Vertical scrolling content at a width equivalent to 320 CSS pixels;</li>
+                <li>Horizontal scrolling content at a height equivalent to 256 CSS pixels.</li>
+            </ul>
+            <p>Except for parts of the content which require two-dimensional layout for usage or meaning.</p>
+            <p><strong>Note</strong>: 320 CSS pixels is equivalent to a starting viewport width of 1280 CSS pixels wide at 400% zoom. For web content which is designed to scroll horizontally (e.g., with vertical text), 256 CSS pixels is equivalent to a starting viewport height of 1024 CSS pixels at 400% zoom.</p>
+            <p><strong>Note</strong>: Examples of content which requires two-dimensional layout are images required for understanding (such as maps and diagrams), video, games, presentations, data tables (not individual cells), and interfaces where it is necessary to keep toolbars in view while manipulating content. It is acceptable to provide two-dimensional scrolling for such parts of the content.</p>
+        </div>
+
+        <h2>Training</h2>
         <ul>
-            <li>Vertical scrolling content at a width equivalent to 320 CSS pixels;</li>
-            <li>Horizontal scrolling content at a height equivalent to 256 CSS pixels.</li>
+            <li><a href="https://dequeuniversity.com/class/responsive-zoom/">Deque University: Responsive Design and Zoom</a> (requires account)</li>
+            <li><a href="https://www.w3schools.com/accessibility/accessibility_page_zoom.php">W3: Accessibility Page Zoom</a></li>
         </ul>
-        <p>Except for parts of the content which require two-dimensional layout for usage or meaning.</p>
-        <p><strong>Note</strong>: 320 CSS pixels is equivalent to a starting viewport width of 1280 CSS pixels wide at 400% zoom. For web content which is designed to scroll horizontally (e.g., with vertical text), 256 CSS pixels is equivalent to a starting viewport height of 1024 CSS pixels at 400% zoom.</p>
-        <p><strong>Note</strong>: Examples of content which requires two-dimensional layout are images required for understanding (such as maps and diagrams), video, games, presentations, data tables (not individual cells), and interfaces where it is necessary to keep toolbars in view while manipulating content. It is acceptable to provide two-dimensional scrolling for such parts of the content.</p>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-        <li><a href="https://dequeuniversity.com/class/responsive-zoom/">Deque University: Responsive Design and Zoom</a> (requires account)</li>
-        <li><a href="https://www.w3schools.com/accessibility/accessibility_page_zoom.php">W3: Accessibility Page Zoom</a></li>
-    </ul>
 </div>
     {% include checkpoints/1410checkpoints.html %}

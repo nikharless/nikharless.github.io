@@ -1,24 +1,26 @@
 ---
 layout: default
 current: 1204
-level: aa
-guideline: perceivable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.1204.1204[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>Captions are provided for all live audio content in synchronized media.</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>Captions are provided for all live audio content in synchronized media.</p>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+            <li><a href="https://dequeuniversity.com/class/multimedia/">Deque University: Multimedia, Animations, and Motion</a> (requires account)</li>
+            <li><a href="https://www.section508.gov/create/synchronized-media/creating-accessible-media/">Section508.gov: Creating Accessible Media</a></li>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-        <li><a href="https://dequeuniversity.com/class/multimedia/">Deque University: Multimedia, Animations, and Motion</a> (requires account)</li>
-        <li><a href="https://www.section508.gov/create/synchronized-media/creating-accessible-media/">Section508.gov: Creating Accessible Media</a></li>
-    </ul>
 </div>
 
     {% include checkpoints/1204checkpoints.html %}

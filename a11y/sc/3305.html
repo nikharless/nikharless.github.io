@@ -1,22 +1,24 @@
 ---
 layout: default
 current: 3305
-level: aaa
-guideline: understandable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.3305.3305[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>Context-sensitive help is available.</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>Context-sensitive help is available.</p>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-    </ul>
 </div>
     {% include checkpoints/3305checkpoints.html %}

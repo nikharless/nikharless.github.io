@@ -1,24 +1,26 @@
 ---
 layout: default
 current: 2103
-level: aaa
-guideline: operable
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.2103.2103[page.current] %}
+{% assign sc=currentpg %}
 
-<div class="cpcontent {{ page.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
-    
-    <div class="sc {{ page.level }}">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes.</p>
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ page.level }}link">
+        <h1>{{ currentpg.name }} (Level {{ page.level | upcase }})</h1>
+        
+        <div class="sc {{ page.level }}">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes.</p>
+        </div>
+
+        <h2>Training</h2>
+        <ul>
+            <li><a href="https://dequeuniversity.com/class/input-methods/">Deque: Device-Independent User Input Methods</a> (account required)</li>
+            <li><a href="https://dequeuniversity.com/class/testing/">Deque: Web Accessibility Testing: Basic Methods and Tools</a> (account required)</li>
+        </ul>
     </div>
-
-    <h2>Training</h2>
-    <ul>
-        <li><a href="https://dequeuniversity.com/class/input-methods/">Deque: Device-Independent User Input Methods</a> (account required)</li>
-        <li><a href="https://dequeuniversity.com/class/testing/">Deque: Web Accessibility Testing: Basic Methods and Tools</a> (account required)</li>
-    </ul>
 </div>
     {% include checkpoints/2103checkpoints.html %}
