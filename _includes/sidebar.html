@@ -4,7 +4,7 @@
 		<h3><button type="button" aria-expanded="false" class="accordion-trigger {{ sc.level }} {% if sc.guideline == "perceivable" %}glselect{% endif %}" aria-controls="sect1" id="accordion1id"><span class="accordion-title">Perceivable</span></button></h3>
 		<div id="sect1" role="region" aria-labelledby="accordion1id" class="accordion-panel" hidden>
 				{% for item in site.data.perceivable %}
-					<a href="{{ item.link | prepend: baseurl }}" {% if currentpg.link == item.link or currentpg.link == item.parent %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
+					<a href="{{ item.link | prepend: baseurl }}" {% if currentpg.link == item.link | prepend: baseurl or currentpg.link == item.parent %}class="current" aria-current="page"{% endif %}>{{ item.name }}</a>
 				{% endfor %}
 		</div>
 		<h3><button type="button" aria-expanded="false" class="accordion-trigger {{ sc.level }} {% if sc.guideline == "operable" %}glselect{% endif %}" aria-controls="sect2" id="accordion2id"><span class="accordion-title">Operable</span></button></h3>
