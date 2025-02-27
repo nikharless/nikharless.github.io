@@ -1,12 +1,13 @@
 ---
 layout: default
 current: 1101
-level: {{ site.data.1101.1101[page.current].name }}
 ---
 {% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.1101.1101[page.current] %}
 {% assign sc=currentpg %}
 
+{% include sidebar.html %}
+<div class="content row">
 <div class="cpcontent {{ currentpg.level }}link">
     {{ page.level }}
     <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
@@ -44,5 +45,6 @@ level: {{ site.data.1101.1101[page.current].name }}
         <li><a href="https://www.w3schools.com/accessibility/accessibility_image_text.php">W3Schools: Accessibility Descriptive Texts for Images</a></li>
         <li><a href="https://www.ssa.gov/accessibility/files/SSA_Alternative_Text_Guide.pdf">Social Security Administration Guide: Alternate text for images</a> (PDF)</li>
     </ul>
+</div>
 </div>
     {% include checkpoints/1101checkpoints.html %}
