@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 41020119
-root: WCAG 2.2
-base: base
 criterion: 4102
 checkpoint: 410201
 guideline: understandable
@@ -13,22 +11,22 @@ css: select-only
 {% assign baseurl=site.data.4102.4102[page.base] %}
 {% assign sc=site.data.4102.4102[page.criterion] %}
 {% assign cp=site.data.4102.4102[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
         <div class="row">
-            <h2 class="{{ page.level }}">Expected Result</h2>
+            <h2 class="{{ sc.level }}">Expected Result</h2>
             <div>If a control functions as a combobox (select), it has the <code>aria-controls</code> property and an expanded state.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Actual Result</h2>
+            <h2 class="{{ sc.level }}">Actual Result</h2>
             <div>A combobox does not have the required attributes.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Solution</h2>
+            <h2 class="{{ sc.level }}">Solution</h2>
             <div>
                 <ul>
                     <li>Use the <code>aria-controls</code> attribute to identify the element that serves as the popup.</li>
@@ -37,7 +35,7 @@ css: select-only
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <div class="example">
                     {% include examples/select-only.html %}
@@ -57,7 +55,7 @@ css: select-only
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Not Applicable</h2>
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
             <div>
                 <p>The following items are not applicable to this failure:</p>
                 <ul>
@@ -68,11 +66,11 @@ css: select-only
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Assistive technology only works well when code is done properly.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

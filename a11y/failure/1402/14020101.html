@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 14020101
-root: WCAG 2.2
-base: base
 criterion: 1402
 checkpoint: 140201
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1402.1402[page.current] %}
 {% assign baseurl=site.data.1402.1402[page.base] %}
 {% assign sc=site.data.1402.1402[page.criterion] %}
 {% assign cp=site.data.1402.1402[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Audio that plays automatically for more than 3 seconds has either a mechanism to pause or stop the audio or a mechanism to control the volume independently from the overall system volume.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Audio that plays automatically for more than 3 seconds does not have a mechanism to pause, stop, mute, or control the volume.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Don't start the audio automatically, <strong>OR</strong></li>
@@ -38,17 +34,17 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Screen reader users may have difficulty hearing the screen reader when other sounds are playing. People with attention disorders may have difficulty focusing on the content when audio is playing.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>

@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 22010101
-root: WCAG 2.2
-base: base
 criterion: 2201
 checkpoint: 220101
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.2201.2201[page.current] %}
 {% assign baseurl=site.data.2201.2201[page.base] %}
 {% assign sc=site.data.2201.2201[page.criterion] %}
 {% assign cp=site.data.2201.2201[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The user receives a warning before the session times out.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The session time limit expires without giving the user a warning.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Provide a warning before the session times out.</li>
@@ -42,7 +38,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <ul>
                     <li>A site logs the user out after a period of inactivity to protect their data. The site provides a dialog asking if the user needs more time. After 30 seconds, if there is no response, the user is logged out.</li>
@@ -50,11 +46,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with various disabilities are disoriented by sudden changes of context.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

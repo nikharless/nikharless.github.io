@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 12050101
-root: WCAG 2.2
-base: base
 criterion: 1205
 checkpoint: 120501
 guideline: perceivable
@@ -12,26 +10,26 @@ a
 {% assign baseurl=site.data.1205.1205[page.base] %}
 {% assign sc=site.data.1205.1205[page.criterion] %}
 {% assign cp=site.data.1205.1205[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Prerecorded synchronized media must have an audio description of the visual content.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The prerecorded synchronized media content does not have an audio alternative for the video portion.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Provide an audio description that includes all key visual elements necessary to understand the video content.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Audio Description Added to Spaces in Audio</h3>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/cQXD6jkv4hQ?si=XXoZK9b1Wl2tRgjM" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -41,11 +39,11 @@ a
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Visually impaired users, or any users who have difficulty understanding moving content, need an alternate means of receiving the information.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.2.5 Audio Description (Prerecorded)</a></li>

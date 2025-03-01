@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 24070101
-root: WCAG 2.2
-base: base
 criterion: 2407
 checkpoint: 240701
 guideline: operable
@@ -13,22 +11,22 @@ css: 2407
 {% assign baseurl=site.data.2407.2407[page.base] %}
 {% assign sc=site.data.2407.2407[page.criterion] %}
 {% assign cp=site.data.2407.2407[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>There is a visible indicator showing which element is in focus.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>There is no visible focus indicator.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Use CSS to create a visible focus indicator, <strong>OR</strong></li>
@@ -37,7 +35,7 @@ css: 2407
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <p>Tab through the links and controls to see the focus indicators.</p>
                 <h3>Links with Visible Focus Indicators</h3>
@@ -113,11 +111,11 @@ css: 2407
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Without a focus indicator, sighted keyboard users cannot operate the page.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

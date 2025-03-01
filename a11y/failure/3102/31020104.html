@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 31020104
-root: WCAG 2.2
-base: base
 criterion: 3102
 checkpoint: 310201
 guideline: understandable
@@ -12,22 +10,22 @@ a
 {% assign baseurl=site.data.3102.3102[page.base] %}
 {% assign sc=site.data.3102.3102[page.criterion] %}
 {% assign cp=site.data.3102.3102[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The foreign text container tag has the language set to the appropriate language.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The foreign text container tag does not have the language set to the appropriate language.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
             <div>
         		<ol>
                     <li>For each instance, locate and select the corresponding tag in the Tags tree.</li>
@@ -38,17 +36,17 @@ a
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <img src="{{ baseurl }}/assets/images/3102-pdf-object-properties-language.png" alt="Screenshot of Adobe Acrobat Object Properties dialog Tag tab for a Span tag with German selected from the Language drop-down." style="max-width: 480px; border: 1px solid #ccc;">
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Assistive technology users get information in the correct language.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

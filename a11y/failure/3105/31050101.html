@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 31050101
-root: WCAG 2.2
-base: base
 criterion: 3105
 checkpoint: 310501
 guideline: understandable
@@ -12,22 +10,22 @@ aa
 {% assign baseurl=site.data.3105.3105[page.base] %}
 {% assign sc=site.data.3105.3105[page.criterion] %}
 {% assign cp=site.data.3105.3105[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>When text requires more than a 9th grade reading level to understand, supplemental content explaining the text or an alternate version that is easier to read is provided.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>No supplemental content or alternate version is provided.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Provide an alternate version of the text content that is easier to read, <strong>OR</strong></li>
@@ -36,7 +34,7 @@ aa
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <div class="example">
                     <h3>Scientific Report</h3>
@@ -63,11 +61,11 @@ aa
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>More people, especially those with cognitive disabilities, can understand the meaning of content.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

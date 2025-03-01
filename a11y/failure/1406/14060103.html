@@ -1,37 +1,33 @@
 ---
 layout: default
 current: 14060103
-root: WCAG 2.2
-base: base
 criterion: 1406
 checkpoint: 140601
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1406.1406[page.current] %}
 {% assign baseurl=site.data.1406.1406[page.base] %}
 {% assign sc=site.data.1406.1406[page.criterion] %}
 {% assign cp=site.data.1406.1406[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Regular size text has a contrast ratio of at least 7:1 with all parts of the background.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Regular size text does not have a contrast ratio of at least 7:1 with all parts of the background.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Change the text or background so that the contrast ratio between the text and the background is at least 7:1 in all areas.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <p>Adding a background color behind text that's over an image can help ensure that the text maintains enough contrast when the background image or the flow of the text changes.</p>
                 <div id="bg2">
@@ -40,11 +36,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Vision impaired and color blind users need sufficient contrast in order to be able to read text.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

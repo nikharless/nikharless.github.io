@@ -1,47 +1,43 @@
 ---
 layout: default
 current: 14030202
-root: WCAG 2.2
-base: base
 criterion: 1403
 checkpoint: 140302
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1403.1403[page.current] %}
 {% assign baseurl=site.data.1403.1403[page.base] %}
 {% assign sc=site.data.1403.1403[page.criterion] %}
 {% assign cp=site.data.1403.1403[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Large size link text, including all states of the link, has a contrast ratio of at least 3:1 with the background.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Large link text does not have a contrast ratio of at least 3:1 with the background on hover or focus.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Change the text or background color so that the contrast ratio between the text and the background is at least 3:1 in all states.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div style="background-color: #F5FFF2">
                 <p><a href="#" style="color: #253F00; font-size: 24px;" onmouseover="this.style.color='#5fa200'" onmouseout="this.style.color='#253F00'" onfocus="this.style.color='#5fa200'; this.style.outline='none';"; onblur="this.style.color='#253F00'">This link text has passing contrast with the background at 3:1 in the hover state.</a></p>
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Vision impaired and color blind users need sufficient contrast in order to be able to read text.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>

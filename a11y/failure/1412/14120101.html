@@ -1,48 +1,44 @@
 ---
 layout: default
 current: 14120101
-root: WCAG 2.2
-base: base
 criterion: 1412
 checkpoint: 141201
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1412.1412[page.current] %}
 {% assign baseurl=site.data.1412.1412[page.base] %}
 {% assign sc=site.data.1412.1412[page.criterion] %}
 {% assign cp=site.data.1412.1412[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The spacing between letters, words, lines of text, and paragraphs can be adjusted.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The spacing between letters, words, lines of text, and paragraphs cannot be adjusted.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Code the text so that it can be adjusted by the user with external tools.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <p>Use <a href="https://dylanb.github.io/bookmarklets.html">Dylan Barrell’s 1.4.12 Text Spacing Bookmarklet</a> to change the spacing.</p>            
                 <div style="max-width: 30em; border: 1px solid #888;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et ultrices enim. Pellentesque pulvinar massa orci, sed ultrices tellus hendrerit ac. Ut turpis dui, dapibus id augue id, fermentum consectetur velit. Pellentesque pharetra hendrerit erat, ac convallis est lacinia quis.</div>
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>People with low vision or dyslexia may need to adjust text spacing in order to read the text.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

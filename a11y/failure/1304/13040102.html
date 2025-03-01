@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 13040102
-root: WCAG 2.2
-base: base
 criterion: 1304
 checkpoint: 130401
 guideline: perceivable
@@ -12,36 +10,36 @@ a
 {% assign baseurl=site.data.1304.1304[page.base] %}
 {% assign sc=site.data.1304.1304[page.criterion] %}
 {% assign cp=site.data.1304.1304[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Content rotates to accommodate changes in device orientation.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Content is restricted to a specific orientation.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Remove any restrictions on orientation.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with dexterity impairments often have their devices mounted in a fixed position, such as on the arm of a wheelchair. In addition, users with low vision may find it easier to view zoomed content in landscape orientation.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.3.4 Orientation</a></li>

@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 14080402
-root: WCAG 2.2
-base: base
 criterion: 1408
 checkpoint: 140804
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1408.1408[page.current] %}
 {% assign baseurl=site.data.1408.1408[page.base] %}
 {% assign sc=site.data.1408.1408[page.criterion] %}
 {% assign cp=site.data.1408.1408[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Paragraph spacing is adjustable to at least 1.5 times the line spacing.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Paragraph spacing is less than 1.5 times the line spacing and cannot be adjusted by the user.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Set the bottom margin to at least 1.5 times the <code>line-height</code> value, <strong>OR</strong></li>
@@ -36,7 +32,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <p>You can calculate the minimum paragraph margin based on the font size. For example:</p>
                 <ol>
@@ -80,11 +76,11 @@ margin-bottom: 1em;</code></pre>
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with certain cognitive disabilities have difficulty reading blocks of text with insufficient spacing between paragraphs.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G188">G188: Providing a button on the page to increase line spaces and paragraph spaces</a></li>

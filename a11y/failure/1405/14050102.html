@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 14050102
-root: WCAG 2.2
-base: base
 criterion: 1405
 checkpoint: 140501
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1405.1405[page.current] %}
 {% assign baseurl=site.data.1405.1405[page.base] %}
 {% assign sc=site.data.1405.1405[page.criterion] %}
 {% assign cp=site.data.1405.1405[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Real text is used to convey information rather than images of text whenever possible.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Pages of text in PDF are images.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Use OCR to generate actual text from an image.
             <h3>Adobe Acrobat Pro</h3>
             <ol>
@@ -40,17 +36,17 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <img src="{{ baseurl }}/assets/images/14050102-acrobat-ocr.png" alt="Screenshot of Acrobat Scan & OCR panel with Recognize Text In this file dialog open" style="max-width: 300px;">
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Pages of text cannot be interpreted by screen readers.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 14080401
-root: WCAG 2.2
-base: base
 criterion: 1408
 checkpoint: 140804
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1408.1408[page.current] %}
 {% assign baseurl=site.data.1408.1408[page.base] %}
 {% assign sc=site.data.1408.1408[page.criterion] %}
 {% assign cp=site.data.1408.1408[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Line spacing is adjustable to at least 1.5.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Line spacing is less than 1.5 and is not adjustable.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Set the <code>line-height</code> to at least 1.5, <strong>OR</strong></li>
@@ -36,7 +32,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>                
                 <h3 style="color: red;">Bad Example: Single Spaced</h3>
                 <div style="line-height: 1; border: 1px solid #888;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et ultrices enim. Pellentesque pulvinar massa orci, sed ultrices tellus hendrerit ac. Ut turpis dui, dapibus id augue id, fermentum consectetur velit. Pellentesque pharetra hendrerit erat, ac convallis est lacinia quis.</div>
@@ -52,11 +48,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with certain cognitive disabilities have difficulty reading blocks of text which are single spaced.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G188">G188: Providing a button on the page to increase line spaces and paragraph spaces</a></li>

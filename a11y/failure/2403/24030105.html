@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 24030105
-root: WCAG 2.2
-base: base
 criterion: 2403
 checkpoint: 240301
 guideline: perceivable
@@ -13,37 +11,37 @@ css: dialog
 {% assign baseurl=site.data.2403.2403[page.base] %}
 {% assign sc=site.data.2403.2403[page.criterion] %}
 {% assign cp=site.data.2403.2403[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Focus is restricted to the modal while it is open.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Focus is not restricted to the modal while it is open, and the user can focus on background content.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Restrict the focus to stay within the modal while it is open. Focus order should move from the last focusable item in the modal back to the first focusable item in the modal.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <p>Focus is maintained within this modal until it is closed.</p>
                 {% include examples/modal.html %}
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Navigating a site or application with only the keyboard will make sense.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

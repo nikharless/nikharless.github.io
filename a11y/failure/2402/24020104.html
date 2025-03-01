@@ -1,47 +1,43 @@
 ---
 layout: default
 current: 24020104
-root: WCAG 2.2
-base: base
 criterion: 2402
 checkpoint: 240201
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.2402.2402[page.current] %}
 {% assign baseurl=site.data.2402.2402[page.base] %}
 {% assign sc=site.data.2402.2402[page.criterion] %}
 {% assign cp=site.data.2402.2402[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Mobile app screen has a title or main heading describing the content.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Mobile app screen does not have a title or main heading describing the content.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Add a descriptive title or main heading describing the screen content.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <img src="{{ baseurl }}/assets/images/24020104-screen-title.jpg" alt="Screenshot of News app with screen title of Sports">
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Screen reader users, as well as people with cognitive, memory, or reading disabilities benefit from the ability to identify content by its title.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

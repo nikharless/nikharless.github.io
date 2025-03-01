@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 21040101
-root: WCAG 2.2
-base: base
 criterion: 2104
 checkpoint: 210401
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.2104.2104[page.current] %}
 {% assign baseurl=site.data.2104.2104[page.base] %}
 {% assign sc=site.data.2104.2104[page.criterion] %}
 {% assign cp=site.data.2104.2104[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>If a single character key shortcut exists, then it can be turned off, remapped, or are only active when the relevant user interface component is in focus.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>A single character key shortcut is always active and cannot be turned off or remapped.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Only allow the shortcut to be active when the appropriate element is in focus, <strong>OR</strong></li>
@@ -37,7 +33,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Bad Examples</h3>
                 <p>Videos of speech user trouble with single character key shortcuts:</p>
@@ -48,11 +44,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Character-key shortcuts are easy to accidentally trigger, especially with speech input.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G217">G217: Providing a mechanism to allow users to remap or turn off character key shortcuts</a></li>

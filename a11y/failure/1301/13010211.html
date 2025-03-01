@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 13010211
-root: WCAG 2.2
-base: base
 criterion: 1301
 checkpoint: 130102
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1301.1301[page.current] %}
 {% assign baseurl=site.data.1301.1301[page.base] %}
 {% assign sc=site.data.1301.1301[page.criterion] %}
 {% assign cp=site.data.1301.1301[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Non-tabular data is not marked up as a table.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Table markup is used for layout purposes.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Remove any of the following from the markup:
@@ -45,7 +41,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <h3>Layout Table</h3>
                 <p>This is an outdated method for page layout. Do not code pages this way.</p>
@@ -132,11 +128,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Screen readers read tables in a special way in order to communicate the data relationships within. Layout tables should not be read this way, as it can cause confusion.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>

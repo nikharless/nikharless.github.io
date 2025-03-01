@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 24090101
-root: WCAG 2.2
-base: base
 criterion: 2409
 checkpoint: 240901
 guideline: operable
@@ -12,22 +10,22 @@ aa
 {% assign baseurl=site.data.2409.2409[page.base] %}
 {% assign sc=site.data.2409.2409[page.criterion] %}
 {% assign cp=site.data.2409.2409[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The purpose of the link can be determined from the link text alone.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The purpose of the link cannot be determined from the link text alone.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Change the link text to describe the purpose of the link, <strong>OR</strong></li>
@@ -36,18 +34,18 @@ aa
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Link Text</h3>
                 <a href="#">How to Make Links Accessible</a>              
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Descriptive link text is more understandable for all users, especially when using assistive technology.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

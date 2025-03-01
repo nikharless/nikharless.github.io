@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 14080301
-root: WCAG 2.2
-base: base
 criterion: 1408
 checkpoint: 140803
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1408.1408[page.current] %}
 {% assign baseurl=site.data.1408.1408[page.base] %}
 {% assign sc=site.data.1408.1408[page.criterion] %}
 {% assign cp=site.data.1408.1408[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Blocks of text must not be justified.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Text is justified.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Align text to either the left or right side only, <strong>OR</strong></li>
@@ -36,7 +32,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 
                 <h3 style="color: red;">Bad Example: Justified</h3>
@@ -53,11 +49,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with certain cognitive disabilities have difficulty reading blocks of texts with uneven spacing between words.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G169">G169: Aligning text on only one side</a></li>

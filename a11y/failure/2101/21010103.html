@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 21010103
-root: WCAG 2.2
-base: base
 criterion: 2101
 checkpoint: 210101
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.2101.2101[page.current] %}
 {% assign baseurl=site.data.2101.2101[page.base] %}
 {% assign sc=site.data.2101.2101[page.criterion] %}
 {% assign cp=site.data.2101.2101[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>All functionality is available through the keyboard interface.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>A link cannot be activated using only a keyboard, because it's coded without an <code>href</code> attribute.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
             <ul>
                 <li>Provide an <code>href</code> attribute pointing to the target url, <strong>AND</strong></li>
@@ -35,7 +31,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Scripted Link</h3>
                 <p>Using <code>onclick</code> allows activation with both the mouse and the keyboard.</p>
@@ -50,11 +46,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Some users with vision disabilities or hand tremors are unable to use a mouse well or at all.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

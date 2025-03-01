@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 25080101
-root: WCAG 2.2
-base: base
 criterion: 2508
 checkpoint: 250801
 guideline: operable
@@ -13,26 +11,26 @@ css: 2508
 {% assign baseurl=site.data.2508.2508[page.base] %}
 {% assign sc=site.data.2508.2508[page.criterion] %}
 {% assign cp=site.data.2508.2508[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Control target size is at least 24 x 24 CSS pixels.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Control target size is less than 24 x 24 CSS pixels.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Increase the target size to at least 24 x 24 CSS pixels.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Buttons</h3>
                 <div class="example">
@@ -75,11 +73,11 @@ margin: 0 10px 0 0;</code></pre>
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Some users cannot click or tap small controls.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

@@ -1,37 +1,33 @@
 ---
 layout: default
 current: 14040104
-root: WCAG 2.2
-base: base
 criterion: 1404
 checkpoint: 140401
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1404.1404[page.current] %}
 {% assign baseurl=site.data.1404.1404[page.base] %}
 {% assign sc=site.data.1404.1404[page.criterion] %}
 {% assign cp=site.data.1404.1404[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Text content is readable and functional when resized up to 200%.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Text content is clipped, truncated or obscured when resized to 200%. The content can still be accessed, but it is not obvious that content is missing and can be accessed.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Provide an indicator that more content is available.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Single Line</h3>
                 <p>In this example, a tooltip shows the full text, and an ellipsis alerts the user that the text is truncated.</p>
@@ -62,11 +58,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Vision impaired users need to be able to read and use the content when zoomed.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>

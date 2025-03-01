@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 23010101
-root: WCAG 2.2
-base: base
 criterion: 2301
 checkpoint: 230101
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.2301.2301[page.current] %}
 {% assign baseurl=site.data.2301.2301[page.base] %}
 {% assign sc=site.data.2301.2301[page.criterion] %}
 {% assign cp=site.data.2301.2301[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Content does not flash more than 3 times per second, OR the flash is below the flash thresholds.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Content flashes more than 3 times per second and is above the flash thresholds.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Remove the flashing content, <strong>OR</strong></li>
@@ -37,17 +33,17 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Flashing content can cause migraines, dizziness, nausea, and seizures.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

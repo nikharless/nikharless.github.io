@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 12080102
-root: WCAG 2.2
-base: base
 criterion: 1208
 checkpoint: 120801
 guideline: perceivable
@@ -12,26 +10,26 @@ aa
 {% assign baseurl=site.data.1208.1208[page.base] %}
 {% assign sc=site.data.1208.1208[page.criterion] %}
 {% assign cp=site.data.1208.1208[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Prerecorded synchronized media and video-only media has a text transcript which includes the visual content.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The video has a text transcript, but it is not adequate.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Provide a text transcript that includes all key visual elements necessary to understand the video content.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <h3>Text Transcript</h3>
                 <p>This transcript does include the text on the cartoon images, which is positive. However, it should also include a brief description of the cartoons themselves to give context to the text.</p>
@@ -40,11 +38,11 @@ aa
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Deafblind users cannot see or hear the video content, so they require both the audio and visual information in text format so that it can be interpreted by assistive technology such as a braille device.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.2.8 Media Alternative (Prerecorded)</a></li>

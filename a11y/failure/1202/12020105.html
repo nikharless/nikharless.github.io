@@ -1,37 +1,33 @@
 ---
 layout: default
 current: 12020105
-root: WCAG 2.2
-base: base
 criterion: 1202
 checkpoint: 120201
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1201.1201[page.current] %}
 {% assign baseurl=site.data.1201.1201[page.base] %}
 {% assign sc=site.data.1201.1201[page.criterion] %}
 {% assign cp=site.data.1201.1201[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Prerecorded video with audio must have synchronized captions which convey the same information provided in the audio.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The video has captions, but important sound effects are not included.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Edit the captions to include all of the important sound effects in the audio.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <h3>Video With and Without Sound Descriptions</h3>
                 <p>This video demonstrates why including sounds in the captions is important.</p>
@@ -39,11 +35,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with hearing may receive meaningful information from sound effects (e.g., the sound of someone arriving via train). Deaf users and other users who use captions must be given all the same information that is given in audio form.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.2.2 Captions (Prerecorded)</a></li>

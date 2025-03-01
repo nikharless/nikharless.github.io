@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 13010102
-root: WCAG 2.2
-base: base
 criterion: 1301
 checkpoint: 130101
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1301.1301[page.current] %}
 {% assign baseurl=site.data.1301.1301[page.base] %}
 {% assign sc=site.data.1301.1301[page.criterion] %}
 {% assign cp=site.data.1301.1301[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Visible sections of a web page are marked up semantically as landmarks.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Visible sections of the web page are marked up as landmarks, but the landmarks are not used correctly.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Ensure valid tags or roles are used:
@@ -53,7 +49,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <pre><code>&lt;html&gt;
     &lt;header&gt;
@@ -78,11 +74,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Page regions are visible at a glance for sighted users. Landmarks allow assistive technology users to have this same information and to easily navigate to different areas of the page.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>

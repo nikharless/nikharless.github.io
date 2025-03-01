@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 24080101
-root: WCAG 2.2
-base: base
 criterion: 2408
 checkpoint: 240801
 guideline: operable
@@ -12,22 +10,22 @@ aa
 {% assign baseurl=site.data.2408.2408[page.base] %}
 {% assign sc=site.data.2408.2408[page.criterion] %}
 {% assign cp=site.data.2408.2408[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Information about the user's location within the set of web pages is available.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>There is no information providing context for the user's location within the set of web pages.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <p>Provide location context using one of the following (or some other method):</p>
                 <ul>
@@ -40,7 +38,7 @@ aa
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Breadcrumbs</h3>
                 {% include examples/breadcrumb.html %}
@@ -57,11 +55,11 @@ aa
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Location indicators reduce confusion for people with cognitive disabilities.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

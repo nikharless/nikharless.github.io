@@ -1,47 +1,43 @@
 ---
 layout: default
 current: 11010605
-root: WCAG 2.2
-base: base
 criterion: 1101
 checkpoint: 110106
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1101.1101[page.criterion] %}
 {% assign cp=site.data.1101.1101[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The text alternative refers to the location of the transcript.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The video element has a text alternative and transcript, but the text alternative does not refer to the location of the transcript.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Add a reference to the location of the transcript to the text alternative.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div></div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>

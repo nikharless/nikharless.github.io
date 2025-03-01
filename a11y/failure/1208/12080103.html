@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 12080103
-root: WCAG 2.2
-base: base
 criterion: 1208
 checkpoint: 120801
 guideline: perceivable
@@ -12,36 +10,36 @@ aa
 {% assign baseurl=site.data.1208.1208[page.base] %}
 {% assign sc=site.data.1208.1208[page.criterion] %}
 {% assign cp=site.data.1208.1208[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>If the video itself is an alternative to text on the page, it must be clearly labeled as such.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The video is an alternative to text on the page, but it is not clearly labeled as such.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Clearly label the video as an alternative to text on the page.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                  
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Media which is intended as an alternative to text on the page needs to be clearly labeled as such, so users can find it and so users who expect text alternatives know not to look for them.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.2.8 Media Alternative (Prerecorded)</a></li>

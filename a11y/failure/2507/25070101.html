@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 25070101
-root: WCAG 2.2
-base: base
 criterion: 2507
 checkpoint: 250701
 guideline: operable
@@ -13,28 +11,28 @@ css: 2507
 {% assign baseurl=site.data.2507.2507[page.base] %}
 {% assign sc=site.data.2507.2507[page.criterion] %}
 {% assign cp=site.data.2507.2507[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>A single pointer alternative is available for any functionality which uses a dragging movement.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>No single pointer alternative is available for functionality that uses a dragging movement.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <p>Provide a single pointer alternative for functionality that uses a dragging movement.</p>
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <ul>
                     <li>A list can be reordered by dragging and dropping the items. Alternatively, activating an item reveals arrow buttons which move the item within the list.</li>
@@ -56,11 +54,11 @@ css: 2507
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Some users cannot use a mouse to drag items.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

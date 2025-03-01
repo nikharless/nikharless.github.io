@@ -1,37 +1,33 @@
 ---
 layout: default
 current: 21010202
-root: WCAG 2.2
-base: base
 criterion: 2101
 checkpoint: 210102
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.2101.2101[page.current] %}
 {% assign baseurl=site.data.2101.2101[page.base] %}
 {% assign sc=site.data.2101.2101[page.criterion] %}
 {% assign cp=site.data.2101.2101[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>All functionality is available through the keyboard interface.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Multiple <code>accesskey</code> attributes have the same value, resulting in a conflict which renders some functionality unusable with the keyboard.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Ensure each <code>accesskey</code> has a unique value.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <p>The search field uses the <code>accesskey</code> value "s", so when this access key is pressed, the search field gains focus.</p>
                 <p>Access key implementation varies across browsers. Press <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> to use the access key in most Windows browsers and <kbd>Control</kbd> + <kbd>Option</kbd> + <kbd>s</kbd> to use the access key in most Mac browsers.</p>
@@ -45,11 +41,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Duplicate <code>accesskey</code> values cause conflicts which render some functionality unusable with the keyboard.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

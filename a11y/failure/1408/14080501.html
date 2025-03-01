@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 14080501
-root: WCAG 2.2
-base: base
 criterion: 1408
 checkpoint: 140805
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1408.1408[page.current] %}
 {% assign baseurl=site.data.1408.1408[page.base] %}
 {% assign sc=site.data.1408.1408[page.criterion] %}
 {% assign cp=site.data.1408.1408[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>When text is resized up to 200%, it does not require horizontal scrolling.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>When text is resized up to 200%, it requires horizontal scrolling.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Use a layout which reflows when the screen size changes, <strong>AND</strong></li>
@@ -36,17 +32,17 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>                
                 
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with visual or cognitive disabilities can become disoriented if they have to scroll back and forth to read a block of text.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G146">G146: Using liquid layout</a></li>

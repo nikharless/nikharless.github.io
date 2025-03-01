@@ -1,37 +1,33 @@
 ---
 layout: default
 current: 12010102
-root: WCAG 2.2
-base: base
 criterion: 1201
 checkpoint: 120101
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1201.1201[page.current] %}
 {% assign baseurl=site.data.1201.1201[page.base] %}
 {% assign sc=site.data.1201.1201[page.criterion] %}
 {% assign cp=site.data.1201.1201[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Prerecorded audio-only content must have a text transcript that includes all of the information presented in the audio.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The prerecorded audio-only content has a text transcript, but it doesn't include all the dialogue.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Update the text transcript to include all of the dialogue in the audio.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <h3>Transcript</h3>
                 <p>In <a href="https://www.thisamericanlife.org/775/the-possum-experiment">this example from the This American Life podcast</a>, all spoken dialogue is included in the transcript.</p>
@@ -43,11 +39,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>People who are deaf, hard of hearing, or have difficulty understanding audio information for any reason need to be have access to the same dialogue heard in the audio.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>

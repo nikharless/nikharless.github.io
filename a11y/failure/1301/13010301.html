@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 13010301
-root: WCAG 2.2
-base: base
 criterion: 1301
 checkpoint: 130103
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1301.1301[page.current] %}
 {% assign baseurl=site.data.1301.1301[page.base] %}
 {% assign sc=site.data.1301.1301[page.criterion] %}
 {% assign cp=site.data.1301.1301[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>If the label for an individual control in a group of controls does not provide enough context to understand the purpose of the control, the control is programmatically associated with the group label.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The label for an individual checkbox in a group of related checkboxes does not provide enough context to understand the purpose of the checkbox, and the checkbox is not programmatically associated with the group label.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <h3>Native HTML (Preferred Method)</h3>
                 <p>Use the <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> tags to group the checkboxes.</p>
@@ -47,7 +43,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <h3>Native HTML (Preferred Method)</h3>
                 <fieldset>
@@ -91,11 +87,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Assistive technology users browsing through a form will not hear group labels unless they are programmatically associated. Screen readers in forms mode will ignore any text that is not programmatically associated with form controls.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>

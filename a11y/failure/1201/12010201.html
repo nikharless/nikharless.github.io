@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 12010201
-root: WCAG 2.2
-base: base
 criterion: 1201
 checkpoint: 120102
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1201.1201[page.current] %}
 {% assign baseurl=site.data.1201.1201[page.base] %}
 {% assign sc=site.data.1201.1201[page.criterion] %}
 {% assign cp=site.data.1201.1201[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Prerecorded video-only content must have a text or audio alternative that includes all of the information presented in the video.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The prerecorded video-only content does not have an audio description or text transcript.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Add an audio description or text transcript that includes all of the information presented in the video using one of the following methods:
                 <ul>
                     <li>Provide an audio file of a description of the video, <strong>OR</strong></li>
@@ -38,7 +34,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <h3>Silent Video and Alternate Video with Audio Description</h3>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/RlRMxbuggR0?si=E2C-vnZ3dXPPlz6N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -46,11 +42,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Blind users need an alternate method of getting information conveyed through only video content.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>

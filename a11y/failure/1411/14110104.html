@@ -1,37 +1,33 @@
 ---
 layout: default
 current: 14110104
-root: WCAG 2.2
-base: base
 criterion: 1411
 checkpoint: 141101
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1411.1411[page.current] %}
 {% assign baseurl=site.data.1411.1411[page.base] %}
 {% assign sc=site.data.1411.1411[page.criterion] %}
 {% assign cp=site.data.1411.1411[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Visual indicators of a slider's boundaries must have at least 3:1 contrast with the background.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Visual indicators of a slider's boundaries do not have at least 3:1 contrast with the background.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Change the color of the boundary to have at least 3:1 contrast with the background.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <script src="{{ baseurl }}/assets/js/switch.js"></script>
                 <h3>Background</h3>
@@ -46,11 +42,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Color blind and visually impaired users need to be able to distinguish non-text user controls.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

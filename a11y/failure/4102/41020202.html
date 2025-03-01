@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 41020202
-root: WCAG 2.2
-base: base
 criterion: 4102
 checkpoint: 410202
 guideline: understandable
@@ -13,26 +11,26 @@ css: 41020202
 {% assign baseurl=site.data.4102.4102[page.base] %}
 {% assign sc=site.data.4102.4102[page.criterion] %}
 {% assign cp=site.data.4102.4102[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
         <div class="row">
-            <h2 class="{{ page.level }}">Expected Result</h2>
+            <h2 class="{{ sc.level }}">Expected Result</h2>
             <div>Custom controls have valid ARIA attributes and values.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Actual Result</h2>
+            <h2 class="{{ sc.level }}">Actual Result</h2>
             <div>A custom control has an invalid ARIA attribute or value.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Solution</h2>
+            <h2 class="{{ sc.level }}">Solution</h2>
             <div>Ensure states, properties, and values are valid.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <div class="example">
                     <h3>Slider</h3>
@@ -52,7 +50,7 @@ css: 41020202
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Not Applicable</h2>
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
             <div>
                 <p>The following items are not applicable to this failure:</p>
                 <ul>
@@ -72,11 +70,11 @@ css: 41020202
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Assistive technology only works well when code is done properly.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

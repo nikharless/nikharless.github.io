@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 14010104
-root: WCAG 2.2
-base: base
 criterion: 1401
 checkpoint: 140101
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1401.1401[page.current] %}
 {% assign baseurl=site.data.1401.1401[page.base] %}
 {% assign sc=site.data.1401.1401[page.criterion] %}
 {% assign cp=site.data.1401.1401[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Color is not used as the only means of distinguishing a visual element.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Color is used as the only means of distinguishing a visual element.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div><p>Provide a visual means of conveying the information in addition to color. Possible solutions include, but are not limited to, the following:</p>
                 <ul>
                     <li>Instead of using legends on charts and graphs, label the elements directly.</li>
@@ -37,7 +33,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Bar Chart</h3>
                 <p>Rather than relying on the color of the bars, each bar is labeled with text.</p>
@@ -75,11 +71,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>People who are color blind or have low vision need an alternate means besides color of getting the information.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.4.1 Use of Color</a></li>

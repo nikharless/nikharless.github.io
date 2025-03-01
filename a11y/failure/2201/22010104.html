@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 22010104
-root: WCAG 2.2
-base: base
 criterion: 2201
 checkpoint: 220101
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.2201.2201[page.current] %}
 {% assign baseurl=site.data.2201.2201[page.base] %}
 {% assign sc=site.data.2201.2201[page.criterion] %}
 {% assign cp=site.data.2201.2201[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Time limits can be turned off, adjusted, or extended.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The time limit gives a warning when it is about to expire. However, the time limit is not essential or required and cannot be turned off, adjusted, or extended.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Extend the time limit to at least 20 hours, <strong>OR</strong></li>
@@ -37,7 +33,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <ul>
                     <li>A web page has automatically updating featured stories links which are displayed in a rotating fashion. It provides a control that allows the user to extend the length of time between each update as much as 10 times the default.</li>
@@ -46,11 +42,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with various disabilities often need more time to complete activities.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

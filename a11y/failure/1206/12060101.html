@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 12060101
-root: WCAG 2.2
-base: base
 criterion: 1206
 checkpoint: 120601
 guideline: perceivable
@@ -12,26 +10,26 @@ aa
 {% assign baseurl=site.data.1206.1206[page.base] %}
 {% assign sc=site.data.1206.1206[page.criterion] %}
 {% assign cp=site.data.1206.1206[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Prerecorded synchronized media has a sign language interpretation for the audio content.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The prerecorded synchronized media does not have a sign language interpretation for the audio content.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Provide a sign language interpretation that includes all key elements necessary to understand the audio content.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Live Show Recorded with ASL Interpreter</h3>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/JPZjvE9k3i0?si=uctIAOheG1pC5K-N" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -41,11 +39,11 @@ aa
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Some deaf users are more fluent in sign language than in reading spoken languages.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.2.6 Sign Language (Prerecorded)</a></li>

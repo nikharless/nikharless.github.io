@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 31060101
-root: WCAG 2.2
-base: base
 criterion: 3106
 checkpoint: 310601
 guideline: understandable
@@ -12,22 +10,22 @@ aa
 {% assign baseurl=site.data.3106.3106[page.base] %}
 {% assign sc=site.data.3106.3106[page.criterion] %}
 {% assign cp=site.data.3106.3106[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>When the meaning of words depends on the pronunciation, the intended pronunciation is provided.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The meaning of a word depends on the pronunciation, which is not clear from the context, and the intended pronunciation is not provided.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <p>Provide the pronunciation with a mechanism such as the following:
                 <ul>
@@ -38,7 +36,7 @@ aa
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Pronunciation After Word</h3>
                 <div class="example">
@@ -51,11 +49,11 @@ aa
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Some people, including those with cognitive disabilities, may not understand the meaning of content.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G62">G62: Providing a glossary</a></li>

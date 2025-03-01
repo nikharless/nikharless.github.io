@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 11010301
-root: WCAG 2.2
-base: base
 criterion: 1101
 checkpoint: 110103
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1101.1101[page.criterion] %}
 {% assign cp=site.data.1101.1101[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Complex images have a short descriptive text alternative that summarizes the information provided by the image.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The complex image does not have a short text alternative.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Add a short text alternative which summarizes the information provided by the image using one of the following methods:
                 <ul>
                     <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
@@ -38,7 +34,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <h3>Complex Image with Link to Long Description</h3>
 
@@ -56,11 +52,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Blind and visually impaired users need to have a short text alternative for complex images so that they can understand the purpose of the image and know whether they want to explore the long description.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>

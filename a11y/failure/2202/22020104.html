@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 22020104
-root: WCAG 2.2
-base: base
 criterion: 2202
 checkpoint: 220201
 guideline: perceivable
@@ -13,26 +11,26 @@ css: scrolling-text
 {% assign baseurl=site.data.2202.2202[page.base] %}
 {% assign sc=site.data.2202.2202[page.criterion] %}
 {% assign cp=site.data.2202.2202[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The user is able to interact with other content while moving, blinking, or scrolling content is paused.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The user is not able to interact with other content while the moving, blinking, or scrolling content is paused.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Provide a mechanism to pause, stop, or hide the moving, blinking, or scrolling element which allows the user to interact with other content while it is paused.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Scrolling Text</h3>
                 <p>This scrolling text element can be paused when the mouse is hovered over it. However, if this were the only means of pausing it, the user could not interact with the other content, because as soon as they removed the mouse hover, it would begin scrolling again.</p>
@@ -49,11 +47,11 @@ css: scrolling-text
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Some people with cognitive disabilities and attention deficits cannot concentrate with continual movement.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

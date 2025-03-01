@@ -1,37 +1,33 @@
 ---
 layout: default
 current: 14060201
-root: WCAG 2.2
-base: base
 criterion: 1406
 checkpoint: 140602
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1406.1406[page.current] %}
 {% assign baseurl=site.data.1406.1406[page.base] %}
 {% assign sc=site.data.1406.1406[page.criterion] %}
 {% assign cp=site.data.1406.1406[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Large text, including images of large text, has a contrast ratio of at least 4.5:1 with the background.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Large text does not have a contrast ratio of at least 4.5:1 with the background.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Change the text or background color so that the contrast ratio between the text and the background is at least 4.5:1.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div style="background-color: #F5FFF2">
                 <p style="font-size: 24px; color: #4C8200">This text has passing contrast with the background at 4.5:1.</p>
                 <p style="font-size: 19px; font-weight: bold; color: #4C8200">This text has passing contrast with the background at 4.5:1.</p>
@@ -40,11 +36,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Vision impaired and color blind users need sufficient contrast in order to be able to read text.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

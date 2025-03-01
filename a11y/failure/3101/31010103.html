@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 31010103
-root: WCAG 2.2
-base: base
 criterion: 3101
 checkpoint: 310101
 guideline: understandable
@@ -12,36 +10,36 @@ guideline: understandable
 {% assign baseurl=site.data.3101.3101[page.base] %}
 {% assign sc=site.data.3101.3101[page.criterion] %}
 {% assign cp=site.data.3101.3101[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The web page has a <code>lang</code> attribute that sets the default page language.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The web page has a <code>lang</code> attribute, but the language code does not match the actual language of the page.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Set the <code>lang</code> value to the language code for the actual language of the page.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <pre><code>&lt;html <strong>lang="fr"</strong>&gt;</code></pre>
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Assistive technology users get information in the correct language.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 24040102
-root: WCAG 2.2
-base: base
 criterion: 2404
 checkpoint: 240401
 guideline: operable
@@ -12,22 +10,22 @@ guideline: operable
 {% assign baseurl=site.data.2404.2404[page.base] %}
 {% assign sc=site.data.2404.2404[page.criterion] %}
 {% assign cp=site.data.2404.2404[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The purpose of the link can be determined from the image alternative text along with its immediate context without having to leave the link.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The purpose of the link cannot be determined without leaving the link.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Add alternative text to the image, describing the link purpose (<code>alt</code>, <code>title</code>, <code>aria-label</code>, or <code>aria-labelledby</code>), <strong>OR</strong></li>
@@ -37,7 +35,7 @@ guideline: operable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Image Alternative Text</h3>
                 <p><a href="#"><img src="{{ baseurl }}/assets/images/110101-github-mark.png" width="60" height="60" alt="GitHub home"></a></p>
@@ -59,11 +57,11 @@ guideline: operable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with visual and cognitive disabilities can navigate more easily.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

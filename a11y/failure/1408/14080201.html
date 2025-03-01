@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 14080201
-root: WCAG 2.2
-base: base
 criterion: 1408
 checkpoint: 140802
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1408.1408[page.current] %}
 {% assign baseurl=site.data.1408.1408[page.base] %}
 {% assign sc=site.data.1408.1408[page.criterion] %}
 {% assign cp=site.data.1408.1408[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The width of a block of text can be adjusted so that no more than 80 characters are displayed without the need for horizontal scrolling.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>When a block of text is resized so that no more than 80 characters are displayed, horizontal scrolling is required.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Use relative width measurements such as ems or percentages, <strong>OR</strong></li>
@@ -36,7 +32,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <p>Use browser zoom to resize text to 200%.</p>
                 <h3>Ems</h3>
@@ -47,11 +43,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with certain cognitive disabilities are better able to track lines of text when they are shorter.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

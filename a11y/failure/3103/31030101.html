@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 31030101
-root: WCAG 2.2
-base: base
 criterion: 3103
 checkpoint: 310301
 guideline: understandable
@@ -12,26 +10,26 @@ aa
 {% assign baseurl=site.data.3103.3103[page.base] %}
 {% assign sc=site.data.3103.3103[page.criterion] %}
 {% assign cp=site.data.3103.3103[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Unusual words or phrases must have definitions provided.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Words or phrases used in an unusual or restricted way do not have definitions provided.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Add a mechanism for providing definitions for unusual words.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Link to Definition</h3>
                 <div class="example">Unusual words or phrases include <a href="https://www.w3.org/TR/WCAG22/#dfn-jargon"><em>jargon</em></a>.</div>
@@ -50,11 +48,11 @@ aa
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>More people, especially those with cognitive disabilities, can understand the meaning of content.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

@@ -1,37 +1,33 @@
 ---
 layout: default
 current: 14090101
-root: WCAG 2.2
-base: base
 criterion: 1409
 checkpoint: 140901
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1409.1409[page.current] %}
 {% assign baseurl=site.data.1409.1409[page.base] %}
 {% assign sc=site.data.1409.1409[page.criterion] %}
 {% assign cp=site.data.1409.1409[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Real text is used to convey information rather than images of text.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>An image of text is used for meaningful text.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Replace the image of text with real text, using CSS styling to retain the desired visual appearance.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <div style="background-color: #010a00;">
                     <div style="padding: 1rem; font-family: Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif; font-size: 2rem; font-weight: 400; letter-spacing: 5px; text-align: center; text-transform: uppercase; color: #fff; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;">Accessibility Matters</div>
@@ -49,11 +45,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with vision or reading disabilities often need to adjust the text in order to read it.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

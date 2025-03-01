@@ -1,48 +1,44 @@
 ---
 layout: default
 current: 12020102
-root: WCAG 2.2
-base: base
 criterion: 1202
 checkpoint: 120201
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1201.1201[page.current] %}
 {% assign baseurl=site.data.1201.1201[page.base] %}
 {% assign sc=site.data.1201.1201[page.criterion] %}
 {% assign cp=site.data.1201.1201[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Prerecorded video with audio must have synchronized captions which convey the same information provided in the audio.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The video has captions, but they are inaccurate.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Rewrite the captions to match the audio. If you are using automatic captions, switch to manually written ones.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <h3>YouTube</h3>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/SrApzuyirvs?si=6DvTzyI6IgWMXd94" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>People who are deaf, hard of hearing, or have difficulty understanding audio information for any reason, need to be able to access the same information provided in the audio portion of multimedia.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.2.2: Captions (Prerecorded)</a></li>

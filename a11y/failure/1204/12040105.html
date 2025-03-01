@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 12040105
-root: WCAG 2.2
-base: base
 criterion: 1204
 checkpoint: 120401
 guideline: perceivable
@@ -12,35 +10,35 @@ a
 {% assign baseurl=site.data.1204.1204[page.base] %}
 {% assign sc=site.data.1204.1204[page.criterion] %}
 {% assign cp=site.data.1204.1204[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Live video with audio must have synchronized captions which convey the same information provided in the audio.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The live video has captions, but important sound effects are not included.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Include all of the important sound effects in the captions.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with hearing may receive meaningful information from sound effects (e.g., the sound of someone arriving via train). Deaf users and other users who use captions must be given all the same information that is given in audio form.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.2.4 Captions (Live)</a></li>

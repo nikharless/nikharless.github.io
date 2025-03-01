@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 11010106
-root: WCAG 2.2
-base: base
 criterion: 1101
 checkpoint: 110101
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1101.1101[page.criterion] %}
 {% assign cp=site.data.1101.1101[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>A server-side image map is used, but there is no text alternative for the links.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ol>
                     <li>Add an <code>&lt;alt&gt;</code> attribute to the <code>&lt;img&gt;</code> tag summarizing the purpose of the image map.</li>
@@ -36,7 +32,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <h3>Server-Side Image Map</h3>
                 <a href="#"><img ismap src="{{ baseurl }}/assets/images/11010106-map_640.png" alt="World Map"></a>
@@ -54,14 +50,14 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>
                 <p>Blind and visually impaired users need to have a text alternative to functional images so that they can be interpreted by assistive technology such as screen readers and braille devices.</p>
                 <p>Server-side image maps send the coordinates of mouse clicks to be calculated server-side, after which a link is returned. There is nothing for keyboard users to focus on, and no way to add a text alternative to the areas of the image map.</p>
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>

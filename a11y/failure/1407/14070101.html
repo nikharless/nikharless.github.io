@@ -1,48 +1,44 @@
 ---
 layout: default
 current: 14070201
-root: WCAG 2.2
-base: base
 criterion: 1407
 checkpoint: 140702
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1407.1407[page.current] %}
 {% assign baseurl=site.data.1407.1407[page.base] %}
 {% assign sc=site.data.1407.1407[page.criterion] %}
 {% assign cp=site.data.1407.1407[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Audio that is mostly speech has low or no background sound or the background sound can be turned off.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Audio has background sound that is too loud.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Mix the audio so that there is at least a 20 db difference between the foreground and background sound.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <p><strong>Good</strong>: <a href="https://www.w3.org/WAI/WCAG22/working-examples/audio-contrast/good-contrast.mp3">Audio Example: Foreground is 20 decibels above the background</a> (mp3)</p>
                 <p><strong>Bad</strong>: <a href="https://www.w3.org/WAI/WCAG22/working-examples/audio-contrast/bad-contrast.mp3">Audio Example: Foreground is less than 20 decibels above the background</a> (mp3)</p>
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with hearing impairments often have difficulty separating speech from background sound.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

@@ -1,37 +1,33 @@
 ---
 layout: default
 current: 12030103
-root: WCAG 2.2
-base: base
 criterion: 1203
 checkpoint: 120301
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1201.1201[page.current] %}
 {% assign baseurl=site.data.1201.1201[page.base] %}
 {% assign sc=site.data.1201.1201[page.criterion] %}
 {% assign cp=site.data.1201.1201[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Prerecorded synchronized media must have a text or audio description of the visual content.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The prerecorded synchronized media content has a text transcript for the video portion, but it does not include all important visual elements.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Provide a text transcript that includes all key visual elements necessary to understand the video content.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <h3>Text Transcript</h3>
                 <p>This transcript does include the text on the cartoon images, which is positive. However, it should also include a brief description of the cartoons themselves to give context to the text.</p>
@@ -40,11 +36,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Visually impaired users, or any users who have difficulty understanding moving content, need an alternate means of receiving the information.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.2.3: Audio Description or Media Alternative (Prerecorded)</a></li>

@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 31040101
-root: WCAG 2.2
-base: base
 criterion: 3104
 checkpoint: 310401
 guideline: understandable
@@ -12,26 +10,26 @@ aa
 {% assign baseurl=site.data.3104.3104[page.base] %}
 {% assign sc=site.data.3104.3104[page.criterion] %}
 {% assign cp=site.data.3104.3104[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Abbreviations must have definitions provided.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Abbreviations do not have definitions provided.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Add a mechanism for providing definitions for abbreviations.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Expansion with <code>&lt;abbr&gt;</code></h3>
                 <p>The <code>title</code> attribute on the <code>&lt;abbr&gt;</code> tag shows a tooltip on hover which reveals the expansion.</p>
@@ -61,11 +59,11 @@ aa
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Some people, including those with cognitive disabilities, may not understand the shortened form of words.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

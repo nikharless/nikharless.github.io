@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 24130102
-root: WCAG 2.2
-base: base
 criterion: 2413
 checkpoint: 241301
 guideline: operable
@@ -13,26 +11,26 @@ css: focus-indicator
 {% assign baseurl=site.data.2413.2413[page.base] %}
 {% assign sc=site.data.2413.2413[page.criterion] %}
 {% assign cp=site.data.2413.2413[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The focused state has at least a 3:1 contrast with the unfocused state.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The focused state does not have at least a 3:1 contrast with the unfocused state.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Adjust the colors so that the focus state has at least a 3:1 contrast with the same pixels in the unfocused state.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <p>Tab to each element to see the focus indicator.</p>
 
@@ -81,11 +79,11 @@ css: focus-indicator
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with visual impairments, including older people, can't see small changes in visual appearance.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

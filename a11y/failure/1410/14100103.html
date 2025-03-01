@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 14100103
-root: WCAG 2.2
-base: base
 criterion: 1410
 checkpoint: 141001
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1410.1410[page.current] %}
 {% assign baseurl=site.data.1410.1410[page.base] %}
 {% assign sc=site.data.1410.1410[page.criterion] %}
 {% assign cp=site.data.1410.1410[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The content is viewable and usable without scrolling in two dimensions when the viewport is set to 320 CSS pixels wide.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>When the viewport is set to 320 CSS pixels wide, two-dimensional scrolling is required to access all the content.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Use a layout which reflows when the screen size changes, <strong>AND</strong></li>
@@ -36,7 +32,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Responsive Design</h3>
                 <p>The following working examples resize and reflow elements to fit them within the viewport.</p>
@@ -48,11 +44,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with visual or cognitive disabilities can become disoriented if they have to scroll back and forth to read and use content.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

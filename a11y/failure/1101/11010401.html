@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 11010401
-root: WCAG 2.2
-base: base
 criterion: 1101
 checkpoint: 110104
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.1101.1101[page.base] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1101.1101[page.criterion] %}
 {% assign cp=site.data.1101.1101[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Decorative images using the <code>&lt;img&gt;</code> tag must have a null <code>alt</code> value.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The decorative <code>&lt;img&gt;</code> does not have an <code>alt</code> attribute.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Add <code>alt=""</code> to the <code>&lt;img&gt;</code> element.</li>
@@ -36,7 +32,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <h3>JPG Image</h3>
                 <div style="border: 1px solid black; padding: 5px">
@@ -48,11 +44,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Blind and visually impaired users want decorative or redundant images hidden so they do not get overwhelmed with unimportant screen reader chatter.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>

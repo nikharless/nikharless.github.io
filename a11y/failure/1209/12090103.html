@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 12090103
-root: WCAG 2.2
-base: base
 criterion: 1209
 checkpoint: 120901
 guideline: perceivable
@@ -12,35 +10,35 @@ aa
 {% assign baseurl=site.data.1209.1209[page.base] %}
 {% assign sc=site.data.1209.1209[page.criterion] %}
 {% assign cp=site.data.1209.1209[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
         <div class="row">
-            <h2 class="{{ page.level }}">Expected Result</h2>
+            <h2 class="{{ sc.level }}">Expected Result</h2>
             <div>Live audio broadcasts must have a text equivalent.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Actual Result</h2>
+            <h2 class="{{ sc.level }}">Actual Result</h2>
             <div>The live audio broadcast has a text equivalent, but all the dialogue is not included.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Solution</h2>
+            <h2 class="{{ sc.level }}">Solution</h2>
             <div>Include all of the audio dialogue in the text equivalent.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>People who are deaf, hard of hearing, or have difficulty understanding audio information for any reason, need to be able to access the same information provided in the live audio broadcast.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.2.9 Audio-only (Live)</a></li>

@@ -1,37 +1,33 @@
 ---
 layout: default
 current: 22050101
-root: WCAG 2.2
-base: base
 criterion: 2205
 checkpoint: 220501
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.2205.2205[page.current] %}
 {% assign baseurl=site.data.2205.2205[page.base] %}
 {% assign sc=site.data.2205.2205[page.criterion] %}
 {% assign cp=site.data.2205.2205[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>There is no loss of data when a user's authenticated session expires and they log back in.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Data is lost when the user's session expires, and they have to start their progress over.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Provide a mechanism to save data between authenticated sessions.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <ul>
                     <li>A shopping website saves cart contents and check-out progress when a user's session times out. When the user logs back in, they are taken to the same step in the process with all previously entered information retained.</li>
@@ -40,11 +36,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Users with various disabilities often need more time to complete activities.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G105">G105: Saving data so that it can be used after a user re-authenticates</a></li>

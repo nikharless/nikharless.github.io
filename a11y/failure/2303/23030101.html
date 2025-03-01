@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 23030101
-root: WCAG 2.2
-base: base
 criterion: 2303
 checkpoint: 230301
 guideline: perceivable
@@ -12,22 +10,22 @@ aa
 {% assign baseurl=site.data.2303.2303[page.base] %}
 {% assign sc=site.data.2303.2303[page.criterion] %}
 {% assign cp=site.data.2303.2303[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The user can disable any animation triggered by interaction.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Animation triggered by interaction cannot be disabled.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Provide a mechanism for the user to disable any animation triggered by interaction.</li>
@@ -35,7 +33,7 @@ aa
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <ul>
                     <li>A site which uses parallax animation has a control at the top of the page which allows the user to turn off the parallax effect.</li>
@@ -44,11 +42,11 @@ aa
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Motion animation can cause some users to experience dizziness, headaches, or nausea.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

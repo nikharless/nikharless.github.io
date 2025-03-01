@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 24110101
-root: WCAG 2.2
-base: base
 criterion: 2411
 checkpoint: 241101
 guideline: operable
@@ -12,22 +10,22 @@ a
 {% assign baseurl=site.data.2411.2411[page.base] %}
 {% assign sc=site.data.2411.2411[page.criterion] %}
 {% assign cp=site.data.2411.2411[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Focus is not entirely hidden by author-created content.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Focus is entirely hidden by author-created content.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <p>Ensure focusable content is not entirely hidden by author-created content. Some ways of avoiding overlap include:</p>
                 <ul>
@@ -38,7 +36,7 @@ a
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <ul>
                     <li>Working example: <a href="https://www.w3.org/WAI/WCAG22/working-examples/css-padding-focus-not-obscured/">Using CSS scroll-padding to un-obscure content.</a></li>
@@ -46,11 +44,11 @@ a
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>People who can't use a mouse need to see what has keyboard focus.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 13010401
-root: WCAG 2.2
-base: base
 criterion: 1301
 checkpoint: 130104
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1301.1301[page.current] %}
 {% assign baseurl=site.data.1301.1301[page.base] %}
 {% assign sc=site.data.1301.1301[page.criterion] %}
 {% assign cp=site.data.1301.1301[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Headings are marked up semantically as headings.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Headings are not marked up semantically as headings.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <h3>Native HTML (Preferred Method)</h3>
                 <p>Use the <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code> and <code>&lt;h6&gt;</code> tags to mark up headings.</p>
@@ -43,7 +39,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <h3>Native HTML (Preferred Method)</h3>
                 <pre><code>&lt;h1&gt;Page-Level Heading&lt;/h1&gt;
@@ -67,11 +63,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Visual users can see at a glance how information on the page is structured. Assistive technology users rely on semantic markup to understand how content is arranged. Screen reader users also use headings to navigate through the page.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>

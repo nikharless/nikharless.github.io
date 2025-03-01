@@ -1,33 +1,29 @@
 ---
 layout: default
 current: 13010201
-root: WCAG 2.2
-base: base
 criterion: 1301
 checkpoint: 130102
-guideline: perceivable
-
 ---
 {% assign currentpg=site.data.1301.1301[page.current] %}
 {% assign baseurl=site.data.1301.1301[page.base] %}
 {% assign sc=site.data.1301.1301[page.criterion] %}
 {% assign cp=site.data.1301.1301[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Data tables are marked up semantically as tables.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Data tables are not marked up semantically as tables.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Mark up data tables as semantic tables.
                 <ul>
                     <li>Use native <a href="https://www.w3schools.com/html/html_tables.asp">HTML tables</a>.</li>
@@ -36,7 +32,7 @@ guideline: perceivable
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <table>
                     <tr>
@@ -69,11 +65,11 @@ guideline: perceivable
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Table relationships are visible at a glance for sighted users. Assistive technology users need to get this relationship information from the semantic structure and to be able to easily navigate the data.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>

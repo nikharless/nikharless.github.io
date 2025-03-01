@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 24030103
-root: WCAG 2.2
-base: base
 criterion: 2403
 checkpoint: 240301
 guideline: perceivable
@@ -13,22 +11,22 @@ css: disclosure-faq
 {% assign baseurl=site.data.2403.2403[page.base] %}
 {% assign sc=site.data.2403.2403[page.criterion] %}
 {% assign cp=site.data.2403.2403[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Focus moves to modeless dialog immediately after the trigger element.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Focus does not move to modeless dialog immediately after the trigger element.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <ul>
                     <li>Place the modeless dialog in the DOM immediately after the trigger element so the focus moves to it in logical order, <strong>OR</strong></li>
@@ -37,7 +35,7 @@ css: disclosure-faq
             </div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Examples</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <p>The added content in this example is located immediately after the trigger element in the DOM. When the user tabs through the page, the focus goes from the trigger element to the link within the additional content before moving to the next control.</p>
                 {% include examples/disclosure.html %}
@@ -64,11 +62,11 @@ css: disclosure-faq
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Navigating a site or application with only the keyboard will make sense.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>

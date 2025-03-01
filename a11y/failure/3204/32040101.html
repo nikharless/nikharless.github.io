@@ -1,8 +1,6 @@
 ---
 layout: default
 current: 32040101
-root: WCAG 2.2
-base: base
 criterion: 3204
 checkpoint: 320401
 guideline: understandable
@@ -12,26 +10,26 @@ a
 {% assign baseurl=site.data.3204.3204[page.base] %}
 {% assign sc=site.data.3204.3204[page.criterion] %}
 {% assign cp=site.data.3204.3204[page.checkpoint] %}
-
-<div class="cpcontent {{ page.level }}link">
+{% include sidebar.html %}
+<div class="cpcontent {{ sc.level }}link">
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-failure.html %}
 
     <div class="failure">
     	<div class="row">
-    		<h2 class="{{ page.level }}">Expected Result</h2>
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Form controls that have the same functionality within a set of web pages are identified consistently.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Actual Result</h2>
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Form controls that have the same functionality within a set of web pages are not identified consistently.</div>
     	</div>
     	<div class="row">
-    		<h2 class="{{ page.level }}">Solution</h2>
+    		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Ensure form controls that have the same functionality within a set of web pages have consistent labels and accessible names each time they appear.</div>
     	</div>
         <div class="row">
-            <h2 class="{{ page.level }}">Passing Example<br>
+            <h2 class="{{ sc.level }}">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
             <div>
                 <h3>Page 1</h3>
@@ -54,7 +52,7 @@ a
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Failing Example<br>
+            <h2 class="{{ sc.level }}">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
             <div>
                 <h3>Page 1</h3>
@@ -77,11 +75,11 @@ a
             </div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">Why It's Important</h2>
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
             <div>Consistently identified actions are especially important to people with disabilities.</div>
         </div>
         <div class="row">
-            <h2 class="{{ page.level }}">References</h2>
+            <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
