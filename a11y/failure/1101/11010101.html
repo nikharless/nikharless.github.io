@@ -12,59 +12,59 @@ checkpoint: 110101
 {% include sidebar.html %}
 <div class="content row">
     <div class="cpcontent {{ currentpg.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The control is labeled with only an &lt;img&gt;, but the image does not have a text alternative.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Add a text alternative which describes the purpose of the functional image using one of the following methods:
-                <ul>
-                    <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
-                    <li>Add an <code>aria-label</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
-                    <li>Add an <code>aria-labelledby</code> attribute to the <code>&lt;img&gt;</code> tag, set to the <code>id</code> value of the text to use as a label, <strong>OR</strong></li>
-                    <li>Add a <code>title</code> attribute to the <code>&lt;img&gt;</code> tag</li>
-                </ul>
+        <div class="failure">
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The control is labeled with only an &lt;img&gt;, but the image does not have a text alternative.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Add a text alternative which describes the purpose of the functional image using one of the following methods:
+                    <ul>
+                        <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
+                        <li>Add an <code>aria-label</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
+                        <li>Add an <code>aria-labelledby</code> attribute to the <code>&lt;img&gt;</code> tag, set to the <code>id</code> value of the text to use as a label, <strong>OR</strong></li>
+                        <li>Add a <code>title</code> attribute to the <code>&lt;img&gt;</code> tag</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>Image as Link</h3>
+                    <p><a href="#"><img src="{{ baseurl }}/assets/images/11010101-BeaverCountyLogo.png" alt="Beaver County, Pennsylvania. Divided by rivers, united by people"></a></p>
+        <pre><code>&lt;a href="https://www.beavercountypa.gov/"&gt;
+      &lt;img 
+        src="BeaverCountyLogo.png" 
+        <strong>alt="Beaver County, Pennsylvania. Divided by rivers, united by people"</strong>&gt;
+    &lt;/a&gt;</code></pre>
+                </div>
             </div>
-    	</div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Image as Link</h3>
-                <p><a href="#"><img src="{{ baseurl }}/assets/images/11010101-BeaverCountyLogo.png" alt="Beaver County, Pennsylvania. Divided by rivers, united by people"></a></p>
-    <pre><code>&lt;a href="https://www.beavercountypa.gov/"&gt;
-  &lt;img 
-    src="BeaverCountyLogo.png" 
-    <strong>alt="Beaver County, Pennsylvania. Divided by rivers, united by people"</strong>&gt;
-&lt;/a&gt;</code></pre>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>Blind and visually impaired users need to have a text alternative to functional images so that they can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not know what the link or control does.</div>
             </div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Blind and visually impaired users need to have a text alternative to functional images so that they can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not know what the link or control does.</div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F65">F65: Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H65">H65: Using the title attribute to identify form controls when the label element cannot be used</a></li>
-                </ul>
+            <div class="row">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F65">F65: Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H65">H65: Using the title attribute to identify form controls when the label element cannot be used</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-
     {% include checkpoints/1101checkpoints.html %}
 </div>
