@@ -1,3 +1,1 @@
-window.onload = function () {
-	document.title = {{ currentpg.name }};
-}
+document.title = "{{ currentpg.name }}";
