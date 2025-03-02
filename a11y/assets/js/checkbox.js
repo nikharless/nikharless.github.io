@@ -14,8 +14,8 @@ class Checkbox {
     this.domNode = domNode;
     this.domNode.tabIndex = 0;
     /* Find a way to cycle through checkboxes */
-    this.ccbChecked = document.getElementById('ccbChecked1');
-    this.ccbNotChecked = document.getElementById('ccbNotChecked1');
+    this.ccbChecked1 = document.getElementById('ccbChecked1');
+    this.ccbNotChecked1 = document.getElementById('ccbNotChecked1');
     this.ccbChecked2 = document.getElementById('ccbChecked2');
     this.ccbNotChecked2 = document.getElementById('ccbNotChecked2');
     this.ccbChecked3 = document.getElementById('ccbChecked3');
@@ -33,9 +33,9 @@ class Checkbox {
   toggleCheckbox(id) {
     if (this.domNode.getAttribute('aria-checked') === 'true') {
       this.domNode.setAttribute('aria-checked', 'false');
-      if (id == ccbChecked) {
-        this.ccbChecked.style.display = "none";
-        this.ccbNotChecked.style.display = "block";
+      if (id == ccbChecked1) {
+        this.ccbChecked1.style.display = "none";
+        this.ccbNotChecked1.style.display = "block";
       } else if (id == ccbChecked2) {
         this.ccbChecked2.style.display = "none";
         this.ccbNotChecked2.style.display = "block";
@@ -46,9 +46,9 @@ class Checkbox {
 
     } else {
       this.domNode.setAttribute('aria-checked', 'true');
-      if (id == ccbChecked) {
-        this.ccbChecked.style.display = "block";
-        this.ccbNotChecked.style.display = "none";
+      if (id == ccbChecked1) {
+        this.ccbChecked1.style.display = "block";
+        this.ccbNotChecked1.style.display = "none";
       } else if (id == ccbChecked2) {
         this.ccbChecked2.style.display = "block";
         this.ccbNotChecked2.style.display = "none";
