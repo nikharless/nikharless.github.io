@@ -11,76 +11,77 @@ criterion: 2205
 {% include sidebar.html %}
 <div class="content row">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <h2>Overview</h2>
+        <h2>Overview</h2>
 
-    <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> There must be no loss of data when a user's authenticated session expires and they log back in.</li>
-    </ul>
+        <h2>Basic Requirements and Best Practices</h2>
+        <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+            <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+        <ul>
+            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> There must be no loss of data when a user's authenticated session expires and they log back in.</li>
+        </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want my data from an expired session to remain available so that I can continue my task without starting over when I log back in.</div>
+        <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want my data from an expired session to remain available so that I can continue my task without starting over when I log back in.</div>
 
-    <div class="success"><strong>Success:</strong> If you had a disability, when a session times out and you log back in, you can continue your task instead of having to start over.</div>
+        <div class="success"><strong>Success:</strong> If you had a disability, when a session times out and you log back in, you can continue your task instead of having to start over.</div>
 
-    <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is there a session time limit?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When the session times out, can the user log back in and continue where they left off?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2205.2205[22050101].link | prepend: baseurl }}">{{ site.data.2205.2205[22050101].name }}</a>.</span></li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        <h2>Testing Logic</h2>
+        <script src="{{ baseurl }}/assets/js/tree.js"></script>
+        <h3 id="test1">Is there a session time limit?</h3>
+        <ul role="tree" aria-labelledby="test1">
+            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When the session times out, can the user log back in and continue where they left off?</span>
+                <ul role="group">
+                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                    <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2205.2205[22050101].link | prepend: baseurl }}">{{ site.data.2205.2205[22050101].name }}</a>.</span></li>
+                </ul>
+            </li>
+            <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+        </ul>
 
-    <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Sign in to the site.</li>
-        <li>Take some steps in a process. (Enter data, track progress, etc.)</li>
-        <li>Allow the session to time out.</li>
-        <li>Log back in and verify that you can continue where you left off and any progress has not been lost.</li>
-    </ol>
+        <h2>Web Test Procedure</h2>
+        <h3>Desktop</h3>
+        <ol>
+            <li>Sign in to the site.</li>
+            <li>Take some steps in a process. (Enter data, track progress, etc.)</li>
+            <li>Allow the session to time out.</li>
+            <li>Log back in and verify that you can continue where you left off and any progress has not been lost.</li>
+        </ol>
 
-    <h3>Mobile</h3>
-    <p>Follow the process for Desktop.</p>
+        <h3>Mobile</h3>
+        <p>Follow the process for Desktop.</p>
 
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the process for Desktop.</p>
+        <h2>Mobile App Test Procedure</h2>
+        <p>Follow the process for Desktop.</p>
 
-    <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2205.2205[22050101].link | prepend: baseurl }}">{{ site.data.2205.2205[22050101].name }}</a>. (Medium)</li>
-    </ul>
+        <h2>Failures</h2>
+        <ul>
+            <li><a href="{{ site.data.2205.2205[22050101].link | prepend: baseurl }}">{{ site.data.2205.2205[22050101].name }}</a>. (Medium)</li>
+        </ul>
 
-    <h2>Testing Tools</h2>
-    <ul>
-        
-    </ul>
+        <h2>Testing Tools</h2>
+        <ul>
+            
+        </ul>
 
-    <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>Related Techniques:
-            <ul>
-                <li>General:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G105">G105: Saving data so that it can be used after a user re-authenticates</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G181">G181: Encoding user data as hidden or encrypted data in a re-authorization page</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <h3>Additional Information</h3>
+        <h2>References</h2>
+        <h3>WCAG</h3>
+        <ul>
+            <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+            <li>Related Techniques:
+                <ul>
+                    <li>General:
+                        <ul>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G105">G105: Saving data so that it can be used after a user re-authenticates</a></li>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G181">G181: Encoding user data as hidden or encrypted data in a re-authorization page</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h3>Additional Information</h3>
+    </div>
     {% include checkpoints/2205checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>

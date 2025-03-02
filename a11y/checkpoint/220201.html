@@ -11,136 +11,137 @@ criterion: 2202
 {% include sidebar.html %}
 <div class="content row">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <h2>Overview</h2>
+        <h2>Overview</h2>
 
-    <p>Examples of moving, blinking, or scrolling content include:</p>
-    <ul>
-        <li>Videos</li>
-        <li>Animations</li>
-        <li>Synchronized media presentations</li>
-        <li>Real-time games</li>
-        <li>Scrolling stock tickers</li>
-    </ul>
+        <p>Examples of moving, blinking, or scrolling content include:</p>
+        <ul>
+            <li>Videos</li>
+            <li>Animations</li>
+            <li>Synchronized media presentations</li>
+            <li>Real-time games</li>
+            <li>Scrolling stock tickers</li>
+        </ul>
 
-    <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The user must be able to pause, stop, or hide automatically moving, blinking, or scrolling content that lasts longer than 5 seconds.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #e00000;" aria-label="Requirement"></span> Real-time updates should resume with the most current information when unpaused.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #e00000;" aria-label="Requirement"></span> Updates with static information should resume where it left off when unpaused.</li>
-    </ul>
+        <h2>Basic Requirements and Best Practices</h2>
+        <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+            <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+        <ul>
+            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The user must be able to pause, stop, or hide automatically moving, blinking, or scrolling content that lasts longer than 5 seconds.</li>
+            <li><span role="img" class="fa-solid fa-circle-check" style="color: #e00000;" aria-label="Requirement"></span> Real-time updates should resume with the most current information when unpaused.</li>
+            <li><span role="img" class="fa-solid fa-circle-check" style="color: #e00000;" aria-label="Requirement"></span> Updates with static information should resume where it left off when unpaused.</li>
+        </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with an attention deficit disorder, I want to be able to pause, stop, or hide continuous animations so that I can focus on other page content.</div>
+        <div class="userstory"><strong>User Story:</strong> As a user with an attention deficit disorder, I want to be able to pause, stop, or hide continuous animations so that I can focus on other page content.</div>
 
-    <div class="success"><strong>Success:</strong> If you had an attention deficit disorder, when you encounter a continously moving animation, you are able to pause, stop, or hide it to allow you to focus on other page content.</div>
+        <div class="success"><strong>Success:</strong> If you had an attention deficit disorder, when you encounter a continously moving animation, you are able to pause, stop, or hide it to allow you to focus on other page content.</div>
 
-    <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is there any moving, blinking, or scrolling content on the page which starts automatically?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the moving, blinking, or scrolling last more than 5 seconds?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the moving, blinking, or scrolling content presented in parallel with other content?</span>
-                    <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the moving, blinking, or scrolling content part of an activity where it is essential (e.g., loading animations)?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism for the user to pause, stop, or hide the content?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the mechanism allow the user to interact with other content while the movement is paused?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2202.2202[22020104].link | prepend: baseurl }}">{{ site.data.2202.2202[22020104].name }}</a>.</span></li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content animated?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2202.2202[22020101].link | prepend: baseurl }}">{{ site.data.2202.2202[22020101].name }}</a>.</span></li>
-                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content blinking?</span>
-                                                    <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2202.2202[22020102].link | prepend: baseurl }}">{{ site.data.2202.2202[22020102].name }}</a>.</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2202.2202[22020103].link | prepend: baseurl }}">{{ site.data.2202.2202[22020103].name }}</a>.</span></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</a></span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</a></span></li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        <h2>Testing Logic</h2>
+        <script src="{{ baseurl }}/assets/js/tree.js"></script>
+        <h3 id="test1">Is there any moving, blinking, or scrolling content on the page which starts automatically?</h3>
+        <ul role="tree" aria-labelledby="test1">
+            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the moving, blinking, or scrolling last more than 5 seconds?</span>
+                <ul role="group">
+                    <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the moving, blinking, or scrolling content presented in parallel with other content?</span>
+                        <ul role="group">
+                            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the moving, blinking, or scrolling content part of an activity where it is essential (e.g., loading animations)?</span>
+                                <ul role="group">
+                                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                    <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism for the user to pause, stop, or hide the content?</span>
+                                        <ul role="group">
+                                            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the mechanism allow the user to interact with other content while the movement is paused?</span>
+                                                <ul role="group">
+                                                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                    <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2202.2202[22020104].link | prepend: baseurl }}">{{ site.data.2202.2202[22020104].name }}</a>.</span></li>
+                                                </ul>
+                                            </li>
+                                            <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content animated?</span>
+                                                <ul role="group">
+                                                    <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2202.2202[22020101].link | prepend: baseurl }}">{{ site.data.2202.2202[22020101].name }}</a>.</span></li>
+                                                    <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content blinking?</span>
+                                                        <ul role="group">
+                                                            <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2202.2202[22020102].link | prepend: baseurl }}">{{ site.data.2202.2202[22020102].name }}</a>.</span></li>
+                                                            <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2202.2202[22020103].link | prepend: baseurl }}">{{ site.data.2202.2202[22020103].name }}</a>.</span></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</a></span></li>
+                        </ul>
+                    </li>
+                    <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</a></span></li>
+                </ul>
+            </li>
+            <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+        </ul>
 
-    <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Identify all moving, blinking, or scrolling content that starts automatically, lasts for more than 5 seconds, and is presented along with other content.</li>
-        <li>Verify that there is a mechanism available to stop, pause, or hide the content.</li>
-    </ol>
+        <h2>Web Test Procedure</h2>
+        <h3>Desktop</h3>
+        <ol>
+            <li>Identify all moving, blinking, or scrolling content that starts automatically, lasts for more than 5 seconds, and is presented along with other content.</li>
+            <li>Verify that there is a mechanism available to stop, pause, or hide the content.</li>
+        </ol>
 
-    <h3>Desktop Screen Reader</h3>
-    <ol>
-        <li>Turn on the screen reader.</li>
-        <li>Follow the process for Desktop.</li>
-    </ol>
+        <h3>Desktop Screen Reader</h3>
+        <ol>
+            <li>Turn on the screen reader.</li>
+            <li>Follow the process for Desktop.</li>
+        </ol>
 
-    <h3>Mobile</h3>
+        <h3>Mobile</h3>
 
-    <h4>Screen Reader (iOS and Android)</h4>
-    <p>Follow the process for Desktop Screen Reader.</p>
+        <h4>Screen Reader (iOS and Android)</h4>
+        <p>Follow the process for Desktop Screen Reader.</p>
 
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Web Mobile.</p>
+        <h2>Mobile App Test Procedure</h2>
+        <p>Follow the procedure for Web Mobile.</p>
 
-    <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2202.2202[22020101].link | prepend: baseurl }}">{{ site.data.2202.2202[22020101].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2202.2202[22020102].link | prepend: baseurl }}">{{ site.data.2202.2202[22020102].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2202.2202[22020103].link | prepend: baseurl }}">{{ site.data.2202.2202[22020103].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2202.2202[22020104].link | prepend: baseurl }}">{{ site.data.2202.2202[22020104].name }}</a>. (Medium)</li>
-    </ul>
+        <h2>Failures</h2>
+        <ul>
+            <li><a href="{{ site.data.2202.2202[22020101].link | prepend: baseurl }}">{{ site.data.2202.2202[22020101].name }}</a>. (Medium)</li>
+            <li><a href="{{ site.data.2202.2202[22020102].link | prepend: baseurl }}">{{ site.data.2202.2202[22020102].name }}</a>. (Medium)</li>
+            <li><a href="{{ site.data.2202.2202[22020103].link | prepend: baseurl }}">{{ site.data.2202.2202[22020103].name }}</a>. (Medium)</li>
+            <li><a href="{{ site.data.2202.2202[22020104].link | prepend: baseurl }}">{{ site.data.2202.2202[22020104].name }}</a>. (Medium)</li>
+        </ul>
 
-    <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-    </ul>
+        <h2>Testing Tools</h2>
+        <ul>
+            <li>Screen reader</li>
+        </ul>
 
-    <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>Related Techniques:
-            <ul>
-                <li>General:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G4">G4: Allowing the content to be paused and restarted from where it was paused</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G11">G11: Creating content that blinks for less than 5 seconds</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G152">G152: Setting animated gif images to stop blinking after n cycles (within 5 seconds)</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G186">G186: Using a control in the Web page that stops moving, blinking, or auto-updating content</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G187">G187: Using a technology to include blinking content that can be turned off via the user agent</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G191">G191: Providing a link, button, or other mechanism that reloads the page without any blinking content</a></li>
-                    </ul>
-                </li>
-                <li>JavaScript:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR22">SCR22: Using scripts to control blinking and stop it in five seconds or less</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR33">SCR33: Using script to scroll content, and providing a mechanism to pause it</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <h3>Additional Information</h3>
+        <h2>References</h2>
+        <h3>WCAG</h3>
+        <ul>
+            <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+            <li>Related Techniques:
+                <ul>
+                    <li>General:
+                        <ul>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G4">G4: Allowing the content to be paused and restarted from where it was paused</a></li>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G11">G11: Creating content that blinks for less than 5 seconds</a></li>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G152">G152: Setting animated gif images to stop blinking after n cycles (within 5 seconds)</a></li>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G186">G186: Using a control in the Web page that stops moving, blinking, or auto-updating content</a></li>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G187">G187: Using a technology to include blinking content that can be turned off via the user agent</a></li>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G191">G191: Providing a link, button, or other mechanism that reloads the page without any blinking content</a></li>
+                        </ul>
+                    </li>
+                    <li>JavaScript:
+                        <ul>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR22">SCR22: Using scripts to control blinking and stop it in five seconds or less</a></li>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR33">SCR33: Using script to scroll content, and providing a mechanism to pause it</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h3>Additional Information</h3>
+    </div>
     {% include checkpoints/2202checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>

@@ -11,114 +11,115 @@ criterion: 2204
 {% include sidebar.html %}
 <div class="content row">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <h2>Overview</h2>
+        <h2>Overview</h2>
 
-    <p>This applies to interruptions such as:</p>
-    <ul>
-        <li>Page refreshes</li>
-        <li>Content refreshes</li>
-        <li>Status messages</li>
-        <li>Non-emergency alerts</li>
-    </ul>
+        <p>This applies to interruptions such as:</p>
+        <ul>
+            <li>Page refreshes</li>
+            <li>Content refreshes</li>
+            <li>Status messages</li>
+            <li>Non-emergency alerts</li>
+        </ul>
 
-    <p>Emergencies include:</p>
-    <ul>
-        <li>Alerts regarding dangers to health and safety</li>
-        <li>Alerts regarding data loss</li>
-    </ul>
+        <p>Emergencies include:</p>
+        <ul>
+            <li>Alerts regarding dangers to health and safety</li>
+            <li>Alerts regarding data loss</li>
+        </ul>
 
-    <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> There must be a mechanism to turn off or postpone interruptions unless they are an emergency.</li>
-    </ul>
+        <h2>Basic Requirements and Best Practices</h2>
+        <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+            <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+        <ul>
+            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> There must be a mechanism to turn off or postpone interruptions unless they are an emergency.</li>
+        </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to interact with the page without interruptions so that I can focus on the content without becoming disoriented.</div>
+        <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to interact with the page without interruptions so that I can focus on the content without becoming disoriented.</div>
 
-    <div class="success"><strong>Success:</strong> If you had a visual or cognitive disability, when you use a web page, your task is not interrupted.</div>
+        <div class="success"><strong>Success:</strong> If you had a visual or cognitive disability, when you use a web page, your task is not interrupted.</div>
 
-    <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the page automatically refresh with updated content?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the updated content involve an emergency?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism to suppress or postpone non-emergency updates?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2204.2204[22040101].link | prepend: baseurl }}">{{ site.data.2204.2204[22040101].name }}</a>.</span></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the page interrupt the user with notifications or alerts?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the alert involve an emergency?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism to suppress or postpone non-emergency alerts and notifications?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2204.2204[22040102].link | prepend: baseurl }}">{{ site.data.2204.2204[22040102].name }}</a>.</span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-            </ul>
-        </li>
-    </ul>
+        <h2>Testing Logic</h2>
+        <script src="{{ baseurl }}/assets/js/tree.js"></script>
+        <h3 id="test1">Does the page automatically refresh with updated content?</h3>
+        <ul role="tree" aria-labelledby="test1">
+            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the updated content involve an emergency?</span>
+                <ul role="group">
+                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                    <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism to suppress or postpone non-emergency updates?</span>
+                        <ul role="group">
+                            <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                            <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2204.2204[22040101].link | prepend: baseurl }}">{{ site.data.2204.2204[22040101].name }}</a>.</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the page interrupt the user with notifications or alerts?</span>
+                <ul role="group">
+                    <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the alert involve an emergency?</span>
+                        <ul role="group">
+                            <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                            <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism to suppress or postpone non-emergency alerts and notifications?</span>
+                                <ul role="group">
+                                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                    <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2204.2204[22040102].link | prepend: baseurl }}">{{ site.data.2204.2204[22040102].name }}</a>.</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                </ul>
+            </li>
+        </ul>
 
-    <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Identify any interruptions such as content refreshing, notifications, updates, and alerts.</li>
-        <li>Verify that there is a mechanism for the user to suppress or postpone them.</li>
-    </ol>
+        <h2>Web Test Procedure</h2>
+        <h3>Desktop</h3>
+        <ol>
+            <li>Identify any interruptions such as content refreshing, notifications, updates, and alerts.</li>
+            <li>Verify that there is a mechanism for the user to suppress or postpone them.</li>
+        </ol>
 
-    <h3>Mobile</h3>
-    <p>Follow the process for Desktop.</p>
+        <h3>Mobile</h3>
+        <p>Follow the process for Desktop.</p>
 
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the process for Desktop.</p>
+        <h2>Mobile App Test Procedure</h2>
+        <p>Follow the process for Desktop.</p>
 
-    <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2204.2204[22040101].link | prepend: baseurl }}">{{ site.data.2204.2204[22040101].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2204.2204[22040102].link | prepend: baseurl }}">{{ site.data.2204.2204[22040102].name }}</a>. (Medium)</li>
-    </ul>
+        <h2>Failures</h2>
+        <ul>
+            <li><a href="{{ site.data.2204.2204[22040101].link | prepend: baseurl }}">{{ site.data.2204.2204[22040101].name }}</a>. (Medium)</li>
+            <li><a href="{{ site.data.2204.2204[22040102].link | prepend: baseurl }}">{{ site.data.2204.2204[22040102].name }}</a>. (Medium)</li>
+        </ul>
 
-    <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-    </ul>
+        <h2>Testing Tools</h2>
+        <ul>
+            <li>Screen reader</li>
+        </ul>
 
-    <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>Related Techniques:
-            <ul>
-                <li>General:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G75">G75: Providing a mechanism to postpone any updating of content</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G76">G76: Providing a mechanism to request an update of the content instead of updating automatically</a></li>
-                    </ul>
-                </li>
-                <li>JavaScript:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR14">SCR14: Using scripts to make nonessential alerts optional</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <h3>Additional Information</h3>
+        <h2>References</h2>
+        <h3>WCAG</h3>
+        <ul>
+            <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+            <li>Related Techniques:
+                <ul>
+                    <li>General:
+                        <ul>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G75">G75: Providing a mechanism to postpone any updating of content</a></li>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G76">G76: Providing a mechanism to request an update of the content instead of updating automatically</a></li>
+                        </ul>
+                    </li>
+                    <li>JavaScript:
+                        <ul>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR14">SCR14: Using scripts to make nonessential alerts optional</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h3>Additional Information</h3>
+    </div>
     {% include checkpoints/2204checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
