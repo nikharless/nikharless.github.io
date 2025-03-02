@@ -1,55 +1,56 @@
 ---
 layout: default
-title: Failure - 2.4.1.2.1 <code>&lt;iframe&gt;</code> does not have a <code>title</code> attribute
-current: /a11y/failure/2401/24010201.html
-root: WCAG 2.2
-scurl: /a11y/sc/2401.html
-sctitle: 2.4.1 Bypass Blocks
-cpurl: /a11y/checkpoint/240102.html
-cptitle: 2.4.1.2 Titles on Frames
-guideline: operable
-
-w3scurl: https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks
+current: 24010201
+criterion: 2401
+checkpoint: 240102
 ---
-<div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.2401.2401[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.2401.2401[page.criterion] %}
+{% assign cp=site.data.2401.2401[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div><code>&lt;iframe&gt;</code>s have <code>title</code> attributes to allow screen reader users to use them to navigate the page.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Content is segmented using <code>&lt;iframe&gt;</code>s, but the <code>&lt;iframe&gt;</code>s do not have <code>title</code> attributes.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Add a <code>title</code> attribute to each <code>&lt;iframe&gt;</code> and set it to a unique value describing the <code>&lt;iframe&gt;</code>'s contents.</div>
-    	</div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <pre><code>&lt;iframe src="header.html" name="header-iframe" title="Header"&gt;&lt;/iframe&gt;
-&lt;iframe src="footer.html" name="footer-iframe" title="Footer"&gt;&lt;/iframe&gt;</code></pre>
+        <div class="failure">
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div><code>&lt;iframe&gt;</code>s have <code>title</code> attributes to allow screen reader users to use them to navigate the page.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Content is segmented using <code>&lt;iframe&gt;</code>s, but the <code>&lt;iframe&gt;</code>s do not have <code>title</code> attributes.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Add a <code>title</code> attribute to each <code>&lt;iframe&gt;</code> and set it to a unique value describing the <code>&lt;iframe&gt;</code>'s contents.</div>
+        	</div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <pre><code>&lt;iframe src="header.html" name="header-iframe" title="Header"&gt;&lt;/iframe&gt;
+    &lt;iframe src="footer.html" name="footer-iframe" title="Footer"&gt;&lt;/iframe&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Screen reader and keyboard-only users are not able to scroll past blocks of content or go directly to the main content.</div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H64">H64: Using the title attribute of the iframe element</a></li>
-                </ul>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>Screen reader and keyboard-only users are not able to scroll past blocks of content or go directly to the main content.</div>
+            </div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H64">H64: Using the title attribute of the iframe element</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2401checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
