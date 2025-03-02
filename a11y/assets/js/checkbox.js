@@ -30,18 +30,18 @@ class Checkbox {
     this.domNode.addEventListener('click', this.onClick.bind(this));
   }
 
-  toggleCheckbox() {
+  toggleCheckbox(id) {
     if (this.domNode.getAttribute('aria-checked') === 'true') {
       this.domNode.setAttribute('aria-checked', 'false');
-      if (this.ccbChecked !== null) {
+      if (id == ccbChecked) {
         this.ccbChecked.style.display = "none";
         this.ccbNotChecked.style.display = "block";
-      } else if (this.ccbChecked2 !== null) {
+      } else if (id == ccbChecked2) {
         this.ccbChecked2.style.display = "none";
         this.ccbNotChecked2.style.display = "block";
-      } else if (this.ccbChecked3 !== null) {
-        this.ccbChecked2.style.display = "none";
-        this.ccbNotChecked2.style.display = "block";
+      } else if (id == ccbChecked3) {
+        this.ccbChecked3.style.display = "none";
+        this.ccbNotChecked3.style.display = "block";
       }
 
     } else {
@@ -65,7 +65,7 @@ class Checkbox {
 
     switch (event.key) {
       case ' ':
-        this.toggleCheckbox();
+        this.toggleCheckbox(this.id);
         flag = true;
         break;
 
@@ -79,7 +79,7 @@ class Checkbox {
   }
 
   onClick() {
-    this.toggleCheckbox();
+    this.toggleCheckbox(this.id);
   }
 }
 
