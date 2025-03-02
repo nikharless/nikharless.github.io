@@ -12,56 +12,55 @@ checkpoint: 220101
 {% include sidebar.html %}
 <div class="content row">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The user receives a warning before the session times out.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The session time limit expires without giving the user a warning.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Provide a warning before the session times out.</li>
-                    <li>If the time limit is not essential or required,
-                        <ul>
-                            <li>Extend the time limit to at least 20 hours, <strong>OR</strong></li>
-                            <li>Provide a means to turn off the time limit before it occurs, <strong>OR</strong></li>
-                            <li>Provide a means to extend the time limit with a simple action at least 10 times, and give the user at least 20 seconds to do so.</li>
-                        </ul>
-                    </li>
-                </ul>
+        <div class="failure">
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>The user receives a warning before the session times out.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The session time limit expires without giving the user a warning.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Provide a warning before the session times out.</li>
+                        <li>If the time limit is not essential or required,
+                            <ul>
+                                <li>Extend the time limit to at least 20 hours, <strong>OR</strong></li>
+                                <li>Provide a means to turn off the time limit before it occurs, <strong>OR</strong></li>
+                                <li>Provide a means to extend the time limit with a simple action at least 10 times, and give the user at least 20 seconds to do so.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <ul>
+                        <li>A site logs the user out after a period of inactivity to protect their data. The site provides a dialog asking if the user needs more time. After 30 seconds, if there is no response, the user is logged out.</li>
+                    </ul>
+                </div>
             </div>
-    	</div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <ul>
-                    <li>A site logs the user out after a period of inactivity to protect their data. The site provides a dialog asking if the user needs more time. After 30 seconds, if there is no response, the user is logged out.</li>
-                </ul>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>Users with various disabilities are disoriented by sudden changes of context.</div>
             </div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Users with various disabilities are disoriented by sudden changes of context.</div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                </ul>
+            <div class="row">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
     {% include checkpoints/2201checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
