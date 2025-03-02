@@ -13,13 +13,13 @@ class Checkbox {
   constructor(domNode) {
     this.domNode = domNode;
     this.domNode.tabIndex = 0;
-    /* Find a way to cycle through checkboxes */
+    /* Find a way to cycle through checkboxes
     this.ccbChecked1 = document.getElementById('ccbChecked1');
     this.ccbNotChecked1 = document.getElementById('ccbNotChecked1');
     this.ccbChecked2 = document.getElementById('ccbChecked2');
     this.ccbNotChecked2 = document.getElementById('ccbNotChecked2');
     this.ccbChecked3 = document.getElementById('ccbChecked3');
-    this.ccbNotChecked3 = document.getElementById('ccbNotChecked3');
+    this.ccbNotChecked3 = document.getElementById('ccbNotChecked3'); */
 
     if (!this.domNode.getAttribute('aria-checked')) {
       this.domNode.setAttribute('aria-checked', 'false');
@@ -33,13 +33,13 @@ class Checkbox {
   toggleCheckbox() {
     if (this.domNode.getAttribute('aria-checked') === 'true') {
       this.domNode.setAttribute('aria-checked', 'false');
-      this.domNode.firstChild.setAttribute('style', 'display: none;');
-      this.domNode.firstChild.nextSibling.setAttribute('style', 'display: block;');
+      /*this.domNode.firstChild.setAttribute('style', 'display: none;');
+      this.domNode.firstChild.nextSibling.setAttribute('style', 'display: block;');*/
 
     } else {
       this.domNode.setAttribute('aria-checked', 'true');
-      this.domNode.firstChild..setAttribute('style', 'display: block;');
-      this.domNode.firstChild.nextSibling.setAttribute('style', 'display: none;');
+      /*this.domNode.firstChild..setAttribute('style', 'display: block;');
+      this.domNode.firstChild.nextSibling.setAttribute('style', 'display: none;');*/
     }
   }
 
