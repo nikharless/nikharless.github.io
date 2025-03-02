@@ -3,8 +3,6 @@ layout: default
 current: 24070103
 criterion: 2407
 checkpoint: 240701
-guideline: operable
-a
 css: focus-indicator
 ---
 {% assign root=site.data.site.root %}
@@ -15,48 +13,49 @@ css: focus-indicator
 {% include sidebar.html %}
 <div class="content row">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>There is a visible indicator showing which element is in focus.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The focus is removed from the element using a script.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Eliminate any script which removes keyboard focus from a focused element.</div>
-    	</div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <p>Tab through the links to see the script in action.</p>
-                <h3>Link Focus Removed</h3>
-                <div class="example" style="width: 80%;">
-                    <p><a onFocus="this.blur()" href="#">Link</a></p>
+        <div class="failure">
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>There is a visible indicator showing which element is in focus.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The focus is removed from the element using a script.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Eliminate any script which removes keyboard focus from a focused element.</div>
+        	</div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <p>Tab through the links to see the script in action.</p>
+                    <h3>Link Focus Removed</h3>
+                    <div class="example" style="width: 80%;">
+                        <p><a onFocus="this.blur()" href="#">Link</a></p>
+                    </div>
+                    <pre><code>&lt;a onFocus="this.blur()" href="#"&gt;Link&lt;/a&gt;</code></pre>
                 </div>
-                <pre><code>&lt;a onFocus="this.blur()" href="#"&gt;Link&lt;/a&gt;</code></pre>
             </div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Without a focus indicator, sighted keyboard users cannot operate the page. In addition, this script renders the control unusable by a keyboard.</div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F55">F55: Failure of Success Criteria 2.1.1, 2.4.7, and 3.2.1 due to using script to remove focus when focus is received</a></li>
-                </ul>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>Without a focus indicator, sighted keyboard users cannot operate the page. In addition, this script renders the control unusable by a keyboard.</div>
+            </div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F55">F55: Failure of Success Criteria 2.1.1, 2.4.7, and 3.2.1 due to using script to remove focus when focus is received</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2407checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
