@@ -30,29 +30,29 @@ class Checkbox {
     this.domNode.addEventListener('click', this.onClick.bind(this));
   }
 
-  toggleCheckbox(id) {
+  toggleCheckbox(clickId) {
     if (this.domNode.getAttribute('aria-checked') === 'true') {
       this.domNode.setAttribute('aria-checked', 'false');
-      if (id == ccbChecked1) {
+      if (clickId == ccbChecked1) {
         this.ccbChecked1.style.display = "none";
         this.ccbNotChecked1.style.display = "block";
-      } else if (id == ccbChecked2) {
+      } else if (clickId == ccbChecked2) {
         this.ccbChecked2.style.display = "none";
         this.ccbNotChecked2.style.display = "block";
-      } else if (id == ccbChecked3) {
+      } else if (clickId == ccbChecked3) {
         this.ccbChecked3.style.display = "none";
         this.ccbNotChecked3.style.display = "block";
       }
 
     } else {
       this.domNode.setAttribute('aria-checked', 'true');
-      if (id == ccbChecked1) {
+      if (clickId == ccbChecked1) {
         this.ccbChecked1.style.display = "block";
         this.ccbNotChecked1.style.display = "none";
-      } else if (id == ccbChecked2) {
+      } else if (clickId == ccbChecked2) {
         this.ccbChecked2.style.display = "block";
         this.ccbNotChecked2.style.display = "none";
-      } else if (id == ccbChecked3) {
+      } else if (clickId == ccbChecked3) {
         this.ccbChecked3.style.display = "block";
         this.ccbNotChecked3.style.display = "none";
       }
