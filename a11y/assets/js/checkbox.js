@@ -46,8 +46,16 @@ class Checkbox {
 
     } else {
       this.domNode.setAttribute('aria-checked', 'true');
-      this.ccbChecked.style.display = "block";
-      this.ccbNotChecked.style.display = "none";
+      if (id == ccbChecked) {
+        this.ccbChecked.style.display = "block";
+        this.ccbNotChecked.style.display = "none";
+      } else if (id == ccbChecked2) {
+        this.ccbChecked2.style.display = "block";
+        this.ccbNotChecked2.style.display = "none";
+      } else if (id == ccbChecked3) {
+        this.ccbChecked3.style.display = "block";
+        this.ccbNotChecked3.style.display = "none";
+      }
     }
   }
 
