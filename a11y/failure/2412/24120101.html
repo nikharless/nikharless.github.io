@@ -3,8 +3,6 @@ layout: default
 current: 24120101
 criterion: 2412
 checkpoint: 241201
-guideline: operable
-a
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2412.2412[page.current] %}
@@ -14,52 +12,53 @@ a
 {% include sidebar.html %}
 <div class="content row">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Focus is not obscured in any way by author-created content.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Focus is partially obscured by author-created content.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <p>Ensure focusable content is not obscured in any way by author-created content. Some ways of avoiding overlap include:</p>
-                <ul>
-                    <li>Use CSS <code>scroll-padding</code> to make room for sticky content.</li>
-                    <li>Put the overlapping content into a modal which can be dismissed.</li>
-                    <li>Remove overlapping content when focus is removed.</li>
-                </ul>      
+        <div class="failure">
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Focus is not obscured in any way by author-created content.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Focus is partially obscured by author-created content.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <p>Ensure focusable content is not obscured in any way by author-created content. Some ways of avoiding overlap include:</p>
+                    <ul>
+                        <li>Use CSS <code>scroll-padding</code> to make room for sticky content.</li>
+                        <li>Put the overlapping content into a modal which can be dismissed.</li>
+                        <li>Remove overlapping content when focus is removed.</li>
+                    </ul>      
+                </div>
+        	</div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <ul>
+                        <li>Working example: <a href="https://www.w3.org/WAI/WCAG22/working-examples/css-padding-focus-not-obscured/">Using CSS scroll-padding to un-obscure content.</a></li>
+                    </ul>                
+                </div>
             </div>
-    	</div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <ul>
-                    <li>Working example: <a href="https://www.w3.org/WAI/WCAG22/working-examples/css-padding-focus-not-obscured/">Using CSS scroll-padding to un-obscure content.</a></li>
-                </ul>                
+            <div class="row">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>People who can't use a mouse need to see what has keyboard focus.</div>
             </div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>People who can't use a mouse need to see what has keyboard focus.</div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C43">C43: Using CSS scroll-padding to un-obscure content</a></li>
-                </ul>
+            <div class="row">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C43">C43: Using CSS scroll-padding to un-obscure content</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2412checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

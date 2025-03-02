@@ -3,8 +3,6 @@ layout: default
 current: 24110102
 criterion: 2411
 checkpoint: 241101
-guideline: operable
-a
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2411.2411[page.current] %}
@@ -14,50 +12,51 @@ a
 {% include sidebar.html %}
 <div class="content row">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Focus is not entirely hidden by user-opened content.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Focus is entirely hidden by user-opened content and cannot be dismissed.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <p>Ensure focusable content is not entirely hidden by content that the user has opened. Some ways include:</p>
-                <ul>
-                    <li>Reflow content to make room for the inserted content.</li>
-                    <li>Put the overlapping content into a modal which can be dismissed.</li>
-                    <li>Remove overlapping content when focus is removed.</li>
-                    <li>Open additional content only over empty space.</li>
-                </ul>      
+        <div class="failure">
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Focus is not entirely hidden by user-opened content.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Focus is entirely hidden by user-opened content and cannot be dismissed.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <p>Ensure focusable content is not entirely hidden by content that the user has opened. Some ways include:</p>
+                    <ul>
+                        <li>Reflow content to make room for the inserted content.</li>
+                        <li>Put the overlapping content into a modal which can be dismissed.</li>
+                        <li>Remove overlapping content when focus is removed.</li>
+                        <li>Open additional content only over empty space.</li>
+                    </ul>      
+                </div>
+        	</div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                
+                </div>
             </div>
-    	</div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-            
+            <div class="row">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>People who can't use a mouse need to see what has keyboard focus.</div>
             </div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>People who can't use a mouse need to see what has keyboard focus.</div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                </ul>
+            <div class="row">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2411checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

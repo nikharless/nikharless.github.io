@@ -3,8 +3,6 @@ layout: default
 current: 24130101
 criterion: 2413
 checkpoint: 241301
-guideline: operable
-a
 css: focus-indicator
 ---
 {% assign root=site.data.site.root %}
@@ -15,61 +13,62 @@ css: focus-indicator
 {% include sidebar.html %}
 <div class="content row">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The area of the focus indicator is at least as large as the area of a 2 CSS pixel thick perimeter around the element.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The area of the focus indicator is smaller than the area of a 2 CSS pixel thick perimeter around the element.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <p>Make the focus indicator larger so that it's at least as large as the area of a 2 CSS pixel thick perimeter around the element. The easiest way to do this is to make it a 2 CSS pixel thick line around the element.</p>
-                <p>The minimum area can be calculated as follows:</p>
-                <ul>
-                    <li>Rectangle: 4<var>h</var> + 4<var>w</var></li>
-                    <li>Circle: 4𝜋<var>r</var></li>
-                    <li>Rounded rectangle: 4<var>h</var> + 4<var>w</var> - (16 - 4𝜋)<var>r</var></li>
-                </ul>
+        <div class="failure">
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>The area of the focus indicator is at least as large as the area of a 2 CSS pixel thick perimeter around the element.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The area of the focus indicator is smaller than the area of a 2 CSS pixel thick perimeter around the element.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <p>Make the focus indicator larger so that it's at least as large as the area of a 2 CSS pixel thick perimeter around the element. The easiest way to do this is to make it a 2 CSS pixel thick line around the element.</p>
+                    <p>The minimum area can be calculated as follows:</p>
+                    <ul>
+                        <li>Rectangle: 4<var>h</var> + 4<var>w</var></li>
+                        <li>Circle: 4𝜋<var>r</var></li>
+                        <li>Rounded rectangle: 4<var>h</var> + 4<var>w</var> - (16 - 4𝜋)<var>r</var></li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <p>Tab to each element to see the focus indicator.</p>
+
+                    <h3>Solid Line</h3>
+                    <p>The outline, border, and outset buttons have 2px lines. Because the focus indicator is smaller than the size of the button, the inset button has a 3px line and the bottom border button has a 6px line to make up for the difference in area.</p>
+                    <button class="exampleButton solidOutlineFI">Outline</button> <button class="exampleButton solidBorderFI">Border</button> <button class="exampleButton solidOutsetFI">Outset</button> <button class="exampleButton solidInsetFI">Inset</button> <button class="exampleButton bottomBorderFI">Bottom</button>
+
+                    <h3>Triangle with Bounding Box</h3>
+                    <div class="triangle-right" role="button" tabindex="0"></div>
+
+                    <h3>Triangle with Surrounding Border</h3>
+                    <div class="triangle-right-img" role="button" tabindex="0"></div>
+                </div>
             </div>
-    	</div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <p>Tab to each element to see the focus indicator.</p>
-
-                <h3>Solid Line</h3>
-                <p>The outline, border, and outset buttons have 2px lines. Because the focus indicator is smaller than the size of the button, the inset button has a 3px line and the bottom border button has a 6px line to make up for the difference in area.</p>
-                <button class="exampleButton solidOutlineFI">Outline</button> <button class="exampleButton solidBorderFI">Border</button> <button class="exampleButton solidOutsetFI">Outset</button> <button class="exampleButton solidInsetFI">Inset</button> <button class="exampleButton bottomBorderFI">Bottom</button>
-
-                <h3>Triangle with Bounding Box</h3>
-                <div class="triangle-right" role="button" tabindex="0"></div>
-
-                <h3>Triangle with Surrounding Border</h3>
-                <div class="triangle-right-img" role="button" tabindex="0"></div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>Users with visual impairments, including older people, can't see small changes in visual appearance.</div>
             </div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Users with visual impairments, including older people, can't see small changes in visual appearance.</div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G195">G195: Using an author-supplied, visible focus indicator</a></li>
-                </ul>
+            <div class="row">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G195">G195: Using an author-supplied, visible focus indicator</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2413checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

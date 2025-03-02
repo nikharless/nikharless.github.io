@@ -3,8 +3,6 @@ layout: default
 current: 25080101
 criterion: 2508
 checkpoint: 250801
-guideline: operable
-aa
 css: 2508
 ---
 {% assign root=site.data.site.root %}
@@ -15,80 +13,81 @@ css: 2508
 {% include sidebar.html %}
 <div class="content row">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Control target size is at least 24 x 24 CSS pixels.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Control target size is less than 24 x 24 CSS pixels.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Increase the target size to at least 24 x 24 CSS pixels.</div>
-    	</div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Buttons</h3>
-                <div class="example">
-                    <button class="exButton" style="min-height:24px; min-width:24px;"><strong>Click Here</strong></button>
-                    <pre><code>&lt;button <strong>style="min-height:24px; min-width:24px;</strong>"&gt;Click Here&lt;/button&gt;</code></pre>
-                </div>
+        <div class="failure">
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Control target size is at least 24 x 24 CSS pixels.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Control target size is less than 24 x 24 CSS pixels.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Increase the target size to at least 24 x 24 CSS pixels.</div>
+        	</div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Buttons</h3>
+                    <div class="example">
+                        <button class="exButton" style="min-height:24px; min-width:24px;"><strong>Click Here</strong></button>
+                        <pre><code>&lt;button <strong>style="min-height:24px; min-width:24px;</strong>"&gt;Click Here&lt;/button&gt;</code></pre>
+                    </div>
 
-                <div class="example">
-                    <div class="triangle-right-img" style="width:24px; height:24px; background-size:24px;" role="button" tabindex="0"></div>
-                    <pre><code>.triangle-right-img {
-    background-image: url("triangle.png");
-    <strong>width: 24px;
-    height: 24px;
-    background-size: 24px;</strong>
-}</code></pre>
-                </div>
+                    <div class="example">
+                        <div class="triangle-right-img" style="width:24px; height:24px; background-size:24px;" role="button" tabindex="0"></div>
+                        <pre><code>.triangle-right-img {
+        background-image: url("triangle.png");
+        <strong>width: 24px;
+        height: 24px;
+        background-size: 24px;</strong>
+    }</code></pre>
+                    </div>
 
-                <p>These icons are 20px, but there is 10px of space between them.</p>
-                <div class="example">
-                    <i class="fab fa-twitter" style="font-size: 20px; margin: 0 10px 0 0;"></i>
-                    <i class="fab fa-facebook-f" style="font-size: 20px; margin: 0 10px 0 0;"></i>
-                    <i class="fab fa-pinterest" style="font-size: 20px; margin: 0 10px 0 0;"></i>
-                    <i class="fab fa-instagram" style="font-size: 20px; margin: 0 10px 0 0;"></i>
-                    <i class="fab fa-google-plus-g" style="font-size: 20px; margin: 0 10px 0 0;"></i>
-                    <pre><code>font-size: 20px; 
-margin: 0 10px 0 0;</code></pre>
-                </div>
+                    <p>These icons are 20px, but there is 10px of space between them.</p>
+                    <div class="example">
+                        <i class="fab fa-twitter" style="font-size: 20px; margin: 0 10px 0 0;"></i>
+                        <i class="fab fa-facebook-f" style="font-size: 20px; margin: 0 10px 0 0;"></i>
+                        <i class="fab fa-pinterest" style="font-size: 20px; margin: 0 10px 0 0;"></i>
+                        <i class="fab fa-instagram" style="font-size: 20px; margin: 0 10px 0 0;"></i>
+                        <i class="fab fa-google-plus-g" style="font-size: 20px; margin: 0 10px 0 0;"></i>
+                        <pre><code>font-size: 20px; 
+    margin: 0 10px 0 0;</code></pre>
+                    </div>
 
-                <h3>Select</h3>
-                <p>Menu options are also subject to this criterion.</p>
-                <div class="example">
-                    {% include examples/select-only.html %}
-                    <script src="{{ baseurl }}/assets/js/select-only.js"></script>
-                    <pre><code>/* menu options */
-.combo-option {
-    padding: 10px 12px 12px;
-    <strong>min-height: 24px;</strong>
-}</code></pre>
+                    <h3>Select</h3>
+                    <p>Menu options are also subject to this criterion.</p>
+                    <div class="example">
+                        {% include examples/select-only.html %}
+                        <script src="{{ baseurl }}/assets/js/select-only.js"></script>
+                        <pre><code>/* menu options */
+    .combo-option {
+        padding: 10px 12px 12px;
+        <strong>min-height: 24px;</strong>
+    }</code></pre>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Some users cannot click or tap small controls.</div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C42">C42: Using min-height and min-width to ensure sufficient target spacing</a></li>
-                </ul>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>Some users cannot click or tap small controls.</div>
+            </div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C42">C42: Using min-height and min-width to ensure sufficient target spacing</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2508checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

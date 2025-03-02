@@ -3,8 +3,6 @@ layout: default
 current: 25030102
 criterion: 2503
 checkpoint: 250301
-guideline: operable
-
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2503.2503[page.current] %}
@@ -14,51 +12,52 @@ guideline: operable
 {% include sidebar.html %}
 <div class="content row">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Each control's accessible name contains the text of its visible label.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The control does not have an accessible name.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Add an accessible name which includes the visible label text.</div>
-    	</div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Exact Text</h3>
-                <button class="exButton">This is the label</button>
-                <pre><code>&lt;button&gt;<strong>This is the label</strong>&lt;/button&gt;</code></pre>
+        <div class="failure">
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Each control's accessible name contains the text of its visible label.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The control does not have an accessible name.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Add an accessible name which includes the visible label text.</div>
+        	</div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Exact Text</h3>
+                    <button class="exButton">This is the label</button>
+                    <pre><code>&lt;button&gt;<strong>This is the label</strong>&lt;/button&gt;</code></pre>
 
-                <h3>Visible Label at the Beginning</h3>
-                <button class="exButton" aria-label="Read more about accessibility">Read More</button>
-                <pre><code>&lt;button <strong>aria-label="Read more about accessibility"</strong>&gt;Read More&lt;/button&gt;</code></pre>
+                    <h3>Visible Label at the Beginning</h3>
+                    <button class="exButton" aria-label="Read more about accessibility">Read More</button>
+                    <pre><code>&lt;button <strong>aria-label="Read more about accessibility"</strong>&gt;Read More&lt;/button&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Voice control users use the visible labels in their commands.</div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F111">F111: Failure of Success Criteria 1.3.1, 2.5.3, and 4.1.2 due to a control with visible label text but no accessible name</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G208">G208: Including the text of the visible label as part of the accessible name</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G211">G211: Matching the accessible name to the visible label</a></li>
-                </ul>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>Voice control users use the visible labels in their commands.</div>
+            </div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F111">F111: Failure of Success Criteria 1.3.1, 2.5.3, and 4.1.2 due to a control with visible label text but no accessible name</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G208">G208: Including the text of the visible label as part of the accessible name</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G211">G211: Matching the accessible name to the visible label</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2503checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

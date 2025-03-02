@@ -3,8 +3,6 @@ layout: default
 current: 25060101
 criterion: 2506
 checkpoint: 250601
-guideline: operable
-aa
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2506.2506[page.current] %}
@@ -14,54 +12,55 @@ aa
 {% include sidebar.html %}
 <div class="content row">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>User can switch between different methods of input.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The content restricts input methods.</div>
-    	</div>
-    	<div class="row">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <p>Ensure the content can be operated by various input methods. For example:</p>
-                <ul>
-                    <li>Use input-agnostic event handlers in JavaScript such as <code>focus</code>, <code>blur</code>, and <code>click</code>.</li>
-                    <li>Register JavaScript event handlers for keyboard and pointer inputs simultaneously.</li>
-                    <li>When one input method is detected, do not disable others.</li>
-                </ul>
+        <div class="failure">
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>User can switch between different methods of input.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The content restricts input methods.</div>
+        	</div>
+        	<div class="row">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <p>Ensure the content can be operated by various input methods. For example:</p>
+                    <ul>
+                        <li>Use input-agnostic event handlers in JavaScript such as <code>focus</code>, <code>blur</code>, and <code>click</code>.</li>
+                        <li>Register JavaScript event handlers for keyboard and pointer inputs simultaneously.</li>
+                        <li>When one input method is detected, do not disable others.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <ul>
+                        <li>A mobile device user can pair a keyboard and mouse and use those to interact with the content.</li>
+                        <li>A desktop user can attach a touch-enabled monitor and use that to interact with the content.</li>
+                        <li>A user can alternate between using speech recognition and keyboard/mouse input.</li>
+                    </ul>
+                </div>
             </div>
-    	</div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <ul>
-                    <li>A mobile device user can pair a keyboard and mouse and use those to interact with the content.</li>
-                    <li>A desktop user can attach a touch-enabled monitor and use that to interact with the content.</li>
-                    <li>A user can alternate between using speech recognition and keyboard/mouse input.</li>
-                </ul>
+            <div class="row">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>People may not be able to work using just one input method.</div>
             </div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>People may not be able to work using just one input method.</div>
-        </div>
-        <div class="row">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F98">F98: Failure due to interactions being limited to touch-only on touchscreen devices</a></li>
-                </ul>
+            <div class="row">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F98">F98: Failure due to interactions being limited to touch-only on touchscreen devices</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2506checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
