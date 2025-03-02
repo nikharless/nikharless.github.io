@@ -88,6 +88,7 @@ class Checkbox {
 
   onClick() {
     this.toggleCheckbox(this.id);
+    alert(this.id);
   }
 }
 
