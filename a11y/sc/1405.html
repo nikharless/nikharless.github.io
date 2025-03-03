@@ -7,11 +7,11 @@ current: 1405
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
         
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>If the technologies being used can achieve the visual presentation, text is used to convey information rather than images of text except for the following:</p>
             <dl>
@@ -23,11 +23,13 @@ current: 1405
             </dl>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
         <ul>
             <li><a href="https://dequeuniversity.com/class/images/">Deque University: Images, SVG, and Canvas</a> (requires account)</li>
             <li><a href="https://www.w3schools.com/accessibility/accessibility_page_zoom.php">W3: Accessibility Page Zoom</a></li>
         </ul>
+        </div>
     </div>
     {% include checkpoints/1405checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

@@ -7,10 +7,10 @@ current: 1304
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href="{{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Content does not restrict its view and operation to a single display orientation, such as portrait or landscape, unless a specific display orientation is essential.</p>
             <dl>
@@ -19,10 +19,12 @@ current: 1304
             </dl>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
         <ul>
             <li><a href="https://dequeuniversity.com/class/responsive-zoom/?lang=en">Deque University: Responsive Design and Zoom</a> (requires account)</li>
         </ul>
+        </div>
     </div>
     {% include checkpoints/1304checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

@@ -7,21 +7,23 @@ current: 2206
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
     
-    <div class="sc {{ currentpg.level }}">
+    <div class="block">
         <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
         <p>Users are warned of the duration of any user inactivity that could cause data loss, unless the data is preserved for more than 20 hours when the user does not take any actions.</p>
 
         <p><strong>Note</strong>: Privacy regulations may require explicit user consent before user identification has been authenticated and before user data is preserved. In cases where the user is a minor, explicit consent may not be solicited in most jurisdictions, countries or regions. Consultation with privacy professionals and legal counsel is advised when considering data preservation as an approach to satisfy this success criterion.</p>
     </div>
 
-    <h2>Training</h2>
+    <div class="block">
+            <h2>Training</h2>
     <ul>
         <li></li>
     </ul>
+        </div>
     </div>
     {% include checkpoints/2206checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

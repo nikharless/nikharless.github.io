@@ -7,20 +7,22 @@ current: 2507
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
         
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>All functionality that uses a dragging movement for operation can be achieved by a single pointer without dragging, unless dragging is essential or the functionality is determined by the user agent and not modified by the author.</p>
 
             <p><strong>Note</strong>: This requirement applies to web content that interprets pointer actions (i.e. this does not apply to actions that are required to operate the user agent or assistive technology).</p>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
         <ul>
         </ul>
+        </div>
     </div>
     {% include checkpoints/2507checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

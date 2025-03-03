@@ -7,22 +7,24 @@ current: 2403
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
     
-    <div class="sc {{ currentpg.level }}">
+    <div class="block">
         <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
         <p>If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability.</p>
     </div>
 
-    <h2>Training</h2>
+    <div class="block">
+            <h2>Training</h2>
     <ul>
         <li><a href="https://dequeuniversity.com/class/input-methods/?lang=en">Deque: Device-Independent User Input Methods</a> (account required)</li>
         <li><a href="https://dequeuniversity.com/class/testing/?lang=en">Deque: Web Accessibility Testing: Basic Methods and Tools</a> (account required)</li>
         <li><a href="https://www.section508.gov/training/presentations/aed-cop-pptx01/">Section508.gov: Module 1: Creating the Presentation’s Layout Design and Establishing the Logical Reading Order (From: How to Author and Test Microsoft PowerPoint Presentations for Accessibility)</a></li>
         <li><a href="https://www.section508.gov/training/pdfs/aed-cop-pdf03/">Section508.gov: Module 3: Remediating PDFs for Accessibility (From: How to Test and Remediate PDFs for Accessibility Using Adobe Acrobat DC)</a></li>
     </ul>
+        </div>
     </div>
     {% include checkpoints/2403checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

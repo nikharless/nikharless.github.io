@@ -7,20 +7,22 @@ current: 2103
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
         
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes.</p>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
         <ul>
             <li><a href="https://dequeuniversity.com/class/input-methods/">Deque: Device-Independent User Input Methods</a> (account required)</li>
             <li><a href="https://dequeuniversity.com/class/testing/">Deque: Web Accessibility Testing: Basic Methods and Tools</a> (account required)</li>
         </ul>
+        </div>
     </div>
     {% include checkpoints/2103checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

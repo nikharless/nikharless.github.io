@@ -7,11 +7,11 @@ current: 1407
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
         
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>For prerecorded audio-only content that (1) contains primarily speech in the foreground, (2) is not an audio CAPTCHA or audio logo, and (3) is not vocalization intended to be primarily musical expression such as singing or rapping, at least one of the following is true:</p>
             <dl>
@@ -25,7 +25,9 @@ current: 1407
             </dl>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
+        </div>
     </div>
     {% include checkpoints/1407checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

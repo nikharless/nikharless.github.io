@@ -7,15 +7,16 @@ current: 1301
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href="{{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.</p>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
         <ul>
             <li><a href="https://dequeuniversity.com/class/semantic-structure/?lang=en">Deque University: Semantic Structure and Navigation</a> (requires account)</li>
             <li>PowerPoint:
@@ -44,6 +45,7 @@ current: 1301
             <li><a href="https://www.w3.org/WAI/tutorials/page-structure/content/">WAI: Content Structure</a></li>
             <li><a href="https://www.w3schools.com/html/html_tables.asp">W3: HTML Tables</a></li>
         </ul>
+        </div>
     </div>
     {% include checkpoints/1301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

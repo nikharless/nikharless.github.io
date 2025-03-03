@@ -7,23 +7,25 @@ current: 2301
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
     
-    <div class="sc {{ currentpg.level }}">
+    <div class="block">
         <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
         <p>Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.</p>
 
         <p><strong>Note</strong>: Since any content that does not meet this success criterion can interfere with a user's ability to use the whole page, all content on the Web page (whether it is used to meet other success criteria or not) must meet this success criterion. See <a href="https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold#cc5">Conformance Requirement 5: Non-Interference</a>.</p>
     </div>
 
-    <h2>Training</h2>
+    <div class="block">
+            <h2>Training</h2>
     <ul>
         <li><a href="https://dequeuniversity.com/class/multimedia/">Deque: Multimedia, Animations, and Motion</a> (account required)</li>
         <li><a href="https://www.section508.gov/training/presentations/aed-cop-pptx12/">Section508.gov: Module 12: Excluding Flashing Objects (From: How to Author and Test Microsoft PowerPoint Presentations for Accessibility)</a></li>
         <li><a href="https://www.section508.gov/training/spreadsheets/aed-cop-xlsx09/">Section508.gov: Module 9: Excluding Flashing Objects (From: How to Author and Test Microsoft Excel Worksheets for Accessibility)</a></li>
     </ul>
+        </div>
     </div>
     {% include checkpoints/2301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

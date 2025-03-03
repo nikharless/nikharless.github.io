@@ -7,20 +7,22 @@ current: 4103
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
         
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>In content implemented using markup languages, status messages can be programmatically determined through role or properties such that they can be presented to the user by assistive technologies without receiving focus.</p>
         </div>
 
-        <h2>Training</h2>
-        <ul>
-            <li><a href="https://dequeuniversity.com/class/forms/">Deque University: Form Labels, Instructions, and Validation</a></li>
-            <li><a href="https://dequeuniversity.com/class/dynamic-updates/">Deque University: Dynamic Updates, AJAX, and Single-Page Apps</a></li>
-        </ul>
+        <div class="block">
+            <h2>Training</h2>
+            <ul>
+                <li><a href="https://dequeuniversity.com/class/forms/">Deque University: Form Labels, Instructions, and Validation</a></li>
+                <li><a href="https://dequeuniversity.com/class/dynamic-updates/">Deque University: Dynamic Updates, AJAX, and Single-Page Apps</a></li>
+            </ul>
+        </div>
     </div>
     {% include checkpoints/4103checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

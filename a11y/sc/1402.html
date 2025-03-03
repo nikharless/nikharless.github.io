@@ -7,11 +7,11 @@ current: 1402
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
         
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.</p>
 
@@ -21,10 +21,12 @@ current: 1402
             </dl>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
         <ul>
             <li><a href="https://dequeuniversity.com/class/multimedia/">Deque University: Multimedia, Animation, and Motion</a> (requires account)</li>
         </ul>
+        </div>
     </div>
     {% include checkpoints/1402checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

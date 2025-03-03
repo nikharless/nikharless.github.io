@@ -7,11 +7,11 @@ current: 2411
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
         
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>When a user interface component receives keyboard focus, the component is not entirely hidden due to author-created content.</p>
 
@@ -20,10 +20,12 @@ current: 2411
             <p><strong>Note</strong>: Content opened by the user may obscure the component receiving focus. If the user can reveal the focused component without advancing the keyboard focus, the component with focus is not considered hidden due to author-created content.</p>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
         <ul>
 
         </ul>
+        </div>
     </div>
     {% include checkpoints/2411checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

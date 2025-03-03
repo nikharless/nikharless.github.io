@@ -7,11 +7,11 @@ current: 2502
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
         
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>For functionality that can be operated using a single pointer, at least one of the following is true:</p>
 
@@ -31,10 +31,12 @@ current: 2502
             <p><strong>Note</strong>: This requirement applies to web content that interprets pointer actions (i.e. this does not apply to actions that are required to operate the user agent or assistive technology).</p>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
         <ul>
             <li><a href="https://dequeuniversity.com/class/input-methods/?lang=en">Deque: Device-Independent User Input Methods</a> (account required)</li>
         </ul>
+        </div>
     </div>
     {% include checkpoints/2502checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

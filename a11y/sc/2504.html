@@ -7,11 +7,11 @@ current: 2504
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
         
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Functionality that can be operated by device motion or user motion can also be operated by user interface components and responding to the motion can be disabled to prevent accidental actuation, except when:</p>
 
@@ -23,10 +23,12 @@ current: 2504
             </dl>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
         <ul>
             <li><a href="https://dequeuniversity.com/class/input-methods/">Deque University: Device-Independent User Input Methods</a> (account required)</li>
         </ul>
+        </div>
     </div>
     {% include checkpoints/2504checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

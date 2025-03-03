@@ -7,11 +7,11 @@ current: 3307
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
         
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Information previously entered by or provided to the user that is required to be entered again in the same process is either:</p>
 
@@ -29,9 +29,11 @@ current: 3307
             </ul>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
         <ul>
         </ul>
+        </div>
     </div>
     {% include checkpoints/3307checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

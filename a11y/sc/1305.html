@@ -7,10 +7,10 @@ current: 1305
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href="{{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>The purpose of each input field collecting information about the user can be programmatically determined when:</p>
             <ul>
@@ -19,11 +19,13 @@ current: 1305
             </ul>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
         <ul>
             <li><a href="https://dequeuniversity.com/class/forms/?lang=en">Deque University: Form Labels, Instructions, and Validation</a> (requires account)</li>
             <li><a href="https://www.w3schools.com/accessibility/accessibility_autocomplete.php">W3: Accessibility Autocomplete</a></li>
         </ul>
+        </div>
     </div>
     {% include checkpoints/1305checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

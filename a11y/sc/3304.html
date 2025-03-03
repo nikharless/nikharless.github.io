@@ -7,11 +7,11 @@ current: 3304
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
         <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
         
-        <div class="sc {{ currentpg.level }}">
+        <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>For Web pages that cause legal commitments or financial transactions for the user to occur, that modify or delete user-controllable data in data storage systems, or that submit user test responses, at least one of the following is true:</p>
 
@@ -25,10 +25,12 @@ current: 3304
             </dl>
         </div>
 
-        <h2>Training</h2>
+        <div class="block">
+            <h2>Training</h2>
         <ul>
             <li><a href="https://dequeuniversity.com/class/forms/">Deque University: Form Labels, Instructions, and Validation</a> (account required)</li>
         </ul>
+        </div>
     </div>
     {% include checkpoints/3304checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>

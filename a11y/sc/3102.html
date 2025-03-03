@@ -7,20 +7,22 @@ current: 3102
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
     
-    <div class="sc {{ currentpg.level }}">
+    <div class="block">
         <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
         <p>The human language of each passage or phrase in the content can be programmatically determined except for proper names, technical terms, words of indeterminate language, and words or phrases that have become part of the vernacular of the immediately surrounding text.</p>
     </div>
 
-    <h2>Training</h2>
+    <div class="block">
+            <h2>Training</h2>
     <ul>
         <li><a href="https://dequeuniversity.com/class/semantic-structure/?lang=en">Deque: Semantic Structure and Navigation</a> (account required)</li>
     </ul>
-</div>
+    </div>
+    </div>
     {% include  checkpoints/3102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>

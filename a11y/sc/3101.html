@@ -7,23 +7,25 @@ current: 3101
 {% assign sc=currentpg %}
 
 {% include sidebar.html %}
-<div class="content row">
+<div class="content row {{ sc.level }}">
     <div class="cpcontent {{ currentpg.level }}link">
     <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
     
-    <div class="sc {{ currentpg.level }}">
+    <div class="block">
         <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
         <p>The default human language of each Web page can be programmatically determined.</p>
     </div>
 
-    <h2>Training</h2>
+    <div class="block">
+            <h2>Training</h2>
     <ul>
         <li><a href="https://dequeuniversity.com/class/semantic-structure/">Deque University: Semantic Structure and Navigation</a> (account required)</li>
         <li><a href="https://www.section508.gov/training/presentations/aed-cop-pptx10/">Section508.gov: Module 10: Formatting Text for the Intended Language (From: How to Author and Test Microsoft PowerPoint Presentations for Accessibility)</a></li>
         <li><a href="https://www.section508.gov/training/documents/aed-cop-docx06/">Section508.gov: Module 6: Identify Distinct Languages (From: How to Make an Accessible Document in Microsoft Word)</a></li>
         <li><a href="https://www.section508.gov/training/pdfs/aed-cop-pdf03/">Section508.gov: Module 3: Remediating PDFs for Accessibility (From: How to Test and Remediate PDFs for Accessibility Using Adobe Acrobat DC)</a></li>
     </ul>
-</div>
+    </div>
+    </div>
     {% include  checkpoints/3101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
