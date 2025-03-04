@@ -14,7 +14,8 @@ criterion: 2413
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
-    <h2>Overview</h2>
+    <div class="block">
+        <h2>Overview</h2>
     <p>The minimum area can be calculated as follows:</p>
     <ul>
         <li>Rectangle: 4<var>h</var> + 4<var>w</var></li>
@@ -23,7 +24,10 @@ criterion: 2413
     </ul>
     <p><em>Note: If you need to use complex mathematics to figure out if a focus indicator passes, it probably needs to be bigger.</em></p>
 
-    <h2>Basic Requirements and Best Practices</h2>
+    </div>
+
+    <div class="block">
+        <h2>Basic Requirements and Best Practices</h2>
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
         <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
@@ -36,7 +40,10 @@ criterion: 2413
 
     <div class="success"><strong>Success:</strong> If you were a sighted keyboard user, when you navigate through a page, you could easily see what element was in focus.</div>
 
-    <h2>Testing Logic</h2>
+    </div>
+
+    <div class="block">
+        <h2>Testing Logic</h2>
     <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">As you navigate through the page using the keyboard, is it visually apparent which element has focus?</h3>
     <ul role="tree" aria-labelledby="test1">
@@ -54,7 +61,10 @@ criterion: 2413
         <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2407.2407[2407].link | prepend: baseurl }}">{{ site.data.2407.2407[2407].name }}</a>.</span></li>
     </ul>
 
-    <h2>Web Test Procedure</h2>
+    </div>
+
+    <div class="block">
+        <h2>Web Test Procedure</h2>
     <ol>
         <li>Using only the keyboard, navigate to and interact with all interactive elements and widgets.</li>
         <li>Check whether the focus indicator solidly encloses the focused element.</li>
@@ -62,13 +72,19 @@ criterion: 2413
         <li>If it isn't, check whether any pixels that change have a contrast ratio of at least 3:1 between focused and unfocused states.</li>
     </ol>
 
-    <h2>Failures</h2>
+    </div>
+
+    <div class="block">
+        <h2>Failures</h2>
     <ul>
         <li><a href="{{ site.data.2413.2413[24130101].link | prepend: baseurl }}">{{ site.data.2413.2413[24130101].name }}</a>. (Medium)</li>
         <li><a href="{{ site.data.2413.2413[24130102].link | prepend: baseurl }}">{{ site.data.2413.2413[24130102].name }}</a>. (Medium)</li>
     </ul>
 
-    <h2>Testing Tools</h2>
+    </div>
+
+    <div class="block">
+        <h2>Testing Tools</h2>
     <ul>
         <li>Keyboard</li>
         <li><a href="https://www.tpgi.com/color-contrast-checker/">TPGi Colour Contrast Analyzer</a></li>
@@ -77,7 +93,10 @@ criterion: 2413
         <li><a href="https://webaim.org/resources/contrastchecker/">WebAIM Contrast Checker</a></li>
     </ul>
 
-    <h2>References</h2>
+    </div>
+
+    <div class="block">
+        <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
@@ -99,6 +118,7 @@ criterion: 2413
         <li><a href="https://www.sarasoueidan.com/blog/focus-indicators/">A guide to designing accessible, WCAG-conformant focus indicators</a></li>
     </ul>
     </div>
+</div>
     {% include checkpoints/2413checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>

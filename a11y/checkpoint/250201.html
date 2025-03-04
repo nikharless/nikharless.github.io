@@ -14,10 +14,14 @@ criterion: 2502
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
-    <h2>Overview</h2>
+    <div class="block">
+        <h2>Overview</h2>
     <p>Completing an action on the down-event is only allowed when it is essential. An example of this would be keyboard emulation, where a character is typed as soon as the key is pressed rather than when it is released.</p>
 
-    <h2>Basic Requirements and Best Practices</h2>
+    </div>
+
+    <div class="block">
+        <h2>Basic Requirements and Best Practices</h2>
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
         <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
@@ -28,7 +32,10 @@ criterion: 2502
 
     <div class="success"><strong>Success:</strong> If you were a user with a disability, when you activated a function, you could abort or undo it.</div>
 
-    <h2>Testing Logic</h2>
+    </div>
+
+    <div class="block">
+        <h2>Testing Logic</h2>
     <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Does activating a control perform an action that cannot be undone?</h3>
     <ul role="tree" aria-labelledby="test1">
@@ -56,7 +63,10 @@ criterion: 2502
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
     </ul>
 
-    <h2>Web Test Procedure</h2>
+    </div>
+
+    <div class="block">
+        <h2>Web Test Procedure</h2>
     <ol>
         <li>Find all controls on the page with actions that cannot be undone.</li>
         <li>If that control can be triggered by a single-pointer touch, verify that at least one of the following is true:
@@ -71,18 +81,27 @@ criterion: 2502
     <h2>Mobile App Test Procedure</h2>
     <p>Follow the Web test procedure.</p>
 
-    <h2>Failures</h2>
+    </div>
+
+    <div class="block">
+        <h2>Failures</h2>
     <ul>
         <li><a href="{{ site.data.2502.2502[25020101].link | prepend: baseurl }}">{{ site.data.2502.2502[25020101].name }}</a>. (Medium)</li>
     </ul>
 
-    <h2>Testing Tools</h2>
+    </div>
+
+    <div class="block">
+        <h2>Testing Tools</h2>
     <ul>
         <li>Mouse</li>
         <li>Touchscreen</li>
     </ul>
 
-    <h2>References</h2>
+    </div>
+
+    <div class="block">
+        <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
@@ -99,6 +118,7 @@ criterion: 2502
         
     </ul>
     </div>
+</div>
     {% include checkpoints/2502checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>

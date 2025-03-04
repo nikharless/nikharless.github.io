@@ -14,10 +14,14 @@ criterion: 2401
     <h1>{{ currentpg.name }}</h1>
     {% include breadcrumbs/bc-checkpoint.html %}
 
-    <h2>Overview</h2>
+    <div class="block">
+        <h2>Overview</h2>
     <p>When page content is presented in <code>&lt;iframe&gt;</code>s, screen reader users can navigate to these in the same way they can navigate to section headings.</p>
 
-    <h2>Basic Requirements and Best Practices</h2>
+    </div>
+
+    <div class="block">
+        <h2>Basic Requirements and Best Practices</h2>
     <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
         <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
     <ul>
@@ -28,7 +32,10 @@ criterion: 2401
 
     <div class="success"><strong>Success:</strong> If you were a keyboard-only user, when blocks of content are repeated across pages, you would be able to skip past them to the content you want.</div>
 
-    <h2>Testing Logic</h2>
+    </div>
+
+    <div class="block">
+        <h2>Testing Logic</h2>
     <script src="{{ baseurl }}/assets/js/tree.js"></script>
     <h3 id="test1">Does the page use <code>&lt;iframe&gt;</code> elements to group blocks of repeated material?</h3>
     <ul role="tree" aria-labelledby="test1">
@@ -51,7 +58,10 @@ criterion: 2401
         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
     </ul>
 
-    <h2>Web Test Procedure</h2>
+    </div>
+
+    <div class="block">
+        <h2>Web Test Procedure</h2>
     <h3>Desktop</h3>
     <ol>
         <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> to flag any <code>&lt;iframe&gt;</code> with a missing <code>title</code> attribute.</li>
@@ -76,21 +86,30 @@ criterion: 2401
         <li>Follow the procedure for Desktop.</li>
     </ol>
 
-    <h2>Failures</h2>
+    </div>
+
+    <div class="block">
+        <h2>Failures</h2>
     <ul>
         <li><a href="{{ site.data.2401.2401[24010201].link | prepend: baseurl }}">{{ site.data.2401.2401[24010201].name }}</a>. (Medium)</li>
         <li><a href="{{ site.data.2401.2401[24010202].link | prepend: baseurl }}">{{ site.data.2401.2401[24010202].name }}</a>. (Medium)</li>
         <li><a href="{{ site.data.2401.2401[24010203].link | prepend: baseurl }}">{{ site.data.2401.2401[24010203].name }}</a>. (Medium)</li>
     </ul>
 
-    <h2>Testing Tools</h2>
+    </div>
+
+    <div class="block">
+        <h2>Testing Tools</h2>
     <ul>
         <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
         <li>Chrome Developer Tools</li>
         <li>Screen reader</li>
     </ul>
 
-    <h2>References</h2>
+    </div>
+
+    <div class="block">
+        <h2>References</h2>
     <h3>WCAG</h3>
     <ul>
         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
@@ -106,6 +125,7 @@ criterion: 2401
         <li><a href="https://www.boia.org/blog/why-are-iframe-titles-important-for-accessibility">BOIA: Why Are iFrame Titles Important for Accessibility?</a></li>
     </ul>
     </div>
+</div>
     {% include checkpoints/2401checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
