@@ -11,148 +11,141 @@ criterion: 1101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Each audio and video element must have a text alternative which summarizes its purpose.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> If there is text in the audio/video preview, that exact text should be included in the text alternative.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want to hear a summary description of the audio or video content so that I know whether I want to explore it further.</div>
-
-    <div class="success"><strong>Success:</strong> If you could not see the audio or video element, when you read it with a screen reader, you would hear a summary description of the media.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is there audio content on the page?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio have a short text alternative?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently summarize the content of the audio?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010605].link | prepend: baseurl }}">{{ site.data.1101.1101[11010605].name }}</a></span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010601].link | prepend: baseurl }}">{{ site.data.1101.1101[11010601].name }}</a></span></li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    <h3 id="test2">Does the text alternative for the audio-only content refer to the accompanying transcript?</h3>
-    <p><em>If a transcript does not exist, see <a href="{{ site.data.1201.1201[1201].link | prepend: baseurl }}">{{ site.data.1201.1201[1201].name }}</a>.</em></p>
-    <ul role="tree" aria-labelledby="test2">
-        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010605].link | prepend: baseurl }}">{{ site.data.1101.1101[11010605].name }}</a></span></li>
-    </ul>
-
-    <h3 id="test3">Is there video content on the page?</h3>
-    <ul role="tree" aria-labelledby="test3">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the video content have a short text alternative?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently summarize the content of the video?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010604].link | prepend: baseurl }}">{{ site.data.1101.1101[11010604].name }}</a></span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010602].link | prepend: baseurl }}">{{ site.data.1101.1101[11010602].name }}</a></span></li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Locate each audio or video element using one or more of the following methods:
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li>Visually</li>
-                <li><strong>Windows / NVDA</strong>: Use the <kbd>O</kbd> key to cycle through objects.</li>
-                <li><strong>MacOS / VoiceOver</strong>: Use <kbd>VO+Command+O</kbd> to cycle through objects.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Each audio and video element must have a text alternative which summarizes its purpose.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> If there is text in the audio/video preview, that exact text should be included in the text alternative.</li>
             </ul>
-        </li>
-        <li>Verify that it has a text alternative that summarizes its content.</li>
-    </ol>
 
-    <h3>Mobile</h3>
-    <ol>
-        <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features</a>.</li>
-        <li>Navigate to each audio or video element.</li>
-        <li>Verify that it has a text alternative that summarizes its content.</li>
-    </ol>
+            <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want to hear a summary description of the audio or video content so that I know whether I want to explore it further.</div>
 
-    <h2>Mobile App Test Procedure</h2>
-    <ul>
-        <li>Follow the procedure for Web Mobile.</li>
-    </ul>
+            <div class="success"><strong>Success:</strong> If you could not see the audio or video element, when you read it with a screen reader, you would hear a summary description of the media.</div>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is there audio content on the page?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio have a short text alternative?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently summarize the content of the audio?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010605].link | prepend: baseurl }}">{{ site.data.1101.1101[11010605].name }}</a></span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010601].link | prepend: baseurl }}">{{ site.data.1101.1101[11010601].name }}</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
 
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1101.1101[11010601].link | prepend: baseurl }}">{{ site.data.1101.1101[11010601].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1101.1101[11010602].link | prepend: baseurl }}">{{ site.data.1101.1101[11010602].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1101.1101[11010603].link | prepend: baseurl }}">{{ site.data.1101.1101[11010603].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1101.1101[11010604].link | prepend: baseurl }}">{{ site.data.1101.1101[11010604].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1101.1101[11010605].link | prepend: baseurl }}">{{ site.data.1101.1101[11010605].name }}</a> (Low)</li>
-    </ul>
+            <h3 id="test2">Does the text alternative for the audio-only content refer to the accompanying transcript?</h3>
+            <p><em>If a transcript does not exist, see <a href="{{ site.data.1201.1201[1201].link | prepend: baseurl }}">{{ site.data.1201.1201[1201].name }}</a>.</em></p>
+            <ul role="tree" aria-labelledby="test2">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010605].link | prepend: baseurl }}">{{ site.data.1101.1101[11010605].name }}</a></span></li>
+            </ul>
 
-    </div>
+            <h3 id="test3">Is there video content on the page?</h3>
+            <ul role="tree" aria-labelledby="test3">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the video content have a short text alternative?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently summarize the content of the video?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010604].link | prepend: baseurl }}">{{ site.data.1101.1101[11010604].name }}</a></span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010602].link | prepend: baseurl }}">{{ site.data.1101.1101[11010602].name }}</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
+        </div>
 
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
-        <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
-        <li><a href="https://wave.webaim.org/extension/">WAVE</a></li>
-        <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
-        <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
-        <li><a href="https://pauljadam.com/bookmarklets.html">Paul Adam Images bookmarklet</a></li>
-        <li><a href="https://chrispederick.com/work/web-developer/">Web Developer</a></li>
-        <li>Screen reader</li>
-    </ul>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Locate each audio or video element using one or more of the following methods:
+                    <ul>
+                        <li>Visually</li>
+                        <li><strong>Windows / NVDA</strong>: Use the <kbd>O</kbd> key to cycle through objects.</li>
+                        <li><strong>MacOS / VoiceOver</strong>: Use <kbd>VO+Command+O</kbd> to cycle through objects.</li>
+                    </ul>
+                </li>
+                <li>Verify that it has a text alternative that summarizes its content.</li>
+            </ol>
 
-    </div>
+            <h3>Mobile</h3>
+            <ol>
+                <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features</a>.</li>
+                <li>Navigate to each audio or video element.</li>
+                <li>Verify that it has a text alternative that summarizes its content.</li>
+            </ol>
 
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
-        <li>Related Techniques:
+            <h2>Mobile App Test Procedure</h2>
             <ul>
-                <li>General:
+                <li>Follow the procedure for Web Mobile.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.1101.1101[11010601].link | prepend: baseurl }}">{{ site.data.1101.1101[11010601].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1101.1101[11010602].link | prepend: baseurl }}">{{ site.data.1101.1101[11010602].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1101.1101[11010603].link | prepend: baseurl }}">{{ site.data.1101.1101[11010603].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1101.1101[11010604].link | prepend: baseurl }}">{{ site.data.1101.1101[11010604].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1101.1101[11010605].link | prepend: baseurl }}">{{ site.data.1101.1101[11010605].name }}</a> (Low)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
+                <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
+                <li><a href="https://wave.webaim.org/extension/">WAVE</a></li>
+                <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+                <li><a href="https://pauljadam.com/bookmarklets.html">Paul Adam Images bookmarklet</a></li>
+                <li><a href="https://chrispederick.com/work/web-developer/">Web Developer</a></li>
+                <li>Screen reader</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
+                <li>Related Techniques:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G68">G68: Providing a short text alternative that describes the purpose of live audio-only and live video-only content</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-teext content</a></li>
-                    </ul>
-                </li>
-                <li>HTML:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H53">H53: Using the body of the object element</a></li>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G68">G68: Providing a short text alternative that describes the purpose of live audio-only and live video-only content</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-teext content</a></li>
+                            </ul>
+                        </li>
+                        <li>HTML:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H53">H53: Using the body of the object element</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
