@@ -11,138 +11,134 @@ criterion: 1201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Audio-only content includes the following:</p>
+            <ul>
+                <li>Audio podcasts</li>
+                <li>mp3 files</li>
+            </ul>
 
-    <p>Audio-only content includes the following:</p>
-    <ul>
-        <li>Audio podcasts</li>
-        <li>mp3 files</li>
-    </ul>
+            <h3>Example</h3>
+            <img src="{{ baseurl }}/assets/images/120101-this-am-life.png" style="max-width: 550px; border: 1px solid black;" alt="Screenshot of an episode of the This American Life podcast with the audio player at the top and the transcript underneath">
+            <p>The text transcript for this audio podcast can be read while the audio is playing.</p>
+            <p><a href="https://www.thisamericanlife.org/775/transcript">This American Life podcast episode transcript</a></p>
+        </div>
 
-    <h3>Example</h3>
-    <img src="{{ baseurl }}/assets/images/120101-this-am-life.png" style="max-width: 550px; border: 1px solid black;" alt="Screenshot of an episode of the This American Life podcast with the audio player at the top and the transcript underneath">
-    <p>The text transcript for this audio podcast can be read while the audio is playing.</p>
-    <p><a href="https://www.thisamericanlife.org/775/transcript">This American Life podcast episode transcript</a></p>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded audio-only content must have a text transcript.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text transcript must include all dialogue and narration.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text transcript must identify speakers.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text transcript must include important sounds.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text transcript must be an actual text alternative.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The text transcript should be presented next to the audio and be easy to find.</li>
+            </ul>
 
-    </div>
+            <div class="userstory"><strong>User Story:</strong> As a deaf user, I want to read a transcript of the audio content so that I can get all of the same information.</div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded audio-only content must have a text transcript that includes all of the information presented in the audio.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The text transcript should be presented next to the audio and be easy to find.</li>
-    </ul>
+            <div class="success"><strong>Success:</strong> If you could not hear the audio, when you read the transcript, you would get all of the information conveyed in the audio content.</div>
+        </div>
 
-    <div class="userstory"><strong>User Story:</strong> As a deaf user, I want to read a transcript of the audio content so that I can get all of the same information.</div>
-
-    <div class="success"><strong>Success:</strong> If you could not hear the audio, when you read the transcript, you would get all of the information conveyed in the audio content.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the page contain any audio-only content?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the audio-only content accompanied by a full transcript?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the dialogue in the transcript match the dialogue in the audio-only content?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Does the page contain any audio-only content?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the audio-only content accompanied by a full transcript?</span>
                     <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; If the audio includes more than one speaker, does the transcript identify who is speaking each time it changes?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the dialogue in the transcript match the dialogue in the audio-only content?</span>
                             <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; Does the transcript include important sound effects?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; If the audio includes more than one speaker, does the transcript identify who is speaking each time it changes?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010104].link | prepend: baseurl }}">{{ site.data.1201.1201[12010104].name }}</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the transcript include important sound effects?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010104].link | prepend: baseurl }}">{{ site.data.1201.1201[12010104].name }}</a></span></li>
+                                            </ul>
+                                        </li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010103].link | prepend: baseurl }}">{{ site.data.1201.1201[12010103].name }}</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010103].link | prepend: baseurl }}">{{ site.data.1201.1201[12010103].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010102].link | prepend: baseurl }}">{{ site.data.1201.1201[12010102].name }}</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010102].link | prepend: baseurl }}">{{ site.data.1201.1201[12010102].name }}</a></span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the audio-only content itself a media alternative for text?</span>
-                    <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it clearly labeled as such?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the audio-only content itself a media alternative for text?</span>
                             <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; Add text making it clear that the audio is an alternative for the text content.</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it clearly labeled as such?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <li><a href="{{ site.data.1201.1201[12010106].link | prepend: baseurl }}">{{ site.data.1201.1201[12010106].name }}</a></li>.</span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010101].link | prepend: baseurl }}">{{ site.data.1201.1201[12010101].name }}</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010101].link | prepend: baseurl }}">{{ site.data.1201.1201[12010101].name }}</a></span></li>
                     </ul>
-                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Locate each audio-only object.</li>
+                <li>Verify that there is a text transcript available.</li>
+                <li>Verify that the transcript meets all the requirements listed above.</li>
+            </ol>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>Locate each audio-only object.</li>
-        <li>Verify that there is a text transcript available.</li>
-        <li>Verify that the transcript includes all dialogue and sound effects, and that it identifies the speakers.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <ul>
-        <li>Follow the procedure for Web.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1201.1201[12010101].link | prepend: baseurl }}">{{ site.data.1201.1201[12010101].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1201.1201[12010102].link | prepend: baseurl }}">{{ site.data.1201.1201[12010102].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1201.1201[12010103].link | prepend: baseurl }}">{{ site.data.1201.1201[12010103].name }}</a> (Low)</li>
-        <li><a href="{{ site.data.1201.1201[12010104].link | prepend: baseurl }}">{{ site.data.1201.1201[12010104].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1201.1201[12010105].link | prepend: baseurl }}">{{ site.data.1201.1201[12010105].name }}</a> (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader (optional)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.2.1: Audio-only and Video-only (Prerecorded) (Level A)</a></li>
-        <li>Related Techniques:
+            <h2>Mobile App Test Procedure</h2>
             <ul>
-                <li>General:
+                <li>Follow the procedure for Web.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.1201.1201[12010101].link | prepend: baseurl }}">{{ site.data.1201.1201[12010101].name }}</a> (High)</li>
+                <li><a href="{{ site.data.1201.1201[12010102].link | prepend: baseurl }}">{{ site.data.1201.1201[12010102].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1201.1201[12010103].link | prepend: baseurl }}">{{ site.data.1201.1201[12010103].name }}</a> (Low)</li>
+                <li><a href="{{ site.data.1201.1201[12010104].link | prepend: baseurl }}">{{ site.data.1201.1201[12010104].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1201.1201[12010105].link | prepend: baseurl }}">{{ site.data.1201.1201[12010105].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1201.1201[12010106].link | prepend: baseurl }}">{{ site.data.1201.1201[12010106].name }}</a> (Medium)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.2.1: Audio-only and Video-only (Prerecorded) (Level A)</a></li>
+                <li>Related Techniques:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G158">G158: Providing an alternative for time-based media for audio-only content</a></li>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G158">G158: Providing an alternative for time-based media for audio-only content</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://webaim.org/techniques/captions/">WebAIM: Captions, Transcripts, and Audio Descriptions</a></li>
-        <li><a href="https://ableplayer.github.io/ableplayer/">Able Player</a></li>
-    </ul>
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/media/av/transcripts/">w3: Transcripts</a></li>
+                <li><a href="https://webaim.org/techniques/captions/">WebAIM: Captions, Transcripts, and Audio Descriptions</a></li>
+                <li><a href="https://ableplayer.github.io/ableplayer/">Able Player</a></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/1201checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
