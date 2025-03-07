@@ -12,42 +12,51 @@ checkpoint: 120401
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Live video with audio must have synchronized captions which convey the same information provided in the audio.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The live video has captions, but all the dialogue is not included.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Include all of the dialogue in the audio.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Captions must include all spoken dialogue and narration.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The live video has captions, but not all the dialogue or narration is included.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Include all of the dialogue and narration in the audio.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>People who are deaf, hard of hearing, or have difficulty understanding audio information for any reason, need to be able to access the same information provided in the audio portion of live broadcasts.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.2.4 Captions (Live)</a></li>
-                    <li><a href="https://www.w3.org/WAI/media/av/captions/">W3: Captions</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to access the same information provided in the audio portion of the broadcast.</li>
+                        <li><strong>Information processing:</strong> People who have the ability to hear use captions to more easily process the auditory information.</li>
+                        <li><strong>Non-native speakers:</strong> Captions help non-native speakers of the audio language understand the content.</li>
+                        <li><strong>Environment:</strong> Captions allow all users to access the auditory information in environments where sound can't be used or cannot be heard.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC 1.2.4 Captions (Live)</a></li>
+                        <li><a href="https://www.w3.org/WAI/media/av/captions/">W3: Captions</a></li>
+                        <li><a href="https://www.rev.com/blog/communication-access-real-time-translation">rev: Communication Access Real-Time Translation (CART Captioning) 101</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1204checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
