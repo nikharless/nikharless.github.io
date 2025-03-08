@@ -1,0 +1,65 @@
+---
+layout: default
+current: 12010203
+criterion: 1201
+checkpoint: 120103
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.1201.1201[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.1201.1201[page.criterion] %}
+{% assign cp=site.data.1201.1201[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Prerecorded video-only content must have a text or audio alternative that includes all of the information presented in the video.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The prerecorded video-only content has a text transcript, but it doesn't include all of the information presented in the video.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Update the text transcript to include all of the information presented in the video.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> People who are blind or vision impaired need to be able to access the same information provided in the video.</li>
+                        <li><strong>Information processing:</strong> People who have the ability to see use alternatives to more easily process the visual information.</li>
+                        <li><strong>Deafblind:</strong> Transcripts allow deafblind users access to information presented in video content.</li>
+                        <li><strong>SEO:</strong> Transcripts allow search engines to catalog the information contained in video content.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F67">F67: Failure of Success Criterion 1.1.1 and 1.2.1 due to providing long descriptions for non-text content that does not serve the same purpose or does not present the same information</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G159">G159: Providing an alternative for time-based media for video-only content</a></li>
+                        <li><a href="https://www.w3.org/WAI/media/av/description/">W3: Description of Visual Information</a></li>
+                        <li><a href="https://www.w3.org/WAI/media/av/transcripts/">W3: Transcripts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/1201checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
