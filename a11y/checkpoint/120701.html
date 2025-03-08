@@ -11,41 +11,47 @@ criterion: 1207
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <h3>Examples</h3>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/4gAIERMr39I?si=iq_Wf6lGn7ktMdox" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    <p><a href="https://www.3playmedia.com/learn/how-to-guides/audio-description-how-to-guides/audio-description-examples/#section-extended">See examples from 3PlayMedia under Extended Audio Description.</a></p>
+        <div class="block">
+            <h2>Overview</h2>
+            <h3>Examples</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/4gAIERMr39I?si=iq_Wf6lGn7ktMdox" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p><a href="https://www.3playmedia.com/learn/how-to-guides/audio-description-how-to-guides/audio-description-examples/#section-extended">See examples from 3PlayMedia under Extended Audio Description.</a></p>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded synchronized media which does not have sufficient audio pauses to fit all the important visual information must have an extended audio description of the visual content.</li>
+            </ul>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded synchronized media which does not have sufficient audio pauses to fit all the important visual information must have an extended audio description of the visual content.</li>
-    </ul>
+            <div class="userstory"><strong>User Story:</strong> As a blind user, I want to listen to an audio description along with the video so that I can get all of the same information that is conveyed in the visual portion of the video.</div>
 
-    <div class="userstory"><strong>User Story:</strong> As a blind user, I want to listen to an audio description along with the video so that I can get all of the same information that is conveyed in the visual portion of the video.</div>
+            <div class="success"><strong>Success:</strong> If you could not see the video, when you listen to the audio description you would get all of the information conveyed in the video portion.</div>
+        </div>
 
-    <div class="success"><strong>Success:</strong> If you could not see the video, when you listen to the audio description you would get all of the information conveyed in the video portion.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the page contain synchronized media (e.g., video with dialogue)?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the video content in the synchronized media have an audio description?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio description include all the important actions, visuals, and text in the video?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Does the page contain synchronized media (e.g., video with dialogue)?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the video content in the synchronized media have an audio description?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio description include all the important actions, visuals, and text in the video?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the video have sufficient pauses to include all the important actions, visuals, and text in the video?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1205.1205[12050102].link | prepend: baseurl }}">{{ site.data.1205.1205[12050102].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1207.1207[12070101].link | prepend: baseurl }}">{{ site.data.1207.1207[12070101].name }}</a></span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the video have sufficient pauses to include all the important actions, visuals, and text in the video?</span>
                             <ul role="group">
                                 <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1205.1205[12050102].link | prepend: baseurl }}">{{ site.data.1205.1205[12050102].name }}</a></span></li>
@@ -54,76 +60,56 @@ criterion: 1207
                         </li>
                     </ul>
                 </li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the video itself a media alternative for text?</span>
-                    <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it clearly labeled as such?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; Add text making it clear that the video is an alternative for the text content.</span></li>
-                            </ul>
-                        </li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the video have sufficient pauses to include all the important actions, visuals, and text in the video?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes;</strong> See <a href="{{ site.data.1205.1205[12050101].link | prepend: baseurl }}">{{ site.data.1205.1205[12050101].name }}</a></span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1207.1207[12070101].link | prepend: baseurl }}">{{ site.data.1207.1207[12070101].name }}</a></span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Locate each video element on the page.</li>
+                <li>Determine whether the video content contains any information not provided through the audio content.</li>
+                <li>If it does, verify that it has an audio description that provides the visual information.</li>
+                <li>If it does, determine whether the soundtrack has enough space between dialogue and narration to insert sufficient audio descriptions.</li>
+                <li>If not, determine whether extended audio descriptions are provided.</li>
+            </ol>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-
-    <ol>
-        <li>Locate each video element on the page.</li>
-        <li>Determine whether the video content contains any information not provided through the audio content.</li>
-        <li>If it does, verify that it has an audio description that provides the visual information.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <ul>
-        <li>Follow the procedure for Web.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1207.1207[12070101].link | prepend: baseurl }}">{{ site.data.1207.1207[12070101].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1207.1207[12070102].link | prepend: baseurl }}">{{ site.data.1207.1207[12070102].name }}</a> (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.2.7 Extended Audio Description (Prerecorded)</a></li>
-        <li>Related Techniques:
+            <h2>Mobile App Test Procedure</h2>
             <ul>
-                <li>General:
+                <li>Follow the procedure for Web.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.1207.1207[12070101].link | prepend: baseurl }}">{{ site.data.1207.1207[12070101].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1207.1207[12070102].link | prepend: baseurl }}">{{ site.data.1207.1207[12070102].name }}</a> (Medium)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>Related Techniques:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G8">G8: Providing a movie with extended audio descriptions</a></li>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G8">G8: Providing a movie with extended audio descriptions</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://www.3playmedia.com/blog/does-your-video-need-extended-or-standard-description/">3PlayMedia: Does Your Video Need Extended or Standard Description?</a></li>
-        <li><a href="https://ableplayer.github.io/ableplayer/">Able Player</a></li>
-    </ul>
-</div>
-</div>
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://www.3playmedia.com/blog/does-your-video-need-extended-or-standard-description/">3PlayMedia: Does Your Video Need Extended or Standard Description?</a></li>
+                <li><a href="https://ableplayer.github.io/ableplayer/">Able Player</a></li>
+            </ul>
+        </div>
+    </div>
      {% include checkpoints/1207checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
