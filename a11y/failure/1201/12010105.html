@@ -1,0 +1,72 @@
+---
+layout: default
+current: 12010105
+criterion: 1201
+checkpoint: 120101
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.1201.1201[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.1201.1201[page.criterion] %}
+{% assign cp=site.data.1201.1201[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Text transcript must be an actual text alternative.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The prerecorded audio-only content has a text transcript, but it is not a true equivalent.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Update the text transcript to be an equivalent alternative to the information contained in the audio.
+                    <p>The following are examples of text that would not be equivalent alternatives to audio:</p>
+                    <ul>
+                        <li>File names</li>
+                        <li>Placeholder text</li>
+                        <li>Programming references</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to access the same information provided in the audio.</li>
+                        <li><strong>Information processing:</strong> People who have the ability to hear use transcripts to more easily process the auditory information.</li>
+                        <li><strong>Non-native speakers:</strong> Transcripts help non-native speakers of the audio language understand the content.</li>
+                        <li><strong>Environment:</strong> Transcripts allow all users to access the auditory information in environments where sound can't be used or cannot be heard.</li>
+                        <li><strong>SEO:</strong> Transcripts allow search engines to catalog the information contained in audio.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F67">F67: Failure of Success Criterion 1.1.1 and 1.2.1 due to providing long descriptions for non-text content that does not serve the same purpose or does not present the same information</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G158">G158: Providing an alternative for time-based media for audio-only content</a></li>
+                        <li><a href="https://www.w3.org/WAI/media/av/transcripts/">W3: Transcripts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/1201checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
