@@ -12,48 +12,62 @@ checkpoint: 120801
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Prerecorded synchronized media and video-only media has a text transcript which includes the visual content.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The video does not have a text transcript.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Provide a text transcript that includes a description of all key audio and visual elements.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Text Transcript</h3>
-                <img src="{{ baseurl }}/assets/images/12030103-transcript.png" style="max-width: 640px;" alt="Screenshot of video with text transcript visible to the side">
-                <p><a href="https://www.ted.com/talks/liana_finck_life_is_hard_art_helps/transcript">TED: Liana Finck: Life is Hard. Art Helps.</a></p>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Prerecorded synchronized media and video-only media must have a text (transcript) alternative that includes all of the information presented in the visual content.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The media does not have a text transcript.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <p>Add a text transcript that includes all of the information presented in the video content using one of the following methods:</p>
+                    <ul>
+                        <li>Provide a text transcript describing the video content adjacent to the media, <strong>OR</strong></li>
+                        <li>Provide a text transcript via a link adjacent to the media.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>Text Transcript</h3>
+                    <img src="{{ baseurl }}/assets/images/12030103-transcript.png" style="max-width: 640px;" alt="Screenshot of video with text transcript visible to the side">
+                    <p><a href="https://www.ted.com/talks/liana_finck_life_is_hard_art_helps/transcript">TED: Liana Finck: Life is Hard. Art Helps.</a></p>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Deafblind users cannot see or hear the video content, so they require both the audio and visual information in text format so that it can be interpreted by assistive technology such as a braille device.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.2.8 Media Alternative (Prerecorded)</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G69">G69: Providing an alternative for time based media</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G58">G58: Placing a link to the alternative for time-based media immediately next to the non-text content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G159">G159: Providing an alternative for time-based media for video-only content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H53">H53: Using the body of the object element</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> People who are blind or vision impaired need to be able to access the same information provided in the video track.</li>
+                        <li><strong>Information processing:</strong> People who have the ability to see use alternatives to more easily process the visual information.</li>
+                        <li><strong>Deafblind:</strong> Transcripts allow deafblind users access to information presented in video content through braille devices.</li>
+                        <li><strong>SEO:</strong> Transcripts allow search engines to catalog the information contained in video content.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G69">G69: Providing an alternative for time based media</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G58">G58: Placing a link to the alternative for time-based media immediately next to the non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G159">G159: Providing an alternative for time-based media for video-only content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H53">H53: Using the body of the object element</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
      {% include checkpoints/1208checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
