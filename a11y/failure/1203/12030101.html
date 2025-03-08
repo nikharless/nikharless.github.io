@@ -12,58 +12,66 @@ checkpoint: 120301
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Prerecorded synchronized media must have a text or audio description of the visual content.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The prerecorded synchronized media content does not have either a text or audio alternative for the video portion.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Provide an audio description that includes all key visual elements necessary to understand the video content, <strong>OR</strong></li>
-                    <li>Provide a text transcript that includes description of all key visual elements required to understand the video content.</li>
-                </ul>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Audio Description</h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/cQXD6jkv4hQ?si=XXoZK9b1Wl2tRgjM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Prerecorded synchronized media must have a text (transcript) or audio (audio descriptions) alternative that includes all of the information presented in the visual content.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The prerecorded synchronized media content does not have either a text or audio alternative for the video portion.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Provide an audio description that includes all key visual elements necessary to understand the video content, <strong>OR</strong></li>
+                        <li>Provide a text transcript that includes description of all key visual elements required to understand the video content.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Audio Description</h3>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cQXD6jkv4hQ?si=XXoZK9b1Wl2tRgjM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-                <h3>Text Transcript</h3>
-                <img src="{{ baseurl }}/assets/images/12030101-transcript.png" style="max-width: 480px;" alt="Screenshot of video with text transcript visible to the side">
+                    <h3>Text Transcript</h3>
+                    <img src="{{ baseurl }}/assets/images/12030101-transcript.png" style="max-width: 480px;" alt="Screenshot of video with text transcript visible to the side">
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Visually impaired users, or any users who have difficulty understanding moving content, need an alternate means of receiving the information.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.2.3: Audio Description or Media Alternative (Prerecorded)</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G69">G69: Providing an alternative for time based media</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G58">G58: Placing a link to the alternative for time-based media immediately next to the non-text content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G78">G78: Providing a second, user-selectable, audio track that includes audio descriptions</a>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G173">G173: Providing a version of a movie with audio descriptions</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G8">G8: Providing a movie with extended audio descriptions</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G203">G203: Using a static text alternative to describe a talking head video</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H96">H96: Using the track element to provide audio descriptions</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> People who are blind or vision impaired need to be able to access the same information provided in the video track.</li>
+                        <li><strong>Information processing:</strong> People who have the ability to see use alternatives to more easily process the visual information.</li>
+                        <li><strong>Deafblind:</strong> Transcripts allow deafblind users access to information presented in video content.</li>
+                        <li><strong>SEO:</strong> Transcripts allow search engines to catalog the information contained in video content.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G69">G69: Providing an alternative for time based media</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G58">G58: Placing a link to the alternative for time-based media immediately next to the non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G78">G78: Providing a second, user-selectable, audio track that includes audio descriptions</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G173">G173: Providing a version of a movie with audio descriptions</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G8">G8: Providing a movie with extended audio descriptions</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G203">G203: Using a static text alternative to describe a talking head video</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H96">H96: Using the track element to provide audio descriptions</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1203checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
