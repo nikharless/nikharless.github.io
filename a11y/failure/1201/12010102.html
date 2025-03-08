@@ -12,51 +12,60 @@ checkpoint: 120101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Prerecorded audio-only content must have a text transcript that includes all of the information presented in the audio.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The prerecorded audio-only content has a text transcript, but it doesn't include all the dialogue.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Update the text transcript to include all of the dialogue in the audio.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Transcript</h3>
-                <p>In <a href="https://www.thisamericanlife.org/775/the-possum-experiment">this example from the This American Life podcast</a>, all spoken dialogue is included in the transcript.</p>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Text transcript must include all dialogue and narration.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The prerecorded audio-only content has a text transcript, but it doesn't include all the dialogue.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Update the text transcript to include all of the dialogue in the audio.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>Transcript</h3>
+                    <p>In <a href="https://www.thisamericanlife.org/775/the-possum-experiment">this example from the This American Life podcast</a>, all spoken dialogue is included in the transcript.</p>
 
-                <div style="border: 1px solid black; padding: 10px;">
-                    <p><strong>Ira Glass</strong>  Which got her thinking. And when she got back to work, without much to do, she decided to make a poster of her own.</p>
-                    <p><strong>Jessica Lee Williamson</strong>  I just wrote “cat found” above two pictures of possums that I had printed off the internet. One of the possums looks like he’s crouching, disturbed by an invasive camera lens. And then the other possum is hissing.</p>
+                    <div style="border: 1px solid black; padding: 10px;">
+                        <p><strong>Ira Glass</strong>  Which got her thinking. And when she got back to work, without much to do, she decided to make a poster of her own.</p>
+                        <p><strong>Jessica Lee Williamson</strong>  I just wrote “cat found” above two pictures of possums that I had printed off the internet. One of the possums looks like he’s crouching, disturbed by an invasive camera lens. And then the other possum is hissing.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to access the same information provided in the audio.</li>
+                        <li><strong>Information processing:</strong> People who have the ability to hear use transcripts to more easily process the auditory information.</li>
+                        <li><strong>Non-native speakers:</strong> Transcripts help non-native speakers of the audio language understand the content.</li>
+                        <li><strong>Environment:</strong> Transcripts allow all users to access the auditory information in environments where sound can't be used or cannot be heard.</li>
+                        <li><strong>SEO:</strong> Transcripts allow search engines to catalog the information contained in audio.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F67">F67: Failure of Success Criterion 1.1.1 and 1.2.1 due to providing long descriptions for non-text content that does not serve the same purpose or does not present the same information</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G158">G158: Providing an alternative for time-based media for audio-only content</a></li>
+                        <li><a href="https://www.w3.org/WAI/media/av/transcripts/">W3: Transcripts</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>People who are deaf, hard of hearing, or have difficulty understanding audio information for any reason need to be have access to the same dialogue heard in the audio.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F67">F67: Failure of Success Criterion 1.1.1 and 1.2.1 due to providing long descriptions for non-text content that does not serve the same purpose or does not present the same information</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G158">G158: Providing an alternative for time-based media for audio-only content</a></li>
-                    <li><a href="https://www.w3.org/WAI/media/av/transcripts/">W3: Transcripts</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
-</div>
 
     {% include checkpoints/1201checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
