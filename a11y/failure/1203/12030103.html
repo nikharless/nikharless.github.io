@@ -12,50 +12,54 @@ checkpoint: 120301
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Prerecorded synchronized media must have a text or audio description of the visual content.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The prerecorded synchronized media content has a text transcript for the video portion, but it does not include all important visual elements.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Provide a text transcript that includes all key visual elements necessary to understand the video content.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Text Transcript</h3>
-                <p>This transcript does include the text on the cartoon images, which is positive. However, it should also include a brief description of the cartoons themselves to give context to the text.</p>
-                <img src="{{ baseurl }}/assets/images/12030103-transcript.png" style="max-width: 640px;" alt="Screenshot of video with text transcript visible to the side">
-                <p><a href="https://www.ted.com/talks/liana_finck_life_is_hard_art_helps/transcript">TED: Liana Finck: Life is Hard. Art Helps.</a></p>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Prerecorded synchronized media must have a text (transcript) or audio (audio descriptions) alternative that includes all of the information presented in the visual content.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The prerecorded synchronized media content has a text transcript for the video portion, but it does not include all important visual elements.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Provide a text transcript that includes all key visual elements necessary to understand the video content.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>Text Transcript</h3>
+                    <p>This transcript does include the text on the cartoon images, which is positive. However, it should also include a brief description of the cartoons themselves to give context to the text.</p>
+                    <img src="{{ baseurl }}/assets/images/12030103-transcript.png" style="max-width: 640px;" alt="Screenshot of video with text transcript visible to the side">
+                    <p><a href="https://www.ted.com/talks/liana_finck_life_is_hard_art_helps/transcript">TED: Liana Finck: Life is Hard. Art Helps.</a></p>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Visually impaired users, or any users who have difficulty understanding moving content, need an alternate means of receiving the information.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.2.3: Audio Description or Media Alternative (Prerecorded)</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G8">G8: Providing a movie with extended audio descriptions</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G78">G78: Providing a second, user-selectable, audio track that includes audio descriptions</a>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G173">G173: Providing a version of a movie with audio descriptions</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G203">G203: Using a static text alternative to describe a talking head video</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H96">H96: Using the track element to provide audio descriptions</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> People who are blind or vision impaired need to be able to access the same information provided in the video track.</li>
+                        <li><strong>Information processing:</strong> People who have the ability to see use alternatives to more easily process the visual information.</li>
+                        <li><strong>Deafblind:</strong> Transcripts allow deafblind users access to information presented in video content.</li>
+                        <li><strong>SEO:</strong> Transcripts allow search engines to catalog the information contained in video content.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G203">G203: Using a static text alternative to describe a talking head video</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1203checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
