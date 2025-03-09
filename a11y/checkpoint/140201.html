@@ -11,120 +11,108 @@ criterion: 1402
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The user must be able to control automatic audio that plays for more than 3 seconds.
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li>The user must be able to pause or stop the audio, <strong>OR</strong></li>
-                <li>The user must be able to adjust the volume of the audio independently of the system volume control</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The user must be able to control automatic audio that plays for more than 3 seconds.
+                    <ul>
+                        <li>The user must be able to pause or stop the audio, <strong>OR</strong></li>
+                        <li>The user must be able to adjust the volume of the audio independently of the system volume control</li>
+                    </ul>
+                </li>
             </ul>
-        </li>
-    </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want to be able to control automatically playing audio so that I can hear my screen reader.</div>
+            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want to be able to control automatically playing audio so that I can hear my screen reader.</div>
 
-    <div class="success"><strong>Success:</strong> If you used a screen reader to read the page, when audio automatically played for more than 3 seconds, you would be able to turn it off or adjust the volume independently of the system volume control.</div>
+            <div class="success"><strong>Success:</strong> If you used a screen reader to read the page, when audio automatically played for more than 3 seconds, you would be able to turn it off or adjust the volume independently of the system volume control.</div>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is there audio on the page that starts playing automatically?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio play for more than 3 seconds?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a mechanism available to pause or stop the audio?</a></span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is there audio on the page that starts playing automatically?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio play for more than 3 seconds?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism available to adjust the volume of the audio independently of the system audio control?</span>
-                            <ul>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a mechanism available to pause or stop the audio?</a></span>
+                            <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1402.1402[14020101].link | prepend: baseurl }}">{{ site.data.1402.1402[14020101].name }}</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism available to adjust the volume of the audio independently of the system audio control?</span>
+                                    <ul>
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1402.1402[14020101].link | prepend: baseurl }}">{{ site.data.1402.1402[14020101].name }}.</a></span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Locate any audio that automatically plays for more than 3 seconds.</li>
+                <li>Verify that the audio can be paused, stopped, muted, or the volume can be adjusted independently of the system volume control.</li>
+                <li>Verify that the controls work with a screen reader turned on.</li>
+            </ol>
+
+            <h2>Mobile App Test Procedure</h2>
+            <p>Follow the procedure for Web.</p>
+
+            <h2>PDF Test Procedure</h2>
+            <p>Follow the procedure for Web.</p>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.1402.1402[14020101].link | prepend: baseurl }}">{{ site.data.1402.1402[14020101].name }}.</a> (High)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Web:
+                    <ul>
+                        <li>Screen reader</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>Related Techniques:
+                    <ul>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G60">G60: Playing a sound that turns off automatically within three seconds</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G170">G170: Providing a control near the beginning of the Web page that turns off sounds that play automatically</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G171">G171: Playing sounds only on user request</a></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-
-    <ol>
-        <li>Locate any audio that automatically plays for more than 3 seconds.</li>
-        <li>Verify that the audio can be paused, stopped, muted, or the volume can be adjusted independently of the system volume control.</li>
-        <li>Verify that the controls work with a screen reader turned on.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Web.</p>
-
-    <h2>PDF Test Procedure</h2>
-    <p>Follow the procedure for Web.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1402.1402[14020101].link | prepend: baseurl }}">{{ site.data.1402.1402[14020101].name }}</a> (High)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Web:
-            <ul>
-                <li>Screen reader</li>
-            </ul>
-        </li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.4.2: Audio Control</a></li>
-        <li>Related Techniques:
-            <ul>
-                <li>General:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G60">G60: Playing a sound that turns off automatically within three seconds</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G170">G170: Providing a control near the beginning of the Web page that turns off sounds that play automatically</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G171">G171: Playing sounds only on user request</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-        <li></li>
-    </ul>
-    </div>
-</div>
     {% include checkpoints/1402checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
