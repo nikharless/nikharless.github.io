@@ -12,54 +12,63 @@ checkpoint: 140201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Audio that plays automatically for more than 3 seconds has either a mechanism to pause or stop the audio or a mechanism to control the volume independently from the overall system volume.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Audio that plays automatically for more than 3 seconds does not have a mechanism to pause, stop, mute, or control the volume.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Don't start the audio automatically, <strong>OR</strong></li>
-                    <li>Ensure the audio doesn't play for more than 3 seconds, <strong>OR</strong></li>
-                    <li>Provide a mechanism to pause or stop the audio, <strong>OR</strong></li>
-                    <li>Provide a mechanism to control the volume of the audio independently of the system volume</li>
-                </ul>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Audio that plays automatically for more than 3 seconds has either a mechanism to pause or stop the audio or a mechanism to control the volume independently from the overall system volume.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Audio that plays automatically for more than 3 seconds does not have a mechanism to pause, stop, mute, or control the volume.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Don't start the audio automatically, <strong>OR</strong></li>
+                        <li>Ensure the audio doesn't play for more than 3 seconds, <strong>OR</strong></li>
+                        <li>Provide a mechanism to pause or stop the audio, <strong>OR</strong></li>
+                        <li>Provide a mechanism to control the volume of the audio independently of the system volume.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <audio controls autoplay>
+                        <source src="11010601-horse.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div> 
+                    <ul>
+                        <li><strong>Screen readers:</strong> Screen reader users may have difficulty hearing the screen reader when other sounds are playing.</li>
+                        <li><strong>Attention disorders:</strong> People with attention disorders may have difficulty focusing on the content when audio is playing.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Screen reader users may have difficulty hearing the screen reader when other sounds are playing. People with attention disorders may have difficulty focusing on the content when audio is playing.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F23">F23: Failure of 1.4.2 due to playing a sound longer than 3 seconds where there is no mechanism to turn it off</a>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F93">F93: Failure of Success Criterion 1.4.2 for absence of a way to pause or stop an HTML5 media element that autoplays</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G60">G60: Playing a sound that turns off automatically within three seconds</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G170">G170: Providing a control near the beginning of the Web page that turns off sounds that play automatically</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G171">G171: Playing sounds only on user request</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F23">F23: Failure of 1.4.2 due to playing a sound longer than 3 seconds where there is no mechanism to turn it off</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F93">F93: Failure of Success Criterion 1.4.2 for absence of a way to pause or stop an HTML5 media element that autoplays</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G60">G60: Playing a sound that turns off automatically within three seconds</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G170">G170: Providing a control near the beginning of the Web page that turns off sounds that play automatically</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G171">G171: Playing sounds only on user request</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1402checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
