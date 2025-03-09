@@ -12,51 +12,67 @@ checkpoint: 230101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Content does not flash more than 3 times per second, OR the flash is below the flash thresholds.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Content flashes more than 3 times per second and is above the flash thresholds.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Remove the flashing content, <strong>OR</strong></li>
-                    <li>Reduce the flashing to less than 3 flashes per second, <strong>OR</strong></li>
-                    <li>Ensure the flashing is below the flash thresholds.</li>
-                </ul>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Content does not flash more than 3 times per second, OR the flash is below the flash thresholds.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Content flashes more than 3 times per second and is above the flash thresholds.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Remove the flashing content, <strong>OR</strong></li>
+                        <li>Reduce the flashing to less than 3 flashes per second, <strong>OR</strong></li>
+                        <li>Ensure the flashing is below the flash thresholds.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Fewer than 3 Flashes per Second</h3>
+                    <div id="alert" style="opacity: 0; transition: opacity 1s ease-in-out;">
+                        <script>
+                            function showAlert() {
+                                document.getElementById("alert").style.opacity = 1;
+                                setTimeout(function() {
+                                    document.getElementById("alert").style.opacity = 0;
+                                }, 1000); // Adjust time as needed
+                            }
+                        </script>
+                        <button onclick="showAlert()">Show Alert</button>
+                    </div>
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Seizure disorders:</strong> Flashing content can cause migraines, dizziness, nausea, and seizures.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Flashing content can cause migraines, dizziness, nausea, and seizures.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G15">G15: Using a tool to ensure that content does not violate the general flash threshold or red flash threshold</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G19">G19: Ensuring that no component of the content flashes more than three times in any 1-second period</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G176">G176: Keeping the flashing area small enough</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G15">G15: Using a tool to ensure that content does not violate the general flash threshold or red flash threshold</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G19">G19: Ensuring that no component of the content flashes more than three times in any 1-second period</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G176">G176: Keeping the flashing area small enough</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
