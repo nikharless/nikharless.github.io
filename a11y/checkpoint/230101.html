@@ -11,116 +11,110 @@ criterion: 2301
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>This criterion only applies to web content, not flashing caused by user agents. Examples include:</p>
-    <ul>
-        <li>Video</li>
-        <li>Animations</li>
-        <li>Blinking elements</li>
-    </ul>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>This criterion only applies to web content, not flashing caused by user agents. Examples include:</p>
+            <ul>
+                <li>Video</li>
+                <li>Animations</li>
+                <li>Blinking elements</li>
+            </ul>
 
-    <p><em>Note: Though this checkpoint technically passes if the flashing area is small enough, the size is calculated using standard screen size and viewing distance. A user who is closer to their screen or who zooms in to view content could cause the content to then fail. Therefore, it's safer to ensure flashing is no more than 3 times per second.</em></p>
+            <p><em>Note: Though this checkpoint technically passes if the flashing area is small enough, the size is calculated using standard screen size and viewing distance. A user who is closer to their screen or who zooms in to view content could cause the content to then fail. Therefore, it's safer to ensure flashing is no more than 3 times per second.</em></p>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content must not flash more than 3 times per second, OR the flash must be below the flash thresholds.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Content should not flash at all.</li>
+            </ul>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content must not flash more than 3 times per second, OR the flash must be below the flash thresholds.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Content should not flash at all.</li>
-    </ul>
+            <div class="userstory"><strong>User Story:</strong> As a user with a seizure disorder, I want to view content that does not flash so that it does not trigger seizures.</div>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with a seizure disorder, I want to view content that does not flash so that it does not trigger seizures.</div>
+            <div class="success"><strong>Success:</strong> If you had a seizure disorder, when viewing flashing content, you would not have seizures.</div>
+        </div>
 
-    <div class="success"><strong>Success:</strong> If you had a seizure disorder, when viewing flashing content, you would not have seizures.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is there any flashing content on the page?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the flash below the general flash and red flash thresholds? (This can be measured with <a href="https://trace.umd.edu/peat/">PEAT.</a>)</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the flashing area smaller than 341 x 256 pixels?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is there any flashing content on the page?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the flash below the general flash and red flash thresholds? (This can be measured with <a href="https://trace.umd.edu/peat/">PEAT.</a>)</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2301.2301[23010101].link | prepend: baseurl }}">{{ site.data.2301.2301[23010101].name }}</a>.</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the flashing area smaller than 341 x 256 pixels?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2301.2301[23010101].link | prepend: baseurl }}">{{ site.data.2301.2301[23010101].name }}.</a></span></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Locate any flashing content.</li>
-        <li>Determine the size of the flashing area.</li>
-        <li>If the area is bigger than 341 x 256 pixels, count the number of flashes per second.</li>
-        <li>If the content flashes more than 3 times per second, test using PEAT.
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
             <ol>
-                <li>Open the web page in Firefox on Windows.</li>
-                <li>In PEAT, select <strong>Start Capture</strong> from the Capture menu.</li>
-                <li>Play the video you just captured to make sure it recorded correctly.</li>
-                <li>Select <strong>Analyze Video</strong> from the Analysis menu.</li>
-                <li>Review the PEAT Test Results and Analysis.</li>
+                <li>Locate any flashing content.</li>
+                <li>Determine the size of the flashing area.</li>
+                <li>If the area is bigger than 341 x 256 pixels, count the number of flashes per second.</li>
+                <li>If the content flashes more than 3 times per second, test using PEAT.
+                    <ol>
+                        <li>Open the web page in Firefox on Windows.</li>
+                        <li>In PEAT, select <strong>Start Capture</strong> from the Capture menu.</li>
+                        <li>Play the video you just captured to make sure it recorded correctly.</li>
+                        <li>Select <strong>Analyze Video</strong> from the Analysis menu.</li>
+                        <li>Review the PEAT Test Results and Analysis.</li>
+                    </ol>
+                </li>
             </ol>
-        </li>
-    </ol>
 
-    <h3>Mobile</h3>
-    <ol>
-        <li>Locate any flashing content.</li>
-        <li>Count the number of flashes per second.</li>
-        <li>If the content flashes more than 3 times per second, test using PEAT on a desktop computer.</li>
-    </ol>
+            <h3>Mobile</h3>
+            <ol>
+                <li>Locate any flashing content.</li>
+                <li>Count the number of flashes per second.</li>
+                <li>If the content flashes more than 3 times per second, test using PEAT on a desktop computer.</li>
+            </ol>
+        </div>
 
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.2301.2301[23010101].link | prepend: baseurl }}">{{ site.data.2301.2301[23010101].name }}.</a> (Critical)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li><a href="https://trace.umd.edu/peat/">PEAT (Photosensitive Epilepsy Analysis Tool)</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G15">G15: Using a tool to ensure that content does not violate the general flash threshold or red flash threshold</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G19">G19: Ensuring that no component of the content flashes more than three times in any 1-second period</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G176">G176: Keeping the flashing area small enough</a></li>
+            </ul>
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://trace.umd.edu/photosensitive-epilepsy-analysis-tool-peat-user-guide/">Photosensitive Epilepsy Analysis Tool (PEAT) User Guide</a></li>
+            </ul>
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2301.2301[23010101].link | prepend: baseurl }}">{{ site.data.2301.2301[23010101].name }}</a>. (Critical)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li><a href="https://trace.umd.edu/peat/">PEAT (Photosensitive Epilepsy Analysis Tool)</a></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G15">G15: Using a tool to ensure that content does not violate the general flash threshold or red flash threshold</a></li>
-        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G19">G19: Ensuring that no component of the content flashes more than three times in any 1-second period</a></li>
-        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G176">G176: Keeping the flashing area small enough</a></li>
-    </ul>
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://trace.umd.edu/photosensitive-epilepsy-analysis-tool-peat-user-guide/">Photosensitive Epilepsy Analysis Tool (PEAT) User Guide</a></li>
-    </ul>
-    </div>
-</div>
     {% include checkpoints/2301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
