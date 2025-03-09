@@ -40,16 +40,18 @@ checkpoint: 230101
                     <h3>Fewer than 3 Flashes per Second</h3>
                     <div id="alert" style="opacity: 0; transition: opacity 1s ease-in-out;">
                         <script>
-                            function showAlert() {
-                                document.getElementById("alert").style.opacity = 1;
-                                setTimeout(function() {
-                                    document.getElementById("alert").style.opacity = 0;
-                                }, 1000); // Adjust time as needed
+                            function showAlert(elm, interval, duration) {
+                                elm.style.visibility = (elm.style.visibility === "hidden" ? "visible" : "hidden");
+                                if (duration > 0) {
+                                    setTimeout(showAlert, interval, elm, interval, duration - interval);
+                                } else {
+                                    elm.style.visibility = "visible";
+                                }
                             }
                         </script>
-                        <div style="background-color: yellow; width: 200px; height: 50px;">Time is running out!</div>
+                        <div id="blinker" style="background-color: yellow; width: 200px; height: 50px; padding: 10px; text-align: center;">Time is running out!</div>
                     </div>
-                    <button onclick="showAlert()">Show Alert</button>
+                    <button onclick="showAlert(alert, 200,3000)">Show Alert</button>
                 </div>
             </div>
             <div class="row block">
