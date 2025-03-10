@@ -12,70 +12,76 @@ checkpoint: 220201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The user is able to pause, stop, or hide blinking content that lasts more than 5 seconds.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Blinking content lasts more than 5 seconds, and there is no means to pause, stop, or hide it.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Provide a mechanism to pause, stop, or hide the blinking element, <strong>OR</strong>
-                        <ul>
-                            <li><em>Note: The mechanism must allow the user to interact with other content while it is paused. Therefore, pausing on focus does not meet this criterion.</em></li>
-                        </ul>
-                    </li>
-                    <li>Shorten the blinking to last 5 seconds or less.</li>
-                </ul>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>3-Second Blink</h3>
-                <div id="blinkMe" style="display: block; border: 1px solid #1C7AC7; border-radius: 4px;">I will blink for 3 seconds</div>
-                <script>
-                    function blinkElement(elm, interval, duration) {
-                        elm.style.visibility = (elm.style.visibility === "hidden" ? "visible" : "hidden");
-                        if (duration > 0) {
-                            setTimeout(blinkElement, interval, elm, interval, duration - interval);
-                        } else {
-                            elm.style.visibility = "visible";
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>The user is able to pause, stop, or hide blinking content that starts automatically and lasts more than 5 seconds.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Blinking content starts automatically and lasts more than 5 seconds, and there is no means to pause, stop, or hide it.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Provide a mechanism to pause, stop, or hide the blinking element, 
+                            <ul>
+                                <li><em>Note: The mechanism must allow the user to interact with other content while it is paused. Therefore, pausing on focus does not meet this criterion.</em></li>
+                            </ul>
+                            <strong>OR</strong>
+                        </li>
+                        <li>Shorten the blinking to last 5 seconds or less.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>3-Second Blink</h3>
+                    <div id="blinkMe" style="display: block; border: 1px solid #1C7AC7; border-radius: 4px;">I will blink for 3 seconds</div>
+                    <script>
+                        function blinkElement(elm, interval, duration) {
+                            elm.style.visibility = (elm.style.visibility === "hidden" ? "visible" : "hidden");
+                            if (duration > 0) {
+                                setTimeout(blinkElement, interval, elm, interval, duration - interval);
+                            } else {
+                                elm.style.visibility = "visible";
+                            }
                         }
-                    }
 
-                    blinkElement(document.getElementById("blinkMe"), 200, 3000);
-                </script>
+                        blinkElement(document.getElementById("blinkMe"), 200, 3000);
+                    </script>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Some people with cognitive disabilities and attention deficits cannot concentrate with continual movement.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G11">G11: Creating content that blinks for less than 5 seconds</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G152">G152: Setting animated gif images to stop blinking after n cycles (within 5 seconds)</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G186">G186: Using a control in the Web page that stops moving, blinking, or auto-updating content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G187">G187: Using a technology to include blinking content that can be turned off via the user agent</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G191">G191: Providing a link, button, or other mechanism that reloads the page without any blinking content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR22">SCR22: Using scripts to control blinking and stop it in five seconds or less</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Attention deficits and cognitive disabilities:</strong> users may be distracted by continuous movement.</li>
+                    </ul> 
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G11">G11: Creating content that blinks for less than 5 seconds</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G152">G152: Setting animated gif images to stop blinking after n cycles (within 5 seconds)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G186">G186: Using a control in the Web page that stops moving, blinking, or auto-updating content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G187">G187: Using a technology to include blinking content that can be turned off via the user agent</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G191">G191: Providing a link, button, or other mechanism that reloads the page without any blinking content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR22">SCR22: Using scripts to control blinking and stop it in five seconds or less</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2202checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

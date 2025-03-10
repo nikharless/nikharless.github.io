@@ -3,8 +3,6 @@ layout: default
 current: 22020104
 criterion: 2202
 checkpoint: 220201
-guideline: perceivable
-
 css: scrolling-text
 ---
 {% assign root=site.data.site.root %}
@@ -15,59 +13,64 @@ css: scrolling-text
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The user is able to interact with other content while moving, blinking, or scrolling content is paused.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The user is not able to interact with other content while the moving, blinking, or scrolling content is paused.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Provide a mechanism to pause, stop, or hide the moving, blinking, or scrolling element which allows the user to interact with other content while it is paused.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Scrolling Text</h3>
-                <p>This scrolling text element can be paused when the mouse is hovered over it. However, if this were the only means of pausing it, the user could not interact with the other content, because as soon as they removed the mouse hover, it would begin scrolling again.</p>
-                <input type="checkbox" id="css-toggle" class="css-toggle"> <label for="css-toggle">Pause scroll</label><br>
-                <div class="scrolling-text-container">
-                    <div class="scrolling-text-inner" style="--marquee-speed: 20s; --direction:scroll-left" role="marquee">
-                        <div class="scrolling-text">
-                            <div class="scrolling-text-item">Scrollin', scrollin', scrollin'</div>
-                            <div class="scrolling-text-item">Keep scrollin', scrollin', scrollin'</div>
-                            <div class="scrolling-text-item">Until you are controllin'</div>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>The user is able to interact with other content while moving, blinking, or scrolling content is paused.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The user is not able to interact with other content while the moving, blinking, or scrolling content is paused.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Provide a mechanism to pause, stop, or hide the moving, blinking, or scrolling element which allows the user to interact with other content while it is paused.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Scrolling Text</h3>
+                    <p>This scrolling text element can be paused when the mouse is hovered over it. However, if this were the only means of pausing it, the user could not interact with the other content, because as soon as they removed the mouse hover, it would begin scrolling again.</p>
+                    <input type="checkbox" id="css-toggle" class="css-toggle"> <label for="css-toggle">Pause scroll</label><br>
+                    <div class="scrolling-text-container">
+                        <div class="scrolling-text-inner" style="--marquee-speed: 20s; --direction:scroll-left" role="marquee">
+                            <div class="scrolling-text">
+                                <div class="scrolling-text-item">Scrollin', scrollin', scrollin'</div>
+                                <div class="scrolling-text-item">Keep scrollin', scrollin', scrollin'</div>
+                                <div class="scrolling-text-item">Until you are controllin'</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Some people with cognitive disabilities and attention deficits cannot concentrate with continual movement.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G11">G11: Creating content that blinks for less than 5 seconds</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G152">G152: Setting animated gif images to stop blinking after n cycles (within 5 seconds)</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G186">G186: Using a control in the Web page that stops moving, blinking, or auto-updating content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G187">G187: Using a technology to include blinking content that can be turned off via the user agent</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G191">G191: Providing a link, button, or other mechanism that reloads the page without any blinking content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR22">SCR22: Using scripts to control blinking and stop it in five seconds or less</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Attention deficits and cognitive disabilities:</strong> users may be distracted by continuous movement.</li>
+                    </ul> 
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G11">G11: Creating content that blinks for less than 5 seconds</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G152">G152: Setting animated gif images to stop blinking after n cycles (within 5 seconds)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G186">G186: Using a control in the Web page that stops moving, blinking, or auto-updating content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G187">G187: Using a technology to include blinking content that can be turned off via the user agent</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G191">G191: Providing a link, button, or other mechanism that reloads the page without any blinking content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR22">SCR22: Using scripts to control blinking and stop it in five seconds or less</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2202checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
