@@ -11,95 +11,86 @@ criterion: 2303
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>Examples of animation triggered by interaction include:</p>
-    <ul>
-        <li>Extra animations when scrolling (i.e., elements moving in and out of view horizontally when user scrolls vertically)</li>
-        <li>Parallax effects when scrolling</li>
-        <li>Loading transitions</li>
-    </ul>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Examples of animation triggered by interaction include:</p>
+            <ul>
+                <li>Extra animations when scrolling (i.e., elements moving in and out of view horizontally when user scrolls vertically)</li>
+                <li>Parallax effects when scrolling</li>
+                <li>Loading transitions</li>
+            </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The user must be able to disable any animation triggered by interaction.</li>
+            </ul>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The user must be able to disable any animation triggered by interaction.</li>
-    </ul>
+            <div class="userstory"><strong>User Story:</strong> As a user with a vestibular disorder, I want to view content that does not animate on interaction so that it does not trigger headaches and nausea.</div>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with a vestibular disorder, I want to view content that does not animate on interaction so that it does not trigger headaches and nausea.</div>
+            <div class="success"><strong>Success:</strong> If you had a vestibular disorder, when animation is triggered by interactions, you would have the option of turning them off.</div>
+        </div>
 
-    <div class="success"><strong>Success:</strong> If you had a vestibular disorder, when animation is triggered by interactions, you would have the option of turning them off.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is there any animation on the page which is triggered by interaction?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the animation essential to the functionality or information presented?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism to disable the animation?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is there any animation on the page which is triggered by interaction?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the animation essential to the functionality or information presented?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2303.2303[23030101].link | prepend: baseurl }}">{{ site.data.2303.2303[23030101].name }}</a>.</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism to disable the animation?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2303.2303[23030101].link | prepend: baseurl }}">{{ site.data.2303.2303[23030101].name }}.</a></span></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop and Mobile</h3>
+            <ol>
+                <li>Locate any non-essential animation that is triggered by user interaction.</li>
+                <li>Verify that there is a mechanism to disable the animation.</li>
+            </ol>
+
+            </div>
+
+            <div class="block">
+                <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.2303.2303[23030101].link | prepend: baseurl }}">{{ site.data.2303.2303[23030101].name }}.</a> (Medium)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Mouse</li>
+                <li>Keyboard</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C39">C39: Using the CSS reduce-motion query to prevent motion</a></li>
+            </ul>
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop and Mobile</h3>
-    <ol>
-        <li>Locate any non-essential animation that is triggered by user interaction.</li>
-        <li>Verify that there is a mechanism to disable the animation.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2303.2303[23030101].link | prepend: baseurl }}">{{ site.data.2303.2303[23030101].name }}</a>. (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Mouse</li>
-        <li>Keyboard</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C39">C39: Using the CSS reduce-motion query to prevent motion</a></li>
-    </ul>
-    <h3>Additional Information</h3>
-    <ul>
-        
-    </ul>
-    </div>
-</div>
     {% include checkpoints/2303checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
