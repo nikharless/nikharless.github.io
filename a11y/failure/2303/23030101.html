@@ -44,6 +44,16 @@ css: dialog-animated
                 <h3><code>prefers-reduced-motion</code> CSS media query</h3>
 
                 {% include examples/dialog-animated.html %}
+
+                <pre><code>@media (prefers-reduced-motion: no-preference) {
+    .my-dialog {
+        transition: display 1s allow-discrete, overlay 1s allow-discrete;
+
+        animation: close 1s forwards;
+        &[open] {
+            animation: open 1s forwards;
+        }
+    }</code></pre>
             </div>
         </div>
         <div class="row block">
