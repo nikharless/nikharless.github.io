@@ -1,0 +1,39 @@
+@media (prefers-reduced-motion: no-preference) {
+	:root {
+	  --base-hue: 190deg;
+	}
+
+	.my-dialog {
+	  transition: opacity 0.4s cubic-bezier(0.4, 1.6, 0.4, 0.8),
+	    scale 0.4s cubic-bezier(0.4, 1.6, 0.4, 0.8), overlay 0.4s allow-discrete,
+	    display 0.4s allow-discrete;
+
+	  opacity: 0;
+	  scale: 0;
+	  &::backdrop {
+	    transition: display 0.5s allow-discrete, overlay 0.5s allow-discrete,
+	      background-color 0.5s;
+	    background-color: hsl(0 0 0 / 0);
+	  }
+
+	  &[open] {
+	    opacity: 1;
+	    scale: 1;
+	  }
+
+	  &[open]::backdrop {
+	    background-color: hsl(0 0 0 / 50%);
+	  }
+	}
+
+	@starting-style {
+	  .my-dialog[open] {
+	    opacity: 0;
+	    scale: 0;
+
+	    &::backdrop {
+	      background-color: hsl(0 0 0 / 0);
+	    }
+	  }
+	}
+}
