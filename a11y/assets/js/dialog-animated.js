@@ -1,6 +1,6 @@
-const dialog = document.querySelector("dialog");
-const showButton = document.querySelector("dialog + button");
-const closeButton = document.querySelector("dialog button");
+const dialog = document.getElementById("myDialog");
+const showButton = document.getElementById("myDialogTrigger");
+const closeButton = document.getElementById("myDialogClose");
 
 // "Show the dialog" button opens the dialog modally
 showButton.addEventListener("click", () => {
