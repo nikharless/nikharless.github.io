@@ -16,6 +16,7 @@ criterion: 2202
 
         <div class="block">
             <h2>Overview</h2>
+            <p>This checkpoint covers content which moves, blinks, or scrolls, regardless of whether the content itself changes</p>
 
             <p>Examples of moving, blinking, or scrolling content include:</p>
             <ul>
@@ -23,7 +24,7 @@ criterion: 2202
                 <li>Animations</li>
                 <li>Synchronized media presentations</li>
                 <li>Real-time games</li>
-                <li>Scrolling stock tickers</li>
+                <li>Scrolling text</li>
             </ul>
         </div>
 
@@ -33,8 +34,9 @@ criterion: 2202
             <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
         <ul>
             <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The user must be able to pause, stop, or hide automatically moving, blinking, or scrolling content that lasts longer than 5 seconds.</li>
-            <li><span role="img" class="fa-solid fa-circle-check" style="color: #e00000;" aria-label="Best Practice"></span> Real-time updates should resume with the most current information when unpaused.</li>
-            <li><span role="img" class="fa-solid fa-circle-check" style="color: #e00000;" aria-label="Best Practice"></span> Updates with static information should resume where it left off when unpaused.</li>
+            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The mechanism for pausing, stopping, or hiding the content must itself pass all applicable Success Criteria.</li> 
+            <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Real-time updates should resume with the most current information when unpaused.</li>
+            <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Updates with static information should resume where it left off when unpaused.</li>
         </ul>
 
         <div class="userstory"><strong>User Story:</strong> As a user with an attention deficit disorder, I want to be able to pause, stop, or hide continuous animations so that I can focus on other page content.</div>
@@ -53,7 +55,7 @@ criterion: 2202
                         <ul role="group">
                             <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the moving, blinking, or scrolling content part of an activity where it is essential (e.g., loading animations)?</span>
                                 <ul role="group">
-                                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                    <li role="treeitem" class="na"><span><strong>Yes</strong>; This checkpoint is not applicable.</span></li>
                                     <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism for the user to pause, stop, or hide the content?</span>
                                         <ul role="group">
                                             <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the mechanism allow the user to interact with other content while the movement is paused?</span>
@@ -77,10 +79,10 @@ criterion: 2202
                                     </li>
                                 </ul>
                             </li>
-                            <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</a></span></li>
+                            <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</a></span></li>
                         </ul>
                     </li>
-                    <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</a></span></li>
+                    <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</a></span></li>
                 </ul>
             </li>
             <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
@@ -91,8 +93,10 @@ criterion: 2202
         <h2>Web Test Procedure</h2>
         <h3>Desktop</h3>
         <ol>
+            <li>Ensure the browser is not configured to block auto-playing content.</li>
             <li>Identify all moving, blinking, or scrolling content that starts automatically, lasts for more than 5 seconds, and is presented along with other content.</li>
             <li>Verify that there is a mechanism available to stop, pause, or hide the content.</li>
+            <li>Verify that the mechanism works.</li>
         </ol>
 
         <h3>Desktop Screen Reader</h3>
