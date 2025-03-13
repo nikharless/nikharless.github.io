@@ -1,0 +1,59 @@
+---
+layout: default
+current: 22020105
+criterion: 2202
+checkpoint: 220201
+css: scrolling-text
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.2202.2202[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.2202.2202[page.criterion] %}
+{% assign cp=site.data.2202.2202[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>The mechanism for pausing, stopping, or hiding the moving, blinking, or scrolling content passes all applicable Success Criteria.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The mechanism for pausing, stopping, or hiding the moving, blinking, or scrolling content does not pass all applicable Success Criteria.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <p>Provide a mechanism which itself passes all applicable Success Criteria.</p>
+                    <p>For example, if a button is used, the button must meet all requirements for buttons.</p>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <p>If the mechanism itself does not pass all applicable Success Criteria, it does not sufficiently perform its intended function.</p>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/2202checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
