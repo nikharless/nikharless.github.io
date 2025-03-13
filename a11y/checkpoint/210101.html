@@ -17,7 +17,17 @@ criterion: 2101
         <div class="block">
             <h2>Overview</h2>
 
-            <p>This checkpoint applies to literal keyboards, but it also applies to any technology which uses the keyboard interface, such as switch controls, voice control, sip-and-puff controls, on-screen keyboards, and screen readers.</p> 
+            <p>This checkpoint applies to literal keyboards, but it also applies to any technology which uses the keyboard interface, such as switch controls, voice control, sip-and-puff controls, on-screen keyboards, and screen readers.</p>
+
+            <p>All interactive elements must be tested, including but not limited to:</p>
+                <ul>
+                    <li>Buttons</li>
+                    <li>Drop-down menus</li>
+                    <li>Form fields</li>
+                    <li>Expanding/collapsing content</li>
+                    <li>Tooltips</li>
+                    <li>Custom controls</li>
+                </ul>
 
             <p>"Specific timings for individual keystrokes" refers to things such as multiple keystrokes within a short period of time or holding down a key for a length of time.</p>
 
@@ -56,49 +66,57 @@ criterion: 2101
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            <h3 id="test1">Can all page functionality be reached using only the keyboard?</h3>
+            <h3 id="test1">Are there interactive controls on the page?</h3>
             <ul role="tree" aria-labelledby="test1">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can all page functionality be activated using only the keyboard?</span>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can all interactive controls be reached using only the keyboard?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the underlying function require input that depends on the path of the user's movement?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can all interactive controls be activated using only the keyboard?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the functionality be activated with a mouse?</span>
                                     <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the control a link?</span>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the underlying function require input that depends on the path of the user's movement?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010103].link | prepend: baseurl }}">{{ site.data.2101.2101[21010103].name }}</a>.</span></li>
-                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control an image map?</span>
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the functionality be activated with a mouse?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it a client-side image map?</span>
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the control a link?</span>
                                                             <ul role="group">
                                                                 <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010103].link | prepend: baseurl }}">{{ site.data.2101.2101[21010103].name }}</a>.</span></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a drag and drop?</span>
-                                                            <ul role="group">
-                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010107].link | prepend: baseurl }}">{{ site.data.2101.2101[21010107].name }}</a>.</span></li>
-                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a scrollable region?</span>
+                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control an image map?</span>
                                                                     <ul role="group">
-                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010108].link | prepend: baseurl }}">{{ site.data.2101.2101[21010108].name }}</a>.</span></li>
-                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010102].link | prepend: baseurl }}">{{ site.data.2101.2101[21010102].name }}</a>.</span></li>
+                                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it a client-side image map?</span>
+                                                                            <ul role="group">
+                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010103].link | prepend: baseurl }}">{{ site.data.2101.2101[21010103].name }}</a>.</span></li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a drag and drop?</span>
+                                                                            <ul role="group">
+                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010107].link | prepend: baseurl }}">{{ site.data.2101.2101[21010107].name }}</a>.</span></li>
+                                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a scrollable region?</span>
+                                                                                    <ul role="group">
+                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010108].link | prepend: baseurl }}">{{ site.data.2101.2101[21010108].name }}</a>.</span></li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010102].link | prepend: baseurl }}">{{ site.data.2101.2101[21010102].name }}</a>.</span></li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
                                                                     </ul>
                                                                 </li>
                                                             </ul>
                                                         </li>
+                                                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                    </ul>
+                    </ul>                        
                 </li>
                 <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010101].link | prepend: baseurl }}">{{ site.data.2101.2101[21010101].name }}</a>.</span></li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
 
             <h3 id="test2">Is there additional modal or non-modal content on the page?</h3> 
