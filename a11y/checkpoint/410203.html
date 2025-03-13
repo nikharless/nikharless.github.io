@@ -11,95 +11,131 @@ criterion: 4102
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
 
-    </div>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Features and components must be compatible with assistive technologies.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Actions must not lead to only silence from the screen reader.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the name, role, and value of user interface components to be programmatically determinable so that I can get this information via my screen reader.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a screen reader user, when accessing user interface components, you would be able to determine the role, purpose, and state of the components.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the component work with a screen reader?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}</a>.</span></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>Using a screen reader, navigate to every user interface component in the page.</li>
-        <li>Verify that the screen reader speaks a name for each component.</li>
-        <li>Verify that the screen reader speaks a valid role for each component.</li>
-        <li>Verify that the screen reader speaks any state, property, or value that can be set by the user.</li>
-        <li>Verify that the screen reader notifies the user of any changes to states, properties, or values.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}</a>.</li>
-        <li><a href="{{ site.data.4102.4102[41020302].link | prepend: baseurl }}">{{ site.data.4102.4102[41020302].name }}</a>.</li>
-        <li><a href="{{ site.data.4102.4102[41020303].link | prepend: baseurl }}">{{ site.data.4102.4102[41020303].name }}</a>.</li>
-        <li><a href="{{ site.data.4102.4102[41020304].link | prepend: baseurl }}">{{ site.data.4102.4102[41020304].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G10">G10: Creating components using a technology that supports the accessibility notification of changes</a></li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Features and components must be compatible with assistive technologies.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Actions must not lead to only silence from the screen reader.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Automatic content changes must be communicated to assistive technologies.</li>
             </ul>
-        </li>
-        <li>ARIA:
+
+            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the name, role, and value of user interface components to be programmatically determinable so that I can get this information via my screen reader.</div>
+
+            <div class="success"><strong>Success:</strong> If you were a screen reader user, when accessing user interface components, you would be able to determine the role, purpose, and state of the components.</div>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is there content on the page that changes/updates automatically?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user notified of the change in content?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user notified using a dialog?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the dialog provide sufficient programmatic notification of the content change?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020304].link | prepend: baseurl }}">{{ site.data.4102.4102[41020304].name }}.</a></span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the user notified using a focus change?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the focus change provide sufficient programmatic notification of the content change?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020305].link | prepend: baseurl }}">{{ site.data.4102.4102[41020305].name }}.</a></span></li>
+                                            </ul>
+                                        </li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the user notified using an ARIA Live Region?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the ARIA Live Region provide sufficient programmatic notification of the content change?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>>No</strong>; See <a href="{{ site.data.4102.4102[41020306].link | prepend: baseurl }}">{{ site.data.4102.4102[41020306].name }}.</a></span></li>
+                                                    </ul>
+                                                </li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}</a>.</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}</a>.</span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
+
+            <h3 id="test1">Does the component work with a screen reader?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020304].link | prepend: baseurl }}">{{ site.data.4102.4102[41020304].name }}</a>.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Using a screen reader, navigate to every user interface component in the page.</li>
+                <li>Verify that the screen reader speaks a name for each component.</li>
+                <li>Verify that the screen reader speaks a valid role for each component.</li>
+                <li>Verify that the screen reader speaks any state, property, or value that can be set by the user.</li>
+                <li>Verify that the screen reader notifies the user of any changes to states, properties, or values.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA4">ARIA4: Using a WAI-ARIA role to expose the role of a user interface component</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                <li><a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020302].link | prepend: baseurl }}">{{ site.data.4102.4102[41020302].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020303].link | prepend: baseurl }}">{{ site.data.4102.4102[41020303].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020304].link | prepend: baseurl }}">{{ site.data.4102.4102[41020304].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020305].link | prepend: baseurl }}">{{ site.data.4102.4102[41020305].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020306].link | prepend: baseurl }}">{{ site.data.4102.4102[41020306].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020307].link | prepend: baseurl }}">{{ site.data.4102.4102[41020307].name }}.</a></li>
             </ul>
-        </li>
-     </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Screen reader</li>
+            </ul>
+        </div>
 
-    </ul>
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G10">G10: Creating components using a technology that supports the accessibility API features of the platforms on which the user agents will be run to expose the names and roles, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                    </ul>
+                </li>
+                <li>ARIA:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA4">ARIA4: Using a WAI-ARIA role to expose the role of a user interface component</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    </ul>
+                </li>
+             </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
