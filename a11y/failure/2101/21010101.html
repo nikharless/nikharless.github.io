@@ -12,98 +12,107 @@ checkpoint: 210101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>All functionality is available through the keyboard interface.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>A control cannot be accessed using only a keyboard</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Use standard HTML for links and controls. The following elements pass this checkpoint by default.
-                        <ul>
-                            <li><code>&lt;a&gt;</code></li>
-                            <li><code>&lt;button&gt;</code></li>
-                            <li><code>&lt;fieldset&gt;</code></li>
-                            <li><code>&lt;input&gt;</code></li>
-                            <li><code>&lt;select&gt;</code></li>
-                            <li><code>&lt;textarea&gt;</code></li>
-                        </ul>
-                        <strong>OR</strong>
-                    </li>
-                    <li>Use <code>tabindex="0"</code> to add custom controls to the tab order, <strong>AND</strong></li>
-                    <li>Provide keyboard event handlers alongside all mouse event handlers, <strong>OR</strong></li>
-                    <li>Provide alternate, keyboard accessible controls that accomplish the same function</li>
-                </ul>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>All functionality is available through the keyboard interface.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>A control cannot be accessed using only a keyboard</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Use standard HTML for links and controls. The following elements pass this checkpoint by default.
+                            <ul>
+                                <li><code>&lt;a&gt;</code> (must have <code>href</code> attribute)</li>
+                                <li><code>&lt;button&gt;</code></li>
+                                <li><code>&lt;fieldset&gt;</code></li>
+                                <li><code>&lt;input&gt;</code></li>
+                                <li><code>&lt;select&gt;</code></li>
+                                <li><code>&lt;textarea&gt;</code></li>
+                            </ul>
+                            <strong>OR</strong>
+                        </li>
+                        <li>Use <code>tabindex="0"</code> to add custom controls to the tab order, <strong>AND</strong></li>
+                        <li>Provide keyboard event handlers alongside all mouse event handlers, <strong>OR</strong></li>
+                        <li>Provide alternate, keyboard accessible controls that accomplish the same function</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    
+                    <h3>Native HTML</h3>
+                    <p>Native HTML is keyboard accessible by default.</p>
+                    <a href="#">Click this link</a><br>
+                    <label for="firstName"> First Name<br>
+                        <input type="text">
+                    </label><br>
+                    <fieldset>
+                        <input type="radio"> Option 1<br>
+                        <input type="radio"> Option 2
+                    </fieldset>
+                    <pre><code>&lt;a href="page.html"&gt;Click this link&lt;/a&gt;
+&lt;label for="firstName"&gt;
+    &lt;input type="text"&gt;
+&lt;/label&gt;
+&lt;fieldset&gt;
+    &lt;input type="radio"&gt; Option 1
+    &lt;input type="radio"&gt; Option 2
+&lt;/fieldset&gt;</code></pre>
+
+                    <h3>Custom Control</h3>
+                    <p>Using <code>onclick</code> and <code>onkeyup</code> allows activation with both the mouse and the keyboard.</p>
+                    <div id="customButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
+                    <pre><code>&lt;div id="customButton" role="button" tabindex="0"&gt;Do Stuff&lt;/div&gt;
+    &lt;script&gt;
+        customButton.onclick = function (e) { doStuff(); };
+        customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
+    &lt;/script&gt;</code></pre>
+
+                    <script>
+                        function doStuff() {
+                            window.alert('Doing Stuff');
+                        }
+                        htmlButton.onclick = function (e) { doStuff(); };
+                        htmlButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
+                        customButton.onclick = function (e) { doStuff(); };
+                        customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
+                    </script>
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                
-                <h3>Native HTML</h3>
-                <p>Native HTML is keyboard accessible by default.</p>
-                <a href="#">Click this link</a><br>
-                <label for "firstName"> First Name<br>
-                    <input type="text">
-                </label><br>
-                <fieldset>
-                    <input type="radio"> Option 1<br>
-                    <input type="radio"> Option 2
-                </fieldset>
-                <pre><code>&lt;a href="page.html"&gt;Click this link&lt;/a&gt;
-&lt;script&gt;
-    htmlButton.onclick = function (e) { doStuff(); };
-    htmlButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-&lt;/script&gt;</code></pre>
-
-                <h3>Custom Control</h3>
-                <p>Using <code>onclick</code> and <code>onkeyup</code> allows activation with both the mouse and the keyboard.</p>
-                <div id="customButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
-                <pre><code>&lt;div id="customButton" role="button" tabindex="0"&gt;Do Stuff&lt;/div&gt;
-&lt;script&gt;
-    customButton.onclick = function (e) { doStuff(); };
-    customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-&lt;/script&gt;</code></pre>
-
-                <script>
-                    function doStuff() {
-                        window.alert('Doing Stuff');
-                    }
-                    htmlButton.onclick = function (e) { doStuff(); };
-                    htmlButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-                    customButton.onclick = function (e) { doStuff(); };
-                    customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-                </script>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                        <li><strong>Hand tremors:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Some users with vision disabilities or hand tremors are unable to use a mouse well or at all.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G90">G90: Providing keyboard-triggered event handlers</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR35">SCR35: Making actions keyboard accessible by using the onclick event of anchors and buttons</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G90">G90: Providing keyboard-triggered event handlers</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR35">SCR35: Making actions keyboard accessible by using the onclick event of anchors and buttons</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
