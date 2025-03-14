@@ -18,11 +18,11 @@ checkpoint: 210101
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>All functionality is available through the keyboard interface.</div>
+        		<div>All controls are keyboard focusable.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A control cannot be accessed using only a keyboard</div>
+        		<div>A control cannot be focused using only a keyboard</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
@@ -69,13 +69,9 @@ checkpoint: 210101
 &lt;/fieldset&gt;</code></pre>
 
                     <h3>Custom Control</h3>
-                    <p>Using <code>onclick</code> and <code>onkeyup</code> allows activation with both the mouse and the keyboard.</p>
+                    <p>Using <code>tabindex="0"</code> allows keyboard focus with the Tab key.</p>
                     <div id="customButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
-                    <pre><code>&lt;div id="customButton" role="button" <strong>tabindex="0"</strong>&gt;Do Stuff&lt;/div&gt;
-    &lt;script&gt;
-        customButton.onclick = function (e) { doStuff(); };
-        <strong>customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };</strong>
-    &lt;/script&gt;</code></pre>
+                    <pre><code>&lt;div id="customButton" role="button" <strong>tabindex="0"</strong>&gt;Do Stuff&lt;/div&gt;</code></pre>
 
                     <script>
                         function doStuff() {

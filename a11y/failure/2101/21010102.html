@@ -12,66 +12,73 @@ checkpoint: 210101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>All functionality is available through the keyboard interface.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>A control cannot be accessed using only a keyboard, because it's coded with only mouse event handlers.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-            <ul>
-                <li>Provide keyboard event handlers alongside all mouse event handlers, <strong>OR</strong></li>
-                <li>Provide alternate, keyboard accessible controls that accomplish the same function.</li>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Custom Control</h3>
-                <p>Using <code>onclick</code> and <code>onkeyup</code> allows activation with both the mouse and the keyboard.</p>
-                <div id="customButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
-                <pre><code>&lt;div id="customButton" role="button" tabindex="0"&gt;Do Stuff&lt;/div&gt;
-&lt;script&gt;
-    customButton.onclick = function (e) { doStuff(); };
-    customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-&lt;/script&gt;</code></pre>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Element uses equivalent keyboard event handlers for all mouse event handlers, OR there is a separate, equivalent keyboard accessible control.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>A control cannot be activated using only a keyboard, because it's coded with only mouse event handlers, AND there is no separate, equivalent keyboard accessible control.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Provide keyboard event handlers alongside all mouse event handlers, <strong>OR</strong></li>
+                        <li>Provide alternate, keyboard accessible controls that accomplish the same function.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Custom Control</h3>
+                    <p>Using <code>onclick</code> and <code>onkeyup</code> allows activation with both the mouse and the keyboard.</p>
+                    <div id="customButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
+                    <pre><code>&lt;div id="customButton" role="button" tabindex="0"&gt;Do Stuff&lt;/div&gt;
+    &lt;script&gt;
+        customButton.onclick = function (e) { doStuff(); };
+        <strong>customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };</strong>
+    &lt;/script&gt;</code></pre>
 
-                <script>
-                    function doStuff() {
-                        window.alert('Doing Stuff');
-                    }
-                    htmlButton.onclick = function (e) { doStuff(); };
-                    htmlButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-                    customButton.onclick = function (e) { doStuff(); };
-                    customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-                </script>
+                    <script>
+                        function doStuff() {
+                            window.alert('Doing Stuff');
+                        }
+                        htmlButton.onclick = function (e) { doStuff(); };
+                        htmlButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
+                        customButton.onclick = function (e) { doStuff(); };
+                        customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
+                    </script>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Some users with vision disabilities or hand tremors are unable to use a mouse well or at all.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G90">G90: Providing keyboard-triggered event handlers</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                        <li><strong>Hand tremors:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G90">G90: Providing keyboard-triggered event handlers</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
