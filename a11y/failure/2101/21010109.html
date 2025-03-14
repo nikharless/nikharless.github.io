@@ -15,49 +15,53 @@ css: tooltips
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>All functionality is available through the keyboard interface.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Content that displays on mouse hover does not display on keyboard focus.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Add keyboard focus/blur event handlers equivalent to the mouseover/mouseout event handlers.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <div class="tooltip-container">
-                    <button class="infoButton" type="button" aria-describedby="description" data-tooltip-trigger>i</button>
-                    <p id="description" role="tooltip" class="hidden">Informational tooltip</p>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Keyboard functionality does not require specific timings for individual keystrokes.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Keyboard functionality requires specific timings for individual keystrokes.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Do not require specific timings for individual keystrokes, such as repeated keystrokes within a short period of time or holding a key down for an extended period in order to register the keystroke, OR</li>
+                        <li>Provide a separate, equivalent keyboard accessible method which does not require specific timing.</li>
+                    </ul>
                 </div>
-                <script src="{{ baseurl }}/assets/js/tooltips.js" defer></script>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Some users with vision disabilities or hand tremors are unable to use a mouse well or at all.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR2">SCR2: Using redundant keyboard and mouse event handlers</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                        <li><strong>Hand tremors:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
