@@ -11,121 +11,123 @@ criterion: 2407
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>Examples of visible focus include, but are not limited to:</p>
-    <ul>
-        <li>A vertical bar is displayed in a text field, or the text in the field is highlighted.</li>
-        <li>A visible border is displayed around the element.</li>
-        <li>The background color is changed.</li>
-        <li>An icon, such as an arrow, is added next to a menu item.</li>
-        <li>A thick line is added under or next to the focused element.</li>
-        <li>A distinctive change is made to the text of the component, such as making it bold or underlined.</li>
-    </ul>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Examples of visible focus include, but are not limited to:</p>
+            <ul>
+                <li>A vertical bar is displayed in a text field, or the text in the field is highlighted.</li>
+                <li>A visible border is displayed around the element.</li>
+                <li>The background color is changed.</li>
+                <li>An icon, such as an arrow, is added next to a menu item.</li>
+                <li>A thick line is added under or next to the focused element.</li>
+                <li>A distinctive change is made to the text of the component, such as making it bold or underlined.</li>
+            </ul>
+            <p>Note: Not all browsers will display a focus indicator on frames. Therefore, if a focusable frame does not have one, it is not a failure.</p>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> There must be a visible indicator showing which element is in focus.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The focus indicator must not be disabled with CSS.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The focus indicator must not be removed with a script.</li>
+            </ul>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> There must be an indicator showing which element is in focus.</li>
-    </ul>
+            <div class="userstory"><strong>User Story:</strong> As a keyboard user, I want to see visible focus indicators so that I can tell what element is in focus.</div>
 
-    <div class="userstory"><strong>User Story:</strong> As a keyboard user, I want to see visible focus indicators so that I can tell what element is in focus.</div>
+            <div class="success"><strong>Success:</strong> If you were a keyboard-only user, when navigating a website, you could see which element was in focus.</div>
+        </div>
 
-    <div class="success"><strong>Success:</strong> If you were a keyboard-only user, when navigating a website, you could see which element was in focus.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">As you navigate through the page using the keyboard, is it visually apparent which element has focus?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Has the focus indicator been disabled using CSS?</span>
-            <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2407.2407[24070102].link | prepend: baseurl }}">{{ site.data.2407.2407[24070102].name }}</a>.</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Has the focus been removed using a script?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Are there elements on the page that can receive keyboard focus?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; As you navigate through the page using the keyboard, is it visually apparent which element has focus?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2407.2407[24070103].link | prepend: baseurl }}">{{ site.data.2407.2407[24070103].name }}</a>.</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2407.2407[24070101].link | prepend: baseurl }}">{{ site.data.2407.2407[24070101].name }}</a>.</span></li>
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Has the focus indicator been disabled using CSS?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2407.2407[24070102].link | prepend: baseurl }}">{{ site.data.2407.2407[24070102].name }}.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Has the focus been removed using a script?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2407.2407[24070103].link | prepend: baseurl }}">{{ site.data.2407.2407[24070103].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2407.2407[24070101].link | prepend: baseurl }}">{{ site.data.2407.2407[24070101].name }}</a>.</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Using only the keyboard, navigate to and interact with all interactive elements and widgets. This includes focus within controls such as menus, select lists, and date pickers.</li>
+                <li>Verify that all elements have a visible focus indicator.</li>
+                <li>Verify that the focus indicator is removed when focus is removed.</li>
+            </ol>
+
+            <h3>Mobile</h3>
+            <p>Follow the desktop procedure using a Bluetooth keyboard.</p>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.2407.2407[24070101].link | prepend: baseurl }}">{{ site.data.2407.2407[24070101].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.2407.2407[24070102].link | prepend: baseurl }}">{{ site.data.2407.2407[24070102].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.2407.2407[24070103].link | prepend: baseurl }}">{{ site.data.2407.2407[24070103].name }.}</a> (High)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Keyboard</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G149">G149: Using user interface components that are highlighted by the user agent when they receive focus</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G165">G165: Using the default focus indicator for the platform so that high visibility default focus indicators will carry over</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G195">G195: Using an author-supplied, visible focus indicator</a></li>
+                    </ul>
+                </li>
+                <li>CSS:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C15">C15: Using CSS to change the presentation of a user interface component when it receives focus</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C40">C40: Creating a two-color focus indicator to ensure sufficient contrast with all components</a></li>
+                    </ul>
+                </li>
+                <li>JavaScript:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR31">SCR31: Using script to change the background color or border of the element with focus</a></li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
 
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Using only the keyboard, navigate to and interact with all interactive elements and widgets. This includes focus within controls such as menus, select lists, and date pickers.</li>
-        <li>Verify that all elements have a visible focus indicator.</li>
-        <li>Verify that the focus indicator is removed when focus is removed.</li>
-    </ol>
-
-    <h3>Mobile</h3>
-    <p>Follow the desktop procedure using a Bluetooth keyboard.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2407.2407[24070101].link | prepend: baseurl }}">{{ site.data.2407.2407[24070101].name }}</a>. (High)</li>
-        <li><a href="{{ site.data.2407.2407[24070102].link | prepend: baseurl }}">{{ site.data.2407.2407[24070102].name }}</a>. (High)</li>
-        <li><a href="{{ site.data.2407.2407[24070103].link | prepend: baseurl }}">{{ site.data.2407.2407[24070103].name }}</a>. (High)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Keyboard</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+            <h3>Additional Information</h3>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G149">G149: Using user interface components that are highlighted by the user agent when they receive focus</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G165">G165: Using the default focus indicator for the platform so that high visibility default focus indicators will carry over</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G195">G195: Using an author-supplied, visible focus indicator</a></li>
+                <li><a href="https://webaim.org/techniques/hypertext/link_text#hover">WebAIM: Links and Hypertext: Hover and focus effects</a></li>
             </ul>
-        </li>
-        <li>CSS:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C15">C15: Using CSS to change the presentation of a user interface component when it receives focus</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C40">C40: Creating a two-color focus indicator to ensure sufficient contrast with all components</a></li>
-            </ul>
-        </li>
-        <li>JavaScript:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR31">SCR31: Using script to change the background color or border of the element with focus</a></li>
-            </ul>
-        </li>
-    </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://webaim.org/techniques/hypertext/link_text#hover">WebAIM: Links and Hypertext: Hover and focus effects</a></li>
-    </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/2407checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
