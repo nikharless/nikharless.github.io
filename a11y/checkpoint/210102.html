@@ -11,97 +11,91 @@ criterion: 2101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Shortcut keys must not conflict with existing device and screen reader shortcuts.</p> 
+        </div>
 
-    <p>Shortcut keys must not conflict with existing device and screen reader shortcuts.</p> 
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Shortcut keys must not conflict with existing device and screen reader shortcuts.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> <code>accesskey</code> values must be unique.</li>
+            </ul>
 
-    </div>
+            <div class="userstory"><strong>User Story:</strong> As a keyboard and screen reader user, I want to be able to access all functionality with the keyboard so that I can use the page.</div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Shortcut keys must not conflict with existing device and screen reader shortcuts.</li>
-    </ul>
+            <div class="success"><strong>Success:</strong> If you used a screen reader along with the keyboard, when you attempt to use the functionality on the page, it does not conflict with screen reader shortcuts.</div>
+        </div>
 
-    <div class="userstory"><strong>User Story:</strong> As a keyboard and screen reader user, I want to be able to access all functionality with the keyboard so that I can use the page.</div>
-
-    <div class="success"><strong>Success:</strong> If you used a screen reader along with the keyboard, when you attempt to use the functionality on the page, it does not conflict with screen reader shortcuts.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the page contain any page-specified shortcut keys and/or <code>accesskey</code> attributes?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the shortcut key and/or <code>accesskey</code> attribute conflict with browser or screen reader preset keys/shortcuts?</span>
-            <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010201].link | prepend: baseurl }}">{{ site.data.2101.2101[21010201].name }}</a>.</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; If it's an <code>accesskey</code>, does the attribute have a unique value?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Does the page contain any page-specified shortcut keys and/or <code>accesskey</code> attributes?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the shortcut key and/or <code>accesskey</code> attribute conflict with browser or screen reader preset keys/shortcuts?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010202].link | prepend: baseurl }}">{{ site.data.2101.2101[21010202].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010201].link | prepend: baseurl }}">{{ site.data.2101.2101[21010201].name }}</a>.</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; If it's an <code>accesskey</code>, does the attribute have a unique value?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010202].link | prepend: baseurl }}">{{ site.data.2101.2101[21010202].name }}</a>.</span></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Locate each occurrence of an <code>accesskey</code> attribute in the page.
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
             <ol>
-                <li>Open the Web Developer browser extension.</li>
-                <li>Select <strong>Information > Display Access Keys</strong>.</li>
+                <li>Locate each occurrence of an <code>accesskey</code> attribute in the page.
+                    <ol>
+                        <li>Open the Web Developer browser extension.</li>
+                        <li>Select <strong>Information > Display Access Keys</strong>.</li>
+                    </ol>
+                </li>
+                <li>For each <code>accesskey</code> defined, verify that it is unique and does not conflict with existing browser and screen reader shortcut keys.</li>
             </ol>
-        </li>
-        <li>For each <code>accesskey</code> defined, verify that it is unique and does not conflict with existing browser and screen reader shortcut keys.</li>
-    </ol>
+        </div>
 
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.2101.2101[21010201].link | prepend: baseurl }}">{{ site.data.2101.2101[21010201].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.2101.2101[21010202].link | prepend: baseurl }}">{{ site.data.2101.2101[21010202].name }}</a> (Low)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Keyboard</li>
+                <li><a href="https://chrispederick.com/work/web-developer/">Web Developer Browser Extension</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+            </ul>
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://pauljadam.com/demos/accesskey.html">Paul J Adam: Accesskey Accessibility Demo</a></li>
+                <li><a href="https://www.w3.org/TR/html401/interact/forms.html#adef-accesskey">W3: Forms: Access keys</a></li>
+            </ul>
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2101.2101[21010201].link | prepend: baseurl }}">{{ site.data.2101.2101[21010201].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.2101.2101[21010202].link | prepend: baseurl }}">{{ site.data.2101.2101[21010202].name }}</a> (Low)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Keyboard</li>
-        <li><a href="https://chrispederick.com/work/web-developer/">Web Developer Browser Extension</a></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-    </ul>
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://pauljadam.com/demos/accesskey.html">Paul J Adam: Accesskey Accessibility Demo</a></li>
-        <li><a href="https://www.w3.org/TR/html401/interact/forms.html#adef-accesskey">W3: Forms: Access keys</a></li>
-    </ul>
-    </div>
-</div>
     {% include checkpoints/2101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>

@@ -11,95 +11,88 @@ criterion: 2101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>On a mobile device, all functionalities based on custom gestures must also be available when a screen reader is turned on.</p> 
+        </div>
 
-    <p>All functionalities based on custom gestures must also be available when a screen reader is turned on.</p> 
-
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All functionalities based on custom gestures must also be available when a screen reader is turned on.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a keyboard and screen reader user, I want to be able to access all functionality with the keyboard so that I can use the page.</div>
-
-    <div class="success"><strong>Success:</strong> If you used a screen reader along with the keyboard, when you attempt to use the functionality on the page, it does not conflict with screen reader gestures.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the app/web page have any functionalities that are based upon custom gestures?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the custom gestures function properly with a screen reader activated?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010301].link | prepend: baseurl }}">{{ site.data.2101.2101[21010301].name }}</a></span></li>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All functionalities based on custom gestures must also be available when a screen reader is turned on.</li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
 
-    <h2>Mobile App Test Procedure</h2>
-    <h3>iOS</h3>
-    <ol>
-        <li>Using VoiceOver, swipe to a control which accepts custom gestures.</li>
-        <li>Verify that VoiceOver announces “Actions available” for custom gestures.
+            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want to be able to access all functionality with the screen reader turned on so that I can use the page.</div>
+
+            <div class="success"><strong>Success:</strong> If you used a screen reader, when you attempt to use the functionality on the page, it does not conflict with screen reader gestures.</div>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Does the app/web page have any functionalities that are based upon custom gestures?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the custom gestures function properly with a screen reader activated?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010301].link | prepend: baseurl }}">{{ site.data.2101.2101[21010301].name }}.</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Mobile App Test Procedure</h2>
+            <h3>iOS</h3>
             <ol>
-                <li>If VoiceOver does not say “Actions available,” open the Rotor.</li>
-                <li>Actions should become an available option in the Rotor, and the Rotor should automatically be set to Actions when it opens.</li>
+                <li>Using VoiceOver, swipe to a control which accepts custom gestures.</li>
+                <li>Verify that VoiceOver announces “Actions available” for custom gestures.
+                    <ol>
+                        <li>If VoiceOver does not say “Actions available,” open the Rotor.</li>
+                        <li>Actions should become an available option in the Rotor, and the Rotor should automatically be set to Actions when it opens.</li>
+                    </ol>
+                </li>
+                <li>Verify that you can activate the action with VoiceOver.</li>
             </ol>
-        </li>
-        <li>Verify that you can activate the action with VoiceOver.</li>
-    </ol>
 
-    <h3>Android</h3>
-    <ol>
-        <li>Using TalkBack, swipe to a control which accepts custom gestures.</li>
-        <li>Verify that TalkBack announces “Actions available” for custom gestures.</li>
-        <li>Verify that you can swipe up and right to open the context menu for the available actions.</li>
-        <li>Verify that you can activate the action.</li>
-    </ol>
+            <h3>Android</h3>
+            <ol>
+                <li>Using TalkBack, swipe to a control which accepts custom gestures.</li>
+                <li>Verify that TalkBack announces “Actions available” for custom gestures.</li>
+                <li>Verify that you can swipe up and right to open the context menu for the available actions.</li>
+                <li>Verify that you can activate the action.</li>
+            </ol>
 
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.2101.2101[21010301].link | prepend: baseurl }}">{{ site.data.2101.2101[21010301].name }}.</a> (High)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Screen reader</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+            </ul>
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2101.2101[21010301].link | prepend: baseurl }}">{{ site.data.2101.2101[21010301].name }}</a> (High)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-    </ul>
-    <h3>Additional Information</h3>
-    <ul>
-
-    </ul>
-    </div>
-</div>
     {% include checkpoints/2101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>

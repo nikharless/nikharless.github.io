@@ -12,52 +12,58 @@ checkpoint: 210102
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>All functionality is available through the keyboard interface.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Multiple <code>accesskey</code> attributes have the same value, resulting in a conflict which renders some functionality unusable with the keyboard.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Ensure each <code>accesskey</code> has a unique value.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <p>The search field uses the <code>accesskey</code> value "s", so when this access key is pressed, the search field gains focus.</p>
-                <p>Access key implementation varies across browsers. Press <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> to use the access key in most Windows browsers and <kbd>Control</kbd> + <kbd>Option</kbd> + <kbd>s</kbd> to use the access key in most Mac browsers.</p>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div><code>accesskey</code> values are unique.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Multiple <code>accesskey</code> attributes have the same value, resulting in a conflict which renders some functionality unusable with the keyboard.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Ensure each <code>accesskey</code> has a unique value.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
                 <div>
-                    <label>
-                        <input type="search" accesskey="s"> <button>Search</button>
-                    </label>
+                    <p>The search field uses the <code>accesskey</code> value "s", so when this access key is pressed, the search field gains focus.</p>
+                    <p>Access key implementation varies across browsers. Press <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> to use the access key in most Windows browsers and <kbd>Control</kbd> + <kbd>Option</kbd> + <kbd>s</kbd> to use the access key in most Mac browsers.</p>
+                    <div>
+                        <label>
+                            <input type="search" accesskey="s"> <button>Search</button>
+                        </label>
+                    </div>
+                    <pre><code>&lt;input type="search" <strong>accesskey="s"</strong>&gt; 
+    &lt;button&gt;Search&lt;/button&gt;</code></pre>
                 </div>
-                <pre><code>&lt;input type="search" <strong>accesskey="s"</strong>&gt; 
-&lt;button&gt;Search&lt;/button&gt;</code></pre>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Duplicate <code>accesskey</code> values cause conflicts which render some functionality unusable with the keyboard.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
-                    <li><a href="https://webaim.org/techniques/keyboard/accesskey">WebAIM: Keyboard Accessibility: Accesskey</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>Duplicate <code>accesskey</code> values cause conflicts which render some functionality unusable with the keyboard.
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                        <li><strong>Hand tremors:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                        <li><a href="https://webaim.org/techniques/keyboard/accesskey">WebAIM: Keyboard Accessibility: Accesskey</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
