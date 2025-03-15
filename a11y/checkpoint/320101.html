@@ -11,118 +11,109 @@ criterion: 3201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
 
-    </div>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When a control gains focus, it must not result in a change of context.</li>
-    </ul>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When a control gains focus, it must not result in a change of context.</li>
+            </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the context to not change unexpectedly so that I know where I am.</div>
+            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the context to not change unexpectedly so that I know where I am.</div>
 
-    <div class="success"><strong>Success:</strong> If you were a screen reader user, when you navigate to a control, the context would not unexpectedly change.</div>
+            <div class="success"><strong>Success:</strong> If you were a screen reader user, when you navigate to a control, the context would not unexpectedly change.</div>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is there a change of context when a control gains focus?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the focus automatically removed or redirected?</span>
-            <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3201.3201[32010101].link | prepend: baseurl }}">{{ site.data.3201.3201[32010101].name }}</a>.</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a new window, tab, or dialog launched?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Are there elements on the page that can receive keyboard focus?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a change of context when a control gains focus?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3201.3201[32010102].link | prepend: baseurl }}">{{ site.data.3201.3201[32010102].name }}</a>.</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a significant change of content before the current focus?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the focus automatically removed or redirected?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3201.3201[32010103].link | prepend: baseurl }}">{{ site.data.3201.3201[32010103].name }}</a>.</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a form automatically submitted?</span>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3201.3201[32010101].link | prepend: baseurl }}">{{ site.data.3201.3201[32010101].name }}.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a new window, tab, or dialog launched?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3201.3201[32010104].link | prepend: baseurl }}">{{ site.data.3201.3201[32010104].name }}</a>.</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3201.3201[32010105].link | prepend: baseurl }}">{{ site.data.3201.3201[32010105].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3201.3201[32010102].link | prepend: baseurl }}">{{ site.data.3201.3201[32010102].name }}.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a significant change of content before the current focus?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3201.3201[32010103].link | prepend: baseurl }}">{{ site.data.3201.3201[32010103].name }}.</a></span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a form automatically submitted?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3201.3201[32010104].link | prepend: baseurl }}">{{ site.data.3201.3201[32010104].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3201.3201[32010105].link | prepend: baseurl }}">{{ site.data.3201.3201[32010105].name }}.</a></span></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Using only the keyboard, navigate through all focusable elements on the page.</li>
+                <li>Verify that there is no unexpected change of context when any element gains focus.</li>
+            </ol>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
+            <h3>Mobile</h3>
+            <ol>
+                <li>Turn on the screen reader.</li>
+                <li>Swipe to navigate through all focusable elements on the page.</li>
+                <li>Verify that there is no unexpected change of context when any element gains focus.</li>
+            </ol>
+        </div>
 
-    <h3>Desktop</h3>
-    <ol>
-        <li>Using only the keyboard, navigate through all controls on the page.</li>
-        <li>Verify that there is no unexpected change of context when any control gains focus.</li>
-    </ol>
-
-    <h3>Mobile</h3>
-    <ol>
-        <li>Turn on the screen reader.</li>
-        <li>Swipe to navigate through all controls on the page.</li>
-        <li>Verify that there is no unexpected change of context when any control gains focus.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Desktop Mobile.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3201.3201[32010101].link | prepend: baseurl }}">{{ site.data.3201.3201[32010101].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.3201.3201[32010102].link | prepend: baseurl }}">{{ site.data.3201.3201[32010102].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.3201.3201[32010103].link | prepend: baseurl }}">{{ site.data.3201.3201[32010103].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.3201.3201[32010104].link | prepend: baseurl }}">{{ site.data.3201.3201[32010104].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.3201.3201[32010105].link | prepend: baseurl }}">{{ site.data.3201.3201[32010105].name }}</a>. (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Keyboard</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>HTML:
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G107">G107: Using "activate" rather than "focus" as a trigger for changes of context</a></li>
+                <li><a href="{{ site.data.3201.3201[32010101].link | prepend: baseurl }}">{{ site.data.3201.3201[32010101].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.3201.3201[32010102].link | prepend: baseurl }}">{{ site.data.3201.3201[32010102].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.3201.3201[32010103].link | prepend: baseurl }}">{{ site.data.3201.3201[32010103].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.3201.3201[32010104].link | prepend: baseurl }}">{{ site.data.3201.3201[32010104].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.3201.3201[32010105].link | prepend: baseurl }}">{{ site.data.3201.3201[32010105].name }}.</a> (Medium)</li>
             </ul>
-        </li>
-     </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Keyboard</li>
+                <li>Mobile device with screen reader</li>
+            </ul>
+        </div>
 
-    </ul>
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G107">G107: Using "activate" rather than "focus" as a trigger for changes of context</a></li>
+                    </ul>
+                </li>
+             </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/3201checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
