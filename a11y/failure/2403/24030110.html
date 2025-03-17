@@ -3,8 +3,6 @@ layout: default
 current: 24030110
 criterion: 2403
 checkpoint: 240301
-guideline: operable
-
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2403.2403[page.current] %}
@@ -14,63 +12,70 @@ guideline: operable
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>PDF tab order follows the document structure.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>PDF tab order does not follow the document structure.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <p>Set the PDF preferences to use the document structure for the Tab order.</p>
-                <h3>Adobe Acrobat Pro</h3>
-                <ol>
-                    <li>Select <strong>All tools > Prepare for accessibility > Check for accessibility</strong>.</li>
-                    <li>In the Accessibility Checker Options, under Category: Document, make sure <strong>Document structure provides a logical reading order</strong> is checked and activate the <strong>Start Checking</strong> button.</li>
-                    <li>In the Accessibility Checker results, expand the <strong>Page Content</strong> section.</li>
-                    <li>Select <strong>Tab order - Failed</strong>.</li>
-                    <li>Right-click or open the Options menu and select <strong>Fix</strong>.</li>
-                </ol>
-                <p><strong>OR</strong></p>
-                <ol>
-                    <li>Select Pages (thumbnails) from the toolbar.</li>
-                    <li>In the Pages pane, press <kbd>Ctrl</kbd>+<kbd>a</kbd> (Windows) to select all pages.</li>
-                    <li>Right-click a page thumbnail or open the Options menu and select <strong>Page Properties</strong>.</li>
-                    <li>In the Page Properties dialog, select the <strong>Tab Order</strong> tab.</li>
-                    <li>Select the <strong>Use Document Structure</strong> radio button and activate the <strong>OK</strong> button.<br>
-                        <img src="{{ baseurl }}/assets/images/f243aj-pdf-tab-order.png" alt="Screenshot of Adobe Acrobat Page Properties dialog with Use Document Structure selected" style="max-width: 480px;"></li>
-                </ol>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>PDF tab order follows the document structure.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>PDF tab order does not follow the document structure.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <p>Set the PDF preferences to use the document structure for the Tab order.</p>
+                    <h3>Adobe Acrobat Pro</h3>
+                    <ol>
+                        <li>Select <strong>All tools > Prepare for accessibility > Check for accessibility</strong>.</li>
+                        <li>In the Accessibility Checker Options, under Category: Document, make sure <strong>Document structure provides a logical reading order</strong> is checked and activate the <strong>Start Checking</strong> button.</li>
+                        <li>In the Accessibility Checker results, expand the <strong>Page Content</strong> section.</li>
+                        <li>Select <strong>Tab order - Failed</strong>.</li>
+                        <li>Right-click or open the Options menu and select <strong>Fix</strong>.</li>
+                    </ol>
+                    <p><strong>OR</strong></p>
+                    <ol>
+                        <li>Select Pages (thumbnails) from the toolbar.</li>
+                        <li>In the Pages pane, press <kbd>Ctrl</kbd>+<kbd>a</kbd> (Windows) to select all pages.</li>
+                        <li>Right-click a page thumbnail or open the Options menu and select <strong>Page Properties</strong>.</li>
+                        <li>In the Page Properties dialog, select the <strong>Tab Order</strong> tab.</li>
+                        <li>Select the <strong>Use Document Structure</strong> radio button and activate the <strong>OK</strong> button.<br>
+                            <img src="{{ baseurl }}/assets/images/f243aj-pdf-tab-order.png" alt="Screenshot of Adobe Acrobat Page Properties dialog with Use Document Structure selected" style="max-width: 480px;"></li>
+                    </ol>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Screen reader and screen magnifier users can become disoriented if tabbing moves the focus in an illogical order.</li>
+                        <li><strong>Cognitive impairments:</strong> Users can become disoriented if tab focus is in an illogical order.</li>
+                        <li><strong>Mobility impairments:</strong> Users may have a more difficult time navigating a page if tab focus is in an illogical order.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Navigating a PDF file with only the keyboard will make sense.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF3">PDF3: Ensuring correct tab and reading order in PDF documents</a></li>
-                    <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro) - TAB ORDER section</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF3">PDF3: Ensuring correct tab and reading order in PDF documents</a></li>
+                        <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro) - TAB ORDER section</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2403checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

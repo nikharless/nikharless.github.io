@@ -12,49 +12,56 @@ checkpoint: 240301
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Positive tabindex values do not result in illogical focus order.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Positive tabindex values are used, resulting in an illogical focus order.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Do not use positive tabindex values, <strong>OR</strong></li>
-                    <li>Ensure that the focus order is logical.</li>
-                </ul>      
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Positive tabindex values do not result in illogical focus order.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Positive tabindex values are used, resulting in an illogical focus order.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Do not use positive tabindex values, <strong>OR</strong></li>
+                        <li>Ensure that the focus order is logical.</li>
+                    </ul>      
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Screen reader and screen magnifier users can become disoriented if tabbing moves the focus in an illogical order.</li>
+                        <li><strong>Cognitive impairments:</strong> Users can become disoriented if tab focus is in an illogical order.</li>
+                        <li><strong>Mobility impairments:</strong> Users may have a more difficult time navigating a page if tab focus is in an illogical order.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Navigating a site or application with only the keyboard will make sense.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F44">F44: Failure of Success Criterion 2.4.3 due to using tabindex to create a tab order that does not preserve meaning and operability</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">G59: Placing the interactive elements in an order that follows sequences and relationships within the content</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F44">F44: Failure of Success Criterion 2.4.3 due to using tabindex to create a tab order that does not preserve meaning and operability</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">G59: Placing the interactive elements in an order that follows sequences and relationships within the content</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2403checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

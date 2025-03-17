@@ -3,8 +3,6 @@ layout: default
 current: 24030104
 criterion: 2403
 checkpoint: 240301
-guideline: perceivable
-
 css: dialog
 ---
 {% assign root=site.data.site.root %}
@@ -15,45 +13,52 @@ css: dialog
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Focus moves to modal dialog when it is opened.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Focus does not move to modal dialog when it is opened.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Place the focus inside the modal when it is opened. Generally, focus should be placed on the first control inside the modal.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <p>When this modal opens, focus goes to the "Name" field.</p>
-                {% include examples/modal.html %}
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Focus moves to modal dialog when it is opened.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Focus does not move to modal dialog when it is opened.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Place the focus inside the modal when it is opened. Generally, focus should be placed on the first control inside the modal.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <p>When this modal opens, focus goes to the "Name" field.</p>
+                    {% include examples/modal.html %}
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Navigating a site or application with only the keyboard will make sense.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">G59: Placing the interactive elements in an order that follows sequences and relationships within the content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H102">H102: Creating modal dialogs with the HTML dialog element</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Screen reader and screen magnifier users can become disoriented if tabbing moves the focus in an illogical order.</li>
+                        <li><strong>Cognitive impairments:</strong> Users can become disoriented if tab focus is in an illogical order.</li>
+                        <li><strong>Mobility impairments:</strong> Users may have a more difficult time navigating a page if tab focus is in an illogical order.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">G59: Placing the interactive elements in an order that follows sequences and relationships within the content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H102">H102: Creating modal dialogs with the HTML dialog element</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2403checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
