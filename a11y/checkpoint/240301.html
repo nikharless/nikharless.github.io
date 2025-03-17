@@ -11,73 +11,90 @@ criterion: 2403
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
 
-    </div>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The navigation order of focusable elements must be logical and intuitive.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Modeless dialogs must appear immediately after the trigger element.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Focus must move to modal dialogs when they are opened.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Focus must be restricted within modal dialogs while they are open.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When a modal is closed, focus must be returned to the trigger element or to the most logical location.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Focus order and visual order should match.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a keyboard-only user, I want the focus order to be logical so that I can easily navigate the content.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a keyboard user, when you navigate a web page, the focus order would be logical and intuitive.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is the navigation order of focusable elements logical and intuitive?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the focus lost after user interaction or content update?</span>
-            <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2403.2403[24030102].link | prepend: baseurl }}">{{ site.data.2403.2403[24030102].name }}</a>.</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the issue involve a modeless dialog?</span>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The navigation order of focusable elements must be logical and intuitive.
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2403.2403[24030103].link | prepend: baseurl }}">{{ site.data.2403.2403[24030103].name }}</a>.</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the issue involve a modal dialog?</span>
+                        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Non-linear DOM order must be logical and intuitive.</li>
+                        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Postive <code>tabindex</code> values must not cause illogical focus order.</li>
+                    </ul>
+                </li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Focus must not be lost or incorrectly placed during interaction or content update.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Modeless dialogs must appear immediately after the trigger element.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Focus must move to modals when they are opened.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Focus must be restricted within modals while they are open.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When a modal is closed, focus must be returned to the trigger element or to the most logical location.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Keyboard focus must follow a scripted visual scroll.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Keyboard focus must not move to hidden elements.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Focus order and visual order should match.</li>
+            </ul>
+
+            <div class="userstory"><strong>User Story:</strong> As a keyboard-only user, I want the focus order to be logical so that I can easily navigate the content.</div>
+
+            <div class="success"><strong>Success:</strong> If you were a keyboard user, when you navigate a web page, the focus order would be logical and intuitive.</div>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Are there keyboard focusable components on the page?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; Does the focus order affect the page meaning or operability?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; Is the navigation order of focusable elements logical and intuitive?</span>
                             <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the focus move to the modal when it is opened?</span>
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the focus lost after user interaction or content update?</span>
                                     <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the focus remain within the modal while it is open?</span>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2403.2403[24030102].link | prepend: baseurl }}">{{ site.data.2403.2403[24030102].name }}.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the issue involve a modeless dialog?</span>
                                             <ul role="group">
-                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the focus return to the trigger element when it is closed?</span>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2403.2403[24030103].link | prepend: baseurl }}">{{ site.data.2403.2403[24030103].name }}.</a></span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the issue involve a modal dialog?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2403.2403[24030101].link | prepend: baseurl }}">{{ site.data.2403.2403[24030101].name }}</a>.</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2403.2403[24030106].link | prepend: baseurl }}">{{ site.data.2403.2403[24030106].name }}</a>.</span></li>
-                                                    </ul>
-                                                </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2403.2403[24030105].link | prepend: baseurl }}">{{ site.data.2403.2403[24030105].name }}</a>.</span></li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2403.2403[24030104].link | prepend: baseurl }}">{{ site.data.2403.2403[24030104].name }}</a>.</span></li>
-                                    </ul>
-                                </li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the focus not follow a scripted visual scroll?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2403.2403[24030107].link | prepend: baseurl }}">{{ site.data.2403.2403[24030107].name }}</a>.</span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the focus move to a hidden element?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2403.2403[24030108].link | prepend: baseurl }}">{{ site.data.2403.2403[24030108].name }}</a>.</span></li>
-                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the element use a positive tabindex value?</span>
-                                                    <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2403.2403[24030109].link | prepend: baseurl }}">{{ site.data.2403.2403[24030109].name }}</a>.</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2403.2403[24030101].link | prepend: baseurl }}">{{ site.data.2403.2403[24030101].name }}</a>.</span></li>
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the focus move to the modal when it is opened?</span>
+                                                            <ul role="group">
+                                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the focus remain within the modal while it is open?</span>
+                                                                    <ul role="group">
+                                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the focus return to the trigger element when it is closed?</span>
+                                                                            <ul role="group">
+                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2403.2403[24030101].link | prepend: baseurl }}">{{ site.data.2403.2403[24030101].name }}.</a></span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2403.2403[24030106].link | prepend: baseurl }}">{{ site.data.2403.2403[24030106].name }}.</a></span></li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2403.2403[24030105].link | prepend: baseurl }}">{{ site.data.2403.2403[24030105].name }}.</a></span></li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2403.2403[24030104].link | prepend: baseurl }}">{{ site.data.2403.2403[24030104].name }}.</a></span></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the focus not follow a scripted visual scroll?</span>
+                                                            <ul role="group">
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2403.2403[24030107].link | prepend: baseurl }}">{{ site.data.2403.2403[24030107].name }}.</a></span></li>
+                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the focus move to a hidden element?</span>
+                                                                    <ul role="group">
+                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2403.2403[24030108].link | prepend: baseurl }}">{{ site.data.2403.2403[24030108].name }}.</a></span></li>
+                                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the element use a positive tabindex value?</span>
+                                                                            <ul role="group">
+                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2403.2403[24030109].link | prepend: baseurl }}">{{ site.data.2403.2403[24030109].name }}.</a></span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2403.2403[24030101].link | prepend: baseurl }}">{{ site.data.2403.2403[24030101].name }}.</a></span></li>
+                                                                            </ul>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -86,118 +103,114 @@ criterion: 2403
                                 </li>
                             </ul>
                         </li>
+                        <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Starting at the top of the page, press <kbd>Tab</kbd> to navigate through the page.</li>
+                <li>Verify that focus moves through the page in a logical and predictable manner.</li>
+                <li>Navigate to interactive elements such as buttons, links, or tabs that show or hide content within the page.</li>
+                <li>Activate or interact with the elements using <kbd>Enter</kbd>, <kbd>Space bar</kbd>, or <kbd>arrow</kbd> keys, as appropriate.</li>
+                <li>When content is added or removed, navigate through the content using the <kbd>Tab</kbd> or <kbd>arrow</kbd> keys as appropriate.</li>
+                <li>Verify that the focus order preserves meaning and operability.</li>
+                <li>For modals, verify that the focus moves to the modal when it is opened, remains within the modal while it is open, and moves to the opener control or the next logical place when the modal is closed.</li>
+                <li>Repeat the above steps if the interactive content introduces additional interactive functionality.</li>
+                <li>Activate in-page links or interactions, such as back to top links, skip to main content links, links to and from footnotes, etc.</li>
+                <li>Verify that when visual focus is moved (i.e., the viewport is shifted), keyboard focus is also moved to the intended target.</li>
+                <li>Note: It may be helpful to launch ANDI: focusable elements and select <strong>tab order</strong>.</li>
+            </ol>
+
+            <h3>Mobile Screen Reader</h3>
+            <ol>
+                <li>Turn VoiceOver or TalkBack on.</li>
+                <li>Starting at the top of the page, swipe to navigate through the page.</li>
+                <li>Verify that focus moves through the page in a logical and predictable manner.</li>
+                <li>Interact with elements such as buttons, links, or tabs that show or hide content within the page.</li>
+                <li>When content is added or removed, verify that the focus order preserves meaning and operability.</li>
+                <li>Repeat the above steps if the interactive content introduces additional interactive functionality.</li>
+                <li>Activate in-page links or interactions, such as back to top links, skip to main content links, links to and from footnotes, etc.</li>
+            </ol>
+
+            <h2>PDF Testing</h2>
+            <ol>
+                <li>Tab through all the active elements in the document (links and form controls).</li>
+                <li>Verify that the tabbing order through active elements is logical and predictable.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.2403.2403[24030101].link | prepend: baseurl }}">{{ site.data.2403.2403[24030101].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.2403.2403[24030102].link | prepend: baseurl }}">{{ site.data.2403.2403[24030102].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.2403.2403[24030103].link | prepend: baseurl }}">{{ site.data.2403.2403[24030103].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.2403.2403[24030104].link | prepend: baseurl }}">{{ site.data.2403.2403[24030104].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.2403.2403[24030105].link | prepend: baseurl }}">{{ site.data.2403.2403[24030105].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.2403.2403[24030106].link | prepend: baseurl }}">{{ site.data.2403.2403[24030106].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.2403.2403[24030107].link | prepend: baseurl }}">{{ site.data.2403.2403[24030107].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.2403.2403[24030108].link | prepend: baseurl }}">{{ site.data.2403.2403[24030108].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.2403.2403[24030109].link | prepend: baseurl }}">{{ site.data.2403.2403[24030109].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.2403.2403[24030110].link | prepend: baseurl }}">{{ site.data.2403.2403[24030110].name }}.</a> (Medium)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Keyboard</li>
+                <li>Screen reader</li>
+                <li><a href="https://pauljadam.com/bookmarklets/focus.html">Paul J Adam: Force Show Keyboard Focus Bookmarklet for Accessibility Testing</a></li>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">G59: Placing the interactive elements in an order that follows sequences and relationships within the content</a></li>
+                    </ul>
+                </li>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H102">H102: Creating modal dialogs with the HTML dialog element</a></li>
+                    </ul>
+                </li>
+                <li>CSS:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C27">C27: Making the DOM order match the visual order</a></li>
+                    </ul>
+                </li>
+                <li>JavaScript:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR26">SCR26: Inserting dynamic content into the Document Object Model immediately following its trigger element</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR27">SCR27: Reordering page sections using the Document Object Model</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF3">PDF3: Ensuring correct tab and reading order in PDF documents</a></li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
 
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Starting at the top of the page, press <kbd>Tab</kbd> to navigate through the page.</li>
-        <li>Verify that focus moves through the page in a logical and predictable manner.</li>
-        <li>Navigate to interactive elements such as buttons, links, or tabs that show or hide content within the page.</li>
-        <li>Activate or interact with the elements using <kbd>Enter</kbd>, <kbd>Space bar</kbd>, or <kbd>arrow</kbd> keys, as appropriate.</li>
-        <li>When content is added or removed, navigate through the content using the <kbd>Tab</kbd> or <kbd>arrow</kbd> keys as appropriate.</li>
-        <li>Verify that the focus order preserves meaning and operability.</li>
-        <li>Repeat the above steps if the interactive content introduces additional interactive functionality.</li>
-        <li>Activate in-page links or interactions, such as back to top links, skip to main content links, links to and from footnotes, etc.</li>
-        <li>Verify that when visual focus is moved (i.e., the viewport is shifted), keyboard focus is also moved to the intended target.</li>
-    </ol>
-
-    <h3>Mobile Screen Reader</h3>
-    <ol>
-        <li>Turn VoiceOver or TalkBack on.</li>
-        <li>Starting at the top of the page, swipe to navigate through the page.</li>
-        <li>Verify that focus moves through the page in a logical and predictable manner.</li>
-        <li>Interact with elements such as buttons, links, or tabs that show or hide content within the page.</li>
-        <li>When content is added or removed, verify that the focus order preserves meaning and operability.</li>
-        <li>Repeat the above steps if the interactive content introduces additional interactive functionality.</li>
-        <li>Activate in-page links or interactions, such as back to top links, skip to main content links, links to and from footnotes, etc.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow Mobile Web procedure.</p>
-
-    <h2>PDF Testing</h2>
-    <ol>
-        <li>Tab through all the active elements in the document (links and form controls).</li>
-        <li>Verify that the tabbing order through active elements is logical and predictable.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2403.2403[24030101].link | prepend: baseurl }}">{{ site.data.2403.2403[24030101].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2403.2403[24030102].link | prepend: baseurl }}">{{ site.data.2403.2403[24030102].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2403.2403[24030103].link | prepend: baseurl }}">{{ site.data.2403.2403[24030103].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2403.2403[24030104].link | prepend: baseurl }}">{{ site.data.2403.2403[24030104].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2403.2403[24030105].link | prepend: baseurl }}">{{ site.data.2403.2403[24030105].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2403.2403[24030106].link | prepend: baseurl }}">{{ site.data.2403.2403[24030106].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2403.2403[24030107].link | prepend: baseurl }}">{{ site.data.2403.2403[24030107].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2403.2403[24030108].link | prepend: baseurl }}">{{ site.data.2403.2403[24030108].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2403.2403[24030109].link | prepend: baseurl }}">{{ site.data.2403.2403[24030109].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2403.2403[24030110].link | prepend: baseurl }}">{{ site.data.2403.2403[24030110].name }}</a>. (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Keyboard</li>
-        <li>Screen reader</li>
-        <li><a href="https://pauljadam.com/bookmarklets/focus.html">Paul J Adam: Force Show Keyboard Focus Bookmarklet for Accessibility Testing</a></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+            <h3>Additional Information</h3>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">G59: Placing the interactive elements in an order that follows sequences and relationships within the content</a></li>
+                <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro) - TAB ORDER section</a></li>
+                <li><a href="https://www.deque.com/blog/aria-modal-alert-dialogs-a11y-support-series-part-2/">Deque: How to Build WAI-ARIA Modal Alert Dialogs: A11y Support Series</a></li>
             </ul>
-        </li>
-        <li>HTML:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H102">H102: Creating modal dialogs with the HTML dialog element</a></li>
-            </ul>
-        </li>
-        <li>CSS:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C27">C27: Making the DOM order match the visual order</a></li>
-            </ul>
-        </li>
-        <li>JavaScript:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR26">SCR26: Inserting dynamic content into the Document Object Model immediately following its trigger element</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR27">SCR27: Reordering page sections using the Document Object Model</a></li>
-            </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF3">PDF3: Ensuring correct tab and reading order in PDF documents</a></li>
-            </ul>
-        </li>
-    </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro) - TAB ORDER section</a></li>
-        <li><a href="https://www.deque.com/blog/aria-modal-alert-dialogs-a11y-support-series-part-2/">Deque: How to Build WAI-ARIA Modal Alert Dialogs: A11y Support Series</a></li>
-    </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/2403checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
