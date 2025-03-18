@@ -12,54 +12,71 @@ checkpoint: 330201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>When the input purpose is not clear from the individual input label alone, a visible group label is provided.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The input purpose is not clear from the individual input labels alone, and a visible group label is not provided.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Provide a visible group label.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Group Labels</h3>
-                <div class="example">
-                    <form>
-                        <fieldset>
-                            <legend>Relationship to Patient</legend>
-                            <label for="self"><input type="radio" id="self" name="relation" value="self"> Self</label>
-                            <label for="spouse"><input type="radio" id="spouse" name="relation" value="spouse"> Spouse</label>
-                            <label for="parent"><input type="radio" id="parent" name="relation" value="parent"> Parent</label>
-                        </fieldset>
-                    </form>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>When the input purpose is not clear from the individual input label alone, a visible group label is provided.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The input purpose is not clear from the individual input labels alone, and a visible group label is not provided.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Provide a visible group label.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Group Labels</h3>
+                    <div class="example">
+                        <form>
+                            <fieldset>
+                                <legend>Relationship to Patient</legend>
+                                <label for="self"><input type="radio" id="self" name="relation" value="self"> Self</label>
+                                <label for="spouse"><input type="radio" id="spouse" name="relation" value="spouse"> Spouse</label>
+                                <label for="parent"><input type="radio" id="parent" name="relation" value="parent"> Parent</label>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
-
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Everyone, especially those with cognitive disabilities, will know how to respond.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G162">G162: Positioning labels to maximize predictability of relationships</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H71">H71: Providing a description for groups of form controls using fieldset and legend elements</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Accuracy of visual label:</strong><br>
+                            File under <a href="{{ site.data.2406.2406[24060201].link | prepend: baseurl }}">{{ site.data.2406.2406[24060201].name }}.</a></li>
+                        <li><strong>Programmatic association:</strong><br>
+                            File under <a href="{{ site.data.1301.1301[13010303].link | prepend: baseurl }}">{{ site.data.1301.1301[13010303].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Cognitive impairments:</strong> Users understand what information should be entered.</li>
+                        <li><strong>Vision impairments:</strong> Labels and instructions help prevent mistakes, which help prevent users having to navigate through the page multiple times.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G162">G162: Positioning labels to maximize predictability of relationships</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H71">H71: Providing a description for groups of form controls using fieldset and legend elements</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/3302checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
