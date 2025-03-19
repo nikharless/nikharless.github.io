@@ -12,59 +12,77 @@ checkpoint: 330202
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Form input labels and instructions have enough information for the user to know what input is expected.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Form input label does not accurately describe the input's purpose.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Provide labels for each form input which succinctly and accurately describe the input's purpose.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Individual Labels</h3>
-                <div class="example">
-                    <form>
-                        <label for="fname">First Name<br>
-                            <input type="text" id="fname">
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Form provides visible essential instructions such as required format, special conditions, etc.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Form does not provide visible essential instructions.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Provide essential instructions within the visible labels, <strong>OR</strong></li>
+                        <li>Provide essential instructions in text elsewhere in the form.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Individual Labels</h3>
+                    <div class="example">
+                        <label for="dob">Date of Birth (mm/dd/yyyy)<br>
+                            <input type="text" id="dob">
                         </label>
-                        <label for="gender">Gender<br>
-                            <select id="gender" name="gender">
-                                <option>Select</option>
-                                <option value="female">Female</option>
-                                <option value="male">Male</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </label>
-                        <label for="agree"><input type="checkbox" id="agree"> I agree to the terms.</label>
-                        <input type="submit" value="Submit">
-                    </form>
+                    </div>
+
+                    <h3>Form Instructions</h3>
+                    <div class="example">
+                        <fieldset>
+                            <legend>Spouse</legend>
+                            <label for="fname">First Name<br>
+                                <input type="text" id="fname">
+                            </label>
+                            <label for="lname">Last Name<br>
+                                <input type="text" id="lname">
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Cognitive impairments:</strong> Users understand what information should be entered.</li>
+                        <li><strong>Vision impairments:</strong> Labels and instructions help prevent mistakes, which help prevent users having to navigate through the page multiple times.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G89">G89: Providing expected data format and example</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G184">G184: Providing text instructions at the beginning of a form or set of fields that describes the necessary input</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Everyone, especially those with cognitive disabilities, will know how to respond.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
-</div>
 
     {% include checkpoints/3302checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
