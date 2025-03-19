@@ -11,142 +11,86 @@ criterion: 3302
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>Labels and instructions should include enough information for the user to know what is expected, including data format.</p>   
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Labels and instructions should include enough information for the user to know what is expected, including data format.</p>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Form or form field must have visual essential instructions.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Important instructions should be accessible to assistive technology. (<em>For the requirement, see <a href="{{ site.data.1301.1301[1301].link | prepend: baseurl }}">{{ site.data.1301.1301[1301].name }}.</a></em>)</li>
+            </ul>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Expected data format must be specified if it isn't clear.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Important instructions must be accessible to assistive technology.</li>
-    </ul>
+            <div class="userstory"><strong>User Story:</strong> As a user with a cognitive disability, I want form inputs and instructions to have enough information so that I know what is expected.</div>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with a cognitive disability, I want form inputs and instructions to have enough information so that I know what is expected.</div>
+            <div class="success"><strong>Success:</strong> If you were a user with a cognitive disability, when you encountered form inputs, labels and instructions would provide enough information for me to know what is expected.</div>
+        </div>
 
-    <div class="success"><strong>Success:</strong> If you were a user with a cognitive disability, when you encountered form inputs, labels and instructions would provide enough information for me to know what is expected.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/js/tree.js"></script>
-    <h3 id="test1">Are there form inputs on the page?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each form input have a label that accurately describes its purpose?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the label include enough information to know what data is expected?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/js/tree.js"></script>
+            <h3 id="test1">Are there form inputs on the page?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the form or form field require any special instructions (e.g., format instructions, order of completion, special conditions, etc.)?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are there separate instructions which include enough information to know what data is expected?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the instructions provided visually, either in the field labels or elsewhere in the form?</span>
                             <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the instructions accurate?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the instructions communicated to assistive technology?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3302.3302[33020204].link | prepend: baseurl }}">{{ site.data.3302.3302[33020204].name }}</a>.</span></li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3302.3302[33020203].link | prepend: baseurl }}">{{ site.data.3302.3302[33020203].name }}</a>.</span></li>
-                                    </ul>
-                                </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3302.3302[33020202].link | prepend: baseurl }}">{{ site.data.3302.3302[33020202].name }}</a>.</span></li>
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3302.3302[33020201].link | prepend: baseurl }}">{{ site.data.3302.3302[33020201].name }}</a>.</span></li>
                             </ul>
                         </li>
+                        <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3302.3302[33020201].link | prepend: baseurl }}">{{ site.data.3302.3302[33020201].name }}</a>.</span></li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Locate any forms.</li>
+                <li>Determine whether additional instruction is needed to know how to enter data.</li>
+                <li>If so, verify that enough instruction is provided either in the labels or separate instructions.</li>
+            </ol>
+        </div>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>Locate any form inputs in the content.</li>
-        <li>Verify that the label for each input accurately describes its purpose.</li>
-        <li>Determine whether additional instruction is needed to know how to enter data.</li>
-        <li>If so, verify that enough instruction is provided.</li>
-        <li>Turn on a screen reader and verify that the instructions are communicated to assistive technology.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Web.</p>
-
-    <h2>PDF Test Procedure</h2>
-    <p>Follow the procedure for Web.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3302.3302[33020201].link | prepend: baseurl }}">{{ site.data.3302.3302[33020201].name }}</a>.</li>
-        <li><a href="{{ site.data.3302.3302[33020202].link | prepend: baseurl }}">{{ site.data.3302.3302[33020202].name }}</a>.</li>
-        <li><a href="{{ site.data.3302.3302[33020203].link | prepend: baseurl }}">{{ site.data.3302.3302[33020203].name }}</a>.</li>
-        <li><a href="{{ site.data.3302.3302[33020204].link | prepend: baseurl }}">{{ site.data.3302.3302[33020204].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G89">G89: Providing expected data format and example</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G162">G162: Positioning labels to maximize predictability of relationships</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G167">G167: Using an adjacent button to label the purpose of a field</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G184">G184: Providing text instructions at the beginning of a form or set of fields that describes the necessary input</a></li>
+                <li><a href="{{ site.data.3302.3302[33020201].link | prepend: baseurl }}">{{ site.data.3302.3302[33020201].name }}.</a></li>
             </ul>
-        </li>
-        <li>HTML:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H44">H44: Using label elements to associate text labels with form controls</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H71">H71: Providing a description for groups of form controls using fieldset and legend elements</a></li>
-            </ul>
-        </li>
-        <li>ARIA:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA1">ARIA1: Using the aria-describedby property to provide a descriptive label for user interface controls</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA9">ARIA9: Using aria-labelledby to concatenate a label from several text nodes</a></li>
-            </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF10">PDF10: Providing labels for interactive form controls in PDF documents</a></li>
-            </ul>
-        </li>
-     </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-
-    </ul>
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G89">G89: Providing expected data format and example</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G162">G162: Positioning labels to maximize predictability of relationships</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G167">G167: Using an adjacent button to label the purpose of a field</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G184">G184: Providing text instructions at the beginning of a form or set of fields that describes the necessary input</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF10">PDF10: Providing labels for interactive form controls in PDF documents</a></li>
+                    </ul>
+                </li>
+             </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/3302checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>

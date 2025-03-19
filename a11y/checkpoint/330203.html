@@ -11,125 +11,103 @@ criterion: 3302
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>Users need to know what form fields are required. This applies to both visible labels and accessible names.</p>
-    <ul>
-        <li>Marking required fields with an asterisk (*) minimally passes. An additional note such as "Fields marked with * are required" should be provided.</li>
-        <li><code>aria-required="true"</code> may be used to add accessibility support where visual indicators aren't enough.</li>
-    </ul>    
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Users need to know what form fields are required. This information must be provided in text or text alternatives.</p>
+            <ul>
+                <li>Marking required fields with an asterisk (*) minimally passes. An additional note such as "Fields marked with * are required" should be provided.</li>
+            </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+        <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+            <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+        <ul>
+            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Required form inputs must have visible text indicators.</li>
+        </ul>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Required status must be communicated to all users.</li>
-    </ul>
+        <div class="userstory"><strong>User Story:</strong> As a user with a cognitive disability, I want form inputs and instructions to have enough information so that I know what is expected.</div>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with a cognitive disability, I want form inputs and instructions to have enough information so that I know what is expected.</div>
+        <div class="success"><strong>Success:</strong> If you were a user with a cognitive disability, when you encountered required form inputs, labels and instructions would provide enough information for me to know they were required.</div>
 
-    <div class="success"><strong>Success:</strong> If you were a user with a cognitive disability, when you encountered required form inputs, labels and instructions would provide enough information for me to know they were required.</div>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Testing Logic</h2>
+        <script src="{{ baseurl }}/js/tree.js"></script>
+        <h3 id="test1">Are there required form fields on the page?</h3>
+        <ul role="tree" aria-labelledby="test1">
+            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the required form fields include the required status in the label?</span>
+                <ul role="group">
+                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                    <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are there form-level instructions indicating which form inputs are required?</span>
+                        <ul role="group">
+                            <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                            <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Do the optional form inputs indicate that they are optional?</span>
+                                <ul role="group">
+                                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                    <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an inline error message that indicates which fields are required?</span>
+                                        <ul role="group">
+                                            <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                            <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3302.3302[33020301].link | prepend: baseurl }}">{{ site.data.3302.3302[33020301].name }}.</a></span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+        </ul>
 
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/js/tree.js"></script>
-    <h3 id="test1">Are there required form inputs on the page?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the required form inputs include the required status in the label?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are there form-level instructions indicating which form inputs are required?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Do the optional form inputs indicate that they are optional?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an inline error message that indicates which fields are required?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3302.3302[33020301].link | prepend: baseurl }}">{{ site.data.3302.3302[33020301].name }}</a>.</span></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Locate any form inputs in the content.</li>
+                <li>Submit the form without entering any input.</li>
+                <li>For each form input that fails validation due to missing required input, verify that the required status is visually communicated to the user in text before the form is submitted.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+        <ul>
+            <li><a href="{{ site.data.3302.3302[33020301].link | prepend: baseurl }}">{{ site.data.3302.3302[33020301].name }}.</a></li>
+        </ul>
+
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G83">G83: Providing text descriptions to identify required fields that were not completed</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
                     </ul>
                 </li>
-            </ul>
-        </li>
-        <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-    </ul>
-
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H90">H90: Indicating required form controls using label or legend</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF5">PDF5: Indicating required form controls in PDF forms</a></li>
+                    </ul>
+                </li>
+             </ul>
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>Locate any form inputs in the content.</li>
-        <li>Submit the form without entering any input.</li>
-        <li>For each form input that fails validation due to missing required input, verify that the required status is communicated to the user before the form is submitted.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Web. Use a screen reader to verify that the required status is also communicated to assistive technology.</p>
-
-    <h2>PDF Test Procedure</h2>
-    <p>Follow the procedure for Web.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3302.3302[33020301].link | prepend: baseurl }}">{{ site.data.3302.3302[33020301].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G83">G83: Providing text descriptions to identify required fields that were not completed</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
-            </ul>
-        </li>
-        <li>HTML:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H90">H90: Indicating required form controls using label or legend</a></li>
-            </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF5">PDF5: Indicating required form controls in PDF forms</a></li>
-            </ul>
-        </li>
-     </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-
-    </ul>
-    </div>
-</div>
     {% include checkpoints/3302checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
