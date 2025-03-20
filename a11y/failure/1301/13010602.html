@@ -31,19 +31,59 @@ checkpoint: 130106
                         <li>Use native HTML table header elements (<code>&lt;tr"&gt;</code>) along with <code>scope="col"</code> or <code>scope="row"</code> to define the header/cell relationship, OR</li>
                         <li>Use ARIA <code>role="rowheader"</code> or <code>row="colheader"</code> on the table header elements.</li>
                     </ul>
-                    <p>Native HTML is the preferred solution.</p>
+                    <p>Native HTML is the preferred solution and should be used whenever possible.</p>
                 </div>
         	</div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Examples</h2>
                 <div>
-                    
+                    <h3>HTML</h3>
+                    <div class="example" style="width: 80%;">
+                        <table>
+                            <tr>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="fname1"></td>
+                                <td><input type="text" id="lname1"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" id="fname2"></td>
+                                <td><input type="text" id="lname2"></td>
+                            </tr>
+                        </table>
+                        <pre><code>&lt;table&gt;
+&lt;/table&gt;</code></pre>
+                    </div>
+
+                    <h3>ARIA</h3>
+                    <div class="example" style="width: 80%;">
+                        <div role="table">
+                            <div role="row">
+                                <div role="colheader">First Name</div>
+                                <div role="colheader">Last Name</div>
+                            </div>
+                            <div role="row">
+                                <div role="cell"><input type="text" id="fname1"></div>
+                                <div role="cell"><input type="text" id="lname1"></div>
+                            </div>
+                            <div role="row">
+                                <div role="cell"><input type="text" id="fname2"></div>
+                                <div role="cell"><input type="text" id="lname2"></div>
+                            </div>
+                        </div>
+                        <pre><code>&lt;div role="table"&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Why It's Important</h2>
                 <div>
-
+                    <ul>
+                        <li><strong>Blind/visual impairment:</strong> Screen reader users hear the table header cell text when they navigate to the form element cell without having to search around to find it.</li>
+                    </ul>
                 </div>
             </div>
             <div class="row block">
