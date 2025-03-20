@@ -37,7 +37,49 @@ checkpoint: 130106
             <div class="row block">
                 <h2 class="{{ sc.level }}">Examples</h2>
                 <div>
-                    
+                    <h3>Explicit Labels</h3>
+                    <div class="example" style="width: 80%;">
+                        <label for="fname" style="display:block;">First Name</label>
+                        <input type="text" id="fname" autocomplete="given-name">
+                        
+                        <label for="lname" style="display:block;">Last Name</label>
+                        <input type="text" id="lname" autocomplete="family-name">
+                        
+                        <input type="checkbox" id="terms"> <label for="terms" style="display:inline;">I agree to the terms and conditions.</label>
+
+                        <pre><code>
+                    </div>
+
+                    <h3>Implicit Labels</h3>
+                    <div class="example" style="width: 80%;">
+                        <label style="display:block;">First Name<br>
+                            <input type="text" id="fname2" autocomplete="given-name">
+                        </label>
+                        <label style="display:block;">Last Name<br>
+                            <input type="text" id="lname2" autocomplete="family-name">
+                        </label>
+                        <label style="display:block;">
+                            <input type="checkbox" id="terms2"> I agree to the terms and conditions.
+                        </label>
+
+                        <pre><code>
+                    </code></pre>
+                    </div>
+
+                    <h3>ARIA</h3>
+                    <div class="example" style="width: 80%;">
+                        <div><span id="fname3">First Name</span>
+                            <input type="text" aria-labelledby="fname3" autocomplete="given-name"></div>
+                        <div><span id="lname3">Last Name</span>
+                            <input type="text" aria-labelledby="lname3" autocomplete="family-name">
+                        </div>
+                        <div>
+                            <input type="checkbox" aria-labelledby="terms"> <span id="terms3">I agree to the terms and conditions.</span>
+                        </div>
+
+                        <pre><code>
+                    </code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
