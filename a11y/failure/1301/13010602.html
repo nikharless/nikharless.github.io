@@ -30,7 +30,7 @@ css: table
         		<div>
                     <ul>
                         <li>Use native HTML table header elements (<code>&lt;tr"&gt;</code>) along with <code>scope="col"</code> or <code>scope="row"</code> to define the header/cell relationship, OR</li>
-                        <li>Use ARIA <code>role="rowheader"</code> or <code>row="colheader"</code> on the table header elements.</li>
+                        <li>Use ARIA <code>role="rowheader"</code> or <code>row="columnheader"</code> on the table header elements.</li>
                     </ul>
                     <p>Native HTML is the preferred solution and should be used whenever possible.</p>
                 </div>
@@ -55,6 +55,18 @@ css: table
                             </tr>
                         </table>
                         <pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th scope="col"&gt;First Name&lt;/th&gt;
+        &lt;th scope="col"&gt;Last Name&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;input type="text" id="fname1"&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="text" id="lname1"&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+        &lt;tr&gt;
+        &lt;td&gt;&lt;input type="text" id="fname2"&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;input type="text" id="lname2"&gt;&lt;/td&gt;
+    &lt;/tr&gt;
 &lt;/table&gt;</code></pre>
                     </div>
 
@@ -75,6 +87,18 @@ css: table
                             </div>
                         </div>
                         <pre><code>&lt;div role="table"&gt;
+    &lt;div role="row"&gt;
+        &lt;div role="columnheader"&gt;First Name&lt;/div&gt;
+        &lt;div role="columnheader"&gt;Last Name&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div role="row"&gt;
+        &lt;div role="cell"&gt;&lt;input type="text" id="fname1"&gt;&lt;/div&gt;
+        &lt;div role="cell"&gt;&lt;input type="text" id="lname1"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div role="row"&gt;
+        &lt;div role="cell"&gt;&lt;input type="text" id="fname2"&gt;&lt;/div&gt;
+        &lt;div role="cell"&gt;&lt;input type="text" id="lname2"&gt;&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;</code></pre>
                     </div>
                 </div>
