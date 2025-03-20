@@ -11,95 +11,81 @@ criterion: 2406
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p><em>Note: A label is available to all users, as opposed to the programmatic name which may only be available to assistive technology.</em></p>
-    <p>An icon with an appropriate text alternative may serve as a label. Some common examples are:</p>
-    <ul>
-        <li>Magnifying glass for search</li>
-        <li>3 horizontal lines on top of each other for a menu</li>
-        <li>Gear icon for preferences or settings</li>
-        <li>Trash can for delete</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Labels must describe the purpose of the associated control(s) or input(s).</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A control's label and programmatic name should be the same. (See <a href="{{ site.data.2503.2503[2503].link | prepend: baseurl }}">{{ site.data.2503.2503[2503].name }}</a>.)</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want labels to be descriptive so that I can easily understand how to use the controls.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a user with a disability, when using a website, you could understand the purpose of controls by their labels.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the page contain control or input labels?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the labels clearly describe the purpose of the associated controls or inputs?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2406.2406[24060201].link | prepend: baseurl }}">{{ site.data.2406.2406[24060201].name }}</a>.</span></li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <p>For each label on the page, verify that it clearly describes the purpose of the associated control or input.</p>
-
-    <h2>PDF Test Procedure</h2>
-    <p>Follow the same procedure as web.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2406.2406[24060201].link | prepend: baseurl }}">{{ site.data.2406.2406[24060201].name }}</a>. (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>Overview</h2>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
-            </ul>
-        </li>
-    </ul>
+                <li>Labels may be either text or images.</li>
+                <li>An error message is not sufficient to communicate the expected format.</li>
+                <li>Dynamic changes to form labels must be included.</li>
+            </ul>            
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-    </ul>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Labels and instructions must describe the purpose of the associated form elements.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A form element's label and programmatic name should be the same. (See <a href="{{ site.data.2503.2503[2503].link | prepend: baseurl }}">{{ site.data.2503.2503[2503].name }}.</a>)</li>
+            </ul>
+
+            <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want labels and instructions to be descriptive so that I can easily understand how to use the controls.</div>
+
+            <div class="success"><strong>Success:</strong> If you were a user with a disability, when using a website, you could understand the purpose of controls by their labels.</div>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Does the page contain form elements?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are all form elements disabled?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="na"><span><strong>Yes</strong>; This checkpoint is not applicable.</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Do the form elements have visual labels or instructions?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the labels or instructions clearly describe the purpose and applicable data requirements of the associated form elements?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2406.2406[24060201].link | prepend: baseurl }}">{{ site.data.2406.2406[24060201].name }}.</a></span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="no"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                <li role="treeitem" class="no"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <p>For each visible label or instruction on the page, verify that it clearly describes the purpose and data requirements of the associated form element.</p>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.2406.2406[24060201].link | prepend: baseurl }}">{{ site.data.2406.2406[24060201].name }}.</a> (Medium)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/2406checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
