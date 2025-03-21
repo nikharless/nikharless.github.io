@@ -25,6 +25,7 @@ criterion: 4102
                 <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Automatic content changes must be communicated to assistive technologies.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content changes to forms must be communicated to assistive technologies.</li>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a dialog is used to alert the user of a content change, it must provide sufficient description of the content change.</li>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a focus change is used to alert the user of a content change, it must provide sufficient description of the content change.</li>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a status message or other ARIA Live Region is used to alert the user of a content change, it must provide sufficient description of the content change.</li>
@@ -38,7 +39,7 @@ criterion: 4102
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            <h3 id="test1">Is there content on the page that changes/updates automatically?</h3>
+            <h3 id="test1">Is there content on the page that changes/updates?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user notified of the change in content?</span>
                     <ul role="group">
@@ -73,6 +74,21 @@ criterion: 4102
                                 </li>
                             </ul>
                         </li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content change the result of an automatic update?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content change within a form?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020302].link | prepend: baseurl }}">{{ site.data.4102.4102[41020302].name }}.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content change the result of user action?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020303].link | prepend: baseurl }}">{{ site.data.4102.4102[41020303].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020303].link | prepend: baseurl }}">{{ site.data.4102.4102[41020303].name }}.</a></span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
                         <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}</a>.</span></li>
                     </ul>
                 </li>
