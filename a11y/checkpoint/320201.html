@@ -11,156 +11,150 @@ criterion: 3202
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>Examples of state or value changes include:</p>
-    <ul>
-        <li>Checkbox checked/unchecked</li>
-        <li>Radio button checked/unchecked</li>
-        <li>Select box option highlighted</li>
-        <li>Menu option highlighted</li>
-        <li>Text entered in text field</li>
-    </ul>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Examples of state or value changes include:</p>
+            <ul>
+                <li>Checkbox checked/unchecked</li>
+                <li>Radio button checked/unchecked</li>
+                <li>Select box option highlighted</li>
+                <li>Menu option highlighted</li>
+                <li>Text entered in text field</li>
+            </ul>
 
-    <p>This checkpoint does not apply to the results of activating a:</p>
-    <ul>
-        <li>Button</li>
-        <li>Link</li>
-        <li>Tab in a tab control</li>
-    </ul>
+            <p>This checkpoint does not apply to the results of activating a:</p>
+            <ul>
+                <li>Button</li>
+                <li>Link</li>
+                <li>Tab in a tab control</li>
+            </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When the value or state of a control is changed, it must not result in a change of context unless there is a warning beforehand.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A submit button should be provided on forms, even if the form can be implicitly submitted.</li>
+            </ul>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When the value or state of a control is changed, it must not result in a change of context unless there is a warning beforehand.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A submit button should be provided on forms, even if the form can be implicitly submitted.</li>
-    </ul>
+            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the context to not change unexpectedly so that I know where I am.</div>
 
-    <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the context to not change unexpectedly so that I know where I am.</div>
+            <div class="success"><strong>Success:</strong> If you were a screen reader user, when you change the state or value of a control, the context would not unexpectedly change.</div>
+        </div>
 
-    <div class="success"><strong>Success:</strong> If you were a screen reader user, when you change the state or value of a control, the context would not unexpectedly change.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/js/tree.js"></script>
-    <h3 id="test1">Is there a change of context when the state or value of a control is changed?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there text notifying the user that this will happen?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the focus automatically removed or redirected?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/js/tree.js"></script>
+            <h3 id="test1">Does the page contain form elements?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a change of context when the state or value of a control is changed?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3202.3202[32020101].link | prepend: baseurl }}">{{ site.data.3202.3202[32020101].name }}</a>.</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a new window, tab, or dialog launched?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there text notifying the user that this will happen?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3202.3202[32020102].link | prepend: baseurl }}">{{ site.data.3202.3202[32020102].name }}</a>.</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a significant change of content before the current focus?</span>
+                                <li role="treeitem" class="na"><span><strong>Yes</strong>; This checkpoint is not applicable.</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the focus automatically removed or redirected?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3202.3202[32020103].link | prepend: baseurl }}">{{ site.data.3202.3202[32020103].name }}</a>.</span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a form automatically submitted?</span>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3202.3202[32020101].link | prepend: baseurl }}">{{ site.data.3202.3202[32020101].name }}.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a new window, tab, or dialog launched?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3202.3202[32020104].link | prepend: baseurl }}">{{ site.data.3202.3202[32020104].name }}</a>.</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3202.3202[32020105].link | prepend: baseurl }}">{{ site.data.3202.3202[32020105].name }}</a>.</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3202.3202[32020102].link | prepend: baseurl }}">{{ site.data.3202.3202[32020102].name }}.</a></span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a significant change of content before the current focus?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3202.3202[32020103].link | prepend: baseurl }}">{{ site.data.3202.3202[32020103].name }}.</a></span></li>
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a form automatically submitted?</span>
+                                                            <ul role="group">
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3202.3202[32020104].link | prepend: baseurl }}">{{ site.data.3202.3202[32020104].name }}.</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3202.3202[32020105].link | prepend: baseurl }}">{{ site.data.3202.3202[32020105].name }}.</a></span></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
+                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                    </ul>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Using only the keyboard, change the setting or enter text for each form element.</li>
+                <li>Navigate away from the form element.</li>
+                <li>Verify that there is no unexpected change of context when any form element state or value changes.
+                    <p>Note: A change is not considered unexpected if the user is notified ahead of time or if the form element is clearly intended to initiate a change in context.</p></li>
+            </ol>
+
+            <h3>Mobile</h3>
+            <ol>
+                <li>Turn on the screen reader.</li>
+                <li>Change the setting or enter text for each form element.</li>
+                <li>Navigate away from the form element.</li>
+                <li>Verify that there is no unexpected change of context when any form element state or value changes.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.3202.3202[32020101].link | prepend: baseurl }}">{{ site.data.3202.3202[32020101].name }}.</a></li>
+                <li><a href="{{ site.data.3202.3202[32020102].link | prepend: baseurl }}">{{ site.data.3202.3202[32020102].name }}.</a></li>
+                <li><a href="{{ site.data.3202.3202[32020103].link | prepend: baseurl }}">{{ site.data.3202.3202[32020103].name }}.</a></li>
+                <li><a href="{{ site.data.3202.3202[32020104].link | prepend: baseurl }}">{{ site.data.3202.3202[32020104].name }}.</a></li>
+                <li><a href="{{ site.data.3202.3202[32020105].link | prepend: baseurl }}">{{ site.data.3202.3202[32020105].name }}.</a></li>
+            </ul>
+
+            </div>
+
+            <div class="block">
+                <h2>Testing Tools</h2>
+            <ul>
+                <li>Keyboard</li>
+                <li>Mobile screen reader</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G13">G13: Describing what will happen before a change to a form control that causes a change of context to occur is made</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G80">G80: Providing a submit button to initiate a change of context</a></li>
                     </ul>
                 </li>
-            </ul>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H32">H32: Providing submit buttons</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H84">H84: Using a button with a select element to perform an action</a></li>
+                    </ul>
+                </li>
+                <li>JavaScript:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR19">SCR19: Using an onchange event on a select element without causing a change of context</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF15">PDF15: Providing submit buttons with the submit-form action in PDF forms</a></li>
+                    </ul>
+                </li>
+             </ul>
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-
-    <h3>Desktop</h3>
-    <ol>
-        <li>Using only the keyboard, change the setting or enter text for each control.</li>
-        <li>Verify that there is no unexpected change of context when any control state or value changes.</li>
-    </ol>
-
-    <h3>Mobile</h3>
-    <ol>
-        <li>Turn on the screen reader.</li>
-        <li>Change the setting or enter text for each control.</li>
-        <li>Verify that there is no unexpected change of context when any control state or value changes.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Mobile Web.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3202.3202[32020101].link | prepend: baseurl }}">{{ site.data.3202.3202[32020101].name }}</a>.</li>
-        <li><a href="{{ site.data.3202.3202[32020102].link | prepend: baseurl }}">{{ site.data.3202.3202[32020102].name }}</a>.</li>
-        <li><a href="{{ site.data.3202.3202[32020103].link | prepend: baseurl }}">{{ site.data.3202.3202[32020103].name }}</a>.</li>
-        <li><a href="{{ site.data.3202.3202[32020104].link | prepend: baseurl }}">{{ site.data.3202.3202[32020104].name }}</a>.</li>
-        <li><a href="{{ site.data.3202.3202[32020105].link | prepend: baseurl }}">{{ site.data.3202.3202[32020105].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Keyboard</li>
-        <li>Mobile screen reader</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G13">G13: Describing what will happen before a change to a form control that causes a change of context to occur is made</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G80">G80: Providing a submit button to initiate a change of context</a></li>
-            </ul>
-        </li>
-        <li>HTML:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H32">H32: Providing submit buttons</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H84">H84: Using a button with a select element to perform an action</a></li>
-            </ul>
-        </li>
-        <li>JavaScript:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR19">SCR19: Using an onchange event on a select element without causing a change of context</a></li>
-            </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF15">PDF15: Providing submit buttons with the submit-form action in PDF forms</a></li>
-            </ul>
-        </li>
-     </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-
-    </ul>
-    </div>
-</div>
     {% include checkpoints/3202checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
