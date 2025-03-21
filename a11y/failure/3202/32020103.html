@@ -12,54 +12,60 @@ checkpoint: 320201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>When a control state or value changes, there is not a significant change of content before the control, unless a warning is provided beforehand.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>When a control state or value changes, there is a significant change of content before the control.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Only add new content after the control, <strong>OR</strong></li>
-                    <li>Notify assistive technology of the change, <strong>OR</strong></li>
-                    <li>Provide instructions warning that the change will occur.</li>
-                </ul>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>When a form element's state or value changes, there is not a significant change of content before the form element, unless a warning is provided beforehand.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>When a form element's state or value changes, there is a significant unexpected change of content before the form element.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Only add new content <em>after</em> the control, <strong>OR</strong></li>
+                        <li>Notify assistive technology of the change, <strong>OR</strong></li>
+                        <li>Provide instructions warning that the change will occur.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impairment:</strong> Users who can't detect changes of context may become disoriented when they occur unexpectedly.</li>
+                        <li><strong>Cognitive impairment:</strong> Users who have difficulty interpreting visual cues may become disoriented when unexpected changes of context occur.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Content that behaves predictably is especially important to people with disabilities.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G13">G13: Describing what will happen before a change to a form control that causes a change of context to occur is made</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G80">G80: Providing a submit button to initiate a change of context</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H32">H32: Providing submit buttons</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H84">H84: Using a button with a select element to perform an action</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR19">SCR19: Using an onchange event on a select element without causing a change of context</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF15">PDF15: Providing submit buttons with the submit-form action in PDF forms</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G13">G13: Describing what will happen before a change to a form control that causes a change of context to occur is made</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G80">G80: Providing a submit button to initiate a change of context</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H32">H32: Providing submit buttons</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H84">H84: Using a button with a select element to perform an action</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR19">SCR19: Using an onchange event on a select element without causing a change of context</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF15">PDF15: Providing submit buttons with the submit-form action in PDF forms</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include  checkpoints/3202checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
