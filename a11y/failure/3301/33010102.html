@@ -37,9 +37,76 @@ checkpoint: 330101
                 <h2 class="{{ sc.level }}">Examples</h2>
                 <div>
                     <h3>List of Errors</h3>
+                    <p>It's not required to include links to the fields in error. However, doing so increases accessibility for keyboard users, especially in long forms.</p>
+                    <div class="example">
+                        <div class="error-block">
+                            <div class="card">
+                                <div class="icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+                                <div class="subject">
+                                    <p><strong>Please correct the following errors:</strong></p>
+                                    <ul>
+                                        <li><a role="button" onClick="setFocusToField('fname')">First Name is required.</a></li>
+                                        <li><a role="button" onClick="setFocusToField('dob')">Date of Birth must be in format: mm/dd/yyyy.</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p>All fields are required.</p>
+                        <form>
+                            <label style="margin-bottom: 10px">First Name:<br>
+                                <input type="text" id="fname" required aria-invalid="true">
+                            </label>
+                            <label style="margin-bottom: 10px">Last Name:<br>
+                                <input type="text" id="lname" required>
+                            </label>
+                            <label>Date of Birth:<br>
+                                <input type="text" id="dob" required aria-invalid="true">
+                            </label>
+                        </form>
+                    </div>
+                    <script>
+                        document.getElementById('lname').value = "Smith";
+                        document.getElementById('dob').value = "Jan 1 1999";
+                        function setFocusToField(id) {
+                            document.getElementById(id).focus();
+                        }
+                    </script>
+
                     <h3>Error Next to Field</h3>
+                    <div class="example">
+                        <p>All fields are required.</p>
+                        <form>
+                            <label style="margin-bottom: 10px">First Name:<br>
+                                <input type="text" required aria-invalid="true" aria-describedby="fnameError"><br>
+                                <span id="fnameError" class="error-text">First Name is required.</span><br>
+                            </label>
+                            <label style="margin-bottom: 10px">Last Name:<br>
+                                <input type="text" value="Smith" required>
+                            </label>
+                            <label>Date of Birth:<br>
+                                <input type="text" required aria-invalid="true" aria-describedby="dobError"><br>
+                                <span id="dobError" class="error-text">Date of Birth must be in format: mm/dd/yyyy</span>
+                            </label>
+                        </form>
+                    </div>
+
                     <h3>Error Alert</h3>
-                    <h3>Error in Label</h3>
+                    Submit the form to see the error.
+                    <div class="example">
+                        <p>All fields are required.</p>
+                        <form>
+                            <label style="margin-bottom: 10px">First Name:<br>
+                                <input type="text" required readonly>
+                            </label>
+                            <label style="margin-bottom: 10px">Last Name:<br>
+                                <input type="text" value="Smith" required readonly>
+                            </label>
+                            <label>Date of Birth:<br>
+                                <input type="text" required readonly>
+                            </label>
+                            <button onclick="window:alert('Error\nFirst Name is required.\nDate of Birth must be in format: mm/dd/yyyy');">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="row block">
