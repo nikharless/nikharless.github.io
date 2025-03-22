@@ -12,49 +12,66 @@ checkpoint: 330101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>When an error is automatically detected, the error is described in text.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>An error is automatically detected, but it is not described in text.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Provide an error message describing the error in text.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Error messages identify the items with the error in visible text.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>An error message does not identify the item with the error in visible text.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Identify the item with the error in the visible text, <strong>OR</strong></li>
+                        <li>Modify the text of the component's label to indicate it has an error, <strong>OR</strong></li>
+                        <li>Use an understandable icon with a text alternative next to the item in error</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>List of Errors</h3>
+                    <h3>Error Next to Field</h3>
+                    <h3>Error Icon with Text Alternative</h3>
+                    <h3>Error Alert</h3>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Flagging errors helps people with reduced sight and cognitive disabilities resolve them.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G83">G83: Providing text descriptions to identify required fields that were not completed</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G84">G84: Providing a text description when the user provides information that is not in the list of allowed values</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G85">G85: Providing a text description when user input falls outside the required format or values</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR32">SCR32: Providing client-side validation and adding error text via the DOM</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF5">PDF5: Indicating required form controls in PDF forms</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF22">PDF22: Indicating when user input falls outside the required format or values in PDF forms</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> Users are able to perceive that an error has occured, where it has occurred, and why.</li>
+                        <li><strong>Cognitive impairments:</strong> Users are able to understand that an error has occured, where it has occurred, and why.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G83">G83: Providing text descriptions to identify required fields that were not completed</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G84">G84: Providing a text description when the user provides information that is not in the list of allowed values</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G85">G85: Providing a text description when user input falls outside the required format or values</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR32">SCR32: Providing client-side validation and adding error text via the DOM</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF5">PDF5: Indicating required form controls in PDF forms</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF22">PDF22: Indicating when user input falls outside the required format or values in PDF forms</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/3301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

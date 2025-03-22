@@ -12,52 +12,54 @@ checkpoint: 330101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>When an error is automatically detected, the error message is readable by assistive technology.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>An error message is visible, but it is not read by assistive technology.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Use an alert dialog to provide the error message, <strong>OR</strong></li>
-                    <li>Display the error message in an <code>aria-live</code> region, <strong>OR</strong></li>
-                    <li>Move focus to the error message.</li>
-                </ul>      
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>When an error is automatically corrected, an error message must be provided in visible text.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>An error is auto-corrected, but the error is not identified in visible error text.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    Provide error text identifying the error and the auto-correction in visible text.   
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> Users are able to perceive that an error has occured, where it has occurred, and why.</li>
+                        <li><strong>Cognitive impairments:</strong> Users are able to understand that an error has occured, where it has occurred, and why.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Flagging errors helps people with reduced sight and cognitive disabilities resolve them.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR32">SCR32: Providing client-side validation and adding error text via the DOM</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR32">SCR32: Providing client-side validation and adding error text via the DOM</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/3301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
