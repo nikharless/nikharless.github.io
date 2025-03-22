@@ -38,7 +38,7 @@ css: error-block
                 <h2 class="{{ sc.level }}">Examples</h2>
                 <div>
                     <h3>List of Errors</h3>
-                    
+                    <p>It's not required to include links to the fields in error. However, doing so increases accessibility for keyboard users, especially in long forms.</p>
                     <div class="example">
                         <div class="error-block">
                             <div class="card">
@@ -75,6 +75,20 @@ css: error-block
 
                     <h3>Error Next to Field</h3>
                     <div class="example">
+                        <p>All fields are required.</p>
+                        <form>
+                            <label>First Name:<br>
+                                <input type="text" required aria-invalid="true" aria-describedby="fnameError"><br>
+                                <p id="fnameError" class="errorText">First Name is required.</p>
+                            </label>
+                            <label>Last Name:<br>
+                                <input type="text" required>
+                            </label>
+                            <label>Date of Birth:<br>
+                                <input type="text" required aria-invalid="true" aria-describedby="dobError">
+                                <p id="dobError" class="errorText">Date of Birth must be in format: mm/dd/yyyy</p>
+                            </label>
+                        </form>
                     </div>
 
                     <h3>Error Alert</h3>
