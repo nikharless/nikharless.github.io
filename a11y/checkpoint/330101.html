@@ -11,159 +11,134 @@ criterion: 3301
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
 
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+        <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+            <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+        <ul>
+            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Error feedback identifies the item with the error through text, non-text content, or presentation.</li>
+            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Visible error messages describing the error must be provided in text when an error is automatically detected.</li>
+            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Error messages describing the error must be accessible to assistive technology.</li>
+        </ul>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Error feedback identifies the item with the error through text, non-text content, or presentation.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Visible error messages describing the error must be provided in text when an error is automatically detected.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Error messages describing the error must be accessible to assistive technology.</li>
-    </ul>
+        <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want text-based error messages describing the error and the item with the error so that I know an error exists and what it is.</div>
 
-    <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want text-based error messages describing the error and the item with the error so that I know an error exists and what it is.</div>
+        <div class="success"><strong>Success:</strong> If you were a screen reader user, when an error was automatically detected, the item with the error would be identified and the error described in text.</div>
 
-    <div class="success"><strong>Success:</strong> If you were a screen reader user, when an error was automatically detected, the item with the error would be identified and the error described in text.</div>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/js/tree.js"></script>
-    <h3 id="test1">Are there interactions which trigger errors on the page?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When an error occurs, is the item with the error identified?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the reason for the error identified using visible text?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Are there interactions which trigger errors on the page?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When an error occurs, is the item with the error identified?</span>
                     <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the text included in the accessible name or description?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the item with the error identified using visible text?</span>
                             <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3301.3301[33010104].link | prepend: baseurl }}">{{ site.data.3301.3301[33010104].name }}</a>.</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the error described using visible text?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3301.3301[33010103].link | prepend: baseurl }}">{{ site.data.3301.3301[33010103].name }}.</a></span></li>
+                                    </ul>
+
+                                </li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3301.3301[33010102].link | prepend: baseurl }}">{{ site.data.3301.3301[33010102].name }}.</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the text included in the accessible name or description?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3301.3301[33010103].link | prepend: baseurl }}">{{ site.data.3301.3301[33010103].name }}</a>.</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3301.3301[33010102].link | prepend: baseurl }}">{{ site.data.3301.3301[33010102].name }}</a>.</span></li>
-                            </ul>
-                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3301.3301[33010101].link | prepend: baseurl }}">{{ site.data.3301.3301[33010101].name }}.</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3301.3301[33010101].link | prepend: baseurl }}">{{ site.data.3301.3301[33010101].name }}</a>.</span></li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-    </ul>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Locate any forms in the content.</li>
-        <li>Deliberately trigger errors by entering user input that falls outside the required format or values or leaving required fields blank, and submit the form.</li>
-        <li>If an input error is automatically detected, verify that both of the following are true:
-            <ul>
-                <li>The item that is in error is identified in text. Options include:
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Use ANDI to locate any forms in the content.</li>
+                <li>Find all instructions and cues (textual and graphical) that are related to form components (e.g., groupings, order of completion, special conditions, qualifiers, format instructions, etc.).
+                <li>Deliberately trigger errors by entering user input that falls outside the required format or values or leaving required fields blank, and submit the form.</li>
+                <li>If an input error is automatically detected, verify that both of the following are true:
                     <ul>
-                        <li>Visible text on the screen</li>
-                        <li>Alternative text on an image</li>
-                        <li>Text that is programmatically associated with the item (e.g., <code>&lt;label&gt;</code>, <code>aria-label</code>, <code>aria-describedby</code>)</li>
+                        <li>The item that is in error is identified in text (e.g., "Error: Password field").</li>
+                        <li>The error is described to the user in text (e.g., "The Password you entered is incorrect.").</li>
                     </ul>
                 </li>
-                <li>The error is described to the user in text. Options include:
+            </ol>
+
+            <h3>Mobile</h3>
+            <p>Using VoiceOver or TalkBack, follow the Desktop Web procedure.</p>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.3301.3301[33010101].link | prepend: baseurl }}">{{ site.data.3301.3301[33010101].name }}.</a></li>
+                <li><a href="{{ site.data.3301.3301[33010102].link | prepend: baseurl }}">{{ site.data.3301.3301[33010102].name }}.</a></li>
+                <li><a href="{{ site.data.3301.3301[33010103].link | prepend: baseurl }}">{{ site.data.3301.3301[33010103].name }}.</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+                <li>Screen reader</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
                     <ul>
-                        <li>Visible text on the screen</li>
-                        <li>Alternative text on an image</li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G83">G83: Providing text descriptions to identify required fields that were not completed</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G84">G84: Providing a text description when the user provides information that is not in the list of allowed values</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G85">G85: Providing a text description when user input falls outside the required format or values</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G139">G139: Creating a mechanism that allows users to jump to errors</a></li>
                     </ul>
                 </li>
-            </ul>
-        </li>
-    </ol>
+                <li>ARIA:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA2">ARIA2: Identifying a required field with the aria-required property</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA21">ARIA21: Using aria-invalid to Indicate An Error Field</a></li>
+                    </ul>
+                </li>
+                <li>JavaScript:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR32">SCR32: Providing client-side validation and adding error text via the DOM</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF5">PDF5: Indicating required form controls in PDF forms</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF22">PDF22: Indicating when user input falls outside the required format or values in PDF forms</a></li>
+                    </ul>
+                </li>
+             </ul>
 
-    <h3>Mobile</h3>
-    <p>Using VoiceOver or TalkBack, follow the Desktop Web procedure.</p>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Mobile Web.</p>
-
-    <h2>PDF Test Procedure</h2>
-    <p>Follow the procedure for Desktop Web.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3301.3301[33010101].link | prepend: baseurl }}">{{ site.data.3301.3301[33010101].name }}</a>.</li>
-        <li><a href="{{ site.data.3301.3301[33010102].link | prepend: baseurl }}">{{ site.data.3301.3301[33010102].name }}</a>.</li>
-        <li><a href="{{ site.data.3301.3301[33010103].link | prepend: baseurl }}">{{ site.data.3301.3301[33010103].name }}</a>.</li>
-        <li><a href="{{ site.data.3301.3301[33010104].link | prepend: baseurl }}">{{ site.data.3301.3301[33010104].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+            <h3>Additional Information</h3>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G83">G83: Providing text descriptions to identify required fields that were not completed</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G84">G84: Providing a text description when the user provides information that is not in the list of allowed values</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G85">G85: Providing a text description when user input falls outside the required format or values</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G139">G139: Creating a mechanism that allows users to jump to errors</a></li>
+                <li><a href="https://www.deque.com/blog/anatomy-of-accessible-forms-error-messages/">Deque: The Anatomy of Accessible Forms: Error Messages</a></li>
+                <li><a href="https://webaim.org/techniques/formvalidation/">WebAIM: Usable and Accessible Form Validation and Error Recovery</a></li>
             </ul>
-        </li>
-        <li>ARIA:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA2">ARIA2: Identifying a required field with the aria-required property</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA21">ARIA21: Using aria-invalid to Indicate An Error Field</a></li>
-            </ul>
-        </li>
-        <li>JavaScript:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR32">SCR32: Providing client-side validation and adding error text via the DOM</a></li>
-            </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF5">PDF5: Indicating required form controls in PDF forms</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF22">PDF22: Indicating when user input falls outside the required format or values in PDF forms</a></li>
-            </ul>
-        </li>
-     </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://www.deque.com/blog/anatomy-of-accessible-forms-error-messages/">Deque: The Anatomy of Accessible Forms: Error Messages</a></li>
-        <li><a href="https://webaim.org/techniques/formvalidation/">WebAIM: Usable and Accessible Form Validation and Error Recovery</a></li>
-    </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/3301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
