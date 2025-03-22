@@ -38,6 +38,11 @@ css: error-block
                 <h2 class="{{ sc.level }}">Examples</h2>
                 <div>
                     <h3>List of Errors</h3>
+                    <script>
+                        function setFocusToField(id) {
+                            document.getElementById(id).focus();
+                        }
+                    </script>
                     <div class="example">
                         <div class="error-block">
                             <div class="card">
@@ -45,21 +50,21 @@ css: error-block
                                 <div class="subject">
                                     <p><strong>Please correct the following errors:</strong></p>
                                     <ul>
-                                        <li>First Name is required.</li>
-                                        <li>Date of Birth must be in format: mm/dd/yyyy.</li>
+                                        <li><a role="button" onClick="setFocusToField('fname')">First Name is required.</a></li>
+                                        <li><a role="button" onClick="setFocusToField('dob')">Date of Birth must be in format: mm/dd/yyyy.</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <p>All fields are required.</p>
                         <label>First Name:<br>
-                            <input type="text" readonly>
+                            <input type="text" id="fname" readonly>
                         </label>
                         <label>Last Name:<br>
-                            <input type="text" value="Smith" readonly>
+                            <input type="text" id="lname" value="Smith" readonly>
                         </label>
                         <label>Date of Birth:<br>
-                            <input type="text" value="Jan 1 1999" readonly>
+                            <input type="text" id="dob" value="Jan 1 1999" readonly>
                         </label>
                     </div>
 
