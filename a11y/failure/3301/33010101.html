@@ -38,11 +38,7 @@ css: error-block
                 <h2 class="{{ sc.level }}">Examples</h2>
                 <div>
                     <h3>List of Errors</h3>
-                    <script>
-                        function setFocusToField(id) {
-                            document.getElementById(id).focus();
-                        }
-                    </script>
+                    
                     <div class="example">
                         <div class="error-block">
                             <div class="card">
@@ -62,13 +58,20 @@ css: error-block
                                 <input type="text" id="fname" required invalid>
                             </label>
                             <label>Last Name:<br>
-                                <input type="text" id="lname" required value="Smith" readonly>
+                                <input type="text" id="lname" required>
                             </label>
                             <label>Date of Birth:<br>
-                                <input type="text" id="dob" required invalid value="Jan 1 1999">
+                                <input type="text" id="dob" required invalid>
                             </label>
                         </form>
                     </div>
+                    <script>
+                        document.getElementById('lname').value = "Smith";
+                        document.getElementById('dob').value = "Jan 1 1999";
+                        function setFocusToField(id) {
+                            document.getElementById(id).focus();
+                        }
+                    </script>
 
                     <h3>Error Next to Field</h3>
                     <div class="example">
