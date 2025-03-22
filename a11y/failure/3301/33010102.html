@@ -55,37 +55,30 @@ css: error-block
                         <p>All fields are required.</p>
                         <form>
                             <label style="margin-bottom: 10px">First Name:<br>
-                                <input type="text" id="fname" required aria-invalid="true">
+                                <input type="text" id="fname" required aria-invalid="true" readonly>
                             </label>
                             <label style="margin-bottom: 10px">Last Name:<br>
-                                <input type="text" id="lname" required>
+                                <input type="text" id="lname" required value="Smith" readonly>
                             </label>
                             <label>Date of Birth (mm/dd/yyyy):<br>
-                                <input type="text" id="dob" required aria-invalid="true">
+                                <input type="text" id="dob" required aria-invalid="true" value="Jan 1 1999" readonly>
                             </label>
                         </form>
                     </div>
-                    <script>
-                        document.getElementById('lname').value = "Smith";
-                        document.getElementById('dob').value = "Jan 1 1999";
-                        function setFocusToField(id) {
-                            document.getElementById(id).focus();
-                        }
-                    </script>
 
                     <h3>Error Next to Field</h3>
                     <div class="example">
                         <p>All fields are required.</p>
                         <form>
                             <label style="margin-bottom: 10px">First Name:<br>
-                                <input type="text" required aria-invalid="true" aria-describedby="fnameError"><br>
+                                <input type="text" required aria-invalid="true" aria-describedby="fnameError" readonly><br>
                                 <span id="fnameError" class="error-text">First Name is required.</span><br>
                             </label>
                             <label style="margin-bottom: 10px">Last Name:<br>
-                                <input type="text" value="Smith" required>
+                                <input type="text" value="Smith" required readonly>
                             </label>
                             <label>Date of Birth (mm/dd/yyyy):<br>
-                                <input type="text" required aria-invalid="true" aria-describedby="dobError"><br>
+                                <input type="text" required aria-invalid="true" aria-describedby="dobError" value="Jan 1 1999" readonly><br>
                                 <span id="dobError" class="error-text">Date of Birth must be in format: mm/dd/yyyy</span>
                             </label>
                         </form>
@@ -100,10 +93,10 @@ css: error-block
                                 <input type="text" required readonly>
                             </label>
                             <label style="margin-bottom: 10px">Last Name:<br>
-                                <input type="text" value="Smith" required readonly>
+                                <input type="text" value="Smith" required value="Smith" readonly>
                             </label>
                             <label>Date of Birth (mm/dd/yyyy):<br>
-                                <input type="text" required readonly>
+                                <input type="text" required value="Jan 1 1999" readonly>
                             </label>
                             <button onclick="window:alert('Error\nFirst Name is required.\nDate of Birth must be in format: mm/dd/yyyy');">Submit</button>
                         </form>
@@ -117,10 +110,10 @@ css: error-block
                                 <input type="text" required aria-invalid="true" readonly>
                             </label>
                             <label style="margin-bottom: 10px">Last Name:<br>
-                                <input type="text" value="Smith" required readonly>
+                                <input type="text" value="Smith" required value="Smith" readonly>
                             </label>
                             <label style="color: #c00000; font-style: italic;">Date of Birth (mm/dd/yyyy): (Date of Birth must be in required format)<br>
-                                <input type="text" required aria-invalid="true" readonly>
+                                <input type="text" required aria-invalid="true" value="Jan 1 1999" readonly>
                             </label>
                         </form>
                     </div>
