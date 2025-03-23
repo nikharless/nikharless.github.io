@@ -41,18 +41,17 @@ criterion: 2404
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            <h3 id="test1">Can the purpose of each link be determined from the link text alone?</h3>
+            <h3 id="test1">Are there links on the page?</h3>
             <ul role="tree" aria-labelledby="test1">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the purpose of the link be determined from the link text together with the text in the same sentence, paragraph, list item, or table cell?</span>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the purpose of each link be determined from the link text alone?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the purpose of the link be determined from the link text together with additional text provided by <code>aria-label</code> or <code>aria-labelledby</code> attributes?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the purpose of the link be determined from the link text together with the text in the same sentence, paragraph, list item, table cell, or table header?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the purpose of the link ambiguous to users in general?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="na"><span><strong>Yes</strong>; This checkpoint is not applicable.</span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is an image the only content in the link?</span>
                                             <ul role="group">
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image have alternate text which describes the link purpose?</span>
@@ -70,6 +69,7 @@ criterion: 2404
                         </li>
                     </ul>
                 </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
         </div>
 
@@ -77,9 +77,9 @@ criterion: 2404
             <h2>Web Test Procedure</h2>
             <h3>Desktop</h3>
             <ol>
-                <li>For each link on the page, check if the visible link text (or text alternative for an image link or image map link) alone is sufficient to describe the purpose of the link.</li>
-                <li>If not, check if the visible link text (or text alternative for an image link or image map link) plus the text in the same sentence, paragraph, list item, table cell, or table header for the cell is sufficient to describe the purpose of the link.</li>
-                <li>If not, check the accessible name for the link to see if the visible link text has been supplemented by an ARIA or <code>title</code> attribute or screen-reader-only text.</li>
+                <li>Use ANDI: links/buttons to identify all links.</li>
+                <li>For each link on the page, check if the ANDI Output is sufficient to describe the purpose of the link.</li>
+                <li>If not, check if the ANDI Output plus the text in the same sentence, paragraph, list item, table cell, or table header for the cell is sufficient to describe the purpose of the link.</li>
             </ol>
 
             <h3>Desktop Screen Reader</h3>
@@ -149,6 +149,7 @@ criterion: 2404
         <div class="block">
             <h2>Testing Tools</h2>
             <ul>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
                 <li>Screen reader</li>
             </ul>
         </div>
