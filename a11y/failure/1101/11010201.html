@@ -12,56 +12,77 @@ checkpoint: 110102
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>All meaningful images must have a text alternative that conveys the same information as the image.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The meaningful <code>&lt;img&gt;</code> does not have a text alternative.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Add a text alternative which describes the purpose of the meaningful image using one of the following methods:
-                <ul>
-                    <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
-                    <li>Add an <code>aria-label</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
-                    <li>Add a <code>title</code> attribute to the <code>&lt;img&gt;</code> tag</li>
-                </ul>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>JPG Image</h3>
-                <p><img src="{{ baseurl }}/assets/images/11010201-mars-rover.png" alt="An artist's concept of a NASA Mars Exploration Rover on the surface of Mars."></p>
-    <pre><code>&lt;img 
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>All meaningful images must have a text alternative that conveys the same information as the image.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The meaningful <code>&lt;img&gt;</code> does not have a text alternative.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Add a text alternative which describes the purpose of the meaningful image using one of the following methods:
+                    <ul>
+                        <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
+                        <li>Add an <code>aria-label</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
+                        <li>Add a <code>title</code> attribute to the <code>&lt;img&gt;</code> tag</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>PNG Image</h3>
+                    <p><img src="{{ baseurl }}/assets/images/11010201-mars-rover.png" alt="An artist's concept of a NASA Mars Exploration Rover on the surface of Mars."></p>
+        <pre><code>&lt;img 
     src="mars-rover.png" 
     <strong>alt="An artist's concept of a NASA Mars Exploration Rover on the surface of Mars."</strong>&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Blind and visually impaired users need to have a text alternative to meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not get the information conveyed by the image.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F65">F65: Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H65">H65: Using the title attribute to identify form controls when the label element cannot be used</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>Decorative images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                        <li><strong>CAPTCHA images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110105].link | prepend: baseurl }}">{{ site.data.1101.1101[110105].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                        <li><strong>Cognitively impaired:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F65">F65: Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H65">H65: Using the title attribute to identify form controls when the label element cannot be used</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
