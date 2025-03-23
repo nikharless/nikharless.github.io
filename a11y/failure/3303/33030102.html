@@ -12,72 +12,94 @@ checkpoint: 330301
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Error messages indicate the expected range of data values.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Error message does not indicate the expected range of data values.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Include the expected range of data values in the error message.
-
-            <h3>PDF</h3>
-                <p>Indicate the required range of values for the field.</p>
-                <ol>
-                    <li>Select <strong>All tools</strong> > <strong>Prepare a form</strong>.</li>
-                    <li>Activate a form field to open the Properties dialog.</li>
-                    <li>In the <strong>Format</strong> tab, select <strong>Special</strong> from the <strong>Select format category</strong> drop-down.</li>
-                    <li>Under Special Options, select <strong>Arbitrary Mask</strong>.</li>
-                    <li>In the field below the selection, enter the correct mask. See "Format text and dropdown fields" in <a href="https://helpx.adobe.com/acrobat/using/pdf-form-field-properties.html">Customize PDF form fields</a> for examples of what to enter for the mask.</li>
-                </ol>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>HTML</h3>
-                <div class="example">
-                    <form>
-                        <label for="rn">Roll Number 
-                            <input id="rn" type="number" aria-invalid="true" aria-describedby="err" value="123">
-                        </label>
-                        <div id="err" style="color: red;">Please lengthen this text to 10 characters or more (you are currently using 3 characters).</div>
-                    </form>
-                </div>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Error messages indicate the expected range of data values.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Error message does not indicate the expected range of data values.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Include the expected range of data values in the error message.
 
                 <h3>PDF</h3>
-                <div class="example">
-                    <img src="{{ baseurl }}/assets/images/33030102-pdf-1.png" style="max-width: 480px;" alt="Screenshot of Text Field Properties dialog Format tab with Arbitrary Mask selected and A entered in the mask field">
+                    <p>Indicate the required range of values for the field.</p>
+                    <ol>
+                        <li>Select <strong>All tools</strong> > <strong>Prepare a form</strong>.</li>
+                        <li>Activate a form field to open the Properties dialog.</li>
+                        <li>In the <strong>Format</strong> tab, select <strong>Special</strong> from the <strong>Select format category</strong> drop-down.</li>
+                        <li>Under Special Options, select <strong>Arbitrary Mask</strong>.</li>
+                        <li>In the field below the selection, enter the correct mask. See "Format text and dropdown fields" in <a href="https://helpx.adobe.com/acrobat/using/pdf-form-field-properties.html">Customize PDF form fields</a> for examples of what to enter for the mask.</li>
+                    </ol>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>HTML</h3>
+                    <div class="example">
+                        <form>
+                            <label for="rn">Roll Number 
+                                <input id="rn" type="number" aria-invalid="true" aria-describedby="err" value="123" readonly>
+                            </label>
+                            <div id="err" style="color: red;">Please lengthen this text to 10 characters or more (you are currently using 3 characters).</div>
+                        </form>
+                    </div>
+
+                    <h3>PDF</h3>
+                    <div class="example">
+                        <img src="{{ baseurl }}/assets/images/33030102-pdf-1.png" style="max-width: 480px;" alt="Screenshot of Text Field Properties dialog Format tab with Arbitrary Mask selected and A entered in the mask field">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>People can address errors faster and with reduced effort.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G84">G84: Providing a text description when the user provides information that is not in the list of allowed values</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G85">G85: Providing a text description when user input falls outside the required format or values</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G177">G177: Providing suggested correction text</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF22">PDF22: Indicating when user input falls outside the required format or values in PDF forms</a></li>
-                    <li><a href="https://helpx.adobe.com/acrobat/using/pdf-form-field-properties.html">Customize PDF form fields</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>No error detection:</strong><br>
+                            The form does not check for errors.</li>
+                        <li><strong>Existence of errors:</strong><br>
+                            File under <a href="{{ site.data.3301.3301[3301].link | prepend: baseurl }}">{{ site.data.3301.3301[3301].name }}.</a></li>
+                        <li><strong>Programmatic association:</strong><br>
+                            File under <a href="{{ site.data.1301.1301[1301].link | prepend: baseurl }}">{{ site.data.1301.1301[1301].name }}.</a></li>
+                        <li><strong>Assistive technology notification:</strong><br>
+                            File under <a href="{{ site.data.4103.4103[4103].link | prepend: baseurl }}">{{ site.data.4103.4103[4103].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> Users are aware of the nature of the error and how to crrect it.</li>
+                        <li><strong>Mobility impaired:</strong> Users can reduce the number of times they need to change an input value.</li>
+                        <li><strong>Cognitively impaired:</strong> Users are able to understand how to successfully complete a form.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G84">G84: Providing a text description when the user provides information that is not in the list of allowed values</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G85">G85: Providing a text description when user input falls outside the required format or values</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G177">G177: Providing suggested correction text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF22">PDF22: Indicating when user input falls outside the required format or values in PDF forms</a></li>
+                        <li><a href="https://helpx.adobe.com/acrobat/using/pdf-form-field-properties.html">Customize PDF form fields</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/3303checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
