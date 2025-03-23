@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 11010207
+current: 11010206
 criterion: 1101
 checkpoint: 110102
 ---
@@ -18,67 +18,36 @@ checkpoint: 110102
     <div class="failure">
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>When the meaningful image changes dynamically, the text alternative updates to match.</div>
+    		<div>The text alternative for the meaningful image includes all meaningful text.</div>
     	</div>
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>When the meaningful image changes dynamically, the text alternative does not update to match.</div>
+    		<div>The meaningful image has a text alternative, but it does not include all meaningful text in the image.</div>
     	</div>
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Code the page to update the text alternative whenever the image changes.</div>
+    		<div>Change the text alternative to include all the meaningful text in the image.</div>
     	</div>
         <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
+            <h2 class="{{ sc.level }}">Examples</h2>
             <div>
-                <h3>Button Changes Image</h3>
-                <p>This button uses JavaScript to change the <code>alt</code> value along with the displayed image.</p>
-
-                <img src="{{ baseurl }}/assets/images/11010207-fish.png" id="myImage" alt="Blue fish" width="320px"><br>
-                <input type="button" onclick="changeImage()" value="Change Image">
-                <script>
-                  function changeImage() {
-                    var image=document.getElementById('myImage');
-                    if (image.src.match("{{ baseurl }}/assets/images/11010207-trout.png")) {
-                      image.src="{{ baseurl }}/assets/images/11010207-fish.png";
-                      image.alt="Blue fish";
-                    } else {
-                      image.src="{{ baseurl }}/assets/images/11010207-trout.png";
-                      image.alt="Trout";
-                    }
-                  }
-                </script>
-
-                <pre><code>&lt;img src="fish.png" id="myImage" alt="Blue fish"&gt;
-&lt;input type="button" onclick="changeImage()" value="Change Image"&gt;
-&lt;script&gt;
-    function changeImage() {
-        var image=document.getElementById('myImage');
-        if (image.src.match("trout.png")) {
-            image.src="fish.png";
-            <strong>image.alt="Blue fish";</strong>
-        } else {
-            image.src="trout.png";
-            <strong>image.alt="Trout";</strong>
-        }
-    }
-&lt;/script&gt;</code></pre>
+                <p>Describing this image as "Scrabble tiles on a table" leaves out the meaningful text that they spell out.</p>
+                <h3>Photo</h3>
+                <img src="{{ baseurl }}/assets/images/11010206-carpe-diem.jpg" alt="Scrabble tiles on a table that spell out Carpe Diem">
+    <pre><code>&lt;img src="carpe-diem.jpg" <strong>alt="Scrabble tiles on a table that spell out Carpe Diem"</strong>&gt;</code></pre>
             </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Blind and visually impaired users need to have a text alternative for meaningful images so that they can be interpreted by assistive technology such as screen readers and braille devices. If the text alternative does not match the visible image, these users would not have the correct information.</div>
+            <div>Blind and visually impaired users need to have a text alternative that describes all the information conveyed by the image in context.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F20">Failure of Success Criterion 1.1.1 and 4.1.2 due to not updating text alternatives when changes to non-text content occur</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G82">G82: Providing a text alternative that identifies the purpose of the non-text content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G94">G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content</a></li>
+                    <li><a href="https://uxdesign.cc/how-to-write-an-image-description-2f30d3bf5546">How to write an image description</a></li>
                 </ul>
             </div>
         </div>

@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 11010208
+current: 11010207
 criterion: 1101
 checkpoint: 110102
 ---
@@ -18,43 +18,67 @@ checkpoint: 110102
     <div class="failure">
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>All meaningful images must have a text alternative that conveys the same information as the image.</div>
+    		<div>When the meaningful image changes dynamically, the text alternative updates to match.</div>
     	</div>
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The meaningful image does not have a text alternative.</div>
+    		<div>When the meaningful image changes dynamically, the text alternative does not update to match.</div>
     	</div>
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Add Alternate Text to the image either in the source document or directly in the PDF.
-                <h3>Adobe PDF</h3>
-                <ol>
-                    <li>Select <strong>Accessibility > Reading Order</strong></li>
-                    <li>Right-click on the image and select <strong>Edit Alternate Text...</strong>.</li>
-                    <li>In the dialog, for <strong>Alternate Text</strong>, enter text which describes the function or destination of the control.</li>
-                </ol>
-            </div>
+    		<div>Code the page to update the text alternative whenever the image changes.</div>
     	</div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Example</h2>
             <div>
-                <h3>Image with Caption</h3>
-                <img src="{{ baseurl }}/assets/images/11010208-clock.png" width="400" alt="Screenshot of Alternate Text dialog for an image of a clock">
-                <p>This image has a &lt;Caption&gt; nested within the &lt;Figure&gt; tag. While this is the recommended structure, screen readers do not appear to read both the Alternate Text and the Caption, but the PDF fails the accessibility check if there is no Alternate Text. A workaround is to include the Caption text in the Alternate Text.</p>
+                <h3>Button Changes Image</h3>
+                <p>This button uses JavaScript to change the <code>alt</code> value along with the displayed image.</p>
+
+                <img src="{{ baseurl }}/assets/images/11010207-fish.png" id="myImage" alt="Blue fish" width="320px"><br>
+                <input type="button" onclick="changeImage()" value="Change Image">
+                <script>
+                  function changeImage() {
+                    var image=document.getElementById('myImage');
+                    if (image.src.match("{{ baseurl }}/assets/images/11010207-trout.png")) {
+                      image.src="{{ baseurl }}/assets/images/11010207-fish.png";
+                      image.alt="Blue fish";
+                    } else {
+                      image.src="{{ baseurl }}/assets/images/11010207-trout.png";
+                      image.alt="Trout";
+                    }
+                  }
+                </script>
+
+                <pre><code>&lt;img src="fish.png" id="myImage" alt="Blue fish"&gt;
+&lt;input type="button" onclick="changeImage()" value="Change Image"&gt;
+&lt;script&gt;
+    function changeImage() {
+        var image=document.getElementById('myImage');
+        if (image.src.match("trout.png")) {
+            image.src="fish.png";
+            <strong>image.alt="Blue fish";</strong>
+        } else {
+            image.src="trout.png";
+            <strong>image.alt="Trout";</strong>
+        }
+    }
+&lt;/script&gt;</code></pre>
             </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Blind and visually impaired users need to have a text alternative to meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not get the information conveyed by the image.</div>
+            <div>Blind and visually impaired users need to have a text alternative for meaningful images so that they can be interpreted by assistive technology such as screen readers and braille devices. If the text alternative does not match the visible image, these users would not have the correct information.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF1">PDF1: Applying text alternatives to images with the Alt entry in PDF documents</a></li>
-                    <li><a href="https://helpx.adobe.com/acrobat/using/editing-document-structure-content-tags.html#add_alternate_text_and_supplementary_information_to_tags">Add alternate text and supplementary information to tags</a></li>
-                    <li><a href="https://www.pdf-accessible.com/wp-content/uploads/2015/01/making-PDF-accessible-Acrobat.pdf">Making PDF documents accessible with Adobe Acrobat Pro</a> (PDF)</li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F20">Failure of Success Criterion 1.1.1 and 4.1.2 due to not updating text alternatives when changes to non-text content occur</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G82">G82: Providing a text alternative that identifies the purpose of the non-text content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
                 </ul>
             </div>
         </div>

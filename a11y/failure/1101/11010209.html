@@ -1,0 +1,65 @@
+---
+layout: default
+current: 11010208
+criterion: 1101
+checkpoint: 110102
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign cp=site.data.1101.1101[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
+
+    <div class="failure">
+    	<div class="row block">
+    		<h2 class="{{ sc.level }}">Expected Result</h2>
+    		<div>All meaningful images must have a text alternative that conveys the same information as the image.</div>
+    	</div>
+    	<div class="row block">
+    		<h2 class="{{ sc.level }}">Actual Result</h2>
+    		<div>The meaningful image does not have a text alternative.</div>
+    	</div>
+    	<div class="row block">
+    		<h2 class="{{ sc.level }}">Solution</h2>
+    		<div>Add Alternate Text to the image either in the source document or directly in the PDF.
+                <h3>Adobe PDF</h3>
+                <ol>
+                    <li>Select <strong>Accessibility > Reading Order</strong></li>
+                    <li>Right-click on the image and select <strong>Edit Alternate Text...</strong>.</li>
+                    <li>In the dialog, for <strong>Alternate Text</strong>, enter text which describes the function or destination of the control.</li>
+                </ol>
+            </div>
+    	</div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Example</h2>
+            <div>
+                <h3>Image with Caption</h3>
+                <img src="{{ baseurl }}/assets/images/11010208-clock.png" width="400" alt="Screenshot of Alternate Text dialog for an image of a clock">
+                <p>This image has a &lt;Caption&gt; nested within the &lt;Figure&gt; tag. While this is the recommended structure, screen readers do not appear to read both the Alternate Text and the Caption, but the PDF fails the accessibility check if there is no Alternate Text. A workaround is to include the Caption text in the Alternate Text.</p>
+            </div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Why It's Important</h2>
+            <div>Blind and visually impaired users need to have a text alternative to meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not get the information conveyed by the image.</div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF1">PDF1: Applying text alternatives to images with the Alt entry in PDF documents</a></li>
+                    <li><a href="https://helpx.adobe.com/acrobat/using/editing-document-structure-content-tags.html#add_alternate_text_and_supplementary_information_to_tags">Add alternate text and supplementary information to tags</a></li>
+                    <li><a href="https://www.pdf-accessible.com/wp-content/uploads/2015/01/making-PDF-accessible-Acrobat.pdf">Making PDF documents accessible with Adobe Acrobat Pro</a> (PDF)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% include checkpoints/1101checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
