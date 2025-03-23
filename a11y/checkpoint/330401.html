@@ -11,164 +11,153 @@ criterion: 3304
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
 
 
-    </div>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If the user can carry out legal or financial transactions, submit test responses, or change or delete stored data, the submissions must be reversible, verifiable, or confirmable.</li>
-    </ul>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If the user can carry out legal or financial transactions, submit test responses, or change or delete stored data, the submissions must be reversible, verifiable, or confirmable.</li>
+            </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to be able to check, confirm, or reverse transactions so that I can avoid serious consequences of mistakes.</div>
+            <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to be able to check, confirm, or reverse transactions so that I can avoid serious consequences of mistakes.</div>
 
-    <div class="success"><strong>Success:</strong> If you were a user with a disability, when submitting transactions with serious consequences, you would have the opportunity to check, confirm, or reverse the transaction.</div>
+            <div class="success"><strong>Success:</strong> If you were a user with a disability, when submitting transactions with serious consequences, you would have the opportunity to check, confirm, or reverse the transaction.</div>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/js/tree.js"></script>
-    <h3 id="test1">Does the page functionality cause transactions with serious consequences to occur?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the page cause legal commitments or financial transactions to occur?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the data entered by the user checked for input errors and the user given the opportunity to correct them?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Does the page contain form elements?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does submitting the form result in legal commitments or financial transactions?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the user given the opportunity to review, confirm, and correct information before finalizing the transaction?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the data entered by the user checked for input errors and the user given the opportunity to correct them?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the submission reversible?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the user given the opportunity to review, confirm, and correct information before finalizing the transaction?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="{{ site.data.3304.3304[33040101].link | prepend: baseurl }}">{{ site.data.3304.3304[33040101].name }}</a>.</span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the submission reversible?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="{{ site.data.3304.3304[33040101].link | prepend: baseurl }}">{{ site.data.3304.3304[33040101].name }}.</a></span></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                    </ul>
-                </li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the page cause user-controllable data to be changed or deleted?</span>
-                    <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user given the opportunity to confirm the action before finalizing it?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does submitting the form cause user-controllable data to be changed or deleted?</span>
                             <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the submission reversible?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user given the opportunity to confirm the action before finalizing it?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="{{ site.data.3304.3304[33040102].link | prepend: baseurl }}">{{ site.data.3304.3304[33040102].name }}</a>.</span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the submission reversible?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="{{ site.data.3304.3304[33040102].link | prepend: baseurl }}">{{ site.data.3304.3304[33040102].name }}.</a></span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does submitting the form submit test answers?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user given the opportunity to review and confirm the answers before final submission?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="{{ site.data.3304.3304[33040103].link | prepend: baseurl }}">{{ site.data.3304.3304[33040103].name }}.</a></span></li>
+                                            </ul>
+                                        </li>
+                                        <li role="treeitem" class="na"><span><strong>No</strong>;</span> This checkpoint is not applicable.</li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the web page submit test answers?</span>
-                            <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user given the opportunity to review and confirm the answers before final submission?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="{{ site.data.3304.3304[33040103].link | prepend: baseurl }}">{{ site.data.3304.3304[33040103].name }}</a>.</span></li>
-                                    </ul>
-                                </li>
-                                <li role="treeitem" class="na"><span><strong>No</strong>;</span></li>
+                    </ul>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Locate any forms which can cause an important legal or financial obligations, change or delete user-controlled data, or submit test answers.</li>
+                <li>Complete the form with intentional errors and submit it.</li>
+                <li>Verify that the transaction can be either:
+                    <ul>
+                        <li>Reversed by the user, <strong>OR</strong>
+                            <ul>
+                                <li>Instructions are provided explaining how to reverse or cancel the transaction.</li>
+                                <li>A keyboard-only user can reverse or cancel the transaction.</li>
+                            </ul>
+                        </li>
+                        <li>Verified by the user, <strong>OR</strong>
+                            <ul>
+                                <li>Data entered by the user is provided for review before final submission, and the user is able to make changes to this data.</li>
+                            </ul>
+                        </li>
+                        <li>Confirmed by the user
+                            <ul>
+                                <li>A mechanism (such as a checkbox) is provided for the user to confirm the transaction.</li>
+                                <li>Validate that if the checkbox is left unchecked, the transaction is not processed.</li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-            </ul>
-        <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-    </ul>
+            </ol>
 
-    </div>
+            <h3>Mobile</h3>
+            <p>Using VoiceOver or TalkBack, follow the Desktop Web procedure.</p>
+        </div>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Locate any pages where a user action can cause an important legal, financial, test/exam or unrecoverable/unchangeable user data transaction to occur.</li>
-        <li>Verify that the transaction can be either:
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li>Reversed by the user, <strong>OR</strong>
+                <li><a href="{{ site.data.3304.3304[33040101].link | prepend: baseurl }}">{{ site.data.3304.3304[33040101].name }}.</a></li>
+                <li><a href="{{ site.data.3304.3304[33040102].link | prepend: baseurl }}">{{ site.data.3304.3304[33040102].name }}.</a></li>
+                <li><a href="{{ site.data.3304.3304[33040103].link | prepend: baseurl }}">{{ site.data.3304.3304[33040103].name }}.</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Screen reader</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
                     <ul>
-                        <li>Instructions are provided explaining how to reverse or cancel the transaction.</li>
-                        <li>A keyboard-only user can reverse or cancel the transaction.</li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G98">G98: Providing the ability for the user to review and correct answers before submitting</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G99">G99: Providing the ability to recover deleted information</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G155">G155: Providing a checkbox in addition to a submit button</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G164">G164: Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G168">G168: Requesting confirmation to continue with selected action</a></li>
                     </ul>
                 </li>
-                <li>Verified by the user, <strong>OR</strong>
+                <li>JavaScript:
                     <ul>
-                        <li>Data entered by the user is provided for review before final submission, and the user is able to make changes to this data.</li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
                     </ul>
                 </li>
-                <li>Confirmed by the user
-                    <ul>
-                        <li>A mechanism (such as a checkbox) is provided for the user to confirm the transaction.</li>
-                        <li>Validate that if the checkbox is left unchecked, the transaction is not processed.</li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ol>
-
-    <h3>Mobile</h3>
-    <p>Using VoiceOver or TalkBack, follow the Desktop Web procedure.</p>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Mobile Web.</p>
-
+             </ul>
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3304.3304[33040101].link | prepend: baseurl }}">{{ site.data.3304.3304[33040101].name }}</a>.</li>
-        <li><a href="{{ site.data.3304.3304[33040102].link | prepend: baseurl }}">{{ site.data.3304.3304[33040102].name }}</a>.</li>
-        <li><a href="{{ site.data.3304.3304[33040103].link | prepend: baseurl }}">{{ site.data.3304.3304[33040103].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G98">G98: Providing the ability for the user to review and correct answers before submitting</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G99">G99: Providing the ability to recover deleted information</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G155">G155: Providing a checkbox in addition to a submit button</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G164">G164: Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G168">G168: Requesting confirmation to continue with selected action</a></li>
-            </ul>
-        </li>
-        <li>JavaScript:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
-            </ul>
-        </li>
-     </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-    </ul>
-    </div>
-</div>
     {% include checkpoints/3304checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
