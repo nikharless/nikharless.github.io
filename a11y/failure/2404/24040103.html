@@ -3,8 +3,6 @@ layout: default
 current: 24040103
 criterion: 2404
 checkpoint: 240401
-guideline: operable
-
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2404.2404[page.current] %}
@@ -14,54 +12,71 @@ guideline: operable
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The purpose of the link can be determined from the link text along with its immediate context without having to leave the link.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The purpose of the link cannot be determined without leaving the link.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <h3>Adobe Acrobat Pro</h3>
-                <ol>
-                    <li>Locate the link in the Tags panel.</li>
-                    <li>Right-click the &lt;Link&gt; tag or open the Options menu and select <strong>Properties...</strong>.</li>
-                    <li>In the Object Properties dialog, select the <strong>Tag</strong> tab.</li>
-                    <li>Enter descriptive link text in the <strong>Alternate Description for Links</strong> field.</li>
-                </ol>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>The purpose of the PDF link can be determined from the link text along with its immediate context without having to leave the link.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The purpose of the PDF link cannot be determined without leaving the link.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <h3>Adobe Acrobat Pro</h3>
+                    <ol>
+                        <li>Locate the link in the Tags panel.</li>
+                        <li>Right-click the &lt;Link&gt; tag or open the Options menu and select <strong>Properties...</strong>.</li>
+                        <li>In the Object Properties dialog, select the <strong>Tag</strong> tab.</li>
+                        <li>Enter descriptive link text in the <strong>Alternate Description for Links</strong> field.</li>
+                    </ol>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <img src="{{ baseurl }}/assets/images/24040103-pdf-link-alt-text.png" alt="Screenshot of Adobe Acrobat Object Properties dialog Tag tab with Alternate Description for Links field highlighted" style="max-width: 480px;">   
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <img src="{{ baseurl }}/assets/images/24040103-pdf-link-alt-text.png" alt="Screenshot of Adobe Acrobat Object Properties dialog Tag tab with Alternate Description for Links field highlighted" style="max-width: 480px;">   
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Buttons</strong>:<br>
+                            File under <a href="{{ site.data.2406.2406[2406].link | prepend: baseurl }}">{{ site.data.2406.2406[2406].name }}.</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Users with visual and cognitive disabilities can navigate more easily.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G53">G53: Identifying the purpose of a link using link text combined with the text of the enclosing sentence</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G91">G91: Providing link text that describes the purpose of a link</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF11">PDF11: Providing links and link text using the Link annotation and the /Link structure element in PDF documents</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF13">PDF13: Providing replacement text using the /Alt entry for links in PDF documents</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> Users can determine the purpose of the link without having to explore around the page.</li>
+                        <li><strong>Motion impaired:</strong> Users can skip links they are not interested in without having to visit the links to see what the content is.</li>
+                        <li><strong>Cognitively impaired:</strong> Users can avoid confusion caused by having to navigate to and from links to see what the content is.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G53">G53: Identifying the purpose of a link using link text combined with the text of the enclosing sentence</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G91">G91: Providing link text that describes the purpose of a link</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF11">PDF11: Providing links and link text using the Link annotation and the /Link structure element in PDF documents</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF13">PDF13: Providing replacement text using the /Alt entry for links in PDF documents</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2404checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
