@@ -12,52 +12,73 @@ checkpoint: 110102
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>All meaningful images must have a text alternative that conveys the same information as the image.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>The meaningful emoji does not have a text alternative.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Solution</h2>
-            <div>Add a text alternative which describes the purpose of the meaningful emoji using the following method:
-                <ol>
-                    <li>Add a <code>&lt;span&gt;</code> tag around the emoji.</li>
-                    <li>Add <code>role="img"</code> to the <code>&lt;span&gt;</code>.</li>
-                    <li>Add an <code>aria-label</code> attribute to the <code>&lt;span&gt;</code>.</li>
-                    <li>Set the value to a text alternative that makes sense in context.</li>
-                </ol>
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>All meaningful images must have a text alternative that conveys the same information as the image.</div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>World Peace</h3>
-                <p><span role="img" aria-label="World">🌏</span><span role="img" aria-label="peace">☮️</span></p>
-    <pre><code>&lt;span <strong>role="img" aria-label="World"</strong>&gt;🌏&lt;/span&gt;&lt;span <strong>role="img" aria-label="Peace"&gt;☮️&lt;/span&gt;</strong></code></pre>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>The meaningful emoji does not have a text alternative.</div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Blind and visually impaired users need to have a text alternative to meaningful images so that they can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users might not get the information intended by the emojis.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H86">H86: Providing text alternatives for emojis, emoticons, ASCII art, and leetspeak</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>Add a text alternative which describes the purpose of the meaningful emoji using the following method:
+                    <ol>
+                        <li>Add a <code>&lt;span&gt;</code> tag around the emoji.</li>
+                        <li>Add <code>role="img"</code> to the <code>&lt;span&gt;</code>.</li>
+                        <li>Add an <code>aria-label</code> attribute to the <code>&lt;span&gt;</code>.</li>
+                        <li>Set the value to a text alternative that makes sense in context.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>World Peace</h3>
+                    <p><span role="img" aria-label="World">🌏</span><span role="img" aria-label="peace">☮️</span></p>
+        <pre><code>&lt;span <strong>role="img" aria-label="World"</strong>&gt;🌏&lt;/span&gt;&lt;span <strong>role="img" aria-label="Peace"&gt;☮️&lt;/span&gt;</strong></code></pre>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>Decorative images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                        <li><strong>CAPTCHA images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110105].link | prepend: baseurl }}">{{ site.data.1101.1101[110105].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                        <li><strong>Cognitively impaired:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H86">H86: Providing text alternatives for emojis, emoticons, ASCII art, and leetspeak</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
