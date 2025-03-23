@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 11010205
+current: 11010206
 criterion: 1101
 checkpoint: 110102
 ---
@@ -12,53 +12,74 @@ checkpoint: 110102
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The text alternative for the meaningful image conveys the same information as the image in context.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The meaningful image has a text alternative, but it does not convey the same information as the image in context.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Change the text alternative to text which sufficiently conveys the same information as the image in context.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <p>The image in the following examples might literally be described as "an old photograph of a mustached man in a cap driving an old car with no roof or windows". However, that may not convey the information intended by its context.</p>
-                <h3>In an article about old cars</h3>
-                <img src="{{ baseurl }}/assets/images/11010205-itala.jpg" alt="1907 Itala motor car">
-    <pre><code>&lt;img src="itala.jpg" <strong>alt="1907 Itala motor car"</strong>&gt;</code></pre>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>The text alternative for the meaningful image conveys the same information as the image in context.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The meaningful image has a text alternative, but it does not convey the same information as the image in context.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Change the text alternative to text which sufficiently conveys the same information as the image in context.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <p>The image in the following examples might literally be described as "an old photograph of a mustached man in a cap driving an old car with no roof or windows". However, that may not convey the information intended by its context.</p>
+                    <h3>In an article about old cars</h3>
+                    <img src="{{ baseurl }}/assets/images/11010205-itala.jpg" alt="1907 Itala motor car">
+        <pre><code>&lt;img src="itala.jpg" <strong>alt="1907 Itala motor car"</strong>&gt;</code></pre>
 
-                <h3>In an article about Prince Scipione Borghese</h3>
-                <img src="{{ baseurl }}/assets/images/11010205-itala.jpg" alt="Borghese's chauffeur, Ettore Guizzardi">
-    <pre><code>&lt;img src="itala.jpg" <strong>alt="Borghese's chauffeur, Ettore Guizzardi"</strong>&gt;</code></pre>
+                    <h3>In an article about Prince Scipione Borghese</h3>
+                    <img src="{{ baseurl }}/assets/images/11010205-itala.jpg" alt="Borghese's chauffeur, Ettore Guizzardi">
+        <pre><code>&lt;img src="itala.jpg" <strong>alt="Borghese's chauffeur, Ettore Guizzardi"</strong>&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Blind and visually impaired users need to have a text alternative that describes the information intended to be conveyed by the image in context.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F13">Failure of Success Criterion 1.1.1 and 1.4.1 due to having a text alternative that does not include information that is conveyed by color differences in the image</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F30">Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G94">G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content</a></li>
-                    <li><a href="https://uxdesign.cc/how-to-write-an-image-description-2f30d3bf5546">How to write an image description</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>Decorative images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                        <li><strong>CAPTCHA images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110105].link | prepend: baseurl }}">{{ site.data.1101.1101[110105].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                        <li><strong>Cognitively impaired:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F13">Failure of Success Criterion 1.1.1 and 1.4.1 due to having a text alternative that does not include information that is conveyed by color differences in the image</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F30">Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G94">G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content</a></li>
+                        <li><a href="https://uxdesign.cc/how-to-write-an-image-description-2f30d3bf5546">How to write an image description</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
