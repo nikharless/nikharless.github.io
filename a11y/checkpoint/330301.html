@@ -11,140 +11,136 @@ criterion: 3303
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
 
 
-    </div>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Error feedback must provide suggestions for error correction, if possible.</li>
-    </ul>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Error feedback must provide suggestions for error correction, if possible.</li>
+            </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with a cognitive disability, I want error messages to provide suggestions for how to correct the error so that I know how to correct it.</div>
+            <div class="userstory"><strong>User Story:</strong> As a user with a cognitive disability, I want error messages to provide suggestions for how to correct the error so that I know how to correct it.</div>
 
-    <div class="success"><strong>Success:</strong> If you were a user with a cognitive disability, when an error was automatically detected, suggestions would be provided to help you correct the error.</div>
+            <div class="success"><strong>Success:</strong> If you were a user with a cognitive disability, when an error was automatically detected, suggestions would be provided to help you correct the error.</div>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/js/tree.js"></script>
-    <h3 id="test1">Are there interactions which trigger errors on the page?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When an error occurs, does the error message provide suggestions for how to correct the error?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the previously entered data re-displayed?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Are there interactions which trigger error checking on the page?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When an error occurs, does the error message provide suggestions for how to correct the error?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Would re-displaying the data jeopardize the security or purpose of the content?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the previously entered data re-displayed?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3303.3303[33030104].link | prepend: baseurl }}">{{ site.data.3303.3303[33030104].name }}</a>.</span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Would providing suggestions jeopardize the security or purpose of the content?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the input in error require a specific data format?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3303.3303[33030101].link | prepend: baseurl }}">{{ site.data.3303.3303[33030101].name }}</a>.</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the input in error require an entry from a specific range of values?</span>
-                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3303.3303[33030102].link | prepend: baseurl }}">{{ site.data.3303.3303[33030102].name }}</a>.</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3303.3303[33030103].link | prepend: baseurl }}">{{ site.data.3303.3303[33030103].name }}</a>.</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Would re-displaying the data jeopardize the security or purpose of the content?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3303.3303[33030104].link | prepend: baseurl }}">{{ site.data.3303.3303[33030104].name }}.</a></span></li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is it possible to know suggestions for correction?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Would providing suggestions jeopardize the security or purpose of the content?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="na"><span><strong>Yes</strong>; This checkpoint is not applicable.</span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the input in error require a specific data format?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3303.3303[33030101].link | prepend: baseurl }}">{{ site.data.3303.3303[33030101].name }}.</a></span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the input in error require an entry from a specific range of values?</span>
+                                                     <ul role="group">
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3303.3303[33030102].link | prepend: baseurl }}">{{ site.data.3303.3303[33030102].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3303.3303[33030103].link | prepend: baseurl }}">{{ site.data.3303.3303[33030103].name }}.</a></span></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Use ANDI to locate any forms in the content.</li>
+                <li>Find all instructions and cues (textual and graphical) that are related to form components (e.g., groupings, order of completion, special conditions, qualifiers, format instructions, etc.).
+                <li>Deliberately trigger errors by entering user input that falls outside the required format or values or leaving required fields blank, and submit the form.</li>
+                <li>If an input error is automatically detected, verify that the error message gives a suggestion about how to fix it.</li>
+            </ol>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Locate any forms in the content.</li>
-        <li>Deliberately trigger errors by entering user input that falls outside the required format or values, and submit the form.</li>
-        <li>If an input error is automatically detected, verify that the error message gives a suggestion about how to fix it.</li>
-    </ol>
+            <h3>Mobile</h3>
+            <p>Using VoiceOver or TalkBack, follow the Desktop Web procedure.</p>
+        </div>
 
-    <h3>Mobile</h3>
-    <p>Using VoiceOver or TalkBack, follow the Desktop Web procedure.</p>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Mobile Web.</p>
-
-    <h2>PDF Test Procedure</h2>
-    <p>Follow the procedure for Desktop Web.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="/a11y/failure/3303/33030101.html">3.3.3.1.1 Error message does not indicate expected data format.</a></li>
-        <li><a href="/a11y/failure/3303/33030102.html">3.3.3.1.2 Error message does not indicate expected range of data values.</a></li>
-        <li><a href="/a11y/failure/3303/33030103.html">3.3.3.1.3 Error message does not provide suggestions for correcting the error.</a></li>
-        <li><a href="/a11y/failure/3303/33030104.html">3.3.3.1.4 Previously entered data is not redisplayed.</a></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G84">G84: Providing a text description when the user provides information that is not in the list of allowed values</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G85">G85: Providing a text description when user input falls outside the required format or values</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G177">G177: Providing suggested correction text</a></li>
+                <li><a href="{{ site.data.3303.3303[33030101].link | prepend: baseurl }}">{{ site.data.3303.3303[33030101].name }}.</a></li>
+                <li><a href="{{ site.data.3303.3303[33030102].link | prepend: baseurl }}">{{ site.data.3303.3303[33030102].name }}.</a></li>
+                <li><a href="{{ site.data.3303.3303[33030103].link | prepend: baseurl }}">{{ site.data.3303.3303[33030103].name }}.</a></li>
+                <li><a href="{{ site.data.3303.3303[33030104].link | prepend: baseurl }}">{{ site.data.3303.3303[33030104].name }}.</a></li>
             </ul>
-        </li>
-        <li>ARIA:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
-            </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF22">PDF22: Indicating when user input falls outside the required format or values in PDF forms</a></li>
-            </ul>
-        </li>
-     </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://www.deque.com/blog/anatomy-of-accessible-forms-error-messages/">Deque: The Anatomy of Accessible Forms: Error Messages</a></li>
-        <li><a href="https://webaim.org/techniques/formvalidation/">WebAIM: Usable and Accessible Form Validation and Error Recovery</a></li>
-    </ul>
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+                <li>Screen reader</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G84">G84: Providing a text description when the user provides information that is not in the list of allowed values</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G85">G85: Providing a text description when user input falls outside the required format or values</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G177">G177: Providing suggested correction text</a></li>
+                    </ul>
+                </li>
+                <li>ARIA:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF22">PDF22: Indicating when user input falls outside the required format or values in PDF forms</a></li>
+                    </ul>
+                </li>
+             </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://www.deque.com/blog/anatomy-of-accessible-forms-error-messages/">Deque: The Anatomy of Accessible Forms: Error Messages</a></li>
+                <li><a href="https://webaim.org/techniques/formvalidation/">WebAIM: Usable and Accessible Form Validation and Error Recovery</a></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/3303checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
