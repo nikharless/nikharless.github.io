@@ -14,77 +14,94 @@ guideline: operable
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The purpose of the link can be determined from the image alternative text along with its immediate context without having to leave the link.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The purpose of the link cannot be determined without leaving the link.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Add alternative text to the image, describing the link purpose (<code>alt</code>, <code>title</code>, <code>aria-label</code>, or <code>aria-labelledby</code>), <strong>OR</strong></li>
-                    <li>Add alternative text to the link describing the link purpose (<code>aria-label</code> or <code>aria-labelledby</code>), <strong>OR</strong></li>
-                    <li>If the image has accompanying visible text, combine the image and the text into a single link and use <code>alt=""</code> on the image.</li>
-                </ul>      
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>The purpose of the link can be determined from the image alternative text along with its immediate context without having to leave the link.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The purpose of the link cannot be determined without leaving the link.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Add alternative text to the image, describing the link purpose (<code>alt</code>, <code>title</code>, <code>aria-label</code>, or <code>aria-labelledby</code>), <strong>OR</strong></li>
+                        <li>Add alternative text to the link describing the link purpose (<code>aria-label</code> or <code>aria-labelledby</code>), <strong>OR</strong></li>
+                        <li>If the image has accompanying visible text, combine the image and the text into a single link and use <code>alt=""</code> on the image.</li>
+                    </ul>      
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Image Alternative Text</h3>
+                    <p><a href="#"><img src="{{ baseurl }}/assets/images/110101-github-mark.png" width="60" height="60" alt="GitHub home"></a></p>
+                    <pre><code>&lt;a href="http://github.com"&gt;
+      &lt;img src="github-mark.png" <strong>alt="GitHub home"</strong>&gt;
+    &lt;/a&gt;</code></pre>
+
+                    <h3>Link Alternative Text</h3>
+                    <p><a href="#" aria-label="Add to Cart"><img src="{{ baseurl }}/assets/images/110101-shopping-cart.png" alt=""></a></p>
+        <pre><code>&lt;a href="#" <strong>aria-label="Add to Cart"</strong>&gt;
+      &lt;img src="shopping-cart.png" alt=""&gt;
+    &lt;/a&gt;</code></pre>
+
+                    <h3>Image and Text in Single Link</h3>
+                    <p><a href="#"><img src="{{ baseurl }}/assets/images/110101-pdf-icon_60.png" width="24" height="24" alt=""> Download the PDF User Guide</a></p>
+        <pre><code>&lt;a href="user-guide.pdf"&gt;
+      &lt;img src="pdf-icon.png" <strong>alt=""</strong>&gt; Download the PDF User Guide
+    &lt;/a&gt;</code></pre>
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Image Alternative Text</h3>
-                <p><a href="#"><img src="{{ baseurl }}/assets/images/110101-github-mark.png" width="60" height="60" alt="GitHub home"></a></p>
-                <pre><code>&lt;a href="http://github.com"&gt;
-  &lt;img src="github-mark.png" <strong>alt="GitHub home"</strong>&gt;
-&lt;/a&gt;</code></pre>
-
-                <h3>Link Alternative Text</h3>
-                <p><a href="#" aria-label="Add to Cart"><img src="{{ baseurl }}/assets/images/110101-shopping-cart.png" alt=""></a></p>
-    <pre><code>&lt;a href="#" <strong>aria-label="Add to Cart"</strong>&gt;
-  &lt;img src="shopping-cart.png" alt=""&gt;
-&lt;/a&gt;</code></pre>
-
-                <h3>Image and Text in Single Link</h3>
-                <p><a href="#"><img src="{{ baseurl }}/assets/images/110101-pdf-icon_60.png" width="24" height="24" alt=""> Download the PDF User Guide</a></p>
-    <pre><code>&lt;a href="user-guide.pdf"&gt;
-  &lt;img src="pdf-icon.png" <strong>alt=""</strong>&gt; Download the PDF User Guide
-&lt;/a&gt;</code></pre>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Buttons</strong>:<br>
+                            File under <a href="{{ site.data.2406.2406[2406].link | prepend: baseurl }}">{{ site.data.2406.2406[2406].name }}.</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Users with visual and cognitive disabilities can navigate more easily.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F89">F89: Failure of Success Criteria 2.4.4, 2.4.9 and 4.1.2 due to not providing an accessible name for an image which is the only content in a link</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G53">G53: Identifying the purpose of a link using link text combined with the text of the enclosing sentence</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G91">G91: Providing link text that describes the purpose of a link</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/html/H2">H2: Combining adjacent image and text links for the same resource</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H24">H24: Providing text alternatives for the area elements of image maps</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H30">H30: Providing link text that describes the purpose of a link for anchor elements</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H77">H77: Identifying the purpose of a link using link text combined with its enclosing list item</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H78">H78: Identifying the purpose of a link using link text combined with its enclosing paragraph</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H79">H79: Identifying the purpose of a link in a data table using the link text combined with its enclosing table cell and associated table header cells</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H81">H81: Identifying the purpose of a link in a nested list using link text combined with the parent list item under which the list is nested</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C7">C7: Using CSS to hide a portion of the link text</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA7">ARIA7: Using aria-labelledby for link purpose</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA8">ARIA8: Using aria-label for link purpose</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> Users can determine the purpose of the link without having to explore around the page.</li>
+                        <li><strong>Motion impaired:</strong> Users can skip links they are not interested in without having to visit the links to see what the content is.</li>
+                        <li><strong>Cognitively impaired:</strong> Users can avoid confusion caused by having to navigate to and from links to see what the content is.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F89">F89: Failure of Success Criteria 2.4.4, 2.4.9 and 4.1.2 due to not providing an accessible name for an image which is the only content in a link</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G53">G53: Identifying the purpose of a link using link text combined with the text of the enclosing sentence</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G91">G91: Providing link text that describes the purpose of a link</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/html/H2">H2: Combining adjacent image and text links for the same resource</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H24">H24: Providing text alternatives for the area elements of image maps</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H30">H30: Providing link text that describes the purpose of a link for anchor elements</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H77">H77: Identifying the purpose of a link using link text combined with its enclosing list item</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H78">H78: Identifying the purpose of a link using link text combined with its enclosing paragraph</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H79">H79: Identifying the purpose of a link in a data table using the link text combined with its enclosing table cell and associated table header cells</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H81">H81: Identifying the purpose of a link in a nested list using link text combined with the parent list item under which the list is nested</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C7">C7: Using CSS to hide a portion of the link text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA7">ARIA7: Using aria-labelledby for link purpose</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA8">ARIA8: Using aria-label for link purpose</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2404checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
