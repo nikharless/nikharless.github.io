@@ -35,6 +35,9 @@ criterion: 4102
                 <li>Addition or removal of content, including other form components</li>
                 <li>Button name changes</li> 
             </ul>
+
+            <h3>Links</h3>
+            <p>This checkpoint only applies to links which change the content of the current page, such as with a single-page application (SPA). It does not apply to links which reload the current page or load another page.</p>
         </div>
 
         <div class="block">
@@ -44,7 +47,7 @@ criterion: 4102
             <ul>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Automatic content changes must be communicated to assistive technologies.</li>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content changes to forms must be communicated to assistive technologies.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> User-initiated content changes must be communicated to assistive technologies.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content changes initiated by links must be communicated to assistive technologies.</li>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a dialog is used to alert the user of a content change, it must provide sufficient description of the content change.</li>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a focus change is used to alert the user of a content change, it must provide sufficient description of the content change.</li>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a status message or other ARIA Live Region is used to alert the user of a content change, it must provide sufficient description of the content change.</li>
@@ -103,9 +106,14 @@ criterion: 4102
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                                                 <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020302].link | prepend: baseurl }}">{{ site.data.4102.4102[41020302].name }}.</a></span></li>
                                             </ul>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content change the result of user action?</span>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content change the result of clicking a link?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020303].link | prepend: baseurl }}">{{ site.data.4102.4102[41020303].name }}.</a></span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the content change sufficiently described by the link that triggered the change?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020303].link | prepend: baseurl }}">{{ site.data.4102.4102[41020303].name }}.</a></span></li>
+                                                    </ul>
+                                                </li>
                                                 <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020307].link | prepend: baseurl }}">{{ site.data.4102.4102[41020307].name }}</a>.</span></li>
                                             </ul>
                                         </li>
@@ -124,8 +132,10 @@ criterion: 4102
             <ol>
                 <li>Using a screen reader, interact with every user interface component in the page.</li>
                 <li>Verify that the screen reader notifies the user of any changes to states, properties, or values.</li>
+                <li>Activate any links which change the content of the current page.</li>
+                <li>Verify that the screen reader notifies the user of the content change.</li>
                 <li>Note any automatic updates to the page content.</li>
-                <li>Verify that the screen reader notifies the user of any changes to page content, both automatic and user-initiated.</li>
+                <li>Verify that the screen reader notifies the user of the content change.</li>
             </ol>
         </div>
 
