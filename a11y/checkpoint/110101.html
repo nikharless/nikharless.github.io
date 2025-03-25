@@ -141,34 +141,58 @@ criterion: 1101
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            <h3 id="test1">Are there images on the page which function as interactive controls?</h3>
+            <h3 id="test1">Are there images on the page which function as interactive components (links or buttons)?</h3>
             <ul role="tree" aria-labelledby="test1">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image have a text alternative?</span>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the image part of a link or button along with text?</span>
                     <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the image part of a link along with text?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image have a text alternative?</span>
                             <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative repeat the text that it is programmatically associated with?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative repeat the text already within the link or button?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the text alternative necessary to understand the function of the control?</span>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; The image is redundant. Test under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the text alternative accurately describe the purpose of the image?</span>
                                             <ul role="group">
-                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently describe the function of the control?</span>
-                                                    <ul role="group">
-                                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010107].link | prepend: baseurl }}">{{ site.data.1101.1101[11010107].name }}.</a></span></li>
-                                                    </ul>
-                                                </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></span></li>
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010108].link | prepend: baseurl }}">{{ site.data.1101.1101[11010108].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a text alternative necessary to understand the control's purpose?</span>
-                            </ul>
-                        </li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a text alternative necessary to understand the control's purpose?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the image have meaning beyond the accompanying text?</span>
                                     <ul role="group">
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the image in an <code>&lt;img&gt;</code> element?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010101].link | prepend: baseurl }}">{{ site.data.1101.1101[11010101].name }}.</a></span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;svg&gt;</code> element?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010102].link | prepend: baseurl }}">{{ site.data.1101.1101[11010102].name }}.</a></span></li>
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image a CSS background image?</span>
+                                                            <ul role="group">
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010104].link | prepend: baseurl }}">{{ site.data.1101.1101[11010104].name }}.</a></span></li>
+                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010107].link | prepend: baseurl }}">{{ site.data.1101.1101[11010107].name }}.</a></span></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; The image is redundant. Test under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the image have a text alternative?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative accurately describe the purpose of the image?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010108].link | prepend: baseurl }}">{{ site.data.1101.1101[11010108].name }}.</a></span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the containing link or button have a text alternative?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;img&gt;</code> element?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010101].link | prepend: baseurl }}">{{ site.data.1101.1101[11010101].name }}.</a></span></li>
                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;svg&gt;</code> element?</span>
@@ -177,10 +201,20 @@ criterion: 1101
                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;input type="image"&gt;</code> element?</span>
                                                             <ul role="group">
                                                                 <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010103].link | prepend: baseurl }}">{{ site.data.1101.1101[11010103].name }}.</a></span></li>
-                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image a CSS background element for an interactive element?</span>
+                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image a CSS background image?</span>
                                                                     <ul role="group">
                                                                         <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010104].link | prepend: baseurl }}">{{ site.data.1101.1101[11010104].name }}.</a></span></li>
-                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; Add a text alternative.</span></li>
+                                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an image map <code>&lt;area&gt;</code> element?</span>
+                                                                            <ul role="group">
+                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010105].link | prepend: baseurl }}">{{ site.data.1101.1101[11010105].name }}.</a></span></li>
+                                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in a server-side image map?</span>
+                                                                                    <ul role="group">
+                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010106].link | prepend: baseurl }}">{{ site.data.1101.1101[11010106].name }}.</a></span></li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010107].link | prepend: baseurl }}">{{ site.data.1101.1101[11010107].name }}.</a></span></li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
                                                                     </ul>
                                                                 </li>
                                                             </ul>
@@ -189,46 +223,21 @@ criterion: 1101
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                     </ul>
                                 </li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
 
-            <h3 id="test2">Is there an image map on the page?</h3> 
+            <h3 id="test2">Are there functional images which change dynamically (e.g., a button that changes from Play to Pause)?</h3>
             <ul role="tree" aria-labelledby="test2">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it a client-side image map with an <code>&lt;area&gt;</code> tag?</span>
-                    <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the <code>&lt;area&gt;</code> tag have a descriptive text alternative?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010105].link | prepend: baseurl }}">{{ site.data.1101.1101[11010105].name }}.</a></span></li>
-                            </ul>
-                        </li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an alternative to the image map, such as a list of links?</span>
-                            <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image map have a short text alternative summarizing its purpose?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></span></li>
-                                    </ul>
-                                </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010106].link | prepend: baseurl }}">{{ site.data.1101.1101[11010106].name }}.</a></span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
-            </ul>
-
-            <h3 id="test3">Are there functional images which change dynamically (e.g., a button that changes from Play to Pause)?</h3>
-            <ul role="tree" aria-labelledby="test3">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative change to match the current functional image?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010207].link | prepend: baseurl }}">{{ site.data.1101.1101[11010207].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010210].link | prepend: baseurl }}">{{ site.data.1101.1101[11010210].name }}.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
