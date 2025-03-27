@@ -12,58 +12,60 @@ checkpoint: 110101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The custom control is labeled with only a CSS background image, but the image does not have a text alternative.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Add a text alternative which describes the purpose of the functional image using the following method:
-                <ul>
-                    <li>Add an <code>aria-label</code> attribute to the container tag</li>
-                </ul>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Custom Button</h3>
-                <style>
-                    #action {
-                        background-image: url("{{ baseurl }}/assets/images/11010103-submit.png");
-                        width: 113px;
-                        height: 36px;
-                    }
-                </style>
-                <div tabindex="0" role="button" id="action" aria-label="Submit"></div>
-    <pre><code>&lt;style&gt;
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>If a control contains only an image AND the control itself doesn't have alternative text, the image must have alternative text which describes the destination or function.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The custom control contains only a CSS background image, but the control does not have alternative text.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Add a text alternative which describes the purpose of the functional image using one of the following methods:
+                    <ul>
+                        <li>Add an <code>aria-label</code> attribute to the control element's tag, <strong>OR</strong></li>
+                        <li>Add an <code>aria-labelledby</code> attribute to the control element's tag and set the value to the <code>id</code> of the text used as a label, <strong>OR</strong></li>
+                        <li>Change the background image to an actual image element (e.g., <code>&lt;img&gt;</code>) and give the image alternative text according to the appropriate checkpoint.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>Custom Button</h3>
+                    <style>
+                        #action {
+                            background-image: url("{{ baseurl }}/assets/images/11010103-submit.png");
+                            width: 113px;
+                            height: 36px;
+                        }
+                    </style>
+                    <div tabindex="0" role="button" id="action" aria-label="Submit"></div>
+                    <pre><code>&lt;style&gt;
     #action {
         background-image: url("submit.png");
     }
 &lt;/style&gt;
 &lt;div tabindex="0" role="button" id="action" <strong>aria-label="Submit"</strong>&gt;&lt;/div&gt;</code></pre>
-                <h3>Font Awesome CSS Pseudo-element</h3>
-                <p>Icon fonts are commonly used in CSS pseudo-elements.</p>
-                <style>
-                    .fb::before {
-                        display: inline-block;
-                        text-rendering: auto;
-                        -webkit-font-smoothing: antialiased;
-                        font: var(--fa-font-brands);
-                        font-size: 48px;
-                        content: "\f09a";
-                    }
-                </style>
-                <p><a href="https://www.facebook.com/niksebastianartist/"><span class="fb fa-brands fa-facebook" aria-label="Nik's Facebook Page"></span></a></p>
-                <pre><code>&lt;style&gt;
+                    <h3>Font Awesome CSS Pseudo-element</h3>
+                    <p>Icon fonts are commonly used in CSS pseudo-elements.</p>
+                    <style>
+                        .fb::before {
+                            display: inline-block;
+                            text-rendering: auto;
+                            -webkit-font-smoothing: antialiased;
+                            font: var(--fa-font-brands);
+                            font-size: 48px;
+                            content: "\f09a";
+                        }
+                    </style>
+                    <p><a href="https://www.facebook.com/niksebastianartist/"><span class="fb fa-brands fa-facebook" aria-label="Nik's Facebook Page"></span></a></p>
+                    <pre><code>&lt;style&gt;
     .fb::before {
         display: inline-block;
         text-rendering: auto;
@@ -73,24 +75,46 @@ checkpoint: 110101
     }
 &lt;/style&gt;
 &lt;p&gt;&lt;a href="#"&gt;&lt;span class="fb fa-brands fa-facebook" <strong>aria-label="Nik's Facebook Page"</strong>&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Blind and visually impaired users need to have a text alternative to functional images so that they can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not know what the link or control does.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F3">Failure of Success Criterion 1.1.1 due to using CSS to include images that convey important information</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>Decorative images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                        <li><strong>CAPTCHA images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110105].link | prepend: baseurl }}">{{ site.data.1101.1101[110105].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                        <li><strong>Cognitively impaired:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F3">Failure of Success Criterion 1.1.1 due to using CSS to include images that convey important information</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

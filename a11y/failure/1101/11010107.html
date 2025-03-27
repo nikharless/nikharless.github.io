@@ -12,48 +12,79 @@ checkpoint: 110101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The text alternative for the functional image describes the purpose of the control.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The functional image has a text alternative, but it does not describe the purpose of the control.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Change the text alternative to describe the purpose of the image.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Search Button</h3>
-                <p>A text alternative such as "magnifying glass" would be inappropriate for this control, because it doesn't describe the function.</p>
-                <p><input type="image" name="submit" src="{{ baseurl }}/assets/images/11010107-search.png" alt="Search"></p>
-    <pre><code>&lt;input type="image" src="submit.png" <strong>alt="Search"</strong>&gt;</code></pre>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>
+                    If a link or button contains only an image AND the link or button itself doesn't have alternative text, the image must have alternative text which describes the destination or function.
+                </div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>
+                    The link or button contains only an image, but the image does not have alternative text and the link or button does not have an accessible name.
+                </div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Add a text alternative which describes the purpose of the functional image using one of the following methods:
+                    <ul>
+                        <li>Add an <code>aria-label</code> attribute to the image element's tag, <strong>OR</strong></li>
+                        <li>Add an <code>aria-labelledby</code> attribute to the image element's tag, set to the <code>id</code> value of the text to use as a label.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>Image as Link</h3>
+                    <p><a href="#"><img src="{{ baseurl }}/assets/images/11010101-BeaverCountyLogo.png" alt="Beaver County, Pennsylvania. Divided by rivers, united by people"></a></p>
+        <pre><code>&lt;a href="https://www.beavercountypa.gov/"&gt;
+      &lt;img 
+        src="BeaverCountyLogo.png" 
+        <strong>alt="Beaver County, Pennsylvania. Divided by rivers, united by people"</strong>&gt;
+    &lt;/a&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Blind and visually impaired users need to have a text alternative that describes the function of the control so that they know what it does. The literal description of the image is irrelevant.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F13">Failure of Success Criterion 1.1.1 and 1.4.1 due to having a text alternative that does not include information that is conveyed by color differences in the image</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F30">Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)</a></li>
-                    <li><a href="https://webaim.org/techniques/alttext/">WebAIM: Alternative Text</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>Decorative images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                        <li><strong>CAPTCHA images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110105].link | prepend: baseurl }}">{{ site.data.1101.1101[110105].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                        <li><strong>Cognitively impaired:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

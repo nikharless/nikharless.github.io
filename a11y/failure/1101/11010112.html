@@ -12,52 +12,73 @@ checkpoint: 110101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>If a control is labeled with only an image, the image must have a text alternative which describes the function or destination of the control.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The control is labeled with only an image, but the image does not have Alternate Text.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Add Alternate Text to the image either in the source document or directly in the PDF.
-                <h3>Adobe PDF</h3>
-                <ol>
-                    <li>Select <strong>Accessibility > Reading Order</strong></li>
-                    <li>Right-click on the image and select <strong>Edit Alternate Text...</strong>.</li>
-                    <li>In the dialog, for <strong>Alternate Text</strong>, enter text which describes the function or destination of the control.</li>
-                </ol>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>If a control is labeled with only an image, the image must have a text alternative which describes the function or destination of the control.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The control is labeled with only an image, but the image does not have Alternate Text.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Add Alternate Text to the image either in the source document or directly in the PDF.
+                    <h3>Adobe PDF</h3>
+                    <ol>
+                        <li>Select <strong>Accessibility > Reading Order</strong></li>
+                        <li>Right-click on the image and select <strong>Edit Alternate Text...</strong>.</li>
+                        <li>In the dialog, for <strong>Alternate Text</strong>, enter text which describes the function or destination of the control.</li>
+                    </ol>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>Image as Link</h3>
+                    <img src="{{ baseurl }}/assets/images/11010110-search-button.png" alt="Screenshot of Alternate Text dialog for a search button in Acrobat Pro. The alt text is Search document.">
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Image as Link</h3>
-                <img src="{{ baseurl }}/assets/images/11010110-search-button.png" alt="Screenshot of Alternate Text dialog for a search button in Acrobat Pro. The alt text is Search document.">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>Decorative images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                        <li><strong>CAPTCHA images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110105].link | prepend: baseurl }}">{{ site.data.1101.1101[110105].name }}.</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Blind and visually impaired users need to have a text alternative to functional images so that they can be interpreted by assistive technology such as screen readers and braille devices. Without a text alternative, these users would not know what the link or control does.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF1">PDF1: Applying text alternatives to images with the Alt entry in PDF documents</a></li>
-                    <li><a href="https://helpx.adobe.com/acrobat/using/editing-document-structure-content-tags.html#add_alternate_text_and_supplementary_information_to_tags">Add alternate text and supplementary information to tags</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                        <li><strong>Cognitively impaired:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF1">PDF1: Applying text alternatives to images with the Alt entry in PDF documents</a></li>
+                        <li><a href="https://helpx.adobe.com/acrobat/using/editing-document-structure-content-tags.html#add_alternate_text_and_supplementary_information_to_tags">Add alternate text and supplementary information to tags</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

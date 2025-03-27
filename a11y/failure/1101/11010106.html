@@ -12,63 +12,82 @@ checkpoint: 110101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>A server-side image map is used, but there is no text alternative for the links.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ol>
-                    <li>Add an <code>&lt;alt&gt;</code> attribute to the <code>&lt;img&gt;</code> tag summarizing the purpose of the image map.</li>
-                    <li>Add an alternate list of text links containing all the same links in the image map.</li>
-                </ol>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Server-Side Image Map</h3>
-                <a href="#"><img ismap src="{{ baseurl }}/assets/images/11010106-map_640.png" alt="World Map"></a>
-                <ul>
-                    <li><a href="#">North America</a></li>
-                    <li><a href="#">South America</a></li>
-                    <li>etc.</li>
-                </ul>
-                <pre><code>&lt;a href="ismap.map"&gt;&lt;img ismap src="map.jpg" alt="World Map"&gt;&lt;/a&gt;
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Server-side image maps must have an alternative list of accessible links.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>A server-side image map is used, but there is no text alternative for the links.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ol>
+                        <li>Add an <code>&lt;alt&gt;</code> attribute to the <code>&lt;img&gt;</code> tag summarizing the purpose of the image map.</li>
+                        <li>Add an alternate list of text links containing all the same links in the image map.</li>
+                    </ol>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>Server-Side Image Map</h3>
+                    <a href="#"><img ismap src="{{ baseurl }}/assets/images/11010106-map_640.png" alt="World Map"></a>
+                    <ul>
+                        <li><a href="#">North America</a></li>
+                        <li><a href="#">South America</a></li>
+                        <li>etc.</li>
+                    </ul>
+                    <pre><code>&lt;a href="ismap.map"&gt;&lt;img ismap src="map.jpg" alt="World Map"&gt;&lt;/a&gt;
 &lt;ul&gt;
     &lt;li&gt;<strong>&lt;a href="north-america.html"&gt;North America&lt;/a&gt;</strong>&lt;/li&gt;
     &lt;li&gt;<strong>&lt;a href="south-america.html"&gt;South America&lt;/a&gt;</strong>&lt;/li&gt;
     ...
 &lt;/ul&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>
-                <p>Blind and visually impaired users need to have a text alternative to functional images so that they can be interpreted by assistive technology such as screen readers and braille devices.</p>
-                <p>Server-side image maps send the coordinates of mouse clicks to be calculated server-side, after which a link is returned. There is nothing for keyboard users to focus on, and no way to add a text alternative to the areas of the image map.</p>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>Decorative images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                        <li><strong>CAPTCHA images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110105].link | prepend: baseurl }}">{{ site.data.1101.1101[110105].name }}.</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://osec.doc.gov/webresources/accessibility/ruleef.htm">Server-Side and Client-Side Image Maps</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <p>Server-side image maps send the coordinates of mouse clicks to be calculated server-side, after which a link is returned. There is nothing for keyboard users to focus on, and no way to add a text alternative to the areas of the image map.</p>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                        <li><strong>Cognitively impaired:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://osec.doc.gov/webresources/accessibility/ruleef.htm">Server-Side and Client-Side Image Maps</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

@@ -1,0 +1,118 @@
+---
+layout: default
+current: 11010110
+criterion: 1101
+checkpoint: 110101
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign cp=site.data.1101.1101[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>When the functional image changes dynamically, the text alternative updates to match.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>When the functional image changes dynamically, the text alternative does not update to match.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Code the page to update the text alternative whenever the image changes.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>Play/Pause Button</h3>
+                    <p>This button uses JavaScript and CSS to change the <code>aria-labelledby</code> value along with the displayed image. The text alternative in this case is attached to the swapped images, and <code>aria-labelledby</code> is used to label the control with the image.</p>
+
+                    <div class="player" role="button" tabindex="0" aria-labelledby="play">
+                        <img id="play" src="{{ baseurl }}/assets/images/11010109-play.png" class="play" aria-hidden="true" alt="Play"> 
+                        <img id="pause" src="{{ baseurl }}/assets/images/11010109-pause.png" class="pause" aria-hidden="true" alt="Pause">
+                    </div>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+                    
+                    <script id="rendered-js">
+                        $( document ).ready(function() {
+    /* on('select')? */
+                            jQuery('.player').on('click', function () {
+
+                                if(jQuery(this).hasClass('active')) {
+                                    jQuery(this).removeClass('active');
+                                    jQuery(this).attr("aria-labelledby","play");
+                                } else {
+                                    jQuery(this).addClass('active');
+                                    jQuery(this).attr("aria-labelledby","pause");
+                                }
+                            });
+                            jQuery('.player').on('keypress', function (e) {
+                                if(e.which==13) {
+
+                                    if(jQuery(this).hasClass('active')) {
+                                        jQuery(this).removeClass('active');
+                                        jQuery(this).attr("aria-labelledby","play");
+                                    } else {
+                                        jQuery(this).addClass('active');
+                                        jQuery(this).attr("aria-labelledby","pause");
+                                    }
+                                }
+                            });
+                        });
+                    </script>
+
+                    <pre><code>&lt;div class="player" role="button" tabindex="0" <strong>aria-labelledby="play"</strong>&gt;
+    &lt;img id="play" src="play.png" class="play" aria-hidden="true" alt="Play"&gt;
+    &lt;img id="pause" src="pause.png" class="pause" aria-hidden="true" alt="Pause"&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>Decorative images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                        <li><strong>CAPTCHA images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110105].link | prepend: baseurl }}">{{ site.data.1101.1101[110105].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                        <li><strong>Cognitively impaired:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}{</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F20">Failure of Success Criterion 1.1.1 and 4.1.2 due to not updating text alternatives when changes to non-text content occur</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G82">G82: Providing a text alternative that identifies the purpose of the non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/1101checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
