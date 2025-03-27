@@ -18,11 +18,21 @@ checkpoint: 110101
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>If a control is labeled with only an image, the image must have alternative text which describes the function or destination of the control.</div>
+        		<div>
+                    <ol>
+                        <li>If a link or button contains only an image AND the link or button itself doesn't have alternative text, the image must have alternative text which describes the destination or function, <strong>OR</strong></li>
+                        <li>If a link or button contains both an image and text AND the image adds information not conveyed by the text, the image must have alternate text which conveys the same information as the image.</li>
+                    </ol>
+                </div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The control is labeled with only an &lt;img&gt;, but the image does not have a text alternative and the control does not have an accessible name.</div>
+        		<div>
+                    <ol>
+                        <li>The link or button contains only an &lt;img&gt;, but the image does not have alternative text and the link or button does not have an accessible name.</li>
+                        <li>The link or button contains both an image and text, and the image adds information not conveyed by the text, but the image does not have alternative text.</li>
+                    </ol>
+                </div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
