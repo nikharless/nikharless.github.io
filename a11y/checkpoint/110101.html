@@ -40,21 +40,20 @@ criterion: 1101
 
             <h4>Image as Button</h4>
             <p>This button's function is to add an item to the cart, so this is what the text alternative should convey. Using "Shopping Cart" would be inappropriate, as that does not describe the actual function, and the user would assume that they are going to a page displaying their cart contents.</p>
-            <p><button style="background-color: transparent; border: 0;"><img src="{{ baseurl }}/assets/images/110101-shopping-cart.png" alt="Add to Cart" /></button></p>
-            <pre><code>&lt;button&gt;
+            <p>Because the image is within a <code>&lt;button&gt;</code>, it's best to attach the alternative text to the button rather than the image. This prevents the screen reader from unnecessarily saying "graphic". In this case, the <code>&lt;img&gt;</code> should have a null <code>alt</code> attribute.</p>
+            <p><button aria-label="Add to Cart" style="background-color: transparent; border: 0;"><img src="{{ baseurl }}/assets/images/110101-shopping-cart.png" alt=""></button></p>
+            <pre><code>&lt;button <strong>aria-label="Add to Cart"</strong>&gt;
     &lt;img 
     src="shopping-cart.png" 
-    <strong>alt="Add to Cart"</strong> /&gt;
+    <strong>alt=""</strong>&gt;
 &lt;/button&gt;</code></pre>
 
             <h4>Input Image</h4>
             <p>This button's function is to submit a form and continue to the next step in a process, so this is what the text alternative should convey.</p>
-            <p><input type="image" src="{{ baseurl }}/assets/images/110101-next-arrow_60.png" alt="Submit and continue" /></button></p>
-            <pre><code>&lt;button&gt;
-    &lt;img 
+            <p><input type="image" src="{{ baseurl }}/assets/images/110101-next-arrow_60.png" alt="Submit and continue"></p>
+            <pre><code>&lt;input type="image" 
     src="next-button.png" 
-    <strong>alt="Submit and continue"</strong> /&gt;
-&lt;/button&gt;</code></pre>
+    <strong>alt="Submit and continue"</strong>&gt;</code></pre>
 
            <h4>Client-side Image Map</h4>
             <p>Each circle on this example image is an <code>&lt;area&gt;</code> which is a link. The alt text for each area must describe the target of the link.</p>
