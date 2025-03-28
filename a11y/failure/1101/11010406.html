@@ -12,71 +12,91 @@ checkpoint: 110104
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Decorative or redundant images must be hidden from screen readers.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The decorative or redundant image is not hidden from screen readers.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Set the image as decorative either in the source document or directly in the PDF.
-                <h3>Adobe PDF</h3>
-                <p>In PDF files, decorative elements are tagged as &lt;Artifact&gt;.</p>
-                <p>To find decorative images tagged as &lt;Figure&gt; without alternate text:</p>
-                <ol>
-                    <li>Select <strong>Tools > Accessibility > Accessibility Check</strong>.</li>
-                    <li>Select <strong>Alternate Text and Headings</strong> from the Category drop-down, make sure <strong>Figures require alternate text</strong> is checked, and activate the <strong>Start Checking</strong> button.</li>
-                    <li>In the results, check for failures under <strong>Alternate Text > Figures alternate text</strong>.</li>
-                    <li>Select a figure from the failure list.</li>
-                    <li>Right-click on the figure (or go to the Options menu) and select <strong>Fix</strong> from the menu.</li>
-                    <li>Check the <strong>Decorative figure</strong> checkbox, then activate <strong>Save & Close</strong>.</li>
-                </ol>
-                <p>To manually mark decorative images incorrectly tagged as &lt;Figure&gt; as &lt;Artifact&gt;:</p>
-                <ol>
-                    <li>Locate the decorative image in the Tags panel.</li>
-                    <li>Right-click on the image (or go to the Options menu) and select <strong>Change Tag to Artifact...</strong>.</li>
-                </ol>
-                <p>To mark an untagged image as &lt;Artifact&gt;:</p>
-                <ol>
-                    <li>Locate the decorative image in the PDF document.</li>
-                    <li>Select <strong>Tools > Accessibility > Reading Order</strong>.</li>
-                    <li>Draw a rectangle around the decorative image to select it.</li>
-                    <li>Activate the <strong>Background/Artifact</strong> button in the Reading Order dialog.</li>
-                </ol>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Decorative or redundant images must be hidden from screen readers.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The decorative or redundant image is not hidden from screen readers.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Set the image as decorative either in the source document or directly in the PDF.
+                    <h3>Adobe PDF</h3>
+                    <p>In PDF files, decorative elements are tagged as &lt;Artifact&gt;.</p>
+                    <p>To find decorative images tagged as &lt;Figure&gt; without alternate text:</p>
+                    <ol>
+                        <li>Select <strong>Tools > Accessibility > Accessibility Check</strong>.</li>
+                        <li>Select <strong>Alternate Text and Headings</strong> from the Category drop-down, make sure <strong>Figures require alternate text</strong> is checked, and activate the <strong>Start Checking</strong> button.</li>
+                        <li>In the results, check for failures under <strong>Alternate Text > Figures alternate text</strong>.</li>
+                        <li>Select a figure from the failure list.</li>
+                        <li>Right-click on the figure (or go to the Options menu) and select <strong>Fix</strong> from the menu.</li>
+                        <li>Check the <strong>Decorative figure</strong> checkbox, then activate <strong>Save & Close</strong>.</li>
+                    </ol>
+                    <p>To manually mark decorative images incorrectly tagged as &lt;Figure&gt; as &lt;Artifact&gt;:</p>
+                    <ol>
+                        <li>Locate the decorative image in the Tags panel.</li>
+                        <li>Right-click on the image (or go to the Options menu) and select <strong>Change Tag to Artifact...</strong>.</li>
+                    </ol>
+                    <p>To mark an untagged image as &lt;Artifact&gt;:</p>
+                    <ol>
+                        <li>Locate the decorative image in the PDF document.</li>
+                        <li>Select <strong>Tools > Accessibility > Reading Order</strong>.</li>
+                        <li>Draw a rectangle around the decorative image to select it.</li>
+                        <li>Activate the <strong>Background/Artifact</strong> button in the Reading Order dialog.</li>
+                    </ol>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>Reading Order</h3>
+                    <img src="{{ baseurl }}/assets/images/11010406-pdf-artifact.png" alt="Screenshot of Reading Order dialog with the Background/Artifact button highlighted">
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Reading Order</h3>
-                <img src="{{ baseurl }}/assets/images/11010406-pdf-artifact.png" alt="Screenshot of Reading Order dialog with the Background/Artifact button highlighted">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
+                        <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>CAPTCHA images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110105].link | prepend: baseurl }}">{{ site.data.1101.1101[110105].name }}.</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Blind and visually impaired users want decorative or redundant images hidden so they do not get overwhelmed with unimportant screen reader chatter.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F38">Failure of Success Criterion 1.1.1 due to not marking up decorative images in HTML in a way that allows assistive technology to ignore them</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/pdf/PDF4">PDF4: Hiding decorative images with the Artifact tag in PDF documents</a></li>
-                    <li><a href="https://www.pdfa.org/wp-content/until2016_uploads/2014/06/MatterhornProtocol_1-02.pdf">PDFA: Matterhorn Protocol</a> (PDF)</li>
-                    <li><a href="https://www.pdf-accessible.com/wp-content/uploads/2015/01/making-PDF-accessible-Acrobat.pdf">Making PDF documents accessible with Adobe Acrobat Pro</a> (PDF)</li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users want decorative images hidden so that the images can be ignored by assistive technology such as screen readers and braille devices.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F38">Failure of Success Criterion 1.1.1 due to not marking up decorative images in HTML in a way that allows assistive technology to ignore them</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/pdf/PDF4">PDF4: Hiding decorative images with the Artifact tag in PDF documents</a></li>
+                        <li><a href="https://www.pdfa.org/wp-content/until2016_uploads/2014/06/MatterhornProtocol_1-02.pdf">PDFA: Matterhorn Protocol</a> (PDF)</li>
+                        <li><a href="https://www.pdf-accessible.com/wp-content/uploads/2015/01/making-PDF-accessible-Acrobat.pdf">Making PDF documents accessible with Adobe Acrobat Pro</a> (PDF)</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
