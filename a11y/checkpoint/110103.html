@@ -11,220 +11,213 @@ criterion: 1101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <h3>Example</h3>
+        <div class="block">
+            <h2>Overview</h2>
+            <h3>Example</h3>
 
-    <p>This is a complex image with a short alt text and a link to the long description below it. Note: this is a sample link and is non-functional.</p>
+            <p>This is a complex image with a short alt text and a link to the long description below it. Note: this is a sample link and is non-functional.</p>
 
-    <figure>
-        <img src="{{ baseurl }}/assets/images/110103-constellations_640.png" height="300" width="300" alt="Historical chart of constellations.">
-        <figcaption><a href="#">Follow this link for a description of the chart.</a></figcaption>
-    </figure>
+            <figure>
+                <img src="{{ baseurl }}/assets/images/110103-constellations_640.png" height="300" width="300" alt="Historical chart of constellations.">
+                <figcaption><a href="#">Follow this link for a description of the chart.</a></figcaption>
+            </figure>
+        </div>
 
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" role="img" aria-label="Requirement"></span> = Requirement<br>
+                <span class="fa-solid fa-circle-check" style="color: #28a228;" role="img" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" role="img" aria-label="Requirement"></span> Complex images that cannot be sufficiently described with a short text alternative must also have a long description that fully conveys all the information provided by the image.</li>
+                <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" role="img" aria-label="Requirement"></span> Complex images must have a short descriptive text alternative that summarizes the information provided by the image.</li>
+                <li><span class="fa-solid fa-circle-check" style="color: #28a228;" role="img" aria-label="Best Practice"></span> The short text alternative should reference the location of the long description.</li>
+                <li><span class="fa-solid fa-circle-check" style="color: #28a228;" role="img" aria-label="Best Practice"></span> Short text alternatives for complex images should not include words such as "image" or "graphic". Words like "graph" or "chart" may be used.</li>
+                <li><span class="fa-solid fa-circle-check" style="color: #28a228;" role="img" aria-label="Best Practice"></span> Short text alternatives should be as succinct as possible.</li>
+            </ul>
 
-    </div>
+            <div class="userstory"><strong>User Story:</strong> 
+                <ul>
+                    <li>As a blind screen reader user, I want to hear a short description of the complex image so that I know if I want to explore it further.</li>
+                    <li>As a blind screen reader user, I want to hear a long description of the complex image so that I get all the information it conveys.</li>
+                </ul>
+            </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" role="img" aria-label="Requirement"></span> = Requirement<br>
-        <span class="fa-solid fa-circle-check" style="color: #28a228;" role="img" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" role="img" aria-label="Requirement"></span> Complex images that cannot be sufficiently described with a short text alternative must also have a long description that fully conveys all the information provided by the image.</li>
-        <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" role="img" aria-label="Requirement"></span> Complex images must have a short descriptive text alternative that summarizes the information provided by the image.</li>
-        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" role="img" aria-label="Best Practice"></span> The short text alternative should reference the location of the long description.</li>
-        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" role="img" aria-label="Best Practice"></span> Short text alternatives for complex images should not include words such as "image" or "graphic". Words like "graph" or "chart" may be used.</li>
-        <li><span class="fa-solid fa-circle-check" style="color: #28a228;" role="img" aria-label="Best Practice"></span> Short text alternatives should be as succinct as possible.</li>
-    </ul>
+            <div class="success"><strong>Success:</strong>
+                <ul>
+                    <li>If you could not see the image, when you read it with a screen reader, you would hear a short description of the complex image summarizing its purpose.</li>
+                    <li>If you could not see the image, when you read the page with a screen reader, you could easily find and hear a long description of the complex image which conveys all the information in the image.</li>
+                </ul>
+            </div>
 
-    <div class="userstory"><strong>User Story:</strong> 
-        <ul>
-            <li>As a blind screen reader user, I want to hear a short description of the complex image so that I know if I want to explore it further.</li>
-            <li>As a blind screen reader user, I want to hear a long description of the complex image so that I get all the information it conveys.</li>
-        </ul>
-    </div>
+            <p>Text alternatives for complex images may be provided in context or on a separate page, such as by:</p>
+            <ul>
+                <li>Providing a long description in the form of adjacent text, preferably with a reference in the short text alternative</li>
+                <li>Providing graph information in table format in addition to the complex image</li>
+                <li>Providing a link to a long description, placed immediately adjacent to the complex image</li>
+                <li>Providing a long description that is hidden within a collapsible region</li>
+                <li>Providing a long description in a dialog that is opened by user choice</li>
+                <li>Providing a link to a long description on another page via the <code>longdesc</code> attribute in addition to a visible link to the same</li>
+            </ul>
+        </div>
 
-    <div class="success"><strong>Success:</strong>
-        <ul>
-            <li>If you could not see the image, when you read it with a screen reader, you would hear a short description of the complex image summarizing its purpose.</li>
-            <li>If you could not see the image, when you read the page with a screen reader, you could easily find and hear a long description of the complex image which conveys all the information in the image.</li>
-        </ul>
-    </div>
-
-    <p>Text alternatives for complex images may be provided in context or on a separate page, such as by:</p>
-    <ul>
-        <li>Providing a long description in the form of adjacent text, preferably with a reference in the short text alternative</li>
-        <li>Providing graph information in table format in addition to the complex image</li>
-        <li>Providing a link to a long description, placed immediately adjacent to the complex image</li>
-        <li>Providing a long description that is hidden within a collapsible region</li>
-        <li>Providing a long description in a dialog that is opened by user choice</li>
-        <li>Providing a link to a long description on another page via the <code>longdesc</code> attribute in addition to a visible link to the same</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Are there complex images on the page that cannot be sufficiently described with a short text alternative?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each complex image have a standard short text alternative?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the short text alternative sufficiently summarize the purpose of the complex image?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Are there complex images on the page that cannot be sufficiently described with a short text alternative?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each complex image have a standard short text alternative?</span>
                     <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each complex image also have a long text alternative?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the short text alternative sufficiently summarize the purpose of the complex image?</span>
                             <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the long text alternative provided in context or via an adjacent link to a separate page?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each complex image also have a long text alternative?</span>
                                     <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the long text alternative sufficiently describe all visual complexities and relationships conveyed visually?</span>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the long text alternative provided in context or via an adjacent link to a separate page?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010304].link | prepend: baseurl }}">{{ site.data.1101.1101[11010304].name }}</a></span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the long text alternative sufficiently describe all visual complexities and relationships conveyed visually?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010304].link | prepend: baseurl }}">{{ site.data.1101.1101[11010304].name }}</a></span></li>
+                                                    </ul>
+                                                </li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; Place the long text description in context or via an adjacent link.</span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; Place the long text description in context or via an adjacent link.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010303].link | prepend: baseurl }}">{{ site.data.1101.1101[11010303].name }}</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010303].link | prepend: baseurl }}">{{ site.data.1101.1101[11010303].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010302].link | prepend: baseurl }}">{{ site.data.1101.1101[11010302].name }}</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010302].link | prepend: baseurl }}">{{ site.data.1101.1101[11010302].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010301].link | prepend: baseurl }}">{{ site.data.1101.1101[11010301].name }}</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010301].link | prepend: baseurl }}">{{ site.data.1101.1101[11010301].name }}</a></span></li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> or <a href="https://wave.webaim.org/extension/">WAVE</a> to flag missing text alternatives.</li>
+                <li>Locate each complex image on the page.</li>
+                <li>Verify that each complex image has a short text alternative which summarizes the information conveyed by the image.</li>
+                <li>Verify that a long description has also been provided.</li>
+            </ol>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> or <a href="https://wave.webaim.org/extension/">WAVE</a> to flag missing text alternatives.</li>
-        <li>Locate each complex image on the page.</li>
-        <li>Verify that each complex image has a short text alternative which summarizes the information conveyed by the image.</li>
-        <li>Verify that a long description has also been provided.</li>
-    </ol>
+            <h3>Mobile</h3>
+            <ol>
+                <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features</a>.</li>
+                <li>Navigate to each complex image.</li>
+                <li>Verify that each complex image has a short text alternative which summarizes the information conveyed by the image.</li>
+                <li>Verify that a long description has also been provided.</li>
+            </ol>
 
-    <h3>Mobile</h3>
-    <ol>
-        <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features</a>.</li>
-        <li>Navigate to each complex image.</li>
-        <li>Verify that each complex image has a short text alternative which summarizes the information conveyed by the image.</li>
-        <li>Verify that a long description has also been provided.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <ul>
-        <li>Follow the procedure for Web Mobile.</li>
-    </ul>
-
-    <h2>PDF Test Procedure</h2>
-    <h3>Find missing short text alternatives.</h3>
-
-    <h4>PDF Accessibility Checker</h4>
-    <ol>
-        <li>Run PAC on the PDF.</li>
-        <li>Select the <strong>WCAG</strong> tab and check if <strong>1.3 Adaptable</strong> is marked as a failure.</li>
-        <li>If it is, activate the <strong>Results in Detail</strong> button.</li>
-        <li>Check if <strong>Alternative text for "Figure" structure elements</strong> is marked as a failure.</li>
-    </ol>
-
-    <h4>Adobe Acrobat Pro</h4>
-    <ol>
-        <li>Select <strong>Accessibility > Accessibility Check</strong> in the Task pane to open the Accessibility Checker Options dialog.</li>
-        <li>Select <strong>Alternate Text and Headings</strong> from the Category drop-down, and make sure <strong>Figures require alternate text</strong> is checked.</li>
-    </ol>
-
-    <h3>Verify the text alternatives are sufficient.</h3>
-    <ol>
-        <li>Locate each complex image in the PDF.</li>
-        <li>Verify that each complex image has a short text alternative which summarizes the information conveyed by the image.</li>
-        <li>Verify that a long description has also been provided.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1101.1101[11010301].link | prepend: baseurl }}">{{ site.data.1101.1101[11010301].name }}</a> (Medium)
-        <li><a href="{{ site.data.1101.1101[11010302].link | prepend: baseurl }}">{{ site.data.1101.1101[11010302].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1101.1101[11010303].link | prepend: baseurl }}">{{ site.data.1101.1101[11010303].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1101.1101[11010304].link | prepend: baseurl }}">{{ site.data.1101.1101[11010304].name }}</a> (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-        <li>Web:
+            <h2>Mobile App Test Procedure</h2>
             <ul>
-                <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
-                <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
-                <li><a href="https://wave.webaim.org/extension/">WAVE</a></li>
-                <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
-                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
-                <li><a href="https://pauljadam.com/bookmarklets.html">Paul Adam Images bookmarklet</a></li>
-                <li><a href="https://chrispederick.com/work/web-developer/">Web Developer</a></li>
+                <li>Follow the procedure for Web Mobile.</li>
             </ul>
-        </li>
-        <li>PDF:
+
+            <h2>PDF Test Procedure</h2>
+            <h3>Find missing short text alternatives.</h3>
+
+            <h4>PDF Accessibility Checker</h4>
+            <ol>
+                <li>Run PAC on the PDF.</li>
+                <li>Select the <strong>WCAG</strong> tab and check if <strong>1.3 Adaptable</strong> is marked as a failure.</li>
+                <li>If it is, activate the <strong>Results in Detail</strong> button.</li>
+                <li>Check if <strong>Alternative text for "Figure" structure elements</strong> is marked as a failure.</li>
+            </ol>
+
+            <h4>Adobe Acrobat Pro</h4>
+            <ol>
+                <li>Select <strong>Accessibility > Accessibility Check</strong> in the Task pane to open the Accessibility Checker Options dialog.</li>
+                <li>Select <strong>Alternate Text and Headings</strong> from the Category drop-down, and make sure <strong>Figures require alternate text</strong> is checked.</li>
+            </ol>
+
+            <h3>Verify the text alternatives are sufficient.</h3>
+            <ol>
+                <li>Locate each complex image in the PDF.</li>
+                <li>Verify that each complex image has a short text alternative which summarizes the information conveyed by the image.</li>
+                <li>Verify that a long description has also been provided.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li><a href="https://pac.pdf-accessibility.org">PAC PDF Accessibility Checker</a></li>
-                <li>Adobe Acrobat Pro</li>
+                <li><a href="{{ site.data.1101.1101[11010301].link | prepend: baseurl }}">{{ site.data.1101.1101[11010301].name }}</a> (Medium)
+                <li><a href="{{ site.data.1101.1101[11010302].link | prepend: baseurl }}">{{ site.data.1101.1101[11010302].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1101.1101[11010303].link | prepend: baseurl }}">{{ site.data.1101.1101[11010303].name }}</a> (High)</li>
+                <li><a href="{{ site.data.1101.1101[11010304].link | prepend: baseurl }}">{{ site.data.1101.1101[11010304].name }}</a> (Medium)</li>
             </ul>
-        </li>
-    </ul>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
-        <li>Related Techniques:
+        <div class="block">
+            <h2>Testing Tools</h2>
             <ul>
-                <li>General:
+                <li>Screen reader</li>
+                <li>Web:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G73">G73: Providing a long description in another location with a link to it that is immediately adjacent to the non-text content</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G74">G74: Providing a long description in text near the non-text content, with a reference to the location of the long description in the short description</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G92">G92: Providing long description for non-text content that serves the same purpose and presents the same information</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G95">G95: Providing short text alternatives that provide a brief description of the non-text content</a></li>
-                    </ul>
-                </li>
-                <li>HTML:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H45">H45: Using longdesc</a></li>
+                        <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
+                        <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
+                        <li><a href="https://wave.webaim.org/extension/">WAVE</a></li>
+                        <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
+                        <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+                        <li><a href="https://pauljadam.com/bookmarklets.html">Paul Adam Images bookmarklet</a></li>
+                        <li><a href="https://chrispederick.com/work/web-developer/">Web Developer</a></li>
                     </ul>
                 </li>
                 <li>PDF:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF1">PDF1: Applying text alternatives to images with the Alt entry in PDF documents</a></li>
+                        <li><a href="https://pac.pdf-accessibility.org">PAC PDF Accessibility Checker</a></li>
+                        <li>Adobe Acrobat Pro</li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://webaim.org/techniques/alttext/">WebAIM: Alternative Text</a></li>
-        <li><a href="https://learn.levelaccess.com/l/487581/2018-04-18/28w4fc">Level Access: Accessibility Basics Webinar Series #3 - Non-text Elements</a> (0:00 - 13:30)</li>
-        <li><a href="https://uxdesign.cc/how-to-write-an-image-description-2f30d3bf5546">How to write an image description</a></li>
-    </ul>
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>Related Techniques:
+                    <ul>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G73">G73: Providing a long description in another location with a link to it that is immediately adjacent to the non-text content</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G74">G74: Providing a long description in text near the non-text content, with a reference to the location of the long description in the short description</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G92">G92: Providing long description for non-text content that serves the same purpose and presents the same information</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G95">G95: Providing short text alternatives that provide a brief description of the non-text content</a></li>
+                            </ul>
+                        </li>
+                        <li>HTML:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H45">H45: Using longdesc</a></li>
+                            </ul>
+                        </li>
+                        <li>PDF:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF1">PDF1: Applying text alternatives to images with the Alt entry in PDF documents</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://webaim.org/techniques/alttext/">WebAIM: Alternative Text</a></li>
+                <li><a href="https://learn.levelaccess.com/l/487581/2018-04-18/28w4fc">Level Access: Accessibility Basics Webinar Series #3 - Non-text Elements</a> (0:00 - 13:30)</li>
+                <li><a href="https://uxdesign.cc/how-to-write-an-image-description-2f30d3bf5546">How to write an image description</a></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
