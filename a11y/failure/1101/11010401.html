@@ -12,56 +12,76 @@ checkpoint: 110104
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Decorative images using the <code>&lt;img&gt;</code> tag must have a null <code>alt</code> value.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The decorative <code>&lt;img&gt;</code> does not have an <code>alt</code> attribute.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Add <code>alt=""</code> to the <code>&lt;img&gt;</code> element.</li>
-                    <li>If the <code>&lt;img&gt;</code> element points to a .svg file and the file has a <code>&lt;title&gt;</code> tag inside it, VoiceOver will read the <code>&lt;title&gt;</code> tag regardless of having a null <code>alt</code> attribute. In this case, add <code>aria-hidden="true"</code> to the <code>&lt;img&gt;</code> element.</li>
-                </ul>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>JPG Image</h3>
-                <div style="border: 1px solid black; padding: 5px">
-                    <p><img src="{{ baseurl }}/assets/images/11010401-smiling-child.jpg" alt="" style="float: left; padding-right: 20px;"></p>
-                    <p>If your children need health coverage, they may be eligible for the Children's Health Insurance Program (CHIP).</p>
-                    <p>CHIP provides low-cost health coverage to children in families that earn too much money to qualify for Medicaid. In some states, CHIP covers pregnant women. Each state offers CHIP coverage, and works closely with its state Medicaid program.</p>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Decorative images using the <code>&lt;img&gt;</code> tag must have a null <code>alt</code> value.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The decorative <code>&lt;img&gt;</code> does not have a null <code>alt</code> attribute.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Add <code>alt=""</code> to the <code>&lt;img&gt;</code> element.</li>
+                        <li>If the <code>&lt;img&gt;</code> element points to a .svg file and the file has a <code>&lt;title&gt;</code> tag inside it, VoiceOver will read the <code>&lt;title&gt;</code> tag regardless of having a null <code>alt</code> attribute. In this case, add <code>aria-hidden="true"</code> to the <code>&lt;img&gt;</code> element.</li>
+                    </ul>
                 </div>
-    <pre style="clear: both;"><code>&lt;img src="smiling-child.jpg" <strong>alt=""</strong>&gt;</code></pre>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <h3>JPG Image</h3>
+                    <div style="border: 1px solid black; padding: 5px">
+                        <p><img src="{{ baseurl }}/assets/images/11010401-smiling-child.jpg" alt="" style="float: left; padding-right: 20px; overflow: hidden;"></p>
+                        <p>If your children need health coverage, they may be eligible for the Children's Health Insurance Program (CHIP).</p>
+                        <p>CHIP provides low-cost health coverage to children in families that earn too much money to qualify for Medicaid. In some states, CHIP covers pregnant women. Each state offers CHIP coverage, and works closely with its state Medicaid program.</p>
+                    </div>
+        <pre style="clear: both;"><code>&lt;img src="smiling-child.jpg" <strong>alt=""</strong>&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Blind and visually impaired users want decorative or redundant images hidden so they do not get overwhelmed with unimportant screen reader chatter.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F38">Failure of Success Criterion 1.1.1 due to not marking up decorative images in HTML in a way that allows assistive technology to ignore them</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H67">Using null alt text and no title attribute on img elements for images that assistive technology should ignore</a></li>
-                    <li><a href="https://www.w3.org/WAI/tutorials/images/decorative/">W3: Decorative Images</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
+                        <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>CAPTCHA images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110105].link | prepend: baseurl }}">{{ site.data.1101.1101[110105].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users want decorative images hidden so that the images can be ignored by assistive technology such as screen readers and braille devices.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F38">Failure of Success Criterion 1.1.1 due to not marking up decorative images in HTML in a way that allows assistive technology to ignore them</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H67">Using null alt text and no title attribute on img elements for images that assistive technology should ignore</a></li>
+                        <li><a href="https://www.w3.org/WAI/tutorials/images/decorative/">W3: Decorative Images</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
