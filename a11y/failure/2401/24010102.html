@@ -12,45 +12,67 @@ checkpoint: 240101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>A method is provided to skip blocks of content repeated across pages.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>A skip link is provided, but the keyboard focus does not move to the correct location when it is activated.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Ensure that keyboard focus actually moves to the correct location, so that when the user presses <kbd>Tab</kbd> the focus moves where expected. It is not enough for the screen to just visually scroll.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>A keyboard-accessible method is provided to skip repeated blocks of content.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>A keyboard-accessible bypass method is provided, but the keyboard focus does not move to the correct location when it is activated.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Ensure that keyboard focus actually moves to the correct location, so that when the user presses <kbd>Tab</kbd> the focus moves where expected. It is not enough for the screen to just visually scroll.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Smooth Scroll</h3>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Screen reader and keyboard-only users are not able to scroll past blocks of content or go directly to the main content.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G1">G1: Adding a link at the top of each page that goes directly to the main content area</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G123">G123: Adding a link at the beginning of a block of repeated content to go to the end of the block</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G124">G124: Adding links at the top of the page to each area of the content</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind:</strong> Screen reader users may have to listen to all header content and dozens of links on every page before the main content is reached.</li>
+                        <li><strong>Vision impaired:</strong> Screen magnifier users may have to search through a large block of content before the main content is reached.</li>
+                        <li><strong>Motion impaired:</strong> Keyboard users and users of assistive technology that uses the keyboard interface may have to navigate through dozens of links before reaching the main content.</li>
+                        <li><strong>Cognitively impaired:</strong> Users may benefit when links are grouped into lists.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li>Creating links to skip blocks of repeated material:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G1">G1: Adding a link at the top of each page that goes directly to the main content area</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G123">G123: Adding a link at the beginning of a block of repeated content to go to the end of the block</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G124">G124: Adding links at the top of the page to each area of the content</a></li>
+                            </ul>
+                        </li>
+                        <li>Grouping blocks of repeated material in a way that can be skipped (e.g., by a skip link):
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA11">ARIA11: Using ARIA landmarks to identify regions of a page</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H64">H64: Using the title attribute of the iframe element</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H69">H69: Providing heading elements at the beginning of each section of content</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H97">H97: Grouping related links using the nav element</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF9">PDF9: Providing headings by marking content with heading tags in PDF documents</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR28">SCR28: Using an expandable and collapsible menu to bypass block of content</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2401checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
