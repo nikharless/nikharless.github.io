@@ -12,52 +12,71 @@ checkpoint: 320301
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Navigation items which appear on multiple web pages appear in the same relative order on each page.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Navigation items which appear on multiple web pages do not appear in the same relative order on each page.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <p>Consistently order navigation that repeats across multiple pages.</p>
-                <ul>
-                    <li>Do not change the order of menu items between pages.</li>
-                    <li>Do not change the order of navigational elements relative to other content in the DOM.</li>
-                    <li>Removing or inserting items (such as submenus) is allowed.</li>
-                </ul>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Navigation mechanisms which appear across multiple web pages appear in the same relative order with regard to other repeated components on each page.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Navigation mechanisms which appear across multiple web pages do not appear in the same relative order with regard to other repeated components on each page.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <p>Consistently order navigation that repeats across multiple pages.</p>
+                    <ul>
+                        <li>Do not change the order of menu items between pages.</li>
+                        <li>Do not change the order of navigational elements relative to other content in the DOM.</li>
+                        <li>Removing or inserting items (such as submenus) is allowed.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <dl>
+                        <dt>A consistently located control</dt>
+                        <dd>A search field is the last item on every Web page in a site. Users can quickly locate the search function.</dd>
+
+                        <dt>An expanding navigation menu</dt>
+                        <dd>A navigation menu includes a list of seven items with links to the main sections of a site. When a user selects one of these items, a list of sub-navigation items is inserted into the top-level navigation menu.</dd>
+
+                        <dt>Consistently positioned skip navigation controls</dt>
+                        <dd>A "skip navigation" (or "skip to main content") link is included as the first link on every page in a Web site. The link allows users to quickly bypass heading information and navigational content and begin interacting with the main content of a page.</dd>
+
+                        <dt>Skip to navigation link</dt>
+                        <dd>Navigational content is consistently located at the end of each page in a set of Web pages. A "skip to navigation" link is consistently located at the beginning of each page so that keyboard users can easily locate it when needed.</dd>
+                    </dl>
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>Content that behaves predictably is especially important to people with disabilities.
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users can easily predict where to find things on each page.</li>
+                        <li><strong>Cognitively impaired:</strong> Users can easily predict where to find things on each page.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Content that behaves predictably is especially important to people with disabilities.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G61">G61: Presenting repeated components in the same relative order each time they appear</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF14">PDF14: Providing running headers and footers in PDF documents</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF17">PDF17: Specifying consistent page numbering for PDF documents</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F66">F66: Failure of Success Criterion 3.2.3 due to presenting navigation links in a different relative order on different pages</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G61">G61: Presenting repeated components in the same relative order each time they appear</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF14">PDF14: Providing running headers and footers in PDF documents</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF17">PDF17: Specifying consistent page numbering for PDF documents</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include  checkpoints/3203checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
