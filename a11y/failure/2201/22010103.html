@@ -12,64 +12,59 @@ checkpoint: 220101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The user receives a warning before the time limit expires.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The time limit expires without giving the user a warning.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Provide a warning before the time out expires.</li>
-                    <li>If the time limit is not essential or required,
-                        <ul>
-                            <li>Extend the time limit to at least 20 hours, <strong>OR</strong></li>
-                            <li>Provide a means to turn off the time limit before it occurs, <strong>OR</strong></li>
-                            <li>Provide a means to extend the time limit with a simple action at least 10 times, and give the user at least 20 seconds to do so.</li>
-                        </ul>
-                    </li>
-                </ul>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>If the content has a time limit and the user is given a warning when time is about to expire, the user must be given a means to extend the time limit with a simple action at least ten times.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The user is given a warning when time is about to expire and is provided a means to extend the time limit with a simple action, but they cannot extend it at least ten times.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    Allow the user to extend the time limit at least 10 times.
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <ul>
+                        
+                    </ul>
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <ul>
-                    <li>An auction has a time limit on the amount of time a user has to submit a bid. A warning is given when the time out is about to expire. Since the time limit is a real-time exception, the user cannot turn off, adjust, or extend it.</li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users need more time to locate things on screen and to read. Screen reader users need more time to understand screen layouts, find information, and operate controls.</li>
+                        <li><strong>Motion impaired:</strong> Users need more time to react, type, and complete activities.</li>
+                        <li><strong>Cognitively impaired: Users need more time to read and understand the information.</strong></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Users with various disabilities are disoriented by sudden changes of context.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F40">F40: Failure due to using meta redirect with a time limit</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F41">F41: Failure of Success Criterion 2.2.1, 2.2.4, and 3.2.5 due to using meta refresh to reload the page</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F58">F58: Failure of Success Criterion 2.2.1 due to using server-side techniques to automatically redirect pages after a time-out</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G4">G4: Allowing the content to be paused and restarted from where it was paused</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G180">G180: Providing the user with a means to set the time limit to 10 times the default time limit</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G198">G198: Providing a way for the user to turn the time limit off</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR16">SCR16: Providing a script that warns the user a time limit is about to expire</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR33">SCR33: Using script to scroll content, and providing a mechanism to pause it</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR36">SCR36: Providing a mechanism to allow users to display moving, scrolling, or auto-updating text in a static window or area</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F40">F40: Failure due to using meta redirect with a time limit</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F41">F41: Failure of Success Criterion 2.2.1, 2.2.4, and 3.2.5 due to using meta refresh to reload the page</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F58">F58: Failure of Success Criterion 2.2.1 due to using server-side techniques to automatically redirect pages after a time-out</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G180">G180: Providing the user with a means to set the time limit to 10 times the default time limit</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G198">G198: Providing a way for the user to turn the time limit off</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR16">SCR16: Providing a script that warns the user a time limit is about to expire</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2201checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
