@@ -12,53 +12,59 @@ checkpoint: 140501
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Real text is used to convey information rather than images of text whenever possible.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Pages of text in PDF are images.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Use OCR to generate actual text from an image.
-            <h3>Adobe Acrobat Pro</h3>
-            <ol>
-                <li>Open the document in Adobe Acrobat Pro.</li>
-                <li>Activate <strong>Scan & OCR</strong>.</li>
-                <li>Under Recognize Text, activate <strong>In this file</strong>.</li>
-                <li>Select <strong>All pages</strong> and activate the <strong>Recognize text</strong> button.</li>
-                <li>Select <strong>Correct recognized text</strong> to review any text that Acrobat is not sure about. Depending on the quality of the image, the text may need significant editing.</li>
-            </ol>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Real text is used to convey information rather than images of text whenever possible.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Pages of text in PDF are images.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Use OCR to generate actual text from an image.
+                <h3>Adobe Acrobat Pro</h3>
+                <ol>
+                    <li>Open the document in Adobe Acrobat Pro.</li>
+                    <li>Activate <strong>Scan & OCR</strong>.</li>
+                    <li>Under Recognize Text, activate <strong>In this file</strong>.</li>
+                    <li>Select <strong>All pages</strong> and activate the <strong>Recognize text</strong> button.</li>
+                    <li>Select <strong>Correct recognized text</strong> to review any text that Acrobat is not sure about. Depending on the quality of the image, the text may need significant editing.</li>
+                </ol>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <img src="{{ baseurl }}/assets/images/14050102-acrobat-ocr.png" alt="Screenshot of Acrobat Scan & OCR panel with Recognize Text In this file dialog open" style="max-width: 300px;">
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <img src="{{ baseurl }}/assets/images/14050102-acrobat-ocr.png" alt="Screenshot of Acrobat Scan & OCR panel with Recognize Text In this file dialog open" style="max-width: 300px;">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Visually impaired:</strong> Users often need to adjust the text in order to read it.</li>
+                        <li><strong>Cognitively impaired:</strong> Users with reading disabilities often need to adjust the text in order to read it.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Pages of text cannot be interpreted by screen readers.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF7">PDF7: Performing OCR on a scanned PDF document to provide actual text</a></li>
-                    <li><a href="https://www.adobe.com/acrobat/hub/use-ocr-to-read-text-from-image.html">How to scan and get text from an image with OCR</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF7">PDF7: Performing OCR on a scanned PDF document to provide actual text</a></li>
+                        <li><a href="https://www.adobe.com/acrobat/hub/use-ocr-to-read-text-from-image.html">How to scan and get text from an image with OCR</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1405checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
