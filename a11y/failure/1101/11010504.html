@@ -1,0 +1,91 @@
+---
+layout: default
+current: 11010504
+criterion: 1101
+checkpoint: 110105
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign cp=site.data.1101.1101[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Each CAPTCHA must have at least one alternate method of validation which does not rely on vision.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The CAPTCHA does not have an auditory method of validation.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Consider using an alternative to the CAPTCHA.</li>
+                        <li>Add an alternate method of validation, such as audio.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>ReCAPTCHA</h3>
+                    <p>The current verson of Google's ReCAPTCHA is a simple checkbox. If it is unable to validate, an image test is presented.</p>
+                    <img src="{{ baseurl }}/assets/images/11010501-recaptcha-image-test.png" style="max-width: 400px" alt="Screenshot of ReCAPTCHA image test which reads, Select all images with an Orange">
+                    <p>At this point the user can Tab to a button to access an audio version.</p>
+                    <img src="{{ baseurl }}/assets/images/11010501-recaptcha-audio-test.png" alt="Screenshot of ReCAPTCHA audio test which reads, Press play and enter the numbers you hear">
+                    <p><a href="https://www.google.com/recaptcha/api2/demo">ReCAPTCHA demo</a></p>
+
+                    <h3>Embedded Text</h3>
+                    <p>A button for an audio alternative is available for this CAPTCHA.</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/duv2KO5LSpE?si=Jjri0BnE-5a9-W3u" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Functional images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
+                        <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>Decorative images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users need to have a text alternative for CAPTCHAs so that they know what it is.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G144"> G144: Ensuring that the Web Page contains another CAPTCHA serving the same purpose using a different modality</a></li>
+                        <li><a href="https://www.boia.org/blog/how-to-make-captcha-accessible-to-everyone">How To Make CAPTCHA Accessible To Everyone</a></li>
+                        <li><a href="https://www.digitala11y.com/the-captcha-conundrum-accessible-alternatives/">The Captcha Conundrum & Accessible Alternatives</a></li>
+                        <li><a href="https://accessibility.psu.edu/captcha/">CAPTCHAs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/1101checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
