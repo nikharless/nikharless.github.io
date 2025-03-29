@@ -11,129 +11,121 @@ criterion: 3204
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p><em>Consistent</em> doesn't have to mean <em>identical</em>. An arrow icon might be named "Go to page 2" on one page and "Go to page 3" on another. This is consistent.</p>
+        <div class="block">
+            <h2>Overview</h2>
+            <p><em>Consistent</em> doesn't have to mean <em>identical</em>. An arrow icon might be named "Go to page 2" on one page and "Go to page 3" on another. This is consistent.</p>
 
-    <p>Components may include:</p>
-    <ul>
-        <li>Active icons</li>
-        <li>Informational icons</li>
-        <li>User interface controls</li>
-        <li>Links</li>
-        <li>Objects</li>
-    </ul>
+            <p>Components may include:</p>
+            <ul>
+                <li>Functional icons</li>
+                <li>Informational icons</li>
+                <li>Form components</li>
+                <li>User interface controls</li>
+                <li>Links</li>
+                <li>Objects</li>
+            </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The accessible name and description must be consistent for components that perform the same function within a set of web pages.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The accessible name and description should be consistent for components that perform the same function within a single web page.</li>
+            </ul>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Components that have the same functionality within a set of web pages must be identified consistently.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Components that have the same functionality within the same web page should be identified consistently.</li>
-    </ul>
+            <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want the components with the same function to be named consistently between web pages so that I can easily identify them.</div>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want the components with the same function to be named consistently between web pages so that I can easily identify them.</div>
+            <div class="success"><strong>Success:</strong> If you were a user with a disability, when components with the same function appear on multiple web pages in a set, they are named consistently each time.</div>
+        </div>
 
-    <div class="success"><strong>Success:</strong> If you were a user with a disability, when components with the same function appear on multiple web pages in a set, they are named consistently each time.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/js/tree.js"></script>
-    <h3 id="test1">Are there components with the same function that are repeated across multiple web pages in a set of pages?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are they identified consistently each time they appear?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are they form controls?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/js/tree.js"></script>
+            <h3 id="test1">Are there components with the same function that are repeated across multiple web pages in a set of pages?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the accessible name and description consistent each time they appear?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3204.3204[32040101].link | prepend: baseurl }}">{{ site.data.3204.3204[32040101].name }}</a>.</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are they links?</span>
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are they form components?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3204.3204[32040102].link | prepend: baseurl }}">{{ site.data.3204.3204[32040102].name }}</a>.</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are they icons?</span>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3204.3204[32040101].link | prepend: baseurl }}">{{ site.data.3204.3204[32040101].name }}.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are they links?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3204.3204[32040103].link | prepend: baseurl }}">{{ site.data.3204.3204[32040103].name }}</a>.</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3204.3204[32040104].link | prepend: baseurl }}">{{ site.data.3204.3204[32040104].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3204.3204[32040102].link | prepend: baseurl }}">{{ site.data.3204.3204[32040102].name }}.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are they icons?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3204.3204[32040103].link | prepend: baseurl }}">{{ site.data.3204.3204[32040103].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3204.3204[32040104].link | prepend: baseurl }}">{{ site.data.3204.3204[32040104].name }}.</a></span></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                     </ul>
-                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Locate any components with labels or accessible names such as links, buttons, active icons, informational icons, objects, etc., that are repeated across web pages.</li>
+                <li>Use ANDI: focusable elements and examine the ANDI Output for any interactive components.</li>
+                <li>Use ANDI: graphics/images and examine the ANDI Output for any informational images or icons.</li>
+                <li>Verify that each component that shares the same function and is repeated across multiple pages is identified using a consistent label, name, or text alternative.</li>
+            </ol>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>Review the web pages within a site, a logical section of a site, or a web application.</li>
-        <li>Locate any components such as links, buttons, active icons, informational icons, objects, etc. that are repeated across web pages.</li>
-        <li>Verify that each component that shares the same function and is repeated across multiple pages is identified using a consistent label, name, or text alternative.</li>
-    </ol>
+            <h2>Mobile App Test Procedure</h2>
+            <p><em>Note: Native software apps are exempt from Section 508 requirements for this criterion.</em></p>
+            <ol>
+                <li>Locate any user interface components such as buttons, pickers, switches, steppers, etc. that are repeated across screens.</li>
+                <li>Verify that each component that shares the same function and is repeated across multiple screens is identified using a consistent label, name, or text alternative.</li>
+            </ol>
 
-    <h2>Mobile App Test Procedure</h2>
-    <p><em>Note: Native software apps are exempt from Section 508 requirements for this criterion.</em></p>
-    <ol>
-        <li>Locate any user interface components such as buttons, pickers, switches, steppers, etc. that are repeated across screens.</li>
-        <li>Verify that each component that shares the same function and is repeated across multiple screens is identified using a consistent label, name, or text alternative.</li>
-    </ol>
+            <h2>PDF Test Procedure</h2>
+            <ol>
+                <li>Locate any user interface elements such as links, buttons, active icons, informational icons, objects, etc. that are repeated across pages of the document.</li>
+                <li>Verify that each component that shares the same function and is repeated across multiple pages is identified using a consistent label, name, or text alternative.</li>
+            </ol>
+        </div>
 
-    <h2>PDF Test Procedure</h2>
-    <ol>
-        <li>Locate any user interface elements such as links, buttons, active icons, informational icons, objects, etc. that are repeated across pages of the document.</li>
-        <li>Verify that each component that shares the same function and is repeated across multiple pages is identified using a consistent label, name, or text alternative.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3204.3204[32040101].link | prepend: baseurl }}">{{ site.data.3204.3204[32040101].name }}</a>.</li>
-        <li><a href="{{ site.data.3204.3204[32040102].link | prepend: baseurl }}">{{ site.data.3204.3204[32040102].name }}</a>.</li>
-        <li><a href="{{ site.data.3204.3204[32040103].link | prepend: baseurl }}">{{ site.data.3204.3204[32040103].name }}</a>.</li>
-        <li><a href="{{ site.data.3204.3204[32040104].link | prepend: baseurl }}">{{ site.data.3204.3204[32040104].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G197">G197: Using labels, names, and text alternatives consistently for content that has the same functionality</a></li>
+                <li><a href="{{ site.data.3204.3204[32040101].link | prepend: baseurl }}">{{ site.data.3204.3204[32040101].name }}.</a></li>
+                <li><a href="{{ site.data.3204.3204[32040102].link | prepend: baseurl }}">{{ site.data.3204.3204[32040102].name }}.</a></li>
+                <li><a href="{{ site.data.3204.3204[32040103].link | prepend: baseurl }}">{{ site.data.3204.3204[32040103].name }}.</a></li>
+                <li><a href="{{ site.data.3204.3204[32040104].link | prepend: baseurl }}">{{ site.data.3204.3204[32040104].name }}.</a></li>
             </ul>
-        </li>
-     </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+                <li>Screen reader</li>
+            </ul>
+        </div>
 
-    </ul>
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G197">G197: Using labels, names, and text alternatives consistently for content that has the same functionality</a></li>
+                    </ul>
+                </li>
+             </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/3204checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
