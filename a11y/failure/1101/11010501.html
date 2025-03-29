@@ -12,61 +12,81 @@ checkpoint: 110105
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Each CAPTCHA must have a text alternative that describes its purpose (but not the visual elements).</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The CAPTCHA does not have a text alternative.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Consider using an alternative to the CAPTCHA.</li>
-                    <li>Add a text alternative to the image which identifies it as a CAPTCHA.</li>
-                </ul>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>ReCAPTCHA</h3>
-                <p>The current verson of Google's ReCAPTCHA is a simple checkbox. If it is unable to validate, an image test is presented.</p>
-                <img src="{{ baseurl }}/assets/images/11010501-recaptcha-image-test.png" style="max-width: 400px" alt="Screenshot of ReCAPTCHA image test which reads, Select all images with an Orange">
-                <p>At this point the user can Tab directly to a button to access an audio version. The image buttons are not visible to screen readers.</p>
-                <p><a href="https://www.google.com/recaptcha/api2/demo">ReCAPTCHA demo</a></p>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Each CAPTCHA must have a text alternative that describes its purpose (but not the visual elements).</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The CAPTCHA does not have a text alternative.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Consider using an alternative to the CAPTCHA.</li>
+                        <li>Add a text alternative to the image which identifies it as a CAPTCHA.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>ReCAPTCHA</h3>
+                    <p>The current verson of Google's ReCAPTCHA is a simple checkbox. If it is unable to validate, an image test is presented.</p>
+                    <img src="{{ baseurl }}/assets/images/11010501-recaptcha-image-test.png" style="max-width: 400px" alt="Screenshot of ReCAPTCHA image test which reads, Select all images with an Orange">
+                    <p>At this point the user can Tab directly to a button to access an audio version. The image buttons are not visible to screen readers.</p>
+                    <p><a href="https://www.google.com/recaptcha/api2/demo">ReCAPTCHA demo</a></p>
 
-                <h4>Distorted Text</h4>
-                <p>The text in the image cannot be put into the text alternative, since that would invalidate the purpose of the CAPTCHA. A text alternative is added to identify its purpose.</p>
-                <img src="{{ baseurl }}/assets/images/11010501-captcha-text.png" alt="Screenshot of CAPTCHA with distorted text. It reads, Retype the characters from the picture.">
-                <pre><code>&lt;img id="captchaImage" 
- <strong>alt="Retype the CAPTCHA code from the image"</strong> src="..."&gt;</code></pre>
+                    <h4>Distorted Text</h4>
+                    <p>The text in the image cannot be put into the text alternative, since that would invalidate the purpose of the CAPTCHA. A text alternative is added to identify its purpose.</p>
+                    <img src="{{ baseurl }}/assets/images/11010501-captcha-text.png" alt="Screenshot of CAPTCHA with distorted text. It reads, Retype the characters from the picture.">
+                    <pre><code>&lt;img id="captchaImage" 
+    <strong>alt="Retype the CAPTCHA code from the image"</strong> src="..."&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Blind and visually impaired users need to know when they are encountering a CAPTCHA.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G143">G143: Providing a text alternative that describes the purpose of the CAPTCHA</a></li>
-                    <li><a href="https://www.boia.org/blog/how-to-make-captcha-accessible-to-everyone">How To Make CAPTCHA Accessible To Everyone</a></li>
-                    <li><a href="https://www.digitala11y.com/the-captcha-conundrum-accessible-alternatives/">The Captcha Conundrum & Accessible Alternatives</a></li>
-                    <li><a href="https://accessibility.psu.edu/captcha/">CAPTCHAs</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Functional images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
+                        <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>Decorative images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users need to have a text alternative for CAPTCHAs so that they know what it is.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G143">G143: Providing a text alternative that describes the purpose of the CAPTCHA</a></li>
+                        <li><a href="https://www.boia.org/blog/how-to-make-captcha-accessible-to-everyone">How To Make CAPTCHA Accessible To Everyone</a></li>
+                        <li><a href="https://www.digitala11y.com/the-captcha-conundrum-accessible-alternatives/">The Captcha Conundrum & Accessible Alternatives</a></li>
+                        <li><a href="https://accessibility.psu.edu/captcha/">CAPTCHAs</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
