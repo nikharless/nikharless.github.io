@@ -15,206 +15,159 @@ criterion: 2201
         {% include breadcrumbs/bc-checkpoint.html %}
 
         <div class="block">
-        <h2>Overview</h2>
+            <h2>Overview</h2>
+            <p>This checkpoint applies to server-side session time-outs and client-side time limits such as:</p>
+            <ul>
+                <li>Page refresh</li>
+                <li>Content updates</li>
+                <li>Content changes</li>
+                <li>Time limits on user responses</li>
+                <li>Animated readable content</li>
+                <li>Automatically scrolling readable content</li>
+            </ul>
 
-        <p>This checkpoint applies to server-side session time-outs and client-side time limits such as:</p>
-        <ul>
-            <li>Page refresh</li>
-            <li>Content updates</li>
-            <li>Content changes</li>
-            <li>Time limits on user responses</li>
-            <li>Animated readable content</li>
-            <li>Automatically scrolling readable content</li>
-        </ul>
-
-        <p>This checkpoint does not apply to:</p>
-        <ul>
-            <li>Content which is available elsewhere on the page in static format</li>
-            <li>Video captions (assuming video is compliant with <a href="{{ site.data.2202.2202[2202].link | prepend: baseurl }}">{{ site.data.2202.2202[2202].name }}</a>)</li>
-            <li>Carousels (compliant with <a href="{{ site.data.2202.2202[2202].link | prepend: baseurl }}">{{ site.data.2202.2202[2202].name }}</a>)</li>
-            <li>Scrolling text that repeats</li>
-            <li>Non-timed server redirects (e.g., 3xx response codes)</li>
-        </ul>
-
+            <p>This checkpoint does not apply to:</p>
+            <ul>
+                <li>Content which is available elsewhere on the page in static format</li>
+                <li>Video captions (Test against <a href="{{ site.data.2202.2202[2202].link | prepend: baseurl }}">{{ site.data.2202.2202[2202].name }}.</a>)</li>
+                <li>Carousels (Test against <a href="{{ site.data.2202.2202[2202].link | prepend: baseurl }}">{{ site.data.2202.2202[2202].name }}.</a>)</li>
+                <li>Scrolling text that repeats</li>
+                <li>Non-timed server redirects (e.g., 3xx response codes)</li>
+            </ul>
         </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-        <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-            <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-        <ul>
-            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If the content has a time limit, the user must be given options to turn off, adjust, or extend that time limit.</li>
-        </ul>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If the content has a time limit, the user must be given options to turn off, adjust, or extend that time limit.</li>
+            </ul>
 
-        <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to be able to adjust time limits so that I have adequate time to complete tasks.</div>
+            <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to be able to adjust time limits so that I have adequate time to complete tasks.</div>
 
-        <div class="success"><strong>Success:</strong> If you had a physical disability, when you encounter a time limit, you are able to adjust it to allow you adequate time to complete the task.</div>
-
+            <div class="success"><strong>Success:</strong> If you had a physical disability, when you encounter a time limit, you are able to adjust it to allow you adequate time to complete the task.</div>
         </div>
 
-    <div class="block">
-        <h2>Testing Logic</h2>
-        <script src="{{ baseurl }}/assets/js/tree.js"></script>
-        <h3 id="test1">Is there a server-side session time limit?</h3>
-        <ul role="tree" aria-labelledby="test1">
-            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there an option to turn off the time limit before encountering it?</span>
-                <ul role="group">
-                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                    <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an option to adjust the time limit at least 10 times the default before encountering it?</span>
-                        <ul role="group">
-                            <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                            <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the time limit longer than 20 hours?</span>
-                                <ul role="group">
-                                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                    <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the user warned before the time expires and given at least 20 seconds to extend the time limit with a simple action?</span>
-                                        <ul role="group">
-                                            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the user extend the time limit at least 10 times?</span>
-                                                <ul role="group">
-                                                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                    <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the time limit essential?</span>
-                                                        <ul role="group">
-                                                            <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                            <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2201.2201[22010102].link | prepend: baseurl }}">{{ site.data.2201.2201[22010102].name }}</a>.</span></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2201.2201[22010101].link | prepend: baseurl }}">{{ site.data.2201.2201[22010101].name }}</a>.</span></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-        </ul>
-
-        <h3 id="test2">Is there a time limit controlled by a script on the page?</h3>
-        <ul role="tree" aria-labelledby="test2">
-            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there an option to turn off the time limit before encountering it?</span>
-                <ul role="group">
-                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                    <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an option to adjust the time limit at least 10 times the default before encountering it?</span>
-                        <ul role="group">
-                            <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                            <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the time limit longer than 20 hours?</span>
-                                <ul role="group">
-                                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                    <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the user warned before the time expires and given at least 20 seconds to extend the time limit with a simple action?</span>
-                                        <ul role="group">
-                                            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the user extend the time limit at least 10 times?</span>
-                                                <ul role="group">
-                                                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                    <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the time limit required as part of a real-time event (i.e., an auction)?</span>
-                                                        <ul role="group">
-                                                            <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                            <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the time limit essential?</span>
-                                                                <ul role="group">
-                                                                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                    <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2201.2201[22010104].link | prepend: baseurl }}">{{ site.data.2201.2201[22010104].name }}</a>.</span></li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2201.2201[22010103].link | prepend: baseurl }}">{{ site.data.2201.2201[22010103].name }}</a>.</span></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-        </ul>
-
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Are there any instances of content time limits on the page?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the time limit a required part of a real-time event where no alternative to the time limit is possible?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="na"><span><strong>Yes</strong>; This checkpoint is not applicable.</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the time limit essential and extending it would invalidate the activity?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="na"><span><strong>Yes</strong>; This checkpoint is not applicable.</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the time limit longer than 20 hours?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="na"><span><strong>Yes</strong>; This checkpoint is not applicable.</span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a means to turn off the time limit before time expires?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a means for the user to adjust the time limit to at least ten times the length of the default setting before time expires?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the page provide a warning before time expires?</span>
+                                                            <ul role="group">
+                                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; For a period of at least 20 seconds, can the user extend the time limit with a simple action?</span>
+                                                                    <ul role="group">
+                                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the user extend the time limit at least ten times?</span>
+                                                                            <ul role="group">
+                                                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2201.2201[22010103].link | prepend: baseurl }}">{{ site.data.2201.2201[22010103].name }}</a>.</span></li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2201.2201[22010102].link | prepend: baseurl }}">{{ site.data.2201.2201[22010102].name }}</a>.</span></li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2201.2201[22010101].link | prepend: baseurl }}">{{ site.data.2201.2201[22010101].name }}</a>.</span></li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
         </div>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-        <h3>Desktop</h3>
-        <ol>
-            <li>Identify any content that has a time out function.</li>
-            <li>Interact with the site and then leave the site idle for a period of time until the time-out activates.</li>
-            <li>Verify that at least one of the following is true:
-                <ul>
-                    <li>The user can turn off the time limit before encountering it.</li>
-                    <li>The user can adjust the time limit before encountering it over a wide range that is at least ten times the length of the default setting.</li>
-                    <li>The user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action, and the user can extend the time limit at least 10 times.</li>
-                </ul>
-            </li>
-        </ol>
-
-        <h3>Desktop Screen Reader</h3>
-        <ol>
-            <li>Turn on the screen reader.</li>
-            <li>Follow the process for Desktop Keyboard.</li>
-        </ol>
-
-        <h3>Mobile</h3>
-
-        <h4>Screen Reader (iOS and Android)</h4>
-        <p>Follow the process for Desktop Screen Reader.</p>
-
-        <h2>Mobile App Test Procedure</h2>
-        <p>Follow the procedure for Web Mobile.</p>
-
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Identify any content that has a time out function:
+                    <ul>
+                        <li>Inspect system or site documentation</li>
+                        <li>Text description somewhere on the page where the time limit occurs</li>
+                        <li>Pop-ups or other messages or warning indicators on the page</li>
+                        <li>Allowing the page to be idle for an extended period of time to prompt a time-out notification or other indication that a time limit has occurred</li>
+                    </ul>
+                </li>
+                <li>Verify that at least one of the following is true:
+                    <ul>
+                        <li>The user can turn off the time limit before encountering it.</li>
+                        <li>The user can adjust the time limit before encountering it over a wide range that is at least ten times the length of the default setting.</li>
+                        <li>The user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action, and the user can extend the time limit at least 10 times.</li>
+                    </ul>
+                </li>
+            </ol>
         </div>
 
-    <div class="block">
-        <h2>Failures</h2>
-        <ul>
-            <li><a href="{{ site.data.2201.2201[22010101].link | prepend: baseurl }}">{{ site.data.2201.2201[22010101].name }}</a>. (High)</li>
-            <li><a href="{{ site.data.2201.2201[22010102].link | prepend: baseurl }}">{{ site.data.2201.2201[22010102].name }}</a>. (High)</li>
-            <li><a href="{{ site.data.2201.2201[22010103].link | prepend: baseurl }}">{{ site.data.2201.2201[22010103].name }}</a>. (High)</li>
-            <li><a href="{{ site.data.2201.2201[22010104].link | prepend: baseurl }}">{{ site.data.2201.2201[22010104].name }}</a>. (High)</li>
-        </ul>
-
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.2201.2201[22010101].link | prepend: baseurl }}">{{ site.data.2201.2201[22010101].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.2201.2201[22010102].link | prepend: baseurl }}">{{ site.data.2201.2201[22010102].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.2201.2201[22010103].link | prepend: baseurl }}">{{ site.data.2201.2201[22010103].name }}.</a> (High)</li>
+            </ul>
         </div>
 
-    <div class="block">
-        <h2>Testing Tools</h2>
-        <ul>
-            <li>Keyboard</li>
-            <li>Screen reader</li>
-        </ul>
-
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Keyboard</li>
+                <li>Screen reader</li>
+            </ul>
         </div>
 
-    <div class="block">
-        <h2>References</h2>
-        <h3>WCAG</h3>
-        <ul>
-            <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-            <li>Related Techniques:
-                <ul>
-                    <li>General:
-                        <ul>
-                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G4">G4: Allowing the content to be paused and restarted from where it was paused</a></li>
-                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G133">G133: Providing a checkbox on the first page of a multipart form that allows users to ask for longer session time limit or no session time limit</a></li>
-                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G180">G180: Providing the user with a means to set the time limit to 10 times the default time limit</a></li>
-                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G198">G198: Providing a way for the user to turn the time limit off</a></li>
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>Related Techniques:
+                    <ul>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G4">G4: Allowing the content to be paused and restarted from where it was paused</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G133">G133: Providing a checkbox on the first page of a multipart form that allows users to ask for longer session time limit or no session time limit</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G180">G180: Providing the user with a means to set the time limit to 10 times the default time limit</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G198">G198: Providing a way for the user to turn the time limit off</a></li>
 
-                        </ul>
-                    </li>
-                    <li>JavaScript:
-                        <ul>
-                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR1">SCR1: Allowing the user to extend the default time limit</a></li>
-                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR16">SCR16: Providing a script that warns the user a time limit is about to expire</a></li>
-                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR33">SCR33: Using script to scroll content, and providing a mechanism to pause it</a></li>
-                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR36">SCR36: Providing a mechanism to allow users to display moving, scrolling, or auto-updating text in a static window or area</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <h3>Additional Information</h3>
+                            </ul>
+                        </li>
+                        <li>JavaScript:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR1">SCR1: Allowing the user to extend the default time limit</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR16">SCR16: Providing a script that warns the user a time limit is about to expire</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR33">SCR33: Using script to scroll content, and providing a mechanism to pause it</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR36">SCR36: Providing a mechanism to allow users to display moving, scrolling, or auto-updating text in a static window or area</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h3>Additional Information</h3>
+        </div>
     </div>
-</div>
     {% include checkpoints/2201checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
