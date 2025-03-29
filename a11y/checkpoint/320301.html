@@ -11,115 +11,99 @@ criterion: 3203
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>Navigation mechanisms may include:</p>
-    <ul>
-        <li>Search fields</li>
-        <li>Navigation menus</li>
-        <li>Skip to main content links</li>
-        <li>Back to top links</li>
-    </ul>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Navigation mechanisms are any components that provide a means for the user to find and navigate to specific content on the website. Navigation mechanisms may include:</p>
+            <ul>
+                <li>Search fields</li>
+                <li>Navigation menus</li>
+                <li>Tables of Content</li>
+                <li>Skip to main content links</li>
+                <li>Back to top links</li>
+            </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Navigation mechanisms which appear across multiple web pages must appear in the same relative order with regard to other repeated components on each page.</li>
+            </ul>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Navigation items which appear on multiple web pages must appear in the same relative order on each page.</li>
-    </ul>
+            <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want the navigation items to be in the same place each time they appear so that I don't have to rediscover them.</div>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want the navigation items to be in the same place each time they appear so that I don't have to rediscover them.</div>
+            <div class="success"><strong>Success:</strong> If you were a user with a disability, when navigation items appear on multiple web pages in a set, they appear in the same relative position each time.</div>
+        </div>
 
-    <div class="success"><strong>Success:</strong> If you were a user with a disability, when navigation items appear on multiple web pages in a set, they appear in the same relative position each time.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/js/tree.js"></script>
-    <h3 id="test1">Are there navigation mechanisms that are repeated across multiple web pages in a set of pages?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do they appear in the same relative order each time they appear?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Has the zoom level, orientation, or viewport size been changed by the user between pages?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/js/tree.js"></script>
+            <h3 id="test1">Are there navigation mechanisms that are repeated across multiple web pages in the set of web pages?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do they appear in the same relative order each time they appear?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3203.3203[32030101].link | prepend: baseurl }}">{{ site.data.3203.3203[32030101].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3203.3203[32030101].link | prepend: baseurl }}">{{ site.data.3203.3203[32030101].name }}.</a></span></li>
+                    </ul>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Review the web pages within a website, a logical section of a site, or a web application. Do not change zoom level, orientation, or viewport size between pages.</li>
+                <li>Look for navigation components such as navigation menus, search fields, or tables of contents that are repeated on multiple pages.</li>
+                <li>Verify that the main navigation links are in the same relative order on each page.</li>
+                <li>If there are multiple navigation components, verify that the components are in the same relative place and order on each page.</li>
+                <li>The ANDI: focusable elements "tab order" feature may help for checking the focus order of components, and the ANDI: structure "reading order" feature may help for checking the content order of both focusable and non-focusable components.</li>
+            </ol>
+
+            <h2>PDF Test Procedure</h2>
+            <ol>
+                <li>Review the pages within the document.</li>
+                <li>Look for navigation components that are repeated on multiple pages.</li>
+                <li>If headers, footers, and/or page numbers exist, verify that they are in the same relative location on each page.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.3203.3203[32030101].link | prepend: baseurl }}">{{ site.data.3203.3203[32030101].name }}.</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G61">G61: Presenting repeated components in the same relative order each time they appear</a></li>
                     </ul>
                 </li>
-            </ul>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF14">PDF14: Providing running headers and footers in PDF documents</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF17">PDF17: Specifying consistent page numbering for PDF documents</a></li>
+                    </ul>
+                </li>
+             </ul>
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>Review the web pages within a site, a logical section of a site, or a web application. Do not change zoom level, orientation, or viewport size between pages.</li>
-        <li>Look for navigation components such as navigation menus, search fields, or tables of contents that are repeated on multiple pages.</li>
-        <li>Verify that the main navigation links are in the same relative order on each page.</li>
-        <li>If there are multiple navigation components, verify that the components are in the same relative place and order on each page.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Web.</p>
-
-    <h2>PDF Test Procedure</h2>
-    <ol>
-        <li>Review the pages within the document.</li>
-        <li>Look for navigation components that are repeated on multiple pages.</li>
-        <li>If headers, footers, and/or page numbers exist, verify that they are in the same relative location on each page.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3203.3203[32030101].link | prepend: baseurl }}">{{ site.data.3203.3203[32030101].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G61">G61: Presenting repeated components in the same relative order each time they appear</a></li>
-            </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF14">PDF14: Providing running headers and footers in PDF documents</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF17">PDF17: Specifying consistent page numbering for PDF documents</a></li>
-            </ul>
-        </li>
-     </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-
-    </ul>
-    </div>
-</div>
     {% include checkpoints/3203checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
