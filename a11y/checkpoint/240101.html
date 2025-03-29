@@ -11,227 +11,185 @@ criterion: 2401
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>Examples of acceptable mechanisms include:</p>
-    <ul>
-        <li>Skip links</li>
-        <li>Semantic heading structure</li>
-        <li>ARIA landmarks</li>
-    </ul>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Blocks of content do not have to be exactly the same to be considered repetitive. They may differ in detail but contain the same type of information and serve the same purpose. Small items such as repeated individual words, phrases, or single links are not considered to be blocks of content.</p>
 
-    <p>Note that landmarks and headings are only usable by screen reader users. Keyboard-only users who do not use screen readers only benefit from skip links, so it's recommended that they be used even in addition to the other methods.</p>
+            <p>Examples of acceptable mechanisms include:</p>
+            <ul>
+                <li>Skip links</li>
+                <li>Hide options</li>
+                <li>Collapsible menus</li>
+            </ul>
 
-    </div>
+            <p>Note that landmarks and headings are only usable by screen reader users. Keyboard-only users and users of assistive technologies which use the keyboard functionality (such as a switch) only benefit from skip links. Landmarks and headings are already required under <a href="{{ site.data.1301.1301[1301].link | prepend: baseurl }}">{{ site.data.1301.1301[1301].name }}.</a></p>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> A method must be provided to skip navigation and other elements that are repeated across screens.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Landmarks should be used.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> All sections of the page should be defined within landmarks.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A skip link should not be included when there is no repetitive block of content on the page.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A skip navigation link should be available to screen reader users and keyboard-only users regardless of other methods available.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The skip link to the main content should be the first link on the page.</li>
-    </ul>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> A keyboard-accessible method must be provided to skip blocks of content that are repeated across screens.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The skip link to the main content should be the first link on the page.</li>
+            </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a keyboard or screen reader user, I want to be able to skip blocks of repeated content so that I do not have to navigate through it each time I encounter it.</div>
+            <div class="userstory"><strong>User Story:</strong> As a keyboard or screen reader user, I want to be able to skip blocks of repeated content so that I do not have to navigate through them each time I encounter them.</div>
 
-    <div class="success"><strong>Success:</strong> If you were a keyboard-only user, when blocks of content are repeated across pages, you would be able to skip past them to the content you want.</div>
+            <div class="success"><strong>Success:</strong> If you were a keyboard-only user, when blocks of content are repeated across pages, you would be able to skip past them to the content you want.</div>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the page contain blocks of content (such as navigation links, heading graphics, and advertising frames) that are repeated across multiple pages?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the page include a link at the very top that goes to the main content area, or a link at the beginning of a repeated content block that goes to the end of the block?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When activated, does the link move the focus to the correct area?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Does the page contain blocks of content (such as navigation links, page headers, tabs, and banners) that are repeated across multiple pages?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the page provide a keyboard-accessible method to bypass the repeated content?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2401.2401[24010102].link | prepend: baseurl }}">{{ site.data.2401.2401[24010102].name }}</a>.</span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the page sectioned using ARIA landmarks?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the page include heading elements at the beginning of each section of content?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the method visible when in focus (if applicable)?</span>
                             <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the repeated content contained within a collapsible region, such as a menu?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When activated, does the method move the focus to the correct area?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2401.2401[24010101].link | prepend: baseurl }}">{{ site.data.2401.2401[24010101].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2401.2401[24010102].link | prepend: baseurl }}">{{ site.data.2401.2401[24010102].name }}.</a></span></li>
                                     </ul>
                                 </li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2401.2401[24010103].link | prepend: baseurl }}">{{ site.data.2401.2401[24010103].name }}.</a></span></li>
                             </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2401.2401[24010101].link | prepend: baseurl }}">{{ site.data.2401.2401[24010101].name }}.</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>When the page loads, press <kbd>Tab</kbd> to navigate into the page. Some skip links are not visible until they receive focus.</li>
+                <li>Check if there is a keyboard-accessible method to skip repetitive blocks of content, such as skip links, hotkeys, scripted elements, etc.
+                    <ol>
+                        <li>Use ANDI: focusable elements to check for skip links, hide options, collapse menu options, etc.), <strong>OR</strong></li>
+                        <li>Use ANDI: links/buttons and select the "view links list" button.</li>
+                    </ol>
+                <li>Use keyboard commands to activate the bypass function.</li>
+                <li>Verify that the focus moves directly past the repeated content.</li>
+            </ol>
+
+            <h3>Desktop Screen Reader (NVDA)</h3>
+            <ol>
+                <li>Open web page in Chrome with NVDA turned on.</li>
+                <li>Check for skip links:
+                    <ol>
+                        <li>Press <kbd>NVDA (Insert)</kbd>+<kbd>F7</kbd> to display the Elements List.</li>
+                        <li>Select <strong>Links</strong>.</li>
+                        <li>Check if there is a keyboard-accessible method to skip repetitive blocks of content, such as skip links, hotkeys, scripted elements, etc.</li>
+                        <li>Use keyboard commands to activate the bypass function.</li>
+                        <li>Verify that the focus moves directly past the repeated content.</li>
+                    </ol>
+                </li>
+            </ol>
+
+            <h3>Mobile Screen Reader</h3>
+            <p>Mobile content often does not require a method to bypass blocks, because the heading content is condensed to a small number of elements (which may include an expandable hamburger menu).</p>
+
+            <p>If a bypass method is required:</p>
+            <ol>
+                <li>Using VoiceOver or TalkBack, check if one of the first few focusable items on the page is a skip link.</li>
+                <li>Check if there is a keyboard-accessible method to skip repetitive blocks of content, such as skip links, hotkeys, scripted elements, etc.</li>
+                <li>Check if the page has a <code>main</code> landmark that allows you to jump to the main content.
+                    <ul>
+                        <li>iOS:
+                            <ol>
+                                <li>Use the Rotor by placing two fingers on the screen and turning, like you are turning a dial.</li>
+                                <li>Switch the Rotor to <strong>Landmarks</strong>.</li>
+                                <li>Swipe up or down through the page and look for a “main” landmark.</li>
+                            </ol>
+                        </li>
+                        <li>Android:
+                            <ol>
+                                <li>Open the local context menu in Chrome by tapping inside the browser screen and swiping up and then down, or down and then up.</li>
+                                <li>Select <strong>Landmarks</strong> from the navigation options.</li>
+                                <li>Swipe left or right through the page and look for a “main” landmark.</li>
+                            </ol>
                         </li>
                     </ul>
                 </li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>When the page loads, press <kbd>Tab</kbd> to navigate into the page.</li>
-        <li>Check if one of the first focusable items on the page is a skip link.
-            <ol>
-                <li>If so, press <kbd>Enter</kbd> to activate the link.</li>
-                <li>Verify that the focus moves to the main content area of the page.</li>
-                <li>Check if there are additional skip links provided (e.g., “Skip to search,” “Skip to navigation,” etc.).</li>
-                <li>If so, verify that these links move the focus to the appropriate area of the page.</li>
             </ol>
-        <li>Check if there is a semantic heading (generally level 1) at the top of the main content area.</li>
-        <li>Check if there is a <code>&lt;main&gt;</code> or <code>role="main"</code> landmark area.</li>
-    </ol>
 
-    <h3>Desktop Screen Reader (NVDA)</h3>
-    <ol>
-        <li>Open web page in Chrome with NVDA turned on.</li>
-        <li>Check for skip links:
+            <h3>PDF Testing</h3>
+            <h4>Adobe Acrobat Pro</h4>
             <ol>
-                <li>Press <kbd>NVDA (Insert)</kbd>+<kbd>F7</kbd> to display the Elements List.</li>
-                <li>Select <strong>Links</strong>.</li>
-                <li>Check if one of the first few focusable items on the page is a skip link.</li>
-                <li>If so, verify that the link moves the focus to the main content area.</li>
+                <li>Select <strong>Accessibility > Reading Order</strong> in the Task pane to open the Reading Order dialog.</li>
+                <li>Check the <strong>Show page content groups</strong> checkbox and select the <strong>Structure types</strong> radio button. This will display the tag value of every tagged object in the Document pane.</li>
+                <li>Verify that each section of the document begins with a heading of the appropriate hierarchical level, <strong>OR</strong></li>
+                <li>Go through the Tags tree in the Tags pane and verify that each section of content begins with a visible heading tagged with <code>&lt;Hx&gt;</code> tags.</li>
             </ol>
-        </li>
-        <li>Check for semantic heading structure:
-            <ol>
-                <li>Press <kbd>NVDA (Insert)</kbd>+<kbd>F7</kbd> to display the Elements List.</li>
-                <li>Select <strong>Headings</strong>.</li>
-                <li>Check if there is a heading near the top of the main content that allows you to jump to the main content by selecting that heading.</li>
-            </ol>
-        </li>
-        <li>Check for landmarks:
-            <ol>
-                <li>Press <kbd>NVDA (Insert)</kbd>+<kbd>F7</kbd> to display the Elements List.</li>
-                <li>Select <strong>Landmarks</strong>.</li>
-                <li>Check if the page has a <code>main</code> landmark that allows you to jump to the main content.</li>
-            </ol>
-        </li>
-        <li>Verify that one of the above options is available.</li>
-    </ol>
 
-    <h3>Mobile Screen Reader</h3>
-    <p>Mobile content often does not require a method to bypass blocks, because the heading content is condensed to a small number of elements (which may include an expandable hamburger menu).</p>
+            <h4>Screen Reader (NVDA or JAWS)</h4>
+            <ol>
+                <li>Press the <kbd>H</kbd> key to navigate through the headings in the document.</li>
+                <li>Verify that each section of the document begins with a heading of the appropriate hierarchical level.</li>
+            </ol>
+        </div>
 
-    <p>If a bypass method is required:</p>
-    <ol>
-        <li>Using VoiceOver or TalkBack, check if one of the first few focusable items on the page is a skip link.</li>
-        <li>Check if there is a heading near the top of the main content that allows you to jump to the main content by selecting that heading.</li>
-        <li>Check if the page has a <code>main</code> landmark that allows you to jump to the main content.
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li>iOS:
-                    <ol>
-                        <li>Use the Rotor by placing two fingers on the screen and turning, like you are turning a dial.</li>
-                        <li>Switch the Rotor to <strong>Landmarks</strong>.</li>
-                        <li>Swipe up or down through the page and look for a “main” landmark.</li>
-                    </ol>
+                <li><a href="{{ site.data.2401.2401[24010101].link | prepend: baseurl }}">{{ site.data.2401.2401[24010101].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.2401.2401[24010102].link | prepend: baseurl }}">{{ site.data.2401.2401[24010102].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.2401.2401[24010103].link | prepend: baseurl }}">{{ site.data.2401.2401[24010103].name }}.</a> (Medium)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">SSA: ANDI</a></li>
+                <li>Screen reader</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G1">G1: Adding a link at the top of each page that goes directly to the main content area</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G123">G123: Adding a link at the beginning of a block of repeated content to go to the end of the block</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G124">G124: Adding links at the top of the page to each area of the content</a></li>
+                    </ul>
                 </li>
-                <li>Android:
-                    <ol>
-                        <li>Open the local context menu in Chrome by tapping inside the browser screen and swiping up and then down, or down and then up.</li>
-                        <li>Select <strong>Landmarks</strong> from the navigation options.</li>
-                        <li>Swipe left or right through the page and look for a “main” landmark.</li>
-                    </ol>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H69">H69: Providing heading elements at the beginning of each section of content</a></li>
+                    </ul>
+                </li>
+                <li>ARIA:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA11">ARIA11: Using ARIA landmarks to identify regions of a page</a></li>
+                    </ul>
+                </li>
+                <li>JavaScript:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR28">SCR28: Using an expandable and collapsible menu to bypass block of content</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF9">PDF9: Providing headings by marking content with heading tags in PDF documents</a></li>
+                    </ul>
                 </li>
             </ul>
-        </li>
-    </ol>
-
-    <h3>PDF Testing</h3>
-    <h4>Adobe Acrobat Pro</h4>
-
-    <ol>
-        <li>Select <strong>Accessibility > Reading Order</strong> in the Task pane to open the Reading Order dialog.</li>
-        <li>Check the <strong>Show page content groups</strong> checkbox and select the <strong>Structure types</strong> radio button. This will display the tag value of every tagged object in the Document pane.</li>
-        <li>Verify that each section of the document begins with a heading of the appropriate hierarchical level, <strong>OR</strong></li>
-        <li>Go through the Tags tree in the Tags pane and verify that each section of content begins with a visible heading tagged with <code>&lt;Hx&gt;</code> tags.</li>
-    </ol>
-
-    <h4>Screen Reader (NVDA or JAWS)</h4>
-    <ol>
-        <li>Press the <kbd>H</kbd> key to navigate through the headings in the document.</li>
-        <li>Verify that each section of the document begins with a heading of the appropriate hierarchical level.</li>
-    </ol>
-
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2401.2401[24010101].link | prepend: baseurl }}">{{ site.data.2401.2401[24010101].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2401.2401[24010102].link | prepend: baseurl }}">{{ site.data.2401.2401[24010102].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2401.2401[24010103].link | prepend: baseurl }}">{{ site.data.2401.2401[24010103].name }}</a>. (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li><a href="https://wave.webaim.org/">WebAIM: WAVE</a></li>
-        <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">SSA: ANDI</a></li>
-        <li><a href="https://pauljadam.com/bookmarklets/headings.html">Paul J Adam: Headings Bookmarklet</a></li>
-        <li><a href="https://pauljadam.com/bookmarklets/landmarks.html">Paul J Adam: Landmarks Bookmarklet</a></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G1">G1: Adding a link at the top of each page that goes directly to the main content area</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G123">G123: Adding a link at the beginning of a block of repeated content to go to the end of the block</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G124">G124: Adding links at the top of the page to each area of the content</a></li>
-            </ul>
-        </li>
-        <li>HTML:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H69">H69: Providing heading elements at the beginning of each section of content</a></li>
-            </ul>
-        </li>
-        <li>ARIA:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA11">ARIA11: Using ARIA landmarks to identify regions of a page</a></li>
-            </ul>
-        </li>
-        <li>JavaScript:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR28">SCR28: Using an expandable and collapsible menu to bypass block of content</a></li>
-            </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF9">PDF9: Providing headings by marking content with heading tags in PDF documents</a></li>
-            </ul>
-        </li>
-    </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-        
-    </ul>
-    </div>
-</div>
     {% include checkpoints/2401checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
