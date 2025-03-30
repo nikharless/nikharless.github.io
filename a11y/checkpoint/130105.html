@@ -11,272 +11,252 @@ criterion: 1301
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    </div>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>This checkpoint applies to visually apparent lists, not programmatic lists. Lists are often used to create menus, breadcrumbs, or other navigation components, but they are not required to be lists.</p>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Lists must be marked up semantically as lists.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> List markup must not be used on text which does not function as a list.</li>
-    </ul>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Visually apparent lists must be marked up programmatically as lists according to their type.</li>
+            </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want lists to be identified as such so that I can understand the structure of the content.</div>
+            <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want lists to be identified as such so that I can understand the structure of the content.</div>
 
-    <div class="success"><strong>Success:</strong> If you could not see the web page, when you use a screen reader, you would know when you encountered a list.</div>
+            <div class="success"><strong>Success:</strong> If you could not see the web page, when you use a screen reader, you would know when you encountered a list.</div>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Are there any elements that function as lists on the page?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are these elements marked up semantically as lists?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the list contain only allowed nested elements?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Are there any visually apparent lists on the page?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are these elements marked up programmatically as lists?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010505].link | prepend: baseurl }}">{{ site.data.1301.1301[13010505].name }}</a></span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the list an unordered (bullet) list?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010501].link | prepend: baseurl }}">{{ site.data.1301.1301[13010501].name }}</a></span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the list an ordered (numbered) list?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the list contain only allowed nested elements?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010502].link | prepend: baseurl }}">{{ site.data.1301.1301[13010502].name }}</a></span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010503].link | prepend: baseurl }}">{{ site.data.1301.1301[13010503].name }}</a></span></li>
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010505].link | prepend: baseurl }}">{{ site.data.1301.1301[13010505].name }}</a></span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the list an unordered (bullet) list?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010501].link | prepend: baseurl }}">{{ site.data.1301.1301[13010501].name }}</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the list an ordered (numbered) list?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010502].link | prepend: baseurl }}">{{ site.data.1301.1301[13010502].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010503].link | prepend: baseurl }}">{{ site.data.1301.1301[13010503].name }}</a></span></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    <h3 id="test2">Are list tags used on text which is not a list purely for visual formatting purposes?</h3>
-    <ul role="tree" aria-labelledby="test2">
-        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010504].link | prepend: baseurl }}">{{ site.data.1301.1301[13010504].name }}</a></span></li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Use the ANDI: structures "list" button to identify any programmatic lists.</li>
+                <li>Verify that each visually apparent list is identified as a list under "List Elements".</li>
+                <li>Verify that the list type matches the type of list (ordered, unordered, or description).</li>
+                <li>Verify that the programmatic structure matches the visual presentation (e.g., nesting, hierarchies, etc.).</li>
+            </ol>
 
-    </div>
+            <h3>Mobile Screen Reader</h3>
+            <h4>VoiceOver or TalkBack</h4>
+            <ol>
+                <li>Locate any text that looks and functions as a list.</li>
+                <li>Verify that every element that functions as a list is identifiable as a list.</li>
+            </ol>
+            <p><em>Note: If bullets are removed from list items with CSS, VoiceOver does not read them as list items. This is not a failure if the list is marked up correctly.</em></p>
+            <p><em>Note: TalkBack speaks the number or "bullet" before each list item to identify lists.</em></p>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Locate any text that looks and functions as a list.
-            <ul>
-                <li>List items may or may not have bullets or numbers.</li>
-                <li>List items may be presented vertically or horizontally.</li>
-            </ul>
-        </li>
-        <li>Verify that every element that functions as a list is identifiable as a list.</li>
-        <li>Verify that the list type matches the type of list.</li>
-        <li>Verify that content that does not function as a list is not marked up as a list.
-            <ul>
-                <li>If a list contains only one item, it is not a failure.</li>
-            </ul>
-        </li>
-    </ol>
+            <h2>Mobile App Test Procedure</h2>
+            <h3>iOS</h3>
+            <p><em>This checkpoint is only applicable to lists that appear in webview content.</em></p>
+            <ol>
+                <li>Locate any text that looks and functions as a list.</li>
+                <li>Verify that every element that functions as a list is identifiable as a list.</li>
+            </ol>
+            <p><em>Note: If bullets are removed from list items with CSS, VoiceOver does not read them as list items. This is not a failure if the list is marked up correctly.</em></p>
 
-    <h3>Mobile Screen Reader</h3>
-    <h4>VoiceOver or TalkBack</h4>
-    <ol>
-        <li>Locate any text that looks and functions as a list.</li>
-        <li>Verify that every element that functions as a list is identifiable as a list.</li>
-        <li>Verify that content that does not function as a list is not spoken as a list.</li>
-    </ol>
-    <p><em>Note: If bullets are removed from list items with CSS, VoiceOver does not read them as list items. This is not a failure if the list is marked up correctly.</em></p>
-    <p><em>Note: TalkBack speaks the number or "bullet" before each list item to identify lists.</em></p>
-
-    <h2>Mobile App Test Procedure</h2>
-    <h3>iOS</h3>
-    <p><em>This checkpoint is only applicable to lists that appear in webview content.</em></p>
-    <ol>
-        <li>Locate any text that looks and functions as a list.</li>
-        <li>Verify that every element that functions as a list is identifiable as a list.</li>
-        <li>Verify that content that does not function as a list is not spoken as a list.</li>
-    </ol>
-    <p><em>Note: If bullets are removed from list items with CSS, VoiceOver does not read them as list items. This is not a failure if the list is marked up correctly.</em></p>
-
-    <h3>Android</h3>
-    <ol>
-        <li>Locate any text that looks and functions as a list.</li>
-        <li>Verify that every element that functions as a list is identifiable as a list.
-            <ul>
-                <li>If the content is part of the native Android app:
+            <h3>Android</h3>
+            <ol>
+                <li>Locate any text that looks and functions as a list.</li>
+                <li>Verify that every element that functions as a list is identifiable as a list.
                     <ul>
-                        <li>Verify that one or both of the following is read:
+                        <li>If the content is part of the native Android app:
                             <ul>
-                                <li>"In List" / "Out of List"</li>
-                                <li>"[number] of [number]" for each list item</li>
+                                <li>Verify that one or both of the following is read:
+                                    <ul>
+                                        <li>"In List" / "Out of List"</li>
+                                        <li>"[number] of [number]" for each list item</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>If the content is part of a webview:
+                            <ul>
+                                <li>Verify that TalkBack speaks the number or "bullet" for each list item.</li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li>If the content is part of a webview:
+            </ol>
+
+            <h2>PDF Test Procedure</h2>
+
+            <h3>PDF Accessibility Checker</h3>
+            <p>This will identify incorrectly structured lists. You must do a manual check to verify that lists have been tagged as lists.</p>
+            <ol>
+                <li>Run PAC on the PDF.</li>
+                <li>Check if <strong>Structure Tree</strong> is marked as a failure.</li>
+                <li>If it is, activate the <strong>Results in Detail</strong> button.</li>
+                <li>Under <strong>PDF/UA > Logical Structure > Structure Tree</strong>, check if <strong>"L" structure elements</strong>, <strong>"LI" structure elements</strong>, <strong>"Lbl" structure elements</strong>, or <strong>"LBody" structure elements</strong> are marked as failures.</li>
+            </ol>
+            <img src="{{ baseurl }}/assets/images/130105-pac-list-failure.png" style="max-width: 380px;" alt="Screenshot of PAC report with list tag results highlighted">
+
+            <h3>Adobe Acrobat Pro</h3>
+            <h4>Accessibility Check</h4>
+            <p>This will identify incorrectly structured lists. You must do a manual check to verify that lists have been tagged as lists.</p>
+            <ol>
+                <li>Select <strong>Tools > Accessibility > Accessibility Check</strong>.</li>
+                <li>In the Accessibility Checker Options dialog, select <strong>Forms, Tables, and Lists</strong> from the Category drop-down.</li>
+                <li>Make sure <strong>LI must be a child of L</strong> and <strong>Lbl and Body must be children of LI</strong> are checked.</li>
+                <li>Activate the <strong>Start Checking</strong> button.</li>
+                <li>In the Accessibility Checker results pane, check for failures under the <strong>Lists</strong> section.</li>
+            </ol>
+
+            <h4>Manual Check</h4>
+            <ol>
+                <li>Locate all lists in the document:
                     <ul>
-                        <li>Verify that TalkBack speaks the number or "bullet" for each list item.</li>
+                        <li>Use the Reading Order tool:
+                            <ol>
+                                <li>Select <strong>All tools > Prepare for accessibility > Fix reading order</strong> to open the Reading Order dialog.</li>
+                                <li>Make sure the <strong>Show page content groups</strong> checkbox is checked, and select the <strong>Structure types</strong> radio button. This will display the tag value of every tagged object in the Document pane.<br>
+                                    <img src="{{ baseurl }}/assets/images/13005-pdf-list-reading-order.png" alt="Screenshot of Acrobat Reading Order panel with Structure types selected and tags displayed in the document pane" style="max-width: 380px;">
+                                </li>
+                                <li>Uncheck <strong>Display like elements in a single block</strong>, so you can see the individual list tags.</li>
+                                <li>Scroll through the document to locate lists.</li>
+                            </ol>
+                            <strong>OR</strong>
+                        </li>
+                        <li>Use the Tags pane:
+                            <ol>
+                                <li>Select the Tags button in the navigation pane.</li>
+                                <li>Select the first tag, and use the <kbd>Up</kbd> and <kbd>Down Arrow</kbd> keys to navigate through each element in the document.</li>
+                            </ol>
+                        </li>
                     </ul>
                 </li>
-            </ul>
-        </li>
-        <li>Verify that content that does not function as a list is not spoken as a list.</li>
-    </ol>
-
-    <h2>PDF Test Procedure</h2>
-
-    <h3>PDF Accessibility Checker</h3>
-    <p>This will identify incorrectly structured lists. You must do a manual check to verify that lists have been tagged as lists.</p>
-    <ol>
-        <li>Run PAC on the PDF.</li>
-        <li>Check if <strong>Structure Tree</strong> is marked as a failure.</li>
-        <li>If it is, activate the <strong>Results in Detail</strong> button.</li>
-        <li>Under <strong>PDF/UA > Logical Structure > Structure Tree</strong>, check if <strong>"L" structure elements</strong>, <strong>"LI" structure elements</strong>, <strong>"Lbl" structure elements</strong>, or <strong>"LBody" structure elements</strong> are marked as failures.</li>
-    </ol>
-    <img src="{{ baseurl }}/assets/images/130105-pac-list-failure.png" style="max-width: 380px;" alt="Screenshot of PAC report with list tag results highlighted">
-
-    <h3>Adobe Acrobat Pro</h3>
-    <h4>Accessibility Check</h4>
-    <p>This will identify incorrectly structured lists. You must do a manual check to verify that lists have been tagged as lists.</p>
-    <ol>
-        <li>Select <strong>Tools > Accessibility > Accessibility Check</strong>.</li>
-        <li>In the Accessibility Checker Options dialog, select <strong>Forms, Tables, and Lists</strong> from the Category drop-down.</li>
-        <li>Make sure <strong>LI must be a child of L</strong> and <strong>Lbl and Body must be children of LI</strong> are checked.</li>
-        <li>Activate the <strong>Start Checking</strong> button.</li>
-        <li>In the Accessibility Checker results pane, check for failures under the <strong>Lists</strong> section.</li>
-    </ol>
-
-    <h4>Manual Check</h4>
-    <ol>
-        <li>Locate all lists in the document:
-            <ul>
-                <li>Use the Reading Order tool:
-                    <ol>
-                        <li>Select <strong>All tools > Prepare for accessibility > Fix reading order</strong> to open the Reading Order dialog.</li>
-                        <li>Make sure the <strong>Show page content groups</strong> checkbox is checked, and select the <strong>Structure types</strong> radio button. This will display the tag value of every tagged object in the Document pane.<br>
-                            <img src="{{ baseurl }}/assets/images/13005-pdf-list-reading-order.png" alt="Screenshot of Acrobat Reading Order panel with Structure types selected and tags displayed in the document pane" style="max-width: 380px;">
-                        </li>
-                        <li>Uncheck <strong>Display like elements in a single block</strong>, so you can see the individual list tags.</li>
-                        <li>Scroll through the document to locate lists.</li>
-                    </ol>
-                    <strong>OR</strong>
-                </li>
-                <li>Use the Tags pane:
-                    <ol>
-                        <li>Select the Tags button in the navigation pane.</li>
-                        <li>Select the first tag, and use the <kbd>Up</kbd> and <kbd>Down Arrow</kbd> keys to navigate through each element in the document.</li>
-                    </ol>
-                </li>
-            </ul>
-        </li>
-        <li>Verify that each element that functions as a list is tagged as a list.
-            <ul>
-                <li>Verify that the list is tagged as <code>&lt;L&gt;</code>.</li>
-                <li>Verify that each list item is tagged as <code>&lt;LI&gt;</code>.</li>
-                <li>If the list has bullets or numbers, make sure they are tagged as <code>&lt;Lbl&gt;</code>.</li>
-                <li>Verify that the list item content is tagged as <code>&lt;LBody&gt;</code>.</li>
-            </ul>
-        </li>
-        <li>Verify that the list elements are properly nested.
-            <pre><code>&lt;L&gt;
-    &lt;LI&gt;
-        &lt;Lbl&gt;
-        &lt;LBody&gt;
-    &lt;LI&gt;
-    ...</code></pre>
-        </li>
-        <li>Verify that elements which are not lists are not tagged as lists.</li>
-    </ol>
-
-    <h3>Screen Reader</h3>
-    <ol>
-        <li>Verify that every element on the page that functions like a list is spoken as a list by the screen reader.</li>
-        <li>Verify that content that does not function as a list is not spoken as a list.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1301.1301[13010501].link | prepend: baseurl }}">{{ site.data.1301.1301[13010501].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1301.1301[13010502].link | prepend: baseurl }}">{{ site.data.1301.1301[13010502].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1301.1301[13010503].link | prepend: baseurl }}">{{ site.data.1301.1301[13010503].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1301.1301[13010504].link | prepend: baseurl }}">{{ site.data.1301.1301[13010504].name }}</a> (Low)</li>
-        <li><a href="{{ site.data.1301.1301[13010505].link | prepend: baseurl }}">{{ site.data.1301.1301[13010505].name }}</a> (Low)</li>
-        <li><a href="{{ site.data.1301.1301[13010506].link | prepend: baseurl }}">{{ site.data.1301.1301[13010506].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1301.1301[13010507].link | prepend: baseurl }}">{{ site.data.1301.1301[13010507].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1301.1301[13010508].link | prepend: baseurl }}">{{ site.data.1301.1301[13010508].name }}</a> (Low)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-        <li>Web:
-            <ul>
-                <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
-                <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
-                <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
-                <li><a href="https://pauljadam.com/bookmarklets/lists.html">Lists Bookmarklet for Accessibility Testing</a></li>
-            </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://pac.pdf-accessibility.org">PAC PDF Accessibility Checker</a></li>
-                <li>Adobe Acrobat Pro</li>
-            </ul>
-        </li>        
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
-        <li>Related Techniques:
-            <ul>
-                <li>HTML:
+                <li>Verify that each element that functions as a list is tagged as a list.
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H40">H40: Using description lists</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H48">H48: Using ol, ul and dl for lists or groups of links</a></li>
+                        <li>Verify that the list is tagged as <code>&lt;L&gt;</code>.</li>
+                        <li>Verify that each list item is tagged as <code>&lt;LI&gt;</code>.</li>
+                        <li>If the list has bullets or numbers, make sure they are tagged as <code>&lt;Lbl&gt;</code>.</li>
+                        <li>Verify that the list item content is tagged as <code>&lt;LBody&gt;</code>.</li>
+                    </ul>
+                </li>
+                <li>Verify that the list elements are properly nested.
+                    <pre><code>&lt;L&gt;
+            &lt;LI&gt;
+                &lt;Lbl&gt;
+                &lt;LBody&gt;
+            &lt;LI&gt;
+            ...</code></pre>
+                </li>
+                <li>Verify that elements which are not lists are not tagged as lists.</li>
+            </ol>
+
+            <h3>Screen Reader</h3>
+            <ol>
+                <li>Verify that every element on the page that functions like a list is identified as a list by the screen reader.</li>
+                <li>Verify that content that does not function as a list is not identified as a list.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.1301.1301[13010501].link | prepend: baseurl }}">{{ site.data.1301.1301[13010501].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1301.1301[13010502].link | prepend: baseurl }}">{{ site.data.1301.1301[13010502].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1301.1301[13010503].link | prepend: baseurl }}">{{ site.data.1301.1301[13010503].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1301.1301[13010504].link | prepend: baseurl }}">{{ site.data.1301.1301[13010504].name }}.</a> (Low)</li>
+                <li><a href="{{ site.data.1301.1301[13010505].link | prepend: baseurl }}">{{ site.data.1301.1301[13010505].name }}.</a> (Low)</li>
+                <li><a href="{{ site.data.1301.1301[13010506].link | prepend: baseurl }}">{{ site.data.1301.1301[13010506].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1301.1301[13010507].link | prepend: baseurl }}">{{ site.data.1301.1301[13010507].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1301.1301[13010508].link | prepend: baseurl }}">{{ site.data.1301.1301[13010508].name }}.</a> (Low)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Screen reader</li>
+                <li>Web:
+                    <ul>
+                        <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+                        <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
+                        <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
+                        <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
+                        <li><a href="https://pauljadam.com/bookmarklets/lists.html">Lists Bookmarklet for Accessibility Testing</a></li>
                     </ul>
                 </li>
                 <li>PDF:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF21">PDF21: Using List tags for lists in PDF documents</a></li>
+                        <li><a href="https://pac.pdf-accessibility.org">PAC PDF Accessibility Checker</a></li>
+                        <li>Adobe Acrobat Pro</li>
                     </ul>
-                </li>
-                <li>Plain Text:
+                </li>        
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>Related Techniques:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/text/T2">T2: Using standard text formatting conventions for lists</a></li>
+                        <li>HTML:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H40">H40: Using description lists</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H48">H48: Using ol, ul and dl for lists or groups of links</a></li>
+                            </ul>
+                        </li>
+                        <li>PDF:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF21">PDF21: Using List tags for lists in PDF documents</a></li>
+                            </ul>
+                        </li>
+                        <li>Plain Text:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/text/T2">T2: Using standard text formatting conventions for lists</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/list_role">MDN: ARIA: list role - Accessibility</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listitem_role">MDN: ARIA: listitem role - Accessibility</a></li>
-        <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro)</a></li>
-    </ul>
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/list_role">MDN: ARIA: list role - Accessibility</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listitem_role">MDN: ARIA: listitem role - Accessibility</a></li>
+                <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro)</a></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/1301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
