@@ -12,35 +12,35 @@ checkpoint: 130104
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Headings are marked up hierarchically.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Headings are marked up semantically as headings, but the level hierarchy is incorrect.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <h3>Native HTML (Preferred Method)</h3>
-                <p>Use the <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code> and <code>&lt;h6&gt;</code> tags to mark up headings in hierarchical order.</p>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Headings are marked up hierarchically.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Headings are marked up programmatically as headings, but the level hierarchy is incorrect.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <h3>Native HTML (Preferred Method)</h3>
+                    <p>Use the <code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code> and <code>&lt;h6&gt;</code> tags to mark up headings in hierarchical order.</p>
 
-                <strong>OR</strong>
+                    <strong>OR</strong>
 
-                <h3>ARIA</h3>
-                <p>Use the <code>aria-level</code> attribute set to the correct heading level (1-6) to mark up headings in hierarchical order.</p>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Native HTML (Preferred Method)</h3>
-                <pre><code>&lt;h1&gt;Page-Level Heading&lt;/h1&gt;
+                    <h3>ARIA</h3>
+                    <p>Use the <code>aria-level</code> attribute set to the correct heading level (1-6) to mark up headings in hierarchical order.</p>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Native HTML (Preferred Method)</h3>
+                    <pre><code>&lt;h1&gt;Page-Level Heading&lt;/h1&gt;
     &lt;h2&gt;Section Heading&lt;/h2&gt;
         &lt;h3&gt;Level 3 Section Heading&lt;/h3&gt;
         &lt;h3&gt;Another Level 3 Section Heading&lt;/h3&gt;
@@ -49,8 +49,8 @@ checkpoint: 130104
             &lt;h4&gt;Level 4 Heading&lt;/h4&gt;
             etc.</code></pre>
 
-                <h3>ARIA</h3>
-                <pre><code>&lt;div role="heading" aria-level="1"&gt;Page-Level Heading&lt;/div&gt;
+                    <h3>ARIA</h3>
+                    <pre><code>&lt;div role="heading" aria-level="1"&gt;Page-Level Heading&lt;/div&gt;
     &lt;div role="heading" aria-level="2"&gt;Section Heading&lt;/div&gt;
         &lt;div role="heading" aria-level="3"&gt;Level 3 Section Heading&lt;/div&gt;
         &lt;div role="heading" aria-level="3"&gt;Another Level 3 Section Heading&lt;/div&gt;
@@ -58,27 +58,42 @@ checkpoint: 130104
         &lt;div role="heading" aria-level="3"&gt;Level 3 Heading for This Section&lt;/div&gt;
             &lt;div role="heading" aria-level="4"&gt;Level 4 Heading&lt;/div&gt;
             etc.</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Visual users can see at a glance how information on the page is structured. Assistive technology users rely on semantic markup to understand how content is arranged.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H42">H42: Using h1-h6 to identify headings</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA12">ARIA12: Using role=heading to identify headings</a></li>
-                    <li><a href="https://www.w3.org/WAI/tutorials/page-structure/headings/">W3: Headings</a></li>
-                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/heading_role">MDN: ARIA: heading role</a></li>
-                    <li><a href="https://webaim.org/techniques/semanticstructure/#contentstructure">WebAIM: Semantic Structure: Regions, Headings, and Lists</a></li>
+                    <li><strong>Programmatic headings</strong><br>
+                        File under <a href="{{ site.data.1301.1301[13010401].link | prepend: baseurl }}">{{ site.data.1301.1301[13010401].name }}.</a></li>
+                    <li><strong>Existence of headings</strong></li>
+                    <li><strong>Descriptive headings:</strong><br>
+                        File under <a href="{{ site.data.2406.2406[2406].link | prepend: baseurl }}">{{ site.data.2406.2406[2406].name }}.</a></li>
                 </ul>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Screen readers also allow users to navigate through the page with headings.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H42">H42: Using h1-h6 to identify headings</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA12">ARIA12: Using role=heading to identify headings</a></li>
+                        <li><a href="https://www.w3.org/WAI/tutorials/page-structure/headings/">W3: Headings</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/heading_role">MDN: ARIA: heading role</a></li>
+                        <li><a href="https://webaim.org/techniques/semanticstructure/#contentstructure">WebAIM: Semantic Structure: Regions, Headings, and Lists</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

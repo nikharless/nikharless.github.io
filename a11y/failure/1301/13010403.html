@@ -12,51 +12,68 @@ checkpoint: 130104
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Only text that functions as a heading is marked up semantically as a heading.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Text that does not function as a heading is marked up as a heading.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Remove heading tags (<code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>) from non-heading text.</li>
-                    <li>Use CSS to style the text as desired.</li>
-                </ul>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <div style="display: block; border: 1px solid black; padding: 20px; text-align: center;"><span style="font-size: 48px; font-weight: bolder;">100%</span><br>
-                coverage!</div>
-                <pre><code>&lt;span style="font-size: 48px; font-weight: bolder;"&gt;100%&lt;/span&gt;&lt;br&gt;
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Only text that functions as a heading is marked up programmatically as a heading.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Text that does not function as a heading is marked up as a heading.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Remove heading tags (<code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>) from non-heading text.</li>
+                        <li>Use CSS to style the text as desired.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    <div style="display: block; border: 1px solid black; padding: 20px; text-align: center;"><span style="font-size: 48px; font-weight: bolder;">100%</span><br>
+                    coverage!</div>
+                    <pre><code>&lt;span style="font-size: 48px; font-weight: bolder;"&gt;100%&lt;/span&gt;&lt;br&gt;
 coverage!&lt;/p&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Visual users can see at a glance how information on the page is structured. Assistive technology users rely on semantic markup to understand how content is arranged.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F43">F43: Failure of Success Criterion 1.3.1 due to using structural markup in a way that does not represent relationships in the content</a></li>
+                    <li><strong>Programmatic headings</strong><br>
+                        File under <a href="{{ site.data.1301.1301[13010401].link | prepend: baseurl }}">{{ site.data.1301.1301[13010401].name }}.</a></li>
+                    <li><strong>Heading level</strong><br>
+                        File under <a href="{{ site.data.1301.1301[13010402].link | prepend: baseurl }}">{{ site.data.1301.1301[13010402].name }}.</a></li>
+                    <li><strong>Existence of headings</strong></li>
+                    <li><strong>Descriptive headings:</strong><br>
+                        File under <a href="{{ site.data.2406.2406[2406].link | prepend: baseurl }}">{{ site.data.2406.2406[2406].name }}.</a></li>
                 </ul>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Screen readers also allow users to navigate through the page with headings.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F43">F43: Failure of Success Criterion 1.3.1 due to using structural markup in a way that does not represent relationships in the content</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

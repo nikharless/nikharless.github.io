@@ -12,62 +12,65 @@ checkpoint: 130104
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Headings are tagged semantically as headings.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Headings are not tagged as headings.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <h3>Adobe Acrobat Pro</h3>
-                <h4>No Tag</h4>
-                <ol>
-                    <li>Select <strong>Tools > Accessibility > Reading Order</strong> to open the Reading Order dialog.</li>
-                    <li>Draw a rectangle around the heading. It should highlight with a pink outline.</li>
-                    <li>Activate the appropriate <strong>Heading</strong> button in the Reading Order dialog.</li>
-                </ol>
-                
-                <h4>Incorrect Tag</h4>
-                <ol>
-                    <li>In the Tags panel, right-click the incorrectly tagged heading or open the Options menu and select <strong>Properties...</strong>.</li>
-                    <li>In the Object Properties dialog, select the correct heading tag from the <strong>Type</strong> drop-down.</li>
-                </ol>
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>Programmatic headings have visible text.</div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Adobe Acrobat Pro</h3>
-                <h4>No Tag</h4>
-                <img src="{{ baseurl }}/assets/images/13010404-pdf-tag-heading.png" alt="Screenshot of Acrobat Reading Order dialog and a heading highlighted on the document" style="max-width: 380px;">
-
-                <h4>Incorrect Tag</h4>
-                <img src="{{ baseurl }}/assets/images/13010404-pdf-obj-prop-heading.png" alt="Screenshot of Acrobat Object Properties dialog with Type drop-down highlighted" style="max-width: 380px;">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>A programmatic heading is empty.</div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Visual users can see at a glance how information on the page is structured. Assistive technology users rely on semantic markup to understand how content is arranged.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <ul>
+                        <li>Place visible text inside the heading tags, <strong>OR</strong></li>
+                        <li>Remove the extraneous heading code.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                    
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF9">PDF9: Providing headings by marking content with heading tags in PDF documents</a></li>
+                    <li><strong>Programmatic headings</strong><br>
+                        File under <a href="{{ site.data.1301.1301[13010401].link | prepend: baseurl }}">{{ site.data.1301.1301[13010401].name }}.</a></li>
+                    <li><strong>Heading level</strong><br>
+                        File under <a href="{{ site.data.1301.1301[13010402].link | prepend: baseurl }}">{{ site.data.1301.1301[13010402].name }}.</a></li>
+                    <li><strong>Existence of headings</strong></li>
+                    <li><strong>Descriptive headings:</strong><br>
+                        File under <a href="{{ site.data.2406.2406[2406].link | prepend: baseurl }}">{{ site.data.2406.2406[2406].name }}.</a></li>
                 </ul>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Screen readers also allow users to navigate through the page with headings.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F43">F43: Failure of Success Criterion 1.3.1 due to using structural markup in a way that does not represent relationships in the content</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
