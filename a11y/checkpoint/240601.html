@@ -24,9 +24,8 @@ criterion: 2406
             <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
                 <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Headings must describe the topic of the section they head.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Each heading must describe the topic of its content.</li>
                 <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Headings should be used to divide and label content.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Headings should be marked up semantically. (See <a href="{{ site.data.1301.1301[130105].link | prepend: baseurl }}">{{ site.data.1301.1301[130105].name }}</a>.)</li>
             </ul>
 
             <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want headings to be descriptive so that I can use them to navigate the content.</div>
@@ -37,21 +36,24 @@ criterion: 2406
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            <h3 id="test1">Does the page contain headings?</h3>
+            <h3 id="test1">Does the page contain visual headings?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the headings describe the topic of the associated blocks of content?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2406.2406[24060101].link | prepend: baseurl }}">{{ site.data.2406.2406[24060101].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2406.2406[24060101].link | prepend: baseurl }}">{{ site.data.2406.2406[24060101].name }}.</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
         </div>
 
         <div class="block">
             <h2>Web Test Procedure</h2>
-            <p>For each heading on the page, verify that it clearly describes the content of its section.</p>
+            <ol>
+                <li>Identify all visual headings on the page.</li>
+                <li>Use ANDI: structures to identify all programmatically defined headings.</li>
+                <li>For each visual heading on the page, verify that it clearly describes the content of its section.</p>
         </div>
 
         <div class="block">
@@ -63,10 +65,9 @@ criterion: 2406
 
         <div class="block">
             <h2>Testing Tools</h2>
-        <ul>
-            
-        </ul>
-
+            <ul>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+            </ul>
         </div>
 
         <div class="block">
