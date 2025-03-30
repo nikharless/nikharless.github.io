@@ -12,76 +12,94 @@ checkpoint: 320401
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Links that have the same target within a set of web pages are identified consistently.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Links that have the same target within a set of web pages are not identified consistently.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Ensure links that have the same target within a set of web pages have consistent text and accessible names each time they appear.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Passing Example<br>
-                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
-            <div>
-                <h3>Page 1</h3>
-                <div class="example">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac malesuada nisl, at efficitur metus. Aenean volutpat, dolor non ornare luctus, leo augue venenatis justo, a dignissim dui urna in orci. Nulla sed orci non sem luctus consequat.</p>
-                    <p><a href="#" aria-label="Read more about lorem ipsum">Read more</a></p>
-                    <pre><code>&lt;a href="#" aria-label="Read more about lorem ipsum"&gt;Read more&lt;/a&gt;</code></pre>
-                </div>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Links that have the same target within a set of web pages are identified consistently.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Links that have the same target within a set of web pages are not identified consistently.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Ensure links that have the same target within a set of web pages have consistent text and accessible names each time they appear.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Page 1</h3>
+                    <div class="example">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac malesuada nisl, at efficitur metus. Aenean volutpat, dolor non ornare luctus, leo augue venenatis justo, a dignissim dui urna in orci. Nulla sed orci non sem luctus consequat.</p>
+                        <p><a href="#" aria-label="Read more about lorem ipsum">Read more</a></p>
+                        <pre><code>&lt;a href="#" aria-label="Read more about lorem ipsum"&gt;Read more&lt;/a&gt;</code></pre>
+                    </div>
 
-                <h3>Page 2</h3>
-                <div class="example">
-                    <p>Vestibulum in massa tincidunt, laoreet elit id, molestie ligula. Donec bibendum malesuada nibh sed fringilla.</p>
-                    <p><a href="#" aria-label="Read more about vestibulum">Read more</a></p>
-                    <pre><code>&lt;a href="#" aria-label="Read more about vestibulum"&gt;Read more&lt;/a&gt;</code></pre>
+                    <h3>Page 2</h3>
+                    <div class="example">
+                        <p>Vestibulum in massa tincidunt, laoreet elit id, molestie ligula. Donec bibendum malesuada nibh sed fringilla.</p>
+                        <p><a href="#" aria-label="Read more about vestibulum">Read more</a></p>
+                        <pre><code>&lt;a href="#" aria-label="Read more about vestibulum"&gt;Read more&lt;/a&gt;</code></pre>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Failing Example<br>
-                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
-            <div>
-                <h3>Page 1</h3>
-                <div class="example">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac malesuada nisl, at efficitur metus. Aenean volutpat, dolor non ornare luctus, leo augue venenatis justo, a dignissim dui urna in orci. Nulla sed orci non sem luctus consequat.</p>
-                    <p><a href="#" aria-label="Read more about lorem ipsum">Read more</a></p>
-                    <pre><code>&lt;a href="#" aria-label="Read more about lorem ipsum"&gt;Read more&lt;/a&gt;</code></pre>
-                </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                    <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>Page 1</h3>
+                    <div class="example">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac malesuada nisl, at efficitur metus. Aenean volutpat, dolor non ornare luctus, leo augue venenatis justo, a dignissim dui urna in orci. Nulla sed orci non sem luctus consequat.</p>
+                        <p><a href="#" aria-label="Read more about lorem ipsum">Read more</a></p>
+                        <pre><code>&lt;a href="#" aria-label="Read more about lorem ipsum"&gt;Read more&lt;/a&gt;</code></pre>
+                    </div>
 
-                <h3>Page 2</h3>
-                <div class="example">
-                    <p>Vestibulum in massa tincidunt, laoreet elit id, molestie ligula. Donec bibendum malesuada nibh sed fringilla.</p>
-                    <p><a href="#" aria-label="Continue to vestibulum article">Continue</a></p>
-                    <pre><code>&lt;a href="#" aria-label="Continue to vestibulum article"&gt;Continue&lt;/a&gt;</code></pre>
+                    <h3>Page 2</h3>
+                    <div class="example">
+                        <p>Vestibulum in massa tincidunt, laoreet elit id, molestie ligula. Donec bibendum malesuada nibh sed fringilla.</p>
+                        <p><a href="#" aria-label="Continue to vestibulum article">Continue</a></p>
+                        <pre><code>&lt;a href="#" aria-label="Continue to vestibulum article"&gt;Continue&lt;/a&gt;</code></pre>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Consistently identified actions are especially important to people with disabilities.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F31">F31: Failure of Success Criterion 3.2.4 due to using two different labels for the same function on different Web pages within a set of Web pages </a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G197">G197: Using labels, names, and text alternatives consistently for content that has the same functionality</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Consistent form components:</strong><br>
+                            File under <a href="{{ site.data.3204.3204[320401].link | prepend: baseurl }}">{{ site.data.3204.3204[320401].name }}.</a></li>
+                        <li><strong>Link purpose:</strong><br>
+                            File under <a href="{{ site.data.2404.2404[2404].link | prepend: baseurl }}">{{ site.data.2404.2404[2404].name }}.</a></li>
+                    </ul> 
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users can easily predict where links go from page to page.</li>
+                        <li><strong>Motion impaired:</strong> Users can save time not having to test links to see where they go.</li>
+                        <li><strong>Cognitively impaired:</strong> Users can easily predict where links go from page to page.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F31">F31: Failure of Success Criterion 3.2.4 due to using two different labels for the same function on different Web pages within a set of Web pages </a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G197">G197: Using labels, names, and text alternatives consistently for content that has the same functionality</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include  checkpoints/3204checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
