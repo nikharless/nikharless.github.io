@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 13010506
+current: 13010505
 criterion: 1301
 checkpoint: 130105
 ---
@@ -12,58 +12,63 @@ checkpoint: 130105
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Lists in PDF documents are tagged as lists.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The list is not tagged as a list.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <h3>Adobe Acrobat Pro</h3>
-                <ul>
-                    <li>Tag the list with the <code>&lt;List&gt;</code> tag.</li>
-                    <li>Tag the bullet or number character with the <code>&lt;Lbl&gt;</code> tag.</li>
-                    <li>Tag the bullet text with the <code>&lt;LBody&gt;</code> tag.</li>
-                    <li>Enclose the <code>&lt;Lbl&gt;</code> and <code>&lt;LBody&gt;</code> elements within the <code>&lt;LI&gt;</code> tag.</li>
-                    <li>Nest the <code>&lt;LI&gt;</code> tags within the <code>&lt;List&gt;</code> tag.</li>
-                </ul>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2>Example</h2>
-            <div>
-                <pre><code>&lt;L&gt;
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Lists in PDF documents are tagged as lists.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The list is not tagged as a list.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <h3>Adobe Acrobat Pro</h3>
+                    <ul>
+                        <li>Tag the list with the <code>&lt;List&gt;</code> tag.</li>
+                        <li>Tag the bullet or number character with the <code>&lt;Lbl&gt;</code> tag.</li>
+                        <li>Tag the bullet text with the <code>&lt;LBody&gt;</code> tag.</li>
+                        <li>Enclose the <code>&lt;Lbl&gt;</code> and <code>&lt;LBody&gt;</code> elements within the <code>&lt;LI&gt;</code> tag.</li>
+                        <li>Nest the <code>&lt;LI&gt;</code> tags within the <code>&lt;List&gt;</code> tag.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2>Example</h2>
+                <div>
+                    <pre><code>&lt;L&gt;
     &lt;LI&gt;
         &lt;Lbl&gt;
         &lt;LBody&gt;
     &lt;LI&gt;
     ...</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Visual users can see at a glance that content is a list. This information must be conveyed to assistive technology users as well.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF21">PDF21: Using List tags for lists in PDF documents</a></li>
-                    <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro)</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. When lists are properly marked up, screen readers inform users of the structure and how many items are in the list.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF21">PDF21: Using List tags for lists in PDF documents</a></li>
+                        <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro)</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
