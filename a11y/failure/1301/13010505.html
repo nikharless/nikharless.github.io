@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 13010505
+current: 13010506
 criterion: 1301
 checkpoint: 130105
 ---
@@ -18,43 +18,47 @@ checkpoint: 130105
     <div class="failure">
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Lists contain only <code>&lt;li&gt;</code>, <code>&lt;script&gt;</code>, and <code>&lt;template&gt;</code> elements.</div>
+    		<div>Lists in PDF documents are tagged as lists.</div>
     	</div>
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>List contains one or more invalid child elements.</div>
+    		<div>The list is not tagged as a list.</div>
     	</div>
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Enclose all content inside <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> elements within <code>&lt;li&gt;</code> elements.</div>
+    		<div>
+                <h3>Adobe Acrobat Pro</h3>
+                <ul>
+                    <li>Tag the list with the <code>&lt;List&gt;</code> tag.</li>
+                    <li>Tag the bullet or number character with the <code>&lt;Lbl&gt;</code> tag.</li>
+                    <li>Tag the bullet text with the <code>&lt;LBody&gt;</code> tag.</li>
+                    <li>Enclose the <code>&lt;Lbl&gt;</code> and <code>&lt;LBody&gt;</code> elements within the <code>&lt;LI&gt;</code> tag.</li>
+                    <li>Nest the <code>&lt;LI&gt;</code> tags within the <code>&lt;List&gt;</code> tag.</li>
+                </ul>
+            </div>
     	</div>
         <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
+            <h2>Example</h2>
             <div>
-                <pre><code>&lt;ul&gt;
-  &lt;li&gt;&lt;p&gt;Coffee&lt;br&gt;
-    &lt;i&gt;with cream&lt;/i&gt;&lt;/p&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="#"&gt;Tea&lt;/a&gt;
-    &lt;ul&gt;
-      &lt;li&gt;Black tea&lt;/li&gt;
-      &lt;li&gt;Green tea&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;img src="milk.png"&gt; Milk&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+                <pre><code>&lt;L&gt;
+    &lt;LI&gt;
+        &lt;Lbl&gt;
+        &lt;LBody&gt;
+    &lt;LI&gt;
+    ...</code></pre>
             </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Screen readers do not correctly read lists when content elements other than <code>&lt;li&gt;</code> are directly below the <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> elements.</div>
+            <div>Visual users can see at a glance that content is a list. This information must be conveyed to assistive technology users as well.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>
-                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol">&lt;ol&gt;: The Ordered List element</a></li>
-                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul">&lt;ul&gt;: The Unordered List element</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF21">PDF21: Using List tags for lists in PDF documents</a></li>
+                    <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro)</a></li>
                 </ul>
             </div>
         </div>

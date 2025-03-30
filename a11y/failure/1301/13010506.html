@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 13010506
+current: 13010507
 criterion: 1301
 checkpoint: 130105
 ---
@@ -18,27 +18,24 @@ checkpoint: 130105
     <div class="failure">
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Lists in PDF documents are tagged as lists.</div>
+    		<div>Lists in PDF documents are nested correctly.</div>
     	</div>
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The list is not tagged as a list.</div>
+    		<div>List elements are not nested correctly.</div>
     	</div>
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <h3>Adobe Acrobat Pro</h3>
                 <ul>
-                    <li>Tag the list with the <code>&lt;List&gt;</code> tag.</li>
-                    <li>Tag the bullet or number character with the <code>&lt;Lbl&gt;</code> tag.</li>
-                    <li>Tag the bullet text with the <code>&lt;LBody&gt;</code> tag.</li>
-                    <li>Enclose the <code>&lt;Lbl&gt;</code> and <code>&lt;LBody&gt;</code> elements within the <code>&lt;LI&gt;</code> tag.</li>
                     <li>Nest the <code>&lt;LI&gt;</code> tags within the <code>&lt;List&gt;</code> tag.</li>
+                    <li>Nest the <code>&lt;Lbl&gt;</code> and <code>&lt;LBody&gt;</code> elements within the <code>&lt;LI&gt;</code> tag.</li>
                 </ul>
             </div>
     	</div>
         <div class="row block">
-            <h2>Example</h2>
+            <h2 class="{{ sc.level }}">Example</h2>
             <div>
                 <pre><code>&lt;L&gt;
     &lt;LI&gt;
@@ -50,7 +47,7 @@ checkpoint: 130105
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Visual users can see at a glance that content is a list. This information must be conveyed to assistive technology users as well.</div>
+            <div>List tags must be properly nested in order for screen readers to interpret them correctly.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">References</h2>

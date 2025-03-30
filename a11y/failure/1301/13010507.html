@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 13010507
+current: 13010508
 criterion: 1301
 checkpoint: 130105
 ---
@@ -18,43 +18,41 @@ checkpoint: 130105
     <div class="failure">
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Lists in PDF documents are nested correctly.</div>
+    		<div>Only content that functions as lists are tagged as lists in a PDF document.</div>
     	</div>
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>List elements are not nested correctly.</div>
+    		<div>Content which does not function as a list is tagged as a list.</div>
     	</div>
     	<div class="row block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
                 <h3>Adobe Acrobat Pro</h3>
                 <ul>
-                    <li>Nest the <code>&lt;LI&gt;</code> tags within the <code>&lt;List&gt;</code> tag.</li>
-                    <li>Nest the <code>&lt;Lbl&gt;</code> and <code>&lt;LBody&gt;</code> elements within the <code>&lt;LI&gt;</code> tag.</li>
+                    <li>Select the <strong>Tags</strong> button in the navigation pane.</li>
+                    <li>In the Accessibility tags panel, find and select the incorrectly tagged element.</li>
+                    <li>Right-click the element or open the Options (...) menu and select <strong>Properties...</strong>.</li>
+                    <li>From the Type drop-down, select the correct tag for the element.</li>
+                    <li>Close the Object Properties dialog.</li>
                 </ul>
             </div>
     	</div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Example</h2>
             <div>
-                <pre><code>&lt;L&gt;
-    &lt;LI&gt;
-        &lt;Lbl&gt;
-        &lt;LBody&gt;
-    &lt;LI&gt;
-    ...</code></pre>
+                <img src="{{ baseurl }}/assets/images/13010508-pdf-obj-prop.png" style="max-width: 380px;" alt="Screenshot of Object Properties dialog in Acrobat with Type drop-down highlighted">
             </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>List tags must be properly nested in order for screen readers to interpret them correctly.</div>
+            <div>Screen readers rely on accessibility tags in PDF documents to interpret the content for users.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF21">PDF21: Using List tags for lists in PDF documents</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F43">F43: Failure of Success Criterion 1.3.1 due to using structural markup in a way that does not represent relationships in the content</a></li>
                     <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro)</a></li>
                 </ul>
             </div>
