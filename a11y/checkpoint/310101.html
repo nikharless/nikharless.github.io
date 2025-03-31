@@ -11,154 +11,146 @@ criterion: 3101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
 
-    </div>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The default page language must be set.</li>
-    </ul>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The default human language of the page must be set.</li>
+            </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the default page language set so that I my screen reader knows how to pronounce the page content.</div>
+            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the default page language set so that I my screen reader knows how to pronounce the page content.</div>
 
-    <div class="success"><strong>Success:</strong> If you were a screen reader user, when you read the page, the screen reader would pronounce the content correctly.</div>
+            <div class="success"><strong>Success:</strong> If you were a screen reader user, when you read the page, the screen reader would pronounce the content correctly.</div>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is the default page language set using the <code>lang</code> attribute on the <code>&lt;html&gt;</code> tag?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the lang attribute valid?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the lang attribute set to the correct language?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is the default page language set using the <code>lang</code> attribute on the <code>&lt;html&gt;</code> tag?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the <code>lang</code> attribute valid?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3101.3101[31010103].link | prepend: baseurl }}">{{ site.data.3101.3101[31010103].name }}</a>.</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the <code>lang</code> attribute set to the correct language?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3101.3101[31010103].link | prepend: baseurl }}">{{ site.data.3101.3101[31010103].name }}.</a></span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3101.3101[31010102].link | prepend: baseurl }}">{{ site.data.3101.3101[31010102].name }}.</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3101.3101[31010102].link | prepend: baseurl }}">{{ site.data.3101.3101[31010102].name }}</a>.</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3101.3101[31010101].link | prepend: baseurl }}">{{ site.data.3101.3101[31010101].name }}.</a></span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3101.3101[31010101].link | prepend: baseurl }}">{{ site.data.3101.3101[31010101].name }}</a>.</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
+            <h4>axe DevTools</h4>
+            <ol>
+                <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> to flag an issue if the <code>lang</code> attribute or its value is invalid.</li>
+                <li>Verify that the <code>lang</code> attribute value matches the actual page language.</li>
+            </ol>
 
-    <h3>Desktop</h3>
+            <h4>ANDI</h4>
+            <ol>
+                <li>Open ANDI: structures.</li>
+                <li>Select <strong>page language</strong> from the <strong>more details</strong> menu.</li>
+                <li>Verify that the <code>&lt;html&gt;</code> element has a <code>lang</code> attribute.</li>
+                <li>Verify that the <code>lang</code> attribute value is valid and matches the actual page language.</li>
+            </ol>
 
-    <h4>axe DevTools</h4>
-    <ol>
-        <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> to flag an issue if the <code>lang</code> attribute or its value is invalid.</li>
-        <li>Verify that the <code>lang</code> attribute value matches the actual page language.</li>
-    </ol>
+            <h4>Manual</h4>
+            <ol>
+                <li>Look at the source code of the page and verify that the <code>&lt;html&gt;</code> element has a <code>lang</code> attribute set to a language code.</li>
+                <li>Verify that the <code>lang</code> attribute value matches the actual page language.</li>
+            </ol>
 
-    <h4>ANDI</h4>
-    <ol>
-        <li>Run ANDI.</li>
-        <li>Select <strong>structures</strong>.</li>
-        <li>Select <strong>page language</strong> from the <strong>more details</strong> menu.</li>
-        <li>Verify that the <code>&lt;html&gt;</code> element has a <code>lang</code> attribute.</li>
-        <li>Verify that the <code>lang</code> attribute value is valid and matches the actual page language.</li>
-    </ol>
+            <h3>Mobile</h3>
+            <ol>
+                <li>Open the page on a desktop computer in Chrome.</li>
+                <li>Open the Developer tools:
+                    <ul>
+                        <li>Right-click the control and select <strong>Inspect</strong>, OR</li>
+                        <li>From the Customize and control Google Chrome menu, select <strong>More tools > Developer tools</strong>, OR</li>
+                        <li>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></li>
+                    </ul>
+                </li>
+                <li>Activate <strong>Toggle device toolbar</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>) to view the page as a mobile device.</li>
+                <li>Select a device from the <strong>Dimensions</strong> drop-down.</li>
+                <li>Follow the procedure for Desktop Web.</li>
+            </ol>
 
-    <h4>Manual</h4>
-    <ol>
-        <li>Look at the source code of the page and verify that the <code>&lt;html&gt;</code> element has a <code>lang</code> attribute set to a language code.</li>
-        <li>Verify that the <code>lang</code> attribute value matches the actual page language.</li>
-    </ol>
+            <h2>PDF Test Procedure</h2>
+            <h3>Adobe Acrobat Pro</h3>
+            <ol>
+                <li>Go to Document Properties:
+                    <ul>
+                        <li>Select <strong>Menu > Document properties...</strong>.</li>
+                        <li>Windows: <kbd>Control</kbd>+<kbd>D</kbd></li>
+                        <li>MacOS: <kbd>Command</kbd>+<kbd>D</kbd></li>
+                    </ul>
+                </li>
+                <li>In the Document Properties dialog, select the <strong>Advanced</strong> tab.</li>
+                <li>Under Reading Options, verify that a language is set in the Language drop-down.</li>
+                <li>Verify that the language matches the actual language of the document.</li>
+            </ol>
+        </div>
 
-    <h3>Mobile</h3>
-    <ol>
-        <li>Open the page on a desktop computer in Chrome.</li>
-        <li>Open the Developer tools:
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li>Right-click the control and select <strong>Inspect</strong>, OR</li>
-                <li>From the Customize and control Google Chrome menu, select <strong>More tools > Developer tools</strong>, OR</li>
-                <li>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></li>
+                <li><a href="{{ site.data.3101.3101[31010101].link | prepend: baseurl }}">{{ site.data.3101.3101[31010101].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.3101.3101[31010102].link | prepend: baseurl }}">{{ site.data.3101.3101[31010102].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.3101.3101[31010103].link | prepend: baseurl }}">{{ site.data.3101.3101[31010103].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.3101.3101[31010104].link | prepend: baseurl }}">{{ site.data.3101.3101[31010104].name }}.</a> (Medium)</li>
             </ul>
-        </li>
-        <li>Activate <strong>Toggle device toolbar</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>) to view the page as a mobile device.</li>
-        <li>Select a device from the <strong>Dimensions</strong> drop-down.</li>
-        <li>Follow the procedure for Desktop Web.</li>
-    </ol>
+        </div>
 
-    <h2>PDF Test Procedure</h2>
-
-    <h3>Adobe Acrobat Pro</h3>
-    <ol>
-        <li>Go to Document Properties:
+        <div class="block">
+            <h2>Testing Tools</h2>
             <ul>
-                <li>Select <strong>Menu > Document properties...</strong>.</li>
-                <li>Windows: <kbd>Control</kbd>+<kbd>D</kbd></li>
-                <li>MacOS: <kbd>Command</kbd>+<kbd>D</kbd></li>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+                <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
+                <li>Chrome Developer Tools > <a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Accessibility Pane</a></li>
+                <li>Firefox Web Developer Tools > <a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Accessibility Inspector</a></li>
+                <li>Adobe Acrobat Pro</li>
             </ul>
-        </li>
-        <li>In the Document Properties dialog, select the <strong>Advanced</strong> tab.</li>
-        <li>Under Reading Options, verify that a language is set in the Language drop-down.</li>
-        <li>Verify that the language matches the actual language of the document.</li>
-    </ol>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3101.3101[31010101].link | prepend: baseurl }}">{{ site.data.3101.3101[31010101].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.3101.3101[31010102].link | prepend: baseurl }}">{{ site.data.3101.3101[31010102].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.3101.3101[31010103].link | prepend: baseurl }}">{{ site.data.3101.3101[31010103].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.3101.3101[31010104].link | prepend: baseurl }}">{{ site.data.3101.3101[31010104].name }}</a>. (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
-        <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
-        <li>Chrome Developer Tools > <a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Accessibility Pane</a></li>
-        <li>Firefox Web Developer Tools > <a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Accessibility Inspector</a></li>
-        <li>Adobe Acrobat Pro</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>HTML:
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H57">H57: Using the language attribute on the HTML element</a></li>
-            </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF16">PDF16: Setting the default language using the /Lang entry in the document catalog of a PDF document</a></li>
-            </ul>
-        </li>
-     </ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H57">H57: Using the language attribute on the HTML element</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF16">PDF16: Setting the default language using the /Lang entry in the document catalog of a PDF document</a></li>
+                    </ul>
+                </li>
+             </ul>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML Language Code Reference</a></li>
-    </ul>
-</div>
-</div>
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML Language Code Reference</a></li>
+            </ul>
+        </div>
+    </div>
     {% include  checkpoints/3101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
