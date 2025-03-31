@@ -12,44 +12,51 @@ checkpoint: 310101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The web page has a <code>lang</code> attribute that sets the default page language.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The web page has a <code>lang</code> attribute, but the language code is invalid.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Set the <code>lang</code> value to a valid language code.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <pre><code>&lt;html <strong>lang="es"</strong>&gt;</code></pre>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>The web page has a <code>lang</code> attribute that sets the default page language.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The web page has a <code>lang</code> attribute, but the language code is invalid.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Set the <code>lang</code> value to a valid language code.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <pre><code>&lt;html <strong>lang="es"</strong>&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Assistive technology users get information in the correct language.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H57">H57: Using the language attribute on the HTML element</a></li>
-                    <li><a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML Language Code Reference</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Screen reader users need the page read to them with the correct pronunciation.</li>
+                        <li><strong>Deaf/hard of hearing:</strong> Users need the captions to be in the correct language.</li>
+                        <li><strong>Cognitively impaired:</strong> Users of text-to-speech software need content to be read with the correct pronunciation.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H57">H57: Using the language attribute on the HTML element</a></li>
+                        <li><a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML Language Code Reference</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include  checkpoints/3101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
