@@ -16,7 +16,13 @@ criterion: 3102
 
         <div class="block">
             <h2>Overview</h2>
-
+            <p>Exceptions to this guideline include:</p>
+            <ul>
+                <li>Proper names</li>
+                <li>Technical terms</li>
+                <li>Words of indeterminate language</li>
+                <li>Words or phrases that have become part of the vernacular of the page language</li>
+            </ul>
         </div>
 
         <div class="block">
@@ -24,10 +30,10 @@ criterion: 3102
             <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
                 <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The language of text that is in a different language than the default page language must be marked up with the correct language code.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text that is in a different language than the default page language must be marked up with the correct language code.</li>
             </ul>
 
-            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the language of text set so that I my screen reader knows how to pronounce the page content.</div>
+            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the language of text set so that my screen reader knows how to pronounce the page content.</div>
 
             <div class="success"><strong>Success:</strong> If you were a screen reader user, when you read the page, the screen reader would pronounce the content correctly.</div>
         </div>
@@ -39,7 +45,7 @@ criterion: 3102
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the text a proper name, technical term, in an indeterminate language, or a phrase that has become part of the vernacular of the default language?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="na"><span><strong>Yes</strong>; This checkpoint is not applicable.</span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the element containing only the alternate language text have a <code>lang</code> attribute?</span>
                             <ul role="group">
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the <code>lang</code> attribute valid?</span>
@@ -47,18 +53,18 @@ criterion: 3102
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the <code>lang</code> attribute set to the correct language?</span>
                                             <ul role="group">
                                                  <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3102.3102[31020103].link | prepend: baseurl }}">{{ site.data.3102.3102[31020103].name }}</a>.</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3102.3102[31020103].link | prepend: baseurl }}">{{ site.data.3102.3102[31020103].name }}.</a></span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3102.3102[31020102].link | prepend: baseurl }}">{{ site.data.3102.3102[31020102].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3102.3102[31020102].link | prepend: baseurl }}">{{ site.data.3102.3102[31020102].name }}.</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3102.3102[31020101].link | prepend: baseurl }}">{{ site.data.3102.3102[31020101].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3102.3102[31020101].link | prepend: baseurl }}">{{ site.data.3102.3102[31020101].name }}.</a></span></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
         </div>
 
@@ -69,27 +75,14 @@ criterion: 3102
 
             <ol>
                 <li>Read the text of the page to identify any changes of language in the page which are not proper names, technical terms, words of indeterminate language, or words or phrases that have become part of the vernacular of the default language.</li>
-                <li>Inspect the code to ensure that any changes in language within the document are properly marked with a <code>lang</code> attribute set to a valid value.</li>
+                <li>Use ANDI: structures. Click the "more details" link.</li>
+                <li>If the "[#] lang attributes" is not zero, click it.</li>
+                <li>Inspect the code for any identified passages to ensure that the <code>lang</code> attribute is set to a valid value.</li>
                 <li>Verify that the <code>lang</code> attribute value matches the actual language of the text.</li>
-            </ol>
-
-            <h3>Mobile</h3>
-            <ol>
-                <li>Open the page on a desktop computer in Chrome.</li>
-                <li>Open the Developer tools:
-                    <ul>
-                        <li>Right-click the control and select <strong>Inspect</strong>, OR</li>
-                        <li>From the Customize and control Google Chrome menu, select <strong>More tools > Developer tools</strong>, OR</li>
-                        <li>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></li>
-                    </ul>
-                </li>
-                <li>Activate <strong>Toggle device toolbar</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>) to view the page as a mobile device.</li>
-                <li>Select a device from the <strong>Dimensions</strong> drop-down.</li>
-                <li>Follow the procedure for Desktop Web.</li>
+                <li>Note any differing language passages that weren't identified by ANDI as failures.</li>
             </ol>
 
             <h2>PDF Test Procedure</h2>
-
             <h3>Adobe Acrobat Pro</h3>
             <ol>
                 <li>Identify passages of text whose language differs from the default document language.</li>
@@ -113,6 +106,7 @@ criterion: 3102
         <div class="block">
             <h2>Testing Tools</h2>
             <ul>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
                 <li>Chrome Developer Tools > <a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Accessibility Pane</a></li>
                 <li>Firefox Web Developer Tools > <a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Accessibility Inspector</a></li>
                 <li>Adobe Acrobat Pro</li>
