@@ -12,50 +12,56 @@ checkpoint: 310201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The foreign text container tag has the language set to the appropriate language.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The foreign text container tag does not have the language set to the appropriate language.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-            <div>
-        		<ol>
-                    <li>For each instance, locate and select the corresponding tag in the Tags tree.</li>
-                    <li>Right-click the tag or activate the Options menu, and select <strong>Properties…</strong>.</li>
-                    <li>In the Object Properties dialog, select the <strong>Tag</strong> tab.</li>
-                    <li>Select the correct language from the <strong>Language</strong> drop-down.</li>
-                </ol>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>The different language text container tag has the language set to the appropriate language.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The different language text container tag does not have the language set to the appropriate language.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+            		<ol>
+                        <li>For each instance, locate and select the corresponding tag in the Tags tree.</li>
+                        <li>Right-click the tag or activate the Options menu, and select <strong>Properties…</strong>.</li>
+                        <li>In the Object Properties dialog, select the <strong>Tag</strong> tab.</li>
+                        <li>Select the correct language from the <strong>Language</strong> drop-down.</li>
+                    </ol>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <img src="{{ baseurl }}/assets/images/3102-pdf-object-properties-language.png" alt="Screenshot of Adobe Acrobat Object Properties dialog Tag tab for a Span tag with German selected from the Language drop-down." style="max-width: 480px; border: 1px solid #ccc;">
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <img src="{{ baseurl }}/assets/images/3102-pdf-object-properties-language.png" alt="Screenshot of Adobe Acrobat Object Properties dialog Tag tab for a Span tag with German selected from the Language drop-down." style="max-width: 480px; border: 1px solid #ccc;">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Default page language:</strong><br>
+                            File under <a href="{{ site.data.3101.3101[3101].link | prepend: baseurl }}">{{ site.data.3101.3101[3101].name }}.</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Assistive technology users get information in the correct language.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF19">PDF19: Specifying the language for a passage or phrase with the Lang entry in PDF documents</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF19">PDF19: Specifying the language for a passage or phrase with the Lang entry in PDF documents</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include  checkpoints/3102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

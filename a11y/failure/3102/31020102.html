@@ -12,44 +12,61 @@ checkpoint: 310201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The foreign text has a <code>lang</code> attribute set to the correct language.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The foreign text has a <code>lang</code> attribute on its container tag, but it is invalid.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Change the value of the <code>lang</code> attribute to the appropriate valid language code.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <pre>You’re not coming? <code>&lt;span <strong>lang="es"</strong>&gt;¡Qué chafa!&lt;/span&gt;</code></pre>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>The different language text has a <code>lang</code> attribute set to the correct language.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The different language text has a <code>lang</code> attribute on its container tag, but it is invalid.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Change the value of the <code>lang</code> attribute to the appropriate valid language code.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <p>You're not coming? <span lang="es">¡Qué chafa!</span></p>
+                    <pre>You’re not coming? <code>&lt;span <strong>lang="es"</strong>&gt;¡Qué chafa!&lt;/span&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Assistive technology users get information in the correct language.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H58">H58: Using language attributes to identify changes in the human language. </a></li>
-                    <li><a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML Language Code Reference</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Default page language:</strong><br>
+                            File under <a href="{{ site.data.3101.3101[3101].link | prepend: baseurl }}">{{ site.data.3101.3101[3101].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Screen reader users need text read to them with the correct pronunciation.</li>
+                        <li><strong>Cognitively impaired:</strong> Users of text-to-speech software need content to be read with the correct pronunciation.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H58">H58: Using language attributes to identify changes in the human language. </a></li>
+                        <li><a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML Language Code Reference</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include  checkpoints/3102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
