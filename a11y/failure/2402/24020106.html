@@ -12,52 +12,59 @@ checkpoint: 240201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>PDF file has a title describing the content.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>PDF file does not have a title describing the content.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <p>Add a descriptive title describing the PDF file's content.</p>
-                <h3>Adobe Acrobat Pro</h3>
-                <ol>
-                    <li>Select <strong>Menu > Document properties...</strong>.</li>
-                    <li>In the Document Properties dialog, select the <strong>Description</strong> tab.</li>
-                    <li>Enter a descriptive title in the <strong>Title</strong> field.</li>
-                    <li>Activate the <strong>OK</strong> button.</li>
-                </ol>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>PDF file has a title describing the content.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>PDF file does not have a title describing the content.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <p>Add a descriptive title describing the PDF file's content.</p>
+                    <h3>Adobe Acrobat Pro</h3>
+                    <ol>
+                        <li>Select <strong>Menu > Document properties...</strong>.</li>
+                        <li>In the Document Properties dialog, select the <strong>Description</strong> tab.</li>
+                        <li>Enter a descriptive title in the <strong>Title</strong> field.</li>
+                        <li>Activate the <strong>OK</strong> button.</li>
+                    </ol>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <img src="{{ baseurl }}/assets/images/24020106-pdf-title.png" alt="Screenshot of Document Properties Description tab in Adobe Acrobat Pro" style="max-width: 480px;">
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <img src="{{ baseurl }}/assets/images/24020106-pdf-title.png" alt="Screenshot of Document Properties Description tab in Adobe Acrobat Pro" style="max-width: 480px;">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>Users can easily identify whether the information on the web page is relevant to their needs.
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Screen reader users can differentiate content when multiple web pages are open.</li>
+                        <li><strong>Motion impaired:</strong> Users who rely on audio when navigating between web pages can differentiate content.</li>
+                        <li><strong>Cognitively impaired:</strong> Users can identify content by its title.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Screen reader users, as well as people with cognitive, memory, or reading disabilities benefit from the ability to identify content by its title.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF18">PDF18: Specifying the document title using the Title entry in the document information dictionary of a PDF document</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF18">PDF18: Specifying the document title using the Title entry in the document information dictionary of a PDF document</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/2402checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
