@@ -12,94 +12,99 @@ checkpoint: 410201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Iframes have accessible names.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>An iframe does not have an accessible name.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Solution</h2>
-            <div>
-                <p>Provide an accessible name for the iframe, using one of the following methods:</p>
-                <ul>
-                    <li>Use the <code>title</code> attribute on the iframe and set it to the accessible name, <strong>OR</strong></li>
-                    <li>Use the <code>aria-label</code> attribute on the iframe and set it to the accessible name, <strong>OR</strong></li>
-                    <li>Use the <code>aria-labelledby</code> attribute on the iframe and point it to the id of a text element with the accessible name.</li>
-                </ul>
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>Iframes have accessible names.</div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Title attribute</h3>
-                <div class="example">
-                    <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
-
-                    <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="{{ baseurl }}/assets/docs/topten.html"&gt;&lt;/iframe&gt;</code></pre>
-                </div>
-
-                <h3>ARIA label</h3>
-                <div class="example">
-                    <iframe aria-label="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
-
-                    <pre><code>&lt;iframe <strong>aria-label="Top Ten Songs of 1972"</strong> src="{{ baseurl }}/assets/docs/topten.html"&gt;&lt;/iframe&gt;</code></pre>
-                </div>
-
-                <h3>Reference to visible text</h3>
-                <div class="example">
-                    <div id="ititle">Top Ten Songs of 1972</div>
-                    <iframe aria-labelledby="ititle" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
-
-                    <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="{{ baseurl }}/assets/docs/topten.html"&gt;&lt;/iframe&gt;</code></pre>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>An iframe does not have an accessible name.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <p>Provide an accessible name for the iframe, using one of the following methods:</p>
+                    <ul>
+                        <li>Use the <code>title</code> attribute on the iframe and set it to the accessible name, <strong>OR</strong></li>
+                        <li>Use the <code>aria-label</code> attribute on the iframe and set it to the accessible name, <strong>OR</strong></li>
+                        <li>Use the <code>aria-labelledby</code> attribute on the iframe and point it to the <code>id</code> of a text element with the accessible name.</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Not Applicable</h2>
-            <div>
-                <p>The following items are not applicable to this failure:</p>
-                <ul>
-                    <li><strong>No iframe elements</strong>:<br>
-                        No iframes on the page</li>
-                    <li><strong>Hidden with display property</strong>:<br>
-                        <code>&lt;iframe src="topten.html" style="display: none;"&gt;&lt;/iframe&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                    <li><strong>Negative tabindex value</strong>:<br>
-                        <code>&lt;iframe src="topten.html" tabindex="-1"&gt;&lt;/iframe&gt;</code><br>
-                        Is not a user interface element, because it can't be tabbed to</li>
-                    <li><strong>Role of "none"</strong>:<br>
-                        <code>&lt;iframe src="topten.html" role="none"&gt;&lt;/iframe&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Title attribute</h3>
+                    <div class="example">
+                        <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+
+                        <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                    </div>
+
+                    <h3>ARIA label</h3>
+                    <div class="example">
+                        <iframe aria-label="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+
+                        <pre><code>&lt;iframe <strong>aria-label="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                    </div>
+
+                    <h3>Reference to visible text</h3>
+                    <div class="example">
+                        <div id="ititle">Top Ten Songs of 1972</div>
+                        <iframe aria-labelledby="ititle" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+
+                        <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Assistive technology only works well when code is done properly.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H64">H64: Using the title attribute of the iframe element</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
-                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/cae760/proposed/">Iframe element has non-empty accessible name</a></li>
-                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4b1c6c/proposed/">Iframe elements with identical accessible names have equivalent purpose</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>No iframe elements</strong>:<br>
+                            No iframes on the page</li>
+                        <li><strong>Hidden with display property</strong>:<br>
+                            <code>&lt;iframe style="display: none;"&gt;&lt;/iframe&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                        <li><strong>Negative tabindex value</strong>:<br>
+                            <code>&lt;iframe tabindex="-1"&gt;&lt;/iframe&gt;</code><br>
+                            Is not a user interface element, because it can't be tabbed to</li>
+                        <li><strong>Role of "none"</strong>:<br>
+                            <code>&lt;iframe role="none"&gt;&lt;/iframe&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> Screen reader users need to be alerted of changes in page content.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H64">H64: Using the title attribute of the iframe element</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/cae760/proposed/">Iframe element has non-empty accessible name</a></li>
+                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4b1c6c/proposed/">Iframe elements with identical accessible names have equivalent purpose</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
