@@ -12,43 +12,69 @@ checkpoint: 130302
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Instructions do not rely on auditory characteristics such as beeps, chimes, or speech to be understood.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Instructions rely on auditory characteristics to be understood.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Add an additional non-auditory reference, such as a text label, that can be accessed by users who cannot hear.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Instructions do not rely on auditory characteristics such as beeps, chimes, or speech to be understood.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Instructions rely on auditory characteristics to be understood.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Add an additional non-auditory reference that can be accessed by users who cannot hear.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <p>Press Continue when you hear the chime.</p>
+                    <button>Continue</button>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>People with hearing disabilities may not be able to understand or follow instructions if they rely on a sound cues.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.3.3 Sensory Characteristics</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G96">G96: Providing textual identification of items that otherwise rely only on sensory information to be understood</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <p>Press Continue when the button is enabled and a chime plays.</p>
+                    <button>Continue</button>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Visual cues:</strong><br>
+                            File under <a href="{{ site.data.1303.1303[13030201].link | prepend: baseurl }}">{{ site.data.1303.1303[13030101].name }}.</a></li>
+                        <li><strong>Sounds not referenced by instructions</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>People with hearing disabilities may not be able to understand or follow instructions if they rely on a sound cues.
+                    <ul>
+                        <li><strong>Deaf/hearing impaired:</strong> Users may not be able to follow instructions if they rely on a auditory description of the content.</li>
+                        <li><strong>Cognitively impaired:</strong> Users may benefit from additional text cues.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G96">G96: Providing textual identification of items that otherwise rely only on sensory information to be understood</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1303checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
