@@ -11,136 +11,122 @@ criterion: 1401
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
 
-    <p>Some ways to convey information without relying on color:</p>
-    <ul>
-        <li>Text</li>
-        <li>A symbol</li>
-        <li>Font weight</li>
-        <li>Pattern</li>
-        <li>Contrast</li>
-    </ul>
-    <p>The alternate visual means are <strong>in addition to</strong> accessible programmatic alternatives for assistive technology.</p>
+            <p>Some ways to convey information without relying on color:</p>
+            <ul>
+                <li>Text</li>
+                <li>A symbol</li>
+                <li>Font weight</li>
+                <li>Pattern</li>
+                <li>Contrast</li>
+            </ul>
+            <p>The alternate visual means:</p>
+            <ul>
+                <li>Must be <strong>in addition to</strong> any programmatic alternatives for assistive technology</li>
+                <li>Must be visible onscreen (e.g., not only on mouse hover)</li>
+            </li>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Color must not be used as the only visual means of conveying information.</li>
+            </ul>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Color must not be used as the only visual means of conveying information.</li>
-    </ul>
+            <div class="userstory"><strong>User Story:</strong> As a color blind user, I want to have an alternative non-color-related means to get information so that I get the same information that non-color blind users get.</div>
 
-    <div class="userstory"><strong>User Story:</strong> As a color blind user, I want to have an alternative non-color-related means to get information so that I get the same information that non-color blind users get.</div>
+            <div class="success"><strong>Success:</strong> If you could not see colors, when you view the page, you would get all the same information as non-color blind users.</div>
+        </div>
 
-    <div class="success"><strong>Success:</strong> If you could not see colors, when you view the page, you would get all the same information as non-color blind users.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is color used as the only means to convey information?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1401.1401[14010101].link | prepend: baseurl }}">{{ site.data.1401.1401[14010101].name }}</a></span></li>
-        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is color used as the only means to indicate an action?</span>
-            <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1401.1401[14010102].link | prepend: baseurl }}">{{ site.data.1401.1401[14010102].name }}</a></span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is color used as the only means to prompt a response?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is there any content that relies on color to convey meaning?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is color used as the only means to indicate an action?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1401.1401[14010103].link | prepend: baseurl }}">{{ site.data.1401.1401[14010103].name }}</a></span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is color used as the only means to distinguish a visual element?</span>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1401.1401[14010102].link | prepend: baseurl }}">{{ site.data.1401.1401[14010102].name }}.</a></span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is color used as the only means to prompt a response?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1401.1401[14010104].link | prepend: baseurl }}">{{ site.data.1401.1401[14010104].name }}</a></span></li>
-                                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1401.1401[14010103].link | prepend: baseurl }}">{{ site.data.1401.1401[14010103].name }}.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is color used as the only means to distinguish a visual element?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1401.1401[14010104].link | prepend: baseurl }}">{{ site.data.1401.1401[14010104].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1401.1401[14010101].link | prepend: baseurl }}">{{ site.data.1401.1401[14010101].name }}.</a></span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Examine the page for any elements where color is used to convey information, indicate an action, prompt a response, or distinguish a visual element.</li>
+                <li>You may use ANDI: color contrast and activate the "grayscale" button to render the page in grayscale.</li>
+                <li>Verify that the information conveyed by color is also conveyed visually without relying on color.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.1401.1401[14010101].link | prepend: baseurl }}">{{ site.data.1401.1401[14010101].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1401.1401[14010102].link | prepend: baseurl }}">{{ site.data.1401.1401[14010102].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1401.1401[14010103].link | prepend: baseurl }}">{{ site.data.1401.1401[14010103].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1401.1401[14010104].link | prepend: baseurl }}">{{ site.data.1401.1401[14010104].name }}.</a> (Medium)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+        <ul>
+            <li>Web:
+                <ul>
+                    <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+                    <li>Chrome Developer tools > More tools > Rendering > Emulate vision deficiencies</li>
+                </ul>
+            </li>
+        </ul>
+
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>Related Techniques:
+                    <ul>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G14">G14: Ensuring that information conveyed by color differences is also available in text</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G182">G182: Ensuring that additional visual cues are available when text color differences are used to convey information</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G205">G205: Including a text cue for colored form control labels</a></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
 
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-
-    <ol>
-        <li>Examine the page for any elements where color is used to convey information, indicate an action, prompt a response, or distinguish a visual element.</li>
-        <li>Verify that the information conveyed by color is also conveyed visually without relying on color.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <ol>
-        <li>Follow the procedure for Web.</li>
-    </ol>
-
-    <h2>PDF Test Procedure</h2>
-    <ol>
-        <li>Follow the procedure for Web.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1401.1401[14010101].link | prepend: baseurl }}">{{ site.data.1401.1401[14010101].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1401.1401[14010102].link | prepend: baseurl }}">{{ site.data.1401.1401[14010102].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1401.1401[14010103].link | prepend: baseurl }}">{{ site.data.1401.1401[14010103].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1401.1401[14010104].link | prepend: baseurl }}">{{ site.data.1401.1401[14010104].name }}</a> (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Web:
+            <h3>Additional Information</h3>
             <ul>
-                <li>Chrome Developer tools > More tools > Rendering > Emulate vision deficiencies</li>
-                <li><a href="https://www.tpgi.com/color-contrast-checker/">TPGi: Colour Contrast Analyzer (CCA)</a></li>
-                <li><a href="https://dequeuniversity.com/color-contrast">Deque Color Contrast Analyzer</a></li>
-                <li><a href="https://accessible-colors.com/">Accessible Colors</a></li>
-                <li><a href="https://coolors.co/contrast-checker/ffffff-a2b9bc">Coolors: Color Contrast Checker</a></li>
+                <li><a href="https://www.w3schools.com/accessibility/accessibility_color_meaning.php">W3: Accessibility Color Alone as Meaning</a></li>
+                <li><a href="https://learn.levelaccess.com/l/487581/2018-04-18/28w48t">LevelAccess: Accessibility Basics Webinar #2 - Use of Color</a> (0:00 - 25:00)</li>
             </ul>
-        </li>
-    </ul>
-
+        </div>
     </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.4.1: Use of Color</a></li>
-        <li>Related Techniques:
-            <ul>
-                <li>General:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G14">G14: Ensuring that information conveyed by color differences is also available in text</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G182">G182: Ensuring that additional visual cues are available when text color differences are used to convey information</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G205">G205: Including a text cue for colored form control labels</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://www.w3schools.com/accessibility/accessibility_color_meaning.php">W3: Accessibility Color Alone as Meaning</a></li>
-        <li><a href="https://learn.levelaccess.com/l/487581/2018-04-18/28w48t">LevelAccess: Accessibility Basics Webinar #2 - Use of Color</a> (0:00 - 25:00)</li>
-    </ul>
-    </div>
-</div>
     {% include checkpoints/1401checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>

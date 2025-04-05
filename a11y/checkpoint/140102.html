@@ -11,142 +11,130 @@ criterion: 1401
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-
-    <p>Some means to distinguish links from regular text:</p>
-    <ul>
-        <li>Underline</li>
-        <li>Bold</li>
-        <li>Italic</li>
-        <li>Chevron</li>
-        <li>Arrow</li>
-        <li>Outline</li>
-        <li>Highlight</li>
-        <li>Placement in an obvious navigation area</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Color alone must not be used to distinguish links from regular text.
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Some means to distinguish links from regular text:</p>
             <ul>
-                <li>If links have a contrast ratio of at least 3:1 with regular text, this counts as an additional visual distinction.</li>
+                <li>Underline</li>
+                <li>Bold</li>
+                <li>Italic</li>
+                <li>Chevron</li>
+                <li>Arrow</li>
+                <li>Outline</li>
+                <li>Highlight</li>
+                <li>Placement in an obvious navigation area</li>
             </ul>
-        </li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Links should not be indistinguishable from surrounding text. However, this scenario would not fail this success criterion, because no users are able to distinguish the links.</li>
-    </ul>
+        </div>
 
-    <div class="userstory"><strong>User Story:</strong> As a color blind user, I want to have an alternative non-color-related means to distinguish links so that I get the same information that non-color blind users get.</div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Color alone must not be used to distinguish links from regular text.
+                    <ul>
+                        <li>If links have a contrast ratio of at least 3:1 with regular text, this counts as an additional visual distinction.</li>
+                    </ul>
+                </li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Links should not be indistinguishable from surrounding text. However, this scenario would not fail this success criterion, because no users are able to distinguish the links.</li>
+            </ul>
 
-    <div class="success"><strong>Success:</strong> If you could not see colors, when you view the page, you would be able to distinguish the links from surrounding text.</div>
+            <div class="userstory"><strong>User Story:</strong> As a color blind user, I want to have an alternative non-color-related means to distinguish links so that I get the same information that non-color blind users get.</div>
 
-    </div>
+            <div class="success"><strong>Success:</strong> If you could not see colors, when you view the page, you would be able to distinguish the links from surrounding text.</div>
+        </div>
 
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is font color alone being used to distinguish links from regular text content?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there at least a 3:1 contrast ratio between link text and regular text?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there any additional meaning to the link color? (For example, a wiki with different color links for existing and non-existing pages)</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is font color alone being used to distinguish links from regular text content?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there at least a 3:1 contrast ratio between link text and regular text?</span>
                     <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there another means besides color to convey this meaning?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there any additional meaning to the link color? (For example, a wiki with different color links for existing and non-existing pages)</span>
                             <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1401.1401[14010202].link | prepend: baseurl }}">{{ site.data.1401.1401[14010202].name }}</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there another means besides color to convey this meaning?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1401.1401[14010202].link | prepend: baseurl }}">{{ site.data.1401.1401[14010202].name }}.</a></span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1401.1401[14010201].link | prepend: baseurl }}">{{ site.data.1401.1401[14010201].name }}.</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1401.1401[14010201].link | prepend: baseurl }}">{{ site.data.1401.1401[14010201].name }}</a></span></li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Locate any links on the page.</li>
+                <li>Verify that there is a means other than color to distinguish them from regular text.</li>
+                <li>Determine if there is additional meaning that is conveyed by link color.</li>
+                <li>If so, verify that there is also a means other than color to convey this additional meaning.</li>
+            </ol>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
+            <h2>Mobile App Test Procedure</h2>
+            <p>In the context of native mobile applications, links are elements that do tasks such as opening a browser or another app such as a phone, email, or contact app.</p>
+            <ol>
+                <li>Follow the procedure for Web.</li>
+            </ol>
+        </div>
 
-    <ol>
-        <li>Locate any links on the page.</li>
-        <li>Verify that there is a means other than color to distinguish them from regular text.</li>
-        <li>Determine if there is additional meaning that is conveyed by link color.</li>
-        <li>If so, verify that there is also a means other than color to convey this additional meaning.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>In the context of native mobile applications, links are elements that do tasks such as opening a browser or another app such as a phone, email, or contact app.</p>
-    <ol>
-        <li>Follow the procedure for Web.</li>
-    </ol>
-
-    <h2>PDF Test Procedure</h2>
-    <ol>
-        <li>Follow the procedure for Web.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1401.1401[14010201].link | prepend: baseurl }}">{{ site.data.1401.1401[14010201].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1401.1401[14010202].link | prepend: baseurl }}">{{ site.data.1401.1401[14010202].name }}</a> (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Web:
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li>Chrome Developer tools > More tools > Rendering > Emulate vision deficiencies</li>
-                <li><a href="https://www.tpgi.com/color-contrast-checker/">TPGi: Colour Contrast Analyzer (CCA)</a></li>
-                <li><a href="https://dequeuniversity.com/color-contrast">Deque Color Contrast Analyzer</a></li>
-                <li><a href="https://accessible-colors.com/">Accessible Colors</a></li>
-                <li><a href="https://coolors.co/contrast-checker/ffffff-a2b9bc">Coolors: Color Contrast Checker</a></li>
+                <li><a href="{{ site.data.1401.1401[14010201].link | prepend: baseurl }}">{{ site.data.1401.1401[14010201].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1401.1401[14010202].link | prepend: baseurl }}">{{ site.data.1401.1401[14010202].name }}.</a> (Medium)</li>
             </ul>
-        </li>
-    </ul>
 
-    </div>
+        </div>
 
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.4.1: Use of Color</a></li>
-        <li>Related Techniques:
+        <div class="block">
+            <h2>Testing Tools</h2>
             <ul>
-                <li>General:
+                <li>Web:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G183">G183: Using a contrast ratio of 3:1 with surrounding text and providing additional visual cues on hover for links or controls where color alone is used to identify them</a></li>
+                        <li>Chrome Developer tools > More tools > Rendering > Emulate vision deficiencies</li>
+                        <li><a href="https://www.tpgi.com/color-contrast-checker/">TPGi: Colour Contrast Analyzer (CCA)</a></li>
+                        <li><a href="https://dequeuniversity.com/color-contrast">Deque Color Contrast Analyzer</a></li>
+                        <li><a href="https://accessible-colors.com/">Accessible Colors</a></li>
+                        <li><a href="https://coolors.co/contrast-checker/ffffff-a2b9bc">Coolors: Color Contrast Checker</a></li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://www.w3schools.com/accessibility/accessibility_color_meaning.php">W3: Accessibility Color Alone as Meaning</a></li>
-        <li><a href="https://learn.levelaccess.com/l/487581/2018-04-18/28w48t">LevelAccess: Accessibility Basics Webinar #2 - Use of Color</a> (0:00 - 25:00)</li>
-    </ul>
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>Related Techniques:
+                    <ul>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G183">G183: Using a contrast ratio of 3:1 with surrounding text and providing additional visual cues on hover for links or controls where color alone is used to identify them</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://www.w3schools.com/accessibility/accessibility_color_meaning.php">W3: Accessibility Color Alone as Meaning</a></li>
+                <li><a href="https://learn.levelaccess.com/l/487581/2018-04-18/28w48t">LevelAccess: Accessibility Basics Webinar #2 - Use of Color</a> (0:00 - 25:00)</li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/1401checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
