@@ -12,60 +12,67 @@ checkpoint: 140101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Color is not used as the only visual means of prompting a response.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Color is used as the only visual means of prompting a response.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Provide a visual means of conveying the information in addition to color.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Highlighted Fields</h3>
-                <p>In addition to the yellow highlighting, instructions name the field.</p>
-                <div style="border: 2px solid black; padding: 1em;">
-                    <p>Begin by entering the 6-digit ID number into the ID field and clicking Search.</p>
-                    <form>
-                        <label for="idno">ID <span style="color: #888;"><em>(e.g. 123456)</em></span><br>
-                            <input type="text" id="idno" style="background-color: #ffffb3; border: 2px solid #cccc00; border-radius: 4px;">
-                        </label>
-                        <button>Search</button><br>
-                        <label for="owner">Owner<br>
-                            <input type="text" id="owner" style="border-radius: 4px;">
-                        </label><br>
-                        <label for="dept">Department<br>
-                            <input type="text" id="dept" style="border-radius: 4px;">
-                        </label>
-                    </form>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Color is not used as the only visual means of prompting a response.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Color is used as the only visual means of prompting a response.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Provide a visual means of conveying the information in addition to color.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <h3>Highlighted Fields</h3>
+                    <p>In addition to the yellow highlighting, instructions name the field.</p>
+                    <div style="border: 2px solid black; padding: 1em;">
+                        <p>Begin by entering the 6-digit ID number into the ID field and clicking Search.</p>
+                        <form>
+                            <label for="idno">ID <span style="color: #888;"><em>(e.g. 123456)</em></span><br>
+                                <input type="text" id="idno" style="background-color: #ffffb3; border: 2px solid #cccc00; border-radius: 4px;">
+                            </label>
+                            <button>Search</button><br>
+                            <label for="owner">Owner<br>
+                                <input type="text" id="owner" style="border-radius: 4px;">
+                            </label><br>
+                            <label for="dept">Department<br>
+                                <input type="text" id="dept" style="border-radius: 4px;">
+                            </label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users cannot see colors or have limited color vision.</li>
+                        <li><strong>Colorblind:</strong> Users cannot distinguish between colors.</li>
+                        <li><strong>Cognitively impaired:</strong> Users may benefit from additional text cues.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F81">F81: Failure of Success Criterion 1.4.1 due to identifying required or error fields using color differences only</a>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G14">G14: Ensuring that information conveyed by color differences is also available in text</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>People who are color blind or have low vision need an alternate means besides color of getting the information.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.4.1 Use of Color</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F81">F81: Failure of Success Criterion 1.4.1 due to identifying required or error fields using color differences only</a>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G14">G14: Ensuring that information conveyed by color differences is also available in text</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
-</div>
 
     {% include checkpoints/1401checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
