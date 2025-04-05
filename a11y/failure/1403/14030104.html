@@ -12,50 +12,64 @@ checkpoint: 140301
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Regular size placeholder text has a contrast ratio of at least 4.5:1 with its background.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Regular size placeholder text does not have a contrast ratio of at least 4.5:1 with its background.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Change the text or background so that the contrast ratio between the placeholder text and the background is at least 4.5:1.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <p>This placeholder text is styled to use the color #767676, which has a contrast ratio of 4.5:1 with the white background.</p>
-                <input type="text" placeholder="Search users"> <button>Search</button>
-                <pre><code>input::placeholder {
-  color: #767676;
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Regular size placeholder text has a contrast ratio of at least 4.5:1 with its background.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Regular size placeholder text does not have a contrast ratio of at least 4.5:1 with its background.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Change the text or background so that the contrast ratio between the placeholder text and the background is at least 4.5:1.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <p>This placeholder text is styled to use the color #767676, which has a contrast ratio of 4.5:1 with the white background.</p>
+                    <input type="text" placeholder="Search users"> <button>Search</button>
+                    <pre><code>input::placeholder {
+    color: #767676;
 }</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Vision impaired and color blind users need sufficient contrast in order to be able to read text.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G18">G18: Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
-                    <li><a href="https://www.deque.com/blog/accessible-forms-the-problem-with-placeholders/">The Anatomy of Accessible Forms: The Problem with Placeholders</a></li>
+                    <li><strong>Large text:</strong><br>
+                        File under <a href="{{ site.data.1403.1403[14030204].link | prepend: baseurl }}">{{ site.data.1403.1403[14030204].name }}.</a></li>
                 </ul>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Vision impaired:</strong> Users often have difficulty reading low contrast text.</li>
+                        <li><strong>Colorblind:</strong> Some color deficiencies lower the contrast in the user's vision.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G18">G18: Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                        <li><a href="https://www.deque.com/blog/accessible-forms-the-problem-with-placeholders/">The Anatomy of Accessible Forms: The Problem with Placeholders</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1403checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

@@ -1,62 +1,80 @@
 ---
 layout: default
-current: 12020107
-criterion: 1202
-checkpoint: 120201
+current: 14030105
+criterion: 1403
+checkpoint: 140301
 ---
 {% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1202.1202[page.current] %}
+{% assign currentpg=site.data.1403.1403[page.current] %}
 {% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1202.1202[page.criterion] %}
-{% assign cp=site.data.1202.1202[page.checkpoint] %}
+{% assign sc=site.data.1403.1403[page.criterion] %}
+{% assign cp=site.data.1403.1403[page.checkpoint] %}
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Prerecorded video with audio must have synchronized captions which convey the same information provided in the audio.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The video has captions, but they are difficult to read and can't be adjusted.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Regular sized text over a moving background has at least a 4.5:1 contrast ratio with the background in all places.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Regular sized text over a moving background does not have at least a 4.5:1 contrast ratio with the background in all places, AND the appearance of the text cannot be adjusted by the user.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Ensure regular sized text over a moving background has at least 4.5:1 contrast with the background at all times, <strong>OR</strong></li>
+                        <li>Use a video player which allows the user to adjust the appearance of the captions.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Caption Settings</h3>
+                    <p>Some video players allow the user to adjust the appearance of captions.</p>
+                    <img src="{{ baseurl }}/assets/images/12020107-caption-settings.png" alt="Screenshot of Advanced options dialog offering different choices for caption appearance.">
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <ul>
-                    <li>Ensure caption text has at least 3:1 contrast (assuming a minimum font size of 18 points) with the background at all times, <strong>OR</strong></li>
-                    <li>Use a video player which allows the user to adjust the appearance of the captions.</li>
+                    <li><strong>Large text:</strong><br>
+                        File under <a href="{{ site.data.1403.1403[14030205].link | prepend: baseurl }}">{{ site.data.1403.1403[14030205].name }}.</a></li>
+                    <li><strong>Disabled form controls</strong></li>
+                    <li><strong>Purely decorative text</strong></li>
+                    <li><strong>Visited link text</strong></li>
+                    <li><strong>Logo text</strong></li>
                 </ul>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Caption Settings</h3>
-                <p>Some video players allow the user to adjust the appearance of captions.</p>
-                <img src="{{ baseurl }}/assets/images/12020107-caption-settings.png" alt="Screenshot of Advanced options dialog offering different choices for caption appearance.">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Vision impaired:</strong> Users often have difficulty reading low contrast text.</li>
+                        <li><strong>Colorblind:</strong> Some color deficiencies lower the contrast in the user's vision.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Users with low vision need to be able to easily read the captions.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.2.2 Captions (Prerecorded)</a></li>
-                    <li><a href="https://www.w3.org/WAI/media/av/captions/">W3: Captions</a></li>
-                    <li><a href="https://subtitleo.com/blog/guide-to-video-captions/#C_Color_and_Contrast">SubtitleO: Color and Contrast</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/media/av/captions/">W3: Captions</a></li>
+                        <li><a href="https://subtitleo.com/blog/guide-to-video-captions/#C_Color_and_Contrast">SubtitleO: Color and Contrast</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1202checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
