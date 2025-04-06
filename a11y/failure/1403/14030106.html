@@ -1,0 +1,80 @@
+---
+layout: default
+current: 14030106
+criterion: 1403
+checkpoint: 140301
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.1403.1403[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.1403.1403[page.criterion] %}
+{% assign cp=site.data.1403.1403[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Regular sized synchronized media captions have at least a 4.5:1 contrast ratio with the background in all places.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Regular sized synchronized media captions do not have at least a 4.5:1 contrast ratio with the background in all places, AND the appearance of the text cannot be adjusted by the user.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Ensure regular sized captions have at least 4.5:1 contrast with the background at all times, <strong>OR</strong></li>
+                        <li>Use a video player which allows the user to adjust the appearance of the captions.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Caption Settings</h3>
+                    <p>Some video players allow the user to adjust the appearance of captions.</p>
+                    <img src="{{ baseurl }}/assets/images/12020107-caption-settings.png" alt="Screenshot of Advanced options dialog offering different choices for caption appearance.">
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Large text:</strong><br>
+                            File under <a href="{{ site.data.1403.1403[14030206].link | prepend: baseurl }}">{{ site.data.1403.1403[14030206].name }}.</a></li>
+                        <li><strong>Text over moving images:</strong><br>
+                            File under <a href="{{ site.data.1403.1403[14030105].link | prepend: baseurl }}">{{ site.data.1403.1403[14030105].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Vision impaired:</strong> Users often have difficulty reading low contrast text.</li>
+                        <li><strong>Colorblind:</strong> Some color deficiencies lower the contrast in the user's vision.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/media/av/captions/">W3: Captions</a></li>
+                        <li><a href="https://subtitleo.com/blog/guide-to-video-captions/#C_Color_and_Contrast">SubtitleO: Color and Contrast</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/1202checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
