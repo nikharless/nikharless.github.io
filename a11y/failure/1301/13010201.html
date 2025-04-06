@@ -12,76 +12,87 @@ checkpoint: 130102
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Data tables are marked up semantically as tables.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Data tables are not marked up semantically as tables.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Mark up data tables as semantic tables.
-                <ul>
-                    <li>Use native <a href="https://www.w3schools.com/html/html_tables.asp">HTML tables</a>.</li>
-                    <li>If this is not possible, follow the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">recommended ARIA pattern for tables</a>.</li>
-                </ul>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Time</th>
-                    </tr>
-                    <tr>
-                        <td>John</td>
-                        <td>18 min</td>
-                    </tr>
-                    <tr>
-                        <td>Jane</td>
-                        <td>20 min</td>
-                    </tr>
-                </table>
-                <pre><code>&lt;table&gt;
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Data tables are identified programmatically as tables.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>A data table is not identified programmatically as a table.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Mark up data tables as programmatic tables.
+                    <ul>
+                        <li>Use native HTML tables, preferred (e.g., <code>&lt;table&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code>), <strong>OR</strong></li>
+                        <li>Use ARIA to assign table roles (e.g., <code>role="table"</code>, <code>role="columnheader"</code>, <code>role="rowheader"</code>, and <code>role="cell"</code>).</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Native HTML (preferred)</h3>
+                    <div class="example">
+                        <table>
+                            <tr>
+                                <th>Park</th>
+                                <th>Top Feature</th>
+                            </tr>
+                            <tr>
+                                <td>Denali National Park</td>
+                                <td>Denali - North America's highest peak</td>
+                            </tr>
+                            <tr>
+                                <td>Great Smoky Mountains National Park</td>
+                                <td>Clingmans Dome</td>
+                            </tr>
+                        </table>
+                        <p><a href="https://ourparks.org/">Source</a></p>
+                        <pre><code>&lt;table&gt;
     &lt;tr&gt;
-        &lt;th&gt;Name&lt;/th&gt;
-        &lt;th&gt;Time&lt;/th&gt;
+        &lt;th&gt;Park&lt;/th&gt;
+        &lt;th&gt;Top Feature&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-        &lt;td&gt;John&lt;/td&gt;
-        &lt;td&gt;18 min&lt;/td&gt;
+        &lt;td&gt;Denali National Park&lt;/td&gt;
+        &lt;td&gt;Denali - North America's highest peak&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-        &lt;td&gt;Jane&lt;/td&gt;
-        &lt;td&gt;20 min&lt;/td&gt;
+        &lt;td&gt;Great Smoky Mountains National Park&lt;/td&gt;
+        &lt;td&gt;Clingmans Dome&lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;</code></pre>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Table relationships are visible at a glance for sighted users. Assistive technology users need to get this relationship information from the semantic structure and to be able to easily navigate the data.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H51">H51: Using table markup to present tabular information</a></li>
-                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">W3: ARIA Table Pattern</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Table relationships are visible at a glance for sighted users. Assistive technology users need to get this relationship information from the semantic structure and to be able to easily navigate the data.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H51">H51: Using table markup to present tabular information</a></li>
+                        <li><a href="https://www.w3schools.com/html/html_tables.asp">W3 Schools: HTML tables</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">W3: ARIA Table Pattern</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
