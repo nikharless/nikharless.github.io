@@ -43,10 +43,66 @@ css: table
                 </div>
         	</div>
             <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                    <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>Layout Table with <code>role="table"</code></h3>
+                    <p>When the caption is coded as a header cell, assistive technology reads it with every associated data cell.</p>
+                    <div class="example">
+                        <div role="table" class="divTable">
+                            <div role="row" class="divTableRow">
+                                <div role="cell" class="divTableCell" style="vertical-align: top; border: 0;">
+                                    <p>Alaska National Parks</p>
+                                    <ul>
+                                        <li>Denali National Park</li>
+                                        <li>Gates of the Arctic National Park</li>
+                                        <li>Glacier Bay National Park</li>
+                                        <li>Katmai National Park</li>
+                                        <li>Kenai Fjords National Park</li>
+                                        <li>Kobuk Valley National park</li>
+                                        <li>Lake Clark National Park</li>
+                                        <li>Wrangell-St. Elias National Park</li>
+                                    </ul>
+                                </div>
+                                <div role="cell" class="divTableCell" style="vertical-align: top; border: 0;">
+                                    <p>Arizona National Parks</p>
+                                    <ul>
+                                        <li>Grand Canyon National Park</li>
+                                        <li>Petrified Forest National Park</li>
+                                        <li>Saguaro National Park</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <p><a href="https://ourparks.org/">Source</a></p>
+                        <pre><code>&lt;div <strong>role="table"</strong> class="divTable"&gt;
+    &lt;div <strong>role="row"</strong> class="divTableRow"&gt;
+        &lt;div <strong>role="cell"</strong> class="divTableCell"&gt;
+            &lt;p&gt;Alaska National Parks&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Denali National Park&lt;/li&gt;
+                &lt;li&gt;Gates of the Arctic National Park&lt;/li&gt;
+                ...
+            &lt;/ul&gt;
+        &lt;/td&gt;                        
+        &lt;td <strong>role="cell"</strong> class="divTableCell"&gt;
+            &lt;p&gt;Arizona National Parks&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Grand Canyon National Park&lt;/li&gt;
+                &lt;li&gt;Petrified Forest National Park&lt;/li&gt;
+                ...
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                     <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Layout Table</h3>
+                    <h3>Layout Table with <code>role="presentation"</code></h3>
                     <div class="example">
                         <div role="presentation" class="divTable">
                             <div class="divTableRow">
