@@ -11,275 +11,291 @@ criterion: 1301
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Data tables must be marked up semantically as tables.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Header cells must be programmatically associated with data cells.
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Data tables are tables which require row or column headers to understand each cell's contents. If tables are not marked up correctly, assistive technology reads it as regular paragraph structure, stripping it of its meaning.</p>
+            <p>Layout tables are programmatic tables used solely for placement of content. If they are read by assistive technology as tables, the reading order will often not make sense.</p>
+        </div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li>If a table has both row and column headers, the <code>scope</code> attribute must be used.</li>
-                <li>Simple tables with only either row or column headers do not need the <code>scope</code> attribute.</li>
-                <li>If a table has more than one set of either row or column headers, the <code>headers</code> and <code>id</code> attributes must be used to associate them.</li>
-                <li>Empty header cells are not a failure.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Data tables must be marked up programmatically as tables.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Header cells must be programmatically associated with data cells.
+                    <ul>
+                        <li>If a table has both row and column headers, the <code>scope</code> attribute must be used.</li>
+                        <li>Simple tables with only either row or column headers do not need the <code>scope</code> attribute.</li>
+                        <li>If a table has more than one set of either row or column headers, the <code>headers</code> and <code>id</code> attributes must be used to associate them.</li>
+                        <li>Empty header cells are not a failure.</li>
+                    </ul>
+                </li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Tables should <strong>not</strong> be used for layout purposes.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span>  If a table is used for layout purposes, it must be marked up to prevent assistive technology from reading it as a data table:
+                    <ul>
+                        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Layout tables must not use <code>&lt;th&gt;</code> or <code>&lt;caption&gt;</code> elements.</li>
+                        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Layout tables must not use <code>headers</code>, <code>scope</code>, or <code>summary</code> attributes.</li>
+                        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Layout tables should use <code>role="presentation"</code> or <code>role="none"</code> to prevent assistive technology from trying to read it as a table.</li>
+                    </ul>
+                </li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Complex tables should be broken down into separate simple tables.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Tables should use the <code>&lt;caption&gt;</code> element to programmatically associate a visual label with the data table.</li>
             </ul>
-        </li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Tables should <strong>not</strong> be used for layout purposes.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span>  If a table is used for layout purposes, it must be marked up to prevent assistive technologies from reading it as a data table:
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Layout tables must not use <code>&lt;th&gt;</code> or <code>&lt;caption&gt;</code> elements.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Layout tables must not use <code>headers</code>, <code>scope</code>, or <code>summary</code> attributes.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Layout tables should use <code>role="presentation"</code> or <code>role="none"</code> to prevent assistive technology from trying to read it as a table.</li>
-            </ul>
-        </li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Complex tables should be broken down into separate simple tables.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Tables should use the <code>&lt;caption&gt;</code> element to programmatically associate a visual label with the data table.</li>
-    </ul>
 
-    <div class="userstory"><strong>User Story:</strong> As a blind user, I want to have tables properly marked up so that my screen reader reads the data in a meaningful way.</div>
+            <div class="userstory"><strong>User Story:</strong> As a blind user, I want to have tables properly marked up so that my screen reader reads the data in a meaningful way.</div>
 
-    <div class="success"><strong>Success:</strong> If you could not see the table, when you read the table with a screen reader, you could navigate from cell to cell and hear the header labels with the data to provide context.</div>
+            <div class="success"><strong>Success:</strong> If you could not see the table, when you read the table with a screen reader, you could navigate from cell to cell and hear the header labels with the data to provide context.</div>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Are there data tables on the page?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the data tables marked up as tables and read by the screen reader as such?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the header cells marked up as such?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">TEST 1: Are there data tables on the page?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the data tables identified programmatically as tables?</span>
                     <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the table have both row and column headers?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the table have a caption?</span>
                             <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the headers have a <code>scope</code> attribute?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the caption marked up as a header?</span>
                                     <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the <code>scope</code> attribute have the correct value?</span>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010209].link | prepend: baseurl }}">{{ site.data.1301.1301[13010209].name }}.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the caption programmatically associated with the table?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010204].link | prepend: baseurl }}">{{ site.data.1301.1301[13010204].name }}</a> or <a href="{{ site.data.1301.1301[13010205].link | prepend: baseurl }}">{{ site.data.1301.1301[13010205].name }}</a>.</span></li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the table have more than one set of either row or column headers?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the headers associated with the data cells using <code>headers</code> and <code>id</code> attributes?</span>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the header cells identified programmatically?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the header and data associations correct?</span>
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the table have both row and column headers?</span>
                                                             <ul role="group">
-                                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010207].link | prepend: baseurl }}">{{ site.data.1301.1301[13010207].name }}</a></span></li>
+                                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the headers have a <code>scope</code> attribute (if native HTML is used)?</span>
+                                                                    <ul role="group">
+                                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the <code>scope</code> attribute have the correct value?</span>
+                                                                            <ul role="group">
+                                                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010204].link | prepend: baseurl }}">{{ site.data.1301.1301[13010204].name }}</a> or <a href="{{ site.data.1301.1301[13010205].link | prepend: baseurl }}">{{ site.data.1301.1301[13010205].name }}.</a></span></li>
+                                                                            </ul>
+                                                                        </li>
+                                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the table have more than one set of either row or column headers?</span>
+                                                                            <ul role="group">
+                                                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the headers associated with the data cells using <code>headers</code> and <code>id</code> attributes?</span>
+                                                                                    <ul role="group">
+                                                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the header and data associations correct?</span>
+                                                                                            <ul role="group">
+                                                                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010207].link | prepend: baseurl }}">{{ site.data.1301.1301[13010207].name }}.</a></span></li>
+                                                                                            </ul>
+                                                                                        </li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010206].link | prepend: baseurl }}">{{ site.data.1301.1301[13010206].name }}.</a></span></li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010203].link | prepend: baseurl }}">{{ site.data.1301.1301[13010203].name }}.</a></span></li>
+                                                                            </ul>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                                             </ul>
                                                         </li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010206].link | prepend: baseurl }}">{{ site.data.1301.1301[13010206].name }}</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010202].link | prepend: baseurl }}">{{ site.data.1301.1301[13010202].name }}.</a></span></li>
                                                     </ul>
-                                                </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010203].link | prepend: baseurl }}">{{ site.data.1301.1301[13010203].name }}</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010210].link | prepend: baseurl }}">{{ site.data.1301.1301[13010210].name }}</a></span></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                            </ul>                        
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010201].link | prepend: baseurl }}">{{ site.data.1301.1301[13010201].name }}</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
+            </ul>
+
+            <h3 id="test2">TEST 2: Are there any layout tables on the page programmatically marked up as tables?</h3>
+            <p><em>Table markup includes any table HTML, <code>summary</code>, <code>headers</code>, or <code>scope</code> attributes, ARIA table roles, and table-related CSS properties.</em></p>
+            <ul role="tree" aria-labelledby="test2">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the layout tables read by the screen reader as data tables?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010211].link | prepend: baseurl }}">{{ site.data.1301.1301[13010211].name }}</a></span></li>
+                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                    </ul>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Verify that data tables are marked up programmatically:
+                    <ol>
+                        <li>Visually locate any data tables on the page, including images of data tables.</li>
+                        <li>Use ANDI: structures and select "reading order" to determine if the reading order makes sense, if needed.</li>
+                        <li>If ANDI identifies any tables, use ANDI: tables to view them.</li>
+                        <li>Use the "Analyze Next Table" button to view each table identified on the page.</li>
+                        <li>Verify that any visually apparent data tables are identified by ANDI. If they aren't, they are not marked up as tables.</li>
+                        <li>Verify that any data tables do not show <code>role="presentation"</code> in the Element information or under Accessibility Alerts.</li>
+                        <li>Review any Accessibility Alerts for <code>role="table"</code> coding errors.</li>
+                    </ol>
+                </li>
+                <li>Verify that header cells are marked up programmatically:
+                    <ul>
+                        <li>Navigate to each data cell with ANDI:tables.</li>
+                        <li>Verify that ANDI Output identifies all relevant row and column headers for each data cell.
+                            <ul>
+                                <li>If there are multiple levels of headers, verify that all are associated with the correct data cells.</li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010202].link | prepend: baseurl }}">{{ site.data.1301.1301[13010202].name }}</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010201].link | prepend: baseurl }}">{{ site.data.1301.1301[13010201].name }}</a></span></li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    <h3 id="test2">Does the data table have a caption?</h3>
-    <ul role="tree" aria-labelledby="test2">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the caption marked up as a table header?</span>
-            <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010209].link | prepend: baseurl }}">{{ site.data.1301.1301[13010209].name }}</a></span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the caption programmatically associated with the table?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010210].link | prepend: baseurl }}">{{ site.data.1301.1301[13010210].name }}</a></span></li>
-                    </ul>
+                <li>Verify that any captions are not marked up as headers.</li>
+                <li>Verify that any layout tables are not identified as tables:
+                    <ol>
+                        <li>Use ANDI: tables to locate any layouts which are identified as tables.</li>
+                        <li>Use the "Analyze Next Table" button to view each table identified on the page.</li>
+                        <li>Verify that the "Element" output does not show <code>role="table"</code>.</li>
+                        <li>If the "Element" output does <em>not</em> show <code>role="presentation"</code>, verify that ANDI Output and any alerts do not show header structure markup (e.g., <code>&lt;th&gt;</code>, <code>scope="row"</code>).</li>
+                    </ol>
                 </li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS. <em>Note: It's a good idea to give the table a caption summarizing its content if this is not explained elsewhere.</em></span></li>
-    </ul>
+            </ol>
 
-    <h3 id="test3">Are there any layout tables on the page semantically marked up as tables?</h3>
-    <p><em>Table markup includes any table HTML, <code>summary</code>, <code>headers</code>, or <code>scope</code> attributes, ARIA table roles, and table-related CSS properties.</em></p>
-    <ul role="tree" aria-labelledby="test3">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the layout tables read by the screen reader as data tables?</span>
-            <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010211].link | prepend: baseurl }}">{{ site.data.1301.1301[13010211].name }}</a></span></li>
-                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-            </ul>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+            <h3>Screen Reader Testing</h3>
+            <h4>NVDA</h4>
+            <ol>
+                <li>Cycle through the tables using the <strong>T</strong> key.</li>
+                <li>Use the up and down arrow keys to navigate through the cells of the table, or use <strong>Control+Alt+</strong> up, down, left, and right arrow keys.</li>
+                <li>Verify that header context is read with the data cells.</li>
+            </ol>
 
-    </div>
+            <h4>JAWS</h4>
+            <ol>
+                <li>Cycle through the tables using the <strong>T</strong> key.</li>
+                <li>Use <strong>Control+Alt+</strong> up, down, left, and right arrow keys to navigate the table.</li>
+                <li>Use <strong>Control+Alt+5</strong> (on the numeric keypad) to read the row and/or column headers for the current cell.</li>
+                <li>Verify that header context is read with the data cells.</li>
+            </ol>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
+            <h4>VoiceOver</h4>
+            <ol>
+                <li>Use <strong>VO+</strong> up, down, left, and right arrow keys to navigate the table.</li>
+                <li>Use <strong>VO+C</strong> to read the column header for the current cell.</li>
+                <li>Verify that header context is read with the data cells.</li>
+            </ol>
+            <p>Note: VoiceOver does not read row headers, though it will identify the row number.</p>
 
-    <ol>
-        <li>Visually locate any data tables on the page.</li>
-        <li>Verify that they are marked up as tables.</li>
-        <li>Verify that header cells are marked up as such.
-            <ul>
-                <li>If there is more than a single set of headers (one row or one column), verify that the scope is set.</li>
-                <li>If there are multiple levels of headers, verify that all are associated with the correct data cells.</li>
-            </ul>
-        </li>
-        <li>Verify that any captions are not marked up as headers.</li>
-        <li>Locate any layout tables on the page, and verify that they do not use <code>&lt;th&gt;</code>, <code>&lt;caption&gt;</code>, <code>headers</code>, <code>scope</code>, or <code>summary</code>.</li>
-    </ol>
+            <h2>Mobile App Test Procedure</h2>
+            <ol>
+                <li>Locate any data tables on the page.</li>
+                <li>Using the screen reader, navigate through the table and determine whether the content is understandable without being able to see it.</li>
+                <li>If the table has interactive content, verify that it can be used with the screen reader turned on.</li>
+            </ol>
 
-    <h3>Screen Reader Testing</h3>
-    <h4>NVDA</h4>
-    <ol>
-        <li>Cycle through the tables using the <strong>T</strong> key.</li>
-        <li>Use the up and down arrow keys to navigate through the cells of the table, or use <strong>Control+Alt+</strong> up, down, left, and right arrow keys.</li>
-        <li>Verify that header context is read with the data cells.</li>
-    </ol>
-
-    <h4>JAWS</h4>
-    <ol>
-        <li>Cycle through the tables using the <strong>T</strong> key.</li>
-        <li>Use <strong>Control+Alt+</strong> up, down, left, and right arrow keys to navigate the table.</li>
-        <li>Use <strong>Control+Alt+5</strong> (on the numeric keypad) to read the row and/or column headers for the current cell.</li>
-        <li>Verify that header context is read with the data cells.</li>
-    </ol>
-
-    <h4>VoiceOver</h4>
-    <ol>
-        <li>Use <strong>VO+</strong> up, down, left, and right arrow keys to navigate the table.</li>
-        <li>Use <strong>VO+C</strong> to read the column header for the current cell.</li>
-        <li>Verify that header context is read with the data cells.</li>
-    </ol>
-    <p>Note: VoiceOver does not read row headers, though it will identify the row number.</p>
-
-    <h2>Mobile App Test Procedure</h2>
-    <ol>
-        <li>Locate any data tables on the page.</li>
-        <li>Using the screen reader, navigate through the table and determine whether the content is understandable without being able to see it.</li>
-        <li>If the table has interactive content, verify that it can be used with the screen reader turned on.</li>
-    </ol>
-
-    <h2>PDF Test Procedure</h2>
-    <h3>PDF Accessibility Checker</h3>
-    <ol>
-        <li>Run PAC on the PDF.</li>
-        <li>Select the <strong>WCAG</strong> tab and check if <strong>1.3 Adaptable</strong> is marked as a failure.</li>
-        <li>If it is, activate the <strong>Results in Detail</strong> button.</li>
-        <li>Check if the following are marked as failures:
-            <ul>
-                <li>Table regularity</li>
-                <li>Table header cell assignments</li>
-            </ul>
-        </li>
-    </ol>
-
-    <h3>Adobe Acrobat Pro</h3>
-    <ol>
-        <li>Select <strong>Accessibility > Reading Order</strong> from the Task pane.</li>
-        <li>Make sure the <strong>Show page content groups</strong> checkbox is checked, and select <strong>Structure types</strong>.</li>
-        <li>Right-click on the table and select <strong>Table Editor</strong> from the context menu.</li>
-        <li>Verify that header cells in data tables are marked up using &lt;TH&gt; tags.</li>
-        <li>Right-click each header cell in the Document pane, and select <strong>Table Cell Properties</strong> from the context menu.</li>
-        <li>In the Table Cell Properties dialog, verify that the appropriate <strong>Scope</strong> is set for the header cell.</li>
-        <li>Verify that the values in the <strong>Row Span</strong> and <strong>Column Span</strong> attributes are accurate.</li>
-    </ol>
-
-    <h3>Screen Reader</h3>
-    <ol>
-        <li>Press <strong>T</strong> to navigate through tables in the document.</li>
-        <li>Use <strong>Ctrl+Alt+Up</strong>, <strong>Down</strong>, <strong>Right</strong>, or <strong>Left Arrow</strong> keys to navigate inside the table and away from table headers.</li>
-        <li>Verify that table headers are announced along with the content of the data cells.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1301.1301[13010201].link | prepend: baseurl }}">{{ site.data.1301.1301[13010201].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1301.1301[13010202].link | prepend: baseurl }}">{{ site.data.1301.1301[13010202].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1301.1301[13010203].link | prepend: baseurl }}">{{ site.data.1301.1301[13010203].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1301.1301[13010204].link | prepend: baseurl }}">{{ site.data.1301.1301[13010204].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1301.1301[13010205].link | prepend: baseurl }}">{{ site.data.1301.1301[13010205].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1301.1301[13010206].link | prepend: baseurl }}">{{ site.data.1301.1301[13010206].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1301.1301[13010207].link | prepend: baseurl }}">{{ site.data.1301.1301[13010207].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1301.1301[13010208].link | prepend: baseurl }}">{{ site.data.1301.1301[13010208].name }}</a> (High)</li>
-        <li><a href="{{ site.data.1301.1301[13010209].link | prepend: baseurl }}">{{ site.data.1301.1301[13010209].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1301.1301[13010210].link | prepend: baseurl }}">{{ site.data.1301.1301[13010210].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1301.1301[13010211].link | prepend: baseurl }}">{{ site.data.1301.1301[13010211].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1301.1301[13010212].link | prepend: baseurl }}">{{ site.data.1301.1301[13010212].name }}</a> (High)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-        <li>Web:
-            <ul>
-                <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
-                <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
-                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
-                <li><a href="https://pauljadam.com/bookmarklets.html">Paul Adam Tables bookmarklet</a></li>
-                <li><a href="https://chrispederick.com/work/web-developer/">Web Developer</a></li>
-            </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://pac.pdf-accessibility.org">PAC PDF Accessibility Checker</a></li>
-                <li>Adobe Acrobat Pro</li>
-            </ul>
-        </li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
-        <li>Related Techniques:
-            <ul>
-                <li>HTML:
+            <h2>PDF Test Procedure</h2>
+            <h3>PDF Accessibility Checker</h3>
+            <ol>
+                <li>Run PAC on the PDF.</li>
+                <li>Select the <strong>WCAG</strong> tab and check if <strong>1.3 Adaptable</strong> is marked as a failure.</li>
+                <li>If it is, activate the <strong>Results in Detail</strong> button.</li>
+                <li>Check if the following are marked as failures:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H39">H39: Using caption elements to associate data table captions with data tables</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H43">H43: Using id and headers attributes to associate data cells with header cells in data tables</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H51">H51: Using table markup to present tabular information</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H63">H63: Using the scope attribute to associate header cells and data cells in data tables</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H73">H73: Using the summary attribute of the table element to give an overview of data tables</a></li>
+                        <li>Table regularity</li>
+                        <li>Table header cell assignments</li>
                     </ul>
                 </li>
+            </ol>
+
+            <h3>Adobe Acrobat Pro</h3>
+            <ol>
+                <li>Select <strong>Accessibility > Reading Order</strong> from the Task pane.</li>
+                <li>Make sure the <strong>Show page content groups</strong> checkbox is checked, and select <strong>Structure types</strong>.</li>
+                <li>Right-click on the table and select <strong>Table Editor</strong> from the context menu.</li>
+                <li>Verify that header cells in data tables are marked up using &lt;TH&gt; tags.</li>
+                <li>Right-click each header cell in the Document pane, and select <strong>Table Cell Properties</strong> from the context menu.</li>
+                <li>In the Table Cell Properties dialog, verify that the appropriate <strong>Scope</strong> is set for the header cell.</li>
+                <li>Verify that the values in the <strong>Row Span</strong> and <strong>Column Span</strong> attributes are accurate.</li>
+            </ol>
+
+            <h3>Screen Reader</h3>
+            <ol>
+                <li>Press <strong>T</strong> to navigate through tables in the document.</li>
+                <li>Use <strong>Ctrl+Alt+Up</strong>, <strong>Down</strong>, <strong>Right</strong>, or <strong>Left Arrow</strong> keys to navigate inside the table and away from table headers.</li>
+                <li>Verify that table headers are announced along with the content of the data cells.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.1301.1301[13010201].link | prepend: baseurl }}">{{ site.data.1301.1301[13010201].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1301.1301[13010202].link | prepend: baseurl }}">{{ site.data.1301.1301[13010202].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1301.1301[13010203].link | prepend: baseurl }}">{{ site.data.1301.1301[13010203].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1301.1301[13010204].link | prepend: baseurl }}">{{ site.data.1301.1301[13010204].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1301.1301[13010205].link | prepend: baseurl }}">{{ site.data.1301.1301[13010205].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1301.1301[13010206].link | prepend: baseurl }}">{{ site.data.1301.1301[13010206].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1301.1301[13010207].link | prepend: baseurl }}">{{ site.data.1301.1301[13010207].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1301.1301[13010208].link | prepend: baseurl }}">{{ site.data.1301.1301[13010208].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1301.1301[13010209].link | prepend: baseurl }}">{{ site.data.1301.1301[13010209].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1301.1301[13010210].link | prepend: baseurl }}">{{ site.data.1301.1301[13010210].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1301.1301[13010211].link | prepend: baseurl }}">{{ site.data.1301.1301[13010211].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1301.1301[13010212].link | prepend: baseurl }}">{{ site.data.1301.1301[13010212].name }}.</a> (High)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Web:
+                    <ul>
+                        <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+                        <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
+                        <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
+                        <li><a href="https://pauljadam.com/bookmarklets.html">Paul Adam Tables bookmarklet</a></li>
+                        <li><a href="https://chrispederick.com/work/web-developer/">Web Developer</a></li>
+                    </ul>
+                </li>
+                <li>Screen reader</li>
                 <li>PDF:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF6">PDF6: Using table elements for table markup in PDF Documents</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF20">PDF20: Using Adobe Acrobat Pro's Table Editor to repair mistagged tables</a></li>
+                        <li><a href="https://pac.pdf-accessibility.org">PAC PDF Accessibility Checker</a></li>
+                        <li>Adobe Acrobat Pro</li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://pauljadam.com/demos/tableA11yTest.html">Paul Adam: Table Accessibility Test Case for VoiceOver</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/table_role">MDN: ARIA: table role</a></li>
-    </ul>
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>Related Techniques:
+                    <ul>
+                        <li>HTML:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H39">H39: Using caption elements to associate data table captions with data tables</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H43">H43: Using id and headers attributes to associate data cells with header cells in data tables</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H51">H51: Using table markup to present tabular information</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H63">H63: Using the scope attribute to associate header cells and data cells in data tables</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H73">H73: Using the summary attribute of the table element to give an overview of data tables</a></li>
+                            </ul>
+                        </li>
+                        <li>PDF:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF6">PDF6: Using table elements for table markup in PDF Documents</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF20">PDF20: Using Adobe Acrobat Pro's Table Editor to repair mistagged tables</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://pauljadam.com/demos/tableA11yTest.html">Paul Adam: Table Accessibility Test Case for VoiceOver</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/table_role">MDN: ARIA: table role</a></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/1301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
