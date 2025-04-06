@@ -118,12 +118,22 @@ criterion: 1301
                 <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
             </ul>
 
-            <h3 id="test3">TEST 3 (LAYOUT TABLES): Are there any layout tables on the page programmatically marked up as tables?</h3>
+            <h3 id="test3">TEST 3 (LAYOUT TABLES): Are there any layout tables on the page?</h3>
             <ul role="tree" aria-labelledby="test3">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the layout tables read by the screen reader as data tables?</span>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the table have <code>role="presentation"</code>?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010211].link | prepend: baseurl }}">{{ site.data.1301.1301[13010211].name }}</a></span></li>
-                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the table include header elements or attributes?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010211].link | prepend: baseurl }}">{{ site.data.1301.1301[13010211].name }}.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the table include table ARIA roles?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010211].link | prepend: baseurl }}">{{ site.data.1301.1301[13010211].name }}.</a></span></li>
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
             </ul>
