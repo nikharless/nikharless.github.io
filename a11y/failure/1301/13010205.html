@@ -12,85 +12,153 @@ checkpoint: 130102
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Header cells are marked up with the correct <code>scope</code> attribute.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Header cells are marked up with the <code>scope</code> attribute, but the value is invalid.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Use one of the 4 valid values for <code>scope</code>:
-                <ul>
-                    <li>Use <code>scope="col"</code> for column headers.</li>
-                    <li>Use <code>scope="colgroup"</code> for colgroup headers.</li>
-                    <li>Use <code>scope="row"</code> for row headers.</li>
-                    <li>Use <code>scope="rowgroup"</code> for rowgroup headers.</li>
-                </ul>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>Table with Column and Row Headers</h3>
-                <table>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Attempts</th>
-                    </tr>
-                    <tr>
-                        <th scope="row">John</th>
-                        <td>18 min</td>
-                        <td>3</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Jane</th>
-                        <td>20 min</td>
-                        <td>1</td>
-                    </tr>
-                </table>
-                <pre><code>&lt;table&gt;
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Header cells are marked up with the correct <code>scope</code> attribute.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Header cells are marked up with the <code>scope</code> attribute, but the value is invalid.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Use one of the 4 valid values for <code>scope</code>:
+                    <ul>
+                        <li>Use <code>scope="col"</code> for column headers.</li>
+                        <li>Use <code>scope="colgroup"</code> for colgroup headers.</li>
+                        <li>Use <code>scope="row"</code> for row headers.</li>
+                        <li>Use <code>scope="rowgroup"</code> for rowgroup headers.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Table with Column and Row Headers</h3>
+                    <div class="example">
+                        <table>
+                            <tr>
+                                <th scope="col">Park</th>
+                                <th scope="col">State</th>
+                                <th scope="col">Top Feature</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Denali National Park</th>
+                                <td>Alaska</td>
+                                <td>Denali - North America's highest peak</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Great Smoky Mountains National Park</th>
+                                <td>North Carolina</td>
+                                <td>Clingmans Dome</td>
+                            </tr>
+                        </table>
+                        <p><a href="https://ourparks.org/">Source</a></p>
+                        <pre><code>&lt;table&gt;
     &lt;tr&gt;
-        &lt;th <strong>scope="col"</strong>&gt;Name&lt;/th&gt;
-        &lt;th <strong>scope="col"</strong>&gt;Time&lt;/th&gt;
-        &lt;th <strong>scope="col"</strong>&gt;Attempts&lt;/th&gt;
+        &lt;th <strong>scope="col"</strong>&gt;Park&lt;/th&gt;
+        &lt;th <strong>scope="col"</strong>&gt;State&lt;/th&gt;
+        &lt;th <strong>scope="col"</strong>&gt;Top Feature&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-        &lt;th <strong>scope="row"</strong>&gt;John&lt;/th&gt;
-        &lt;td&gt;18 min&lt;/td&gt;
-        &lt;td&gt;3&lt;/td&gt;
+        &lt;th <strong>scope="row"</strong>&gt;Denali National Park&lt;/th&gt;
+        &lt;td&gt;Alaska&lt;/td&gt;
+        &lt;td&gt;Denali - North America's highest peak&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-        &lt;th <strong>scope="row"</strong>&gt;Jane&lt;/th&gt;
-        &lt;td&gt;20 min&lt;/td&gt;
-        &lt;td&gt;1&lt;/td&gt;
+        &lt;th <strong>scope="row"</strong>&gt;Great Smoky Mountains National Park&lt;/th&gt;
+        &lt;td&gt;North Carolina&lt;/td&gt;
+        &lt;td&gt;Clingmans Dome&lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;</code></pre>
+                    </div>
+
+                    <h3>Table with Column Group and Column Headers</h3>
+                    <div class="example">
+                        <table>
+                            <tr>
+                                <th rowspan="2" scope="col">Park</th>
+                                <th colspan="3" scope="colgroup">Information</th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Weather</th>
+                                <th scope="col">Top Feature</th>
+                                <th scope="col">Top Trail</th>
+                            </tr>
+                            <tr>
+                                <td>Denali National Park</td>
+                                <td>Extremely unpredictable; be prepared for rapid changes.</td>
+                                <td>Denali - North America's highest peak</td>
+                                <td>West Buttress</td>
+                            </tr>
+                            <tr>
+                                <td>Kenai Fjords National Park</td>
+                                <td>Can have quickly changing and unpredictable weather; waterproof and layered clothing is advisable</td>
+                                <td>Drive Exit Glacier Road</td>
+                                <td>Harding Icefield Trail</td>
+                            </tr>
+                        </table>
+                        <p><a href="https://ourparks.org/">Source</a></p>
+                        <pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th rowspan="2" <strong>scope="col"</strong>&gt;Park&lt;/th&gt;
+        &lt;th colspan="3" <strong>scope="colgroup"</strong>&gt;Information&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th <strong>scope="col"</strong>&gt;Weather&lt;/th&gt;
+        &lt;th <strong>scope="col"</strong>&gt;Top Feature&lt;/th&gt;
+        &lt;th <strong>scope="col"</strong>&gt;Top Trail&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Denali National Park&lt;/td&gt;
+        &lt;td&gt;Extremely unpredictable; be prepared for rapid changes.&lt;/td&gt;
+        &lt;td&gt;Denali - North America's highest peak&lt;/td&gt;
+        &lt;td&gt;West Buttress&lt;/td&gt;
+    &lt;/tr>
+    &lt;tr>
+        &lt;td&gt;Kenai Fjords National Park&lt;/td&gt;
+        &lt;td&gt;Can have quickly changing and unpredictable weather; waterproof and layered clothing is advisable&lt;/td&gt;
+        &lt;td&gt;Drive Exit Glacier Road&lt;/td&gt;
+        &lt;td&gt;Harding Icefield Trail&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Table relationships are visible at a glance for sighted users. Assistive technology users need to get this relationship information from the semantic structure and to be able to easily navigate the data.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.3.1: Info and Relationships</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H63">H63: Using the scope attribute to associate header cells and data cells in data tables</a></li>
-                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th">MDN: &lt;th&gt;: The Table Header element</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Layout tables</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Table relationships are visible at a glance for sighted users. Assistive technology users need to get this relationship information from the programmatic structure and to be able to easily navigate the data.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H63">H63: Using the scope attribute to associate header cells and data cells in data tables</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th">MDN: &lt;th&gt;: The Table Header element</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
