@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 130201
+current: 130204
 criterion: 1302
 ---
 {% assign root=site.data.site.root %}
@@ -16,14 +16,7 @@ criterion: 1302
 
         <div class="block">
             <h2>Overview</h2>
-            <p>It's not necessary that the reading order matches the visual order unless it affects the meaning. There may be more than one logical reading order, and only one needs to be provided.</p>
-            <p>Examples:</p>
-            <ul>
-                <li>Passages of text, tables, and ordered lists have meaningful sequences that cannot be rearranged.</li>
-                <li>Items in unordered lists do not have a meaningful sequence.</li>
-                <li>Sidebars and main content areas usually do not have to be in a particular order.</li>
-                <li>Headings and associated content have a meaningful sequence.</li>
-            </ul>
+            <p></p>
         </div>
 
         <div class="block">
@@ -31,8 +24,8 @@ criterion: 1302
             <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
                 <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The reading order of page content must be logical and intuitive without CSS positioning.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Reading order should match the visual order, but it is not a failure unless the difference changes meaning.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The reading order of modal content must be logical and intuitive.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When a modal is open, it must not be possible for assistive technology to read outside of it.</li>
             </ul>
 
             <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want the content to be read in a meaningful sequence so that I can understand the content.</div>
@@ -43,66 +36,31 @@ criterion: 1302
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            <h3 id="test1">Is there content on the page that is positioned with CSS?</h3>
-            <ul role="tree" aria-labelledby="test1">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the content presented in a logical order when CSS is turned off?</span>
+            <h3 id="test4">Are there modals on the page?</h3>
+            <ul role="tree" aria-labelledby="test4">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When the modal is open, can assistive technology read content outside the modal?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1302.1302[13020101].link | prepend: baseurl }}">{{ site.data.1302.1302[13020101].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1302.1302[130201014].link | prepend: baseurl }}">{{ site.data.1302.1302[13020104].name }}</a></span></li>
+                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
         </div>
 
         <div class="block">
             <h2>Web Test Procedure</h2>
-
-            <h3>Desktop</h3>
-            <p>Verify linearized reading order using one of the following:</p>
+            <h3>Screen Reader</h3>
             <ol>
-                <li>Use the <a href="https://chrispederick.com/work/web-developer/">Web Developer plugin</a> to view the page without CSS:
-                    <ol>
-                        <li>Open the Web Developer plugin.</li>
-                        <li>Select the <strong>CSS</strong> tab.</li>
-                        <li>Check the <strong>Disable All Styles</strong> option.</li>
-                        <li>Verify that the reading order of the non-styled content follows the intended meaning of the content.</li>
-                    </ol>
-                </li>
-                <li>Use the <a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI bookmarklet</a> to check reading order and reveal dynamic content:
-                    <ol>
-                        <li>Activate the ANDI bookmarklet.</li>
-                        <li>Reading Order:
-                            <ol>
-                                <li>Select <strong>structures</strong> from the drop-down.</li>
-                                <li>Activate <strong>reading order</strong>. Web page elements will be numbered according to reading order.</li>
-                            </ol>
-                        </li>
-                        <li>Reveal Hidden Content:
-                            <ol>
-                                <li>Select <strong>hidden content</strong> from the drop-down.</li>
-                                <li>Activate <strong>reveal all</strong>.</li>
-                                <li>Verify that the reading order of the content still follows a logical sequence with the hidden content revealed.</li>
-                            </ol>
-                        </li>
-                    </ol>
-                </li>
+                <li>Starting at the top of the content being tested, navigate to and activate any controls that open modals.</li>
+                <li>Verify that the screen reader does not read outside any modals while they are open.</li>
             </ol>
-
-            <h2>PDF Test Procedure</h2>
-            <h3>Adobe Acrobat Pro</h3>
-            <ol>
-                <li>Select <strong>All tools > Prepare for accessibility > Fix reading order</strong>.</li>
-                <li>In the Reading Order dialog, check <strong>Show page content groups</strong> and <strong>Page content order</strong>. This displays numbers on tagged elements showing the reading order.</li>
-                <li>Verify that the reading order follows the intended meaning of the content.</li>
-            </ol>
-            <img src="{{ baseurl }}/assets/images/130201-pdf-reading-order.png" alt="Screenshot of Acrobat Reading Order dialog with indicated options selected and numbers on tagged elements in the document pane" style="max-width: 380px;">
         </div>
 
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1302.1302[13020101].link | prepend: baseurl }}">{{ site.data.1302.1302[13020101].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1302.1302[13020401].link | prepend: baseurl }}">{{ site.data.1302.1302[13020401].name }}.</a> (High)</li>
             </ul>
         </div>
 
@@ -115,6 +73,7 @@ criterion: 1302
                         <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI bookmarklet</a></li>
                     </ul>
                 </li>
+                <li>Screen reader</li>
             </ul>
         </div>
 

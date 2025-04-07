@@ -1,0 +1,178 @@
+---
+layout: default
+current: 130202
+criterion: 1302
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.1302.1302[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.1302.1302[page.criterion] %}
+
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Overview</h2>
+            <p>It's not necessary that the reading order matches the visual order unless it affects the meaning. There may be more than one logical reading order, and only one needs to be provided.</p>
+            <p>Examples:</p>
+            <ul>
+                <li>Passages of text, tables, and ordered lists have meaningful sequences that cannot be rearranged.</li>
+                <li>Items in unordered lists do not have a meaningful sequence.</li>
+                <li>Sidebars and main content areas usually do not have to be in a particular order.</li>
+                <li>Headings and associated content have a meaningful sequence.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The reading order of page content must be logical and intuitive.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Reading order should match the visual order, but it is not a failure unless the difference changes meaning.</li>
+            </ul>
+
+            <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want the content to be read in a meaningful sequence so that I can understand the content.</div>
+
+            <div class="success"><strong>Success:</strong> If you could not see the web page, when you use a screen reader, you would hear the content in an order that makes logical sense.</div>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test2">Does assistive technology, such as a screen reader, read all visible content on the page?</h3>
+            <ul role="tree" aria-labelledby="test2">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does assistive technology read the content in a logical order?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does assistive technology read hidden content which is meant to be hidden from all users?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1302.1302[13020106].link | prepend: baseurl }}">{{ site.data.1302.1302[13020106].name }}.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the content read by assistive technology match the visual content?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the difference change the meaning?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1302.1302[13020107].link | prepend: baseurl }}">{{ site.data.1302.1302[13020107].name }}.</a></span></li>
+                                                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1302.1302[13020105].link | prepend: baseurl }}">{{ site.data.1302.1302[13020105].name }}.</a></span></li>
+                    </ul>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1302.1302[13020102].link | prepend: baseurl }}">{{ site.data.1302.1302[13020102].name }}.</a></span></li>   
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+
+            <h3>Desktop Screen Reader</h3>
+            <ol>
+                <li>Starting at the top of the page, read through the page content with the screen reader.
+                    <ul>
+                        <li><strong>NVDA and JAWS</strong>: Use <kbd>Down Arrow</kbd> and <kbd>Up Arrow</kbd></li>
+                        <li><strong>VoiceOver</strong>: Use <kbd>VO</kbd>+<kbd>Down Arrow</kbd> and <kbd>Up Arrow</kbd></li>
+                    </ul>
+                    <ol>
+                        <li>Verify that the reading order of the static content follows the intended meaning of the content.</li>
+                        <li>Verify that all visible text can be read.</li>
+                        <li>Verify that content that is meant to be hidden from all users is hidden from the screen reader.</li>
+                    </ol>
+                </li>
+                <li>Starting back at the top of the content being tested, navigate to and activate any controls that add or delete content from the page.
+                    <ul>
+                        <li>Verify that the reading order of the new content is logical in the natural flow of the interaction.</li>
+                        <li>Verify that the screen reader does not read outside any modals while they are open.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>Mobile Screen Reader</h3>
+            <h4>VoiceOver or TalkBack</h4>
+            <ol>
+                <li>Starting at the top of the page, read through the page content with the screen reader by swiping left to right.
+                    <ol>
+                        <li>Verify that the reading order of the static content follows the intended meaning of the content.</li>
+                        <li>Verify that all visible text can be read.</li>
+                        <li>Verify that content that is meant to be hidden from all users is hidden from the screen reader.</li>
+                    </ol>
+                </li>
+                <li>Starting back at the top of the content being tested, navigate to and activate any controls that add or delete content from the page.
+                    <ul>
+                        <li>Verify that the reading order of the new content is logical in the natural flow of the interaction.</li>
+                        <li>Verify that the screen reader does not read outside any modals while they are open.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h2>Mobile App Test Procedure</h2>
+
+            <h3>iOS or Android</h3>
+            <ol>
+                <li>Starting at the top of the page, read through the page content with the screen reader by swiping left to right.</li>
+                <li>Verify that the reading order of the static content follows the intended meaning of the content.</li>
+                <li>Verify that all visible text can be read.</li>
+                <li>Verify that content that is meant to be hidden from all users is hidden from the screen reader.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.1302.1302[13020201].link | prepend: baseurl }}">{{ site.data.1302.1302[13020201].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1302.1302[13020202].link | prepend: baseurl }}">{{ site.data.1302.1302[13020202].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1302.1302[13020203].link | prepend: baseurl }}">{{ site.data.1302.1302[13020203].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1302.1302[13020204].link | prepend: baseurl }}">{{ site.data.1302.1302[13020204].name }}.</a> (High)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Screen reader</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>Related Techniques:
+                    <ul>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G57">G57: Ordering the content in a meaningful sequence</a></li>
+                            </ul>
+                        <li>HTML:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H34">H34: Using a Unicode right-to-left mark (RLM) or left-to-right mark (LRM) to mix text direction inline</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H56">H56: Using the dir attribute on an inline element to resolve problems with nested directional runs</a></li>
+                            </ul>
+                        </li>
+                        <li>CSS:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C6">C6: Positioning content based on structural markup</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C8">C8: Using CSS letter-spacing to control spacing within a word</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C27">C27: Making the DOM order match the visual order</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://www.boia.org/blog/what-does-meaningful-sequence-mean-for-web-accessibility">What Does "Meaningful Sequence" Mean for Web Accessibility?</a></li>
+            </ul>
+        </div>
+    </div>
+    {% include checkpoints/1302checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>

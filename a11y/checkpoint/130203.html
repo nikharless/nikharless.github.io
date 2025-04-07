@@ -1,0 +1,128 @@
+---
+layout: default
+current: 130203
+criterion: 1302
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.1302.1302[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.1302.1302[page.criterion] %}
+
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Overview</h2>
+            <p>When content is inserted into or unhidden in a web page, the reading order must remain logical both from the overall page sequence and starting from the user's current position. It's not logical, for instance, to insert new content before the user's current position in the page unless the user is alerted that it has been inserted.</p>
+        </div>
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The reading order of content which is dynamically inserted or unhidden must be logical and intuitive in the context of the page.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Dynamic content should be inserted after the triggering element.</li>
+            </ul>
+
+            <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want the content to be read in a meaningful sequence so that I can understand the content.</div>
+
+            <div class="success"><strong>Success:</strong> If you could not see the web page, when you use a screen reader, you would hear the content in an order that makes logical sense.</div>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test3">Is content dynamically inserted or unhidden on the page?</h3>
+            <ul role="tree" aria-labelledby="test3">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the added content read in a logical order by assistive technology?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1302.1302[130201013].link | prepend: baseurl }}">{{ site.data.1302.1302[13020103].name }}</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+
+            <h3>Desktop</h3>
+            <ol>
+                <li>Use the <a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI bookmarklet</a> to reveal dynamic content:
+                    <ol>
+                        <li>Use ANDI: hidden content.</li>
+                        <li>Activate <strong>reveal all</strong>.</li>
+                        <li>Verify that the reading order of the content still follows a logical sequence with the hidden content revealed.</li>
+                    </ol>
+                </li>
+            </ol>
+
+            <h3>Desktop Screen Reader</h3>
+            <ol>
+                <li>Starting at the top of the page, navigate to and activate any controls that add or delete content from the page.</li>
+                <li>Verify that the reading order of the new content is logical in the natural flow of the interaction.</li>
+            </ol>
+
+            <h3>Mobile Screen Reader</h3>
+            <h4>VoiceOver or TalkBack</h4>
+            <ol>
+                <li>Starting at the top of the content being tested, navigate to and activate any controls that add or delete content from the page.</li>
+                <li>Verify that the reading order of the new content is logical in the natural flow of the interaction.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.1302.1302[13020301].link | prepend: baseurl }}">{{ site.data.1302.1302[13020301].name }}.</a> (High)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Web:
+                    <ul>
+                        <li><a href="https://chrispederick.com/work/web-developer/">Web Developer plugin</a></li>
+                        <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI bookmarklet</a></li>
+                    </ul>
+                </li>
+                <li>Screen reader</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>Related Techniques:
+                    <ul>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G57">G57: Ordering the content in a meaningful sequence</a></li>
+                            </ul>
+                        <li>CSS:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C6">C6: Positioning content based on structural markup</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C27">C27: Making the DOM order match the visual order</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://www.boia.org/blog/what-does-meaningful-sequence-mean-for-web-accessibility">What Does "Meaningful Sequence" Mean for Web Accessibility?</a></li>
+            </ul>
+        </div>
+    </div>
+    {% include checkpoints/1302checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
