@@ -36,10 +36,55 @@ checkpoint: 130102
                 </div>
         	</div>
             <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                    <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>Table with Invalid Column Headers</h3>
+                    <p>The column headers in this table are marked up with an invalid value.</p>
+                    <div class="example">
+                        <table>
+                            <tr>
+                                <th scope="column">Park</th>
+                                <th scope="column">State</th>
+                                <th scope="column">Top Feature</th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Denali National Park</th>
+                                <td>Alaska</td>
+                                <td>Denali - North America's highest peak</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Great Smoky Mountains National Park</th>
+                                <td>North Carolina</td>
+                                <td>Clingmans Dome</td>
+                            </tr>
+                        </table>
+                        <p><a href="https://ourparks.org/">Source</a></p>
+                        <pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;<strong>th scope="column"</strong>&gt;Park&lt;/th&gt;
+        &lt;<strong>th scope="column"</strong>&gt;State&lt;/th&gt;
+        &lt;<strong>th scope="column"</strong>&gt;Top Feature&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;<strong>th scope="row"</strong>&gt;Denali National Park&lt;/th&gt;
+        &lt;td&gt;Alaska&lt;/td&gt;
+        &lt;td&gt;Denali - North America's highest peak&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;<strong>th scope="row"</strong>&gt;Great Smoky Mountains National Park&lt;/th&gt;
+        &lt;td&gt;North Carolina&lt;/td&gt;
+        &lt;td&gt;Clingmans Dome&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Examples<br>
                     <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Table with Column and Row Headers</h3>
+                    <h3>Table with Valid Column and Row Headers</h3>
                     <div class="example">
                         <table>
                             <tr>
@@ -66,12 +111,12 @@ checkpoint: 130102
         &lt;th <strong>scope="col"</strong>&gt;Top Feature&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-        &lt;th <strong>scope="row"</strong>&gt;Denali National Park&lt;/th&gt;
+        &lt;th scope="row"&gt;Denali National Park&lt;/th&gt;
         &lt;td&gt;Alaska&lt;/td&gt;
         &lt;td&gt;Denali - North America's highest peak&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-        &lt;th <strong>scope="row"</strong>&gt;Great Smoky Mountains National Park&lt;/th&gt;
+        &lt;th scope="row"&gt;Great Smoky Mountains National Park&lt;/th&gt;
         &lt;td&gt;North Carolina&lt;/td&gt;
         &lt;td&gt;Clingmans Dome&lt;/td&gt;
     &lt;/tr&gt;
