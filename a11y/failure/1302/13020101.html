@@ -12,84 +12,109 @@ checkpoint: 130201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>The reading order of unstyled page content is logical.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The reading order of page content is not logical when viewed without CSS.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Ensure that elements are ordered logically in the source code, so that when they are viewed without CSS they still appear in the correct order.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <p>This is a <strong>bad example</strong> from W3 showing 2 lists which have been positioned using CSS.</p>
-                
-                <pre><code>&lt;div class="box"&gt;
-     &lt;span class="menu1"&gt;Products&lt;/span&gt;
-     &lt;span class="menu2"&gt;Locations&lt;/span&gt;
-     &lt;span class="item1"&gt;Telephones&lt;/span&gt;
-     &lt;span class="item2"&gt;Computers&lt;/span&gt;
-     &lt;span class="item3"&gt;Portable MP3 Players&lt;/span&gt;
-     &lt;span class="item5"&gt;Wisconsin&lt;/span&gt;
-     &lt;span class="item4"&gt;Idaho&lt;/span&gt;
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>The reading order of unstyled page content is logical.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The reading order of page content is not logical when viewed without CSS.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Ensure that elements are ordered logically in the source code, so that when they are viewed without CSS they still appear in the correct order.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>CSS Positioning</h3>
+                    <p>This is a <strong>bad example</strong> from W3 showing 2 lists which have been positioned using CSS.</p>
+                    <iframe src="https://www.w3.org/WAI/WCAG22/working-examples/failure-css-positioning/" title="CSS Positioned Lists" style="max-width: 640px; max-height: 480px;"></iframe>
+                    
+                    <pre><code>&lt;div class="box"&gt;
+    &lt;span class="menu1"&gt;Products&lt;/span&gt;
+    &lt;span class="menu2"&gt;Locations&lt;/span&gt;
+    &lt;span class="item1"&gt;Telephones&lt;/span&gt;
+    &lt;span class="item2"&gt;Computers&lt;/span&gt;
+    &lt;span class="item3"&gt;Portable MP3 Players&lt;/span&gt;
+    &lt;span class="item5"&gt;Wisconsin&lt;/span&gt;
+    &lt;span class="item4"&gt;Idaho&lt;/span&gt;
 &lt;/div&gt;</code></pre>
-                <ul>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/working-examples/failure-css-positioning/">Example of CSS positioning failure</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/working-examples/failure-css-positioning/styles-removed">Example of CSS positioning failure with styles removed</a></li>
-                </ul>
-
-                <p>This example could be fixed by using semantic HTML elements and then styling those with CSS.</p>
-                <h3 style="font-family: sans-serif; color: red;">Products</h3>
-                <ul style="list-style-type: none; margin: 0; padding: 0;">
-                    <li>Telephones</li>
-                    <li>Computers</li>
-                    <li>Portable MP3 Players</li>
-                </ul>
-                <h3 style="font-family: sans-serif; color: red;">Locations</h3>
-                <ul style="list-style-type: none; margin: 0; padding: 0;">
-                    <li>Idaho</li>
-                    <li>Wisconsin</li>
-                </ul>
-                <pre><code>&lt;h2&gt;Products&lt;/h2&gt;
-&lt;ul&gt;
-    &lt;li&gt;Telephones&lt;/li&gt;
-    &lt;li&gt;Computers&lt;/li&gt;
-    &lt;li&gt;Portable MP3 Players&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&lt;Locations&lt;/h2&gt;
-&lt;ul&gt;
-    &lt;Idaho&gt;
-    &lt;Wisconsin&gt;
-&lt;/ul&gt;</code></pre>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/working-examples/failure-css-positioning/">Example of CSS positioning failure</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/working-examples/failure-css-positioning/styles-removed">Example of CSS positioning failure with styles removed</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Assistive technologies rely on the source code or other programmatically determined order to render the content in the correct sequence. When positioning elements with CSS, they may visually appear in a different order than they appear in the source code.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.3.2 Meaningful Sequence</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F1">F1: Failure of Success Criterion 1.3.2 due to changing the meaning of content by positioning information with CSS</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C6">C6: Positioning content based on structural markup</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C27">C27: Making the DOM order match the visual order</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>HTML Lists</h3>
+                    <div class="example">
+                    <p>This example could be fixed by using semantic HTML elements and then styling those with CSS.</p>
+                    <h4 style="font-family: sans-serif; color: red;">Products</h4>
+                    <ul style="list-style-type: none; margin: 0; padding: 0;">
+                        <li>Telephones</li>
+                        <li>Computers</li>
+                        <li>Portable MP3 Players</li>
+                    </ul>
+                    <h4 style="font-family: sans-serif; color: red;">Locations</h4>
+                    <ul style="list-style-type: none; margin: 0; padding: 0;">
+                        <li>Idaho</li>
+                        <li>Wisconsin</li>
+                    </ul>
+                    <pre><code>&lt;h2&gt;Products&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Telephones&lt;/li&gt;
+        &lt;li&gt;Computers&lt;/li&gt;
+        &lt;li&gt;Portable MP3 Players&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&lt;Locations&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;Idaho&gt;
+        &lt;Wisconsin&gt;
+    &lt;/ul&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Keyboard focus order:</strong><br>
+                            File under <a href="{{ site.data.2403.2403[2403].link | prepend: baseurl }}">{{ site.data.2403.2403[2403].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users of assistive technology need to get the information in a sequence that makes sense.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F1">F1: Failure of Success Criterion 1.3.2 due to changing the meaning of content by positioning information with CSS</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C6">C6: Positioning content based on structural markup</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C27">C27: Making the DOM order match the visual order</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1302checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
