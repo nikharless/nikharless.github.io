@@ -1,4 +1,4 @@
-const cssStyles = true;
+var cssStyles = true;
 
 function removeCSS() {
 	
