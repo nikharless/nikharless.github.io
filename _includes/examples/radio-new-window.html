@@ -1,20 +1,14 @@
 <script> 
-   function goToSearch(theInput) {
+  function goToSearch(theInput) {
     var searchSite = "https://" + theInput.value + "/"; 
     window.open(searchSite); 
    }
 
-   function getRadioValue() {
-    var ele = document.getElementsByName('searchEngine2');
- 
-    for (i = 0; i < ele.length; i++) {
-      if (ele[i].checked) {
-        window.alert(ele[i].value);
-        //goToSearch(ele[i]);
-        // return (ele[i].value);
-        break;
-      }
-    }
+  function getRadioValue() {
+    var radios = document.getElementsByName("searchEngine2");
+    var selected = Array.from(radios).find(radio => radio.checked);
+    alert(selected.value);
+  }
 </script>
 
 <form name="search_form" id="search_form" action="" method="get">
