@@ -3,7 +3,10 @@ var cssStyles = true;
 function removeCSS() {
 	
 	if (cssStyles == true) {
-		document.getElementsByClassName("css-pos").removeAttribute("style");
+		const items = document.getElementsByClassName("css-pos");
+		for (var i=0; i < items.length; i++) {
+			items[i].removeAttribute("style");
+		}
 		const button = document.querySelector('cssButton');
 		button.innerHTML = "Reset";
 		cssStyles = false;
