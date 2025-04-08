@@ -7,7 +7,7 @@ function removeCSS() {
 		for (var i=0; i < items.length; i++) {
 			items[i].removeAttribute("style");
 		}
-		const button = document.querySelector('cssButton');
+		const button = document.getElementById('cssButton');
 		button.innerHTML = "Reset";
 		cssStyles = false;
 	} else {
