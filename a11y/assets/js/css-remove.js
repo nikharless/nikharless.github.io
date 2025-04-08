@@ -9,7 +9,7 @@ function removeCSS() {
 		}
 		const container = document.getElementById('status');
 		container.innerHTML = "The CSS positioning has been removed, and the lists are jumbled and make no sense.";
-		container.style.display = "block";
+		container.removeAttribute("class");
 
 		const button = document.getElementById('cssButton');
 		button.innerHTML = "Reset";
