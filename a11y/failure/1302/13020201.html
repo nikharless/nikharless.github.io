@@ -1,0 +1,76 @@
+---
+layout: default
+current: 13020201
+criterion: 1302
+checkpoint: 130202
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.1302.1302[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.1302.1302[page.criterion] %}
+{% assign cp=site.data.1302.1302[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Assistive technology reads the content in a logical order.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Assistive technology does not read the content in a logical order.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Ensure that elements are ordered logically in the source code, so that when they are interpreted by assistive technology they still appear in the correct order.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Keyboard focus order:</strong><br>
+                            File under <a href="{{ site.data.2403.2403[2403].link | prepend: baseurl }}">{{ site.data.2403.2403[2403].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users of assistive technology need to get the information in a sequence that makes sense.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
+                        <li><a href="G57: Ordering the content in a meaningful sequence">G57: Ordering the content in a meaningful sequence</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C27">C27: Making the DOM order match the visual order</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/1302checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
