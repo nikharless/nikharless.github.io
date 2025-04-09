@@ -33,6 +33,7 @@ function openModal() {
   modal.style.display = "block";
   mainContent.setAttribute("aria-hidden", "true");  // Hide main content
   modal.setAttribute("aria-modal", "true");  // Set aria-modal to true
+  modal.focus();
 }
 // Function to show content to screen readers and hide modal
 function closeModal() {
