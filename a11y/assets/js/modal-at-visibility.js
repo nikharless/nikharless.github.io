@@ -27,7 +27,7 @@ const mainContent = document.getElementById("mainContent");
 // Get button that opens the modal
 const btn = document.getElementById("openModalBtn");
 // Get the <span> element that closes the modal
-const closeBtn = document.getElementById("modalClose")[0];
+const closeBtn = document.getElementById("modalClose");
 // Function to hide content from screen readers and show modal
 function openModal() {
   modal.style.display = "block";
