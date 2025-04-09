@@ -31,7 +31,7 @@ const closeBtn = document.getElementById("modalClose");
 // Function to hide content from screen readers and show modal
 function openModal() {
   modal.style.display = "block";
-  modal.focus();
+  closeBtn.focus();
   mainContent.setAttribute("aria-hidden", "true");  // Hide main content
   modal.setAttribute("aria-modal", "true");  // Set aria-modal to true
 }
