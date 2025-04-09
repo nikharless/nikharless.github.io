@@ -23,7 +23,8 @@ window.onclick = function(event) {
 // Get good modal element
 const modal = document.getElementById("goodModal");
 // Get main content to toggle aria-hidden
-const mainContent = document.getElementById("mainContent");
+//const mainContent = document.getElementById("mainContent");
+const mainContent = document.querySelector("body");
 // Get button that opens the modal
 const btn = document.getElementById("openModalBtn");
 // Get the <span> element that closes the modal
