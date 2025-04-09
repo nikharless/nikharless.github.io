@@ -73,6 +73,7 @@ function setAriaHiddenForSiblings(hidden) {
 // Override openModal and closeModal to handle aria-hidden on all siblings
 function openModal() {
   modal.style.display = "block";
+  modal.focus();
   setAriaHiddenForSiblings(true);  // Hide all sibling elements except modal
   modal.setAttribute("aria-modal", "true");  // Set aria-modal to true
 }
