@@ -3,7 +3,7 @@ const badModal = document.getElementById("badModal");
 // Get button that opens the bad modal
 const badBtn = document.getElementById("openBadModalBtn");
 // Get the <span> element that closes the modal
-const span = document.getElementsByClassName("dialog_close_button")[0];
+const span = document.getElementById("badModalClose");
 // When the user clicks the button, open the bad modal
 badBtn.onclick = function() {
   badModal.style.display = "block";
@@ -27,7 +27,7 @@ const mainContent = document.getElementById("mainContent");
 // Get button that opens the modal
 const btn = document.getElementById("openModalBtn");
 // Get the <span> element that closes the modal
-const closeBtn = document.getElementsByClassName("dialog_close_button")[0];
+const closeBtn = document.getElementById("modalClose")[0];
 // Function to hide content from screen readers and show modal
 function openModal() {
   modal.style.display = "block";
