@@ -1,10 +1,11 @@
-var displayType = "hidden";
-function toggleDisplay(elem) {
-	if (displayType == "hidden") {
+var displayType = "none";
+function toggleDisplay(elementId) {
+	const elem = document.getElementById(elementId);
+	if (displayType == "none") {
 		elem.style.display = "block";
 		displayType = "block";
 	} else {
-		elem.style.display = "hidden";
-		displayType = "hidden";
+		elem.style.display = "none";
+		displayType = "none";
 	}
 }
