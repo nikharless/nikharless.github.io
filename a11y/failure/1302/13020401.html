@@ -26,19 +26,46 @@ checkpoint: 130204
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div></div>
+        		<div>
+                    <ol>
+                        <li>Add <code>aria-modal="true"</code> to the element containing the modal.</li>
+                        <li>When the modal is open, assign <code>aria-hidden="true"</code> to the elements outside the modal.</li>
+                        <li>When the modal is closed, remove <code>aria-hidden="true"</code> from the elements outside the modal.</li>
+                    </ol>      
+                </div>
         	</div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    
+                    <h3>ARIA Attributes Not Set</h3>
+                    <script src="{{ baseurl }}/assets/js/modal-visibility.js"></script>
+                    <div class="example">
+                        <button id="openBadModalBtn">Open Failing Modal</button>
+                        <div>
+                            <div id="badModal" role="dialog" aria-labelledby="badModalLabel" style="display: none;">
+                                <h2 id="badModalLabel" class="dialog_label">Bad Modal</h2>
+                                <div id="badModalDesc" class="dialog_desc">
+                                    <p>You can read outside this modal with assistive technology.</p>
+                                </div>
+                                <div>
+                                    <button type="button" class="dialog_close_button" aria-label="Close">X</button>
+                                </div>
+                            </div>
+                        </div>
+                        <pre><code></code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
+                    <h3>ARIA Attributes Hide Content</h3>
+                    <div class="example">
+                        <button id="openModalBtn">Open Passing Modal</button>
+                        <pre><code></code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
