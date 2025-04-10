@@ -37,11 +37,11 @@ const closeBtn = document.getElementById("modalClose");
 //   mainContent.setAttribute("aria-hidden", "true");  // Hide main content
 // }
 // Function to show content to screen readers and hide modal
-function closeModal() {
-  modal.style.display = "none";
-  mainContent.removeAttribute("aria-hidden");  // Show main content
-  modal.removeAttribute("aria-modal");  // Remove aria-modal attribute
-}
+// function closeModal() {
+//   modal.style.display = "none";
+//   mainContent.removeAttribute("aria-hidden");  // Show main content
+//   modal.removeAttribute("aria-modal");  // Remove aria-modal attribute
+// }
 // When the user clicks the button, open the modal
 btn.onclick = function() {
   openModal();
@@ -73,9 +73,9 @@ function setAriaHiddenForSiblings(hidden) {
 // Override openModal and closeModal to handle aria-hidden on all siblings
 function openModal() {
   modal.style.display = "block";
+  modal.setAttribute("aria-modal", "true");  // Set aria-modal to true
   modal.focus();
   setAriaHiddenForSiblings(true);  // Hide all sibling elements except modal
-  modal.setAttribute("aria-modal", "true");  // Set aria-modal to true
 }
 function closeModal() {
   modal.style.display = "none";
