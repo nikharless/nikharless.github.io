@@ -148,6 +148,7 @@ class MenuButtonLinks {
 
   openPopup() {
     this.menuNode.style.display = 'block';
+    this.menuNode.style.left = 'auto';
     this.buttonNode.setAttribute('aria-expanded', 'true');
   }
 
