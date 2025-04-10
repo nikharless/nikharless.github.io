@@ -399,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function initAlertDialog() {
     );
     var dialog = document.getElementById(dialogId);
     var desc = document.getElementById(dialog.getAttribute('aria-describedby'));
-    var wordCount = document.getElementById('word_count');
+/*    var wordCount = document.getElementById('word_count');
     if (!wordCount) {
       wordCount = document.createElement('p');
       wordCount.id = 'word_count';
@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function initAlertDialog() {
     }
     var count = target.value.split(/\s/).length;
     var frag = count > 1 ? 'words' : 'word';
-    wordCount.textContent = count + ' ' + frag + ' will be deleted.';
+    wordCount.textContent = count + ' ' + frag + ' will be deleted.';*/
     new aria.Dialog(dialogId, target, focusFirst);
   };
 });
