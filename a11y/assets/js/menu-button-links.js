@@ -148,7 +148,6 @@ class MenuButtonLinks {
 
   openPopup() {
     this.menuNode.style.display = 'block';
-    this.menuNode.style.left = 'auto';
     this.buttonNode.setAttribute('aria-expanded', 'true');
   }
 
@@ -325,12 +324,5 @@ window.addEventListener('load', function () {
   var menuButtons = document.querySelectorAll('.menu-button-links');
   for (let i = 0; i < menuButtons.length; i++) {
     new MenuButtonLinks(menuButtons[i]);
-  }
-});
-
-window.addEventListener('load', function () {
-  var menuButtonsFail = document.querySelectorAll('.menu-button-links-fail');
-  for (let i = 0; i < menuButtonsFail.length; i++) {
-    new MenuButtonLinks(menuButtonsFail[i]);
   }
 });
