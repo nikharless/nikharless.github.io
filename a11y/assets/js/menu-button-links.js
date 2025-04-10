@@ -327,3 +327,10 @@ window.addEventListener('load', function () {
     new MenuButtonLinks(menuButtons[i]);
   }
 });
+
+window.addEventListener('load', function () {
+  var menuButtonsFail = document.querySelectorAll('.menu-button-links-fail');
+  for (let i = 0; i < menuButtonsFail.length; i++) {
+    new MenuButtonLinks(menuButtonsFail[i]);
+  }
+});
