@@ -14,7 +14,7 @@ span.onclick = function() {
 }
 // When the user clicks anywhere outside of the bad modal, close it
 window.onclick = function(event) {
-  if (event.target === modal) {
+  if (event.target === badModal) {
     badModal.style.display = "none";
   }
 }
