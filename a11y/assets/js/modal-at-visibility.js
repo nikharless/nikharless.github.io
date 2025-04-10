@@ -19,7 +19,7 @@ window.onclick = function(event) {
   }
 }
 
-
+/*
 // Get good modal element
 const modal = document.getElementById("goodModal");
 // Get main content to toggle aria-hidden
@@ -81,4 +81,4 @@ function closeModal() {
   modal.style.display = "none";
   setAriaHiddenForSiblings(false);  // Remove aria-hidden from sibling elements
   modal.removeAttribute("aria-modal");  // Remove aria-modal attribute
-}
+}*/
