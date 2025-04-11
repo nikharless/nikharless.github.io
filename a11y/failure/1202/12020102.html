@@ -12,55 +12,65 @@ checkpoint: 120201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Captions must be accurate.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The video has captions, but they are inaccurate.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Rewrite the captions to match the audio. If you are using automatic captions, switch to manually written ones.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3 style="color: red;">Bad Example: YouTube</h3>
-                <p>This video shows an example of inaccurate captions generated automatically.</p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/SrApzuyirvs?si=6DvTzyI6IgWMXd94" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Captions must be accurate.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The video has captions, but they are inaccurate.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Rewrite the captions to match the audio. If you are using automatic captions, switch to manually written ones.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                    <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>YouTube</h3>
+                    <p>This video shows an example of inaccurate captions generated automatically.</p>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/SrApzuyirvs?si=6DvTzyI6IgWMXd94" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>
-                <ul>
-                    <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to access the same information provided in the audio portion of multimedia.</li>
-                    <li><strong>Information processing:</strong> People who have the ability to hear use captions to more easily process the auditory information.</li>
-                    <li><strong>Non-native speakers:</strong> Captions help non-native speakers of the audio language understand the content.</li>
-                    <li><strong>Environment:</strong> Captions allow all users to access the auditory information in environments where sound can't be used or cannot be heard.</li>
-                    <li><strong>SEO:</strong> Captions allow search engines to catalog the information contained in videos.</li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Live synchronized media:</strong><br>
+                            File under <a href="{{ site.data.1204.1204[12040102].link | prepend: baseurl }}">{{ site.data.1204.1204[12040102].name }}</a>.</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC 1.2.2: Captions (Prerecorded)</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F8">Failure of Success Criterion 1.2.2 due to captions omitting some dialogue or important sound effects</a></li>
-                    <li><a href="https://www.w3.org/WAI/media/av/captions/">W3: Captions</a></li>
-                    <li><a href="https://cielo24.com/2019/08/video-captioning-accuracy-levels-explained/">Video Captioning Accuracy Levels Explained</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to access the same information provided in the audio portion of multimedia.</li>
+                        <li><strong>Information processing:</strong> People who have the ability to hear use captions to more easily process the auditory information.</li>
+                        <li><strong>Non-native speakers:</strong> Captions help non-native speakers of the audio language understand the content.</li>
+                        <li><strong>Environment:</strong> Captions allow all users to access the auditory information in environments where sound can't be used or cannot be heard.</li>
+                        <li><strong>SEO:</strong> Captions allow search engines to catalog the information contained in videos.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F8">Failure of Success Criterion 1.2.2 due to captions omitting some dialogue or important sound effects</a></li>
+                        <li><a href="https://www.w3.org/WAI/media/av/captions/">W3: Captions</a></li>
+                        <li><a href="https://cielo24.com/2019/08/video-captioning-accuracy-levels-explained/">Video Captioning Accuracy Levels Explained</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1202checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
