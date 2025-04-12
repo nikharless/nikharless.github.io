@@ -12,44 +12,70 @@ checkpoint: 140401
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Text content is resizable to 200%.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Text-based form controls do not resize.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div></div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Text content is resizable to 200%.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Text-based form controls do not resize.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div></div>
+        	</div>
+            <div class="row block">
+                <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <label for="fname" style="font-size: 1em;">First Name</label>
+                    <input type="text" name="fname" id="fname" style="font-size: 12pt;" value="John">
+                    <label for="lname" style="font-size: 1em;">Last Name</label>
+                    <input type="text" name="lname" id="lname" style="font-size: 12pt;" value="Doe">
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Vision impaired users need to be able to zoom the content so they can read it.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F80">F80: Failure of Success Criterion 1.4.4 when text-based form controls do not resize when visually rendered text is resized up to 200%</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C17">C17: Scaling form elements which contain text</a></li>
-                </ul>
+            <div class="row block">
+                <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Visually impaired:</strong> Users must be able to increase the text size of content so that they can read it.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F80">F80: Failure of Success Criterion 1.4.4 when text-based form controls do not resize when visually rendered text is resized up to 200%</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C17">C17: Scaling form elements which contain text</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1404checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
