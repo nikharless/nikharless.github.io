@@ -12,72 +12,108 @@ checkpoint: 140401
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Text content is readable and functional when resized up to 200%</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Text content is clipped, truncated or obscured when resized to 200% and cannot be accessed.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Ensure that text containers resize when the text resizes.</li>
-                    <li>Use measurements that are relative to other measurements in the content.</li>
-                </ul>     
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3 style="color: red;">Bad Example: Truncated Text</h3>
-                <div style="font-size:100%; width:120px; height:100px; overflow: hidden; border: thin solid gray;">The chief obstacle to the progress of the human race is the human race.</div>
-                <pre><code>.quote {
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Text content is readable and functional when resized up to 200%.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Text content is clipped, truncated or obscured when resized to 200% and cannot be accessed.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Ensure that text containers resize when the text resizes.</li>
+                        <li>Use measurements that are relative to other measurements in the content.</li>
+                    </ul>     
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>Truncated Text</h3>
+                    <div class="example">
+                        <div style="font-size:100%; width:120px; height:100px; overflow: hidden; border: thin solid gray;">The chief obstacle to the progress of the human race is the human race.</div>
+                        <p>Credit: Don Marquis</p>
+                        <pre><code>.quote {
     font-size:100%; 
     width:120px; 
     height:100px; 
     overflow: hidden; 
     border: thin solid gray;
 }</code></pre>
-                <h3 style="color: green;">Good Example: Flexible Height</h3>
-                <div style="font-size:100%; width:120px; min-height:6.25em; border: thin solid gray;">The chief obstacle to the progress of the human race is the human race.</div>
-                <pre><code>.quote {
+                    </div>
+
+                    <h3>Overflowing Text</h3>
+                    <div class="example">
+                        <div style="font-size:100%; width:120px; height:100px; border: thin solid gray;">The chief obstacle to the progress of the human race is the human race.</div>
+                        <p>Credit: Don Marquis</p>
+                        <pre><code>.quote {
+    font-size:100%; 
+    width:120px; 
+    height:100px;
+    border: thin solid gray;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Flexible Height</h3>
+                    <div style="font-size:100%; width:120px; min-height:6.25em; border: thin solid gray;">The chief obstacle to the progress of the human race is the human race.</div>
+                    <pre><code>.quote {
     font-size:100%; 
     width:120px; 
     min-height:6.25em; 
     border: thin solid gray;
 }</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Vision impaired users need to be able to read and use the content when zoomed.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F69">F69: Failure of Success Criterion 1.4.4 when resizing visually rendered text up to 200 percent causes the text, image or controls to be clipped, truncated or obscured</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C12">C12: Using percent for font sizes</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C13">C13: Using named font sizes</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C14">C14: Using em units for font sizes</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C28">C28: Specifying the size of text containers using em units</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G146">G146: Using liquid layout</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR34">SCR34: Calculating size and position in a way that scales with text size</a></li>
-                    <li><a href="https://www.w3schools.com/accessibility/accessibility_text_size.php">W3: Accessibility Text Size</a></li>
-                    <li><a href="https://www.w3schools.com/TAGS/att_title.asp">W3: HTML title Attribute</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Horizontal scrolling:</strong><br>
+                            File under <a href="{{ site.data.1410.1410[14100103].link | prepend: baseurl }}">{{ site.data.1410.1410[14100103].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Visually impaired:</strong> Users must be able to increase the text size of content so that they can read it.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F69">F69: Failure of Success Criterion 1.4.4 when resizing visually rendered text up to 200 percent causes the text, image or controls to be clipped, truncated or obscured</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C12">C12: Using percent for font sizes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C13">C13: Using named font sizes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C14">C14: Using em units for font sizes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C28">C28: Specifying the size of text containers using em units</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G146">G146: Using liquid layout</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR34">SCR34: Calculating size and position in a way that scales with text size</a></li>
+                        <li><a href="https://www.w3schools.com/accessibility/accessibility_text_size.php">W3: Accessibility Text Size</a></li>
+                        <li><a href="https://www.w3schools.com/TAGS/att_title.asp">W3: HTML title Attribute</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1404checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
