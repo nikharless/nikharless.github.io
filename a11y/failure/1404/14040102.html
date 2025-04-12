@@ -12,52 +12,78 @@ checkpoint: 140401
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Text content is resizable to 200%.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Text does not resize due to the use of viewport meta tags which disable zooming.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>In the "viewport" <code>&lt;meta&gt;</code> tag, remove the <code>user-scalable=0</code> option.</li>
-                    <li>Either remove the <code>maximum-scale</code> option, or set it to at least "2".</li>
-                </ul>     
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Text content is resizable to 200%.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Text does not resize due to the use of viewport meta tags which disable zooming.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>In the "viewport" <code>&lt;meta&gt;</code> tag, remove the <code>user-scalable=0</code> or <code>user-scalable=no</code> option, or set it to "yes".</li>
+                        <li>Either remove the <code>maximum-scale</code> option, or set it to at least "2".</li>
+                    </ul>     
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <p><code>user-scalable</code> is set to "no"</p>
+                    <pre><code>&lt;meta name="viewport" content="user-scalable=no"&gt;</code></pre>
+
+                    <p><code>maximum-scale</code> is set to "1"</p>
+                    <pre><code>&lt;meta name="viewport" content="maximum-scale=1.0"&gt;</code></pre>
+
+                    <p><code>maximum-scale</code> is set to "yes" which translates to 1</p>
+                    <pre><code>&lt;meta name="viewport" content="maximum-scale=yes"&gt;</code></pre>
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <p>This fits the initial view of the content to the screen size without disabling zoom capability.</p>
-                <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <p><code>user-scalable</code> is set to "yes"</p>
+                    <pre><code>&lt;meta name="viewport" content="user-scalable=yes"&gt;</code></pre>
+
+                    <p><code>maximum-scale</code> is set to "2"</p>
+                    <pre><code>&lt;meta name="viewport" content="maximum-scale=2.0"&gt;</code></pre>
+
+                    <p>This fits the initial view of the content to the screen size without disabling zoom capability.</p>
+                    <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Why It's Important</h2>
-            <div>Vision impaired users need to be able to zoom in to view the content.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding SC {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G142">G142: Using a technology that has commonly-available user agents that support zoom</a></li>
-                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/b4f0c3/">Meta viewport allows for zoom</a></li>
-                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">MDN: Viewport meta tag</a></li>
-                    <li><a href="https://www.w3schools.com/accessibility/accessibility_page_zoom.php">W3: Accessibility Page Zoom</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Visually impaired:</strong> Users must be able to increase the text size of content so that they can read it.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G142">G142: Using a technology that has commonly-available user agents that support zoom</a></li>
+                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/b4f0c3/">Meta viewport allows for zoom</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">MDN: Viewport meta tag</a></li>
+                        <li><a href="https://www.w3schools.com/accessibility/accessibility_page_zoom.php">W3: Accessibility Page Zoom</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1404checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
