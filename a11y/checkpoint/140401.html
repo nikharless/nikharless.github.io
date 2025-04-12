@@ -16,127 +16,83 @@ criterion: 1404
 
         <div class="block">
             <h2>Overview</h2>
-
+            <p>If any functionality is dropped because of responsive design changes, this is not a failure if the functionality can be accessed by clicking or tapping to a new location (e.g., expandable menu, link, etc.).</p>
         </div>
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-        <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-            <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-        <ul>
-            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text content must be resizable to 200%.</li>
-            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text content must be readable and functional when resized up to 200%.</li>
-            <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text content should be resizable to 500%.</li>
-            <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Mobile apps should use the mobile platform's dynamic text accessibility feature.</li>
-        </ul>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text content must be resizable to 200% without the use of assistive technology.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text must not be clipped, truncated, or obscured when resized to 200%.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All content must be available within one click or tap when resized to 200%.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All functionality must be retained when resized to 200%.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text content should be resizable to 500%.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Mobile apps should use the mobile platform's dynamic text accessibility feature.</li>
+            </ul>
 
-        <div class="userstory"><strong>User Story:</strong> As a user with a visual impairment, I want text to be zoomable and remain readable and functional up to 200% so that I can more easily read it.</div>
+            <div class="userstory"><strong>User Story:</strong> As a user with a visual impairment, I want text to be zoomable and remain readable and functional up to 200% so that I can more easily read it.</div>
 
-        <div class="success"><strong>Success:</strong> If you had a visual impairment, when you enlarged text up to 200%, you would be able to read it and use its functionality.</div>
-
+            <div class="success"><strong>Success:</strong> If you had a visual impairment, when you enlarged text up to 200%, you would be able to read it and use its functionality.</div>
         </div>
 
         <div class="block">
             <h2>Testing Logic</h2>
-        <script src="{{ baseurl }}/assets/js/tree.js"></script>
-        <h3 id="test1">Can the text be resized without assistive technology up to 200%?</h3>
-        <p><em>Note: This includes text the user enters into text fields.</em></p>
-        <ul role="tree" aria-labelledby="test1">
-            <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-            <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the text a caption or image of text?</span>
-                <ul role="group">
-                    <li role="treeitem" class="pass"><span><strong>Yes;</strong> PASS</span></li>
-                    <li role="treeitem" aria-expanded="false"><span><strong>No;</strong> Is the font size set in viewport units (vw)?</span>
-                        <ul role="group">
-                            <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1404.1404[14040101].link | prepend: baseurl }}">{{ site.data.1404.1404[14040101].name }}</a></span></li>
-                            <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the viewport <code>meta</code> element prevent user scaling (<code>user-scalable=no</code> or <code>maximum-scale</code> set to yes or a number less than 2)?</span>
-                                <ul role="group">
-                                    <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1404.1404[14040102].link | prepend: baseurl }}">{{ site.data.1404.1404[14040102].name }}</a></span></li>
-                                    <li role="treeitem" class="fail"><span><strong>No</strong>; </span></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <h3 id="test2">When text is resized up to 200%, is the content truncated?</h3>
-        <ul role="tree" aria-labelledby="test2">
-            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the full content available on focus or after user activation?</span>
-                <ul role="group">
-                    <li role="treeitem" aria-expanded="false"><span><strong>Yes;</strong> Is there an indication that this information can be accessed (other than the fact that it is truncated, such as “…”)?</span>
-                        <ul role="group">
-                            <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                            <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1404.1404[14040104].link | prepend: baseurl }}">{{ site.data.1404.1404[14040104].name }}</a></span></li>
-                        </ul>
-                    </li>
-                    <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="{{ site.data.1404.1404[14040103].link | prepend: baseurl }}">{{ site.data.1404.1404[14040103].name }}</a></span></li>
-                </ul>
-            </li>
-            <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-        </ul>
-
-        <h3 id="test3">When text is resized up to 200%, is the functionality still available?</h3>
-        <ul role="tree" aria-labelledby="test3">
-            <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-            <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Has the functionality been moved to an area that is one click away (such as in a pop-up menu)?</span>
-                <ul role="group">
-                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                    <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="{{ site.data.1404.1404[14040106].link | prepend: baseurl }}">{{ site.data.1404.1404[14040106].name }}</a></span></li>
-                </ul>
-            </li>
-        </ul>
-
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is there text on the page other than captions or images of text?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the text be resized without assistive technology up to 200%?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When the text is resized, is it clipped, truncated, or obscured?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the full content available on focus or after user activation?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes;</strong> Is there an indication that this information can be accessed (other than the fact that it is truncated, such as “…”)?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1404.1404[14040104].link | prepend: baseurl }}">{{ site.data.1404.1404[14040104].name }}.</a></span></li>
+                                            </ul>
+                                        </li>
+                                        <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="{{ site.data.1404.1404[14040103].link | prepend: baseurl }}">{{ site.data.1404.1404[14040103].name }}.</a></span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is all content still available?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is all functionality still available?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="pass"><span><strong>Yes;</strong> PASS</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1404.1404[14040106].link | prepend: baseurl }}">{{ site.data.1404.1404[14040106].name }}.</a></span></li>
+                                            </ul>
+                                        </li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1404.1404[14040106].link | prepend: baseurl }}">{{ site.data.1404.1404[14040106].name }}.</a></span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the viewport <code>meta</code> element prevent user scaling (<code>user-scalable=no</code> or <code>maximum-scale</code> set to yes or a number less than 2)?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1404.1404[14040102].link | prepend: baseurl }}">{{ site.data.1404.1404[14040102].name }}</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No;</strong> Is the font size set in viewport units (vw)?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1404.1404[14040101].link | prepend: baseurl }}">{{ site.data.1404.1404[14040101].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; </span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
 
         <div class="block">
             <h2>Web Test Procedure</h2>
             <h3>Desktop</h3>
             <ol>
-                <li>Use the <a href="http://chrispederick.com/work/web-developer/">Web Developer browser extension</a> for Firefox and Chrome to compare zoom levels. Both browsers will be used for this test.
-                    <ol>
-                        <li>Browser 1 (Firefox):
-                            <ol>
-                                <li>In the first browser, set the zoom level to 100%.</li>
-                                <li>Open the Web Developer extension, and select <strong>Resize > Resize Window...</strong>.</li>
-                                <li>Set <strong>Width</strong> to "1366" and <strong>Height</strong> to "768".</li>
-                                <li>Open the Web Developer extension again and select <strong>Display Window Size</strong>.</li>
-                                <li>Note the difference between the Window and Viewport size, and adjust the Viewport size to 1366x768. For example:
-                                    <ul>
-                                        <li>(Window) 1366px - (Viewport) 1355px = 11px</li>
-                                        <li>1366px + 11px = 1377px</li>
-                                        <li>(Window) 768px - (Viewport) 675px = 93px</li>
-                                        <li>768px + 93px = 861px</li>
-                                        <li>Open the extension, select <strong>Resize > Resize Window...</strong>, and set it to Width: 1377 and Height: 861px.</li>
-                                    </ul>
-                                </li>
-                            </ol>
-                        </li>
-                        <li>Browser 2 (Chrome):
-                            <ol>
-                                <li>In the second browser, follow steps 1-5 of Browser 1 instructions.</li>
-                                <li>Zoom the window to 200%.</li>
-                            </ol>
-                        </li>
-                    </ol>
-                </li>
-                <li>Compare the 100% zoom view to the 200% zoom view, and verify that:
-                    <ul>
-                        <li>All text content has been resized</li>
-                        <li>All content and functionality has been retained</li>
-                    </ul>
-                </li>
-                <li>If either of the above fail, in browser 2 (Chrome):
-                    <ol>
-                        <li>Set the zoom level to 100%.</li>
-                        <li>Go to <strong>Settings > Appearance > Customize fonts</strong>.</li>
-                        <li>Slide the <strong>Font size</strong> slider to "32".</li>
-                        <li>Compare the 100% zoom view to this view and verify the above.</li>
-                    </ol>
-                </li>
-            </ol>
-            <p><em>Note: If any functionality is dropped because of responsive design changes, this is not a failure as long as the functionality can be accessed by clicking or tapping to a new location (e.g., expandable menu, link, etc.).</em></p>
+                <li>Use the browser zoom function (<kbd>Ctrl</kbd>+<kbd>+</kbd>) to resize the text to 200%.</li>
+                <li>If any content does not zoom, verify that there is another non-assistive-technology mechanism to resize the page content (e.g. operating system, platform, or author-provided mechanism).</li>
+            </ol>  
 
             <h3>Mobile</h3>
             <ol>
@@ -162,20 +118,22 @@ criterion: 1404
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1404.1404[14040101].link | prepend: baseurl }}">{{ site.data.1404.1404[14040101].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1404.1404[14040102].link | prepend: baseurl }}">{{ site.data.1404.1404[14040102].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1404.1404[14040103].link | prepend: baseurl }}">{{ site.data.1404.1404[14040103].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1404.1404[14040104].link | prepend: baseurl }}">{{ site.data.1404.1404[14040104].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1404.1404[14040105].link | prepend: baseurl }}">{{ site.data.1404.1404[14040105].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1404.1404[14040106].link | prepend: baseurl }}">{{ site.data.1404.1404[14040106].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1404.1404[14040101].link | prepend: baseurl }}">{{ site.data.1404.1404[14040101].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1404.1404[14040102].link | prepend: baseurl }}">{{ site.data.1404.1404[14040102].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1404.1404[14040103].link | prepend: baseurl }}">{{ site.data.1404.1404[14040103].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1404.1404[14040104].link | prepend: baseurl }}">{{ site.data.1404.1404[14040104].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1404.1404[14040105].link | prepend: baseurl }}">{{ site.data.1404.1404[14040105].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1404.1404[14040106].link | prepend: baseurl }}">{{ site.data.1404.1404[14040106].name }}.</a> (Medium)</li>
             </ul>
         </div>
 
         <div class="block">
             <h2>Testing Tools</h2>
             <ul>
+                <li>Browser zoom</li>
                 <li><a href="https://chrispederick.com/work/web-developer/">Web Developer browser extension</a></li>
                 <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
+                <li>Mobile device</li>
             </ul>
         </div>
 
@@ -183,7 +141,7 @@ criterion: 1404
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li>Related Techniques:
                     <ul>
                         <li>General:
