@@ -3,8 +3,6 @@ layout: default
 current: 24050101
 criterion: 2405
 checkpoint: 240501
-guideline: operable
-
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2405.2405[page.current] %}
@@ -20,11 +18,11 @@ guideline: operable
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>There are at least two ways to locate a web page that is not part of a process on the site.</div>
+        		<div>There are at least two ways to locate a web page within a set of web pages.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>There are fewer than two ways to locate a web page on the site.</div>
+        		<div>There are fewer than two ways to locate a web page within the set of web pages.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
@@ -41,14 +39,35 @@ guideline: operable
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                        
+                    
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li>Pages that are a step in a process</li>
+                    </ul>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Why It's Important</h2>
-                <div>Different users can more easily navigate content in different ways.</div>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users may find it easier to use a search function rather than navigate through a large number of links.</li>
+                        <li><strong>Motion impaired:</strong> Users may find it easier to use a search function rather than navigate through a large number of links.</li>
+                        <li><strong>Cognitively impaired:</strong> Users may prefer a table of contents or site map rather than navigating through complex navigation menus. Others may prefer to explore the site in a sequential manner with next and back links.</li>
+                </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">References</h2>

@@ -1,0 +1,83 @@
+---
+layout: default
+current: 24050102
+criterion: 2405
+checkpoint: 240501
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.2405.2405[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.2405.2405[page.criterion] %}
+{% assign cp=site.data.2405.2405[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>There are at least two ways to locate a web page within a set of web pages.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>There are at least two ways to locate a web page within the set of web pages, but one or more doesn't function correctly.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <p>Ensure that each method functions correctly and leads to the correct page.</p>   
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li>Pages that are a step in a process</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Why It's Important</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visually impaired:</strong> Users may find it easier to use a search function rather than navigate through a large number of links.</li>
+                        <li><strong>Motion impaired:</strong> Users may find it easier to use a search function rather than navigate through a large number of links.</li>
+                        <li><strong>Cognitively impaired:</strong> Users may prefer a table of contents or site map rather than navigating through complex navigation menus. Others may prefer to explore the site in a sequential manner with next and back links.</li>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G63">G63: Providing a site map</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G64">G64: Providing a Table of Contents</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G125">G125: Providing links to navigate to related Web pages</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G126">G126: Providing a list of links to all other Web pages</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G161">G161: Providing a search function to help users find content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G185">G185: Linking to all of the pages on the site from the home page</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/2405checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
