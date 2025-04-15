@@ -38,7 +38,7 @@ class Checkbox {
 
     } else {
       this.domNode.setAttribute('aria-checked', 'true');
-      this.domNode.firstChild..setAttribute('style', 'display: block;');
+      this.domNode.firstChild.setAttribute('style', 'display: block;');
       this.domNode.firstChild.nextSibling.setAttribute('style', 'display: none;');
     }
   }
