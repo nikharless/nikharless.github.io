@@ -17,18 +17,33 @@ criterion: 2101
         <div class="block">
             <h2>Overview</h2>
 
-            <p>This checkpoint applies to literal keyboards, but it also applies to any technology which uses the keyboard interface, such as switch controls, voice control, sip-and-puff controls, on-screen keyboards, and screen readers.</p>
+            <p>This checkpoint applies to literal keyboards, but it also applies to any technology which uses the keyboard interface, such as switch controls, voice control, sip-and-puff controls, on-screen keyboards, and screen readers. It does <em>not</em> apply to Mouse Keys, which does not use the keyboard interface.</p>
 
             <p>All interactive elements must be tested, including but not limited to:</p>
                 <ul>
                     <li>Buttons</li>
+                    <li>Links</li>
                     <li>Drop-down menus</li>
                     <li>Form fields</li>
                     <li>Expanding/collapsing content</li>
+                    <li>Pop-ups</li>
+                    <li>Light boxes</li>
                     <li>Tooltips</li>
+                    <li>Tree views</li>
                     <li>Custom controls</li>
                     <li>Modals</li>
+                    <li>Iframes</li>
                 </ul>
+
+            <p>Standard keyboard commands include:</p>
+            <ul>
+                <li><kbd>Tab</kbd></li>
+                <li><kbd>Space</kbd></li>
+                <li><kbd>Enter</kbd></li>
+                <li><kbd>Escape</kbd></li>
+            </ul>
+
+            <p>If non-standard keyboard commands are used, instructions must be available.</p>
 
             <p>"Specific timings for individual keystrokes" refers to things such as multiple keystrokes within a short period of time or holding down a key for a length of time.</p>
 
@@ -64,9 +79,9 @@ criterion: 2101
                         <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Hover content must be available on keyboard focus if it is not available elsewhere on the page.</li>
                     </ul>
                 </li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Instructions must be provided to explain any non-standard keyboard interaction required to use the functionality.</li>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Keyboard functionality must not require specific timings for individual keystrokes.</li>
                 <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Content should use the standard and expected keyboard interaction for the platform/user agent.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Instructions should be provided to explain any non-standard keyboard interaction required to use the functionality.</li>
             </ul>
 
             <div class="userstory"><strong>User Story:</strong> As a keyboard user, I want to be able to access all functionality with the keyboard so that I can use the page.</div>
@@ -96,32 +111,32 @@ criterion: 2101
                                             <ul role="group">
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the control a link?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010103].link | prepend: baseurl }}">{{ site.data.2101.2101[21010103].name }}</a>.</span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010103].link | prepend: baseurl }}">{{ site.data.2101.2101[21010103].name }}.</a></span></li>
                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control an image map?</span>
                                                             <ul role="group">
                                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it a client-side image map?</span>
                                                                     <ul role="group">
-                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010103].link | prepend: baseurl }}">{{ site.data.2101.2101[21010103].name }}</a>.</span></li>
+                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010103].link | prepend: baseurl }}">{{ site.data.2101.2101[21010103].name }}.</a></span></li>
                                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are there redundant text links available?</span>
                                                                             <ul role="group">
                                                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010105].link | prepend: baseurl }}">{{ site.data.2101.2101[21010105].name }}</a>.</span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010105].link | prepend: baseurl }}">{{ site.data.2101.2101[21010105].name }}.</a></span></li>
                                                                             </ul>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a drag and drop?</span>
                                                                     <ul role="group">
-                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010106].link | prepend: baseurl }}">{{ site.data.2101.2101[21010106].name }}</a>.</span></li>
+                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010106].link | prepend: baseurl }}">{{ site.data.2101.2101[21010106].name }}.</a></span></li>
                                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a scrollable region?</span>
                                                                             <ul role="group">
-                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010107].link | prepend: baseurl }}">{{ site.data.2101.2101[21010107].name }}</a>.</span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2101.2101[21010107].link | prepend: baseurl }}">{{ site.data.2101.2101[21010107].name }}.</a></span></li>
                                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a modal?</span>
                                                                                     <ul role="group">
                                                                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the modal be dismissed without submitting data?</span>
                                                                                             <ul role="group">
                                                                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010104].link | prepend: baseurl }}">{{ site.data.2101.2101[21010104].name }}</a>.</span></li>
+                                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010104].link | prepend: baseurl }}">{{ site.data.2101.2101[21010104].name }}.</a></span></li>
                                                                                             </ul>
                                                                                         </li>
                                                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the control display additional content on mouse hover?</span>
@@ -129,10 +144,10 @@ criterion: 2101
                                                                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the additional content also appear on keyboard focus?</span>
                                                                                                     <ul role="group">
                                                                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010108].link | prepend: baseurl }}">{{ site.data.2101.2101[21010108].name }}</a>.</span></li>
+                                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010108].link | prepend: baseurl }}">{{ site.data.2101.2101[21010108].name }}.</a></span></li>
                                                                                                     </ul>
                                                                                                 </li>
-                                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010102].link | prepend: baseurl }}">{{ site.data.2101.2101[21010102].name }}</a>.</span></li>
+                                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010102].link | prepend: baseurl }}">{{ site.data.2101.2101[21010102].name }}.</a></span></li>
                                                                                             </ul>
                                                                                         </li>
                                                                                     </ul>
@@ -152,7 +167,7 @@ criterion: 2101
                                 </li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010101].link | prepend: baseurl }}">{{ site.data.2101.2101[21010101].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2101.2101[21010101].link | prepend: baseurl }}">{{ site.data.2101.2101[21010101].name }}.</a></span></li>
                     </ul>                        
                 </li>                
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
@@ -165,13 +180,15 @@ criterion: 2101
             <ol>
                 <li>Using only the keyboard (no mouse or screen reader), navigate through the page.
                     <ul>
-                        <li>Press the <kbd>Tab</kbd> key to navigate the focus through menu items, form inputs, links, help items, and other interactive UI elements.</li>
+                        <li>Press the <kbd>Tab</kbd> key to navigate the focus through all interactive UI elements.</li>
                         <li>Press <kbd>Shift</kbd>+<kbd>Tab</kbd> to navigate the focus in the reverse direction through all interactive UI elements.</li>
-                        <li>In grouped inputs, menus, or list item elements, press the <kbd>up</kbd>, <kbd>down</kbd>, <kbd>right</kbd>, or <kbd>left arrow</kbd> keys to move between items inside the element.</li>
+                        <li>In grouped inputs, menus, drop-downs, tabs, and tree views, press the <kbd>up</kbd>, <kbd>down</kbd>, <kbd>right</kbd>, or <kbd>left arrow</kbd> keys to move between items inside the element.</li>
                         <li>Press the <kbd>Enter</kbd> key or the <kbd>Space bar</kbd> to select or activate the interactive UI element that has focus.</li>
+                        <li>Press the <kbd>Esc</kbd> key to close open menus and pop-ups.</li>
                     </ul>
                 </li>
                 <li>Verify that all controls can be navigated to and activated using only the keyboard.</li>
+                <li>If any control cannot be accessed with the keyboard, verify that there is another control with the same function that is accessible.</li>
                 <li>Verify that keyboard functionality does not require specific timing for keystrokes.</li>
             </ol>
 
@@ -190,13 +207,6 @@ criterion: 2101
                 <li>With TalkBack off, navigate through the screen using <kbd>Tab</kbd> and <kbd>Arrow</kbd> keys.</li>
                 <li>Verify that you are able to reach and use all interactive elements.</li>
             </ol>
-
-            <h2>Mobile App Test Procedure</h2>
-
-            <h3>Screen Reader (iOS and Android)</h3>
-            <ul>
-                <li>Follow the procedure for Web Mobile.</li>
-            </ul>
 
             <h3>iOS</h3>
 
@@ -233,15 +243,15 @@ criterion: 2101
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.2101.2101[21010101].link | prepend: baseurl }}">{{ site.data.2101.2101[21010101].name }}</a> (High)</li>
-                <li><a href="{{ site.data.2101.2101[21010102].link | prepend: baseurl }}">{{ site.data.2101.2101[21010102].name }}</a> (High)</li>
-                <li><a href="{{ site.data.2101.2101[21010103].link | prepend: baseurl }}">{{ site.data.2101.2101[21010103].name }}</a> (High)</li>
-                <li><a href="{{ site.data.2101.2101[21010104].link | prepend: baseurl }}">{{ site.data.2101.2101[21010104].name }}</a> (High)</li>
-                <li><a href="{{ site.data.2101.2101[21010105].link | prepend: baseurl }}">{{ site.data.2101.2101[21010105].name }}</a> (High)</li>
-                <li><a href="{{ site.data.2101.2101[21010106].link | prepend: baseurl }}">{{ site.data.2101.2101[21010106].name }}</a> (High)</li>
-                <li><a href="{{ site.data.2101.2101[21010107].link | prepend: baseurl }}">{{ site.data.2101.2101[21010107].name }}</a> (High)</li>
-                <li><a href="{{ site.data.2101.2101[21010108].link | prepend: baseurl }}">{{ site.data.2101.2101[21010108].name }}</a> (High)</li>
-                <li><a href="{{ site.data.2101.2101[21010109].link | prepend: baseurl }}">{{ site.data.2101.2101[21010109].name }}</a> (High)</li>
+                <li><a href="{{ site.data.2101.2101[21010101].link | prepend: baseurl }}">{{ site.data.2101.2101[21010101].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.2101.2101[21010102].link | prepend: baseurl }}">{{ site.data.2101.2101[21010102].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.2101.2101[21010103].link | prepend: baseurl }}">{{ site.data.2101.2101[21010103].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.2101.2101[21010104].link | prepend: baseurl }}">{{ site.data.2101.2101[21010104].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.2101.2101[21010105].link | prepend: baseurl }}">{{ site.data.2101.2101[21010105].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.2101.2101[21010106].link | prepend: baseurl }}">{{ site.data.2101.2101[21010106].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.2101.2101[21010107].link | prepend: baseurl }}">{{ site.data.2101.2101[21010107].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.2101.2101[21010108].link | prepend: baseurl }}">{{ site.data.2101.2101[21010108].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.2101.2101[21010109].link | prepend: baseurl }}">{{ site.data.2101.2101[21010109].name }}.</a> (High)</li>
             </ul>
         </div>
 
