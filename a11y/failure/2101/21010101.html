@@ -3,6 +3,7 @@ layout: default
 current: 21010101
 criterion: 2101
 checkpoint: 210101
+css: 21010101
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2101.2101[page.current] %}
@@ -46,19 +47,44 @@ checkpoint: 210101
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
+                    <h3>Custom Link</h3>
+                    <div role="link" onclick="window.location.href='https://ourparks.org/'">Our Parks</div>
+
+                    <h3>Custom Text Input</h3>
+                    <p id="fname">First Name</p>
+                    <div role="textbox" contenteditable="true" aria-labelledby="fname" style="width: 400px; height: 1em; padding: 10px; box-shadow: 0px 0px 2px 2px #ccc;"></div>
+
+                    <h3>Custom Radio Buttons</h3>
+                    <div role="radiogroup">
+                        <div role="radio" aria-checked="false">Option 1</div>
+                        <div role="radio" aria-checked="false">Option 2</div>
+                    </div>
                     
-                    <h3>Native HTML</h3>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
                     <p>Native HTML is keyboard accessible by default.</p>
-                    <a href="#">Click this link</a><br>
+                    <h3>Native HTML Link with <code>href</code></h3>
+                    <a href="https://ourparks.org">Our Parks</a>
+
+                    <h3>Native HTML Text Input</h3>
                     <label for="firstName"> First Name<br>
-                        <input type="text">
-                    </label><br>
+                        <input type="text" id="firstname">
+                    </label>
+
+                    <h3>Native HTML Radio Buttons</h3>
                     <fieldset>
                         <input type="radio"> Option 1<br>
                         <input type="radio"> Option 2
                     </fieldset>
+
                     <pre><code>&lt;a href="page.html"&gt;Click this link&lt;/a&gt;
 &lt;label for="firstName"&gt;
     &lt;input type="text"&gt;
@@ -68,7 +94,7 @@ checkpoint: 210101
     &lt;input type="radio"&gt; Option 2
 &lt;/fieldset&gt;</code></pre>
 
-                    <h3>Custom Control</h3>
+                    <h3>Custom Button</h3>
                     <p>Using <code>tabindex="0"</code> allows keyboard focus with the Tab key.</p>
                     <div id="customButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
                     <pre><code>&lt;div id="customButton" role="button" <strong>tabindex="0"</strong>&gt;Do Stuff&lt;/div&gt;</code></pre>
