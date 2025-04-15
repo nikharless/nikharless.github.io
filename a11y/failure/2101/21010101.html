@@ -47,12 +47,15 @@ css: 21010101
                 </div>
         	</div>
             <div class="row block">
-                <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Examples<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
                     <h3>Custom Link</h3>
-                    <div role="link" onclick="window.location.href='https://ourparks.org/'">Our Parks</div>
+                    <div class="example">
+                        <div role="link" onclick="window.location.href='https://ourparks.org/'">Our Parks</div>
+
+                        <pre><code>&lt;div role="link" onclick="window.location.href='https://ourparks.org/'"&gt;Our Parks&lt;/div&gt;</code></pre>
+                    </div>
 
                     <h3>Custom Checkbox</h3>
                     <div class="example">
@@ -62,7 +65,7 @@ css: 21010101
                                 <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
                             </div>
                         </div>
-
+                        <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
                         <pre><code>&lt;div role="checkbox" aria-checked="false"&gt; Subscribe to the mailing list</code></pre>
                     </div>
 
@@ -74,9 +77,15 @@ css: 21010101
                                 <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
                             </div>
                         </div>
-
+                        <script src="{{ baseurl }}/assets/js/radio.js"></script>
                         <pre><code>&lt;div role="radio" aria-checked="false"&gt; Check this radio button</code></pre>
-                    </div>                 
+                    </div>
+
+                    <h3>Custom Button</h3>
+                    <div class="example">
+                        <div id="customButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
+                        <pre><code>&lt;div role="button"&gt;Do Stuff&lt;/div&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
@@ -85,42 +94,49 @@ css: 21010101
                 <div>
                     <p>Native HTML is keyboard accessible by default.</p>
                     <h3>Native HTML Link with <code>href</code></h3>
-                    <a href="https://ourparks.org">Our Parks</a>
+                    <div class="example">
+                        <a href="https://ourparks.org">Our Parks</a>
+                        <pre><code>&lt;a href="https://ourparks.org"&gt;Our Parks&lt;/a&gt;</code></pre>
+                    </div>
 
-                    <h3>Native HTML Text Input</h3>
-                    <label for="firstName"> First Name<br>
-                        <input type="text" id="firstname">
-                    </label>
+                    <h3>Native HTML Checkbox</h3>
+                    <div class="example">
+                        <label for="subscribe"> 
+                            <input type="checkbox" id="subscribe"> Subscribe to the mailing list
+                        </label>
+                        <pre><code>&lt;input type="checkbox" id="subscribe"&gt; Subscribe to the mailing list</code></pre>
+                    </div>
 
                     <h3>Native HTML Radio Buttons</h3>
-                    <fieldset>
-                        <input type="radio"> Option 1<br>
-                        <input type="radio"> Option 2
-                    </fieldset>
+                    <div class="example">
+                        <fieldset>
+                            <input type="radio"> Option 1<br>
+                            <input type="radio"> Option 2
+                        </fieldset>
 
-                    <pre><code>&lt;a href="page.html"&gt;Click this link&lt;/a&gt;
-&lt;label for="firstName"&gt;
-    &lt;input type="text"&gt;
-&lt;/label&gt;
-&lt;fieldset&gt;
+                        <pre><code>&lt;fieldset&gt;
     &lt;input type="radio"&gt; Option 1
     &lt;input type="radio"&gt; Option 2
 &lt;/fieldset&gt;</code></pre>
+                    </div>
 
                     <h3>Custom Button</h3>
                     <p>Using <code>tabindex="0"</code> allows keyboard focus with the Tab key.</p>
-                    <div id="customButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
-                    <pre><code>&lt;div id="customButton" role="button" <strong>tabindex="0"</strong>&gt;Do Stuff&lt;/div&gt;</code></pre>
+                    <div class="example">
+                        <div id="customButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
+                        <pre><code>&lt;div id="customButton" role="button" <strong>tabindex="0"</strong>&gt;Do Stuff&lt;/div&gt;</code></pre>
 
-                    <script>
-                        function doStuff() {
-                            window.alert('Doing Stuff');
-                        }
-                        htmlButton.onclick = function (e) { doStuff(); };
-                        htmlButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-                        customButton.onclick = function (e) { doStuff(); };
-                        customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-                    </script>
+                        <script>
+                            function doStuff() {
+                                window.alert('Doing Stuff');
+                            }
+                            htmlButton.onclick = function (e) { doStuff(); };
+                            htmlButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
+                            customButton.onclick = function (e) { doStuff(); };
+                            customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
+                        </script>
+                        <pre><code>&lt;div role="button" <strong>tabindex="0"</strong>&gt;Do Stuff&lt;/div&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
