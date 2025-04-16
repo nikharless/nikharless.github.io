@@ -39,11 +39,13 @@ checkpoint: 210101
                 <div>
                     <h3>Custom Button with <code>onmousedown</code> Event Handler</h3>
                     <p>Using <code>onmousedown</code> alone to provide functionality does not allow keyboard access.</p>
-                    <div id="failButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
-                    <pre><code>&lt;div id="failButton" role="button" tabindex="0"&gt;Do Stuff&lt;/div&gt;
+                    <div class="example">
+                        <div id="failButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
+                        <pre><code>&lt;div id="failButton" role="button" tabindex="0"&gt;Do Stuff&lt;/div&gt;
 &lt;script&gt;
     failButton.onmousedown = function (e) { doStuff(); };
 &lt;/script&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
@@ -52,21 +54,31 @@ checkpoint: 210101
                 <div>
                     <h3>Custom Button with <code>onclick</code> and <code>onkeyup</code> Event Handlers</h3>
                     <p>Using <code>onclick</code> and <code>onkeyup</code> allows activation with both the mouse and the keyboard.</p>
-                    <div id="passButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
-                    <pre><code>&lt;div id="passButton" role="button" tabindex="0"&gt;Do Stuff&lt;/div&gt;
+                    <div class="example">
+                        <div id="passButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
+                        <pre><code>&lt;div id="passButton" role="button" tabindex="0"&gt;Do Stuff&lt;/div&gt;
     &lt;script&gt;
         passButton.onclick = function (e) { doStuff(); };
         <strong>passButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };</strong>
     &lt;/script&gt;</code></pre>
 
-                    <script>
-                        function doStuff() {
-                            window.alert('Doing Stuff');
-                        }
-                        failButton.onmousedown = function (e) { doStuff(); };
-                        passButton.onclick = function (e) { doStuff(); };
-                        passButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-                    </script>
+                        <script>
+                            function doStuff() {
+                                window.alert('Doing Stuff');
+                            }
+                            failButton.onmousedown = function (e) { doStuff(); };
+                            passButton.onclick = function (e) { doStuff(); };
+                            passButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li></li>
+                    </ul>
                 </div>
             </div>
             <div class="row block">

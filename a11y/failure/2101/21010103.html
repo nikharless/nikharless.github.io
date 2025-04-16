@@ -34,17 +34,39 @@ checkpoint: 210101
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Scripted Link</h3>
-                    <a href="#" onclick="return doStuff();">Click this link</a>
-                    <script>
-                        function doStuff() {
-                            window.alert('Doing Stuff');
-                            return false;
-                        }
-                    </script>
-                    <pre><code>&lt;a <strong>href="#"</strong> onclick="return doStuff();"&gt;Click this link&lt;/a&gt;</code></pre>
+                    <h3>Scripted Link with no <code>href</code></h3>
+                    <div class="example">
+                        <p><a onclick="return doStuff();">Our Parks</a></p>
+                        <pre><code>&lt;a onclick="return doStuff();"&gt;Our Parks&lt;/a&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Scripted Link with Inactive <code>href</code></h3>
+                    <div class="example">
+                        <a href="javascript:void(0);" onclick="return doStuff();">Our Parks</a>
+                        <script>
+                            function doStuff() {
+                                window.location="https://ourparks.org/";
+                                return false;
+                            }
+                        </script>
+                        <pre><code>&lt;a <strong>href="javascript:void(0);"</strong> onclick="return doStuff();"&gt;Our Parks&lt;/a&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li></li>
+                    </ul>
                 </div>
             </div>
             <div class="row block">
@@ -52,8 +74,8 @@ checkpoint: 210101
                 <div>
                     <p>Link anchor tags (<code>&lt;a&gt;</code>) are not placed in the tab order unless they have an <code>href</code> attribute.</p>
                     <ul>
-                        <li><strong>Blind/vision impaired:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
-                        <li><strong>Hand tremors:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                        <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                        <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
                     </ul>
                 </div>
             </div>
