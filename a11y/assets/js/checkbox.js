@@ -33,13 +33,13 @@ class Checkbox {
   toggleCheckbox() {
     if (this.domNode.getAttribute('aria-checked') === 'true') {
       this.domNode.setAttribute('aria-checked', 'false');
-      this.domNode.firstChild.setAttribute('style', 'display: none;');
-      this.domNode.firstChild.nextSibling.setAttribute('style', 'display: block;');
+      document.getElementById('ccbChecked').setAttribute('style', 'display: none;');
+      document.domNode.getElementById('ccbNotChecked').setAttribute('style', 'display: block;');
 
     } else {
       this.domNode.setAttribute('aria-checked', 'true');
-      this.domNode.firstChild.setAttribute('style', 'display: block;');
-      this.domNode.firstChild.nextSibling.setAttribute('style', 'display: none;');
+      document.getElementById('ccbChecked').setAttribute('style', 'display: block;');
+      document.getElementById('ccbNotChecked').setAttribute('style', 'display: none;');
     }
   }
 
