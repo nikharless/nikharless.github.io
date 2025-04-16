@@ -95,7 +95,7 @@ aria.Utils = aria.Utils || {};
 
   aria.closeCurrentDialog = function () {
     var currentDialog = aria.getCurrentDialog();
-    window.alert(currentDialog.id);
+    window.alert(currentDialog.attr("id");
     if (currentDialog) {
       currentDialog.close();
       return true;
