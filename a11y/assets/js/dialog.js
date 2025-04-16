@@ -95,6 +95,7 @@ aria.Utils = aria.Utils || {};
 
   aria.closeCurrentDialog = function () {
     var currentDialog = aria.getCurrentDialog();
+    window.alert(currentDialog);
     if (currentDialog) {
       currentDialog.close();
       return true;
@@ -242,7 +243,8 @@ aria.Utils = aria.Utils || {};
    */
   aria.Dialog.prototype.close = function () {
     aria.OpenDialogList.pop();
-    this.removeListeners();
+    this.remov
+    eListeners();
     aria.Utils.remove(this.preNode);
     aria.Utils.remove(this.postNode);
     this.dialogNode.className = 'hidden';
