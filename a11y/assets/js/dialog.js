@@ -119,9 +119,8 @@ function getObjectId(object) {
 
   aria.handleEscape = function (event) {
     var key = event.which || event.keyCode;
-
-    if (key === aria.KeyCode.ESC && aria.closeCurrentDialog()) {
-      if (getObjectId(currentDialog) != 2) {
+    if (getObjectId(currentDialog) != 2) {
+      if (key === aria.KeyCode.ESC && aria.closeCurrentDialog()) {
         event.stopPropagation();
       }
     }
