@@ -34,7 +34,7 @@ class Checkbox {
     if (this.domNode.getAttribute('aria-checked') === 'true') {
       this.domNode.setAttribute('aria-checked', 'false');
       document.getElementById('ccbChecked').setAttribute('style', 'display: none;');
-      document.domNode.getElementById('ccbNotChecked').setAttribute('style', 'display: block;');
+      document.getElementById('ccbNotChecked').setAttribute('style', 'display: block;');
 
     } else {
       this.domNode.setAttribute('aria-checked', 'true');
