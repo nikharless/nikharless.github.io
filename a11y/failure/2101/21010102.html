@@ -34,25 +34,38 @@ checkpoint: 210101
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Custom Control</h3>
+                    <h3>Custom Button with <code>onmousedown</code> Event</h3>
+                    <p>Using <code>onmousedown</code> alone to provide functionality does not allow keyboard access.</p>
+                    <div id="failButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
+                    <pre><code>&lt;div id="failButton" role="button" tabindex="0"&gt;Do Stuff&lt;/div&gt;
+&lt;script&gt;
+    failButton.onmousedown = function (e) { doStuff(); };
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Custom Button</h3>
                     <p>Using <code>onclick</code> and <code>onkeyup</code> allows activation with both the mouse and the keyboard.</p>
-                    <div id="customButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
-                    <pre><code>&lt;div id="customButton" role="button" tabindex="0"&gt;Do Stuff&lt;/div&gt;
+                    <div id="passButton" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
+                    <pre><code>&lt;div id="passButton" role="button" tabindex="0"&gt;Do Stuff&lt;/div&gt;
     &lt;script&gt;
-        customButton.onclick = function (e) { doStuff(); };
-        <strong>customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };</strong>
+        passButton.onclick = function (e) { doStuff(); };
+        <strong>passButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };</strong>
     &lt;/script&gt;</code></pre>
 
                     <script>
                         function doStuff() {
                             window.alert('Doing Stuff');
                         }
-                        htmlButton.onclick = function (e) { doStuff(); };
-                        htmlButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-                        customButton.onclick = function (e) { doStuff(); };
-                        customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
+                        failButton.onmousedown = function (e) { doStuff(); };
+                        passButton.onclick = function (e) { doStuff(); };
+                        passButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
                     </script>
                 </div>
             </div>
@@ -60,8 +73,8 @@ checkpoint: 210101
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
-                        <li><strong>Blind/vision impaired:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
-                        <li><strong>Hand tremors:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                        <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                        <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
                     </ul>
                 </div>
             </div>
