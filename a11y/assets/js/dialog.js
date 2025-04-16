@@ -109,9 +109,11 @@ function getObjectId(object) {
 
   aria.closeCurrentDialog = function () {
     var currentDialog = aria.getCurrentDialog();
-    window.alert(getObjectId(currentDialog));
+    // window.alert(getObjectId(currentDialog));
     if (currentDialog) {
-      currentDialog.close();
+      if (getObjectId(currentDialog) != 2) {
+        currentDialog.close();
+      }
       return true;
     }
 
@@ -257,8 +259,7 @@ function getObjectId(object) {
    */
   aria.Dialog.prototype.close = function () {
     aria.OpenDialogList.pop();
-    this.remov
-    eListeners();
+    this.removeListeners();
     aria.Utils.remove(this.preNode);
     aria.Utils.remove(this.postNode);
     this.dialogNode.className = 'hidden';
