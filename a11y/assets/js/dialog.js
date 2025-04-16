@@ -93,9 +93,23 @@ aria.Utils = aria.Utils || {};
     }
   };
 
+let count = 1;
+const idMap = new WeakMap();
+function getObjectId(object) {
+    const objectId = idMap.get(object);
+    if (objectId === undefined) {
+        count += 1;
+        idMap.set(object, count);
+
+        return count;
+    }
+
+    return objectId;
+}
+
   aria.closeCurrentDialog = function () {
     var currentDialog = aria.getCurrentDialog();
-    window.alert(currentDialog.attr("id"));
+    window.alert(getObjectId(currentDialog));
     if (currentDialog) {
       currentDialog.close();
       return true;
