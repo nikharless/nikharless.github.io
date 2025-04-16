@@ -109,11 +109,8 @@ function getObjectId(object) {
 
   aria.closeCurrentDialog = function () {
     var currentDialog = aria.getCurrentDialog();
-    // window.alert(getObjectId(currentDialog));
     if (currentDialog) {
-      if (getObjectId(currentDialog) != 2) {
-        currentDialog.close();
-      }
+      currentDialog.close();
       return true;
     }
 
@@ -124,7 +121,9 @@ function getObjectId(object) {
     var key = event.which || event.keyCode;
 
     if (key === aria.KeyCode.ESC && aria.closeCurrentDialog()) {
-      event.stopPropagation();
+      if (getObjectId(currentDialog) != 2) {
+        event.stopPropagation();
+      }
     }
   };
 
