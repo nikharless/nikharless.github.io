@@ -35,19 +35,47 @@ css: dialog
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>Modal that Cannot Be Closed with Keyboard without Submitting Data</h3>
+                    <button type="button" onclick="openDialog('failDialog', this)">Open Failing Modal</button>
+                    <div id="dialog_layer" class="dialogs">
+                        <div role="dialog" id="failDialog" aria-labelledby="failDialog_label" aria-modal="true" class="hidden">
+                            <h2 id="failDialog_label" class="dialog_label">Example Failing Modal</h2>
+                            <p>Sign up for our mailing list.</p>
+                            <p><em>Note: This form does not really collect any information.</em></p>
+                            <div class="dialog_form">
+                                <div class="dialog_form_item">
+                                    <label>
+                                        <span>Email address: </span>
+                                        <input type="text">
+                                    </label>
+                                </div>
+                                <div class="dialog_form_actions">
+                                    <button type="button">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>Modal with Cancel Button and <kbd>Esc</kbd> Functionality</h3>
                     <p>This modal has two methods to close it using only the keyboard.</p>
                     
-                    <button type="button" onclick="openDialog('dialog1', this)">Open Modal</button>
+                    <button type="button" onclick="openDialog('passDialog', this)">Open Passing Modal</button>
                     <div id="dialog_layer" class="dialogs">
-                        <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
-                            <h2 id="dialog1_label" class="dialog_label">Example Modal</h2>
+                        <div role="dialog" id="passDialog" aria-labelledby="passDialog_label" aria-modal="true" class="hidden">
+                            <h2 id="passDialog_label" class="dialog_label">Example Passing Modal</h2>
+                            <p>Sign up for our mailing list.</p>
+                            <p><em>Note: This form does not really collect any information.</em></p>
                             <div class="dialog_form">
                                 <div class="dialog_form_item">
                                     <label>
-                                        <span>Name: </span>
+                                        <span>Email address: </span>
                                         <input type="text">
                                     </label>
                                 </div>
