@@ -122,7 +122,7 @@ function getObjectId(object) {
     var failModal = document.getElementById('failModal');
     alert(currentDialog.dialogNode.getAttribute('id'));  
     var key = event.which || event.keyCode;
-    if (currentDialog.dialogNode.getAttribute('id') != "failModal") {
+    if (currentDialog.dialogNode.getAttribute('id') != "failDialog") {
       if (key === aria.KeyCode.ESC && aria.closeCurrentDialog()) {
         event.stopPropagation();
       }
