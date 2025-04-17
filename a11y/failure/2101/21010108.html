@@ -35,21 +35,38 @@ css: tooltips
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Example</h2>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <div class="tooltip-container">
-                        <button class="infoButton" type="button" aria-describedby="description" data-tooltip-trigger>i</button>
-                        <p id="description" role="tooltip" class="hidden">Informational tooltip</p>
+                    <button class="infoButton" type="button" aria-describedby="failDesc" data-tooltip-trigger>i</button>
+                    <p id="failDesc" role="tooltip" class="hidden">This text is not available to keyboard-only users.</p>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <div class="example">
+                        <div class="tooltip-container">
+                            <button class="infoButton" type="button" aria-describedby="description" data-tooltip-trigger>i</button>
+                            <p id="description" role="tooltip" class="hidden">This text appears on hover and on focus.</p>
+                        </div>
+                        <script src="{{ baseurl }}/assets/js/tooltips.js" defer></script>
                     </div>
-                    <script src="{{ baseurl }}/assets/js/tooltips.js" defer></script>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
-                        <li><strong>Blind/vision impaired:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
-                        <li><strong>Hand tremors:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                        <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                        <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
                     </ul>
                 </div>
             </div>
