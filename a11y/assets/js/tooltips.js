@@ -39,8 +39,7 @@ class Tooltip {
     // Close when the trigger loses focus
     this.trigger.addEventListener('blur', this.closeTooltip.bind(this))
 
-    window.alert(this.trigger.getAttribute("id"))
-    if(this.trigger.getAttribute("id") === 'failTip') {
+    if(this.trigger.getAttribute("id") == 'failTip') {
       this.trigger.removeEventListener('focus', this.openTooltip.bind(this))
     }
   }
