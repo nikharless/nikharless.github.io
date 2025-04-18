@@ -38,6 +38,10 @@ class Tooltip {
     this.container.addEventListener('mouseleave', this.closeTooltip.bind(this))
     // Close when the trigger loses focus
     this.trigger.addEventListener('blur', this.closeTooltip.bind(this))
+
+    if(this.trigger.getAttribute("id") === 'failTip') {
+      this.trigger.removeEventListener('focus', this.openTooltip.bind(this))
+    }
   }
 
   attachGlobalListener() {
