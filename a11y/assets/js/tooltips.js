@@ -29,19 +29,18 @@ class Tooltip {
     // Open on mouse hover
     this.container.addEventListener('mouseenter', this.openTooltip.bind(this))
     // Open when a touch is detected
-    this.container.addEventListener('touchstart', this.openTooltip.bind(this))
-    // Open when the trigger gets focus
-    this.trigger.addEventListener('focus', this.openTooltip.bind(this))
+    //this.container.addEventListener('touchstart', this.openTooltip.bind(this))
+
+    if(this.trigger.getAttribute("id") != 'failTip') {
+      // Open when the trigger gets focus
+      this.trigger.addEventListener('focus', this.openTooltip.bind(this))
+    }
 
     // Events that trigger closeTooltip()
     // Close when the mouse cursor leaves the trigger or tooltip area
     this.container.addEventListener('mouseleave', this.closeTooltip.bind(this))
     // Close when the trigger loses focus
     this.trigger.addEventListener('blur', this.closeTooltip.bind(this))
-
-    if(this.trigger.getAttribute("id") == 'failTip') {
-      this.trigger.removeEventListener('focus', this.openTooltip.bind(this))
-    }
   }
 
   attachGlobalListener() {
