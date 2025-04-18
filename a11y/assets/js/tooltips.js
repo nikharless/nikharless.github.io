@@ -30,7 +30,7 @@ class Tooltip {
     this.container.addEventListener('mouseenter', this.openTooltip.bind(this))
     // Open when a touch is detected
     //this.container.addEventListener('touchstart', this.openTooltip.bind(this))
-window.alert(this.trigger.getAttribute("id"));
+
     if(this.trigger.getAttribute("id") != 'failTip') {
       // Open when the trigger gets focus
       this.trigger.addEventListener('focus', this.openTooltip.bind(this))
