@@ -34,8 +34,19 @@ checkpoint: 210201
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
                     <h3>Form Trap</h3>
+                    <p>This form traps the keyboard user by cycling the focus within the form inputs, preventing the user from being able to submit the form.</p>
                     <div class="example">
-                        <p>This form traps the keyboard user by cycling the focus within the form inputs, preventing the user from being able to submit the form.</p>
+                        <script>
+                            function  setFree() {
+                                document.getElementById('email').setAttribute('onblur', 'javascript:void(0);');
+                                document.getElementById('trapt').innerHTML = "Keyboard focus has been set free.";
+                            }
+                            function itsATrap() {
+                                document.getElementById('email').setAttribute('onblur', 'document.getElementById("fname").focus();');
+                                document.getElementById('fname').focus();
+                                document.getElementById('trapt').innerHTML = "Keyboard focus has been trapped.";
+                            }
+                        </script>
                         <p><a href="javascript:void(0);" onclick="setFree()">Click here to disable the keyboard trap.</a> You can <kbd>Shift</kbd> + <kbd>Tab</kbd> to get back here from the form. Once this link is clicked, you can <a href="javascript:void(0);" onclick="itsATrap()">click here to re-enable the keyboard trap.</a></p>
                         <form>
                             <label for="fname">First Name:</label>
@@ -47,17 +58,7 @@ checkpoint: 210201
                             <p><button>Submit</button></p>
                         </form>
                         <div id="trapt" class="sr-only" aria-live="polite">Keyboard focus is trapped.</div>
-                        <script>
-                            function itsATrap() {
-                                document.getElementById('email').setAttribute('onblur', 'javascript:void(0);');
-                                document.getElementById('trapt').innerHTML = "Keyboard focus has been set free.";
-                            }
-                            function itsATrap() {
-                                document.getElementById('email').setAttribute('onblur', 'document.getElementById("fname").focus();');
-                                document.getElementById('fname').focus();
-                                document.getElementById('trapt').innerHTML = "Keyboard focus has been trapped.";
-                            }
-                        </script>
+
                     </div>
 
                     <h3>Context Change Trap</h3>
