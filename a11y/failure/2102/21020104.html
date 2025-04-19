@@ -32,13 +32,65 @@ checkpoint: 210201
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    
+                    <h3>Non-standard Keyboard Shortcuts with Instructions</h3>
+                    <p>Instructions are provided for the non-standard functionality. However, this shortcut does not always work in form fields, because the keystroke combination is used to autofill data.</p>
+                    <p><a href="javascript:setFree()">Click here to disable the trap.</a></p>
+                    <div class="example">
+                        <script>
+                            document.addEventListener('keydown', function(event) {
+                                if (event.code == 'ArrowDown' && (event.CtrlKey || event.metaKey)) {
+                                    setFree();
+                                }
+                            });
+                            function  setFree() {
+                                document.getElementById('email').setAttribute('onblur', 'javascript:void(0);');
+                                document.getElementById('trapt').innerHTML = "Keyboard focus has been set free.";
+                            }
+                        </script>
+                        <p>All fields are required. Press <kbd>Ctrl</kbd> + <kbd>Down Arrow</kbd> to leave the form.</p>
+                        <form>
+                            <label for="fname">First Name:</label>
+                            <input id="fname" class="req">
+                            <label for="lname">Last Name:</label>
+                            <input id="lname" class="req">
+                            <label for="email">Email:</label>
+                            <input id="email" class="req" onblur="document.getElementById('fname').focus();">
+                            <p><button>Submit</button></p>
+                        </form>
+                        <div id="trapt" class="sr-only" aria-live="polite">Keyboard focus is trapped.</div>
+                    </div>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
+                    <h3>Non-standard Keyboard Shortcuts with Instructions</h3>
+                    <p>Instructions are provided for the non-standard functionality. If at all possible, you should stick to standard functionality instead.</p>
+                    <div class="example">
+                        <script>
+                            document.addEventListener('keydown', function(event) {
+                                if (event.code == 'Enter' && (event.altKey || event.metaKey)) {
+                                    setFree2();
+                                }
+                            });
+                            function  setFree2() {
+                                document.getElementById('email2').setAttribute('onblur', 'javascript:void(0);');
+                                document.getElementById('trapt2').innerHTML = "Keyboard focus has been set free.";
+                            }
+                        </script>
+                        <p>All fields are required. Press <kbd>Alt</kbd> + <kbd>Enter</kbd> to leave the form.</p>
+                        <form>
+                            <label for="fname2">First Name:</label>
+                            <input id="fname2" class="req">
+                            <label for="lname2">Last Name:</label>
+                            <input id="lname2" class="req">
+                            <label for="email2">Email:</label>
+                            <input id="email2" class="req" onblur="document.getElementById('fname2').focus();">
+                            <p><button>Submit</button></p>
+                        </form>
+                        <div id="trapt2" class="sr-only" aria-live="polite">Keyboard focus is trapped.</div>
+                    </div>
                 </div>
             </div>
             <div class="row block">
