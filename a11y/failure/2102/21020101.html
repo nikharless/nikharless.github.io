@@ -35,8 +35,25 @@ checkpoint: 210201
                 <div>
                     <h3>Form Trap</h3>
                     <p>This form traps the keyboard user by cycling the focus within the form inputs, preventing the user from being able to submit the form.</p>
+                    <p><a href="javascript:void(0);" onclick="setFree()">Click here to disable the keyboard trap.</a> You can <kbd>Shift</kbd> + <kbd>Tab</kbd> to get back here from the form. Once this link is clicked, you can <a href="javascript:void(0);" onclick="itsATrap()">click here to re-enable the keyboard trap.</a></p>
                     <div class="example">
                         <script>
+                            function checkFields() {
+                                let inputs = document.getElementsByClassName('required');
+                                let isValid = true;
+                                for (var i = 0; i < inputs.length; i++) {
+                                    let changedInput = inputs[i];
+                                    if (changedInput.value.trim() === "" || changedInput.value === null) {
+                                        isValid = false;
+                                        break;
+                                    }
+                                }
+                                if (isValid) {
+                                    setFree();
+                                } else {
+                                    itsATrap();
+                                }
+                            }
                             function  setFree() {
                                 document.getElementById('email').setAttribute('onblur', 'javascript:void(0);');
                                 document.getElementById('trapt').innerHTML = "Keyboard focus has been set free.";
@@ -46,7 +63,8 @@ checkpoint: 210201
                                 document.getElementById('trapt').innerHTML = "Keyboard focus has been trapped.";
                             }
                         </script>
-                        <p><a href="javascript:void(0);" onclick="setFree()">Click here to disable the keyboard trap.</a> You can <kbd>Shift</kbd> + <kbd>Tab</kbd> to get back here from the form. Once this link is clicked, you can <a href="javascript:void(0);" onclick="itsATrap()">click here to re-enable the keyboard trap.</a></p>
+                        
+                        <p>All fields are required.</p>
                         <form>
                             <label for="fname">First Name:</label>
                             <input id="fname">
@@ -57,7 +75,6 @@ checkpoint: 210201
                             <p><button>Submit</button></p>
                         </form>
                         <div id="trapt" class="sr-only" aria-live="polite">Keyboard focus is trapped.</div>
-
                     </div>
 
                     <h3>Context Change Trap</h3>
@@ -71,13 +88,32 @@ checkpoint: 210201
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    
+                    <h3>Disabled Submit</h3>
+                    <p>This form uses a disabled Submit button to prevent form submission without completing the required fields while still allowing the user to navigate past the form.</p>
+                    <div class="example">
+                        <p>All fields are required.</p>
+                        <form>
+                            <label for="fname2">First Name:</label>
+                            <input id="fname2" class="required" onkeyup="enableSubmit()">
+                            <label for="lname2">Last Name:</label>
+                            <input id="lname2" class="required" onkeyup="enableSubmit()">
+                            <label for="email2">Email:</label>
+                            <input id="email2" class="required" onkeyup="enableSubmit()">
+                            <p><input type="submit" value="Submit" disabled></p>
+                        </form>
+                        <script src="{{ baseurl }}/assets/js/disable-submit.js"></script>
+                    </div>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
-                    
+                    <ul>
+                        <li><strong>Focus out of order:</strong><br>
+                            File under <a href="{{ site.data.2403.2403[2403].link | prepend: baseurl }}">{{ site.data.2403.2403[2403].name }}.</a></li>
+                        <li><strong>Focus goes to hidden content:</strong><br>
+                            File under <a href="{{ site.data.2403.2403[2403].link | prepend: baseurl }}">{{ site.data.2403.2403[2403].name }}.</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="row block">
