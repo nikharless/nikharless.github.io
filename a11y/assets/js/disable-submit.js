@@ -10,4 +10,7 @@ function enableSubmit() {
 		}
 	}
 	btn.disabled = !isValid;
+	if (isValid == true) {
+		document.getElementById('trapt').innerHTML = "Submit button has been enabled.";
+	}
 }
