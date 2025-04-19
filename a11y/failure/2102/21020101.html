@@ -57,10 +57,12 @@ checkpoint: 210201
                             function  setFree() {
                                 document.getElementById('email').setAttribute('onblur', 'javascript:void(0);');
                                 document.getElementById('trapt').innerHTML = "Keyboard focus has been set free.";
+                                document.getElementById('results').innerHTML = "isValid: " + isValid;
                             }
                             function itsATrap() {
                                 document.getElementById('email').setAttribute('onblur', 'document.getElementById("fname").focus();');
                                 document.getElementById('trapt').innerHTML = "Keyboard focus has been trapped.";
+                                document.getElementById('results').innerHTML = "isValid: " + isValid;
                             }
                         </script>
                         
@@ -74,6 +76,7 @@ checkpoint: 210201
                             <input id="email" class="required" onkeyup="checkFields()">
                             <p><button>Submit</button></p>
                         </form>
+                        <div id="results"></div>
                         <div id="trapt" class="sr-only" aria-live="polite">Keyboard focus is trapped.</div>
                     </div>
 
