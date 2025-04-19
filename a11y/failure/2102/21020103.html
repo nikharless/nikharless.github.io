@@ -32,10 +32,15 @@ checkpoint: 210201
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3><code>accesskey</code></h3>
-                    <p>To escape this form, the user must press the <kbd>s</kbd> key to access the Submit button.</p>
+                    <h3>Non-standard Keyboard Shortcuts</h3>
+                    <p>To escape this form, the user must press <kbd>Ctrl</kbd> + <kbd>Down Arrow</kbd>. No instructions are provided, so there is no way the user would know to do this.</p>
                     <div class="example">
                         <script>
+                            document.addEventListener('keydown', function(event) {
+                                if (event.code == 'ArrowDown' && (event.ctrlKey || event.metaKey)) {
+                                    setFree();
+                                }
+                            });
                             function  setFree() {
                                 document.getElementById('email').setAttribute('onblur', 'javascript:void(0);');
                                 document.getElementById('trapt').innerHTML = "Keyboard focus has been set free.";
@@ -53,7 +58,7 @@ checkpoint: 210201
                             <input id="lname" class="req">
                             <label for="email">Email:</label>
                             <input id="email" class="req" onblur="document.getElementById('fname').focus();">
-                            <p><button accesskey="s" onclick="setFree()">Submit</button></p>
+                            <p><button>Submit</button></p>
                         </form>
                         <div id="results"></div>
                         <div id="trapt" class="sr-only" aria-live="polite">Keyboard focus is trapped.</div>
