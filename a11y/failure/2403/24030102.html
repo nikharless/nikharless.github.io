@@ -3,6 +3,7 @@ layout: default
 current: 24030102
 criterion: 2403
 checkpoint: 240301
+css: checkbox
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2403.2403[page.current] %}
@@ -32,13 +33,25 @@ checkpoint: 240301
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    
+                    <div class="cbExample">
+                        <div role="checkbox" tabindex="0" aria-checked="false" onclick="document.focus('skip')">Check this box
+                            <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                            <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
+                        </div>
+                    </div>
+                    <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
+                    <div class="cbExample">
+                        <div role="checkbox" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this box
+                            <span id="ccbChecked2" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                            <span id="ccbNotChecked2" class="ccbCheckbox ccbNotChecked" style="display: block; border:0;"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row block">
