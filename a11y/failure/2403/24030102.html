@@ -29,37 +29,7 @@ css: tabs
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>Ensure focus is deliberately placed on the next logical element during interactions and content updates.</div>
         	</div>
-            <div class="row block">
-                <h2 class="{{ sc.level }} bad">Failing Example<br>
-                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
-                <div>
-                    <h3>Focus Reset</h3>
-                    <p>When a tab is selected (<kbd>Tab</kbd> to tab list, arrow to tab, then press <kbd>Enter</kbd>), focus is reset to the top of the page.</p>
-                    <div class="example">
-                        <script src="{{ baseurl }}/assets/js/tabs-manual.js"></script>
-                        <div class="tabs">
-                            <div role="tablist" class="manual">
-                                <button id="tab-1" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1" onkeydown="document.getElementById('skip').focus()">
-                                  <span class="focus">Screen Reader</span>
-                                </button>
-                                <button id="tab-2" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2" tabindex="-1" onkeydown="document.getElementById('skip').focus()">
-                                  <span class="focus">Braille Device</span>
-                                </button>
-                                <button id="tab-3" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-3" tabindex="-1" onkeydown="document.getElementById('skip').focus()">
-                                  <span class="focus">Switch Device</span>
-                                </button>
-                                <button id="tab-4" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-4" tabindex="-1" onkeydown="document.getElementById('skip').focus()">
-                                  <span class="focus">Voice Recognition</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">Screen Reader</div>
-                        <div id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">Braille Device</div>
-                        <div id="tabpanel-3" role="tabpanel" aria-labelledby="tab-3">Switch Device</div>
-                        <div id="tabpanel-4" role="tabpanel" aria-labelledby="tab-4">Voice Recognition</div>
-                    </div>
-                </div>
-            </div>
+            <script src="{{ baseurl }}/assets/js/tabs-manual.js"></script>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
@@ -90,6 +60,38 @@ css: tabs
                     </div>
                 </div>
             </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>Focus Reset</h3>
+                    <p>When a tab is selected (<kbd>Tab</kbd> to tab list, arrow to tab, then press <kbd>Enter</kbd>), focus is reset to the top of the page.</p>
+                    <div class="example">
+                        
+                        <div class="tabs">
+                            <div role="tablist" class="manual">
+                                <button id="tab-1" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1" onkeydown="document.getElementById('skip').focus()">
+                                  <span class="focus">Screen Reader</span>
+                                </button>
+                                <button id="tab-2" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2" tabindex="-1" onkeydown="document.getElementById('skip').focus()">
+                                  <span class="focus">Braille Device</span>
+                                </button>
+                                <button id="tab-3" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-3" tabindex="-1" onkeydown="document.getElementById('skip').focus()">
+                                  <span class="focus">Switch Device</span>
+                                </button>
+                                <button id="tab-4" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-4" tabindex="-1" onkeydown="document.getElementById('skip').focus()">
+                                  <span class="focus">Voice Recognition</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">Screen Reader</div>
+                        <div id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">Braille Device</div>
+                        <div id="tabpanel-3" role="tabpanel" aria-labelledby="tab-3">Switch Device</div>
+                        <div id="tabpanel-4" role="tabpanel" aria-labelledby="tab-4">Voice Recognition</div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="row block">
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
