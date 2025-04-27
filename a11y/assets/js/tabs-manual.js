@@ -126,6 +126,12 @@ class TabsManual {
   }
 }
 
+function failTab(event) {
+  if(event.key === "Enter") {
+    document.getElementById('skip').focus();
+  }
+}
+
 // Initialize tablist
 
 window.addEventListener('load', function () {
