@@ -202,7 +202,7 @@ function getObjectId(object) {
     } else if (typeof focusFirst === 'object') {
       this.focusFirst = focusFirst;
     } else if (this.focusFirst === "focusFirstFail") {
-      this.focusFirst = document;
+      this.focusFirst = document.getElementById(skip);
     } else {
       this.focusFirst = null;
     }
