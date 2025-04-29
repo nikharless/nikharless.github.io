@@ -33,8 +33,30 @@ css: dialog
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    
-                </div>
+                    <p>Focus does not remain in this modal while it is open.</p>
+                    <div class="example">
+                        <button type="button" class="btn-open">Open Failing Modal</button>
+                        <section role="dialog" class="modal hidden" aria-labelledby="failDialog_label">
+                            <h2 id="failDialog_label" class="dialog_label">Example Failing Modal</h2>
+                            <p>Sign up for our mailing list.</p>
+                            <p><em>Note: This form does not actually collect any information.</em></p>
+                            <div class="dialog_form">
+                                <div class="dialog_form_item">
+                                    <label>
+                                        <span>Email address: </span>
+                                        <input type="text">
+                                    </label>
+                                </div>
+                                <div class="dialog_form_actions">
+                                    <button type="button" class="btn-close">Submit</button>
+                                    <button type="button" class="btn-close">Close</button>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="dialog-backdrop overlay"></div>
+                        <script src="{{ baseurl }}/assets/js/dialog-failfocus.js"></script>
+                    </div>
+                </div>  
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
