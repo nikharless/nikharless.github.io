@@ -121,8 +121,7 @@ function getObjectId(object) {
     var currentDialog = aria.getCurrentDialog();
     //var failModal = document.getElementById('failModal'); 
     var key = event.which || event.keyCode;
-    alert(currentDialog);
-    if (currentDialog.dialogNode.getAttribute('id') !== "failModal") {
+    if (currentDialog.dialogNode.getAttribute('id') !== "escapeFail") {
       if (key === aria.KeyCode.ESC && aria.closeCurrentDialog()) {
         event.stopPropagation();
       }
@@ -202,6 +201,8 @@ function getObjectId(object) {
       this.focusFirst = document.getElementById(focusFirst);
     } else if (typeof focusFirst === 'object') {
       this.focusFirst = focusFirst;
+    } else if (this.focusFirst === "focusFirstFail") {
+      this.focusFirst = document;
     } else {
       this.focusFirst = null;
     }
