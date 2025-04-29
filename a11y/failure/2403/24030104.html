@@ -36,26 +36,26 @@ css: dialog
                     <p>When this modal opens, focus does not move to it.</p>
                     <div class="example">
                         <p>This modal cannot be closed without submitting the form.</p>
-                        <button type="button" onclick="document.getElementById('focusFirstFail').showModal()">Open Failing Modal</button>
-                        <div class="dialogs">
-                            <dialog id="focusFirstFail" aria-labelledby="failDialog_label" aria-modal="true">
-                                <h2 id="failDialog_label" class="dialog_label">Example Failing Modal</h2>
-                                <p>Sign up for our mailing list.</p>
-                                <p><em>Note: This form does not actually collect any information.</em></p>
-                                <div class="dialog_form">
-                                    <div class="dialog_form_item">
-                                        <label>
-                                            <span>Email address: </span>
-                                            <input type="text">
-                                        </label>
-                                    </div>
-                                    <div class="dialog_form_actions">
-                                        <button type="button" onclick="document.getElementById('focusFirstFail').close()">Submit</button>
-                                        <button type="button" onclick="document.getElementById('focusFirstFail').close()">Close</button>
-                                    </div>
+                        <button type="button" class="btn-open">Open Failing Modal</button>
+                        <section role="dialog" class="modal" aria-labelledby="failDialog_label">
+                            <h2 id="failDialog_label" class="dialog_label">Example Failing Modal</h2>
+                            <p>Sign up for our mailing list.</p>
+                            <p><em>Note: This form does not actually collect any information.</em></p>
+                            <div class="dialog_form">
+                                <div class="dialog_form_item">
+                                    <label>
+                                        <span>Email address: </span>
+                                        <input type="text">
+                                    </label>
                                 </div>
-                            </dialog>
-                        </div>
+                                <div class="dialog_form_actions">
+                                    <button type="button" class="btn-close">Submit</button>
+                                    <button type="button" class="btn-close">Close</button>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="dialog-backdrop overlay"></div>
+                        <script src="{{ baseurl }}/assets/js/dialog-failfocus.js"></script>
                     </div>
                 </div>
             </div>
