@@ -86,3 +86,20 @@ window.addEventListener(
   },
   false
 );
+
+if (document.getElementById('disclosure_faq2')) {
+  window.addEventListener(
+    'load',
+    function () {
+      var buttons = document.querySelectorAll(
+        // 'button[aria-expanded][aria-controls]'
+        '#disclosure_faq2'
+      );
+
+      for (var i = 0; i < buttons.length; i++) {
+        new DisclosureButton(buttons[i]);
+      }
+    },
+    false
+  );
+}
