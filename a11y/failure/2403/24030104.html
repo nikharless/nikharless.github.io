@@ -38,7 +38,7 @@ css: dialog
                         <p>This modal cannot be closed without submitting the form.</p>
                         <button type="button" onclick="document.getElementById('focusFirstFail').showModal()">Open Failing Modal</button>
                         <div class="dialogs">
-                            <dialog role="dialog" id="focusFirstFail" aria-labelledby="failDialog_label" aria-modal="true" class="hidden">
+                            <dialog id="focusFirstFail" aria-labelledby="failDialog_label" aria-modal="true">
                                 <h2 id="failDialog_label" class="dialog_label">Example Failing Modal</h2>
                                 <p>Sign up for our mailing list.</p>
                                 <p><em>Note: This form does not actually collect any information.</em></p>
@@ -63,9 +63,26 @@ css: dialog
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <p>When this modal opens, focus goes to the "Name" field.</p>
+                    <p>When this modal opens, focus goes to the "Email" field.</p>
                     <div class="example">
-                        {% include examples/modal.html %}
+                        <button type="button" onclick="document.getElementById('passingModal').showModal()">Open Passing Modal</button>
+                        <dialog id="passingModal" aria-labelledby="passingModal_label" aria-modal="true">
+                            <h2 id="passingModal_label" class="dialog_label">Example Passing Modal</h2>
+                            <p>Sign up for our mailing list.</p>
+                            <p><em>Note: This form does not actually collect any information.</em></p>
+                            <div class="dialog_form">
+                                <div class="dialog_form_item">
+                                    <label>
+                                        <span>Email address: </span>
+                                        <input type="text">
+                                    </label>
+                                </div>
+                                <div class="dialog_form_actions">
+                                    <button type="button" onclick="document.getElementById('passingModal').close()">Submit</button>
+                                    <button type="button" onclick="document.getElementById('passingModal').close()">Close</button>
+                                </div>
+                            </div>
+                        </dialog>
                     </div>
                 </div>
             </div>
