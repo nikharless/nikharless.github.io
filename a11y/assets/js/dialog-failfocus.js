@@ -2,6 +2,7 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const openModalBtn = document.querySelector(".btn-open");
 const closeModalBtn = document.querySelector(".btn-close");
+const submitBtn = document.querySelector(".btn-submit");
 
 const openModal = function () {
   modal.classList.remove("hidden");
@@ -16,6 +17,7 @@ const closeModal = function () {
 };
 
 closeModalBtn.addEventListener("click", closeModal);
+submitBtn.addEventListener("click", closeModal);
 overlay.addEventListener("click", closeModal);
 
 document.addEventListener("keydown", function (e) {
