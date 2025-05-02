@@ -16,6 +16,7 @@ const closeModal = function () {
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
   overlay.style.display="none";
+  document.getElementById('skip').focus();
 };
 
 closeModalBtn.addEventListener("click", closeModal);
