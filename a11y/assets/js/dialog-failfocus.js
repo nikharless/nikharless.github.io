@@ -7,6 +7,7 @@ const submitBtn = document.querySelector(".btn-submit");
 const openModal = function () {
   modal.classList.remove("hidden");
   overlay.classList.remove("hidden");
+  overlay.style.display="block";
 };
 
 openModalBtn.addEventListener("click", openModal);
@@ -14,6 +15,7 @@ openModalBtn.addEventListener("click", openModal);
 const closeModal = function () {
   modal.classList.add("hidden");
   overlay.classList.add("hidden");
+  overlay.style.display="none";
 };
 
 closeModalBtn.addEventListener("click", closeModal);
