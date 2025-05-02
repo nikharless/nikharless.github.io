@@ -32,7 +32,26 @@ checkpoint: 240301
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    
+                    <p>These links scroll, but the keyboard focus remains on the trigger link.</p>
+                    <div class="example">
+                        <div id="section1f" style="height:600px; padding:10px;">
+                            <h3>Section 1</h3>
+                            <p><a href="javascript:void()" onclick="goTo2()">Click to smooth scroll to Section 2.</a></p>
+                        </div>
+
+                        <div id="section2f" style="height:300px; padding:10px;">
+                            <h3>Section 2</h3>
+                            <a href="javascript:void()" onclick="goTo1()">Click to smooth scroll to Section 1.</a>
+                        </div>
+                        <script>
+                            function goTo2() {
+                                document.getElementById('section2f').scrollIntoView({ behavior: "smooth"});
+                            }
+                            function goTo1() {
+                                document.getElementById('section1f').scrollIntoView({ behavior: "smooth"});
+                            }
+                        </script>
+                    </div>
                 </div>
             </div>
             <div class="row block">
@@ -40,14 +59,16 @@ checkpoint: 240301
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <p>These links visually scroll to the target area and also move the keyboard focus.</p>
-                    <div id="section1" style="height:600px; padding:10px;">
-                        <h3>Section 1</h3>
-                        <p><a href="#section2" onclick="section2.focus()">Click to smooth scroll to Section 2.</a></p>
-                    </div>
+                    <div class="example">
+                        <div id="section1" style="height:600px; padding:10px;">
+                            <h3>Section 1</h3>
+                            <p><a href="#section2">Click to smooth scroll to Section 2.</a></p>
+                        </div>
 
-                    <div id="section2" style="height:300px; padding:10px;">
-                        <h3>Section 2</h3>
-                        <a href="#section1" onclick="section1.focus()">Click to smooth scroll to Section 1.</a>
+                        <div id="section2" style="height:300px; padding:10px;">
+                            <h3>Section 2</h3>
+                            <a href="#section1">Click to smooth scroll to Section 1.</a>
+                        </div>
                     </div>
                 </div>
             </div>
