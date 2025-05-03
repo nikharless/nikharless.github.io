@@ -42,7 +42,7 @@ css: disclosure-faq
                                 </button>
                             </dt>
                             <dd>
-                                <div id="faq2_desc" class="desc">
+                                <div id="faq2_desc" class="desc sr-only">
                                     <ul>
                                         <li>Shave his belly with a rusty razor</li>
                                         <li>Put him in a long boat until he's sober</li>
@@ -57,13 +57,12 @@ css: disclosure-faq
                         <script>
                             function toggleFailDesc() {
                                 const failDesc = document.getElementById('faq2_desc');
-                                if (failDesc.style.visibility == 'hidden') {
-                                    failDesc.style.visibility = 'visible';
-                                    failDesc.style.height = 'auto';
+                                var failVis = failDesc.getAttribute("class");
+                                if (failVis == "desc sr-only") {
+                                    failDesc.setAttribute('class', 'desc');
                                     failDesc.setAttribute('aria-expanded', 'true');
                                 } else {
-                                    failDesc.style.visibility = 'hidden';
-                                    failDesc.style.height = '0';
+                                    failDesc.setAttribute('class', 'desc sr-only');
                                     failDesc.setAttribute('aria-expanded', 'false');
                                 }
                             }
