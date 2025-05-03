@@ -30,10 +30,11 @@ css: focus-indicator
         		<div>Eliminate any script which removes keyboard focus from a focused element.</div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <p>Tab through the links to see the script in action.</p>
-                    <h3 class="bad">Bad Example: Link Focus Removed</h3>
+                    <p>Tab to the link to see the script in action.</p>
+                    <h3>Link Focus Removed</h3>
                     <div class="example" style="width: 80%;">
                         <p><a onFocus="this.blur()" href="#">Link</a></p>
                     </div>
@@ -41,11 +42,32 @@ css: focus-indicator
                 </div>
             </div>
             <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Default Link Focus</h3>
+                    <div class="example" style="width: 80%;">
+                        <p><a href="#">Link</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Focus indicator has low contrast:</strong><br>
+                            File under <a href="{{ site.data.1411.1411[14110201].link | prepend: baseurl }}">{{ site.data.1411.1411[14110201].name }}.</a></li>
+                        <li><strong>Focus obscured by author-created content:</strong><br>
+                            File under <a href="{{ site.data.2411.2411[241101].link | prepend: baseurl }}">{{ site.data.2411.2411[241101].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
-                        <li><strong>Keyboard users:</strong> Without a focus indicator, sighted keyboard users cannot operate the page.</li>
-                        <li><strong>Cognitive disorders:</strong> Users with attention, short term memory, or executive function limitations benefit from being able to easily find the focus.</li>
+                        <li><strong>Motor Impairment:</strong> Without a focus indicator, sighted keyboard users cannot operate the page.</li>
+                        <li><strong>Cognitive Impairment:</strong> Users with attention, short term memory, or executive function limitations benefit from being able to easily find the focus.</li>
                     </ul>
                 </div>
             </div>
