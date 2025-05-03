@@ -35,6 +35,7 @@ class DisclosureButton {
 
   showContent() {
     if (this.controlledNode) {
+      alert(this.controlledNode.style.visibility);
       if (this.controlledNode.style.visibility == 'hidden') {
         this.controlledNode.style.visibility = 'visible';
         this.controlledNode.style.height = 'auto';
