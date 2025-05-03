@@ -38,7 +38,7 @@ class DisclosureButton {
       if (this.controlledNode.style.visibility == 'hidden') {
         this.controlledNode.style.visibility = 'visible';
         this.controlledNode.style.height = 'auto';
-      } else {
+      } else if (this.controlledNode.style.display == 'none') {
         this.controlledNode.style.display = 'block';
       }
     }
@@ -49,7 +49,7 @@ class DisclosureButton {
       if (this.controlledNode.style.visibility == 'visible') {
         this.controlledNode.style.visibility = 'hidden';
         this.controlledNode.style.height = '0';
-      } else {
+      } else if (this.controlledNode.style.display == 'block') {
         this.controlledNode.style.display = 'none';
       }
     }
