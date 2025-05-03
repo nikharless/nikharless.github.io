@@ -35,24 +35,13 @@ class DisclosureButton {
 
   showContent() {
     if (this.controlledNode) {
-      alert(this.controlledNode.style.visibility);
-      if (this.controlledNode.style.visibility == 'hidden') {
-        this.controlledNode.style.visibility = 'visible';
-        this.controlledNode.style.height = 'auto';
-      } else if (this.controlledNode.style.display == 'none') {
-        this.controlledNode.style.display = 'block';
-      }
+      this.controlledNode.style.display = 'block';
     }
   }
 
   hideContent() {
     if (this.controlledNode) {
-      if (this.controlledNode.style.visibility == 'visible') {
-        this.controlledNode.style.visibility = 'hidden';
-        this.controlledNode.style.height = '0';
-      } else if (this.controlledNode.style.display == 'block') {
-        this.controlledNode.style.display = 'none';
-      }
+      this.controlledNode.style.display = 'none';
     }
   }
 
@@ -105,23 +94,6 @@ if (document.getElementById('disclosure_faq2')) {
       var buttons = document.querySelectorAll(
         // 'button[aria-expanded][aria-controls]'
         '#disclosure_faq2'
-      );
-
-      for (var i = 0; i < buttons.length; i++) {
-        new DisclosureButton(buttons[i]);
-      }
-    },
-    false
-  );
-}
-
-if (document.getElementById('failure_faq')) {
-  window.addEventListener(
-    'load',
-    function () {
-      var buttons = document.querySelectorAll(
-        // 'button[aria-expanded][aria-controls]'
-        '#failure_faq'
       );
 
       for (var i = 0; i < buttons.length; i++) {
