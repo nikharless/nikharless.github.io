@@ -38,10 +38,22 @@ class DisclosureButton {
       this.controlledNode.style.display = 'block';
     }
   }
+  showContentFail() {
+    if (this.controlledNode && this.controlledNode.style.visibility == 'hidden') {
+      this.controlledNode.style.visibility = 'visible';
+      this.controlledNode.style.height = 'auto';
+    }
+  }
 
   hideContent() {
     if (this.controlledNode) {
       this.controlledNode.style.display = 'none';
+    }
+  }
+  hideContentFail() {
+    if (this.controlledNode) {
+      this.controlledNode.style.visibility = 'hidden';
+      this.controlledNode.style.height = '0';
     }
   }
 
