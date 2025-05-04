@@ -49,16 +49,14 @@ checkpoint: 320101
                         <script>
                             function checkForm() {
                                 var email = document.forms["failForm"]["email"].value;
-                                setTimeOut(function() {
-                                    if (email == null || email == "") {
-                                        document.getElementById("email").focus();
-                                    }
-                                }, 1000);
+                                if (email == null || email == "") {
+                                    document.getElementById("email").focus();
+                                }
                             }
                         </script>
                         <form name="failForm">
                             <label>Email: <input type="text" name="email" id="email"></label>
-                            <label><input type="checkbox" onfocus="checkForm()"> I agree to receive promotional emails.</label>
+                            <label><input type="checkbox" onfocus="setTimeOut('checkForm', 2000)"> I agree to receive promotional emails.</label>
                             <button>Submit</button>
                         </form>
                     </div>
