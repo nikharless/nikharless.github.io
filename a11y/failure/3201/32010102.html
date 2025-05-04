@@ -61,7 +61,6 @@ checkpoint: 320101
                     <h3>Dialog Opens on Focus</h3>
                     <p>When the user focuses on the checkbox for the first time, an alert dialog automatically opens.</p>
                     <div class="example" style="width: 80%;">
-                        
                         <form name="failForm">
                             <label>Email (required): <input type="text" name="email" id="email"></label>
                             <label><input type="checkbox" onfocus="checkAlert()"> I agree to receive promotional emails.</label>
@@ -74,7 +73,20 @@ checkpoint: 320101
                 <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    
+                    <h3>Link Only Opens on Activation</h3>
+                    <div class="example" style="width: 80%;">
+                        <p><a target="_blank" onFocus="openLink()" href="{{ baseurl }}/assets/docs/topten.html">Top Ten Songs of 1972</a></p>
+                    </div>
+
+                    <h3>Dialog Only Opens on Request</h3>
+                    <p>The user can click the info button to open a dialog.</p>
+                    <div class="example" style="width: 80%;">
+                        <form name="failForm">
+                            <label>Email (required): <input type="text" name="email" id="email"></label>
+                            <label><input type="checkbox" onfocus="checkAlert()"> I agree to receive promotional emails.</label> <i class="fa-solid fa-circle-info" tabindex="0" aria-label="Info" role="button" onclick="window.alert('We will not share your email address with anyone.');"></i>
+                            <button>Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="row block">
