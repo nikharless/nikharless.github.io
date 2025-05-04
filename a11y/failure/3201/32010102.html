@@ -37,16 +37,17 @@ checkpoint: 320101
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
                     <h3>Link Opens in New Window on Focus</h3>
-                    <p>When this link receives focus, the link automatically opens in a new window.</p>
-                    <div class="example" style="width: 80%;">
-                        <p><a target="_blank" onFocus="window.open(document.URL, '_blank')" href="#">Link</a></p>
-                    </div>
-
-                    <h3>Dialog Opens on Focus</h3>
-                    <p>When the user focuses on the checkbox, a dialog automatically opens.</p>
+                    <p>When this link receives focus for the first time, the link automatically opens in a new window.</p>
                     <div class="example" style="width: 80%;">
                         <script>
+                            var opened = "false";
                             var alerted = "false";
+                            function openLink() {
+                                if (opened == "false") {
+                                    window.open('{{ baseurl }}/assets/docs/topten.html', '_blank');
+                                }
+                                opened = "true";
+                            }
                             function checkAlert() {
                                 if (alerted == "false") {
                                     window.alert('We will not share your email address with anyone.');
@@ -54,6 +55,13 @@ checkpoint: 320101
                                 alerted = "true";
                             }
                         </script>
+                        <p><a target="_blank" onFocus="openLink()" href="{{ baseurl }}/assets/docs/topten.html">Top Ten Songs of 1972</a></p>
+                    </div>
+
+                    <h3>Dialog Opens on Focus</h3>
+                    <p>When the user focuses on the checkbox for the first time, an alert dialog automatically opens.</p>
+                    <div class="example" style="width: 80%;">
+                        
                         <form name="failForm">
                             <label>Email (required): <input type="text" name="email" id="email"></label>
                             <label><input type="checkbox" onfocus="checkAlert()"> I agree to receive promotional emails.</label>
