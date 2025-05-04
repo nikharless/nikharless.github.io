@@ -49,9 +49,11 @@ checkpoint: 320101
                         <script>
                             function checkForm() {
                                 var email = document.forms["failForm"]["email"].value;
-                                if (email == null || email == "") {
-                                    document.getElementById("email").focus();
-                                }
+                                setTimeOut(function() {
+                                    if (email == null || email == "") {
+                                        document.getElementById("email").focus();
+                                    }
+                                }, 1000);
                             }
                         </script>
                         <form name="failForm">
