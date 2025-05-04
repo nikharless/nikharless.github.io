@@ -39,22 +39,6 @@ checkpoint: 320101
                     <h3>Link Opens in New Window on Focus</h3>
                     <p>When this link receives focus for the first time, the link automatically opens in a new window.</p>
                     <div class="example" style="width: 80%;">
-                        <script>
-                            var opened = "false";
-                            var alerted = "false";
-                            function openLink() {
-                                if (opened == "false") {
-                                    window.open('{{ baseurl }}/assets/docs/topten.html', '_blank');
-                                }
-                                opened = "true";
-                            }
-                            function checkAlert() {
-                                if (alerted == "false") {
-                                    window.alert('We will not share your email address with anyone.');
-                                }
-                                alerted = "true";
-                            }
-                        </script>
                         <p><a target="_blank" onFocus="openLink()" href="{{ baseurl }}/assets/docs/topten.html">Top Ten Songs of 1972</a></p>
                     </div>
 
@@ -83,10 +67,35 @@ checkpoint: 320101
                     <div class="example" style="width: 80%;">
                         <form name="failForm">
                             <label>Email (required): <input type="text" name="email" id="email"></label>
-                            <label><input type="checkbox"> I agree to receive promotional emails.</label> <i class="fa-solid fa-circle-info" tabindex="0" aria-label="Info" role="button" onclick="window.alert('We will not share your email address with anyone.');"></i>
+                            <label style="display: flex"><input type="checkbox"> I agree to receive promotional emails.</label> <i class="fa-solid fa-circle-info" tabindex="0" aria-label="Info" role="button" id="info" onclick="showAlert();"></i>
                             <button>Submit</button>
                         </form>
                     </div>
+                    <script>
+                            var opened = "false";
+                            var alerted = "false";
+                            function openLink() {
+                                if (opened == "false") {
+                                    window.open('{{ baseurl }}/assets/docs/topten.html', '_blank');
+                                }
+                                opened = "true";
+                            }
+                            function checkAlert() {
+                                if (alerted == "false") {
+                                    showAlert();
+                                }
+                                alerted = "true";
+                            }
+                            function showAlert() {
+                                window.alert('We will not share your email address with anyone.');
+                            }
+
+                            document.getElementById("info").addEventListener("keydown", function (event) {
+                                if (event.keyCode === 13) {
+                                    showAlert();
+                                }
+                            });
+                        </script>
                 </div>
             </div>
             <div class="row block">
