@@ -67,7 +67,30 @@ checkpoint: 320101
                 <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    
+                    <h3>Link Focus Persistent</h3>
+                    <p>When this link receives focus, the focus remains there until manually moved.</p>
+                    <div class="example" style="width: 80%;">
+                        <p><a href="#">Link</a></p>
+                    </div>
+
+                    <h3>Focus Persistent</h3>
+                    <p>If the Email field is left empty and the user focuses on the checkbox, an error message is displayed but the focus remains in place until manually moved.</p>
+                    <div class="example" style="width: 80%;">
+                        <script>
+                            function checkForm2() {
+                                var email = document.forms["failForm"]["email"].value;
+                                if (email == null || email == "") {
+                                    document.getElementById("errMsg").innerHTML = "An email address is required.";
+                                }
+                            }
+                        </script>
+                        <form name="failForm">
+                            <label>Email (required): <input type="text" name="email" id="email"></label>
+                            <div id="errMsg" class="error-text"></div>
+                            <label><input type="checkbox" onfocus="checkForm2()"> I agree to receive promotional emails.</label>
+                            <button>Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="row block">
