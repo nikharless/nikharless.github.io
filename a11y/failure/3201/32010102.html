@@ -41,14 +41,22 @@ checkpoint: 320101
                     <div class="example" style="width: 80%;">
                         <p><a target="_blank" onFocus="window.open(document.URL, '_blank')" href="#">Link</a></p>
                     </div>
-                    <pre><code>&lt;a onFocus="this.blur()" href="#"&gt;Link&lt;/a&gt;</code></pre>
 
                     <h3>Dialog Opens on Focus</h3>
                     <p>When the user focuses on the checkbox, a dialog automatically opens.</p>
                     <div class="example" style="width: 80%;">
+                        <script>
+                            var alerted = "false";
+                            function checkAlert() {
+                                if (alerted == "false") {
+                                    window.alert('We will not share your email address with anyone.');
+                                }
+                                alerted = "true";
+                            }
+                        </script>
                         <form name="failForm">
                             <label>Email (required): <input type="text" name="email" id="email"></label>
-                            <label><input type="checkbox" onfocus="window.alert('We will not share your email address with anyone.')"> I agree to receive promotional emails.</label>
+                            <label><input type="checkbox" onfocus="checkAlert()"> I agree to receive promotional emails.</label>
                             <button>Submit</button>
                         </form>
                     </div>
