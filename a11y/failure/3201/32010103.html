@@ -34,14 +34,33 @@ checkpoint: 320101
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    
+                    <h3>Change of Content Before Focus</h3>
+                    <div class="example">
+                        <form name="failForm">
+                            <div id="failContent" style="display:none">
+                                <p>Select the notifications you would like to receive via email.</p>
+                                <label><input type="checkbox" checked> All posts</label>
+                                <label><input type="checkbox" checked> Friends' posts</label>
+                                <label><input type="checkbox" checked> Replies to your posts</label>
+                                <label><input type="checkbox" checked> Offers and promotions</label>
+                            </div>
+                            <label>Name: <input type="text" id="name"></label>
+                            <label>Email: <input type="text" id="email" onfocus="showOptions()"></label>
+                            <button>Submit</button>
+                        </form>
+                        <script>
+                            function showOptions() {
+                                document.getElementById("failContent").style.display = "block";
+                            }
+                        </script>
+                    </div>
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     
