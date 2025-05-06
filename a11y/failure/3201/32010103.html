@@ -38,15 +38,16 @@ checkpoint: 320101
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
                     <h3>Change of Content Before Focus</h3>
+                    <p>When the Email field gains focus, checkboxes are revealed at the top of the form.</p>
                     <div class="example">
-                        <form name="failForm">
-                            <div id="failContent" style="display:none">
-                                <p>Select the notifications you would like to receive via email.</p>
+                        <form name="Failure">
+                            <fieldset id="failContent" style="display:none">
+                                <legend>Select the notifications you would like to receive via email.</legend>
                                 <label><input type="checkbox" checked> All posts</label>
                                 <label><input type="checkbox" checked> Friends' posts</label>
                                 <label><input type="checkbox" checked> Replies to your posts</label>
                                 <label><input type="checkbox" checked> Offers and promotions</label>
-                            </div>
+                            </fieldset>
                             <label>Name: <input type="text" id="name"></label>
                             <label>Email: <input type="text" id="email" onfocus="showOptions()"></label>
                             <button>Submit</button>
@@ -63,7 +64,22 @@ checkpoint: 320101
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    
+                    <h3>No Change of Content</h3>
+                    <p>In this example, the checkboxes are always visible and appear after the email field.</p>
+                    <div class="example">
+                        <form name="Pass">
+                            <label>Name: <input type="text" id="name"></label>
+                            <label>Email: <input type="text" id="email" onfocus="showOptions()"></label>
+                            <fieldset>
+                                <legend>Select the notifications you would like to receive via email.</legend>
+                                <label><input type="checkbox" checked> All posts</label>
+                                <label><input type="checkbox" checked> Friends' posts</label>
+                                <label><input type="checkbox" checked> Replies to your posts</label>
+                                <label><input type="checkbox" checked> Offers and promotions</label>
+                            </fieldset>
+                            <button>Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="row block">
