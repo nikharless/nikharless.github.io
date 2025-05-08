@@ -27,23 +27,50 @@ checkpoint: 320101
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>
-                    <ul>
-                        <li>Submit forms only on activation.</li>
-                    </ul>
+                    Submit forms only on activation.
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    
+                    <div class="example" style="width: 80%;">
+                        <form name="failForm">
+                            <label>Email (required): <input type="text" name="email" id="email"></label>
+                            <label><input type="checkbox"> I agree to receive promotional emails.</label>
+                            <button id="failSubmit" onfocus="submitFailForm()">Submit</button>
+                        </form>
+                        <div id="failContent" class="sr-only" aria-live="polite"></div>
+                        <script>
+                            function submitFailForm() {
+                                var failMsg = document.getElementById("failContent");
+                                failMsg.style.display = "block";
+                                failMsg.innerHTML = "You have successfully submitted the form."
+                                document.getElementById("failSubmit").setAttribute("disabled", "");
+                            }
+                        </script>
+                    </div>
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    
+                    <div class="example" style="width: 80%;">
+                        <form name="passForm">
+                            <label>Email (required): <input type="text" name="email" id="passEmail"></label>
+                            <label><input type="checkbox"> I agree to receive promotional emails.</label>
+                            <button onclick="submitPassForm">Submit</button>
+                        </form>
+                        <div id="passContent" class="sr-only" aria-live="polite"></div>
+                        <script>
+                            function submitPassForm() {
+                                var passMsg = document.getElementById("passContent");
+                                passMsg.style.display = "block";
+                                passMsg.innerHTML = "You have successfully submitted the form.";
+                            }
+                        </script>
+                    </div>
                 </div>
             </div>
             <div class="row block">
