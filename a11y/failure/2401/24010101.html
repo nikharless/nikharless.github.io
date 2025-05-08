@@ -3,6 +3,7 @@ layout: default
 current: 24010101
 criterion: 2401
 checkpoint: 240101
+css: 24010101
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2401.2401[page.current] %}
@@ -36,21 +37,40 @@ checkpoint: 240101
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>Skip to Main Content</h3>
+                    <p>This page has a skip link. To access it, tab from the url bar into the page.</p>
+
                     <h3>Hide Header</h3>
+                    <div>
+                        {% include examples/collapsible-header.html %}
+                    </div>
+
                     <h3>Collapsible Menu</h3>
                     <h3>Keyboard Shortcut</h3>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
-                        <li><strong>Blind:</strong> Screen reader users may have to listen to all header content and dozens of links on every page before the main content is reached.</li>
-                        <li><strong>Vision impaired:</strong> Screen magnifier users may have to search through a large block of content before the main content is reached.</li>
-                        <li><strong>Motion impaired:</strong> Keyboard users and users of assistive technology that uses the keyboard interface may have to navigate through dozens of links before reaching the main content.</li>
+                        <li><strong>Blindness:</strong> Screen reader users may have to listen to all header content and dozens of links on every page before the main content is reached.</li>
+                        <li><strong>Visual Impairment:</strong> Screen magnifier users may have to search through a large block of content before the main content is reached.</li>
+                        <li><strong>Motor Impairment:</strong> Keyboard users and users of assistive technology that uses the keyboard interface may have to navigate through dozens of links before reaching the main content.</li>
                         <li><strong>Cognitive Impairment:</strong> Users may benefit when links are grouped into lists.</li>
                     </ul>
                 </div>

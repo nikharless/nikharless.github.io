@@ -1,0 +1,23 @@
+<button type="button" aria-expanded="true" aria-controls="header" class="collapsible-button expanded" id="collapsibleButton"></button>
+<div class="collapsible-header" id="header-content">
+</div>
+
+<script>
+	var coll = document.getElementById("collapsibleButton");
+	coll.addEventListener("click", toggleHeader());
+	coll.addEventListener('keydown', function(event) {
+		if (event.code == 'Enter') {
+			toggleHeader();
+		}
+	});
+
+	function toggleHeader() {
+		this.classList.toggle("active");
+		var content = this.nextElementSibling;
+		if (content.style.display === "block") {
+			content.style.display = "none";
+		} else {
+			content.style.display = "block";
+		}
+	}
+</script>
