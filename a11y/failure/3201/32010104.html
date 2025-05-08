@@ -61,7 +61,7 @@ checkpoint: 320101
                         <form name="passForm">
                             <label>Email (required): <input type="text" name="email" id="passEmail"></label>
                             <label><input type="checkbox"> I agree to receive promotional emails.</label>
-                            <button onclick="submitPassForm()">Submit</button>
+                            <button id="passSubmit">Submit</button>
                         </form>
                         <div id="passContent" style="width: 1px; height: 1px;" aria-live="polite"></div>
                         <script>
@@ -71,6 +71,15 @@ checkpoint: 320101
                                 passMsg.style.height = "auto";
                                 passMsg.innerHTML = "You have successfully submitted the form.";
                             }
+                            const passSubmit = document.getElementById("passSubmit");
+                            passSubmit.addEventListener("click", function (event) {
+                                submitPassForm();
+                            });
+                            passSubmit.addEventListener("keydown", function (event) {
+                                if (event.keyCode === 13) {
+                                    submitPassForm();
+                                }
+                            });
                         </script>
                     </div>
                 </div>
