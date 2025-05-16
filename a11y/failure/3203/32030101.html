@@ -3,6 +3,7 @@ layout: default
 current: 32030102
 criterion: 3203
 checkpoint: 320301
+css: 24010101
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.3203.3203[page.current] %}
@@ -39,6 +40,46 @@ checkpoint: 320301
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
+                    <h3>Navigation Link Order Changes</h3>
+                    <p>Below are example navigation bars for a Home page and an About page for the same site. Each page places the current page first in the menu order. Therefore, the links are <em>not</em> in the same relative order on each page.</p>
+                    <h4>Page 1</h4>
+                    <div class="example">
+                        <div><a href="#mainContent">Skip navigation</a></div>
+                        <div class="short-header"><span class="site-logo">siteLogo</span></div>
+                        <nav aria-label="example home page navigation" class="collapsible-content" style="display: block;">
+                            <ul class="menubar-navigation" role="menubar">
+                                <li role="none"><a role="menuitem" href="#" aria-current="page">Home</a></li>
+                                <li role="none"><a role="menuitem" href="#">About</a></li>
+                                <li role="none"><a role="menuitem" href="#">Services</a></li>
+                                <li role="none"><a role="menuitem" href="#">Contact</a></li>
+                                <li role="none"><a role="menuitem" href="#">Log In</a></li>
+                            </ul>
+                        </nav>
+                        <div id="mainContent">
+                            <h5>Home Page Example</h5>
+                            <p>This is the main content for the Home page example.</p>
+                            <p>The Home page link is the first link in the menu.</p>
+                        </div>
+                    </div>
+                    <h4>Page 2</h4>
+                    <div class="example">
+                        <div><a href="#mainContent2">Skip navigation</a></div>
+                        <div class="short-header"><span class="site-logo">siteLogo</span></div>
+                        <nav aria-label="example about page navigation" class="collapsible-content" style="display: block;">
+                            <ul class="menubar-navigation" role="menubar">
+                                <li role="none"><a role="menuitem" href="#" aria-current="page">About</a></li>
+                                <li role="none"><a role="menuitem" href="#">Home</a></li>
+                                <li role="none"><a role="menuitem" href="#">Services</a></li>
+                                <li role="none"><a role="menuitem" href="#">Contact</a></li>
+                                <li role="none"><a role="menuitem" href="#">Log In</a></li>
+                            </ul>
+                        </nav>
+                        <div id="mainContent2">
+                            <h5>About Us Example</h5>
+                            <p>This is the main content for the About page example.</p>
+                            <p>The About page link is now the first link in the menu, which is not the same relative position as the Home page.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row block">
