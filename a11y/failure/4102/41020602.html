@@ -1,9 +1,9 @@
 ---
 layout: default
-current: 41020107
+current: 41020602
 criterion: 4102
-checkpoint: 410201
-css: 41020201
+checkpoint: 410206
+css: accordion
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -19,21 +19,19 @@ css: 41020201
     <div class="failure">
         <div class="row block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Custom controls have accessible names.</div>
+            <div>Custom breadcrumb controls have all appropriate roles and attributes.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>A custom control does not have an accessible name.</div>
+            <div>A custom breadcrumb control does not have all the appropriate roles or attributes.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Solution</h2>
-            <div>
-                <h3>HTML</h3>
-                <p>Provide an accessible name for the custom control, using one of the following methods:</p>
+            <div>Assign the appropriate roles and attributes:
                 <ul>
-                    <li>Use the <code>aria-label</code> attribute and set the value to the name, <strong>OR</strong></li>
-                    <li>Use the <code>aria-labelledby</code> attribute and point it to a text element which can function as the accessible name, <strong>OR</strong></li>
-                    <li>Use text between the start and end tags of the element as the accessible name.</li>
+                    <li>Use the "navigation" role on the breadcrumb region (<code>&lt;nav&gt;</code> or <code>role="navigation</code>).</li>
+                    <li>Use <code>aria-label</code> on the breadcrumb region to give it an accessible name.</li>
+                    <li>Use the <code>aria-current="page"</code> property on the link to the current page.</li>
                 </ul>
             </div>
         </div>
@@ -41,19 +39,11 @@ css: 41020201
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <div class="example">
-                    <h3>Slider</h3>
-                    {% include examples/slider-rating.html %}
+                    {% include examples/breadcrumb.html %}
 
-                    <pre><code>&lt;div id="id-rating-label"&gt;Accessibility is the right thing to do.&lt;/div&gt;
-&lt;div id="id-rating" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="10" <strong>aria-labelledby="id-rating-label"</strong>&gt;</code></pre>
-                </div>
-
-                <div class="example">
-                    <h3>Carousel</h3>
-                    {% include examples/carousel.html %}
-                    <script src="{{ baseurl }}/assets/js/carousel-tablist.js"></script>
-
-                    <pre><code>&lt;section id="myCarousel" aria-roledescription="carousel" <strong>aria-label="Cats of House Harless"</strong>&gt;</code></pre>
+                    <pre><code><strong>&lt;nav aria-label="Breadcrumb"&gt;</strong>
+...
+&lt;a href="#" <strong>aria-current="page"</strong>&gt;4.1.2.b.f Breadcrumb is missing appropriate roles and/or attributes&lt;/a&gt;</code></pre>
                 </div>
             </div>
         </div>
@@ -86,9 +76,11 @@ css: 41020201
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F68">F68: Failure of Success Criterion 4.1.2 due to a user interface control not having a programmatically determined name</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current">MDN: aria-current</a></li>
                 </ul>
             </div>
         </div>

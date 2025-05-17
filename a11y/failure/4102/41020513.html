@@ -1,9 +1,9 @@
 ---
 layout: default
-current: 41020305
+current: 41020513
 criterion: 4102
-checkpoint: 410203
-css: checkbox
+checkpoint: 410205
+css: tabs
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -19,48 +19,39 @@ css: checkbox
     <div class="failure">
         <div class="row block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>If a control functions as a radio button, it has a checked state.</div>
+            <div>Tab panels have all appropriate roles and attributes.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>A radio button does not have a checked state.</div>
+            <div>A tab panel does not have all the appropriate roles or attributes.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Solution</h2>
             <div>
+                <h3>Tab List</h3>
                 <ul>
-                    <li>Use the native <code>&lt;input type="radio"&gt;</code> mark-up to create the radio button, <strong>OR</strong></li>
-                    <li>Use the <code>aria-checked</code> attribute on the custom radio button element.</li>
+                    <li>Use the "tablist" role on the element that contains a set of tabs.</li>
+                    <li>Use the "tab" role on each tab control element.</li>
+                    <li>Use <code>aria-selected="true"</code> on the currently selected tab control.</li>
+                    <li>Use <code>aria-selected="false"</code> on all non-selected tab controls.</li>
+                    <li>Set <code>tab-index="-1"</code> on all non-selected tab controls.</li>
+                    <li>Use the <code>aria-controls</code> attribute on each tab control and point it to the <code>id</code> of the associated tab panel element.</li>
+                    <li>Use the "tabpanel" role on each container for tab content.</li>
+                    <li>Use the <code>aria-labelledby</code> attribute on each tab panel and point it to the <code>id</code> of the associated tab control element.</li>
                 </ul>
             </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
-                <h3>Native HTML</h3>
+                <h3>Manually Activated Tab List</h3>
                 <div class="example">
-                    <fieldset>
-                        <legend>Side</legend>
-                        <label><input type="radio"> Soup</label>
-                        <label><input type="radio" checked> Salad</label>
-                    </fieldset>
-
-                    <pre><code>&lt;label&gt;<strong>&lt;input type="radio"&gt;</strong> Soup&lt;/label&gt;
-&lt;label&gt;&lt;input type="radio" checked&gt; Salad&lt;/label&gt;</code></pre>
+                    {% include examples/tabs-manual.html %}
                 </div>
 
-                <h3>Custom radio button</h3>
+                <h3>Automatically Activated Tab List</h3>
                 <div class="example">
-                    
-                   <div class="radioExample" role="radiogroup">
-                        <div role="radio" tabindex="0" aria-checked="false">Check this radio button
-                            <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
-                            <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
-                        </div>
-                    </div>
-                <script src="{{ baseurl }}/assets/js/radio.js"></script>
-
-                    <pre><code>&lt;div role="radio" tabindex="0" <strong>aria-checked="false"</strong>&gt; Check this radio button</code></pre>
+                    {% include examples/tabs-automatic.html %}
                 </div>
             </div>
         </div>
@@ -69,8 +60,8 @@ css: checkbox
             <div>
                 <p>The following items are not applicable to this failure:</p>
                 <ul>
-                    <li><strong>Hidden</strong>:<br>
-                        <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
+                    <li><strong>Role of "none"</strong>:<br>
+                        <code>&lt;div role="none"&gt;</code><br>
                         Does not appear in accessibility tree</li>
                 </ul>
             </div>
@@ -84,9 +75,11 @@ css: checkbox
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/">W3: Tabs Pattern</a></li>
                 </ul>
             </div>
         </div>

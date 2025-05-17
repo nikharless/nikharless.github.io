@@ -3,9 +3,6 @@ layout: default
 current: 41020208
 criterion: 4102
 checkpoint: 410202
-guideline: understandable
-
-css: comboboxes
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -21,123 +18,52 @@ css: comboboxes
     <div class="failure">
         <div class="row block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Comboboxes have all appropriate roles and attributes.</div>
+            <div>Elements are contained within any required parent elements.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>A combobox does not have all the appropriate roles or attributes.</div>
+            <div>An element requires a particular parent element, but the parent element is missing.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Solution</h2>
             <div>
+                <h3>HTML</h3>
+                <p>Ensure that any required parent elements are present.</p>
                 <ul>
-                    <li>Use the "combobox" role on the textbox.</li>
-                    <li>Use <code>aria-autocomplete</code> on the textbox.
-                        <ul>
-                            <li>Set it to "list" if it pops up a list of suggestions.</li>
-                            <li>Set it to "inline" if it displays suggestions in the textbox as you type.</li>
-                            <li>Set it to "both" to indicate that it has both inline completion and a list of suggested values.</li>
-                            <li>Set it to "none" if it does not support autocomplete.</li>
-                        </ul>
-                    </li>
-                    <li>Use <code>aria-controls</code> on the textbox and set it to the id of the popup element.</li>
-                    <li>Use <code>aria-expanded</code> on the textbox. Set it to "true" when expanded and to "false" when collapsed.</li>
-                    <li>Use <code>aria-activedescendant</code> on the textbox and set it to the id of the element currently focused in the popup.</li>
-                    <li>Use <code>aria-hoaspopup</code> on the textbox.
-                        <ul>
-                            <li>Set it to "grid" if the popup contains a grid.</li>
-                            <li>Set it to "dialog" if the popup contains a dialog.</li>
-                        </ul>
-                    </li>
-                    <li>Assign the appropriate role to the popup element.
-                        <ul>
-                            <li>Use the "listbox" role if the popup contains a list.
-                                <ul>
-                                    <li>Use the "option" role on each list option.</li>
-                                </ul>
-                            </li>
-                            <li>Use the "dialog" role if the popup contains a dialog.
-                                <ul>
-                                    <li>Use <code>aria-modal="true"</code> on the dialog element.</li>
-                                    <li>Use <code>aria-live="polite"</code> on the elements in the dialog which change when the selection changes.</li>
-                                    <li>Use the "grid" role on the grid element if the popup contains a grid.
-                                        <ul>
-                                            <li>Use the "gridcell" role on each cell of the grid.</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Use <code>aria-label</code> to provide an accessible name for the popup.</li>
-                    <li>Use <code>aria-selected="true"</code> on the element currently focused in the popup.
-                        <ul>
-                            <li>If the popup contains a grid, set <code>tabindex="0"</code> on the currently selected gridcell and <code>tabindex="-1"</code> on all others.</li>
-                        </ul>
-                    </li>
-                    <li>Use <code>tabindex="-1"</code> on the button to remove it from the tab sequence. (It is redundant with keyboard operation.)</li>
-                    <li>Use <code>aria-label</code> to provide an accessible name for the button.</li>
-                    <li>Use <code>aria-controls</code> on the button and set it to the id of the popup element.</li>
-                    <li>Use <code>aria-expanded</code> on the button. Set it to "true" when the popup is expanded and to "false" when collapsed.</li>
+                    <li><code>&lt;area&gt;</code> must be a child of <code>&lt;map&gt;</code></li>
+                    <li><code>&lt;caption&gt;</code>, <code>&lt;colgroup&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>, and <code>&lt;thead&gt;</code> must be a child of <code>&lt;table&gt;</code></li>
+                    <li><code>&lt;col&gt;</code> must be a child of <code>&lt;colgroup&gt;</code></li>
+                    <li><code>&lt;dd&gt;</code> and <code>&lt;dt&gt;</code> must be a child of <code>&lt;dl&gt;</code></li>
+                    <li><code>&lt;figcaption&gt;</code> must be a child of <code>&lt;figure&gt;</code></li>
+                    <li><code>&lt;legend&gt;</code> must be a child of <code>&lt;fieldset&gt;</code></li>
+                    <li><code>&lt;li&gt;</code> must be a child of <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, or <code>&lt;menu&gt;</code></li>
+                    <li><code>&lt;optgroup&gt;</code> must be a child of <code>&lt;select&gt;</code></li>
+                    <li><code>&lt;option&gt;</code> must be a child of <code>&lt;select&gt;</code>, <code>&lt;optgroup&gt;</code>, or <code>&lt;datalist&gt;</code></li>
+                    <li><code>&lt;summary&gt;</code> must be a child of <code>&lt;details&gt;</code></li>
+                    <li><code>&lt;td&gt;</code> and <code>&lt;th&gt;</code> must be a child of <code>&lt;tr&gt;</code></li>
+                    <li><code>&lt;title&gt;</code> must be a child of <code>&lt;head&gt;</code></li>
+                    <li><code>&lt;track&gt;</code> must be a child of <code>&lt;audio&gt;</code> or <code>&lt;video&gt;</code></li>
                 </ul>
             </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
-                <h3>Combobox with List and Inline Autocomplete</h3>
+                <h3></h3>
                 <div class="example">
-                    {% include examples/combobox-autocomplete.html %}
-                    <script src="{{ baseurl }}/assets/js/combobox-autocomplete.js"></script>
+                    <p>Types of paint</p>
+                    <ul>
+                        <li>Watercolor</li>
+                        <li>Acrylic</li>
+                        <li>Oil</li>
+                    </ul>
 
-                    <pre><code><strong>&lt;input type="text" 
-    role="combobox" 
-    aria-autocomplete="both" 
-    aria-expanded="false" 
-    aria-controls="cb1=listbox" 
-    aria-activedescendant&gt;</strong>
-&lt;button type="button" id="cb1-button" 
-    <strong>aria-label="States" 
-    aria-expanded="false" 
-    aria-controls="cb1-listbox"</strong>
-    tabindex="-1"&gt;
-&lt;div <strong>role="tablist" aria-label="Slides"</strong>&gt;
-&lt;button <strong>role="tab" 
-    aria-label="Slide 1" 
-    aria-selected="true" 
-    aria-controls="carousel-item-1"</strong>&gt;
-    ...
-&lt;/button&gt;
-&lt;div id="myCarousel-items" <strong>aria-live="off"</strong>&gt;
-...
-&lt;ul id="cb1-listbox" <strong>role="listbox" 
-    aria-label="States"</strong>&gt;
-    &lt;li id="lb1-al" <strong>role="option"</strong>&gt;Alabama&lt;/li&gt;
-...</code></pre>
-                </div>
-
-                <h3>Date picker</h3>
-                <div class="example">
-                    {% include examples/combobox-datepicker.html %}
-                    <script src="{{ baseurl }}/assets/js/combobox-datepicker.js"></script>
-                    <p style="display: block; height: 1em;"></p>
-
-                    <pre><code><strong>&lt;input type="text" 
-    aria-autocomplete="none" 
-    role="combobox" 
-    aria-expanded="false" 
-    aria-haspopup="dialog" 
-    aria-controls="cb-dialog-1" 
-    aria-describedby="cb-description-1"&gt;</strong>
-...
-&lt;button type="button" tabindex="-1" <strong>aria-label="Choose date"</strong>&gt;
-...
-&lt;div id="cb-dialog-1" 
-    <strong>role="dialog" 
-    aria-modal="true" 
-    aria-label="Choose date"</strong> 
-    style="display:none;&gt;"
-...</code></pre>
+                    <pre><code>&lt;p&gt;Types of paint&lt;/p&gt;
+<strong>&lt;ul&gt;</strong>
+    &lt;li&gt;Watercolor&lt;/li&gt;
+    &lt;li&gt;Acrylic&lt;/li&gt;
+    &lt;li&gt;Oil&lt;/li&gt;
+<strong>&lt;/ul&gt;</strong></code></pre>
                 </div>
             </div>
         </div>
@@ -146,17 +72,8 @@ css: comboboxes
             <div>
                 <p>The following items are not applicable to this failure:</p>
                 <ul>
-                    <li><strong>Native HTML controls</strong>:<br>
-                        <code>&lt;input type="checkbox"&gt; Subscribe to the mailing list</code><br>
-                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
-                    <li><strong>Custom controls that function as native HTML controls</strong>:<br>
-                        <code>&lt;div role="checkbox" tabindex="0" aria-checked="false"&gt;Subscribe to the mailing list</code><br>
-                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
-                    <li><strong>Hidden</strong>:<br>
-                        <code>&lt;div style="display:none;"&gt;</code><br>
-                        Does not appear in accessibility tree</li>
                     <li><strong>Role of "none"</strong>:<br>
-                        <code>&lt;div role="none"&gt;</code><br>
+                        <code>&lt;li role="none"&gt;</code><br>
                         Does not appear in accessibility tree</li>
                 </ul>
             </div>
@@ -170,11 +87,7 @@ css: comboboxes
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
-                    <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
-                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/">W3: Combobox Pattern</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
                 </ul>
             </div>
         </div>

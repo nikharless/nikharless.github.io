@@ -3,9 +3,7 @@ layout: default
 current: 41020201
 criterion: 4102
 checkpoint: 410202
-guideline: understandable
-
-css: 41020201
+css: radio
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -21,41 +19,45 @@ css: 41020201
     <div class="failure">
         <div class="row block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Custom controls have accessible names.</div>
+            <div>If a control functions as a button, it has the role of "button". The function of a button is to perform an action.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>A custom control does not have an accessible name.</div>
+            <div>A button does not have the role of "button".</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Solution</h2>
             <div>
-                <h3>HTML</h3>
-                <p>Provide an accessible name for the custom control, using one of the following methods:</p>
+                <p>Assign the role of "button" to the control, using one of the following methods:</p>
                 <ul>
-                    <li>Use the <code>aria-label</code> attribute and set the value to the name, <strong>OR</strong></li>
-                    <li>Use the <code>aria-labelledby</code> attribute and point it to a text element which can function as the accessible name, <strong>OR</strong></li>
-                    <li>Use text between the start and end tags of the element as the accessible name.</li>
+                    <li>Use the <code>&lt;button&gt;</code> element to create the button, <strong>OR</strong></li>
+                    <li>Use the <code>&lt;input type="button"&gt;</code> element to create the button, <strong>OR</strong></li>
+                    <li>Use <code>role="button"</code> on the element.</li>
                 </ul>
             </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
+                <h3>Button</h3>
                 <div class="example">
-                    <h3>Slider</h3>
-                    {% include examples/slider-rating.html %}
+                    <button>Click Here</button>
 
-                    <pre><code>&lt;div id="id-rating-label"&gt;Accessibility is the right thing to do.&lt;/div&gt;
-&lt;div id="id-rating" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="10" <strong>aria-labelledby="id-rating-label"</strong>&gt;</code></pre>
+                    <pre><code>&lt;button&gt;Click Here&lt;/button&gt;</code></pre>
                 </div>
 
+                <h3>Input type "button"</h3>
                 <div class="example">
-                    <h3>Carousel</h3>
-                    {% include examples/carousel.html %}
-                    <script src="{{ baseurl }}/assets/js/carousel-tablist.js"></script>
+                    <input type="button" value="Click Here">
 
-                    <pre><code>&lt;section id="myCarousel" aria-roledescription="carousel" <strong>aria-label="Cats of House Harless"</strong>&gt;</code></pre>
+                    <pre><code>&lt;input type="button" value="Click Here"&gt;</code></pre>
+                </div>
+
+                <h3>Role of "button"</h3>
+                <div class="example">
+                    <div role="button" tabindex="0" onclick="doThis();" style="color: #D800B8; font-weight: bold; text-decoration: underline;">Click Here</div>
+
+                    <pre><code>&lt;div role="button" tabindex="0" onclick="doThis();"&gt;Click Here&lt;/div&gt;</code></pre>
                 </div>
             </div>
         </div>
@@ -64,17 +66,14 @@ css: 41020201
             <div>
                 <p>The following items are not applicable to this failure:</p>
                 <ul>
-                    <li><strong>Native HTML controls</strong>:<br>
-                        <code>&lt;input type="checkbox"&gt; Subscribe to the mailing list</code><br>
-                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
-                    <li><strong>Custom controls that function as native HTML controls</strong>:<br>
-                        <code>&lt;div role="checkbox" tabindex="0" aria-checked="false"&gt;Subscribe to the mailing list</code><br>
-                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
+                    <li><strong>Links</strong>:<br>
+                        <code>&lt;a href="#" style="border: 1px solid black; padding: 10px;"&gt;</code><br>
+                        Elements which function as links but are styled to look like buttons</li>
+                    <li><strong>Assigned role</strong><br>
+                        <code>&lt;button role="link"&gt;Click Here&lt;/button&gt;</code><br>
+                        Elements which use <code>&lt;button&gt;</code> or <code>&lt;input type="button"&gt;</code> and have a different role assigned using the <code>role</code> attribute</li>
                     <li><strong>Hidden</strong>:<br>
-                        <code>&lt;div style="display:none;"&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                    <li><strong>Role of "none"</strong>:<br>
-                        <code>&lt;div role="none"&gt;</code><br>
+                        <code>&lt;button style="display:none;"&gt;Search&lt;/button&gt;</code><br>
                         Does not appear in accessibility tree</li>
                 </ul>
             </div>
@@ -88,9 +87,13 @@ css: 41020201
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F68">F68: Failure of Success Criterion 4.1.2 due to a user interface control not having a programmatically determined name</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F59">Failure of Success Criterion 4.1.2 due to using script to make div or span a user interface control in HTML without providing a role for the control</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
                 </ul>
             </div>
         </div>

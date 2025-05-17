@@ -1,0 +1,72 @@
+---
+layout: default
+current: 41020704
+criterion: 4102
+checkpoint: 410207
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+{% assign cp=site.data.4102.4102[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>If a dialog is used to alert the user of a content change, it provides sufficient description of the content change.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>A dialog is used to alert the user of a content change, but it does not provide sufficient description of the content change.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <p>Ensure that the dialog provides sufficient description of the content change.</p>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
+                <div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li>Content changes communicated via focus change<br>
+                            File under <a href="{{ site.data.4102.4102[41020305].link | prepend: baseurl }}">{{ site.data.4102.4102[41020305].name }}.</a></li> 
+                        <li>Content changes communicated via status message or other ARIA Live Region<br>
+                            File under <a href="{{ site.data.4102.4102[41020306].link | prepend: baseurl }}">{{ site.data.4102.4102[41020306].name }}.</a></li> 
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> Screen reader users need to be alerted of changes in page content.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G10">Creating components using a technology that supports the accessibility API features of the platforms on which the user agents will be run to expose the names and roles, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H102">Creating modal dialogs with the HTML dialog element</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/4102checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>

@@ -1,8 +1,9 @@
 ---
 layout: default
-current: 41020209
+current: 41020515
 criterion: 4102
-checkpoint: 410202
+checkpoint: 410205
+css: tooltips
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -18,59 +19,28 @@ checkpoint: 410202
     <div class="failure">
         <div class="row block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Elements contain any required child elements.</div>
+            <div>Tooltips have all appropriate roles and attributes.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>An element requires a particular child element, but the child element is missing.</div>
+            <div>A tooltip does not have all the appropriate roles or attributes.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Solution</h2>
             <div>
-                <h3>HTML</h3>
-                <p>Ensure that any required child elements are present.</p>
+                <h3>Tooltip</h3>
                 <ul>
-                    <li><code>&lt;head&gt;</code> must contain a <code>&lt;title&gt;</code> element</li>
-                    <li><code>&lt;table&gt;</code> must contain one or more <code>&lt;tr&gt;</code> elements</li>
+                    <li>Use the "tooltip" role on the popup element.</li>
+                    <li>Use the <code>aria-describedby</code> attribute on the tooltip button and point it to the <code>id</code> of the tooltip.</li>
                 </ul>
             </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
-                <h3>Table</h3>
+                <h3>Tooltip</h3>
                 <div class="example">
-                    <p>Types of paint</p>
-                    <table>
-                        <tr>
-                            <th>Watercolor</th>
-                            <td>water-based</td>
-                        </tr>
-                        <tr>
-                            <th>Acrylic</th>
-                            <td>water-based</td>
-                        </tr>
-                        <tr>
-                            <th>Oil</th>
-                            <td>oil-based</td>
-                        </tr>
-                    </table>
-
-                    <pre><code>&lt;p&gt;Types of paint&lt;/p&gt;
-&lt;table&gt;</strong>
-    <strong>&lt;tr&gt;</strong>
-        &lt;th&gt;Watercolor&lt;/th&gt;
-        &lt;td&gt;water-based&lt;/td&gt;
-    <strong>&lt;/tr&gt;
-    &lt;tr&gt;</strong>
-        &lt;th&gt;Acrylic&lt;/th&gt;
-        &lt;td&gt;water-based&lt;/td&gt;
-    <strong>&lt;/tr&gt;
-    &lt;tr&gt;</strong>
-        &lt;th&gt;Oil&lt;/th&gt;
-        &lt;td&gt;oil-based&lt;/td&gt;
-    <strong>&lt;/tr&gt;</strong>
-&lt;/table&gt;</code></pre>
+                    {% include examples/tooltip.html %}
                 </div>
             </div>
         </div>
@@ -80,7 +50,7 @@ checkpoint: 410202
                 <p>The following items are not applicable to this failure:</p>
                 <ul>
                     <li><strong>Role of "none"</strong>:<br>
-                        <code>&lt;li role="none"&gt;</code><br>
+                        <code>&lt;div role="none"&gt;</code><br>
                         Does not appear in accessibility tree</li>
                 </ul>
             </div>
@@ -94,7 +64,12 @@ checkpoint: 410202
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/">W3: Tooltip Pattern</a></li>
+                    <li><a href="https://inclusive-components.design/tooltips-toggletips/">Tooltips & Toggletips</a></li>
                 </ul>
             </div>
         </div>

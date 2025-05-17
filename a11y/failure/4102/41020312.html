@@ -1,9 +1,8 @@
 ---
 layout: default
-current: 41020305
+current: 41020312
 criterion: 4102
 checkpoint: 410203
-css: checkbox
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -19,48 +18,39 @@ css: checkbox
     <div class="failure">
         <div class="row block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>If a control functions as a radio button, it has a checked state.</div>
+            <div>Read-only form fields have a read-only property.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>A radio button does not have a checked state.</div>
+            <div>A form control that is meant to be read-only does not have a read-only property.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Solution</h2>
             <div>
                 <ul>
-                    <li>Use the native <code>&lt;input type="radio"&gt;</code> mark-up to create the radio button, <strong>OR</strong></li>
-                    <li>Use the <code>aria-checked</code> attribute on the custom radio button element.</li>
+                    <li>For native HTML controls, use the <code>readonly</code> attribute on the control.</li>
+                    <li>For custom controls, use the <code>aria-readonly="true"</code> attribute on the control.</li>
                 </ul>
             </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
-                <h3>Native HTML</h3>
+                <h3>HTML</h3>
                 <div class="example">
-                    <fieldset>
-                        <legend>Side</legend>
-                        <label><input type="radio"> Soup</label>
-                        <label><input type="radio" checked> Salad</label>
-                    </fieldset>
+                    <form>
+                        <label>ID: <input type="text" value="12345" readonly></label>
+                    </form>
 
-                    <pre><code>&lt;label&gt;<strong>&lt;input type="radio"&gt;</strong> Soup&lt;/label&gt;
-&lt;label&gt;&lt;input type="radio" checked&gt; Salad&lt;/label&gt;</code></pre>
+                    <pre><code>&lt;input type="text" value="12345" <strong>readonly</strong>&gt;</code></pre>
                 </div>
 
-                <h3>Custom radio button</h3>
+                <h3>ARIA</h3>
                 <div class="example">
-                    
-                   <div class="radioExample" role="radiogroup">
-                        <div role="radio" tabindex="0" aria-checked="false">Check this radio button
-                            <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
-                            <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
-                        </div>
-                    </div>
-                <script src="{{ baseurl }}/assets/js/radio.js"></script>
+                    <div id="ariaLabel">ID: </div>
+                    <div role="textbox" aria-labelledby="ariaLabel" contenteditable aria-readonly="true" aria-multiline="false" style="border: 1px solid black;">12345</div>
 
-                    <pre><code>&lt;div role="radio" tabindex="0" <strong>aria-checked="false"</strong>&gt; Check this radio button</code></pre>
+                    <pre><code>&lt;div role="textbox" contenteditable <strong>aria-readonly="true"</strong>&gt;12345&lt;/div&gt;</code></pre>
                 </div>
             </div>
         </div>
@@ -69,8 +59,11 @@ css: checkbox
             <div>
                 <p>The following items are not applicable to this failure:</p>
                 <ul>
-                    <li><strong>Hidden</strong>:<br>
-                        <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
+                    <li><strong>Hidden with CSS</strong>:<br>
+                        <code>&lt;input type="textbox" style="display:none;"&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                    <li><strong>Hidden with ARIA</strong>:<br>
+                        <code>&lt;input type="textbox" aria-hidden="true"&gt;</code><br>
                         Does not appear in accessibility tree</li>
                 </ul>
             </div>
@@ -87,6 +80,8 @@ css: checkbox
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-readonly">MDN: aria-readonly</a></li>
+                    <li><a href="https://www.w3schools.com/tags/att_readonly.asp">W3 Schools: HTML readonly Attribute</a></li>
                 </ul>
             </div>
         </div>

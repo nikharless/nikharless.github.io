@@ -1,8 +1,9 @@
 ---
 layout: default
-current: 41020209
+current: 41020308
 criterion: 4102
-checkpoint: 410202
+checkpoint: 410203
+css: select-only
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -18,59 +19,28 @@ checkpoint: 410202
     <div class="failure">
         <div class="row block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Elements contain any required child elements.</div>
+            <div>If an option in a combobox (select) that uses <code>aria-activedescendent</code> is selected, it has the selected state.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>An element requires a particular child element, but the child element is missing.</div>
+            <div>A combobox option does not have a selected state.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Solution</h2>
             <div>
-                <h3>HTML</h3>
-                <p>Ensure that any required child elements are present.</p>
                 <ul>
-                    <li><code>&lt;head&gt;</code> must contain a <code>&lt;title&gt;</code> element</li>
-                    <li><code>&lt;table&gt;</code> must contain one or more <code>&lt;tr&gt;</code> elements</li>
+                    <li>Use <code>aria-selected="true"</code> on the selected option.</li>
                 </ul>
             </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
-                <h3>Table</h3>
                 <div class="example">
-                    <p>Types of paint</p>
-                    <table>
-                        <tr>
-                            <th>Watercolor</th>
-                            <td>water-based</td>
-                        </tr>
-                        <tr>
-                            <th>Acrylic</th>
-                            <td>water-based</td>
-                        </tr>
-                        <tr>
-                            <th>Oil</th>
-                            <td>oil-based</td>
-                        </tr>
-                    </table>
+                    {% include examples/select-only.html %}
+                    <script src="{{ baseurl }}/assets/js/select-only.js"></script>
 
-                    <pre><code>&lt;p&gt;Types of paint&lt;/p&gt;
-&lt;table&gt;</strong>
-    <strong>&lt;tr&gt;</strong>
-        &lt;th&gt;Watercolor&lt;/th&gt;
-        &lt;td&gt;water-based&lt;/td&gt;
-    <strong>&lt;/tr&gt;
-    &lt;tr&gt;</strong>
-        &lt;th&gt;Acrylic&lt;/th&gt;
-        &lt;td&gt;water-based&lt;/td&gt;
-    <strong>&lt;/tr&gt;
-    &lt;tr&gt;</strong>
-        &lt;th&gt;Oil&lt;/th&gt;
-        &lt;td&gt;oil-based&lt;/td&gt;
-    <strong>&lt;/tr&gt;</strong>
-&lt;/table&gt;</code></pre>
+                    <pre><code>&lt;div role="option" id="combo1-1" class="combo-option option-current" <strong>aria-selected="true"</strong>&gt;English&lt;/div&gt;</code></pre>
                 </div>
             </div>
         </div>
@@ -79,8 +49,8 @@ checkpoint: 410202
             <div>
                 <p>The following items are not applicable to this failure:</p>
                 <ul>
-                    <li><strong>Role of "none"</strong>:<br>
-                        <code>&lt;li role="none"&gt;</code><br>
+                    <li><strong>Hidden</strong>:<br>
+                        <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
                         Does not appear in accessibility tree</li>
                 </ul>
             </div>
@@ -94,7 +64,10 @@ checkpoint: 410202
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4e8ab6/proposed/">Element with role attribute has required states and properties</a></li>
                 </ul>
             </div>
         </div>

@@ -1,9 +1,9 @@
 ---
 layout: default
-current: 41020207
+current: 41020516
 criterion: 4102
-checkpoint: 410202
-css: 41020202
+checkpoint: 410205
+css: tree
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -19,32 +19,39 @@ css: 41020202
     <div class="failure">
         <div class="row block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Custom controls have valid roles.</div>
+            <div>Tree views have all appropriate roles and attributes.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>A custom control does not have a valid role.</div>
+            <div>A tree view does not have all the appropriate roles or attributes.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Solution</h2>
-            <div>Assign an appropriate role to the control (and any sub-components) using the <code>role</code> attribute.</div>
+            <div>
+                <h3>Tree View</h3>
+                <ul>
+                    <li>Use the "tree" role on the main tree container.</li>
+                    <li>Use the "treeitem" role on each tree node element.</li>
+                    <li>Use the "group" role on each sub list container.</li>
+                    <li>Use the <code>aria-expanded</code> attribute on each expandable treeitem; set it to "true" if expanded or "false" if collapsed.</li>
+                    <li>If the tree allows multiple selections, use the <code>aria-multiselectable="true"</code> attribute on the tree element.</li>
+                    <li>Use the <code>aria-selected</code> OR <code>aria-checked</code> attribute on each selectable node; set to "true" if selected/checked or to "false" if not. (Only one node may be marked as true if <code>aria-multiselectable="true"</code> is not set.)
+                        <ul>
+                            <li>If the tree only allows a single selection, <code>aria-selected</code> is generally used.</li>
+                            <li>If the tree allows multiple selections, <code>aria-checked</code> is generally used.</li>
+                            <li>It is not recommended to use both in the same tree.</li>
+                        </ul>
+                    </li>
+                    <li>Use the <code>aria-label</code> OR the <code>aria-labelledby</code> attribute on the tree element to provide an accessible name.</li>
+                </ul>
+            </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
+                <h3>File Explorer Tree View</h3>
                 <div class="example">
-                    <h3>Slider</h3>
-                    {% include examples/slider-rating.html %}
-
-                    <pre><code>&lt;div id="id-rating-label"&gt;Accessibility is the right thing to do.&lt;/div&gt;
-&lt;div id="id-rating" <strong>role="slider"</strong> tabindex="0" aria-valuemin="0" aria-valuemax="10" aria-labelledby="id-rating-label"&gt;</code></pre>
-                </div>
-
-                <div class="example">
-                    <h3>Toolbar</h3>
-                    {% include examples/toolbar.html %}
-
-                    <pre><code>&lt;div <strong>role="toolbar"</strong> aria-controls="textarea1" aria-label="Text Formatting"&gt;</code></pre>
+                    {% include examples/treeview.html %}
                 </div>
             </div>
         </div>
@@ -53,15 +60,6 @@ css: 41020202
             <div>
                 <p>The following items are not applicable to this failure:</p>
                 <ul>
-                    <li><strong>Native HTML controls</strong>:<br>
-                        <code>&lt;input type="checkbox"&gt; Subscribe to the mailing list</code><br>
-                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
-                    <li><strong>Custom controls that function as native HTML controls</strong>:<br>
-                        <code>&lt;div role="checkbox" tabindex="0" aria-checked="false"&gt;Subscribe to the mailing list</code><br>
-                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
-                    <li><strong>Hidden</strong>:<br>
-                        <code>&lt;div style="display:none;"&gt;</code><br>
-                        Does not appear in accessibility tree</li>
                     <li><strong>Role of "none"</strong>:<br>
                         <code>&lt;div role="none"&gt;</code><br>
                         Does not appear in accessibility tree</li>
@@ -77,9 +75,11 @@ css: 41020202
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F59">Failure of Success Criterion 4.1.2 due to using script to make div or span a user interface control in HTML without providing a role for the control</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
                     <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
                     <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/treeview/">W3: Tree View Pattern</a></li>
                 </ul>
             </div>
         </div>

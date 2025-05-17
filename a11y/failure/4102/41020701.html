@@ -1,0 +1,84 @@
+---
+layout: default
+current: 41020701
+criterion: 4102
+checkpoint: 410207
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+{% assign cp=site.data.4102.4102[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>Automatically updated content is announced to assistive technology users.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>Automatically updated content is not announced to assistive technology users.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <p>Ensure that automatically updated content is announced to assistive technology users using one of the following:</p>
+                    <ul>
+                        <li>Keyboard-accessible dialog, <strong>OR</strong></li>
+                        <li>Moving keyboard focus to the changed content, <strong>OR</strong></li>
+                        <li>Changing the content within an ARIA Live Region.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Examples</h2>
+                <div>
+                    <ul>
+                        <li>The updated content is announced with a dialog.</li>
+                        <li>The focus is moved to the updated content.</li>
+                        <li>The updated content is contained within an ARIA Live Region or status message.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li>Form elements that change in response to value changes<br>
+                            File under <a href="{{ site.data.4102.4102[41020302].link | prepend: baseurl }}">{{ site.data.4102.4102[41020302].name }}.</a></li> 
+                        <li>Non-form user-initiated updates to content<br>
+                            File under <a href="{{ site.data.4102.4102[41020303].link | prepend: baseurl }}">{{ site.data.4102.4102[41020303].name }}.</a></li> 
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/vision impaired:</strong> Screen reader users need to be alerted of changes in page content.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G10">Creating components using a technology that supports the accessibility API features of the platforms on which the user agents will be run to expose the names and roles, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H102">Creating modal dialogs with the HTML dialog element</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">Using aria-alertdialog to Identify Errors</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA19">Using ARIA role=alert or Live Regions to Identify Errors</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/4102checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
