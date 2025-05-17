@@ -39,8 +39,6 @@ css: disclosure-faq
                 <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The role of user interface components must be programmatically determinable by assistive technologies.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Buttons (not links) should be used to allow users to activate scripted functionality (form submission, play/pause, etc.)</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Links (not buttons) should be used to change focus or go to a new URL.</li>
             </ul>
 
             <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the role of user interface components to be programmatically determinable so that I can get this information via my screen reader.</div>
@@ -51,29 +49,34 @@ css: disclosure-faq
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            <h3 id="test2">Is the role of the component spoken by a screen reader?</h3>
-            <ul role="tree" aria-labelledby="test2">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the role match the function of the component?</span>
+            <h3 id="test1">Does the page contain focusable components?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the role of the component spoken by a screen reader?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a button?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}</a>.</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a link?</span>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020201].link | prepend: baseurl }}">{{ site.data.4102.4102[41020201].name }}.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a form field?</span>
                                     <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the link have an <code>href</code> attribute?</span>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020202].link | prepend: baseurl }}">{{ site.data.4102.4102[41020202].name }}.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a link?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}</a>.</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}</a>.</span></li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select field?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020111].link | prepend: baseurl }}">{{ site.data.4102.4102[41020111].name }}</a>.</span></li>
-                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select option?</span>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the link have an <code>href</code> attribute?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020112].link | prepend: baseurl }}">{{ site.data.4102.4102[41020112].name }}</a>.</span></li>
-                                                        <li role="treeitem"><span><strong>No</strong>; </span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020203].link | prepend: baseurl }}">{{ site.data.4102.4102[41020203].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020204].link | prepend: baseurl }}">{{ site.data.4102.4102[41020204].name }}.</a></span></li>
+                                                    </ul>
+                                                </li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select field?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020205].link | prepend: baseurl }}">{{ site.data.4102.4102[41020205].name }}.</a></span></li>
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select option?</span>
+                                                            <ul role="group">
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020206].link | prepend: baseurl }}">{{ site.data.4102.4102[41020206].name }}.</a></span></li>
+                                                                <li role="treeitem"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020207].link | prepend: baseurl }}">{{ site.data.4102.4102[41020207].name }}.</a></span></li>
+                                                            </ul>
+                                                        </li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -84,37 +87,7 @@ css: disclosure-faq
                         </li>
                     </ul>
                 </li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a button?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}</a>.</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a text field?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020108].link | prepend: baseurl }}">{{ site.data.4102.4102[41020108].name }}</a>.</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a link?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the link have an <code>href</code> attribute?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}</a>.</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}</a>.</span></li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select field?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020111].link | prepend: baseurl }}">{{ site.data.4102.4102[41020111].name }}</a>.</span></li>
-                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select option?</span>
-                                                    <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020112].link | prepend: baseurl }}">{{ site.data.4102.4102[41020112].name }}</a>.</span></li>
-                                                        <li role="treeitem"><span><strong>No</strong>; </span></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable</span></li>
             </ul>
         </div>
 
