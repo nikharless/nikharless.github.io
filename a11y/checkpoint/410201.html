@@ -16,43 +16,13 @@ criterion: 4102
 
         <div class="block">
             <h2>Overview</h2>
-            <p>In general, name, role, state, or value issues under this checkpoint relate to components that have an HTML equivalent, such as links, buttons, checkboxes, radio buttons, and selects.</p>
-
-            <p>For issues related to more complex widgets, especially ones that relate to existing ARIA authoring patterns such as tabpanels, dialogs, listboxes, sliders, carousels, etc., see the issues under checkpoint <a href="{{ site.data.4102.4102[410202].link | prepend: baseurl }}">{{ site.data.4102.4102[410202].name }}</a>.</p>
-
-            <p>For issues related to complex interactions that don’t have HTML or ARIA widget equivalents and are so broken that breaking them down into individual issues is not effective or productive, see checkpoint <a href="{{ site.data.4102.4102[410203].link | prepend: baseurl }}">{{ site.data.4102.4102[410203].name }}</a>.</p>
+            <p></p>
 
             <p>Name:</p>
             <ul>
                 <li>A label for a form control or button</li>
                 <li>The text of a link</li>
                 <li>The name of a tab</li>
-                <li>etc.</li>
-            </ul>
-
-            <p>Role:</p>
-            <ul>
-                <li>Button</li>
-                <li>Link</li>
-                <li>Text field</li>
-                <li>Radio Button</li>
-                <li>Checkbox</li>
-                <li>Select</li>
-                <li>Tab</li>
-                <li>Dialog</li>
-                <li>Slider</li>
-                <li>etc.</li>
-            </ul>
-
-            <p>Value or State:</p>
-            <ul>
-                <li>Expanded/collapsed</li>
-                <li>Selected</li>
-                <li>Current</li>
-                <li>Disabled</li>
-                <li>Text in textfield</li>
-                <li>[x] of [x]</li>
-                <li>Slider’s value</li>
                 <li>etc.</li>
             </ul>
         </div>
@@ -65,24 +35,19 @@ criterion: 4102
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The name of user interface components must be programmatically determinable by assistive technologies.</li>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The accessible name and description of user interface components must accurately describe the component's purpose.</li>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If the name of the component changes during interaction, the name must be programmatically updated.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The role of user interface components must be programmatically determinable by assistive technologies.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The states, properties, and values of user interface components which can be set by the user must be programmatically determinable by assistive technologies.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Notifications of changes to states, properties, and values of user interface components must be communicated to assistive technologies.</li>
                 <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> An <code>aria-label</code> should be provided to describe sections with <code>role="region"</code>.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Buttons (not links) should be used to allow users to activate scripted functionality (form submission, play/pause, etc.)</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Links (not buttons) should be used to change focus or go to a new URL.</li>
                 <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> When multiple navigation regions are present on a page, <code>aria-label</code>s should be used to distinguish the purpose of each.</li>
             </ul>
 
-            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the name, role, and value of user interface components to be programmatically determinable so that I can get this information via my screen reader.</div>
+            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the name of user interface components to be programmatically determinable so that I can get this information via my screen reader.</div>
 
-            <div class="success"><strong>Success:</strong> If you were a screen reader user, when accessing user interface components, you would be able to determine the role, purpose, and state of the components.</div>
+            <div class="success"><strong>Success:</strong> If you were a screen reader user, when accessing user interface components, you would be able to determine the purpose of the components.</div>
         </div>
 
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            <h3 id="test1">TEST 1: Is the name of the component spoken by a screen reader when the component receives focus?</h3>
+            <h3 id="test1">Is the name of the component spoken by a screen reader when the component receives focus?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a button?</span>
@@ -117,172 +82,6 @@ criterion: 4102
                     </ul>
                 </li>
             </ul>
-
-            <h3 id="test2">TEST 2: Is the role of the component spoken by a screen reader?</h3>
-            <ul role="tree" aria-labelledby="test2">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the role match the function of the component?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a button?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}</a>.</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a link?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the link have an <code>href</code> attribute?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}</a>.</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}</a>.</span></li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select field?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020111].link | prepend: baseurl }}">{{ site.data.4102.4102[41020111].name }}</a>.</span></li>
-                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select option?</span>
-                                                    <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020112].link | prepend: baseurl }}">{{ site.data.4102.4102[41020112].name }}</a>.</span></li>
-                                                        <li role="treeitem"><span><strong>No</strong>; </span></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a button?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}</a>.</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a text field?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020108].link | prepend: baseurl }}">{{ site.data.4102.4102[41020108].name }}</a>.</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a link?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the link have an <code>href</code> attribute?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}</a>.</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}</a>.</span></li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select field?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020111].link | prepend: baseurl }}">{{ site.data.4102.4102[41020111].name }}</a>.</span></li>
-                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a select option?</span>
-                                                    <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020112].link | prepend: baseurl }}">{{ site.data.4102.4102[41020112].name }}</a>.</span></li>
-                                                        <li role="treeitem"><span><strong>No</strong>; </span></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-
-            <h3 id="test3">TEST 3: Does the component have a checked state (e.g., checkbox, radio button, or switch)?</h3>
-            <ul role="tree" aria-labelledby="test3">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the checked state spoken by the screen reader</span>
-                    <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the checked state spoken when changed?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020126].link | prepend: baseurl }}">{{ site.data.4102.4102[41020126].name }}</a>.</span></li>
-                            </ul>
-                        </li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a checkbox?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020116].link | prepend: baseurl }}">{{ site.data.4102.4102[41020116].name }}</a>.</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a radio button?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020117].link | prepend: baseurl }}">{{ site.data.4102.4102[41020117].name }}</a>.</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020118].link | prepend: baseurl }}">{{ site.data.4102.4102[41020118].name }}</a>.</span></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-            </ul>       
-
-            <h3 id="test4">TEST 4: Is the component a button?</h3>
-            <ul role="tree" aria-labelledby="test4">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the button a toggle?</span>
-                    <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the pressed state spoken by the screen reader?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020113].link | prepend: baseurl }}">{{ site.data.4102.4102[41020113].name }}</a>.</span></li>
-                            </ul>
-                        </li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the button control expandable content?</span>
-                            <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the expanded state spoken by the screen reader?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the expanded state spoken when changed?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the button a menu button?</span>
-                                                    <ul role="group">
-                                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the button identified as a menu button?</span>
-                                                            <ul role="group">
-                                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020115].link | prepend: baseurl }}">{{ site.data.4102.4102[41020115].name }}</a>.</span></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-                                                    </ul>
-                                                </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020126].link | prepend: baseurl }}">{{ site.data.4102.4102[41020126].name }}</a>.</span></li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020114].link | prepend: baseurl }}">{{ site.data.4102.4102[41020114].name }}</a>.</span></li>
-                                    </ul>
-                                </li>
-                                <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-            </ul>
-
-            <h3 id="test5">TEST 5: Is the component currently disabled?</h3>
-            <ul role="tree" aria-labelledby="test5">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader announce the disabled state?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data.4102.4102[41020122].link | prepend: baseurl }}">{{ site.data.4102.4102[41020122].name }}</a>.</span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-            </ul>
-
-            <h3 id="test6">TEST 6: Is the component required?</h3>
-            <ul role="tree" aria-labelledby="test6">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader announce the required state?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data.4102.4102[41020123].link | prepend: baseurl }}">{{ site.data.4102.4102[41020123].name }}</a>.</span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-            </ul>
-
-            <h3 id="test7">TEST 7: Is the component read-only?</h3>
-            <ul role="tree" aria-labelledby="test7">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader announce the read-only state?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data.4102.4102[41020124].link | prepend: baseurl }}">{{ site.data.4102.4102[41020124].name }}</a>.</span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-            </ul>
         </div>
 
         <div class="block">
@@ -290,12 +89,17 @@ criterion: 4102
 
             <h3>Desktop</h3>
             <h4>User Interface Components</h4>
+            <h5>ANDI</h5>
+            <ol>
+                <li>Launch ANDI: focusable elements.</li>
+                <li>Review each component and determine if the ANDI Output adequately describes the component.</li>
+            </ol>
+
+            <h5>Screen Reader</h5>
             <ol>
                 <li>Using a screen reader, navigate to every user interface component in the page.</li>
                 <li>Verify that the screen reader speaks a name for each component.</li>
-                <li>Verify that the screen reader speaks a valid role for each component.</li>
-                <li>Verify that the screen reader speaks any state, property, or value that can be set by the user.</li>
-                <li>Verify that the screen reader notifies the user of any changes to states, properties, or values.</li>
+                <li>Verify that the name adequately describes the component.</li>
             </ol>
 
             <h4>Frames</h4>
@@ -321,7 +125,6 @@ criterion: 4102
                 <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features.</a></li>
                 <li>Follow the procedure for Desktop Web.</li>
             </ol>
-            <p>Note that default screen reader behavior may not include all information. For example, TalkBack does not read the currently selected value in <code>&lt;select&gt;</code> controls. These cases would fall out of the control of the developer and therefore are not considered failures.</p>
 
             <h2>Mobile App Test Procedure</h2>
 
@@ -330,7 +133,6 @@ criterion: 4102
                 <li><a href="https://support.apple.com/en-us/111799">Turn off image recognition features.</a></li>
                 <li>Follow the procedure for Desktop Web.</li>
             </ol>
-            <p>Note that iOS VoiceOver does not read roles for all elements (such as dialogs), so verify that the issue is, in fact, one that the developer likely has control over before filing a bug. See <a href="https://a11ysupport.io/">Accessibility Support</a> for more information.</p>
 
             <dl class="faq">
                 <dt>
@@ -403,7 +205,6 @@ criterion: 4102
             <ol>
                 <li>Follow the procedure for Desktop Web.</li>
             </ol>
-            <p>Note that TalkBack does not read roles for all elements (such as dialogs), so verify that the issue is, in fact, one that the developer likely has control over before filing a bug. See <a href="https://tetralogical.com/blog/2022/07/07/android-accessibility-roles-and-talkback/">Android accessibility: roles and TalkBack</a> and <a href="https://a11ysupport.io/">Accessibility Support</a> for more information.</p>
 
             <dl class="faq">
                 <dt>
@@ -509,28 +310,6 @@ criterion: 4102
                 <li><a href="{{ site.data.4102.4102[41020105].link | prepend: baseurl }}">{{ site.data.4102.4102[41020105].name }}.</a></li>
                 <li><a href="{{ site.data.4102.4102[41020106].link | prepend: baseurl }}">{{ site.data.4102.4102[41020106].name }}.</a></li>
                 <li><a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020108].link | prepend: baseurl }}">{{ site.data.4102.4102[41020108].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020111].link | prepend: baseurl }}">{{ site.data.4102.4102[41020111].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020112].link | prepend: baseurl }}">{{ site.data.4102.4102[41020112].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020113].link | prepend: baseurl }}">{{ site.data.4102.4102[41020113].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020114].link | prepend: baseurl }}">{{ site.data.4102.4102[41020114].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020115].link | prepend: baseurl }}">{{ site.data.4102.4102[41020115].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020116].link | prepend: baseurl }}">{{ site.data.4102.4102[41020116].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020117].link | prepend: baseurl }}">{{ site.data.4102.4102[41020117].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020118].link | prepend: baseurl }}">{{ site.data.4102.4102[41020118].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020119].link | prepend: baseurl }}">{{ site.data.4102.4102[41020119].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020120].link | prepend: baseurl }}">{{ site.data.4102.4102[41020120].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020121].link | prepend: baseurl }}">{{ site.data.4102.4102[41020121].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020122].link | prepend: baseurl }}">{{ site.data.4102.4102[41020122].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020123].link | prepend: baseurl }}">{{ site.data.4102.4102[41020123].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020124].link | prepend: baseurl }}">{{ site.data.4102.4102[41020124].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020125].link | prepend: baseurl }}">{{ site.data.4102.4102[41020125].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020126].link | prepend: baseurl }}">{{ site.data.4102.4102[41020126].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020127].link | prepend: baseurl }}">{{ site.data.4102.4102[41020127].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020128].link | prepend: baseurl }}">{{ site.data.4102.4102[41020128].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020129].link | prepend: baseurl }}">{{ site.data.4102.4102[41020129].name }}.</a></li>
             </ul>
         </div>
 
@@ -564,8 +343,6 @@ criterion: 4102
                 </li>
                 <li>ARIA:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA4">ARIA4: Using a WAI-ARIA role to expose the role of a user interface component</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
                     </ul>
