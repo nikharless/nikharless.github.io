@@ -1,39 +1,30 @@
-const searchBox = document.querySelector('.search-box');
-const options = document.querySelectorAll('.options li');
-const selectedOption = document.querySelector('.selected-option');
-const clearButton = document.getElementById('clear-button');
+// Variables
+const dropdown = document.querySelector('.dropdown');
+const input = document.querySelector('input');
+const listOfOptions = document.querySelectorAll('.option');
+const body = document.body;
 
-// Check if search country present in menu list
-searchBox.addEventListener('input', () => {
-    const searchTerm = searchBox.value.toLowerCase();
+// Functions
+const toggleDropdown = (event) => {
+  event.stopPropagation();
+  dropdown.classList.toggle('opened');
+};
 
-    options.forEach(option => {
-        const text = option.textContent.toLowerCase();
-        if (text.includes(searchTerm)) {
-            option.style.display = 'block';
-        } else {
-            option.style.display = 'none';
-        }
-    });
+const selectOption = (event) => {
+  input.value = event.currentTarget.textContent;
+};
+
+const closeDropdownFromOutside = () => {
+  if (dropdown.classList.contains('opened')) {
+    dropdown.classList.remove('opened');
+  }
+};
+// Event Listeners
+
+body.addEventListener('click', closeDropdownFromOutside);
+
+listOfOptions.forEach((option) => {
+  option.addEventListener('click', selectOption);
 });
 
-// Iterating and printing the selected country name
-for (const option of options) {
-    option.addEventListener('click', () => {
-        const value = option.getAttribute('data-value');
-        selectedOption.textContent = 
-            "You have chosen " + option.textContent;
-        searchBox.value = '';
-        for (const opt of options) {
-            opt.style.display = 'block';
-        }
-    });
-}
-
-clearButton.addEventListener('click', function () {
-    selectedOption.textContent = 'Select an option';
-    searchBox.value = '';
-    options.forEach(option => {
-        option.style.display = 'block';
-    });
-});
+dropdown.addEventListener('click', toggleDropdown);
