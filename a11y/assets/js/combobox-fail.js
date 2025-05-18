@@ -28,3 +28,13 @@ listOfOptions.forEach((option) => {
 });
 
 dropdown.addEventListener('click', toggleDropdown);
+dropdown.addEventListener('keydown', onButtonKeyDown)
+
+onButtonKeyDown(event) {
+    if (event.key === ' ') {
+      toggleDropdown();
+
+      event.stopPropagation();
+      event.preventDefault();
+    }
+  }
