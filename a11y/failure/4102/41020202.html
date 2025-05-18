@@ -3,6 +3,7 @@ layout: default
 current: 41020202
 criterion: 4102
 checkpoint: 410202
+css: checkbox
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -38,11 +39,17 @@ checkpoint: 410202
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Text field</h3>
+                    <h3>Radio button</h3>
                     <div class="example">
-                        <div id="name1">Name: </div><div contenteditable="true" aria-labelledby="name1" style="border: 1px solid black; width: 200px;"></div>
+                        <div class="radioExample" role="radiogroup">
+                            <div tabindex="0" aria-checked="false">Check this radio button
+                                <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
+                                <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
+                            </div>
+                        </div>
+                        <script src="{{ baseurl }}/assets/js/radio.js"></script>
 
-                        <pre><code>&lt;div id="name"&gt;Name: &lt;/div&gt;&lt;div contenteditable="true" aria-labelledby="name"&gt; Name&lt;/div&gt;</code></pre>
+                        <pre><code>&lt;div tabindex="0" aria-checked="false"&gt;Check this radio button&lt;/div&gt;</code></pre>
                     </div>
                 </div>
             </div>
