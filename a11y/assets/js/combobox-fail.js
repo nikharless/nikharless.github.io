@@ -34,7 +34,6 @@ function onButtonKeyDown(event) {
     if (event.key === ' ') {
       toggleDropdown();
 
-      event.stopPropagation();
       event.preventDefault();
     }
   }
