@@ -33,7 +33,6 @@ dropdown.addEventListener('keydown', onButtonKeyDown)
 function onButtonKeyDown(event) {
     if (event.key === ' ') {
       toggleDropdown();
-
       event.preventDefault();
     }
   }
