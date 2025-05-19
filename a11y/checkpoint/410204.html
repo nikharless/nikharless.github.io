@@ -1,0 +1,252 @@
+---
+layout: default
+current: 410204
+criterion: 4102
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Overview</h2>
+            
+            <p>Value:</p>
+            <ul>
+                <li>Select currently selected value</li>
+                <li>Slider min, max, and current value</li>
+                <li>Text in textfield</li>
+                <li>etc.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The values of user interface components which can be set by the user must be programmatically determinable by assistive technologies.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Notifications of changes to values of user interface components must be communicated to assistive technologies.</li>
+            </ul>
+
+            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the value of user interface components to be programmatically determinable so that I can get this information via my screen reader.</div>
+
+            <div class="success"><strong>Success:</strong> If you were a screen reader user, when accessing user interface components, you would be able to determine the current value of the components.</div>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+
+            <h3>Desktop</h3>
+            <h4>User Interface Components</h4>
+            <ol>
+                <li>Using a screen reader, navigate to each user interface component which has a value that can be set by the user.</li>
+                <li>Verify that the screen reader speaks any value.</li>
+                <li>Verify that the screen reader notifies the user of any changes to values.</li>
+            </ol>
+
+            <h3>Mobile</h3>
+            <ol>
+                <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features.</a></li>
+                <li>Follow the procedure for Desktop Web.</li>
+            </ol>
+
+            <h2>Mobile App Test Procedure</h2>
+
+            <h3>iOS</h3>
+            <ol>
+                <li><a href="https://support.apple.com/en-us/111799">Turn off image recognition features.</a></li>
+                <li>Follow the procedure for Desktop Web.</li>
+            </ol>
+
+            <dl class="faq">
+                <dt>
+                    <button type="button" aria-expanded="false" aria-controls="faq2_desc">iOS VoiceOver state/value expectations:</button>
+                </dt>
+                <dd>
+                    <div id="faq2_desc" class="desc">
+                        <ul>
+                            <li><strong>Selected:</strong> “[accessible name], button, selected”
+                                <ul>
+                                    <li>Note: “button” may be optional, depending on whether the selected item is within a listview.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Expanded:</strong> “[accessible name], button, expanded [or] collapsed”
+                                <ul>
+                                    <li>Note: “button may be optional, depending on whether the selected item is within a listview.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Disabled:</strong> “[accessible name], dimmed, button”</li>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+            <script src="{{ baseurl }}/js/disclosureButton.js"></script>
+
+            <h3>Android</h3>
+            <ol>
+                <li>Follow the procedure for Desktop Web.</li>
+            </ol>
+
+            <dl class="faq">
+                <dt>
+                    <button type="button" aria-expanded="false" aria-controls="faq3_desc">Android TalkBack name/role expectations:</button>
+                </dt>
+                <dd>
+                    <div id="faq3_desc" class="desc">
+                        <ul>
+                            <li><strong>Buttons</strong> (including text, image, and floating action buttons): 
+                                <ul>
+                                    <li>“[accessible name], button”, <strong>OR</strong></li>
+                                    <li>“[accessible name] (pause), Double tap to activate”, <strong>OR</strong></li>
+                                    <li>“[accessible name], button (pause), Double tap to activate” or similar</li>
+                                </ul>
+                            </li>
+                            <li><strong>Links:</strong>
+                                <ul>
+                                    <li>An earcon plays identifying the text span as a link (“link” is NOT spoken), <strong>AND</strong></li>
+                                    <li>“[accessible name], Double tap to activate” or similar</li>
+                                </ul>
+                            </li>
+                            <li><strong>Alert or popup:</strong> “Alert” or “Popup”, then:
+                                <ul>
+                                    <li>First text block, <strong>OR</strong></li>
+                                    <li>Pane title as set by <code>accessibilityPaneTitle</code></li>
+                                </ul>
+                            </li>
+                            <li><strong>Badge:</strong> “[accessible name], has [x] notifications, [rest of announcement]”</li>
+                            <li><strong>Bottom navigation:</strong>
+                                <ul>
+                                    <li>Selected state for currently active top-level destination, <strong>AND</strong></li>
+                                    <li>“[accessible name], Double tap to activate” or similar</li>
+                                </ul>
+                            </li>
+                            <li><strong>Checkbox or radio button:</strong>
+                                <ul>
+                                    <li>“Checked” or “Not checked”, then “[accessible name], Double tap to activate” or similar
+                                        <ul>
+                                            <li>May or may not say “checkbox” or “radio button” before “Double tap to activate” or similar</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Compound button or toggle button</strong> (i.e., a button with a “pressed” state):
+                                <ul>
+                                    <li>“Checked” or “Not checked”, then [accessible name], Double tap to activate” or similar (no “checkbox” or “button” role is read)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Text field:</strong>
+                                <ul>
+                                    <li>“[accessible name], Edit box”, <strong>OR</strong></li>
+                                    <li>“[accessible name], Edit box for [accessible name]”, <strong>OR</strong></li>
+                                    <li>“[entered value], Edit box for [accessible name]”, <strong>OR</strong></li>
+                                    <li>“Editing Edit box for [accessible name]”, <strong>OR</strong></li>
+                                    <li>“Editing [entered value], Edit box for [accessible name]”<br>
+                                        <strong>AND</strong></li>
+                                    <li>“(pause) Double tap to enter text. Double tap and hold to long press”, <strong>OR</strong></li>
+                                    <li>“(pause) Double tap and hold to long press” or similar</li>
+                                </ul>
+                            </li>
+                            <li><strong>Expandable list view:</strong> “[accessible name], Collapsed (or) Expanded, Double tap to activate” or similar</li>
+                            <li><strong>Menu (various types):</strong> “[role], [accessible name of first menu item]</li>
+                            <li><strong>Progress bar:</strong>
+                                <ul>
+                                    <li>Indeterminate: “Loading… [accessible name]”</li>
+                                    <li>Determinate: “Loading… [accessible name], [current %]”</li>
+                                </ul>
+                            </li>
+                            <li><strong>Rating bar:</strong> “[Percentage], [accessible name], rating”</li>
+                            <li><strong>Seek bar:</strong> 
+                                <ul>
+                                    <li>“[Percentage], [accessible name], Seek control (pause), Use volume keys to adjust”, <strong>OR</strong></li>
+                                    <li>“[Percentage], Seek control for [accessible name] (pause), Use volume keys to adjust” or similar</li>
+                                </ul>
+                            </li>
+                            <li><strong>Snackbar or toast:</strong> A polite accessibility announcement of the text in the snackbar or toast</li>
+                            <li><strong>Spinner:</strong>
+                                <ul>
+                                    <li>Collapsed state: “Drop-down list, [value] for [accessible name], Double tap to change, <strong>OR</strong></li>
+                                    <li>“Drop-down list, [value], Double tap to change” or similar (may or may not say “drop-down list”<br>
+                                        <strong>AND/OR</strong></li>
+                                    <li>Expanded state: “[accessible name], [x] of [x]” for each list item</li>
+                                </ul>
+                            </li>
+                            <li><strong>Switch:</strong>
+                                <ul>
+                                    <li>“[accessible name], [state], Switch (pause), Double tap to activate, <strong>OR</strong></li>
+                                    <li>“[state], Switch for [accessible name] (pause), Double tap to toggle” or similar</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </dd>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.4102.4102[41020401].link | prepend: baseurl }}">{{ site.data.4102.4102[41020401].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020402].link | prepend: baseurl }}">{{ site.data.4102.4102[41020402].name }}.</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
+                <li>Screen reader</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G135">G135: Using the accessibility API features of a technology to expose names and notification of changes</a></li>
+                    </ul>
+                </li>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
+                    </ul>
+                </li>
+                <li>ARIA:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                    </ul>
+                </li>
+             </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://ictbaseline.access-board.gov/web-baselines/05Controls/">Section 508 ICT Testing Baseline Portfolio: User Controls (Web)</a></li>
+                <li><a href="https://ictbaseline.access-board.gov/web-baselines/10Forms/">Section 508 ICT Testing Baseline Portfolio: Forms (Web)</a></li>
+                <li><a href="https://a11ysupport.io/">Accessibility Support</a></li>
+            </ul>
+        </div>
+    </div>
+    {% include checkpoints/4102checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
