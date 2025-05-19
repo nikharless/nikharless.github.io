@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 410203
+current: 410206
 criterion: 4102
 ---
 {% assign root=site.data.site.root %}
@@ -16,28 +16,14 @@ criterion: 4102
 
         <div class="block">
             <h2>Overview</h2>
-            <p>This checkpoint applies to any changes of content occurring on the web page.</p>
-
-            <h3>Forms</h3>
-            <p>Form-related content changes may be triggered by things such as:</p>
+            <p>State:</p>
             <ul>
-                <li>Changing values or states of of other form components</li>
-                <li>Toggling a function</li>
-                <li>Entering data in a text field</li>
-                <li>Mouseover</li>
-                <li>Keyboard focus</li>
+                <li>Current</li>
+                <li>Disabled</li>
+                <li>Expanded/collapsed</li>
+                <li>Selected</li>
+                <li>etc.</li>
             </ul>
-
-            <p>Form-related changes include but are not limited to:</p>
-            <ul>
-                <li>Changes to instructions</li>
-                <li>Error notifications</li>
-                <li>Addition or removal of content, including other form components</li>
-                <li>Button name changes</li> 
-            </ul>
-
-            <h3>Links</h3>
-            <p>This checkpoint only applies to links which change the content of the current page, such as with a single-page application (SPA). It does not apply to links which reload the current page or load another page.</p>
         </div>
 
         <div class="block">
@@ -45,83 +31,23 @@ criterion: 4102
             <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
                 <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Automatic content changes must be communicated to assistive technologies.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content changes to forms must be communicated to assistive technologies.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content changes initiated by links must be communicated to assistive technologies.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a dialog is used to alert the user of a content change, it must provide sufficient description of the content change.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a focus change is used to alert the user of a content change, it must provide sufficient description of the content change.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a status message or other ARIA Live Region is used to alert the user of a content change, it must provide sufficient description of the content change.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The states of custom user interface components which can be set by the user must be programmatically determinable by assistive technologies.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Notifications of changes to states of user interface components must be communicated to assistive technologies.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> HTML markup must meet W3C specifications and facilitate accessibility support with assistive technologies.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> ARIA should be used to indicate name, role, and value for tabs, modals, or other dynamic widgets.</li>
             </ul>
 
-            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want to be notified of any changes of content on the page so that I know they have occurred.</div>
+            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the state of user interface components to be programmatically determinable so that I can get this information via my screen reader.</div>
 
-            <div class="success"><strong>Success:</strong> If you were a screen reader user, when page content updates, you would receive a notification.</div>
+            <div class="success"><strong>Success:</strong> If you were a screen reader user, when accessing user interface components, you would be able to determine the state of the components.</div>
         </div>
 
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            <h3 id="test1">Is there content on the page that changes/updates?</h3>
+            <h3 id="test1">Are there custom controls on the page that don't map to basic native HTML controls?</h3>
             <ul role="tree" aria-labelledby="test1">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user notified of the change in content?</span>
-                    <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user notified using a dialog?</span>
-                            <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the dialog provide sufficient programmatic notification of the content change?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020304].link | prepend: baseurl }}">{{ site.data.4102.4102[41020304].name }}.</a></span></li>
-                                    </ul>
-                                </li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the user notified using a focus change?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the focus change provide sufficient programmatic notification of the content change?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020305].link | prepend: baseurl }}">{{ site.data.4102.4102[41020305].name }}.</a></span></li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the user notified using a status message or other ARIA Live Region?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the ARIA Live Region provide sufficient programmatic notification of the content change?</span>
-                                                    <ul role="group">
-                                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020306].link | prepend: baseurl }}">{{ site.data.4102.4102[41020306].name }}.</a></span></li>
-                                                    </ul>
-                                                </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020307].link | prepend: baseurl }}">{{ site.data.4102.4102[41020307].name }}</a>.</span></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content change the result of an automatic update?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}.</a></span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content change within a form?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the content change sufficiently described by the form element that triggered the change?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020302].link | prepend: baseurl }}">{{ site.data.4102.4102[41020302].name }}.</a></span></li>
-                                            </ul>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the content change the result of clicking a link?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the content change sufficiently described by the link that triggered the change?</span>
-                                                    <ul role="group">
-                                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020303].link | prepend: baseurl }}">{{ site.data.4102.4102[41020303].name }}.</a></span></li>
-                                                    </ul>
-                                                </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020307].link | prepend: baseurl }}">{{ site.data.4102.4102[41020307].name }}</a>.</span></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; 
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
@@ -130,31 +56,40 @@ criterion: 4102
         <div class="block">
             <h2>Web Test Procedure</h2>
             <ol>
-                <li>Using a screen reader, interact with every user interface component in the page.</li>
-                <li>Verify that the screen reader notifies the user of any changes to states, properties, or values.</li>
-                <li>Activate any links which change the content of the current page.</li>
-                <li>Verify that the screen reader notifies the user of the content change.</li>
-                <li>Note any automatic updates to the page content.</li>
-                <li>Verify that the screen reader notifies the user of the content change.</li>
+                <li>Using a screen reader, interact with every custom user interface component in the page.</li>
+                <li>Verify that the screen reader speaks any properties required for understanding the functionality of the component.</li>
+                <li>Verify that the screen reader speaks any states that can be set by the user.</li>
+                <li>Verify that the screen reader notifies the user of any changes to states.</li>
             </ol>
         </div>
 
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020302].link | prepend: baseurl }}">{{ site.data.4102.4102[41020302].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020303].link | prepend: baseurl }}">{{ site.data.4102.4102[41020303].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020304].link | prepend: baseurl }}">{{ site.data.4102.4102[41020304].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020305].link | prepend: baseurl }}">{{ site.data.4102.4102[41020305].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020306].link | prepend: baseurl }}">{{ site.data.4102.4102[41020306].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020307].link | prepend: baseurl }}">{{ site.data.4102.4102[41020307].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020601].link | prepend: baseurl }}">{{ site.data.4102.4102[41020601].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020602].link | prepend: baseurl }}">{{ site.data.4102.4102[41020602].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020603].link | prepend: baseurl }}">{{ site.data.4102.4102[41020603].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020604].link | prepend: baseurl }}">{{ site.data.4102.4102[41020604].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020605].link | prepend: baseurl }}">{{ site.data.4102.4102[41020605].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020606].link | prepend: baseurl }}">{{ site.data.4102.4102[41020606].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020607].link | prepend: baseurl }}">{{ site.data.4102.4102[41020607].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020608].link | prepend: baseurl }}">{{ site.data.4102.4102[41020608].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020609].link | prepend: baseurl }}">{{ site.data.4102.4102[41020609].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020610].link | prepend: baseurl }}">{{ site.data.4102.4102[41020610].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020611].link | prepend: baseurl }}">{{ site.data.4102.4102[41020611].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020612].link | prepend: baseurl }}">{{ site.data.4102.4102[41020612].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020613].link | prepend: baseurl }}">{{ site.data.4102.4102[41020613].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020614].link | prepend: baseurl }}">{{ site.data.4102.4102[41020614].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020615].link | prepend: baseurl }}">{{ site.data.4102.4102[41020615].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020616].link | prepend: baseurl }}">{{ site.data.4102.4102[41020616].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020617].link | prepend: baseurl }}">{{ site.data.4102.4102[41020617].name }}.</a></li>
             </ul>
         </div>
 
         <div class="block">
             <h2>Testing Tools</h2>
             <ul>
+                <li><a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a></li>
                 <li>Screen reader</li>
             </ul>
         </div>
@@ -171,12 +106,7 @@ criterion: 4102
                 </li>
                 <li>ARIA:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA4">ARIA4: Using a WAI-ARIA role to expose the role of a user interface component</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">Using aria-alertdialog to Identify Errors</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA19">Using ARIA role=alert or Live Regions to Identify Errors</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA22">ARIA22: Using role=status to present status messages</a></li>
                     </ul>
                 </li>
                 <li>HTML:
