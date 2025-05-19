@@ -6,7 +6,7 @@ const body = document.body;
 
 // Functions
 const toggleDropdown = (event) => {
-  //event.stopPropagation();
+  event.stopPropagation();
   dropdown.classList.toggle('opened');
 };
 
