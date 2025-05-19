@@ -28,7 +28,7 @@ listOfOptions.forEach((option) => {
 });
 
 dropdown.addEventListener('click', toggleDropdown);
-dropdown.addEventListener('keydown', onButtonKeyDown)
+dropdown.addEventListener('keydown', onButtonKeyDown);
 
 function onButtonKeyDown(event) {
     if (event.key === ' ') {
