@@ -13,49 +13,87 @@ css: 1411
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Form fields (checkboxes, radio buttons, select elements, textboxes, listboxes, searchboxes, sliders, spinbuttons, switches) have accessible names.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>A form field does not have an accessible name.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Solution</h2>
-            <div>
-                <h3>HTML</h3>
-                <p>Provide an accessible name for the form field, using one of the following methods:</p>
-                <ul>
-                    <li>Use <code>&lt;label&gt;</code>, place the name between the start and end tags, and point it to the id of the corresponding <code>&lt;input&gt;</code> <strong>OR</strong></li>
-                    <li>Use <code>&lt;label&gt;</code> and place the name and the <code>&lt;input&gt;</code> between the start and end tags, <strong>OR</strong></li>
-                    <li>Use the <code>aria-label</code> attribute on the <code>&lt;input&gt;</code> and set the value to the name, <strong>OR</strong></li>
-                    <li>Use the <code>aria-labelledby</code> attribute on the <code>&lt;input"&gt;</code> and point it to a text element which can function as the accessible name, <strong>OR</strong></li>
-                    <li>Use the <code>placeholder</code> attribute on the <code>&lt;input"&gt;</code> and set the value to the name, <strong>OR</strong><br>
-                        <em>Note: Placeholder text may be used as the accessible name, but <a href="/a11y/sc/3302.html">3.3.2 Labels or Instructions</a> still requires a permanently visible label.</em></li>
-                    <li>Place text which can function as the accessible name within an element (such as a <code>&lt;div&gt;</code>) that uses the <code>role</code> attribute to assign the role.</li>
-                </ul>
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>Form fields (checkboxes, radio buttons, select elements, textboxes, listboxes, searchboxes, sliders, spinbuttons, switches) have accessible names.</div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Labels</h3>
-                <div class="example">
-                    <label>Email<br>
-                        <input type="email"></label>
-                    <label><input type="checkbox"> Subscribe to the mailing list</label>
-                    <fieldset>
-                        <legend>Types of emails</legend>
-                        <label><input type="radio" name="types" value="all"> All</label>
-                        <label><input type="radio" name="types" value="essential"> Essential only</label>
-                    </fieldset> 
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>A form field does not have an accessible name.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <h3>HTML</h3>
+                    <p>Provide an accessible name for the form field, using one of the following methods:</p>
+                    <ul>
+                        <li>Use <code>&lt;label&gt;</code>, place the name between the start and end tags, and point it to the id of the corresponding <code>&lt;input&gt;</code> <strong>OR</strong></li>
+                        <li>Use <code>&lt;label&gt;</code> and place the name and the <code>&lt;input&gt;</code> between the start and end tags, <strong>OR</strong></li>
+                        <li>Use the <code>aria-label</code> attribute on the <code>&lt;input&gt;</code> and set the value to the name, <strong>OR</strong></li>
+                        <li>Use the <code>aria-labelledby</code> attribute on the <code>&lt;input"&gt;</code> and point it to a text element which can function as the accessible name, <strong>OR</strong></li>
+                        <li>Use the <code>placeholder</code> attribute on the <code>&lt;input"&gt;</code> and set the value to the name, <strong>OR</strong><br>
+                            <em>Note: Placeholder text may be used as the accessible name, but <a href="/a11y/sc/3302.html">3.3.2 Labels or Instructions</a> still requires a permanently visible label.</em></li>
+                        <li>Place text which can function as the accessible name within an element (such as a <code>&lt;div&gt;</code>) that uses the <code>role</code> attribute to assign the role.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>No Programmatic Names</h3>
+                    <div class="example">
+                        <form>
+                            Email<br>
+                            <input type="email">
+                            <input type="checkbox"> Subscribe to the mailing list
+                            <fieldset>
+                                <p>Types of emails</p>
+                                <input type="radio" name="types" value="all"> All<br>
+                                <input type="radio" name="types" value="essential"> Essential only
+                            </fieldset>
+                        </form>
+                    </div>
 
-                    <pre><code><strong>&lt;label&gt;</strong>Email
+                    <h3>Labels Not Associated</h3>
+                    <div class="example">
+                        <form>
+                            <label>Email</label>
+                            <input type="email">
+                            <input type="checkbox"> <label>Subscribe to the mailing list</label>
+                            <fieldset>
+                                <p>Types of emails</p>
+                                <input type="radio" name="types" value="all"> <label>All</label><br>
+                                <input type="radio" name="types" value="essential"> <label>Essential only</label>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                    <div class="example">
+                        <input type="text" value="Type your search here">
+                        <input type="submit" value="Search">
+                    </div>
+                </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Labels</h3>
+                    <div class="example">
+                        <label>Email<br>
+                            <input type="email"></label>
+                        <label><input type="checkbox"> Subscribe to the mailing list</label>
+                        <fieldset>
+                            <legend>Types of emails</legend>
+                            <label><input type="radio" name="types" value="all"> All</label>
+                            <label><input type="radio" name="types" value="essential"> Essential only</label>
+                        </fieldset> 
+
+                        <pre><code><strong>&lt;label&gt;</strong>Email
     &lt;input type="email"&gt;
 <strong>&lt;/label&gt;
 &lt;label&gt;</strong>
@@ -66,145 +104,146 @@ css: 1411
     <strong>&lt;label&gt;</strong>&lt;input type="radio" name="types" value="all"&gt; All<strong>&lt;/label&gt;</strong>
     <strong>&lt;label&gt;</strong>&lt;input type="radio" name="types" value="essential"&gt; Essential only<strong>&lt;/label&gt;</strong>
 &lt;/fieldset&gt;</code></pre>
-                    
-                    <label for="email">Email</label>
-                    <input type="email" id="email">
-                    <p><input type="checkbox" id="checkbox1"> <label for="checkbox1" style="display: inline-block;">Subscribe to the mailing list</label></p>
-                    <fieldset>
-                        <legend>Types of emails</legend>
-                        <input type="radio" name="types" value="all" id="rb1"> <label for="rb1" style="display: inline-block;">All</label>
-                        <input type="radio" name="types" value="essential" id="rb2"> <label for="rb2" style="display: inline-block;">Essential only</label>
-                    </fieldset> 
+                        
+                        <label for="email">Email</label>
+                        <input type="email" id="email">
+                        <p><input type="checkbox" id="checkbox1"> <label for="checkbox1" style="display: inline-block;">Subscribe to the mailing list</label></p>
+                        <fieldset>
+                            <legend>Types of emails</legend>
+                            <input type="radio" name="types" value="all" id="rb1"> <label for="rb1" style="display: inline-block;">All</label>
+                            <input type="radio" name="types" value="essential" id="rb2"> <label for="rb2" style="display: inline-block;">Essential only</label>
+                        </fieldset> 
 
-                     <pre><code><strong>&lt;label for="email"&gt;Email&lt;/label&gt;</strong>
-&lt;input type="email" id="email"&gt;
-&lt;input type="checkbox" id="checkbox1"&gt; 
-<strong>&lt;label for="checkbox1"&gt;Subscribe to the mailing list&lt;/label&gt;</strong>
-&lt;fieldset&gt;
-    &lt;legend&gt;Types of emails&lt;/legend&gt;
-    &lt;input type="radio" name="types" value="all" id="rb1"&gt; <strong>&lt;label for="rb1"&gt;All&lt;/label&gt;</strong>
-    &lt;input type="radio" name="types" value="essential" id="rb2"&gt; <strong>&lt;label for="rb2"&gt;Essential only&lt;/label&gt;</strong>
-&lt;/fieldset&gt;</code></pre>
-                </div>
-
-                <h3><code>&lt;aria-label&gt;</code></h3>
-                <div class="example">
-                    <p>Email<br>
-                    <input type="email" aria-label="Email"></p>
-                    <p><input type="checkbox" aria-label="Subscribe to the mailing list"> Subscribe to the mailing list</p>
-                    <fieldset>
-                        <legend>Types of emails</legend>
-                        <input type="radio" name="types" value="all" aria-label="all"> All<br>
-                        <input type="radio" name="types" value="essential" aria-label="essential"> Essential only
-                    </fieldset> 
-
-                    <pre><code>&lt;p&gt;Email&lt;/p&gt;
-&lt;input type="email" <strong>aria-label="Email"</strong>&gt;
-&lt;p&gt;&lt;input type="checkbox" <strong>aria-label="Subscribe to the mailing list"</strong>&gt; Subscribe to the mailing list&lt;/p&gt;
-&lt;fieldset&gt;
-    &lt;legend&gt;Types of emails&lt;/legend&gt;
-    &lt;input type="radio" name="types" value="all" <strong>aria-label="all"</strong>&gt; All
-    &lt;input type="radio" name="types" value="essential" <strong>aria-label="essential"</strong>&gt; Essential only
-&lt;/fieldset&gt;</code></pre>
-                </div>
-
-                <h3><code>&lt;aria-labelledby&gt;</code></h3>
-                <div class="example">
-                    <p id="email2">Email<br>
-                    <input type="email" aria-labelledby="email2"></p>
-                    <input type="checkbox" aria-labelledby="checkbox2"> <span id="checkbox2"> Subscribe to the mailing list</span>
-                    <fieldset>
-                        <legend>Types of emails</legend>
-                        <input type="radio" name="types" value="all" aria-labelledby="all"> <span id="all">All</span><br>
-                        <input type="radio" name="types" value="essential" aria-labelledby="essential"> <span id="essential">Essential only</span>
-                    </fieldset> 
-
-                    <pre><code>&lt;p id="email"&gt;Email&lt;/p&gt;
-&lt;input type="email" <strong>aria-labelledby="email"</strong>&gt;
-&lt;input type="checkbox" <strong>aria-labelledby="checkbox2"</strong>&gt; &lt;span id="checkbox2"&gt; Subscribe to the mailing list&lt;/span&gt;
-&lt;fieldset&gt;
-    &lt;legend&gt;Types of emails&lt;/legend&gt;
-    &lt;input type="radio" name="types" value="all" <strong>aria-labelledby="all"</strong>&gt; &lt;span id="all"&gt;All&lt;/span&gt;
-    &lt;input type="radio" name="types" value="essential" <strong>aria-labelledby="essential"</strong>&gt; &lt;span id="essential"&gt;Essential only&lt;/span&gt;
-&lt;/fieldset&gt;</code></pre>
-                </div>
-
-                <h3>Placeholder text</h3>
-                <div class="example">
-                    <input type="text" placeholder="Email">
-
-                    <pre><code>&lt;input type="email" <strong>placeholder="Email"</strong>&gt;</code></pre>
-                </div>
-
-                <h3>Custom form fields</h3>
-                <div class="example">
-                    <div role="textbox" contenteditable="true" style="border: 1px solid black;">Email</div>
-                    <div class="cbExample">
-                        <div role="checkbox" tabindex="0" aria-checked="false">Subscribe to the mailing list
-                            <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
-                            <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
-                        </div>
-                    </div>
-                    <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
-
-                    <div class="radioExample" role="radiogroup" aria-labelledby="grp">
-                        <p id="grp">Types of emails</p>
-                        <div role="radio" tabindex="0" aria-checked="false">All
-                            <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
-                            <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
-                        </div>
-                        <div role="radio" tabindex="0" aria-checked="false">Essential only
-                            <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
-                            <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
-                        </div>
+                         <pre><code><strong>&lt;label for="email"&gt;Email&lt;/label&gt;</strong>
+    &lt;input type="email" id="email"&gt;
+    &lt;input type="checkbox" id="checkbox1"&gt; 
+    <strong>&lt;label for="checkbox1"&gt;Subscribe to the mailing list&lt;/label&gt;</strong>
+    &lt;fieldset&gt;
+        &lt;legend&gt;Types of emails&lt;/legend&gt;
+        &lt;input type="radio" name="types" value="all" id="rb1"&gt; <strong>&lt;label for="rb1"&gt;All&lt;/label&gt;</strong>
+        &lt;input type="radio" name="types" value="essential" id="rb2"&gt; <strong>&lt;label for="rb2"&gt;Essential only&lt;/label&gt;</strong>
+    &lt;/fieldset&gt;</code></pre>
                     </div>
 
-                    <pre><code>&lt;div role="textbox" contenteditable="true" style="border: 1px solid black;"&gt;<strong>Email</strong>&lt;/div&gt;</code></pre>
-                <script src="{{ baseurl }}/assets/js/radio.js"></script>
+                    <h3><code>&lt;aria-label&gt;</code></h3>
+                    <div class="example">
+                        <p>Email<br>
+                        <input type="email" aria-label="Email"></p>
+                        <p><input type="checkbox" aria-label="Subscribe to the mailing list"> Subscribe to the mailing list</p>
+                        <fieldset>
+                            <legend>Types of emails</legend>
+                            <input type="radio" name="types" value="all" aria-label="all"> All<br>
+                            <input type="radio" name="types" value="essential" aria-label="essential"> Essential only
+                        </fieldset> 
+
+                        <pre><code>&lt;p&gt;Email&lt;/p&gt;
+    &lt;input type="email" <strong>aria-label="Email"</strong>&gt;
+    &lt;p&gt;&lt;input type="checkbox" <strong>aria-label="Subscribe to the mailing list"</strong>&gt; Subscribe to the mailing list&lt;/p&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Types of emails&lt;/legend&gt;
+        &lt;input type="radio" name="types" value="all" <strong>aria-label="all"</strong>&gt; All
+        &lt;input type="radio" name="types" value="essential" <strong>aria-label="essential"</strong>&gt; Essential only
+    &lt;/fieldset&gt;</code></pre>
+                    </div>
+
+                    <h3><code>&lt;aria-labelledby&gt;</code></h3>
+                    <div class="example">
+                        <p id="email2">Email<br>
+                        <input type="email" aria-labelledby="email2"></p>
+                        <input type="checkbox" aria-labelledby="checkbox2"> <span id="checkbox2"> Subscribe to the mailing list</span>
+                        <fieldset>
+                            <legend>Types of emails</legend>
+                            <input type="radio" name="types" value="all" aria-labelledby="all"> <span id="all">All</span><br>
+                            <input type="radio" name="types" value="essential" aria-labelledby="essential"> <span id="essential">Essential only</span>
+                        </fieldset> 
+
+                        <pre><code>&lt;p id="email"&gt;Email&lt;/p&gt;
+    &lt;input type="email" <strong>aria-labelledby="email"</strong>&gt;
+    &lt;input type="checkbox" <strong>aria-labelledby="checkbox2"</strong>&gt; &lt;span id="checkbox2"&gt; Subscribe to the mailing list&lt;/span&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Types of emails&lt;/legend&gt;
+        &lt;input type="radio" name="types" value="all" <strong>aria-labelledby="all"</strong>&gt; &lt;span id="all"&gt;All&lt;/span&gt;
+        &lt;input type="radio" name="types" value="essential" <strong>aria-labelledby="essential"</strong>&gt; &lt;span id="essential"&gt;Essential only&lt;/span&gt;
+    &lt;/fieldset&gt;</code></pre>
+                    </div>
+
+                    <h3>Placeholder text</h3>
+                    <div class="example">
+                        <input type="text" placeholder="Email">
+
+                        <pre><code>&lt;input type="email" <strong>placeholder="Email"</strong>&gt;</code></pre>
+                    </div>
+
+                    <h3>Custom form fields</h3>
+                    <div class="example">
+                        <div role="textbox" contenteditable="true" style="border: 1px solid black;">Email</div>
+                        <div class="cbExample">
+                            <div role="checkbox" tabindex="0" aria-checked="false">Subscribe to the mailing list
+                                <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                                <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
+                            </div>
+                        </div>
+                        <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
+
+                        <div class="radioExample" role="radiogroup" aria-labelledby="grp">
+                            <p id="grp">Types of emails</p>
+                            <div role="radio" tabindex="0" aria-checked="false">All
+                                <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
+                                <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
+                            </div>
+                            <div role="radio" tabindex="0" aria-checked="false">Essential only
+                                <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
+                                <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
+                            </div>
+                        </div>
+
+                        <pre><code>&lt;div role="textbox" contenteditable="true" style="border: 1px solid black;"&gt;<strong>Email</strong>&lt;/div&gt;</code></pre>
+                    <script src="{{ baseurl }}/assets/js/radio.js"></script>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Not Applicable</h2>
-            <div>
-                <p>The following items are not applicable to this failure:</p>
-                <ul>
-                    <li><strong>Hidden with CSS</strong>:<br>
-                        <code>&lt;input type="email" style="display:none;"&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                    <li><strong>Hidden with ARIA</strong>:<br>
-                        <code>&lt;input type="email" aria-hidden="true"&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                    <li><strong>Role of "none"</strong>:<br>
-                        <code>&lt;input type="email" role="none"&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Hidden with CSS</strong>:<br>
+                            <code>&lt;input type="email" style="display:none;"&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                        <li><strong>Hidden with ARIA</strong>:<br>
+                            <code>&lt;input type="email" aria-hidden="true"&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                        <li><strong>Role of "none"</strong>:<br>
+                            <code>&lt;input type="email" role="none"&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Assistive technology only works well when code is done properly.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F68">F68: Failure of Success Criterion 4.1.2 due to a user interface control not having a programmatically determined name</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G135">G135: Using the accessibility API features of a technology to expose names and notification of changes</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF10">PDF10: Providing labels for interactive form controls in PDF documents</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/e086e5/">Form field has non-empty accessible name</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>Assistive technology only works well when code is done properly.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F68">F68: Failure of Success Criterion 4.1.2 due to a user interface control not having a programmatically determined name</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G135">G135: Using the accessibility API features of a technology to expose names and notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF10">PDF10: Providing labels for interactive form controls in PDF documents</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/e086e5/">Form field has non-empty accessible name</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
