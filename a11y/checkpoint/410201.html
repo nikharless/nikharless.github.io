@@ -29,12 +29,19 @@ css: disclosure-faq
                 <li>Frames and iframes</li>
             </ul>
 
-            <p>An accessible name may be:</p>
+            <p>An accessible name may be provided by:</p>
             <ul>
-                <li>A programmatically associated label for a form control or button</li>
+                <li>A programmatically associated <code>&lt;label&gt;</code> for a form control</li>
+                <li>An <code>aria-label</code> attribute</li>
+                <li>A <code>title</code> attribute</li>
+                <li>An <code>aria-labelledby</code> attribute</li>
+                <li>The text of a <code>&lt;button&gt;</code></li>
+                <li>A <code>value</code> attribute for Submit and Reset buttons</li>
+                <li>An <code>alt</code> attribute for image buttons</li>
                 <li>The text of a link</li>
-                <li>The label of a menu item or tab</li>
-                <li>The title of a dialog, frame, or iframe</li>
+                <li>The text of a drop-down option or tab</li>
+                <li>The title of a frame, or iframe</li>
+                <li>An <code>aria-label</code> or <code>aria-labelledby</code> element for a dialog</li>
                 <li>etc.</li>
             </ul>
         </div>
@@ -60,7 +67,7 @@ css: disclosure-faq
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            <h3 id="test1">Does the page contain focusable components?</h3>
+            <h3 id="test1">Does the page contain user interface components?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the name of the component identified by assistive technology when the component receives focus?</span>
                     <ul role="group">
@@ -84,10 +91,20 @@ css: disclosure-faq
                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component an iframe?</span>
                                                             <ul role="group">
                                                                 <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020105].link | prepend: baseurl }}">{{ site.data.4102.4102[41020105].name }}.</a></span></li>
-                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component part of a group of components?</span>
+                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a dialog?</span>
                                                                     <ul role="group">
-                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020106].link | prepend: baseurl }}">{{ site.data.4102.4102[41020106].name }}.</a></span></li>
-                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}.</a></span></li>
+                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}.</a></span></li>
+                                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a frame?</span>
+                                                                            <ul role="group">
+                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}.</a></span></li>
+                                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component part of a group of components?</span>
+                                                                                    <ul role="group">
+                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020106].link | prepend: baseurl }}">{{ site.data.4102.4102[41020106].name }}.</a></span></li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}.</a></span></li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </li>
                                                                     </ul>
                                                                 </li>
                                                             </ul>
@@ -335,6 +352,8 @@ css: disclosure-faq
                 <li><a href="{{ site.data.4102.4102[41020106].link | prepend: baseurl }}">{{ site.data.4102.4102[41020106].name }}.</a></li>
                 <li><a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}.</a></li>
                 <li><a href="{{ site.data.4102.4102[41020108].link | prepend: baseurl }}">{{ site.data.4102.4102[41020108].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}.</a></li>
+                <li><a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}.</a></li>
             </ul>
         </div>
 
