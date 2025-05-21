@@ -3,6 +3,7 @@ layout: default
 current: 41020101
 criterion: 4102
 checkpoint: 410201
+css: button-arrows
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -44,16 +45,16 @@ checkpoint: 410201
                     <h3><code>&lt;button&gt;</code> without text</h3>
                     <p>This example uses the native HTML <code>&lt;button&gt;</code> element, but it does not have any text or image with a text alternative inside it.</p>
                     <div class="example">
-                        <button></button>
+                        <button class="arrow-button right-arrow"><span class="arrow"></span></button>
 
-                        <pre><code>&lt;button&gt;&lt;/button&gt;</code></pre>
+                        <pre><code>&lt;button&gt;&lt;span class="arrow"&gt;&lt;/span&gt;&lt;/button&gt;</code></pre>
                     </div>
 
                     <p>This example uses the native HTML <code>&lt;button&gt;</code> element with a <code>value</code> attribute. However, the <code>value</code> attribute is not valid on the <code>&lt;button&gt;</code> element and does not provide an accessible name.</p>
                     <div class="example">
-                        <button value="Submit"></button>
+                        <button value="Next"></button>
 
-                        <pre><code>&lt;button value="Submit"&gt;&lt;/button&gt;</code></pre>
+                        <pre><code>&lt;button value="Next"&gt;&lt;/button&gt;</code></pre>
                     </div>
 
                     <p>This example uses the native HTML <code>&lt;button&gt;</code> element with <code>role="none"</code>. However, because a <code>&lt;button&gt;</code> element is focusable, the <code>role="none"</code> is ignored, leaving the button without an accessible name.</p>
@@ -74,9 +75,9 @@ checkpoint: 410201
                     <h3>Custom button</h3>
                     <p>This example uses the text inside a <code>&lt;div&gt;</code> with <code>role="button"</code>, but it does not have any text or image with a text alternative inside it.</p>
                     <div class="example">
-                        <div role="button" tabindex="0" style="border: 1px solid black; padding: 5px; width: 50px;"></div>
+                        <div role="button" tabindex="0" class="arrow-button right-arrow"><span class="arrow"></span></div>
 
-                        <pre><code>&lt;div role="button" tabindex="0"&gt;&lt;/div&gt;</code></pre>
+                        <pre><code>&lt;div role="button" tabindex="0"&gt;&lt;span class="arrow"&gt;&lt;/span&gt;&lt;/div&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -99,11 +100,19 @@ checkpoint: 410201
                         <pre><code>&lt;button&gt;&lt;img src="submit.png" <strong>alt="Submit"</strong>&gt;&lt;/button&gt;</code></pre>
                     </div>
 
-                    <p>This example uses an <code>aria-label</code> value as the accessible name.</p>
+                    <p>This example uses an <code>aria-label</code> value on a CSS image as the accessible name.</p>
                     <div class="example">
-                        <button aria-label="Next"></button>
+                        <button class="arrow-button right-arrow"><span class="arrow" aria-label="Next"></span></button>
 
-                        <pre><code>&lt;button aria-label="Next"&gt;&lt;/button&gt;</code></pre>
+                        <pre><code>&lt;button&gt;&lt;span class="arrow" aria-label="Next"&gt;&lt;/span&gt;&lt;/button&gt;</code></pre>
+                    </div>
+
+
+                    <p>This example uses an <code>aria-label</code> value on the &lt;button&gt; element as the accessible name.</p>
+                    <div class="example">
+                        <button aria-label="Next" class="arrow-button right-arrow"><span class="arrow"></span></button>
+
+                        <pre><code>&lt;button aria-label="Next"&gt;&lt;span class="arrow" &gt;&lt;/span&gt;&lt;/button&gt;</code></pre>
                     </div>
 
                     <h3>Input button</h3>
@@ -139,9 +148,9 @@ checkpoint: 410201
 
                     <p>This example uses an <code>aria-label</code> value as the accessible name.</p>
                     <div class="example">
-                        <div role="button" tabindex="0" aria-label="Next"></div>
+                        <div role="button" tabindex="0" aria-label="Next"class="arrow-button right-arrow"><span class="arrow"></span></div>
 
-                        <pre><code>&lt;div role="button" tabindex="0" aria-label="Next"&gt;&lt;/div&gt;</code></pre>
+                        <pre><code>&lt;div role="button" tabindex="0" aria-label="Next"&gt;&lt;span class="arrow"&gt;&lt;/span&gt;&lt;/div&gt;</code></pre>
                     </div>
                 </div>
             </div>
