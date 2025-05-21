@@ -45,17 +45,17 @@ css: 1411
                 <h2 class="{{ sc.level }} bad">Failing Examples<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>No Programmatic Names</h3>
+                    <h3 id="form1">No Programmatic Names</h3>
                     <p>The form fields in these examples do not have any programmatic names.</p>
                     <div class="example">
-                        <form>
+                        <form aria-labelledby="form1">
                             Email<br>
                             <input type="email">
                             <p><input type="checkbox"> Subscribe to the mailing list</p>
                             <fieldset>
                                 <p>Types of emails</p>
-                                <input type="radio" name="types" value="all"> All<br>
-                                <input type="radio" name="types" value="essential"> Essential only
+                                <input type="radio" name="types1" value="all"> All<br>
+                                <input type="radio" name="types1" value="essential"> Essential only
                             </fieldset>
                         </form>
 
@@ -78,17 +78,17 @@ css: 1411
                         <pre><code>&lt;input type="text" value="Enter search text here"&gt;</code></pre>
                     </div>
 
-                    <h3>Labels Not Associated</h3>
+                    <h3 id="form2">Labels Not Associated</h3>
                     <p>This example has <code>&lt;label&gt;</code> tags, but they are not associated with the input fields.</p>
                     <div class="example">
-                        <form>
+                        <form aria-labelledby="form2">
                             <label>Email</label>
                             <input type="email">
                             <p><input type="checkbox"> <label style="display: inline-block;">Subscribe to the mailing list</label></p>
                             <fieldset>
                                 <p>Types of emails</p>
-                                <input type="radio" name="types" value="all"> <label style="display: inline-block;">All</label><br>
-                                <input type="radio" name="types" value="essential"> <label style="display: inline-block;">Essential only</label>
+                                <input type="radio" name="types2" value="all"> <label style="display: inline-block;">All</label><br>
+                                <input type="radio" name="types2" value="essential"> <label style="display: inline-block;">Essential only</label>
                             </fieldset>
                         </form>
 
@@ -109,17 +109,17 @@ css: 1411
                 <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Implicit Labels</h3>
+                    <h3 id="form3">Implicit Labels</h3>
                     <p>To use implicit labels, place the form field inside the <code>&lt;label&gt;</code> tags.</p>
                     <div class="example">
-                        <form>
+                        <form aria-labelledby="form3">
                             <label>Email<br>
                                 <input type="email"></label>
                             <label><input type="checkbox"> Subscribe to the mailing list</label>
                             <fieldset>
                                 <legend>Types of emails</legend>
-                                <label><input type="radio" name="types" value="all"> All</label>
-                                <label><input type="radio" name="types" value="essential"> Essential only</label>
+                                <label><input type="radio" name="types3" value="all"> All</label>
+                                <label><input type="radio" name="types3" value="essential"> Essential only</label>
                             </fieldset>
                         </form>
 
@@ -138,17 +138,17 @@ css: 1411
 &lt;/form&gt;</code></pre>
                     </div>
 
-                    <h3>Explicit Labels</h3>
+                    <h3 id="form4">Explicit Labels</h3>
                     <p>To use explicit labels, give the form field a unique id and point to it in the <code>&lt;label&gt;</code> using the <code>for</code> attribute.</p>
                     <div class="example">
-                        <form>
+                        <form aria-labelledby="form4">
                             <label for="email">Email</label>
                             <input type="email" id="email">
                             <p><input type="checkbox" id="checkbox1"> <label for="checkbox1" style="display: inline-block;">Subscribe to the mailing list</label></p>
                             <fieldset>
                                 <legend>Types of emails</legend>
-                                <input type="radio" name="types" value="all" id="rb1"> <label for="rb1" style="display: inline-block;">All</label>
-                                <input type="radio" name="types" value="essential" id="rb2"> <label for="rb2" style="display: inline-block;">Essential only</label>
+                                <input type="radio" name="types4" value="all" id="rb1"> <label for="rb1" style="display: inline-block;">All</label>
+                                <input type="radio" name="types4" value="essential" id="rb2"> <label for="rb2" style="display: inline-block;">Essential only</label>
                             </fieldset>
                         </form>
 
@@ -165,17 +165,17 @@ css: 1411
 &lt;/form&gt;</code></pre>
                     </div>
 
-                    <h3><code>aria-label</code></h3>
+                    <h3 id="form5"><code>aria-label</code></h3>
                     <p>The <code>aria-label</code> attribute may be used on form fields.</p>
                     <div class="example">
-                        <form>
+                        <form aria-labelledby="form5">
                             <p>Email<br>
                             <input type="email" aria-label="Email"></p>
                             <p><input type="checkbox" aria-label="Subscribe to the mailing list"> Subscribe to the mailing list</p>
                             <fieldset>
                                 <legend>Types of emails</legend>
-                                <input type="radio" name="types" value="all" aria-label="all"> All<br>
-                                <input type="radio" name="types" value="essential" aria-label="essential"> Essential only
+                                <input type="radio" name="types5" value="all" aria-label="all"> All<br>
+                                <input type="radio" name="types5" value="essential" aria-label="essential"> Essential only
                             </fieldset>
                         </form>
 
@@ -191,17 +191,17 @@ css: 1411
 &lt;/form&gt;</code></pre>
                     </div>
 
-                    <h3><code>aria-labelledby</code></h3>
+                    <h3 id="form6"><code>aria-labelledby</code></h3>
                     <p>To use the <code>aria-labelledby</code> attribute, give the visible label element a unique id and point to it from the form field.</p>
                     <div class="example">
-                        <form>
+                        <form aria-labelledby="form6">
                             <p id="email2">Email<br>
                             <input type="email" aria-labelledby="email2"></p>
                             <input type="checkbox" aria-labelledby="checkbox2"> <span id="checkbox2"> Subscribe to the mailing list</span>
                             <fieldset>
                                 <legend>Types of emails</legend>
-                                <input type="radio" name="types" value="all" aria-labelledby="all"> <span id="all">All</span><br>
-                                <input type="radio" name="types" value="essential" aria-labelledby="essential"> <span id="essential">Essential only</span>
+                                <input type="radio" name="types6" value="all" aria-labelledby="all"> <span id="all">All</span><br>
+                                <input type="radio" name="types6" value="essential" aria-labelledby="essential"> <span id="essential">Essential only</span>
                             </fieldset>
                         </form>
 
@@ -224,10 +224,10 @@ css: 1411
                         <pre><code>&lt;input type="email" <strong>placeholder="Email"</strong>&gt;</code></pre>
                     </div>
 
-                    <h3>Custom form fields</h3>
+                    <h3 id="form7">Custom form fields</h3>
                     <p>These custom form fields use the text inside the <code>&lt;div&gt;</code> with the <code>role</code> assigned as the programmatic name.</p>
                     <div class="example">
-                        <div role="form">
+                        <div role="form" aria-labelledby="form7">
                             <div role="textbox" contenteditable="true" style="border: 1px solid black;">Email</div>
                             <div class="cbExample">
                                 <div role="checkbox" tabindex="0" aria-checked="false">Subscribe to the mailing list
