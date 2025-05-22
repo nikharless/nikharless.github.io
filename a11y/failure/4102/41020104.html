@@ -30,9 +30,9 @@ checkpoint: 410201
                     <h3>HTML</h3>
                     <p>Provide an accessible name for the link, using one of the following methods:</p>
                     <ul>
-                        <li>Use text between the start and end tags of an <code>&lt;a&gt;</code> element as the accessible name, <strong>OR</strong></li>
-                        <li>Use text between the start and end tags of a custom link as the accessible name, <strong>OR</strong></li>
-                        <li>Use text between the start and end tags of a <code>&lt;button&gt;</code> element with <code>role="link"</code> as the accessible name, <strong>OR</strong></li>
+                        <li>Use text or text alternative between the start and end tags of an <code>&lt;a&gt;</code> element as the accessible name, <strong>OR</strong></li>
+                        <li>Use text or text alternative between the start and end tags of a custom link as the accessible name, <strong>OR</strong></li>
+                        <li>Use text or text alternative between the start and end tags of a <code>&lt;button&gt;</code> element with <code>role="link"</code> as the accessible name, <strong>OR</strong></li>
                         <li>Use the <code>aria-label</code> attribute on the link and set it to the accessible name, <strong>OR</strong></li>
                         <li>Use the <code>title</code> attribute on the link and set it to the accessible name, <strong>OR</strong></li>
                         <li>Use the <code>aria-labelledby</code> attribute on the link and point it to the id of a text element with the accessible name, <strong>OR</strong></li>
@@ -51,6 +51,80 @@ checkpoint: 410201
                             }
                         }
                     </script>
+                    <h3>Empty accessible name</h3>
+                    <p>This example has no content inside the link.</p>
+                    <div class="example">
+                        <a href="https://ourparks.org/"></a>
+
+                        <pre><code>&lt;a href="https://ourparks.org/"&gt;&lt;/a&gt;</code></pre>
+                    </div>
+
+                    <h3>No text or text alternative</h3>
+                    <p>This example link has an image with no text alternative.</p>
+                    <div class="example">
+                        <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt=""></a>
+
+                        <pre><code>&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" <strong>alt=""</strong>&gt;&lt;/a&gt;</code></pre>
+                    </div>
+
+                    <h3>Role of "presentation"</h3>
+                    <p>This example link has an image assigned the role of "presentation".</p>
+                    <div class="example">
+                        <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" role="presentation"></a>
+
+                        <pre><code>&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" <strong>role="presentation"</strong>&gt;&lt;/a&gt;</code></pre>
+                    </div>
+
+                    <h3>Role of "none"</h3>
+                    <p>This example has a role of "none". However, because the <code>&lt;a&gt;</code> element is focusable, the "link" role takes precedence, resulting in a link with no accessible name.</p>
+                    <div class="example">
+                        <a href="https://ourparks.org/" role="none"></a>
+
+                        <pre><code>&lt;a href="https://ourparks.org/" <strong>role="none"</strong>&gt;&lt;/a&gt;</code></pre>
+                    </div>
+
+                    <p>This example link has an image assigned the role of "none".</p>
+                    <div class="example">
+                        <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" role="none"></a>
+
+                        <pre><code>&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" <strong>role="none"</strong>&gt;&lt;/a&gt;</code></pre>
+                    </div>
+
+                    <h3>Invalid <code>aria-labelledby</code> reference</h3>
+                    <p>This example link has an image using <code>aria-labelledby</code> which points to an empty element.</p>
+                    <div class="example">
+                        <div id="divOne"></div>
+                        <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" aria-labelledby="divOne"></a>
+
+                        <pre><code>&lt;div id="divOne"&gt;&lt;/div&gt;
+&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" <strong>aria-labelledby="divOne"</strong>&gt;&lt;/a&gt;</code></pre>
+                    </div>
+
+                    <p>This example link has an image using <code>aria-labelledby</code> which points to a non-existent <code>id</code>.</p>
+                    <div class="example">
+                        <div id="divOne"></div>
+                        <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" aria-labelledby="divOne"></a>
+
+                        <pre><code>&lt;div id="divOne"&gt;&lt;/div&gt;
+&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" <strong>aria-labelledby="oneDiv"</strong>&gt;&lt;/a&gt;</code></pre>
+                    </div>
+
+                    <h3>Image map <code>&lt;area&gt;</code> element with no <code>alt</code> attribute</h3>
+                    <p>Image map <code>&lt;area&gt;</code> elements have a semantic role of "link". Here they are missing <code>alt</code> attributes and have no accessible name.</p>
+                    <div class="example">
+                        <img src="{{ baseurl }}/assets/images/110101-infographic.png" style="max-width: 480px;" alt="Steps of the Process" usemap="#csimap">
+                        <map id="csimap" name="csimap">
+                            <area shape="rect" coords="0,0,168,334" href="#" onclick="alert('Step 1')">
+                            <area shape="rect" coords="168,0,319,334" href="#" onclick="alert('Step 2')">
+                            <area shape="rect" coords="319,0,471,334" href="#" onclick="alert('Step 3')">
+                            <area shape="rect" coords="471,0,640,334" href="#" onclick="alert('Step 4')">
+                        </map>
+                        <pre><code>&lt;img src="infographic.png" alt="Steps of the Process" usemap="#csimap"&gt;
+&lt;map id="csimap" name="Sample Image Map"&gt; 
+    &lt;area shape="rect" coords="0,0,168,334" href="step1.html"&gt;
+        ...
+&lt;/map&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
@@ -66,7 +140,7 @@ checkpoint: 410201
                     </div>
 
                     <h3>Link content text alternative</h3>
-                    <p>This example uses native HTML, and the link text is the accessible name.</p>
+                    <p>This example uses the image text alternative as the accessible name.</p>
                     <div class="example">
                         <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt="Our Parks"></a>
 
@@ -89,7 +163,7 @@ checkpoint: 410201
 
                     <p>This example uses the <code>aria-labelledby</code> attribute on the image to provide an accessible name for the link.</p>
                     <div class="example">
-                        <p id="label" style="font-family: Palanquin Dark,ui-sans-serif,system-ui,sans-serif,'Apple Color Emoji','Segoe UI Emoji',Segoe UI Symbol,'Noto Color Emoji'; font-weight: 600; color: #404040;">Our Parks</p>
+                        <p id="label" style="font-family: Palanquin Dark,ui-sans-serif,system-ui,sans-serif,'Apple Color Emoji','Segoe UI Emoji',Segoe UI Symbol,'Noto Color Emoji'; font-weight: 600; color: #404040; font-size: 3.75rem;">Our Parks</p>
                         <p><a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt="" aria-labelledby="label"></a></p>
 
                         <pre><code>&lt;h1 id="label"&gt;Our Parks&lt;/h1&gt;
@@ -138,14 +212,9 @@ checkpoint: 410201
                             <area shape="rect" coords="319,0,471,334" href="#" onclick="alert('Step 3')" alt="Step 3 Details">
                             <area shape="rect" coords="471,0,640,334" href="#" onclick="alert('Step 4')" alt="Step 4 Details">
                         </map>
-                        <pre><code>&lt;img src="infographic.png"
-    alt="Steps of the Process"
-    usemap="#csimap"&gt;
+                        <pre><code>&lt;img src="infographic.png" alt="Steps of the Process" usemap="#csimap"&gt;
 &lt;map id="csimap" name="Sample Image Map"&gt; 
-    &lt;area shape="rect"
-        coords="0,0,168,334"
-        href="step1.html"
-        <strong>alt="Step 1 Details"</strong>&gt;
+    &lt;area shape="rect" coords="0,0,168,334" href="step1.html" <strong>alt="Step 1 Details"</strong>&gt;
         ...
 &lt;/map&gt;</code></pre>
                     </div>
@@ -158,20 +227,20 @@ checkpoint: 410201
                     <ul>
                         <li><strong>Link as button</strong>:<br>
                             <code>&lt;a href="https://www.w3.org/WAI/" role="button"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
-                            File under <a href="/a11y/failure/4102/41020101.html">4.1.2.1.1 Button does not have an accessible name.</a></li>
+                            File under <a href="{{ site.data.4102.4102[41020101].link | prepend: baseurl }}">{{ site.data.4102.4102[41020101].name }}.</a></li>
                         <li><strong>Hidden with display property</strong>:<br>
-                            <code>&lt;a href="https://www.w3.org/WAI/" style="display: none;"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
+                            <code>&lt;a href="https://ourparks.org/" style="display: none;"&gt;Our Parks&lt;/a&gt;</code><br>
                             Does not appear in accessibility tree</li>
                         <li><strong>Hidden with visibility property</strong>:<br>
-                            <code>&lt;a href="https://www.w3.org/WAI/" style="visibility: hidden;"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
+                            <code>&lt;a href="https://ourparks.org/" style="visibility: hidden;"&gt;Our Parks&lt;/a&gt;</code><br>
                             Does not appear in accessibility tree</li>
                         <li><strong>Hidden with ARIA</strong>:<br>
-                            <code>&lt;a href="https://www.w3.org/WAI/" aria-hidden="true"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
+                            <code>&lt;a href="https://ourparks.org/" aria-hidden="true"&gt;Our Parks&lt;/a&gt;</code><br>
                             Does not appear in accessibility tree</li>
-                        <li><strong>Anchor element without href attribute</strong>:<br>
+                        <li><strong><code>&lt;a&gt;</code> element without <code>href</code> attribute</strong>:<br>
                             <code>&lt;a&gt;</code><br>
                             Not a link</li>
-                        <li><strong>Area element that is not a link</strong>:<br>
+                        <li><strong><code>&lt;area&gt;</code> element that is not a link</strong>:<br>
                             <code>&lt;area shape="rect" coords="0,0,30,100&gt;</code><br>
                             Not a link</li>
                     </ul>
