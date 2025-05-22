@@ -59,7 +59,7 @@ checkpoint: 410201
                         <pre><code>&lt;a href="https://ourparks.org/"&gt;&lt;/a&gt;</code></pre>
                     </div>
 
-                    <h3>No text or text alternative</h3>
+                    <h3>No text alternative</h3>
                     <p>This example link has an image with no text alternative.</p>
                     <div class="example">
                         <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt=""></a>
@@ -68,11 +68,11 @@ checkpoint: 410201
                     </div>
 
                     <h3>Role of "presentation"</h3>
-                    <p>This example link has an image assigned the role of "presentation".</p>
+                    <p>This example link has an image assigned the role of "presentation", so the text alternative is hidden from assistive technology.</p>
                     <div class="example">
-                        <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" role="presentation"></a>
+                        <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt="Our Parks" role="presentation"></a>
 
-                        <pre><code>&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" <strong>role="presentation"</strong>&gt;&lt;/a&gt;</code></pre>
+                        <pre><code>&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" alt="Our Parks" <strong>role="presentation"</strong>&gt;&lt;/a&gt;</code></pre>
                     </div>
 
                     <h3>Role of "none"</h3>
@@ -83,11 +83,11 @@ checkpoint: 410201
                         <pre><code>&lt;a href="https://ourparks.org/" <strong>role="none"</strong>&gt;&lt;/a&gt;</code></pre>
                     </div>
 
-                    <p>This example link has an image assigned the role of "none".</p>
+                    <p>This example link has an image assigned the role of "none", so the text alternative is hidden from assistive technology.</p>
                     <div class="example">
                         <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" role="none"></a>
 
-                        <pre><code>&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" <strong>role="none"</strong>&gt;&lt;/a&gt;</code></pre>
+                        <pre><code>&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" alt="Our Parks" <strong>role="none"</strong>&gt;&lt;/a&gt;</code></pre>
                     </div>
 
                     <h3>Invalid <code>aria-labelledby</code> reference</h3>
@@ -140,7 +140,7 @@ checkpoint: 410201
                     </div>
 
                     <h3>Link content text alternative</h3>
-                    <p>This example uses the image text alternative as the accessible name.</p>
+                    <p>This example uses the image <code>alt</code> attribute on the image to provide an accessible name for the link.</p>
                     <div class="example">
                         <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt="Our Parks"></a>
 
@@ -187,7 +187,7 @@ checkpoint: 410201
                     </div>
 
                     <h3><code>aria-label</code> attribute</h3>
-                    <p>This example uses the <code>aria-label</code> attribute to provide an accessible name.</p>
+                    <p>This example uses the <code>aria-label</code> attribute on the link to provide an accessible name.</p>
                     <div class="example">
                         <a href="https://ourparks.org/" aria-label="Our Parks"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt=""></a>
 
@@ -226,7 +226,7 @@ checkpoint: 410201
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
                         <li><strong>Link as button</strong>:<br>
-                            <code>&lt;a href="https://www.w3.org/WAI/" role="button"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
+                            <code>&lt;a href="https://ourparks.org/" role="button"&gt;Our Parks&lt;/a&gt;</code><br>
                             File under <a href="{{ site.data.4102.4102[41020101].link | prepend: baseurl }}">{{ site.data.4102.4102[41020101].name }}.</a></li>
                         <li><strong>Hidden with display property</strong>:<br>
                             <code>&lt;a href="https://ourparks.org/" style="display: none;"&gt;Our Parks&lt;/a&gt;</code><br>
