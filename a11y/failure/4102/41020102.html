@@ -131,47 +131,78 @@ css: 1411
                             <div role="textbox" contenteditable="true" style="border: 1px solid black;"></div></label>
                         </div>
 
-                        <pre><code>&lt;label&gt;Email
+                        <pre><code><strong>&lt;label&gt;</strong>Email
     &lt;div role="textbox" contenteditable="true"&gt;&lt;&gt;
-&lt;/label&gt;</code></pre>
+<strong>&lt;/label&gt;</strong></code></pre>
                     </div>
 
                     <h3>Invalid Target</h3>
                     <p>This example uses <code>aria-labelledby</code> to point to an element with no text.</p>
                     <div class="example">
-                        <div id="emptyDiv"></div>
-                        <input type="email" aria-labelledby="emptyDiv">
+                        <form aria-labelledby="form2">
+                            <div id="emptyDiv"></div>
+                            <input type="email" aria-labelledby="emptyDiv">
+                        </form>
 
-                        <pre><code>&lt;div id="emptyDiv"&gt;&lt;/div&gt;
+                        <pre><code><strong>&lt;div id="emptyDiv"&gt;&lt;/div&gt;</strong>
 &lt;input type="email" aria-labelledby="emptyDiv"&gt;</code></pre>
                     </div>
 
                     <p>This example uses <code>aria-labelledby</code> to point to a non-existent <code>id</code>.</p>
                     <div class="example">
-                        <div id="divOne">Email</div>
-                        <input type="email" aria-labelledby="oneDiv">
+                        <form aria-labelledby="form2">
+                            <div id="divOne">Email</div>
+                            <input type="email" aria-labelledby="oneDiv">
+                        </form>
 
                         <pre><code>&lt;div id="divOne"&gt;Email&lt;/div&gt;
-&lt;input type="email" aria-labelledby="oneDiv"&gt;</code></pre>
+&lt;input type="email" <strong>aria-labelledby="oneDiv"</strong>&gt;</code></pre>
                     </div>
 
-                    <h3>Value</h3>
+                    <h3 id="form3">Value</h3>
                     <p>In this example, the text serves as the value, not the accessible name. The text may be deleted or edited, leaving the text field without a name.</p>
                     <div class="example">
-                        <div role="textbox" contenteditable="true" style="border: 1px solid black;">Email</div>
+                        <form aria-labelledby="form3">
+                            <div role="textbox" contenteditable="true" style="border: 1px solid black;">Email</div>
+                        </form>
 
-                        <pre><code>&lt;div role="textbox" contenteditable="true"&gt;Email&lt;/div&gt;</code></pre>
+                        <pre><code>&lt;div role="textbox" contenteditable="true"&gt;<strong>Email</strong>&lt;/div&gt;</code></pre>
                     </div>
+
+                    <h3 id="form4">Hidden</h3>
+                    <p>These form fields do not have accessible names, because they are hidden from assistive technology.</p>
+                    <div class="example">
+                        <form aria-labelledby="form4">
+                            <label><span aria-hidden="true">Email:</span> <input type="email"></label>
+                            <p><input type="checkbox"> <label style="display: inline-block;"><span aria-hidden="true">Subscribe to the mailing list</span></label></p>
+                            <fieldset>
+                                <p>Types of emails</p>
+                                <input type="radio" name="types2" value="all"> <label style="display: inline-block;"><span aria-hidden="true">All</span></label><br>
+                                <input type="radio" name="types2" value="essential"> <label style="display: inline-block;"><span aria-hidden="true">Essential only</span></label>
+                            </fieldset>
+                        </form>
+
+                        <pre><code>&lt;form&gt;
+    &lt;label&gt;&lt;span <strong>aria-hidden="true"&gt;</strong>Email&lt;/span&gt;
+    &lt;input type="email"&gt;&lt;/label&gt;
+    &lt;input type="checkbox"&gt; <strong>&lt;label&gt;&lt;span <strong>aria-hidden="true"&gt;</strong>Subscribe to the mailing list&lt;/span&gt;&lt;/label&gt;</strong>
+    &lt;fieldset&gt;
+        &lt;p&gt;Types of emails&lt;/p&gt;
+        &lt;input type="radio" name="types" value="all"&gt; &lt;label&gt;&lt;span <strong>aria-hidden="true"&gt;</strong>All&lt;/span&gt;&lt;/label&gt;
+        &lt;input type="radio" name="types" value="essential"&gt; &lt;label&gt;&lt;span <strong>aria-hidden="true"&gt;</strong>Essential only&lt;/span&gt;&lt;/label&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+                    </div>     
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3 id="form3">Implicit Labels</h3>
+                    <h3 id="form5">Implicit Labels</h3>
                     <p>To use implicit labels, place the form field inside the <code>&lt;label&gt;</code> tags.</p>
                     <div class="example">
-                        <form aria-labelledby="form3">
+                        <form aria-labelledby="form5">
                             <label>Email<br>
                                 <input type="email"></label>
                             <label><input type="checkbox"> Subscribe to the mailing list</label>
@@ -197,10 +228,10 @@ css: 1411
 &lt;/form&gt;</code></pre>
                     </div>
 
-                    <h3 id="form4">Explicit Labels</h3>
+                    <h3 id="form6">Explicit Labels</h3>
                     <p>To use explicit labels, give the form field a unique id and point to it in the <code>&lt;label&gt;</code> using the <code>for</code> attribute.</p>
                     <div class="example">
-                        <form aria-labelledby="form4">
+                        <form aria-labelledby="form6">
                             <label for="email">Email</label>
                             <input type="email" id="email">
                             <p><input type="checkbox" id="checkbox1"> <label for="checkbox1" style="display: inline-block;">Subscribe to the mailing list</label></p>
@@ -224,10 +255,10 @@ css: 1411
 &lt;/form&gt;</code></pre>
                     </div>
 
-                    <h3 id="form5"><code>aria-label</code></h3>
+                    <h3 id="form7"><code>aria-label</code></h3>
                     <p>The <code>aria-label</code> attribute may be used on form fields.</p>
                     <div class="example">
-                        <form aria-labelledby="form5">
+                        <form aria-labelledby="form7">
                             <p>Email<br>
                             <input type="email" aria-label="Email"></p>
                             <p><input type="checkbox" aria-label="Subscribe to the mailing list"> Subscribe to the mailing list</p>
@@ -250,10 +281,10 @@ css: 1411
 &lt;/form&gt;</code></pre>
                     </div>
 
-                    <h3 id="form6"><code>aria-labelledby</code></h3>
+                    <h3 id="form8"><code>aria-labelledby</code></h3>
                     <p>To use the <code>aria-labelledby</code> attribute, give the visible label element a unique id and point to it from the form field.</p>
                     <div class="example">
-                        <form aria-labelledby="form6">
+                        <form aria-labelledby="form8">
                             <p id="email2">Email<br>
                             <input type="email" aria-labelledby="email2"></p>
                             <input type="checkbox" aria-labelledby="checkbox2"> <span id="checkbox2"> Subscribe to the mailing list</span>
@@ -284,10 +315,10 @@ css: 1411
                         <pre><code>&lt;input type="email" <strong>placeholder="Email"</strong>&gt;</code></pre>
                     </div>
 
-                    <h3 id="form7">Custom form fields</h3>
+                    <h3 id="form9">Custom form fields</h3>
                     <p>These custom form fields use the text inside the <code>&lt;div&gt;</code> with the <code>role</code> assigned as the programmatic name.</p>
                     <div class="example">
-                        <div role="form" aria-labelledby="form7">
+                        <div role="form" aria-labelledby="form9">
                             <div class="cbExample">
                                 <div role="checkbox" tabindex="0" aria-checked="false">Subscribe to the mailing list
                                     <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
@@ -334,8 +365,8 @@ css: 1411
                         <li><strong>Hidden with ARIA</strong>:<br>
                             <code>&lt;input type="email" aria-hidden="true"&gt;</code><br>
                             Does not appear in accessibility tree</li>
-                        <li><strong>Role of "none"</strong>:<br>
-                            <code>&lt;input type="email" role="none"&gt;</code><br>
+                        <li><strong>Disabled with role of "none"</strong>:<br>
+                            <code>&lt;input type="email" role="none" disabled&gt;</code><br>
                             Does not appear in accessibility tree</li>
                     </ul>
                 </div>
