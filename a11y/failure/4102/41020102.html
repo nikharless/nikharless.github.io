@@ -19,7 +19,22 @@ css: 1411
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Form fields (checkboxes, radio buttons, select elements, textboxes, listboxes, searchboxes, sliders, spinbuttons, switches) have accessible names.</div>
+                <div>
+                    <P>Form fields have accessible names. Form fields include the following semantic roles:</P>
+                    <ul>
+                        <li>checkbox</li>
+                        <li>combobox (<code>&lt;select&gt;</code> elements)</li>
+                        <li>listbox</li>
+                        <li>menuitemcheckbox</li>
+                        <li>menuitemradio</li>
+                        <li>radio</li>
+                        <li>searchbox</li>
+                        <li>slider</li>
+                        <li>spinbutton</li>
+                        <li>switch</li>
+                        <li>textbox</li>
+                    </ul>
+                </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
@@ -106,7 +121,47 @@ css: 1411
         &lt;input type="radio" name="types" value="essential"&gt; <strong>&lt;label&gt;Essential only&lt;/label&gt;</strong>
     &lt;/fieldset&gt;
 &lt;/form&gt;</code></pre>
-                    </div>    
+                    </div>
+
+                    <p>This example has <code>&lt;label&gt;</code> tags enclosing the form fields. However, implicit labels only work for native HTML elements. When used with ARIA roles, the association must be explicit.</p>
+
+                    <div class="example">
+                        <div role="form" aria-labelledby="form2">
+                            <label>Email
+                            <div role="textbox" contenteditable="true" style="border: 1px solid black;"></div></label>
+                        </div>
+
+                        <pre><code>&lt;label&gt;Email
+    &lt;div role="textbox" contenteditable="true"&gt;&lt;&gt;
+&lt;/label&gt;</code></pre>
+                    </div>
+
+                    <h3>Invalid Target</h3>
+                    <p>This example uses <code>aria-labelledby</code> to point to an element with no text.</p>
+                    <div class="example">
+                        <div id="emptyDiv"></div>
+                        <input type="email" aria-labelledby="emptyDiv">
+
+                        <pre><code>&lt;div id="emptyDiv"&gt;&lt;/div&gt;
+&lt;input type="email" aria-labelledby="emptyDiv"&gt;</code></pre>
+                    </div>
+
+                    <p>This example uses <code>aria-labelledby</code> to point to a non-existent <code>id</code>.</p>
+                    <div class="example">
+                        <div id="divOne">Email</div>
+                        <input type="email" aria-labelledby="oneDiv">
+
+                        <pre><code>&lt;div id="divOne"&gt;Email&lt;/div&gt;
+&lt;input type="email" aria-labelledby="oneDiv"&gt;</code></pre>
+                    </div>
+
+                    <h3>Value</h3>
+                    <p>In this example, the text serves as the value, not the accessible name. The text may be deleted or edited, leaving the text field without a name.</p>
+                    <div class="example">
+                        <div role="textbox" contenteditable="true" style="border: 1px solid black;">Email</div>
+
+                        <pre><code>&lt;div role="textbox" contenteditable="true"&gt;Email&lt;/div&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
@@ -222,6 +277,7 @@ css: 1411
                     </div>
 
                     <h3>Placeholder text</h3>
+                    <p>The <code>placeholder</code> attribute passes this checkpoint. However, a persistent visible label is still required for <a href="{{ site.data.3302.3302[33020101].link | prepend: baseurl }}">{{ site.data.3302.3302[33020101].name }}.</a>
                     <div class="example">
                         <input type="text" placeholder="Email">
 
@@ -232,7 +288,6 @@ css: 1411
                     <p>These custom form fields use the text inside the <code>&lt;div&gt;</code> with the <code>role</code> assigned as the programmatic name.</p>
                     <div class="example">
                         <div role="form" aria-labelledby="form7">
-                            <div role="textbox" contenteditable="true" style="border: 1px solid black;">Email</div>
                             <div class="cbExample">
                                 <div role="checkbox" tabindex="0" aria-checked="false">Subscribe to the mailing list
                                     <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
@@ -255,7 +310,6 @@ css: 1411
                         </div>
 
                         <pre><code>&lt;div role="form"&gt;
-    &lt;div role="textbox" contenteditable="true"&gt;<strong>Email</strong>&lt;/div&gt;
     &lt;div role="checkbox" tabindex="0" aria-checked="false"&gt;<strong>Subscribe to the mailing list</strong>&lt;/div&gt;
     &lt;div role="radiogroup" aria-labelledby="grp"&gt;
         &lt;p id="grp"&gt;Types of emails&lt;/p&gt;
@@ -272,6 +326,8 @@ css: 1411
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
+                        <li><strong>Visible labels</strong><br>
+                            File under <a href="{{ site.data.3302.3302[33020101].link | prepend: baseurl }}">{{ site.data.3302.3302[33020101].name }}.</a></li>
                         <li><strong>Hidden with CSS</strong>:<br>
                             <code>&lt;input type="email" style="display:none;"&gt;</code><br>
                             Does not appear in accessibility tree</li>
