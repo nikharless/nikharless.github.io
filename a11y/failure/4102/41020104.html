@@ -12,131 +12,198 @@ checkpoint: 410201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Links have accessible names.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>A link does not have an accessible name.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Solution</h2>
-            <div>
-                <h3>HTML</h3>
-                <p>Provide an accessible name for the link, using one of the following methods:</p>
-                <ul>
-                    <li>Use text between the start and end tags of an <code>&lt;a&gt;</code> element as the accessible name, <strong>OR</strong></li>
-                    <li>Use text between the start and end tags of a custom link as the accessible name, <strong>OR</strong></li>
-                    <li>Use text between the start and end tags of a <code>&lt;button&gt;</code> element with <code>role="link"</code> as the accessible name, <strong>OR</strong></li>
-                    <li>Use the <code>aria-label</code> attribute on the link and set it to the accessible name, <strong>OR</strong></li>
-                    <li>Use the <code>title</code> attribute on the link and set it to the accessible name, <strong>OR</strong></li>
-                    <li>Use the <code>aria-labelledby</code> attribute on the link and point it to the id of a text element with the accessible name, <strong>OR</strong></li>
-                    <li>Use the <code>alt</code> attribute on an <code>&lt;area&gt;</code> tag and set it to the accessible name.</li>
-                </ul>
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>Links have accessible names.</div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Link content text</h3>
-                <div class="example">
-                    <a href="https://www.w3.org/WAI/">Web Accessibility Initiative (WAI)</a>
-
-                    <pre><code>&lt;a href="https://www.w3.org/WAI/"&gt;<strong>Web Accessibility Initiative (WAI)</strong>&lt;/a&gt;</code></pre>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>A link does not have an accessible name.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <h3>HTML</h3>
+                    <p>Provide an accessible name for the link, using one of the following methods:</p>
+                    <ul>
+                        <li>Use text between the start and end tags of an <code>&lt;a&gt;</code> element as the accessible name, <strong>OR</strong></li>
+                        <li>Use text between the start and end tags of a custom link as the accessible name, <strong>OR</strong></li>
+                        <li>Use text between the start and end tags of a <code>&lt;button&gt;</code> element with <code>role="link"</code> as the accessible name, <strong>OR</strong></li>
+                        <li>Use the <code>aria-label</code> attribute on the link and set it to the accessible name, <strong>OR</strong></li>
+                        <li>Use the <code>title</code> attribute on the link and set it to the accessible name, <strong>OR</strong></li>
+                        <li>Use the <code>aria-labelledby</code> attribute on the link and point it to the id of a text element with the accessible name, <strong>OR</strong></li>
+                        <li>Use the <code>alt</code> attribute on an <code>&lt;area&gt;</code> tag and set it to the accessible name.</li>
+                    </ul>
                 </div>
-
-                <h3>Custom link text</h3>
-                <div class="example">
-                    <div role="link" tabindex="0" onclick="openLink(event)" onkeyup="openLink(event)" style="text-decoration: underline;">Web Accessibility Initiative (WAI)</div>
-
-                    <pre><code>&lt;div role="link" tabindex="0" onclick="openLink(event)" onkeyup="openLink(event)"&gt;<strong>Web Accessibility Initiative (WAI)</strong>&lt;/div&gt;</code></pre>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <script>
+                        function openLink(event) {
+                            if (event.type === 'click' || ['Enter', ' '].includes(event.key)) {
+                                window.location.href = 'https://ourparks.org/'
+                            }
+                        }
+                    </script>
                 </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Link content text</h3>
+                    <p>This example uses native HTML, and the link text is the accessible name.</p>
+                    <div class="example">
+                        <a href="https://ourparks.org/">Our Parks</a>
 
-                <h3>Button as link</h3>
-                <div class="example">
-                    <button role="link" onclick="openLink(event)">Web Accessibility Initiative (WAI)</button>
+                        <pre><code>&lt;a href="https://ourparks.org/"&gt;<strong>Our Parks</strong>&lt;/a&gt;</code></pre>
+                    </div>
 
-                    <pre><code>&lt;button role="link" onclick="openLink(event)"&gt;<strong>Web Accessibility Initiative (WAI)</strong>&lt;/button&gt;</code></pre>
-                </div>
+                    <h3>Link content text alternative</h3>
+                    <p>This example uses native HTML, and the link text is the accessible name.</p>
+                    <div class="example">
+                        <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt="Our Parks"></a>
 
-                <h3>aria-label</h3>
-                <div class="example">
-                    <a href="https://github.com/" aria-label="github"><img src="{{ baseurl }}/assets/images/110101-github-mark.png" alt="" style="max-width: 48px; max-height: 48px;"></a>
+                        <pre><code>&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" <strong>alt="Our Parks"</strong>&gt;&lt;/a&gt;</code></pre>
+                    </div>
 
-                    <pre><code>&lt;a href="https://github.com/" <strong>aria-label="github"</strong>&gt;&lt;img src="github.png" alt=""&gt;&lt;/a&gt;</code></pre>
-                </div>
+                    <p>This example uses the <code>title</code> attribute on the image to provide an accessible name for the link.</p>
+                    <div class="example">
+                        <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt="" title="Our Parks"></a>
 
-                <h3>Title attribute</h3>
-                <div class="example">
-                    <a href="https://github.com/" title="github"><img src="{{ baseurl }}/assets/images/110101-github-mark.png" alt="" style="max-width: 48px; max-height: 48px;"></a>
+                        <pre><code>&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" alt="" <strong>title="Our Parks"</strong>&gt;&lt;/a&gt;</code></pre>
+                    </div>
 
-                    <pre><code>&lt;a href="https://github.com/" <strong>title="github"</strong>&gt;&lt;img src="{{ baseurl }}/assets/images/github.png" alt=""&gt;&lt;/a&gt;</code></pre>
-                </div>
+                    <p>This example uses the <code>aria-label</code> attribute on the image to provide an accessible name for the link.</p>
+                    <div class="example">
+                        <a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt="" aria-label="Our Parks"></a>
 
-                <h3>Image map area element</h3>
-                <div class="example">
-                    <map name="imagemap">
-                        <area shape="rect" coords="0,0,30,100" href="https://www.w3.org/WAI/" alt="Web Accessibility Initiative (WAI)">
-                    </map>
+                        <pre><code>&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" alt="" <strong>aria-label="Our Parks"</strong>&gt;&lt;/a&gt;</code></pre>
+                    </div>
 
-                    <pre><code>&lt;map name="imagemap"&gt;
-    &lt;area shape="rect" coords="0,0,30,100" href="https://www.w3.org/WAI/" <strong>alt="Web Accessibility Initiative (WAI)"</strong>&gt;
+                    <p>This example uses the <code>aria-labelledby</code> attribute on the image to provide an accessible name for the link.</p>
+                    <div class="example">
+                        <p id="label" style="font-family: Palanquin Dark,ui-sans-serif,system-ui,sans-serif,'Apple Color Emoji','Segoe UI Emoji',Segoe UI Symbol,'Noto Color Emoji'; font-weight: 600; color: #404040;">Our Parks</p>
+                        <p><a href="https://ourparks.org/"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt="" aria-labelledby="label"></a></p>
+
+                        <pre><code>&lt;h1 id="label"&gt;Our Parks&lt;/h1&gt;
+&lt;a href="https://ourparks.org/"&gt;&lt;img src="our-parks-logo.svg" alt="" <strong>aria-labelledby="label"</strong>&gt;&lt;/a&gt;</code></pre>
+                    </div>
+
+                    <h3>Custom link text</h3>
+                    <p>This example has a role of "link" and uses the link text as the accessible name.</p>
+                    <div class="example">
+                        <div role="link" tabindex="0" onclick="openLink(event)" onkeyup="openLink(event)" style="text-decoration: underline;">Our Parks</div>
+
+                        <pre><code>&lt;div role="link" tabindex="0" onclick="openLink(event)" onkeyup="openLink(event)"&gt;<strong>Our Parks</strong>&lt;/div&gt;</code></pre>
+                    </div>
+
+                    <h3>Button as link</h3>
+                    <p>This example also has a role of "link" and uses the button text as the accessible name.</p>
+                    <div class="example">
+                        <button role="link" onclick="openLink(event)">Our Parks</button>
+
+                        <pre><code>&lt;button role="link" onclick="openLink(event)"&gt;<strong>Our Parks</strong>&lt;/button&gt;</code></pre>
+                    </div>
+
+                    <h3><code>aria-label</code> attribute</h3>
+                    <p>This example uses the <code>aria-label</code> attribute to provide an accessible name.</p>
+                    <div class="example">
+                        <a href="https://ourparks.org/" aria-label="Our Parks"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt=""></a>
+
+                        <pre><code>&lt;a href="https://ourparks.org/" <strong>aria-label="Our Parks"</strong>&gt;&lt;img src="our-parks-logo.svg" alt=""&gt;&lt;/a&gt;</code></pre>
+                    </div>
+
+                    <h3><code>title</code> attribute</h3>
+                    <p>This example uses the <code>title</code> attribute on the link to provide an accessible name.</p>
+                    <div class="example">
+                        <a href="https://ourparks.org/" title="Our Parks"><img src="{{ baseurl }}/assets/images/1101-our-parks-logo-dark.svg" alt=""></a>
+
+                        <pre><code>&lt;a href="https://ourparks.org/" <strong>title="Our Parks"</strong>&gt;&lt;img src="our-parks-logo.svg" alt=""&gt;&lt;/a&gt;</code></pre>
+                    </div>
+
+                    <h3>Image map <code>&lt;area&gt;</code> element</h3>
+                    <p>Image map <code>&lt;area&gt;</code> elements have a semantic role of "link". The <code>alt</code> attribute provides the accessible name.</p>
+                    <div class="example">
+                        <img src="{{ baseurl }}/assets/images/110101-infographic.png" style="max-width: 480px;" alt="Steps of the Process" usemap="#csimap">
+                        <map id="csimap" name="csimap">
+                            <area shape="rect" coords="0,0,168,334" href="#" onclick="alert('Step 1')" alt="Step 1 Details">
+                            <area shape="rect" coords="168,0,319,334" href="#" onclick="alert('Step 2')" alt="Step 2 Details">
+                            <area shape="rect" coords="319,0,471,334" href="#" onclick="alert('Step 3')" alt="Step 3 Details">
+                            <area shape="rect" coords="471,0,640,334" href="#" onclick="alert('Step 4')" alt="Step 4 Details">
+                        </map>
+                        <pre><code>&lt;img src="infographic.png"
+    alt="Steps of the Process"
+    usemap="#csimap"&gt;
+&lt;map id="csimap" name="Sample Image Map"&gt; 
+    &lt;area shape="rect"
+        coords="0,0,168,334"
+        href="step1.html"
+        <strong>alt="Step 1 Details"</strong>&gt;
+        ...
 &lt;/map&gt;</code></pre>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Not Applicable</h2>
-            <div>
-                <p>The following items are not applicable to this failure:</p>
-                <ul>
-                    <li><strong>Link as button</strong>:<br>
-                        <code>&lt;a href="https://www.w3.org/WAI/" role="button"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
-                        File under <a href="/a11y/failure/4102/41020101.html">4.1.2.1.1 Button does not have an accessible name.</a></li>
-                    <li><strong>Hidden with display property</strong>:<br>
-                        <code>&lt;a href="https://www.w3.org/WAI/" style="display: none;"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                    <li><strong>Hidden with visibility property</strong>:<br>
-                        <code>&lt;a href="https://www.w3.org/WAI/" style="visibility: hidden;"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                    <li><strong>Hidden with ARIA</strong>:<br>
-                        <code>&lt;a href="https://www.w3.org/WAI/" aria-hidden="true"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                    <li><strong>Anchor element without href attribute</strong>:<br>
-                        <code>&lt;a&gt;</code><br>
-                        Not a link</li>
-                    <li><strong>Area element that is not a link</strong>:<br>
-                        <code>&lt;area shape="rect" coords="0,0,30,100&gt;</code><br>
-                        Not a link</li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Link as button</strong>:<br>
+                            <code>&lt;a href="https://www.w3.org/WAI/" role="button"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
+                            File under <a href="/a11y/failure/4102/41020101.html">4.1.2.1.1 Button does not have an accessible name.</a></li>
+                        <li><strong>Hidden with display property</strong>:<br>
+                            <code>&lt;a href="https://www.w3.org/WAI/" style="display: none;"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                        <li><strong>Hidden with visibility property</strong>:<br>
+                            <code>&lt;a href="https://www.w3.org/WAI/" style="visibility: hidden;"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                        <li><strong>Hidden with ARIA</strong>:<br>
+                            <code>&lt;a href="https://www.w3.org/WAI/" aria-hidden="true"&gt;Web Accessibility Initiative (WAI)&lt;/a&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                        <li><strong>Anchor element without href attribute</strong>:<br>
+                            <code>&lt;a&gt;</code><br>
+                            Not a link</li>
+                        <li><strong>Area element that is not a link</strong>:<br>
+                            <code>&lt;area shape="rect" coords="0,0,30,100&gt;</code><br>
+                            Not a link</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Assistive technology only works well when code is done properly.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G135">G135: Using the accessibility API features of a technology to expose names and notification of changes</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
-                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/c487ae/">Link has non-empty accessible name</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Vision Impairment:</strong> Programmatic names enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Programmatic names enable compatibility with assistive technology such as speech recognition software.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G135">G135: Using the accessibility API features of a technology to expose names and notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/c487ae/">Link has non-empty accessible name</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
