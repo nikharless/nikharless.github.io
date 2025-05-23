@@ -3,7 +3,7 @@ layout: default
 current: 41020106
 criterion: 4102
 checkpoint: 410201
-css: radio
+css: radio-color
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -162,6 +162,31 @@ css: radio
         &lt;input type="radio" name="fc" id="red"&gt;
         &lt;label for="red"&gt;Red&lt;/label&gt;
     &lt;/div&gt;</code></pre>
+                    </div>
+
+                    <h3>Radiogroup role and <code>aria-label</code></h3>
+                    <p></p>
+                    <p>NVDA:</p>
+                    <div class="example">
+                        <div><img id="prodImg" src="{{baseurl}}/assets/images/mug-black.jpg" alt="white mug with black interior"></div>
+                        <div role="radiogroup" aria-label="Mug Color">
+                            <div aria-label="black" onclick="changeImage('black')" onkeyup="changeImage('black')"><input type="radio" name="mc" class="radio black"></div>
+                            <div aria-label="blue" onclick="changeImage('blue')" onkeyup="changeImage('blue')"><input type="radio" name="mc" class="radio blue"></div>
+                            <div aria-label="pink" onclick="changeImage('pink')" onkeyup="changeImage('pink')"><input type="radio" name="mc" class="radio pink"></div>
+                        </div>
+
+                        <script>
+                            function changeImage(mugColor) {
+                                var image=document.getElementById('prodImg');
+                                if (image.src.match("{{ baseurl }}/assets/images/11010207-trout.png")) {
+                                  image.src="{{ baseurl }}/assets/images/11010207-fish.png";
+                                  image.alt="Blue fish";
+                                } else {
+                                  image.src="{{ baseurl }}/assets/images/11010207-trout.png";
+                                  image.alt="Trout";
+                                }
+                            }
+                    </script>
                     </div>
 
                     <h3>Fieldset and legend for checkbox group</h3>
