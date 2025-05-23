@@ -36,16 +36,49 @@ checkpoint: 410201
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Title attribute</h3>
+
+                    <h3>No accessible name</h3>
+                    <p>This example doesn't have an accessible name.</p>
+                    <div class="example">
+                        <iframe src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+
+                        <pre><code>&lt;iframe src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                    </div>
+
+                    <h3>Empty <code>title</code> attribute</h3>
+                    <p>This example has a <code>title</code> attribute, but it is empty.</p>
+                    <div class="example">
+                        <iframe title="" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+
+                        <pre><code>&lt;iframe <strong>title=""</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                    </div>
+
+                    <h3><code>name</code> attribute</h3>
+                    <p>This example has a <code>name</code> attribute, but this does not provide an accessible name.</p>
+                    <div class="example">
+                        <iframe name="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+
+                        <pre><code>&lt;iframe <strong>name="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3><code>title attribute</code></h3>
+                    <p>This example uses the <code>title</code> attribute to provide the accessible name.</p>
                     <div class="example">
                         <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
 
                         <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
                     </div>
 
-                    <h3>ARIA label</h3>
+                    <h3><code>aria-label</code> attribute</h3>
+                    <p>This example uses the <code>aria-label</code> attribute to provide the accessible name.</p>
                     <div class="example">
                         <iframe aria-label="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
 
@@ -53,11 +86,13 @@ checkpoint: 410201
                     </div>
 
                     <h3>Reference to visible text</h3>
+                    <p>This example uses the <code>aria-labelledby</code> attribute pointing to existing text to provide the accessible name.</p>
                     <div class="example">
                         <div id="ititle">Top Ten Songs of 1972</div>
                         <iframe aria-labelledby="ititle" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
 
-                        <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                        <pre>&lt;div id="ititle"&gt;Top Ten Songs of 1972&lt;/div&gt;
+<code>&lt;iframe <strong>aria-labelledby="ititle"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -84,7 +119,8 @@ checkpoint: 410201
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
-                        <li><strong>Blind/vision impaired:</strong> Screen reader users need to be alerted of changes in page content.</li>
+                        <li><strong>Blindness/Vision Impairment:</strong> Programmatic names enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Programmatic names enable compatibility with assistive technology such as speech recognition software.</li>
                     </ul>
                 </div>
             </div>
