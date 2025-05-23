@@ -1,0 +1,148 @@
+---
+layout: default
+current: 41020111
+criterion: 4102
+checkpoint: 410201
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+{% assign cp=site.data.4102.4102[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>Iframes with different resources have different accessible names.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>Iframes with different resources have the same accessible name.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <p>Provide a unique accessible name for each iframe resource.</p>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+
+                    <h3>Same accessible name for different resources</h3>
+                    <p><code>title</code> attribute and different source documents</p>
+                    <div class="example">
+                        <iframe title="Top Ten Songs" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+                        <iframe title="Top Ten Songs" src="{{ baseurl }}/assets/docs/topten3.html"></iframe>
+
+                        <pre><code>&lt;iframe title="Top Ten Songs" src="topten.html"&gt;&lt;/iframe&gt;
+&lt;iframe title="Top Ten Songs" src="topten3.html"&gt;&lt;/iframe&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3><code>title</code> attribute and same source document</h3>
+                    <p>This example uses the <code>title</code> attribute to provide the same accessible name for two iframes pointing to the same source document.</p>
+                    <div class="example">
+                        <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+                        <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+
+                        <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;
+&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                    </div>
+
+                    <h3><code>title</code> attribute and equivalent source documents</h3>
+                    <p>This example uses the <code>title</code> attribute to provide the same accessible name for two iframes pointing to equivalent source documents.</p>
+                    <div class="example">
+                        <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+                        <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten2.html"></iframe>
+
+                        <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;
+&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten2.html"&gt;&lt;/iframe&gt;</code></pre>
+                    </div>
+
+                    <h3><code>title</code> and <code>aria-label</code> attributes and same source document</h3>
+                    <p>This example uses the <code>title</code> and <code>aria-label</code> attributes to provide the same accessible name for two iframes pointing to the same source document.</p>
+                    <div class="example">
+                        <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+                        <iframe aria-label="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+
+                        <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;
+&lt;iframe <strong>aria-label="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                    </div>
+
+                    <h3>Reference to visible text</h3>
+                    <p>This example uses <code>aria-labelledby</code> attributes pointing to existing text to provide the same accessible name for two iframes pointing to the same source document.</p>
+                    <div class="example">
+                        <div id="ititle">Top Ten Songs of 1972</div>
+                        <iframe aria-labelledby="ititle" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+
+                        <div id="ititle2">Top Ten Songs of 1972</div>
+                        <iframe aria-labelledby="ititle2" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+
+                        <pre>&lt;div id="ititle"&gt;Top Ten Songs of 1972&lt;/div&gt;
+<code>&lt;iframe <strong>aria-labelledby="ititle"</strong> src="topten.html"&gt;&lt;/iframe&gt;
+
+&lt;div id="ititle2"&gt;Top Ten Songs of 1972&lt;/div&gt;
+<code>&lt;iframe <strong>aria-labelledby="ititle2"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>One iframe element</strong>:<br>
+                            Only one iframe on the page</li>
+                        <li><strong>Multiple iframes with different accessible names</strong>:<br>
+                            No multiple iframes with the same accessible name</li>
+                        <li><strong>Hidden with <code>display</code> property</strong>:<br>
+                            <code>&lt;iframe title="Page One" style="display: none;"&gt;&lt;/iframe&gt;</code><br>
+                            Has same name but does not appear in accessibility tree</li>
+                        <li><strong>Hidden with <code>aria-hidden</code>:<br>
+                            <code>&lt;iframe title="Page One" aria-hidden="true"&gt;&lt;/iframe&gt;</code><br>
+                            Has same name but does not appear in accessibility tree</li>
+                        <li><strong>No accessible name</strong>:<br>
+                            <code>&lt;iframe src="page.html"&gt;&lt;/iframe&gt;</code><br>
+                            File under <a href="{{ site.data.4102.4102[41020105].link | prepend: baseurl }}">{{ site.data.4102.4102[41020105].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Vision Impairment:</strong> Programmatic names enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Programmatic names enable compatibility with assistive technology such as speech recognition software.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H64">H64: Using the title attribute of the iframe element</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4b1c6c/proposed/">Iframe elements with identical accessible names have equivalent purpose</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/4102checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
