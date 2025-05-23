@@ -61,7 +61,7 @@ css: radio
 
                     <h3>No checkbox group name</h3>
                     <p>This example shows two checkbox groups. When browsing this form with assistive technology in forms mode, it is not clear what the two groups of choices are for. The group label must be programmatically associated with the checkbox group.</p>
-                    <p>NVDA: ""</p>
+                    <p>NVDA: "Pepperoni, checkbox, not checked", "Pepperoni, checkbox, not checked"</p>
                     <div class="example">
                         <div><strong>Choose your toppings</strong></div>
                         <div>First pizza</div>
@@ -78,6 +78,23 @@ css: radio
 &lt;label&gt;&lt;input type="checkbox" name="pizza1" value="pepperoni"&gt; Pepperoni&lt;/label&gt;
 &lt;label&gt;&lt;input type="checkbox" name="pizza1" value="mushrooms"&gt; Mushrooms&lt;/label&gt;
 ...</code></pre>
+                    </div>
+
+                    <h3>No input group name</h3>
+                    <p></p>
+                    <p>NVDA: ""</p>
+                    <div class="example">
+                        <div>Shipping Address</div>
+                        <label>Name: <input type="text"></label>
+                        <label>Street Address: <input type="text"></label>
+                        <label>City: <input type="text"></label>
+                        <label>Postal Code: <input type="text"></label>
+
+                        <div>Billing Address</div>
+                        <label>Name: <input type="text"></label>
+                        <label>Street Address: <input type="text"></label>
+                        <label>City: <input type="text"></label>
+                        <label>Postal Code: <input type="text"></label>
                     </div>
                 </div>
             </div>
@@ -112,31 +129,43 @@ css: radio
                     </div>
 
                     <h3>Radiogroup role</h3>
+                    <p>This example uses the ARIA "radiogroup" role to provide a group name for each radio group.</p>
+                    <p>NVDA: ""</p>
                     <div class="example">
-                        <p id="radio_group_label">Pancake Toppings</p>
+                        <p id="radio_group_label">Fill color</p>
                         <div role="radiogroup" aria-labelledby="radio_group_label">
-                            <input type="radio" name="toppings" id="syrup">
-                            <label for="syrup" style="display:inline-block;">Maple syrup</label><br>
-                            <input type="radio" name="toppings" id="berries">
-                            <label for="berries" style="display:inline-block;">Blueberries</label><br>
-                            <input type="radio" name="toppings" id="cream">
-                            <label for="cream" style="display:inline-block;">Whipped cream</label>
+                            <input type="radio" name="fc" id="black">
+                            <label for="black" style="display:inline-block;">Black</label><br>
+                            <input type="radio" name="fc" id="blue">
+                            <label for="blue" style="display:inline-block;">Blue</label><br>
+                            <input type="radio" name="fc" id="red">
+                            <label for="red" style="display:inline-block;">Red</label>
                         </div>
 
-                        <pre><code>&lt;p id="radio_group_label"&gt;Pancake Toppings&lt;/p&gt;
+                        <p id="radio_group_label">Outline color</p>
+                        <div role="radiogroup" aria-labelledby="radio_group_label">
+                            <input type="radio" name="oc" id="black">
+                            <label for="black" style="display:inline-block;">Black</label><br>
+                            <input type="radio" name="oc" id="blue">
+                            <label for="blue" style="display:inline-block;">Blue</label><br>
+                            <input type="radio" name="oc" id="red">
+                            <label for="red" style="display:inline-block;">Red</label>
+                        </div>
+
+                        <pre><code>&lt;p id="radio_group_label"&gt;Fill color&lt;/p&gt;
     &lt;div role="radiogroup" <strong>aria-labelledby="radio_group_label"</strong>&gt;
-        &lt;input type="radio" name="toppings" id="syrup"&gt;
-        &lt;label for="syrup"&gt;Maple syrup&lt;/label&gt;&lt;br&gt;
-        &lt;input type="radio" name="toppings" id="berries"&gt;
-        &lt;label for="berries"&gt;Blueberries&lt;/label>&lt;br&gt;
-        &lt;input type="radio" name="toppings" id="cream"&gt;
-        &lt;label for="cream"&gt;Whipped cream&lt;/label&gt;
+        &lt;input type="radio" name="fc" id="black"&gt;
+        &lt;label for="black"&gt;Black&lt;/label&gt;&lt;br&gt;
+        &lt;input type="radio" name="fc" id="blue"&gt;
+        &lt;label for="blue"&gt;Blue&lt;/label>&lt;br&gt;
+        &lt;input type="radio" name="fc" id="red"&gt;
+        &lt;label for="red"&gt;Red&lt;/label&gt;
     &lt;/div&gt;</code></pre>
                     </div>
 
                     <h3>Fieldset and legend for checkbox group</h3>
                     <p>This example uses <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> elements to provide a group name for each checkbox group, so assistive technology users understand what they are picking toppings for.</p>
-                    <p>NVDA: "Fill color, grouping, Black, radio button, not checked, 1 of 3", "Outline color, grouping, Black, radio button, not checked, 1 of 3"</p>
+                    <p>NVDA: "First pizza, grouping, Pepperoni, checkbox, not checked", "Second pizza, grouping, Pepperoni, checkbox, not checked"</p>
                     <div class="example">
                         <div><strong>Choose your toppings</strong></div>
                         <fieldset>
@@ -162,27 +191,85 @@ css: radio
                     </div>
 
                     <h3>Group role</h3>
+                    <p>This example uses the ARIA "group" role to provide a group name for each checkbox group.</p>
+                    <p>NVDA: ""</p>
                     <div class="example">
-                        <p id="group_label">Contact Information</p>
+                        <p id="group_label">First pizza</p>
                         <div role="group" aria-labelledby="group_label">
-                            <label for="name">Name: </label> 
-                               <input type="text" id="name"><br>
-                            <label for="address">Address: </label>
-                               <input type="text" id="address"><br>
-                            <label for="city">City: </label>
-                               <input type="text" id="city"><br>
-                            <label for="state">State: </label>
-                               <input type="text" id="state"><br>
-                            <label for="zip">Zip Code: </label>
-                               <input type="text" id="zip"><br>
+                            <label><input type="checkbox" name="pizza1" value="pepperoni"> Pepperoni</label>
+                            <label><input type="checkbox" name="pizza1" value="mushrooms"> Mushrooms</label>
+                            <label><input type="checkbox" name="pizza1" value="pineapple"> Pineapple</label>
                         </div>
 
-                        <pre><code>&lt;p id="group_label"&gt;Contact Information&lt;/p&gt;
-    &lt;div role="group" <strong>aria-labelledby="group_label"</strong>&gt;
-        &lt;label for="name"&gt;Name: &lt;/label&gt;
-        &lt;input type="text" id="name"&gt;
-        ...
-    &lt;/div&gt;</code></pre>
+                        <p id="group_label">Second pizza</p>
+                        <div role="group" aria-labelledby="group_label">
+                            <label><input type="checkbox" name="pizza2" value="pepperoni"> Pepperoni</label>
+                            <label><input type="checkbox" name="pizza2" value="mushrooms"> Mushrooms</label>
+                            <label><input type="checkbox" name="pizza2" value="pineapple"> Pineapple</label>
+                        </div>
+
+                        <pre><code>&lt;p id="group_label"&gt;First pizza&lt;/p&gt;
+&lt;div role="group" <strong>aria-labelledby="group_label"</strong>&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="pizza1" value="pepperoni"&gt; Pepperoni&lt;/label&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="pizza1" value="mushrooms"&gt; Mushrooms&lt;/label&gt;
+    ...
+&lt;/div&gt;</code></pre>
+                    </div>
+
+                    <h3>Fieldset and legend for input group</h3>
+                    <p>This example uses <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> elements to provide a group name for each input group, so assistive technology users understand what address they are entering.</p>
+                    <p>NVDA: "", ""</p>
+                    <div class="example">
+                        <div><strong>Choose your toppings</strong></div>
+                        <fieldset>
+                            <legend>Shipping Address</legend>
+                            <label>Name: <input type="text"></label>
+                            <label>Street Address: <input type="text"></label>
+                            <label>City: <input type="text"></label>
+                            <label>Postal Code: <input type="text"></label>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Billing Address</legend>
+                            <label>Name: <input type="text"></label>
+                            <label>Street Address: <input type="text"></label>
+                            <label>City: <input type="text"></label>
+                            <label>Postal Code: <input type="text"></label>
+                        </fieldset>
+
+                        <pre><code>&lt;fieldset&gt;
+    &lt;legend&gt;Shipping Address&lt;/legend&gt;
+    &lt;label&gt;Name: &lt;input type="text"&gt;&lt;/label&gt;
+    &lt;label&gt;Street Address: &lt;input type="text"&gt;&lt;/label&gt;
+    ...
+&lt;/fieldset&gt;</code></pre>
+                    </div>
+
+                    <h3>Group role</h3>
+                    <p>This example uses the ARIA "group" role to provide a group name for each input group.</p>
+                    <div class="example">
+                        <p id="group_label">Shipping Address</p>
+                        <div role="group" aria-labelledby="group_label">
+                            <label>Name: <input type="text"></label>
+                            <label>Street Address: <input type="text"></label>
+                            <label>City: <input type="text"></label>
+                            <label>Postal Code: <input type="text"></label>
+                        </div>
+
+                        <p id="group_label">Billing Address</p>
+                        <div role="group" aria-labelledby="group_label">
+                            <label>Name: <input type="text"></label>
+                            <label>Street Address: <input type="text"></label>
+                            <label>City: <input type="text"></label>
+                            <label>Postal Code: <input type="text"></label>
+                        </div>
+
+                        <pre><code>&lt;p id="group_label"&gt;Shipping Address&lt;/p&gt;
+&lt;div role="group" <strong>aria-labelledby="group_label"</strong>&gt;
+    &lt;label&gt;Name: &lt;input type="text"&gt;&lt;/label&gt;
+    &lt;label&gt;Street Address: &lt;input type="text"&gt;&lt;/label&gt; 
+    ...
+&lt;/div&gt;</code></pre>
                     </div>
                 </div>
             </div>
