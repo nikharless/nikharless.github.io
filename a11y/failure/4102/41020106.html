@@ -13,125 +13,138 @@ css: radio
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>If the labels for individual controls in a group of controls do not provide enough context to understand the purpose of the controls, the form element group has an accessible name.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>The labels for individual controls in a group of controls do not provide enough context to understand the purpose of the controls, but the form element group does not have an accessible name.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Solution</h2>
-            <div>
-                <p>Provide an accessible name for the form element group, using one of the following methods:</p>
-                <ul>
-                    <li>Use the <code>&lt;fieldset&gt;</code> element to group form controls, and place the accessible name in the <code>legend</code> element, <strong>OR</strong></li>
-                    <li>Use the <code>aria-labelledby</code> attribute on the element with <code>role="group"</code> or <code>role="radiogroup"</code> and set it to the id value of the visible label to function as the accessible name.</li>
-                </ul>
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>If the labels for individual controls in a group of controls do not provide enough context to understand the purpose of the controls, the form element group has an accessible name.</div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Fieldset and legend</h3>
-                <div class="example">
-                    <fieldset>
-                        <legend>Pizza Toppings</legend>
-                        <label><input type="checkbox"> Pepperoni</label>
-                        <label><input type="checkbox"> Mushrooms</label>
-                        <label><input type="checkbox"> Black olives</label>
-                        <label><input type="checkbox"> Extra cheese</label>
-                    </fieldset> 
-
-                    <pre><code>&lt;fieldset&gt;
-    <strong>&lt;legend&gt;Pizza Toppings&lt;/legend&gt;</strong>
-    &lt;label&gt;&lt;input type="checkbox"&gt; Pepperoni&lt;/label&gt;
-    ...
-&lt;/fieldset&gt;</code></pre>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>The labels for individual controls in a group of controls do not provide enough context to understand the purpose of the controls, but the form element group does not have an accessible name.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <p>Provide an accessible name for the form element group, using one of the following methods:</p>
+                    <ul>
+                        <li>Use the <code>&lt;fieldset&gt;</code> element to group form controls, and place the accessible name in the <code>legend</code> element, <strong>OR</strong></li>
+                        <li>Use the <code>aria-labelledby</code> attribute on the element with <code>role="group"</code> or <code>role="radiogroup"</code> and set it to the id value of the visible label to function as the accessible name.</li>
+                    </ul>
                 </div>
+            </div>
+            <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                </div>     
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Fieldset and legend</h3>
+                    <div class="example">
+                        <fieldset>
+                            <legend>Pizza Toppings</legend>
+                            <label><input type="checkbox"> Pepperoni</label>
+                            <label><input type="checkbox"> Mushrooms</label>
+                            <label><input type="checkbox"> Black olives</label>
+                            <label><input type="checkbox"> Extra cheese</label>
+                        </fieldset> 
 
-                <h3>Radiogroup role</h3>
-                <div class="example">
-                    <p id="radio_group_label">Pancake Toppings</p>
-                    <div role="radiogroup" aria-labelledby="radio_group_label">
-                        <input type="radio" name="toppings" id="syrup">
-                        <label for="syrup" style="display:inline-block;">Maple syrup</label><br>
-                        <input type="radio" name="toppings" id="berries">
-                        <label for="berries" style="display:inline-block;">Blueberries</label><br>
-                        <input type="radio" name="toppings" id="cream">
-                        <label for="cream" style="display:inline-block;">Whipped cream</label>
+                        <pre><code>&lt;fieldset&gt;
+        <strong>&lt;legend&gt;Pizza Toppings&lt;/legend&gt;</strong>
+        &lt;label&gt;&lt;input type="checkbox"&gt; Pepperoni&lt;/label&gt;
+        ...
+    &lt;/fieldset&gt;</code></pre>
                     </div>
 
-                    <pre><code>&lt;p id="radio_group_label"&gt;Pancake Toppings&lt;/p&gt;
-&lt;div role="radiogroup" <strong>aria-labelledby="radio_group_label"</strong>&gt;
-    &lt;input type="radio" name="toppings" id="syrup"&gt;
-    &lt;label for="syrup"&gt;Maple syrup&lt;/label&gt;&lt;br&gt;
-    &lt;input type="radio" name="toppings" id="berries"&gt;
-    &lt;label for="berries"&gt;Blueberries&lt;/label>&lt;br&gt;
-    &lt;input type="radio" name="toppings" id="cream"&gt;
-    &lt;label for="cream"&gt;Whipped cream&lt;/label&gt;
-&lt;/div&gt;</code></pre>
-                </div>
+                    <h3>Radiogroup role</h3>
+                    <div class="example">
+                        <p id="radio_group_label">Pancake Toppings</p>
+                        <div role="radiogroup" aria-labelledby="radio_group_label">
+                            <input type="radio" name="toppings" id="syrup">
+                            <label for="syrup" style="display:inline-block;">Maple syrup</label><br>
+                            <input type="radio" name="toppings" id="berries">
+                            <label for="berries" style="display:inline-block;">Blueberries</label><br>
+                            <input type="radio" name="toppings" id="cream">
+                            <label for="cream" style="display:inline-block;">Whipped cream</label>
+                        </div>
 
-                <h3>Group role</h3>
-                <div class="example">
-                    <p id="group_label">Contact Information</p>
-                    <div role="group" aria-labelledby="group_label">
-                        <label for="name">Name: </label> 
-                           <input type="text" id="name"><br>
-                        <label for="address">Address: </label>
-                           <input type="text" id="address"><br>
-                        <label for="city">City: </label>
-                           <input type="text" id="city"><br>
-                        <label for="state">State: </label>
-                           <input type="text" id="state"><br>
-                        <label for="zip">Zip Code: </label>
-                           <input type="text" id="zip"><br>
+                        <pre><code>&lt;p id="radio_group_label"&gt;Pancake Toppings&lt;/p&gt;
+    &lt;div role="radiogroup" <strong>aria-labelledby="radio_group_label"</strong>&gt;
+        &lt;input type="radio" name="toppings" id="syrup"&gt;
+        &lt;label for="syrup"&gt;Maple syrup&lt;/label&gt;&lt;br&gt;
+        &lt;input type="radio" name="toppings" id="berries"&gt;
+        &lt;label for="berries"&gt;Blueberries&lt;/label>&lt;br&gt;
+        &lt;input type="radio" name="toppings" id="cream"&gt;
+        &lt;label for="cream"&gt;Whipped cream&lt;/label&gt;
+    &lt;/div&gt;</code></pre>
                     </div>
 
-                    <pre><code>&lt;p id="group_label"&gt;Contact Information&lt;/p&gt;
-&lt;div role="group" <strong>aria-labelledby="group_label"</strong>&gt;
-    &lt;label for="name"&gt;Name: &lt;/label&gt;
-    &lt;input type="text" id="name"&gt;
-    ...
-&lt;/div&gt;</code></pre>
+                    <h3>Group role</h3>
+                    <div class="example">
+                        <p id="group_label">Contact Information</p>
+                        <div role="group" aria-labelledby="group_label">
+                            <label for="name">Name: </label> 
+                               <input type="text" id="name"><br>
+                            <label for="address">Address: </label>
+                               <input type="text" id="address"><br>
+                            <label for="city">City: </label>
+                               <input type="text" id="city"><br>
+                            <label for="state">State: </label>
+                               <input type="text" id="state"><br>
+                            <label for="zip">Zip Code: </label>
+                               <input type="text" id="zip"><br>
+                        </div>
+
+                        <pre><code>&lt;p id="group_label"&gt;Contact Information&lt;/p&gt;
+    &lt;div role="group" <strong>aria-labelledby="group_label"</strong>&gt;
+        &lt;label for="name"&gt;Name: &lt;/label&gt;
+        &lt;input type="text" id="name"&gt;
+        ...
+    &lt;/div&gt;</code></pre>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Not Applicable</h2>
-            <div>
-                <p>The following items are not applicable to this failure:</p>
-                <ul>
-                    <li><strong>No groups</strong>:<br>
-                        No groups of related form elements on the page</li>
-                    <li><strong>Group label not required</strong>:<br>
-                        Group label is not required to understand the full purpose of the individual controls</li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>No groups</strong>:<br>
+                            No groups of related form elements on the page</li>
+                        <li><strong>Group label not required</strong>:<br>
+                            Group label is not required to understand the full purpose of the individual controls</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Assistive technology only works well when code is done properly.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Vision Impairment:</strong> Programmatic names enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Programmatic names enable compatibility with assistive technology such as speech recognition software.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
