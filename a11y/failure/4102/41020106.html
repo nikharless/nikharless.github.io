@@ -41,6 +41,7 @@ css: radio
                 <div>
                     <h3>No radio group name</h3>
                     <p>This example shows two radio button groups. When browsing this form with assistive technology in forms mode, it is not clear what the color choices are for. The group label must be programmatically associated with the radio group.</p>
+                    <p>NVDA: "Black, radio button, not checked, 1 of 6", "Black, radio button, not checked, 4 of 6"</p>
                     <div class="example">
                         <div>Fill color</div>
                         <label><input type="radio" name="fc" value="black"> Black</label>
@@ -53,18 +54,40 @@ css: radio
                         <label><input type="radio" name="oc" value="red"> Red</label>
 
                         <pre><code>&lt;div&gt;Fill color&lt;/div&gt;
-&lt;label&gt;&lt;input type="radio" value="black"&gt; Black&lt;/label&gt;
-&lt;label&gt;&lt;input type="radio" value="blue"&gt; Blue&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="fc" value="black"&gt; Black&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="fc" value="blue"&gt; Blue&lt;/label&gt;
 ...</code></pre>
-                    </div>  
+                    </div>
+
+                    <h3>No checkbox group name</h3>
+                    <p>This example shows two checkbox groups. When browsing this form with assistive technology in forms mode, it is not clear what the two groups of choices are for. The group label must be programmatically associated with the checkbox group.</p>
+                    <p>NVDA: ""</p>
+                    <div class="example">
+                        <div><strong>Choose your toppings</strong></div>
+                        <div>First pizza</div>
+                        <label><input type="checkbox" name="pizza1" value="pepperoni"> Pepperoni</label>
+                        <label><input type="checkbox" name="pizza1" value="mushrooms"> Mushrooms</label>
+                        <label><input type="checkbox" name="pizza1" value="pineapple"> Pineapple</label>
+
+                        <div>Second pizza</div>
+                        <label><input type="checkbox" name="pizza2" value="pepperoni"> Pepperoni</label>
+                        <label><input type="checkbox" name="pizza2" value="mushrooms"> Mushrooms</label>
+                        <label><input type="checkbox" name="pizza2" value="pineapple"> Pineapple</label>
+
+                        <pre><code>&lt;div&gt;First pizza&lt;/div&gt;
+&lt;label&gt;&lt;input type="checkbox" name="pizza1" value="pepperoni"&gt; Pepperoni&lt;/label&gt;
+&lt;label&gt;&lt;input type="checkbox" name="pizza1" value="mushrooms"&gt; Mushrooms&lt;/label&gt;
+...</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Fieldset and legend</h3>
+                    <h3>Fieldset and legend for radio group</h3>
                     <p>This example uses <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> elements to provide a group name for each radio group, so assistive technology users understand what they are picking a color for.</p>
+                    <p>NVDA: "Fill color, grouping, Black, radio button, not checked, 1 of 3", "Outline color, grouping, Black, radio button, not checked, 1 of 3"</p>
                     <div class="example">
                         <fieldset>
                             <legend>Fill color</legend>
@@ -82,8 +105,8 @@ css: radio
 
                         <pre><code>&lt;fieldset&gt;
     &lt;legend&gt;Fill color&lt;/legend&gt;
-    &lt;label&gt;&lt;input type="radio" value="black"&gt; Black&lt;/label&gt;
-    &lt;label&gt;&lt;input type="radio" value="blue"&gt; Blue&lt;/label&gt;
+    &lt;label&gt;&lt;input type="radio" name="fc" value="black"&gt; Black&lt;/label&gt;
+    &lt;label&gt;&lt;input type="radio" name="fc" value="blue"&gt; Blue&lt;/label&gt;
     ...
 &lt;/fieldset&gt;</code></pre>
                     </div>
@@ -109,6 +132,33 @@ css: radio
         &lt;input type="radio" name="toppings" id="cream"&gt;
         &lt;label for="cream"&gt;Whipped cream&lt;/label&gt;
     &lt;/div&gt;</code></pre>
+                    </div>
+
+                    <h3>Fieldset and legend for checkbox group</h3>
+                    <p>This example uses <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> elements to provide a group name for each checkbox group, so assistive technology users understand what they are picking toppings for.</p>
+                    <p>NVDA: "Fill color, grouping, Black, radio button, not checked, 1 of 3", "Outline color, grouping, Black, radio button, not checked, 1 of 3"</p>
+                    <div class="example">
+                        <div><strong>Choose your toppings</strong></div>
+                        <fieldset>
+                            <legend>First pizza</legend>
+                            <label><input type="checkbox" name="pizza1" value="pepperoni"> Pepperoni</label>
+                            <label><input type="checkbox" name="pizza1" value="mushrooms"> Mushrooms</label>
+                            <label><input type="checkbox" name="pizza1" value="pineapple"> Pineapple</label>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Second pizza</legend>
+                            <label><input type="checkbox" name="pizza2" value="pepperoni"> Pepperoni</label>
+                            <label><input type="checkbox" name="pizza2" value="mushrooms"> Mushrooms</label>
+                            <label><input type="checkbox" name="pizza2" value="pineapple"> Pineapple</label>
+                        </fieldset>
+
+                        <pre><code>&lt;fieldset&gt;
+    &lt;legend&gt;First pizza&lt;/legend&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="pizza1" value="pepperoni"&gt; Pepperoni&lt;/label&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="pizza1" value="mushrooms"&gt; Mushrooms&lt;/label&gt;
+    ...
+&lt;/fieldset&gt;</code></pre>
                     </div>
 
                     <h3>Group role</h3>
