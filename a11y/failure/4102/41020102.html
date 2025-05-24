@@ -90,6 +90,22 @@ css: 1411
 &lt;/form&gt;</code></pre>
                     </div>
 
+                    <p>This select control does not have a visible label or an accessible name. Only the value is read by assistive technology.</p>
+                    <div class="example">
+                        <select>
+                            <option>Best Match</option>
+                            <option>Featured</option>
+                            <option>Price - High to Low</option>
+                            <option>Price - Low to High</option>
+                            <option>Product Name</option>
+                        </select>
+
+                        <pre><code>&lt;select&gt;
+    &lt;option&gt;Best Match&lt;/option&gt;
+    &lt;option&gt;Featured&lt;/option&gt;
+    ...</code></pre>
+                    </div>
+
                     <h3 id="form2">Labels not associated</h3>
                     <p>This example has <code>&lt;label&gt;</code> tags, but they are not associated with the input fields.</p>
                     <div class="example">
@@ -127,6 +143,24 @@ css: 1411
                         <pre><code><strong>&lt;label&gt;</strong>Email
     &lt;div role="textbox" contenteditable="true"&gt;&lt;/div&gt;
 <strong>&lt;/label&gt;</strong></code></pre>
+                    </div>
+
+                    <p>This example has a visible label, but it is not associated with the control.</p>
+                    <div class="example" style="display:flex;">
+                        <div>Sort by:</div>
+                        <select>
+                            <option>Best Match</option>
+                            <option>Featured</option>
+                            <option>Price - High to Low</option>
+                            <option>Price - Low to High</option>
+                            <option>Product Name</option>
+                        </select>
+
+                        <pre><code>&lt;div&gt;Sort by:&lt;/div&gt;
+&lt;select&gt;
+    &lt;option&gt;Best Match&lt;/option&gt;
+    &lt;option&gt;Featured&lt;/option&gt;
+    ...</code></pre>
                     </div>
 
                     <h3 id="form3">Invalid target</h3>
@@ -231,6 +265,26 @@ css: 1411
 &lt;/form&gt;</code></pre>
                     </div>
 
+                    <div class="example">
+                        <label>Sort by:
+                            <select>
+                                <option>Best Match</option>
+                                <option>Featured</option>
+                                <option>Price - High to Low</option>
+                                <option>Price - Low to High</option>
+                                <option>Product Name</option>
+                            </select>
+                        </label>
+
+                        <pre><code><strong>&lt;label&gt;</strong>Sort by:
+    &lt;select&gt;
+        &lt;option&gt;Best Match&lt;/option&gt;
+        &lt;option&gt;Featured&lt;/option&gt;
+        ...
+    &lt;/select&gt;
+<strong>&lt;/label&gt;</strong></code></pre>
+                    </div>
+
                     <h3 id="form7">Explicit Labels</h3>
                     <p>To use explicit labels, give the form field a unique id and point to it in the <code>&lt;label&gt;</code> using the <code>for</code> attribute.</p>
                     <div class="example">
@@ -256,6 +310,24 @@ css: 1411
         &lt;input type="radio" name="types" value="essential" id="rb2"&gt; <strong>&lt;label for="rb2"&gt;Essential only&lt;/label&gt;</strong>
     &lt;/fieldset&gt;
 &lt;/form&gt;</code></pre>
+                    </div>
+
+                    <div class="example">
+                        <label for="sort">Sort by:</label>
+                        <select id="sort">
+                            <option>Best Match</option>
+                            <option>Featured</option>
+                            <option>Price - High to Low</option>
+                            <option>Price - Low to High</option>
+                            <option>Product Name</option>
+                        </select>
+
+                        <pre><code><strong>&lt;label for="sort"&gt;Sort by:&lt;/label&gt;</strong>
+    &lt;select id="sort"&gt;
+        &lt;option&gt;Best Match&lt;/option&gt;
+        &lt;option&gt;Featured&lt;/option&gt;
+        ...
+    &lt;/select&gt;</code></pre>
                     </div>
 
                     <h3 id="form8"><code>aria-label</code></h3>
@@ -284,6 +356,23 @@ css: 1411
 &lt;/form&gt;</code></pre>
                     </div>
 
+                    <p>If a visible label is not possible for a select control, <code>aria-label</code> can be used to provide an accessible name.</p>
+                    <div class="example">
+                        <select aria-label="Sort by">
+                            <option>Best Match</option>
+                            <option>Featured</option>
+                            <option>Price - High to Low</option>
+                            <option>Price - Low to High</option>
+                            <option>Product Name</option>
+                        </select>
+
+                        <pre><code>&lt;select <strong>aria-label="Sort by"</strong>&gt;
+        &lt;option&gt;Best Match&lt;/option&gt;
+        &lt;option&gt;Featured&lt;/option&gt;
+        ...
+    &lt;/select&gt;</code></pre>
+                    </div>
+
                     <h3 id="form9"><code>aria-labelledby</code></h3>
                     <p>To use the <code>aria-labelledby</code> attribute, give the visible label element a unique id and point to it from the form field.</p>
                     <div class="example">
@@ -308,6 +397,24 @@ css: 1411
         &lt;input type="radio" name="types" value="essential" <strong>aria-labelledby="rb2"</strong>&gt; &lt;span id="rb2"&gt;Essential only&lt;/span&gt;
     &lt;/fieldset&gt;
 &lt;/form&gt;</code></pre>
+                    </div>
+
+                    <div class="example">
+                        <div id="sortLabel">Sort by:</div>
+                        <select aria-labelledby="sortLabel">
+                            <option>Best Match</option>
+                            <option>Featured</option>
+                            <option>Price - High to Low</option>
+                            <option>Price - Low to High</option>
+                            <option>Product Name</option>
+                        </select>
+
+                        <pre><code>&lt;div id="sortLabel"&gt;Sort by:&lt;/div&gt;
+    &lt;select <strong>aria-labelledby="sortLabel"</strong>&gt;
+        &lt;option&gt;Best Match&lt;/option&gt;
+        &lt;option&gt;Featured&lt;/option&gt;
+        ...
+    &lt;/select&gt;</code></pre>
                     </div>
 
                     <h3 id="form10">Placeholder text</h3>

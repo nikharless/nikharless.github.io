@@ -13,87 +13,111 @@ css: 41020201
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Custom controls have accessible names.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>A custom control does not have an accessible name.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Solution</h2>
-            <div>
-                <h3>HTML</h3>
-                <p>Provide an accessible name for the custom control, using one of the following methods:</p>
-                <ul>
-                    <li>Use the <code>aria-label</code> attribute and set the value to the name, <strong>OR</strong></li>
-                    <li>Use the <code>aria-labelledby</code> attribute and point it to a text element which can function as the accessible name, <strong>OR</strong></li>
-                    <li>Use text between the start and end tags of the element as the accessible name.</li>
-                </ul>
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>Custom controls have accessible names.</div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <div class="example">
-                    <h3>Slider</h3>
-                    {% include examples/slider-rating.html %}
-
-                    <pre><code>&lt;div id="id-rating-label"&gt;Accessibility is the right thing to do.&lt;/div&gt;
-&lt;div id="id-rating" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="10" <strong>aria-labelledby="id-rating-label"</strong>&gt;</code></pre>
-                </div>
-
-                <div class="example">
-                    <h3>Carousel</h3>
-                    {% include examples/carousel.html %}
-                    <script src="{{ baseurl }}/assets/js/carousel-tablist.js"></script>
-
-                    <pre><code>&lt;section id="myCarousel" aria-roledescription="carousel" <strong>aria-label="Cats of House Harless"</strong>&gt;</code></pre>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>A custom control does not have an accessible name.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <h3>HTML</h3>
+                    <p>Provide an accessible name for the custom control, using one of the following methods:</p>
+                    <ul>
+                        <li>Use the <code>aria-label</code> attribute and set the value to the name, <strong>OR</strong></li>
+                        <li>Use the <code>aria-labelledby</code> attribute and point it to a text element which can function as the accessible name, <strong>OR</strong></li>
+                        <li>Use text between the start and end tags of the element as the accessible name.</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Not Applicable</h2>
-            <div>
-                <p>The following items are not applicable to this failure:</p>
-                <ul>
-                    <li><strong>Native HTML controls</strong>:<br>
-                        <code>&lt;input type="checkbox"&gt; Subscribe to the mailing list</code><br>
-                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
-                    <li><strong>Custom controls that function as native HTML controls</strong>:<br>
-                        <code>&lt;div role="checkbox" tabindex="0" aria-checked="false"&gt;Subscribe to the mailing list</code><br>
-                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
-                    <li><strong>Hidden</strong>:<br>
-                        <code>&lt;div style="display:none;"&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                    <li><strong>Role of "none"</strong>:<br>
-                        <code>&lt;div role="none"&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Assistive technology only works well when code is done properly.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F68">F68: Failure of Success Criterion 4.1.2 due to a user interface control not having a programmatically determined name</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                    <div class="example">
+                        <h3>Slider</h3>
+                        <p>This slider uses <code>aria-labelledby</code> to provide an accessible name.</p>
+                        {% include examples/slider-rating.html %}
+
+                        <pre><code>&lt;div id="id-rating-label"&gt;Accessibility is the right thing to do.&lt;/div&gt;
+    &lt;div id="id-rating" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="10" <strong>aria-labelledby="id-rating-label"</strong>&gt;</code></pre>
+                    </div>
+
+                    <div class="example">
+                        <h3>Carousel</h3>
+                        <p>This carousel uses <code>aria-label</code> to provide an accessible name.</p>
+                        {% include examples/carousel.html %}
+                        <script src="{{ baseurl }}/assets/js/carousel-tablist.js"></script>
+
+                        <pre><code>&lt;section id="myCarousel" aria-roledescription="carousel" <strong>aria-label="Cats of House Harless"</strong>&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Buttons</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[41020101].link | prepend: baseurl }}">{{ site.data.4102.4102[41020101].name }}.</a></li>
+                        <li><strong>Form fields</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[41020102].link | prepend: baseurl }}">{{ site.data.4102.4102[41020102].name }}.</a></li>
+                        <li><strong>Image buttons</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[41020103].link | prepend: baseurl }}">{{ site.data.4102.4102[41020103].name }}.</a></li>
+                        <li><strong>Links</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[41020104].link | prepend: baseurl }}">{{ site.data.4102.4102[41020104].name }}.</a></li>
+                        <li><strong>Iframes</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[41020105].link | prepend: baseurl }}">{{ site.data.4102.4102[41020105].name }}.</a></li>
+                        <li><strong>Frames</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}.</a></li>
+                        <li><strong>Dialogs</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}.</a></li>
+                        <li><strong>Form element groups</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[41020106].link | prepend: baseurl }}">{{ site.data.4102.4102[41020106].name }}.</a></li>
+                        <li><strong>Hidden</strong>:<br>
+                            <code>&lt;div style="display:none;"&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                        <li><strong>Role of "none"</strong>:<br>
+                            <code>&lt;div role="none"&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Vision Impairment:</strong> Programmatic names enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Programmatic names enable compatibility with assistive technology such as speech recognition software.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F68">F68: Failure of Success Criterion 4.1.2 due to a user interface control not having a programmatically determined name</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
