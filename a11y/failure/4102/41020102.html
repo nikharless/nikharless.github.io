@@ -65,7 +65,7 @@ css: 1411
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
                     <h3 id="form1">No programmatic names</h3>
-                    <p>The form fields in these examples do not have any programmatic names.</p>
+                    <p>The form fields in these examples have visible labels, but they do not have any programmatic names.</p>
                     <p>NVDA: "Edit, blank", "Checkbox, not checked", "Radio button, not checked, 1 of 2"</p>
                     <div class="example">
                         <form aria-labelledby="form1">
@@ -91,8 +91,29 @@ css: 1411
 &lt;/form&gt;</code></pre>
                     </div>
 
+                    <p>This example has a visible label, but it is not associated with the control.</p>
+                    <p>NVDA: "Combobox, Best Match, collapsed"</p>
+                    <div class="example">
+                        <div style="display:flex;">
+                            <div>Sort by: </div>
+                            <select>
+                                <option>Best Match</option>
+                                <option>Featured</option>
+                                <option>Price - High to Low</option>
+                                <option>Price - Low to High</option>
+                                <option>Product Name</option>
+                            </select>
+                        </div>
+
+                        <pre><code>&lt;div&gt;Sort by:&lt;/div&gt;
+&lt;select&gt;
+    &lt;option&gt;Best Match&lt;/option&gt;
+    &lt;option&gt;Featured&lt;/option&gt;
+    ...</code></pre>
+                    </div>
+
                     <h3 id="form2">Labels not associated</h3>
-                    <p>This example has <code>&lt;label&gt;</code> tags, but they are not associated with the input fields.</p>
+                    <p>The form fields in this example have <code>&lt;label&gt;</code> tags, but they are not associated with the input fields.</p>
                     <p>NVDA: "Edit, blank", "Checkbox, not checked", "Radio button, not checked, 1 of 2"</p>
                     <div class="example">
                         <form aria-labelledby="form2">
@@ -131,11 +152,11 @@ css: 1411
 <strong>&lt;/label&gt;</strong></code></pre>
                     </div>
 
-                    <p>This example has a visible label, but it is not associated with the control.</p>
+                    <p>This example has <code>&lt;label&gt;</code> tags enclosing the <code>&lt;select&gt;</code>, but it is not associated with the control.</p>
                     <p>NVDA: "Combobox, Best Match, collapsed"</p>
                     <div class="example">
                         <div style="display:flex;">
-                            <div>Sort by: </div>
+                            <label style="display: inline;">Sort by: </label>
                             <select>
                                 <option>Best Match</option>
                                 <option>Featured</option>
@@ -145,7 +166,7 @@ css: 1411
                             </select>
                         </div>
 
-                        <pre><code>&lt;div&gt;Sort by:&lt;/div&gt;
+                        <pre><code>&lt;label&gt;Sort by: &lt;/label&gt;
 &lt;select&gt;
     &lt;option&gt;Best Match&lt;/option&gt;
     &lt;option&gt;Featured&lt;/option&gt;
@@ -527,6 +548,7 @@ css: 1411
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F111">F111: Failure of Success Criteria 1.3.1, 2.5.3, and 4.1.2 due to a control with visible label text but no accessible name</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G135">G135: Using the accessibility API features of a technology to expose names and notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H44">H44: Using label elements to associate text labels with form controls</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
