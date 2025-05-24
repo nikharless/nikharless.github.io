@@ -152,7 +152,7 @@ css: 1411
 <strong>&lt;/label&gt;</strong></code></pre>
                     </div>
 
-                    <p>This example has <code>&lt;label&gt;</code> tags enclosing the <code>&lt;select&gt;</code>, but it is not associated with the control.</p>
+                    <p>This example has <code>&lt;label&gt;</code> tags, but the label is not programmatically associated with the control.</p>
                     <p>NVDA: "Combobox, Best Match, collapsed"</p>
                     <div class="example">
                         <div style="display:flex;">
@@ -166,7 +166,7 @@ css: 1411
                             </select>
                         </div>
 
-                        <pre><code>&lt;label&gt;Sort by: &lt;/label&gt;
+                        <pre><code><strong>&lt;label&gt;Sort by: &lt;/label&gt;</strong>
 &lt;select&gt;
     &lt;option&gt;Best Match&lt;/option&gt;
     &lt;option&gt;Featured&lt;/option&gt;
@@ -200,7 +200,8 @@ css: 1411
 
                     <h3 id="form4">Value</h3>
                     <p>This example has a <code>value</code> attribute which places text in the text field. However, this text can be edited or deleted and does not serve as an accessible name.</p>
-                    <p>NVDA: "Edit, selected, Enter search text here"</p>
+                    <p>NVDA (with default text): "Edit, selected, Enter search text here"<br>
+                    NVDA (with text deleted): "Edit, blank"</p>
                     <div class="example">
                         <form aria-labelledby="form4">
                             <input type="text" value="Enter search text here">
@@ -211,7 +212,8 @@ css: 1411
                     </div>
 
                     <p>In this example, the text serves as the value, not the accessible name. The text may be deleted or edited, leaving the text field without a name.</p>
-                    <p>NVDA: "Edit, multiline, Email"</p>
+                    <p>NVDA (with default text): "Edit, multiline, Email"<br>
+                    NVDA (with text deleted): "Edit, blank"</p>
                     <div class="example">
                         <form aria-labelledby="form4">
                             <div role="textbox" contenteditable="true" style="border: 1px solid black;">Email</div>
@@ -220,7 +222,7 @@ css: 1411
                         <pre><code>&lt;div role="textbox" contenteditable="true"&gt;<strong>Email</strong>&lt;/div&gt;</code></pre>
                     </div>
 
-                    <p>This select control does not have a visible label or an accessible name. Only the value is read by assistive technology.</p>
+                    <p>This select control does not have a visible label or an accessible name. Only the value (the currently selected option) is read by assistive technology.</p>
                     <p>NVDA: "Combobox, Best Match, collapsed"</p>
                     <div class="example">
                         <select>
