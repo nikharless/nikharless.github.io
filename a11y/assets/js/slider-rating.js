@@ -80,10 +80,10 @@ class RatingSlider {
   getValueText(value) {
     switch (value) {
       case 0:
-        return 'Choose a rating from one to ten where 10 is extremely satisfied';
+        return 'Choose a rating from one to ten where 10 is Strongly Agree';
 
       case 1:
-        return 'one, extremely dissatisfied';
+        return 'one, strongly disagree';
 
       case 2:
         return 'two';
@@ -110,7 +110,7 @@ class RatingSlider {
         return 'nine';
 
       case 10:
-        return 'ten, extremely satisfied';
+        return 'ten, strongly agree';
 
       default:
         break;
@@ -122,37 +122,37 @@ class RatingSlider {
   getValueTextWithMax(value) {
     switch (value) {
       case 0:
-        return 'Choose a rating from one to ten where 10 is extremely satisfied';
+        return 'Choose a rating from one to ten where 10 is strongly agree';
 
       case 1:
-        return 'one out of 10, extremely dissatisfied';
+        return 'one out of 10, strongly disagree';
 
       case 2:
-        return 'two out of ten where ten is extremely satisfied';
+        return 'two out of ten where ten is strongly agree';
 
       case 3:
-        return 'three  out of ten where ten is extremely satisfied';
+        return 'three  out of ten where ten is strongly agree';
 
       case 4:
-        return 'four  out of ten where ten is extremely satisfied';
+        return 'four  out of ten where ten is strongly agree';
 
       case 5:
-        return 'five  out of ten where ten is extremely satisfied';
+        return 'five  out of ten where ten is strongly agree';
 
       case 6:
-        return 'six  out of ten where ten is extremely satisfied';
+        return 'six  out of ten where ten is strongly agree';
 
       case 7:
-        return 'seven  out of ten where ten is extremely satisfied';
+        return 'seven  out of ten where ten is strongly agree';
 
       case 8:
-        return 'eight  out of ten where ten is extremely satisfied';
+        return 'eight  out of ten where ten is strongly agree';
 
       case 9:
-        return 'nine  out of ten where ten is extremely satisfied';
+        return 'nine  out of ten where ten is strongly agree';
 
       case 10:
-        return 'ten  out of ten, extremely satisfied';
+        return 'ten  out of ten, strongly agree';
 
       default:
         break;
