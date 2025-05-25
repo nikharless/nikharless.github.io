@@ -2,7 +2,7 @@
 layout: default
 current: 41020109
 criterion: 4102
-checkpoint: 410203
+checkpoint: 410201
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -31,9 +31,33 @@ checkpoint: 410203
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Example</h2>
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Title attribute</h3>
+                    <h3>No <code>title</code> attribute</h3>
+                    <p>The frame in this example has no <code>title</code> attribute to provide an accessible name.</p>
+                    <div class="example">
+                        <pre><code>&lt;frameset&gt;
+    &lt;frame src="resources.html"&gt;&lt;/frame&gt;
+    ...
+&lt;/frameset&gt;</code></pre>
+                    </div>
+
+                    <h3>Insufficient title</h3>
+                    <p>The frame in this example has a <code>title</code>, but it does not describe the content of the frame.</p>
+                    <div class="example">
+                        <pre><code>&lt;frameset&gt;
+    &lt;frame <strong>title="one"</strong> src="resources.html"&gt;&lt;/frame&gt;
+    ...
+&lt;/frameset&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3><code>title</code> attribute</h3>
                     <div class="example">
                         <pre><code>&lt;frameset&gt;
     &lt;frame <strong>title="Resources"</strong> src="resources.html"&gt;&lt;/frame&gt;
