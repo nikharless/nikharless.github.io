@@ -49,12 +49,16 @@ css: dialog-html
                     </div>
                     <script>
                         document.addEventListener("DOMContentLoaded", function(e) {
-                            const d = document.querySelector("dialog");
-                            const btnOpen = document.querySelector(".open-modal");
+                            const d = document.querySelectorAll("dialog");
+                            const btnOpen = document.querySelectorAll(".open-modal");
+                            var c = 0;
 
-                            btnOpen.addEventListener("click", function() {
-                                d.showModal();
-                            }, false);
+                            btnOpen.forEach((openBtn) => {
+                                openBtn.addEventListener("click", function() {
+                                    d[c].showModal();
+                                }, false);
+                            })
+                            c++;
                         });
                     </script>
                 </div>
