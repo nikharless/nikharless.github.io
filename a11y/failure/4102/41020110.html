@@ -46,13 +46,18 @@ css: 41020110
                                     <p>This modal does not have an accessible name.</p>
                                 </div>
                                 <div>
-                                    <button type="button" class="dialog_close_button" id="modalClose" aria-label="Close" onclick="closeDialog(this)">X</button>
+                                    <button type="button" class="dialog_close_button" id="modalClose" aria-label="Close" onclick="closeThisDialog(this)">X</button>
                                 </div>
                             </div>
                         </div>
                         <pre><code></code></pre>
                     </div>
                     <script src="{{ baseurl }}/assets/js/alertdialog.js"></script>
+                    <script>
+                        function closeThisDialog(dialog) {
+                            dialog.close();
+                        }
+                    </script>
                 </div>
             </div>
             <div class="row block">
@@ -62,7 +67,7 @@ css: 41020110
                     <h3><code>aria-labelledby</code></h3>
                     <p>This modal uses <code>aria-labelledby</code> pointing to the visible modal heading to provide the modal with an accessible name.</p>
                     <div class="example">
-                        
+                        {% include examples/modal.html %}
                     </div>
                 </div>
             </div>
