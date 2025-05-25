@@ -1,0 +1,81 @@
+---
+layout: default
+current: 41020110
+criterion: 4102
+checkpoint: 410201
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+{% assign cp=site.data.4102.4102[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>Dialogs have an accessible name.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>A dialog does not have an accessible name.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <p></p>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>No dialogs</strong>:<br>
+                            No dialogs on the page</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Vision Impairment:</strong> Programmatic names enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Programmatic names enable compatibility with assistive technology such as speech recognition software.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/4102checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
