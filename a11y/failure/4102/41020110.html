@@ -3,7 +3,7 @@ layout: default
 current: 41020110
 criterion: 4102
 checkpoint: 410201
-css: dialog
+css: dialog-html
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -38,6 +38,7 @@ css: dialog
                     <h3>No Accessible Name</h3>
                     <p>This modal does not have an accessible name.</p>
                     <div class="example">
+                        <button type="button" onclick="openDialog('dialog1', this)">Open Modal</button>
                         <dialog>
                             <h1 class="dialog_label" tabindex="-1">Modal with No Accessible Name</h1>
                             <p class="dialog_desc">This modal does not have an accessible name.</p>
@@ -46,6 +47,16 @@ css: dialog
                             </form>
                         </dialog>
                     </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function(e) {
+                            const d = document.querySelector("dialog");
+                            const btnOpen = document.querySelector(.".open-modal");
+
+                            btnOpen.addEventListener("click", function() {
+                                d.showModal();
+                            }, false);
+                        });
+                    </script>
                 </div>
             </div>
             <div class="row block">
@@ -91,6 +102,7 @@ css: dialog
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H102">H102: Creating modal dialogs with the HTML dialog element</a></li>
                     </ul>
                 </div>
             </div>
