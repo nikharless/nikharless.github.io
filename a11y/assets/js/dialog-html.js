@@ -5,6 +5,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
     for (let i=0; i < btnOpen.length; i++) {
         openBtn.addEventListener("click", function() {
             d[i].showModal();
-        }
+        });
     }
 });
