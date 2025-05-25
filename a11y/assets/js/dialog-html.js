@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", function(e) {
     const d = document.querySelectorAll("dialog");
     const btnOpen = document.querySelectorAll(".open-modal");
-    var c = 0;
 
-    btnOpen.forEach((openBtn) => {
+    for (let i=0; i < btnOpen.length; i++) {
         openBtn.addEventListener("click", function() {
-            d[c].showModal();
-        }, false);
-    c++;
-    })
+            d[i].showModal();
+        }
+    }
 });
