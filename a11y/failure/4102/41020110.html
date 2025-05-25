@@ -3,7 +3,7 @@ layout: default
 current: 41020110
 criterion: 4102
 checkpoint: 410201
-css: dialog
+css: 41020110
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -35,29 +35,32 @@ css: dialog
                 <h2 class="{{ sc.level }} bad">Failing Examples<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <button type="button" onclick="openDialog('dialog1', this)">Open Modal</button>
-                        <div role="dialog" id="dialog2" aria-modal="true" class="hidden">
-                            <h2 class="dialog_label">Example Modal with No Name</h2>
-                            <div class="dialog_form">
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span>Name: </span>
-                                        <input type="text">
-                                    </label>
+                    <div class="example">
+                        <button id="openModalBtn" onclick="openAlertDialog('badModal',this)">Open Failing Modal</button>
+                        <div class="dialog-backdrop no-scroll">
+                            <div id="badModal" role="alertdialog" aria-modal="true" class="hidden">
+                                <h2 id="badModalLabel" class="dialog_label">No Name Modal</h2>
+                                <div id="badModalDesc" class="dialog_desc">
+                                    <p>This modal does not have an accessible name.</p>
                                 </div>
-                                <div class="dialog_form_actions">
-                                    <button type="button">Submit</button>
-                                    <button type="button" onclick="closeDialog(this)">Cancel</button>
+                                <div>
+                                    <button type="button" class="dialog_close_button" id="modalClose" aria-label="Close" onclick="closeDialog(this)">X</button>
                                 </div>
                             </div>
                         </div>
+                        <pre><code></code></pre>
+                    </div>
+                    <script src="{{ baseurl }}/assets/js/alertdialog.js"></script>
+                </div>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    {% include examples/modal.html %}
+                    <div class="example">
+                        {% include examples/modal.html %}
+                    </div>
                 </div>
             </div>
             <div class="row block">
