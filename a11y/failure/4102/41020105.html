@@ -22,7 +22,10 @@ checkpoint: 410201
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>An iframe does not have an accessible name.</div>
+                <div>
+                    <p>An iframe does not have an accessible name.</p>
+                    <p>Note: Navigate iframes with NVDA using the <kbd>m</kbd> key.</p>
+                </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
@@ -41,7 +44,8 @@ checkpoint: 410201
                 <div>
 
                     <h3>No accessible name</h3>
-                    <p>This example doesn't have an accessible name.</p>
+                    <p>This example doesn't have an accessible name. If the embedded document has <code>&lt;title&gt;</code> text, assistive technology may read this.</p>
+                    <p>NVDA: "Frame, Home link, bar, Lists"</p>
                     <div class="example">
                         <iframe src="{{ baseurl }}/assets/docs/topten.html"></iframe>
 
@@ -50,6 +54,7 @@ checkpoint: 410201
 
                     <h3>Empty <code>title</code> attribute</h3>
                     <p>This example has a <code>title</code> attribute, but it is empty.</p>
+                    <p>NVDA: "Frame, Home link, bar, Lists"</p>
                     <div class="example">
                         <iframe title="" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
 
@@ -58,6 +63,7 @@ checkpoint: 410201
 
                     <h3><code>name</code> attribute</h3>
                     <p>This example has a <code>name</code> attribute, but this does not provide an accessible name.</p>
+                    <p>NVDA: "Top Ten Songs of 1972, frame, Home link, bar, Lists"</p>
                     <div class="example">
                         <iframe name="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
 
@@ -71,6 +77,7 @@ checkpoint: 410201
                 <div>
                     <h3><code>title</code> attribute</h3>
                     <p>This example uses the <code>title</code> attribute to provide the accessible name.</p>
+                    <p>NVDA: "Top Ten Songs of 1972, frame, Home link, bar, Lists"</p>
                     <div class="example">
                         <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
 
@@ -80,6 +87,7 @@ checkpoint: 410201
                     <h3><code>aria-label</code> attribute</h3>
                     <p>This example uses the <code>aria-label</code> attribute to provide the accessible name.</p>
                     <p>Note: user agent support for this is inconsistent, so the use of the <code>title</code> attribute is recommended.</p>
+                    <p>NVDA: "Top Ten Songs of 1972, frame, Home link, bar, Lists"</p>
                     <div class="example">
                         <iframe aria-label="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
 
@@ -88,6 +96,7 @@ checkpoint: 410201
 
                     <h3>Reference to visible text</h3>
                     <p>This example uses the <code>aria-labelledby</code> attribute pointing to existing text to provide the accessible name.</p>
+                    <p>NVDA: "Top Ten Songs of 1972, frame, Home link, bar, Lists"</p>
                     <div class="example">
                         <div id="ititle">Top Ten Songs of 1972</div>
                         <iframe aria-labelledby="ititle" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
