@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', function initAlertDialog() {
       triggerBtn.getAttribute('data-textbox')
     );
     var dialog = document.getElementById(dialogId);
-    if (document.getElementById(dialog.getAttribute('aria-describedby'))) {
+    if (dialog.getAttribute('aria-describedby')) {
       var desc = document.getElementById(dialog.getAttribute('aria-describedby'));
     }
 
