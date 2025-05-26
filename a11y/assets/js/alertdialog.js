@@ -398,16 +398,10 @@ document.addEventListener('DOMContentLoaded', function initAlertDialog() {
       triggerBtn.getAttribute('data-textbox')
     );
     var dialog = document.getElementById(dialogId);
-    var desc = document.getElementById(dialog.getAttribute('aria-describedby'));
-/*    var wordCount = document.getElementById('word_count');
-    if (!wordCount) {
-      wordCount = document.createElement('p');
-      wordCount.id = 'word_count';
-      desc.appendChild(wordCount);
+    if (document.getElementById(dialog.getAttribute('aria-describedby'))) {
+      var desc = document.getElementById(dialog.getAttribute('aria-describedby'));
     }
-    var count = target.value.split(/\s/).length;
-    var frag = count > 1 ? 'words' : 'word';
-    wordCount.textContent = count + ' ' + frag + ' will be deleted.';*/
+
     new aria.Dialog(dialogId, target, focusFirst);
   };
 });
