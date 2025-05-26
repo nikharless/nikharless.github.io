@@ -38,16 +38,22 @@ css: dialog-html
                     <h3>No Accessible Name</h3>
                     <p>This modal does not have an accessible name.</p>
                     <div class="example">
-                        <button class="open-modal" type="button">Open Modal</button>
-                        <dialog id="dialog1">
-                            <h1 class="dialog_label" tabindex="-1">Modal with No Accessible Name</h1>
-                            <p class="dialog_desc">This modal does not have an accessible name.</p>
-                            <form method="dialog">
-                                <button aria-label="Close" class="dialog_close_button">&times;</button>
-                            </form>
-                        </dialog>
+                        <button id="openModalBtn" onclick="openAlertDialog('goodModal',this)">Open Passing Modal</button>
+                        <div class="dialog-backdrop no-scroll">
+                            <div id="badModal" role="alertdialog" aria-modal="true" class="hidden">
+                                <h2 class="dialog_label">Modal with No Accessible Name</h2>
+                                <div class="dialog_desc">
+                                    <p>This modal does not have an accessible name.</p>
+                                </div>
+                                <div>
+                                    <button type="button" class="dialog_close_button" id="modalClose" aria-label="Close" onclick="closeDialog(this)">X</button>
+                                </div>
+                            </div>
+                        </div>
+                        <pre><code></code></pre>
                     </div>
-                    <script src="{{ baseurl }}/assets/js/dialog-html.js"></script>
+                    <script src="{{ baseurl }}/assets/js/utils.js"></script>
+                    <script src="{{ baseurl }}/assets/js/alertdialog.js"></script>
                 </div>
             </div>
             <div class="row block">
@@ -66,6 +72,7 @@ css: dialog-html
                             </form>
                         </dialog>
                     </div>
+                    <script src="{{ baseurl }}/assets/js/dialog-html.js"></script>
                 </div>
             </div>
             <div class="row block">
