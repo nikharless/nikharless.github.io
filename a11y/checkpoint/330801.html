@@ -2,6 +2,7 @@
 layout: default
 current: 330801
 criterion: 3308
+css: disclosure-faq
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.3308.3308[page.current] %}
@@ -11,119 +12,108 @@ criterion: 3308
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Examples of cognitive function tests:</p>
+            <ul>
+                <li>Remembering a site-specific password</li>
+                <li>Remembering a touch screen gesture</li>
+                <li>Transcribing a website-provided word</li>
+                <li>Recognizing an image the website provided</li>
+                <li>Solving math problems</li>
+                <li>Text-based personal content</li>
+            </ul>
+        </div>
 
-    <p>Examples of cognitive function tests:</p>
-    <ul>
-        <li>Remembering a site-specific password</li>
-        <li>Remembering a touch screen gesture</li>
-        <li>Transcribing a website-provided word</li>
-        <li>Recognizing an image the website provided</li>
-        <li>Solving math problems</li>
-        <li>Text-based personal content</li>
-    </ul>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> A cognitive function test must not be required for authentication unless an alternative or assistive mechanism is provided or the test involves object recognition or personal non-text content.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Object recognition and personal content cognitive function tests should be avoided.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> When entering a password is essential (such as creating one to be saved by a password manager), it should be possible to show the password.</li>
+            </ul>
 
-    </div>
+            <div class="userstory"><strong>User Story:</strong> As a user with a cognitive impairment, I want to be able to authenticate without a cognitive function test so that I can log in without excessive cognitive effort.</div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> A cognitive function test must not be required for authentication unless an alternative or assistive mechanism is provided or the test involves object recognition or personal non-text content.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Object recognition and personal content cognitive function tests should be avoided.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> When entering a password is essential (such as creating one to be saved by a password manager), it should be possible to show the password.</li>
-    </ul>
+            <div class="success"><strong>Success:</strong> If you were a user with a cognitive impairment, when logging in, a cognitive function test would not be required.</div>
+        </div>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with a cognitive impairment, I want to be able to authenticate without a cognitive function test so that I can log in without excessive cognitive effort.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a user with a cognitive impairment, when logging in, a cognitive function test would not be required.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/js/tree.js"></script>
-    <h3 id="test1">Is a cognitive function test (e.g., remembering a password or solving a puzzle) required for any step in an authentication process?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there an alternative authentication method that does not require a cognitive function test (e.g., one-use codes, biometrics, etc.)?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism available to assist the user in completing the cognitive function test (e.g., support for password managers, copy and paste, etc.)?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is a cognitive function test (e.g., remembering a password or solving a puzzle) required for any step in an authentication process?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there an alternative authentication method that does not require a cognitive function test (e.g., one-use codes, biometrics, etc.)?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the cognitive function test object recognition (e.g., images, video, or audio)?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism available to assist the user in completing the cognitive function test (e.g., support for password managers, copy and paste, etc.)?</span>
                             <ul role="group">
-                                <li role="treeitem" class="na"><span><strong>Yes</strong>; Not applicable</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the cognitive function test identifying non-text content provided by the user?</span>
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the cognitive function test object recognition (e.g., images, video, or audio)?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="na"><span><strong>Yes</strong>; Not applicable</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3308.3308[33080101].link | prepend: baseurl }}">{{ site.data.3308.3308[33080101].name }}</a>.</span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the cognitive function test identifying non-text content provided by the user?</span>
+                                            <ul role="group">
+                                                <li role="treeitem" class="na"><span><strong>Yes</strong>; Not applicable</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3308.3308[33080101].link | prepend: baseurl }}">{{ site.data.3308.3308[33080101].name }}</a>.</span></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>For each authentication method, check if a cognitive function test is required.</li>
+                <li>If so, check if the test involves object recognition or identifying personal content.</li>
+                <li>If not, verify that there is an alternative authentication method or a mechanism to assist the user in completing it.</li>
+                <li>Test each step of any multi-factor authentication.</li>
+            </ol>
+        </div>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>For each authentication method, check if a cognitive function test is required.</li>
-        <li>If so, check if the test involves object recognition or identifying personal content.</li>
-        <li>If not, verify that there is an alternative authentication method or a mechanism to assist the user in completing it.</li>
-        <li>Test each step of any multi-factor authentication.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3308.3308[33080101].link | prepend: baseurl }}">{{ site.data.3308.3308[33080101].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G218">G218: Email link authentication</a></li>
+                <li><a href="{{ site.data.3308.3308[33080101].link | prepend: baseurl }}">{{ site.data.3308.3308[33080101].name }}</a>.</li>
             </ul>
-        </li>
-        <li>HTML:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H100">H100: Providing properly marked up email and password inputs</a></li>
-            </ul>
-        </li>
-     </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-    </ul>
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G218">G218: Email link authentication</a></li>
+                    </ul>
+                </li>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H100">H100: Providing properly marked up email and password inputs</a></li>
+                    </ul>
+                </li>
+             </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/3308checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
