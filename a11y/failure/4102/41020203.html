@@ -39,11 +39,12 @@ checkpoint: 410202
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
                     <h3>Emulated link</h3>
+                    <p>This example uses JavaScript to create a custom link, but no role is assigned.</p>
                     <p>NVDA: "clickable emulated"</p>
                     <div class="example">
-                        <p>This is an <span tabindex="0" onclick="location.href='https://www.w3.org/WAI/WCAG22/Techniques/failures/F42'" style="text-decoration: underline;">emulated</span> link without a role.</p>
+                        <p>This is an <span tabindex="0" onclick="openLink(event)" style="text-decoration: underline;">emulated</span> link without a role.</p>
 
-                        <pre><code>&lt;p&gt;This is an &lt;span tabindex="0" onclick="location.href='webpage.html'"&gt;emulated&lt;/span&gt; link without a role.&lt;/p&gt;</code></pre>
+                        <pre><code>&lt;p&gt;This is an &lt;span tabindex="0" onclick="openLink(event)"&gt;emulated&lt;/span&gt; link without a role.&lt;/p&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -52,7 +53,8 @@ checkpoint: 410202
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>HTML anchor tag</h3>
-                    <p>NVDA: "HTML &lt;a&gt; Tag link"</p>
+                    <p>This example uses the native HTML <code>&lt;a&gt;</code> element with the <code>href</code> attribute to provide the role of "link".</p>
+                    <p>NVDA: "HTML &lt;a&gt; Tag, link"</p>
                     <div class="example">
                         <a href="https://www.w3schools.com/tags/tag_a.asp">HTML &lt;a&gt; Tag</a>
 
@@ -60,11 +62,18 @@ checkpoint: 410202
                     </div>
 
                     <h3>Role of "link"</h3>
-                    <p>NVDA: "Web Accessibility Initiative (WAI) link"</p>
+                    <p>This example uses the HTML <code>&lt;button&gt;</code> element to perform the function of a link. The ARIA "link" role is explicitly assigned.</p>
+                    <p>NVDA: "Emulated link failure, link"</p>
                     <div class="example">
-                        <button role="link" onclick="openLink(event)">Web Accessibility Initiative (WAI)</button>
+                        <button role="link" onclick="openLink(event)">Emulated link failure</button>
 
-                        <pre><code>&lt;button <strong>role="link</strong>" onclick="openLink(event)"&gt;Web Accessibility Initiative (WAI)&lt;/button&gt;</code></pre>
+                        <pre><code>&lt;button <strong>role="link"</strong> onclick="openLink(event)"&gt;Emulated link failure&lt;/button&gt;</code></pre>
+
+                        <script>
+                            function openLink(event) {
+                                location.href='https://www.w3.org/WAI/WCAG22/Techniques/failures/F42';
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
