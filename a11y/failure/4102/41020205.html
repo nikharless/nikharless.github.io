@@ -40,10 +40,16 @@ css: 41020205
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
                     <h3>Custom combobox</h3>
+                    <p>This custom combobox does not have an ARIA role assigned and is identified by AT as a textbox.</p>
                     <p>NVDA: "Select a language, edit, read only, blank"</p>
-                    {% include examples/combobox-fail.html %}
+                    <div class="example">
+                        {% include examples/combobox-fail.html %}
 
-                    <pre><code>&lt;div class="dropdown"&gt;</code></pre>
+                        <pre><code><strong>&lt;div class="dropdown"&gt;</strong>
+    &lt;input type="text" placeholder="Select a language" readonly&gt;
+    &lt;ul class="options"&gt;
+    ...</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
@@ -51,7 +57,8 @@ css: 41020205
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>HTML &lt;select&gt; tag</h3>
-                    <p>NVDA: "Select a color: combo box, Red, collapsed"</p>
+                    <p>This example uses the native HTML <code>&lt;select&gt;</code> element which has the default role of "combobox".</p>
+                    <p>NVDA: "Select a color: combobox, Red, collapsed"</p>
                     <div class="example">
                         <label for="colors">Select a color:</label>
                         <select name="colors" id="colors">
@@ -67,11 +74,14 @@ css: 41020205
                     </div>
 
                     <h3>Custom combobox</h3>
-                    <p>NVDA: "Language, combo box, Select a Language, collapsed, opens list"</p>
-                    {% include examples/select-only.html %}
-                    <script src="{{ baseurl }}/assets/js/select-only.js"></script>
+                    <p>This custom combobox has the ARIA role "combobox" explicitly assigned.</p>
+                    <p>NVDA: "Language, combobox, Select a Language, collapsed, opens list"</p>
+                    <div class="example"
+                        {% include examples/select-only.html %}
+                        <script src="{{ baseurl }}/assets/js/select-only.js"></script>
 
-                    <pre><code>&lt;div <strong>role="combobox"</strong> aria-controls="listbox1" aria-haspopup="listbox" aria-expanded="false" tabindex="0"&gt;</code></pre>
+                        <pre><code>&lt;div <strong>role="combobox"</strong> aria-controls="listbox1" aria-haspopup="listbox" aria-expanded="false" tabindex="0"&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
