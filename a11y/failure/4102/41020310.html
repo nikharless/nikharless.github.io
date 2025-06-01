@@ -20,7 +20,7 @@ last-modified: 31 May 2025
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
                 <div>
-                    <p>Disabled controls have a disabled state.</p>
+                    <p>Disabled controls communicate the disabled state to assistive technology.</p>
                     <p>The following elements support the <code>disabled</code> HTML attribute:</p>
                     <ul>
                         <li><code>&lt;button&gt;</code></li>
@@ -74,7 +74,7 @@ last-modified: 31 May 2025
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>Disabled control does not have a disabled state.</div>
+                <div>Disabled control does not communicate the disabled state to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
@@ -112,9 +112,9 @@ last-modified: 31 May 2025
 
                     <h3>ARIA</h3>
                     <div class="example">
-                        <button aria-disabled="true">Save</button>
+                        <div role="button" tabindex="0" aria-disabled="true" style="opacity: 0.5;">Save</div>
 
-                        <pre><code>&lt;button <strong>aria-disabled="true"</strong>&gt;Save&lt;/button&gt;</code></pre>
+                        <pre><code>&lt;div role="button" tabindex="0" <strong>aria-disabled="true"</strong>&gt;Save&lt;/div&gt;</code></pre>
                     </div>
                 </div>
             </div>
