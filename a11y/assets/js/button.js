@@ -7,8 +7,8 @@
 
 'use strict';
 
-var ICON_MUTE_URL = '#icon-mute';
-var ICON_SOUND_URL = '#icon-sound';
+var ICON_MUTE_URL = "fa-solid fa-volume-xmark";
+var ICON_SOUND_URL = "fa-solid fa-volume-high";
 
 function init() {
   /*var actionButton = document.getElementById('action');
@@ -110,7 +110,7 @@ function toggleButtonState(button) {
 
   var icon = button.querySelector('use');
   icon.setAttribute(
-    'href',
+    'class',
     isAriaPressed ? ICON_SOUND_URL : ICON_MUTE_URL
   );
 }
