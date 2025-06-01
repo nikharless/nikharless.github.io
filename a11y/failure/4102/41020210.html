@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 41020209
+current: 41020210
 criterion: 4102
 checkpoint: 410202
 ---
@@ -18,25 +18,67 @@ checkpoint: 410202
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Elements contain any required child elements or roles.</div>
+                <div>Elements do not contain any invalid child elements or roles.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>An element requires a particular child element or role, but the child is missing.</div>
+                <div>An element contains an invalid child element or role.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
                     <h3>HTML</h3>
-                    <p>Ensure that any required child elements are present.</p>
+                    <p>Ensure that any child elements are valid.</p>
                     <ul>
-                        <li><code>&lt;head&gt;</code> must contain a <code>&lt;title&gt;</code>.</li>
-                        <li><code>&lt;hgroup&gt;</code> must contain a heading element (e.g., <code>&lt;h1&gt;</code>, etc.).</li>
-                        <li><code>&lt;table&gt;</code> must contain one or more <code>&lt;tr&gt;</code>.</li>
+                        <li><code>&lt;address&gt;</code> must not contain heading or sectioning content (<code>&lt;h1&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;header&gt;</code>, etc.).</li>
+                        <li><code>&lt;audio&gt;</code> must only contain <code>&lt;track&gt;</code> or <code>&lt;source&gt;</code> elements.</li>
+                        <li><code>&lt;colgroup&gt</code> (without a <code>span</code> attribute) must only contain <code>&lt;col&gt;</code> elements.</li>
+                        <li><code>&lt;dl&gt;</code> must only contain <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code>, <code>&lt;script&gt;</code>, or <code>&lt;template&gt;</code> elements.</li>
+                        <li><code>&lt;dt&gt;</code> must not contain heading or sectioning content (<code>&lt;h1&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;header&gt;</code>, etc.).</li>
+                        <li><code>&lt;form&gt;</code> must not contain nested <code>&lt;form&gt;</code> elements.</li>
+                        <li><code>&lt;header&gt;</code> must not contain nested <code>&lt;header&gt;</code> or <code>&lt;footer&gt;</code> elements.</li>
+                        <li><code>&lt;html&gt;</code> must only contain one <code>&lt;head&gt;</code> and one <code>&lt;body&gt;</code>.</li>
+                        <li><code>&lt;label&gt;</code> must not contain nested <code>&lt;label&gt;</code> elements.</li>
+                        <li><code>&lt;menu&gt;</code> must only contain <code>&lt;li&gt;</code>, <code>&lt;script&gt;</code>, or <code>&lt;template&gt;</code> elements.</li>
+                        <li><code>&lt;meter&gt;</code> must not contain nested <code>&lt;meter&gt;</code> elements.</li>
+                        <li><code>&lt;ol&gt;</code> must only contain <code>&lt;li&gt;</code>, <code>&lt;script&gt;</code>, or <code>&lt;template&gt;</code> elements.</li>
+                        <li><code>&lt;optgroup&gt;</code> must only contain <code>&lt;option&gt;</code> or a single <code>&lt;legend&gt;</code> elements.</li>
+                        <li><code>&lt;progress&gt;</code> must not contain nested <code>&lt;progress&gt;</code> elements.</li>
+                        <li><code>&lt;table&gt;</code> must only contain the following, in order: <code>&lt;caption&gt;</code>, <code>&lt;colgroup&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> or <code>&lt;tr&gt;</code> (required), <code>&lt;tfoot&gt;</code>.</li>
+                        <li><code>&lt;tbody&gt;</code> must only contain <code>&lt;tr&gt;</code> elements.</li>
+                        <li><code>&lt;tfoot&gt;</code> must only contain <code>&lt;tr&gt;</code> elements.</li>
+                        <li><code>&lt;th&gt;</code> must not contain heading or sectioning content (<code>&lt;h1&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;header&gt;</code>, etc.).</li>
+                        <li><code>&lt;thead&gt;</code> must only contain <code>&lt;tr&gt;</code> elements.</li>
+                        <li><code>&lt;tr&gt;</code> must only contain <code>&lt;td&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;script&gt;</code>, or <code>&lt;template&gt;</code> elements.</li>
+                        <li><code>&lt;ul&gt;</code> must only contain <code>&lt;li&gt;</code>, <code>&lt;script&gt;</code>, or <code>&lt;template&gt;</code> elements.</li>
+                        <li><code>&lt;video&gt;</code> must only contain <code>&lt;track&gt;</code> or <code>&lt;source&gt;</code> elements.</li>
+                    </ul>
+
+                    <p>The following elements must not contain any interactive content. Links must not contain buttons, etc.</p>
+                    <ul>
+                        <li><code>&lt;a&gt;</code></li>
+                        <li><code>&lt;button&gt;</code></li>
+                    </ul>
+
+                    <p>The following elements are void elements (they do not have end tags) and must not contain any content.</p>
+                    <ul>
+                        <li><code>&lt;area&gt;</code></li>
+                        <li><code>&lt;br&gt;</code></li>
+                        <li><code>&lt;col&gt;</code></li>
+                        <li><code>&lt;colgroup span="[value]"&gt;</code></li>
+                        <li><code>&lt;embed&gt;</code></li>
+                        <li><code>&lt;hr&gt;</code></li>
+                        <li><code>&lt;iframe&gt;</code> (has end tag)</li>
+                        <li><code>&lt;img&gt;</code></li>
+                        <li><code>&lt;input&gt;</code></li>
+                        <li><code>&lt;link&gt;</code></li>
+                        <li><code>&lt;meta&gt;</code></li>
+                        <li><code>&lt;source&gt;</code></li>
+                        <li><code>&lt;track&gt;</code></li>
                     </ul>
 
                     <h3>ARIA</h3>
-                    <p>Ensure that any required child roles are present.</p>
+                    <p>Ensure that any child roles are valid.</p>
                     <ul>
                         <li><code>feed</code> must contain an <code>article</code>.</li>
                         <li><code>grid</code> must contain a <code>row</code> or <code>rowgroup</code>.</li>
@@ -107,8 +149,8 @@ checkpoint: 410202
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
-                        <li><strong>Invalid child</strong>:<br>
-                            File under <a href="{{ site.data.4102.4102[41020210].link | prepend: baseurl }}">{{ site.data.4102.4102[41020210].name }}.</a></li>
+                        <li><strong>Missing required child:<br>
+                            File under <a href="{{ site.data.4102.4102[41020209].link | prepend: baseurl }}">{{ site.data.4102.4102[41020209].name }}.</a></strong>
                         <li><strong>Role of "none"</strong>:<br>
                             <code>&lt;li role="none"&gt;</code><br>
                             Does not appear in accessibility tree</li>
