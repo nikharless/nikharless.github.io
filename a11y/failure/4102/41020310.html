@@ -3,7 +3,7 @@ layout: default
 current: 41020310
 criterion: 4102
 checkpoint: 410203
-last-modified: 31 May 2025
+last-modified: 1 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -21,6 +21,18 @@ last-modified: 31 May 2025
                 <h2 class="{{ sc.level }}">Expected Result</h2>
                 <div>
                     <p>Disabled controls communicate the disabled state to assistive technology.</p>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>Disabled control does not communicate the disabled state to assistive technology.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <h3>Native HTML</h3>
+                    <p>Use the <code>disabled</code> attribute on a native HTML element in order to identify it as disabled, remove the keyboard focus, remove the functionality, and make it visually appear disabled. Use the CSS <code>:disabled</code> pseudo-class to style the disabled state.</p>
+
                     <p>The following elements support the <code>disabled</code> HTML attribute:</p>
                     <ul>
                         <li><code>&lt;button&gt;</code></li>
@@ -31,6 +43,9 @@ last-modified: 31 May 2025
                         <li><code>&lt;select&gt;</code></li>
                         <li><code>&lt;textarea&gt;</code></li>
                     </ul>
+                    
+                    <h3>Custom Controls</h3>
+                    <p>Use the <code>aria-disabled</code> attribute on a custom control in order to identify the control as disabled without changing the focusability, functionality or appearance. Use JavaScript to prevent interaction.</p>
 
                     <p>The following roles support the <code>aria-disabled</code> property:</p>
                     <ul>
@@ -69,27 +84,6 @@ last-modified: 31 May 2025
                         <li><code>tree</code></li>
                         <li><code>treegrid</code></li>
                         <li><code>treeitem</code></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>Disabled control does not communicate the disabled state to assistive technology.</div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <ul>
-                        <li>Use the <code>disabled</code> attribute on a native HTML element in order to identify it as disabled, remove the keyboard focus, remove the functionality, and make it visually appear disabled, 
-                            <ul>
-                                <li>Use the CSS <code>:disabled</code> pseudo-class to style the disabled state.</li>
-                            </ul>
-                            <strong>OR</strong></li>
-                        <li>Use the <code>aria-disabled</code> attribute on a custom control in order to identify the control as disabled without changing the focusability, functionality or appearance.
-                            <ul>
-                                <li>Use JavaScript to prevent interaction.</li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
             </div>
