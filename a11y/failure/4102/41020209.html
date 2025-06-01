@@ -18,11 +18,11 @@ checkpoint: 410202
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Elements contain any required child elements.</div>
+                <div>Elements contain any required child elements or roles.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>An element requires a particular child element, but the child element is missing.</div>
+                <div>An element requires a particular child element or role, but the child is missing.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
@@ -32,6 +32,24 @@ checkpoint: 410202
                     <ul>
                         <li><code>&lt;head&gt;</code> must contain a <code>&lt;title&gt;</code> element</li>
                         <li><code>&lt;table&gt;</code> must contain one or more <code>&lt;tr&gt;</code> elements</li>
+                    </ul>
+
+                    <h3>HTML</h3>
+                    <p>Ensure that any required child roles are present.</p>
+                    <ul>
+                        <li><code>feed</code> must contain an <code>article</code>.</li>
+                        <li><code>grid</code> must contain a <code>row</code> or <code>rowgroup</code>.</li>
+                        <li><code>list</code> must contain a <code>listitem</code>.</li>
+                        <li><code>listbox</code> must contain a <code>group</code> or <code>option</code>.</li>
+                        <li><code>menu</code> must contain a <code>group</code>, <code>menuitem</code>, <code>menuitemcheckbox</code>, or <code>menuitemradio</code>.</li>
+                        <li><code>menubar</code> must contain a <code>group</code>, <code>menuitem</code>, <code>menuitemcheckbox</code>, or <code>menuitemradio</code>.</li>
+                        <li><code>radiogroup</code> must contain a <code>radio</code>.</li>
+                        <li><code>row</code> must contain a <code>cell</code>, <code>columnheader</code>, <code>gridcell</code>, or <code>rowheader</code>.</li>
+                        <li><code>rowgroup</code> must contain a <code>row</code>.</li>
+                        <li><code>table</code> must contain a <code>row</code> or <code>rowgroup</code>.</li>
+                        <li><code>tablist</code> must contain a <code>tab</code>.</li>
+                        <li><code>tree</code> must contain a <code>group</code> or <code>treeitem</code>.</li>
+                        <li><code>treegrid</code> must contain a <code>row</code> or <code>rowgroup</code>.</li>
                     </ul>
                 </div>
             </div>
@@ -43,7 +61,7 @@ checkpoint: 410202
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>Table</h3>
