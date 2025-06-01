@@ -80,7 +80,7 @@ checkpoint: 410202
                     <h3>ARIA</h3>
                     <p>Ensure that any child roles are valid.</p>
                     <ul>
-                        <li><code>group</code> must only contain a <code>option</code> elements.</li>
+                        <li><code>group</code> must only contain <code>option</code> elements.</li>
                         <li><code>spinbutton</code> must only contain a single <code>textbox</code> and/or two <code>button</code> elements.</li>
                     </ul>
                 </div>
@@ -89,47 +89,56 @@ checkpoint: 410202
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                        
+                    <h3>List</h3>
+                    <p>This unordered list has another unordered list as a direct child.</p>
+                    <div class="example">
+                        <ul>
+                            <ul aria-label="nav list">
+                                <li><a href="javascript:void">Home</a></li>
+                                <li><a href="javascript:void">About</a></li>
+                            </ul>
+                            <ul aria-label="contact list">
+                                <li><a href="javascript:void">Email</a></li>
+                                <li><a href="javascript:void">Location</a></li>
+                            </ul>
+                        </ul>
+
+                        <pre><code>&lt;ul&gt;
+    &lt;ul aria-label="nav list"&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        ...</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Table</h3>
-                    <p>This <code>&lt;table&gt;</code> contains child <code>&lt;tr&gt;</code> elements.</p>
+                    <h3>List</h3>
+                    <p>This unordered list properly nests the sub-lists inside list items.</p>
                     <div class="example">
-                        <p>Types of paint</p>
-                        <table>
-                            <tr>
-                                <th>Watercolor</th>
-                                <td>water-based</td>
-                            </tr>
-                            <tr>
-                                <th>Acrylic</th>
-                                <td>water-based</td>
-                            </tr>
-                            <tr>
-                                <th>Oil</th>
-                                <td>oil-based</td>
-                            </tr>
-                        </table>
+                        <ul>
+                            <li>
+                                <ul aria-label="nav list">
+                                    <li><a href="javascript:void">Home</a></li>
+                                    <li><a href="javascript:void">About</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul aria-label="contact list">
+                                    <li><a href="javascript:void">Email</a></li>
+                                    <li><a href="javascript:void">Location</a></li>
+                                </ul>
+                            </li>
+                        </ul>
 
-                        <pre><code>&lt;p&gt;Types of paint&lt;/p&gt;
-    &lt;table&gt;</strong>
-        <strong>&lt;tr&gt;</strong>
-            &lt;th&gt;Watercolor&lt;/th&gt;
-            &lt;td&gt;water-based&lt;/td&gt;
-        <strong>&lt;/tr&gt;
-        &lt;tr&gt;</strong>
-            &lt;th&gt;Acrylic&lt;/th&gt;
-            &lt;td&gt;water-based&lt;/td&gt;
-        <strong>&lt;/tr&gt;
-        &lt;tr&gt;</strong>
-            &lt;th&gt;Oil&lt;/th&gt;
-            &lt;td&gt;oil-based&lt;/td&gt;
-        <strong>&lt;/tr&gt;</strong>
-    &lt;/table&gt;</code></pre>
+                        <pre><code>&lt;ul&gt;
+    &lt;li&gt;
+        &lt;ul aria-label="nav list"&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+            ...
+        &lt;/ul&gt;
+    &lt;/li&gt;</code></pre>
                     </div>
                 </div>
             </div>
