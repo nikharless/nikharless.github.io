@@ -20,12 +20,12 @@ last-modified: 1 June 2025
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
                 <div>
-                    <p>Read-only controls communicate the read-only property to assistive technology.</p>
+                    <p>Read-only controls are communicated to assistive technology.</p>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A read-only control does not communicate the read-only property to assistive technology.</div>
+                <div>A read-only control is not communicated to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
@@ -50,7 +50,7 @@ last-modified: 1 June 2025
                     </ul>
 
                     <h3>Custom Controls</h3>
-                    <p>Use the <code>aria-readonly</code> attribute on a custom control.</p>
+                    <p>Use the <code>aria-readonly</code> attribute on a custom control. Use JavaScript to prevent the text from being edited.</p>
                     
                     <p>The following roles support the <code>aria-readonly</code> property:</p>
                     <ul>
@@ -77,7 +77,7 @@ last-modified: 1 June 2025
                 <div>
                     <h3>Plain Text</h3>
                     <p>In this example, a previously entered ID is provided for the user to refer to and copy/paste. However, the field is inserted into the form as plain text. When assistive technology reads the form in forms mode, this text will not be read to the user.</p>
-                    <p>NVDA: ""</p>
+                    <p>NVDA: Not read in forms mode</p>
                     <div class="example">
                         <form>
                             <p>ID: 12345</p>
@@ -92,7 +92,7 @@ last-modified: 1 June 2025
                 <div>
                     <h3>Native HTML</h3>
                     <p>This example uses a native HTML <code>&lt;input&gt;</code> element with the <code>readonly</code> attribute.</p>
-                    <p>NVDA: ""</p>
+                    <p>NVDA: "ID:, edit, read only, selected 12345"</p>
                     <div class="example">
                         <form>
                             <label>ID: <input type="text" value="12345" readonly></label>
