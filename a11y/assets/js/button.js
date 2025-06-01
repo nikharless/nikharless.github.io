@@ -108,7 +108,7 @@ function toggleButtonState(button) {
 
   button.setAttribute('aria-pressed', isAriaPressed ? 'false' : 'true');
 
-  var icon = button.querySelector('use');
+  var icon = button.querySelector('i');
   icon.setAttribute(
     'class',
     isAriaPressed ? ICON_SOUND_URL : ICON_MUTE_URL
