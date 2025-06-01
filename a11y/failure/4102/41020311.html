@@ -66,9 +66,31 @@ last-modified: 1 June 2025
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
+                    <h3>HTML</h3>
+                    <p>This native HTML example indicates with an asterisk in the label that it is required. However, it does not clearly communicate to assistive technology that it is required.</p>
+                    <p>NVDA: ""</p>
+                    <div class="example">
+                        <form>
+                            <label>Email* <input type="email"></label>
+                            <input type="submit" value="Save">
+                        </form>
+
+                        <pre><code>&lt;input type="email"&gt;</code></pre>
+                    </div>
+
+                    <h3>ARIA</h3>
+                    <p>This custom textbox indicates with an asterisk in the label that it is required. However, it does not clearly communicate to assistive technology that it is required.</p>
+                    <p>NVDA: ""</p>
+                    <div class="example">
+                        <div id="ariaLabel">Email* </div>
+                        <div role="textbox" contenteditable aria-labelledby="ariaLabel" style="border: 1px solid black; width: 200px;"></div>
+                        <button aria-disabled="true">Save</button>
+
+                        <pre><code>&lt;div role="textbox" contenteditable&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
@@ -89,6 +111,7 @@ last-modified: 1 June 2025
 
                     <h3>ARIA</h3>
                     <p>This custom textbox uses <code>aria-required="true"</code> to communicate the required state to assistive technology.</p>
+                    <p>NVDA: ""</p>
                     <div class="example">
                         <div id="ariaLabel">Email* </div>
                         <div role="textbox" contenteditable aria-labelledby="ariaLabel" aria-required="true" style="border: 1px solid black; width: 200px;"></div>
