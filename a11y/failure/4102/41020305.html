@@ -4,6 +4,7 @@ current: 41020305
 criterion: 4102
 checkpoint: 410203
 css: checkbox
+last-modified: 2 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -13,85 +14,119 @@ css: checkbox
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>If a control functions as a radio button, it has a checked state.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>A radio button does not have a checked state.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Solution</h2>
-            <div>
-                <ul>
-                    <li>Use the native <code>&lt;input type="radio"&gt;</code> mark-up to create the radio button, <strong>OR</strong></li>
-                    <li>Use the <code>aria-checked</code> attribute on the custom radio button element.</li>
-                </ul>
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>If a control functions as a radio button, it communicates the checked state to assistive technology.</div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Native HTML</h3>
-                <div class="example">
-                    <fieldset>
-                        <legend>Side</legend>
-                        <label><input type="radio"> Soup</label>
-                        <label><input type="radio" checked> Salad</label>
-                    </fieldset>
-
-                    <pre><code>&lt;label&gt;<strong>&lt;input type="radio"&gt;</strong> Soup&lt;/label&gt;
-&lt;label&gt;&lt;input type="radio" checked&gt; Salad&lt;/label&gt;</code></pre>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>A radio button does not communicate the checked state to assistive technology.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <ul>
+                        <li>Use the native HTML <code>&lt;input type="radio"&gt;</code> mark-up to create the radio button, <strong>OR</strong></li>
+                        <li>Use the <code>aria-checked</code> attribute on a custom radio button element.</li>
+                    </ul>
                 </div>
-
-                <h3>Custom radio button</h3>
-                <div class="example">
-                    
-                   <div class="radioExample" role="radiogroup">
-                        <div role="radio" tabindex="0" aria-checked="false">Check this radio button
-                            <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
-                            <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <div class="example">
+                       <div class="radioExampleFailCheck" role="radiogroup">
+                            <div role="radio" tabindex="0">Check this radio button
+                                <span id="crbCheckedFail" class="crbRadio crbChecked" style="display: none;"></span>
+                                <span id="crbNotCheckedFail" class="crbRadio crbNotChecked" style="display: block;"></span>
+                            </div>
                         </div>
-                    </div>
-                <script src="{{ baseurl }}/assets/js/radio.js"></script>
+                        <script src="{{ baseurl }}/assets/js/radio-fail-412.js"></script>
 
-                    <pre><code>&lt;div role="radio" tabindex="0" <strong>aria-checked="false"</strong>&gt; Check this radio button</code></pre>
+                        <pre><code>&lt;div role="radio" tabindex="0"&gt; Check this radio button</code></pre>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Not Applicable</h2>
-            <div>
-                <p>The following items are not applicable to this failure:</p>
-                <ul>
-                    <li><strong>Hidden</strong>:<br>
-                        <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Native HTML</h3>
+                    <p>This example uses native HTML, which automatically communicates the checked state to assistive technology.</p>
+                    <ul>
+                        <li>NVDA: ""</li>
+                    </ul>
+                    <div class="example">
+                        <fieldset>
+                            <legend>Side</legend>
+                            <label><input type="radio"> Soup</label>
+                            <label><input type="radio" checked> Salad</label>
+                        </fieldset>
+
+                        <pre><code>&lt;label&gt;<strong>&lt;input type="radio"&gt;</strong> Soup&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" checked&gt; Salad&lt;/label&gt;</code></pre>
+                    </div>
+
+                    <h3>Custom radio button</h3>
+                    <p>This custom radio button uses <code>aria-checked</code> to communicate the checked state to assistive technology.</p>
+                    <ul>
+                        <li>NVDA: ""</li>
+                    </ul>
+                    <div class="example">
+                       <div class="radioExample" role="radiogroup">
+                            <div role="radio" tabindex="0" aria-checked="false">Check this radio button
+                                <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
+                                <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
+                            </div>
+                        </div>
+                    <script src="{{ baseurl }}/assets/js/radio.js"></script>
+
+                        <pre><code>&lt;div role="radio" tabindex="0" <strong>aria-checked="false"</strong>&gt; Check this radio button</code></pre>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Assistive technology only works well when code is done properly.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Hidden</strong>:<br>
+                            <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input">MDN: &lt;input&gt;: The HTML Input element</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-checked">MDN: ARIA: aria-checked attribute</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/radio/">WAI-ARIA: Radio Group Pattern</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
