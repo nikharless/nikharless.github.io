@@ -54,6 +54,10 @@ class DisclosureButton {
     } else if (this.buttonNode.getAttribute('aria-expanded') === 'false') {
       this.buttonNode.setAttribute('aria-expanded', 'true');
       this.showContent();
+    } else if (this.controlledNode.style.display === 'none') {
+      this.showContent();
+    } else {
+      this.hideContent();
     }
   }
 
