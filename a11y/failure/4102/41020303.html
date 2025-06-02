@@ -4,6 +4,7 @@ current: 41020303
 criterion: 4102
 checkpoint: 410203
 css: menu-button-links
+last-modified: 2 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -13,69 +14,101 @@ css: menu-button-links
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>If a control functions as a menu button, it has an <code>aria-haspopup</code> attribute.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>A menu button does not have the <code>aria-haspopup</code> attribute.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Solution</h2>
-            <div>Use the <code>aria-haspopup</code> attribute on the menu button.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Menu</h3>
-                <div class="example">
-                    
-                    {% include examples/menu-button-links.html %}
-                    <script src="{{ baseurl }}/assets/js/menu-button-links.js"></script>
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>If a control opens a menu popup, it communicates this property to assistive technology.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>A menu button does not communicate to assistive technology that it opens a menu.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <p>Use the <code>aria-haspopup</code> attribute on the menu button.</p>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <div class="menu-button-links">
+                        <button type="button" id="menubutton1" aria-controls="menu1" aria-expanded="false">
+                            WAI-ARIA Quick Links
+                            <svg xmlns="http://www.w3.org/2000/svg" class="down" width="12" height="9" viewBox="0 0 12 9">
+                                <polygon points="1 0, 11 0, 6 8"></polygon>
+                            </svg>
+                        </button>
+                        <ul id="menu1" role="menu" aria-labelledby="menubutton1">
+                            <li role="none"><a role="menuitem" href="https://www.w3.org/">W3C Home Page</a></li>
+                            <li role="none"><a role="menuitem" href="https://www.w3.org/standards/webdesign/accessibility">W3C Web Accessibility Initiative</a></li>
+                            <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria/">Accessible Rich Internet Application Specification</a></li>
+                            <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria-practices/">WAI-ARIA Authoring Practices</a></li>
+                            <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria-implementation/">WAI-ARIA Implementation Guide</a></li>
+                            <li role="none"><a role="menuitem" href="https://www.w3.org/TR/accname-aam-1.1/">Accessible Name and Description</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Menu</h3>
+                    <div class="example">
+                        
+                        {% include examples/menu-button-links.html %}
+                        <script src="{{ baseurl }}/assets/js/menu-button-links.js"></script>
 
-                    <pre><code>&lt;button type="button" id="menubutton" <strong>aria-haspopup="true"</strong> aria-controls="menu2" aria-expanded="false"&gt;</code></pre>
+                        <pre><code>&lt;button type="button" id="menubutton" <strong>aria-haspopup="true"</strong> aria-controls="menu2" aria-expanded="false"&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Toggle button</strong><br>
+                            <code>&lt;a tabindex="0" role="button" id="toggle" aria-pressed="false"&gt;Mute&lt;/a&gt;</code><br>
+                            File under <a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}.</a></li>
+                        <li><strong>Disclosure button</strong><br>
+                            <code>&lt;&lt;button type="button" aria-expanded="false" aria-controls="faq1_desc"&gt;&gt;</code><br>
+                            File under <a href="{{ site.data.4102.4102[41020302].link | prepend: baseurl }}">{{ site.data.4102.4102[41020302].name }}.</a></li>
+                        <li><strong>Hidden</strong>:<br>
+                            <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/">WAI-ARIA: Menu Button Pattern</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Not Applicable</h2>
-            <div>
-                <p>The following items are not applicable to this failure:</p>
-                <ul>
-                    <li><strong>Toggle button</strong><br>
-                        <code>&lt;a tabindex="0" role="button" id="toggle" aria-pressed="false"&gt;Mute&lt;/a&gt;</code><br>
-                        File under <a href="41020113.html">4.1.2.1.13 Toggle button is missing the pressed state.</a></li>
-                    <li><strong>Disclosure button</strong><br>
-                        <code>&lt;&lt;button type="button" aria-expanded="false" aria-controls="faq1_desc"&gt;&gt;</code><br>
-                        File under <a href="41020114.html">4.1.2.1.14 Disclosure button is missing the expanded state.</a></li>
-                    <li><strong>Hidden</strong>:<br>
-                        <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                </ul>
-            </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Assistive technology only works well when code is done properly.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
-</div>
 
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
