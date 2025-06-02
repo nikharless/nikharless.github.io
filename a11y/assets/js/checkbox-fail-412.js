@@ -19,7 +19,7 @@ class CheckboxFailChecked {
     this.domNode.addEventListener('click', this.onClick.bind(this));
   }
 
-  toggleCheckbox() {
+  toggleFailCheckbox() {
     if (document.getElementById('ccbChecked').getAttribute('style') === 'display: block;') {
       document.getElementById('ccbChecked').setAttribute('style', 'display: none;');
       document.getElementById('ccbNotChecked').setAttribute('style', 'display: block;');
@@ -43,7 +43,7 @@ class CheckboxFailChecked {
 
     switch (event.key) {
       case ' ':
-        this.toggleCheckbox();
+        this.toggleFailCheckbox();
         flag = true;
         break;
 
@@ -57,7 +57,7 @@ class CheckboxFailChecked {
   }
 
   onClick() {
-    this.toggleCheckbox();
+    this.toggleFailCheckbox();
   }
 }
 
