@@ -20,12 +20,12 @@ class CheckboxFailChecked {
   }
 
   toggleFailCheckbox() {
-    if (document.getElementById('ccbChecked').getAttribute('style') === 'display: block;') {
-      document.getElementById('ccbChecked').setAttribute('style', 'display: none;');
-      document.getElementById('ccbNotChecked').setAttribute('style', 'display: block;');
+    if (document.getElementById('ccbCheckedFail').getAttribute('style') === 'display: block;') {
+      document.getElementById('ccbCheckedFail').setAttribute('style', 'display: none;');
+      document.getElementById('ccbNotCheckedFail').setAttribute('style', 'display: block;');
     } else {
-      document.getElementById('ccbChecked').setAttribute('style', 'display: block;');
-      document.getElementById('ccbNotChecked').setAttribute('style', 'display: none;');
+      document.getElementById('ccbCheckedFail').setAttribute('style', 'display: block;');
+      document.getElementById('ccbNotCheckedFail').setAttribute('style', 'display: none;');
     }
   }
 
