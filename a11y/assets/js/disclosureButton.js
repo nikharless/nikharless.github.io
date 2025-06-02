@@ -25,7 +25,9 @@ class DisclosureButton {
       this.controlledNode = document.getElementById(id);
     }
 
-    this.buttonNode.setAttribute('aria-expanded', 'false');
+    if (this.buttonNode.getAttribute('id') !== 'disclosure_faqf') {
+      this.buttonNode.setAttribute('aria-expanded', 'false');
+    }
     this.hideContent();
 
     this.buttonNode.addEventListener('click', this.onClick.bind(this));
@@ -94,6 +96,23 @@ if (document.getElementById('disclosure_faq2')) {
       var buttons = document.querySelectorAll(
         // 'button[aria-expanded][aria-controls]'
         '#disclosure_faq2'
+      );
+
+      for (var i = 0; i < buttons.length; i++) {
+        new DisclosureButton(buttons[i]);
+      }
+    },
+    false
+  );
+}
+
+if (document.getElementById('disclosure_faqf')) {
+  window.addEventListener(
+    'load',
+    function () {
+      var buttons = document.querySelectorAll(
+        // 'button[aria-expanded][aria-controls]'
+        '#disclosure_faqf'
       );
 
       for (var i = 0; i < buttons.length; i++) {
