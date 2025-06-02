@@ -132,7 +132,7 @@ class RadioGroup {
 
 // Initialize radio button group
 window.addEventListener('load', function () {
-  var radios = document.querySelectorAll('.radioExample [role="radiogroup"]');
+  var radios = document.querySelectorAll('.radioExample');
   for (var i = 0; i < radios.length; i++) {
     new RadioGroup(radios[i]);
   }
