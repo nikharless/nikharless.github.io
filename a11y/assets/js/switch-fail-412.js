@@ -1,13 +1,13 @@
-document.querySelectorAll(".switch switch-off").forEach((theSwitch) => {
+document.querySelectorAll(".switch").forEach((theSwitch) => {
   theSwitch.addEventListener("click", handleClickEvent, false);
 });
 
 function handleClickEvent(evt) {
   const el = evt.target;
 
-  if (el.getAttribute("class") === "switch switch-on") {
-    el.setAttribute("class", "switch switch-off");
+  if (el.getAttribute("name") === "switch-on") {
+    el.setAttribute("name", "switch-off");
   } else {
-    el.setAttribute("class", "switch switch-on");
+    el.setAttribute("name", "switch-on");
   }
 }
