@@ -129,7 +129,7 @@ class RadioGroupFailCheck {
 
 // Initialize radio button group
 window.addEventListener('load', function () {
-  var radiosFailCheck = document.querySelectorAll('.radioExampleFailCheck [role="radiogroup"]');
+  var radiosFailCheck = document.querySelectorAll('.radioExampleFailCheck');
   for (var i = 0; i < radiosFailCheck.length; i++) {
     new RadioGroupFailCheck(radiosFailCheck[i]);
   }
