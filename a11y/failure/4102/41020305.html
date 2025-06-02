@@ -42,7 +42,7 @@ last-modified: 2 June 2025
                     <h3>Custom Radio Button</h3>
                     <p>This custom radio button does not communicate the checked state to assistive technology.</p>
                     <ul>
-                        <li>NVDA:</li>
+                        <li>NVDA (on focus, regardless of state): "Soup, radio button, not checked, 1 of 2</li>
                     </ul>
                     <div class="example">
                         <p id="sideLabel">Side</p>
@@ -58,7 +58,7 @@ last-modified: 2 June 2025
                         </div>
                         <script src="{{ baseurl }}/assets/js/radio-fail-412.js"></script>
 
-                        <pre><code>&lt;div role="radio" tabindex="0"&gt; Check this radio button</code></pre>
+                        <pre><code>&lt;div role="radio" tabindex="0"&gt; Soup</code></pre>
                     </div>
                 </div>
             </div>
@@ -69,13 +69,15 @@ last-modified: 2 June 2025
                     <h3>Native HTML</h3>
                     <p>This example uses native HTML, which automatically communicates the checked state to assistive technology.</p>
                     <ul>
-                        <li>NVDA: ""</li>
+                        <li>NVDA (on focus when not checked): "Soup, radio button, not checked, 1 of 2"</li>
+                        <li>NVDA (on focus when checked): "Salad, radio button, checked, 2 of 2"</li>
+                        <li>NVDA (on state change): "checked" or "not checked"</li>
                     </ul>
                     <div class="example">
                         <fieldset>
                             <legend>Side</legend>
                             <label><input type="radio"> Soup</label>
-                            <label><input type="radio" checked> Salad</label>
+                            <label><input type="radio"> Salad</label>
                         </fieldset>
 
                         <pre><code>&lt;label&gt;<strong>&lt;input type="radio"&gt;</strong> Soup&lt;/label&gt;
@@ -85,7 +87,9 @@ last-modified: 2 June 2025
                     <h3>Custom radio button</h3>
                     <p>This custom radio button uses <code>aria-checked</code> to communicate the checked state to assistive technology.</p>
                     <ul>
-                        <li>NVDA: ""</li>
+                        <li>NVDA (on focus when not checked): "Soup, radio button, not checked, 1 of 2"</li>
+                        <li>NVDA (on focus when checked): "Soup, radio button, checked, 1 of 2"</li>
+                        <li>NVDA (on state change): "checked" or "not checked"</li>
                     </ul>
                     <div class="example">
                         <p>Side</p>
@@ -101,7 +105,7 @@ last-modified: 2 June 2025
                         </div>
                     <script src="{{ baseurl }}/assets/js/radio.js"></script>
 
-                        <pre><code>&lt;div role="radio" tabindex="0" <strong>aria-checked="false"</strong>&gt; Check this radio button</code></pre>
+                        <pre><code>&lt;div role="radio" tabindex="0" <strong>aria-checked="false"</strong>&gt; Soup</code></pre>
                     </div>
                 </div>
             </div>
