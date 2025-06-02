@@ -65,6 +65,6 @@ class CheckboxFailChecked {
 window.addEventListener('load', function () {
   let checkboxesFailCheck = document.querySelectorAll('.cbExampleFailCheck [role="checkbox"]');
   for (let i = 0; i < checkboxesFailCheck.length; i++) {
-    new CheckboxFailChecked(checkboxes[i]);
+    new CheckboxFailChecked(checkboxesFailCheck[i]);
   }
 });
