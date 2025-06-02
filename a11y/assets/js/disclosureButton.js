@@ -51,7 +51,7 @@ class DisclosureButton {
     if (this.buttonNode.getAttribute('aria-expanded') === 'true') {
       this.buttonNode.setAttribute('aria-expanded', 'false');
       this.hideContent();
-    } else {
+    } else if (this.buttonNode.getAttribute('aria-expanded') === 'false') {
       this.buttonNode.setAttribute('aria-expanded', 'true');
       this.showContent();
     }
