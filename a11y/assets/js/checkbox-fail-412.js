@@ -20,7 +20,6 @@ class CheckboxFailChecked {
   }
 
   toggleCheckbox() {
-    alert(document.getElementById('ccbChecked').getAttribute('style'));
     if (document.getElementById('ccbChecked').getAttribute('style') === 'display: block;') {
       document.getElementById('ccbChecked').setAttribute('style', 'display: none;');
       document.getElementById('ccbNotChecked').setAttribute('style', 'display: block;');
