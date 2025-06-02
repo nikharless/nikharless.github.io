@@ -36,21 +36,28 @@ last-modified: 2 June 2025
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <div class="menu-button-links">
-                        <button type="button" id="menubutton1" aria-controls="menu1" aria-expanded="false">
-                            WAI-ARIA Quick Links
-                            <svg xmlns="http://www.w3.org/2000/svg" class="down" width="12" height="9" viewBox="0 0 12 9">
-                                <polygon points="1 0, 11 0, 6 8"></polygon>
-                            </svg>
-                        </button>
-                        <ul id="menu1" role="menu" aria-labelledby="menubutton1">
-                            <li role="none"><a role="menuitem" href="https://www.w3.org/">W3C Home Page</a></li>
-                            <li role="none"><a role="menuitem" href="https://www.w3.org/standards/webdesign/accessibility">W3C Web Accessibility Initiative</a></li>
-                            <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria/">Accessible Rich Internet Application Specification</a></li>
-                            <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria-practices/">WAI-ARIA Authoring Practices</a></li>
-                            <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria-implementation/">WAI-ARIA Implementation Guide</a></li>
-                            <li role="none"><a role="menuitem" href="https://www.w3.org/TR/accname-aam-1.1/">Accessible Name and Description</a></li>
-                        </ul>
+                    <h3>Custom Menu Button</h3>
+                    <p>This example does not communicate to assistive technology that it opens a menu.</p>
+                    <p>NVDA: "WAI-ARIA Quick Links, button, collapsed"</p>
+                    <div class="example">
+                        <div class="menu-button-links">
+                            <button type="button" id="menubutton1" aria-controls="menu1" aria-expanded="false">
+                                WAI-ARIA Quick Links
+                                <svg xmlns="http://www.w3.org/2000/svg" class="down" width="12" height="9" viewBox="0 0 12 9">
+                                    <polygon points="1 0, 11 0, 6 8"></polygon>
+                                </svg>
+                            </button>
+                            <ul id="menu1" role="menu" aria-labelledby="menubutton1">
+                                <li role="none"><a role="menuitem" href="https://www.w3.org/">W3C Home Page</a></li>
+                                <li role="none"><a role="menuitem" href="https://www.w3.org/standards/webdesign/accessibility">W3C Web Accessibility Initiative</a></li>
+                                <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria/">Accessible Rich Internet Application Specification</a></li>
+                                <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria-practices/">WAI-ARIA Authoring Practices</a></li>
+                                <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria-implementation/">WAI-ARIA Implementation Guide</a></li>
+                                <li role="none"><a role="menuitem" href="https://www.w3.org/TR/accname-aam-1.1/">Accessible Name and Description</a></li>
+                            </ul>
+                        </div>
+
+                        <pre><code>&lt;button type="button" id="menubutton" aria-controls="menu2" aria-expanded="false"&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -58,13 +65,15 @@ last-modified: 2 June 2025
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Menu</h3>
+                    <h3>Custom Menu Button</h3>
+                    <p>This example uses <code>aria-haspopup="menu"</code> to communicate to assistive technology that it opens a menu.</p>
+                    <p>NVDA: "WAI-ARIA Quick Links, menu button, collapsed, subMenu"</p>
                     <div class="example">
                         
                         {% include examples/menu-button-links.html %}
                         <script src="{{ baseurl }}/assets/js/menu-button-links.js"></script>
 
-                        <pre><code>&lt;button type="button" id="menubutton" <strong>aria-haspopup="true"</strong> aria-controls="menu2" aria-expanded="false"&gt;</code></pre>
+                        <pre><code>&lt;button type="button" id="menubutton" <strong>aria-haspopup="menu"</strong> aria-controls="menu2" aria-expanded="false"&gt;</code></pre>
                     </div>
                 </div>
             </div>
