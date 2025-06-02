@@ -1,4 +1,4 @@
-document.querySelectorAll(".switch").forEach((theSwitch) => {
+document.querySelectorAll(".switch switch-off").forEach((theSwitch) => {
   theSwitch.addEventListener("click", handleClickEvent, false);
 });
 
