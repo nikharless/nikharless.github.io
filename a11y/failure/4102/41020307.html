@@ -39,12 +39,27 @@ last-modified: 2 June 2025
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
+                    <h3>Custom Select-Only Combobox</h3>
+                    <p>This example does not communicate the expanded state to assistive technology.</p>
+                    <ul>
+                        <li>NVDA: "Language, combobox, Select a Language, opens list"</li>
+                    </ul>
                     <div class="example">
                         <div class="combo js-select">
                             <div id="combo-fail-label" class="combo-label">Language</div>
                             <div aria-controls="listbox-fail" aria-haspopup="listbox" aria-labelledby="combo-fail-label" id="combo-fail" class="combo-input" role="combobox" tabindex="0"></div>
                             <div class="combo-menu" role="listbox" id="listbox-fail" aria-labelledby="combo-fail-label" tabindex="-1"></div>
                         </div>
+
+                        <pre><code>&lt;div role="combobox" 
+    aria-controls="listbox" 
+    aria-haspopup="listbox" 
+    aria-labelledby="combo-label" 
+    id="combo" 
+    tabindex="0"
+    aria-activedescendant&gt;
+    Select a Language
+&lt;/div&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -86,13 +101,13 @@ last-modified: 2 June 2025
                         <script src="{{ baseurl }}/assets/js/select-only.js"></script>
 
                         <pre><code>&lt;div role="combobox" 
-    aria-controls="listbox1" 
+    aria-controls="listbox" 
     <strong>aria-expanded="false"</strong> 
     aria-haspopup="listbox" 
-    aria-labelledby="combo1-label" 
-    id="combo1" 
+    aria-labelledby="combo-label" 
+    id="combo" 
     tabindex="0" 
-    aria-activedescendent&gt;
+    aria-activedescendant&gt;
     Select a Language
 &lt;/div&gt;</code></pre>
                     </div>
