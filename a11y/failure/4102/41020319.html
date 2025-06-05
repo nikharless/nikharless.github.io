@@ -1,10 +1,10 @@
 ---
 layout: default
-current: 41020303
+current: 41020319
 criterion: 4102
 checkpoint: 410203
-css: select-only
-last-modified: 3 June 2025
+css: toggle-button
+last-modified: 1 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -20,55 +20,46 @@ last-modified: 3 June 2025
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>If an option in a combobox (select) that uses <code>aria-activedescendent</code> is selected, it has the selected state.</div>
+                <div>If a control functions as a toggle button, it has a "pressed" state.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A combobox option does not have a selected state.</div>
+                <div>A toggle button does not have a "pressed" state.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
-                    <ul>
-                        <li>Use <code>aria-selected="true"</code> on the selected option.</li>
-                    </ul>
+                    <p>Use the <code>aria-pressed</code> attribute on the toggle button. For a simple two-state toggle button, set it to "true" when pressed and to "false" when not pressed. It must be explicitly set, as the default value is "undefined".</p>
+                    <p><strong>Do not</strong> change the label on a toggle button (e.g., "Mute"/"Unmute") when the state changes.</p>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Custom Select-Only Combobox</h3>
-                    <p>This example does not communicate the selected state of the currently selected option to assistive technology.</p>
-                    <ul>
-                        <li>NVDA: "Language, list, Select a Language, 1 of 7"</li>
-                    </ul>
+                    <h3>Regular Button</h3>
+                    <p>This button does not track pressed state changes.</p>
+                    <p>NVDA: "Mute, button"</p>
                     <div class="example">
-                        <div class="combo js-select-fail">
-                            <div id="combo-fail-label" class="combo-label">Language</div>
-                            <div aria-controls="listbox-fail" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="combo-fail-label" id="combo-fail" class="combo-input" role="combobox" tabindex="0"></div>
-                            <div class="combo-menu" role="listbox" id="listbox-fail" aria-labelledby="combo-fail-label" tabindex="-1"></div>
-                        </div>
+                        <a tabindex="0" role="button" class="toggleButton">Mute <i class="fa-solid fa-volume-high" aria-hidden="true"></i></a>
+
+                        <pre><code>&lt;a tabindex="0" role="button"&gt;Mute&lt;/a&gt;</code></pre>
                     </div>
-                    <script src="{{ baseurl }}/assets/js/select-only-fail-412.js"></script>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <p>Add multi-select</p>
-
-                    <h3>Custom Select-Only Combobox</h3>
+                    <h3>Toggle Button</h3>
                     <p></p>
-                    <ul>
-                        <li>NVDA: "Language, list, Select a Language, 1 of 7"</li>
-                    </ul>
+                    <p>NVDA: "Mute, toggle button, not pressed"</p>
                     <div class="example">
-                        {% include examples/select-only.html %}
-                        <script src="{{ baseurl }}/assets/js/select-only.js"></script>
+                        <a tabindex="0" role="button" id="toggle" aria-pressed="false" class="toggleButton">Mute <i class="fa-solid fa-volume-high" aria-hidden="true"></i></a>
+                        
+                        <script src="{{ baseurl }}/assets/js/toggle-button.js"></script>
 
-                        <pre><code>&lt;div role="option" id="combo1-1" class="combo-option option-current" <strong>aria-selected="true"</strong>&gt;English&lt;/div&gt;</code></pre>
+                        <pre><code>&lt;a tabindex="0" role="button" id="toggle" <strong>aria-pressed="false"</strong>&gt;Mute&lt;/a&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -77,20 +68,17 @@ last-modified: 3 June 2025
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
+                        <li><strong>Switch</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[41020306].link | prepend: baseurl }}">{{ site.data.4102.4102[41020306].name }}.</a></li>
                         <li><strong>Hidden</strong>:<br>
-                            <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
+                            <code>&lt;div style="display:none;"&gt;Mute&lt;/div&gt;</code><br>
                             Does not appear in accessibility tree</li>
                     </ul>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
-                        <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
-                    </ul>
-                </div>
+                <div>Assistive technology only works well when code is done properly.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">References</h2>
@@ -100,10 +88,7 @@ last-modified: 3 June 2025
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4e8ab6/proposed/">Element with role attribute has required states and properties</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#aria-selected">WAI-ARIA: aria-selected state</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-selected">MDN: ARIA: aria-selected attribute</a></li>
-                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/">Combobox Pattern</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/examples/button/">WAI-ARIA: Button Examples</a></li>
                     </ul>
                 </div>
             </div>

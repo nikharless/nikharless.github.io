@@ -3,8 +3,8 @@ layout: default
 current: 41020301
 criterion: 4102
 checkpoint: 410203
-css: toggle-button
-last-modified: 1 June 2025
+css: checkbox
+last-modified: 2 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -20,46 +20,82 @@ last-modified: 1 June 2025
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>If a control functions as a toggle button, it has a "pressed" state.</div>
+                <div>If a control functions as a checkbox, it communicates the checked state to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A toggle button does not have a "pressed" state.</div>
+                <div>A checkbox does not communicate the checked state to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
-                    <p>Use the <code>aria-pressed</code> attribute on the toggle button. For a simple two-state toggle button, set it to "true" when pressed and to "false" when not pressed. It must be explicitly set, as the default value is "undefined".</p>
-                    <p><strong>Do not</strong> change the label on a toggle button (e.g., "Mute"/"Unmute") when the state changes.</p>
+                    <ul>
+                        <li>Use the native HTML <code>&lt;input type="checkbox"&gt;</code> mark-up to create the checkbox, <strong>OR</strong></li>
+                        <li>Use the <code>aria-checked</code> attribute on the custom checkbox element.</li>
+                    </ul>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Regular Button</h3>
-                    <p>This button does not track pressed state changes.</p>
-                    <p>NVDA: "Mute, button"</p>
+                    <h3>Custom Checkbox</h3>
+                    <p>This custom checkbox does not communicate the checked state to assistive technology.</p>
+                    <ul>
+                        <li>NVDA (on focus, regardless of state): "Subscribe to the mailing list, checkbox, not checked"</li>
+                        <li>NVDA (on state change): Nothing spoken</li>
+                    </ul>
                     <div class="example">
-                        <a tabindex="0" role="button" class="toggleButton">Mute <i class="fa-solid fa-volume-high" aria-hidden="true"></i></a>
-
-                        <pre><code>&lt;a tabindex="0" role="button"&gt;Mute&lt;/a&gt;</code></pre>
+                        <script src="{{ baseurl }}/assets/js/checkbox-fail-412.js"></script>
+                        <div class="cbExampleFailCheck">
+                            <div role="checkbox" tabindex="0">Subscribe to the mailing list
+                                <span id="ccbCheckedFail" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                                <span id="ccbNotCheckedFail" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
+                            </div>
+                        </div>
+                        <pre><code>&lt;div role="checkbox" tabindex="0"&gt; Subscribe to the mailing list
+    ...
+&lt;/div&gt;</code></pre>
                     </div>
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Toggle Button</h3>
-                    <p></p>
-                    <p>NVDA: "Mute, toggle button, not pressed"</p>
+                    <h3>Native HTML</h3>
+                    <p>This example uses native HTML, which automatically communicates the checked state to assistive technology.</p>
+                    <ul>
+                        <li>NVDA (on focus when not checked): "Soup, checkbox, not checked"</li>
+                        <li>NVDA (on focus when checked): "Salad, checkbox, checked"</li>
+                        <li>NVDA (on state change): "checked" or "not checked"</li>
+                    </ul>
                     <div class="example">
-                        <a tabindex="0" role="button" id="toggle" aria-pressed="false" class="toggleButton">Mute <i class="fa-solid fa-volume-high" aria-hidden="true"></i></a>
-                        
-                        <script src="{{ baseurl }}/assets/js/toggle-button.js"></script>
+                        <label><input type="checkbox"> Soup</label>
+                        <label><input type="checkbox" checked> Salad</label>
 
-                        <pre><code>&lt;a tabindex="0" role="button" id="toggle" <strong>aria-pressed="false"</strong>&gt;Mute&lt;/a&gt;</code></pre>
+                        <pre><code>&lt;input type="checkbox"&gt; Soup&lt;/label&gt;
+&lt;input type="checkbox" checked&gt; Salad&lt;/label&gt;</code></pre>
+                    </div>
+
+                    <h3>Custom Checkbox</h3>
+                    <p>This custom checkbox uses <code>aria-checked</code> to communicate the checked state to assistive technology.</p>
+                    <ul>
+                        <li>NVDA (on focus when not checked): "Subscribe to the mailing list, checkbox, not checked"</li>
+                        <li>NVDA (on focus when checked): "Subscribe to the mailing list, checkbox, checked"</li>
+                        <li>NVDA (on state change): "checked" or "not checked"</li>
+                    </ul>
+                    <div class="example">
+                        <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
+                        <div class="cbExample">
+                            <div role="checkbox" tabindex="0" aria-checked="false">Subscribe to the mailing list
+                                <span id="ccbChecked" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                                <span id="ccbNotChecked" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
+                            </div>
+                        </div>
+                        <pre><code>&lt;div role="checkbox" tabindex="0" <strong>aria-checked="false"</strong>&gt; Subscribe to the mailing list
+    ...
+&lt;/div&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -71,14 +107,19 @@ last-modified: 1 June 2025
                         <li><strong>Switch</strong>:<br>
                             File under <a href="{{ site.data.4102.4102[41020306].link | prepend: baseurl }}">{{ site.data.4102.4102[41020306].name }}.</a></li>
                         <li><strong>Hidden</strong>:<br>
-                            <code>&lt;div style="display:none;"&gt;Mute&lt;/div&gt;</code><br>
+                            <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
                             Does not appear in accessibility tree</li>
                     </ul>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>Assistive technology only works well when code is done properly.</div>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
+                    </ul>
+                </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">References</h2>
@@ -88,7 +129,10 @@ last-modified: 1 June 2025
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/examples/button/">WAI-ARIA: Button Examples</a></li>
+                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4e8ab6/proposed/">Element with role attribute has required states and properties</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input">MDN: &lt;input&gt;: The HTML Input element</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-checked">MDN: ARIA: aria-checked attribute</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/">WAI-ARIA: Checkbox Pattern</a></li>
                     </ul>
                 </div>
             </div>

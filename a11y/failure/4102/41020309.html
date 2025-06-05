@@ -3,6 +3,8 @@ layout: default
 current: 41020309
 criterion: 4102
 checkpoint: 410203
+css: checkbox
+last-modified: 2 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -12,65 +14,138 @@ checkpoint: 410203
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Custom text input has the <code>contenteditable</code> attribute.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>Custom text input does not have the <code>contenteditable</code> attribute.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Solution</h2>
-            <div>Use the <code>contenteditable</code> attribute on the custom text input, even if it is marked up as read-only.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Custom form fields</h3>
-                <div class="example">
-                    <div role="textbox" contenteditable="true" style="border: 1px solid black;">Email</div>
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>If a control functions as a radio button, it communicates the checked state to assistive technology.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>A radio button does not communicate the checked state to assistive technology.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <ul>
+                        <li>Use the native HTML <code>&lt;input type="radio"&gt;</code> mark-up to create the radio button, <strong>OR</strong></li>
+                        <li>Use the <code>aria-checked</code> attribute on a custom radio button element.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>Custom Radio Button</h3>
+                    <p>This custom radio button does not communicate the checked state to assistive technology.</p>
+                    <ul>
+                        <li>NVDA (on focus, regardless of state): "Soup, radio button, not checked, 1 of 2</li>
+                    </ul>
+                    <div class="example">
+                        <p id="sideLabel">Side</p>
+                        <div class="radioExampleFailCheck" role="radiogroup" aria-labelledby="sideLabel">
+                            <div role="radio" tabindex="0">Soup
+                                <span id="crbCheckedFail" class="crbRadio crbChecked" style="display: none;"></span>
+                                <span id="crbNotCheckedFail" class="crbRadio crbNotChecked" style="display: block;"></span>
+                            </div>
+                            <div role="radio">Salad
+                                <span id="crbCheckedFail2" class="crbRadio crbChecked" style="display: none;"></span>
+                                <span id="crbNotCheckedFail2" class="crbRadio crbNotChecked" style="display: block;"></span>
+                            </div>
+                        </div>
+                        <script src="{{ baseurl }}/assets/js/radio-fail-412.js"></script>
 
-                    <pre><code>&lt;div role="textbox" <strong>contenteditable="true"</strong> style="border: 1px solid black;"&gt;Email&lt;/div&gt;</code></pre>
+                        <pre><code>&lt;div role="radio" tabindex="0"&gt; Soup</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Native HTML</h3>
+                    <p>This example uses native HTML, which automatically communicates the checked state to assistive technology.</p>
+                    <ul>
+                        <li>NVDA (on focus when not checked): "Soup, radio button, not checked, 1 of 2"</li>
+                        <li>NVDA (on focus when checked): "Salad, radio button, checked, 2 of 2"</li>
+                        <li>NVDA (on state change): "checked"</li>
+                    </ul>
+                    <div class="example">
+                        <fieldset>
+                            <legend>Side</legend>
+                            <label><input type="radio" name="side"> Soup</label>
+                            <label><input type="radio" name="side"> Salad</label>
+                        </fieldset>
+
+                        <pre><code>&lt;label&gt;<strong>&lt;input type="radio" name="side"&gt;</strong> Soup&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="side"&gt; Salad&lt;/label&gt;</code></pre>
+                    </div>
+
+                    <h3>Custom radio button</h3>
+                    <p>This custom radio button uses <code>aria-checked</code> to communicate the checked state to assistive technology.</p>
+                    <ul>
+                        <li>NVDA (on focus when not checked): "Soup, radio button, not checked, 1 of 2"</li>
+                        <li>NVDA (on focus when checked): "Soup, radio button, checked, 1 of 2"</li>
+                        <li>NVDA (on state change): "checked"</li>
+                    </ul>
+                    <div class="example">
+                        <p>Side</p>
+                        <div class="radioExample" role="radiogroup" aria-labelledby="sideLabel">
+                            <div role="radio" tabindex="0" aria-checked="false">Soup
+                                <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
+                                <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
+                            </div>
+                            <div role="radio" aria-checked="false">Salad
+                                <span id="crbChecked2" class="crbRadio crbChecked" style="display: none;"></span>
+                                <span id="crbNotChecked2" class="crbRadio crbNotChecked" style="display: block;"></span>
+                            </div>
+                        </div>
+                    <script src="{{ baseurl }}/assets/js/radio.js"></script>
+
+                        <pre><code>&lt;div role="radio" tabindex="0" <strong>aria-checked="false"</strong>&gt; Soup</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Hidden</strong>:<br>
+                            <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input">MDN: &lt;input&gt;: The HTML Input element</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-checked">MDN: ARIA: aria-checked attribute</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/radio/">WAI-ARIA: Radio Group Pattern</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Not Applicable</h2>
-            <div>
-                <p>The following items are not applicable to this failure:</p>
-                <ul>
-                    <li><strong>Hidden with CSS</strong>:<br>
-                        <code>&lt;div role="textbox" style="display:none;"&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                    <li><strong>Hidden with ARIA</strong>:<br>
-                        <code>&lt;div role="textbox" aria-hidden="true"&gt;</code><br>
-                        Does not appear in accessibility tree</li>
-                </ul>
-            </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Assistive technology only works well when code is done properly.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4e8ab6/proposed/">Element with role attribute has required states and properties</a></li>
-                </ul>
-            </div>
-        </div>
     </div>
-</div>
 
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>

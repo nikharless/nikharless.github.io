@@ -3,7 +3,7 @@ layout: default
 current: 41020306
 criterion: 4102
 checkpoint: 410203
-css: switches
+css: menu-button-links
 last-modified: 2 June 2025
 ---
 {% assign root=site.data.site.root %}
@@ -20,37 +20,44 @@ last-modified: 2 June 2025
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>If a control functions as a switch, it communicates the checked state to assistive technology.</div>
+                <div>If a control opens a menu popup, it communicates this property to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A switch does not communicate the checked state to assistive technology.</div>
+                <div>A menu button does not communicate to assistive technology that it opens a menu.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
-                    <ul>
-                        <li>Use the <code>aria-checked</code> attribute on the switch element.</li>
-                    </ul>
+                    <p>Use the <code>aria-haspopup</code> attribute on the menu button.</p>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Custom Switch</h3>
-                    <p>This switch does not communicate the checked state to assistive technology.</p>
-                    <ul>
-                        <li>NVDA (on focus, regardless of state): "Toggle this switch, switch, off"</li>
-                        <li>NVDA (on change): Nothing is spoken</li>
-                    </ul>
+                    <h3>Custom Menu Button</h3>
+                    <p>This example does not communicate to assistive technology that it opens a menu.</p>
+                    <p>NVDA: "WAI-ARIA Quick Links, button, collapsed"</p>
                     <div class="example">
-                        <button role="switch" id="id-switch-1" class="switch" name="switch-off">
-                            <span>off</span>
-                            <span>on</span>
-                        </button>
-                        <label for="id-switch-1" class="switch">Toggle this switch</label>
-                        <script src="{{ baseurl }}/assets/js/switch-fail-412.js"></script>
+                        <div class="menu-button-links">
+                            <button type="button" id="menubutton1" aria-controls="menu1" aria-expanded="false">
+                                WAI-ARIA Quick Links
+                                <svg xmlns="http://www.w3.org/2000/svg" class="down" width="12" height="9" viewBox="0 0 12 9">
+                                    <polygon points="1 0, 11 0, 6 8"></polygon>
+                                </svg>
+                            </button>
+                            <ul id="menu1" role="menu" aria-labelledby="menubutton1">
+                                <li role="none"><a role="menuitem" href="https://www.w3.org/">W3C Home Page</a></li>
+                                <li role="none"><a role="menuitem" href="https://www.w3.org/standards/webdesign/accessibility">W3C Web Accessibility Initiative</a></li>
+                                <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria/">Accessible Rich Internet Application Specification</a></li>
+                                <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria-practices/">WAI-ARIA Authoring Practices</a></li>
+                                <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria-implementation/">WAI-ARIA Implementation Guide</a></li>
+                                <li role="none"><a role="menuitem" href="https://www.w3.org/TR/accname-aam-1.1/">Accessible Name and Description</a></li>
+                            </ul>
+                        </div>
+
+                        <pre><code>&lt;button type="button" id="menubutton" aria-controls="menu2" aria-expanded="false"&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -58,29 +65,15 @@ last-modified: 2 June 2025
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Custom Switch</h3>
-                    <p>This example uses <code>aria-checked</code> to communicate the checked state to assistive technology.</p>
-                    <ul>
-                        <li>NVDA (on focus, when off): "Toggle this switch, switch, off"</li>
-                        <li>NVDA (on focus, when on): "Toggle this switch, switch, on"</li>
-                        <li>NVDA (on change): "on" and "off"</li>
-                    </ul>
+                    <h3>Custom Menu Button</h3>
+                    <p>This example uses <code>aria-haspopup="menu"</code> to communicate to assistive technology that it opens a menu.</p>
+                    <p>NVDA: "WAI-ARIA Quick Links, menu button, collapsed, subMenu"</p>
                     <div class="example">
-                        <script src="{{ baseurl }}/assets/js/switch.js"></script>
-                        <div class="switchExample">
-                            <label>
-                                <span class="label">Toggle this switch</span>
-                                <input id="id-switch-2" type="checkbox" role="switch">
-                                <span class="state">
-                                    <span class="container">
-                                        <span class="position" style="background-color:white; border: 2px solid #949494;">
-                                        </span>
-                                    </span>
-                                    <span class="on" aria-hidden="true">On</span>
-                                    <span class="off" aria-hidden="true">Off</span>
-                                </span>
-                            </label>
-                        </div>
+                        
+                        {% include examples/menu-button-links.html %}
+                        <script src="{{ baseurl }}/assets/js/menu-button-links.js"></script>
+
+                        <pre><code>&lt;button type="button" id="menubutton" <strong>aria-haspopup="menu"</strong> aria-controls="menu2" aria-expanded="false"&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -89,8 +82,10 @@ last-modified: 2 June 2025
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
-                        <li><strong>Checkbox</strong>:<br>
-                            File under <a href="{{ site.data.4102.4102[41020304].link | prepend: baseurl }}">{{ site.data.4102.4102[41020304].name }}.</a></li>
+                        <li><strong>Toggle button</strong><br>
+                            File under <a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}.</a></li>
+                        <li><strong>Disclosure button</strong><br>
+                            File under <a href="{{ site.data.4102.4102[41020302].link | prepend: baseurl }}">{{ site.data.4102.4102[41020302].name }}.</a></li>
                         <li><strong>Hidden</strong>:<br>
                             <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
                             Does not appear in accessibility tree</li>
@@ -114,9 +109,8 @@ last-modified: 2 June 2025
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4e8ab6/proposed/">Element with role attribute has required states and properties</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/switch_role">MDN: ARIA: switch role</a></li>
-                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/switch/">WAI-ARIA: Switch Pattern</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/">WAI-ARIA: Menu Button Pattern</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-haspopup">MDN: ARIA: aria-haspopup attribute</a></li>
                     </ul>
                 </div>
             </div>
