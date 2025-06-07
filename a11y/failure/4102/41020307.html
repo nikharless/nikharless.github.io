@@ -44,12 +44,13 @@ last-modified: 6 June 2025
                     <p>NVDA: ""</p>
                     <div class="example">
                         <p>This meter changes every 5 seconds. Use the pause button to stop changes.</p>
-                        <h3 id="cpu_usage_label">Central Processing Unit (CPU) Usage</h3>
+                        <p id="cpu_usage_label" style="font-weight: bold;">Central Processing Unit (CPU) Usage</p>
                         <p><button type="button" class="play-meters">Pause Updates</button></p>
                         <div role="meter" aria-valuemin="0" aria-valuemax="100" aria-labelledby="cpu_usage_label">
-                        <svg width="100" height="100" class="fill" aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="0" y="0" width="100%" height="100%" fill="currentcolor"></rect>
-                        </svg>
+                            <svg width="100" height="100" class="fill" aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="0" y="0" width="100%" height="100%" fill="currentcolor"></rect>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,7 +58,19 @@ last-modified: 6 June 2025
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Meter</h3>
+                    <h3>Native HTML <code>&lt;meter&gt;</code></h3>
+                    <p>This example</p>
+                    <p>NVDA: ""</p>
+                    <div class="example">
+                        <label for="native-meter">Central Processing Unit (CPU) Usage</label>
+                        <meter id="native-meter" min="0" max="100" value="90"> at 90/100</meter>
+
+                        <pre><code>&lt;meter id="native-meter" min="0" max="100" value="90"&gt; at 90/100&lt;/meter&gt;</code></pre>
+                    </div>
+
+                    <h3>Custom Meter</h3>
+                    <p>This example</p>
+                    <p>NVDA: ""</p>
                     <div class="example">
                         {% include examples/meter.html %}
                     </div>
