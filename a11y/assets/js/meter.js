@@ -56,7 +56,7 @@ Meter.prototype._update = function (min, max, value) {
 
   if (value !== this.value) {
     this.value = value;
-    if (this.id !== "meter-fail-412") {
+    if (this.rootEl.id !== "meter-fail-412") {
       this.rootEl.setAttribute('aria-valuenow', value + '');
     }
     if(!isNaN(value)) {
