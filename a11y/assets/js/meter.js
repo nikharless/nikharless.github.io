@@ -60,7 +60,7 @@ Meter.prototype._update = function (min, max, value) {
       this.rootEl.setAttribute('aria-valuenow', value + '');
     }
     this.rootEl.nextSibling.innerHTML = value;
-    console.log(this.rootEl.nextSibling.innerHTML);
+    console.log(this.rootEl.nextSibling);
   }
 };
 
