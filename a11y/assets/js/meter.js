@@ -88,32 +88,36 @@ window.addEventListener('load', function () {
   // randomly update meter values
 
   // returns an id for setInterval
+  var intervals = [];
   function playMeters(i) {
-    return window.setInterval(function () {
-      if (i !== undefined) {
+    if(i !== undefined) {
+      intervals[i] = window.setInterval(function () {
         meters[i].setValue(Math.random() * 100);
-      } else {
-        meters.forEach(function (meter) {
-          meter.setValue(Math.random() * 100);
-        });
+      }, 5000);
+    } else {
+      for (x=0; x < meters.length; x++) {
+        intervals[x] = window.setInterval(function() {
+          meters.forEach(function (meter) {
+            meter.setValue(Math.random() * 100);
+          }
+        }, 5000);
       }
-    }, 5000);
+    }
   }
 
   // play/pause meter updates
   var playButtons = document.querySelectorAll('.play-meters');
   var isPaused = [];
+
   for (let i=0; i < playButtons.length; i++) {
     playButtons[i].addEventListener('click', function () {
       isPaused[i] = playButtons[i].classList.contains('paused');
       if (isPaused[i]) {
-        console.log(isPaused[i]);
         updateInterval = playMeters(i);
         playButtons[i].classList.remove('paused');
         playButtons[i].innerHTML = 'Pause Updates';
       } else {
-        console.log(updateInterval[i]);
-        clearInterval(updateInterval[i]);
+        clearInterval(intervals[i]);
         playButtons[i].classList.add('paused');
         playButtons[i].innerHTML = 'Start Updates';
       }
