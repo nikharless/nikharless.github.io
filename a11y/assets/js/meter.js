@@ -90,13 +90,13 @@ window.addEventListener('load', function () {
   // returns an id for setInterval
   function playMeters(i) {
     return window.setInterval(function () {
-      meters.forEach(function (meter) {
-        if (i !== '') {
-          meter[i].setValue(Math.random() * 100);
-        } else {
+      if (i !== '') {
+        meters.forEach(function (meter) {
           meter.setValue(Math.random() * 100);
-        }
-      });
+        });
+      } else {
+        meters[i].setValue(Math.random() * 100);
+      }
     }, 5000);
   }
 
