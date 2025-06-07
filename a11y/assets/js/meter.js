@@ -92,6 +92,7 @@ window.addEventListener('load', function () {
     return window.setInterval(function () {
       if (i !== undefined) {
         meters.forEach(function (meter) {
+          alert("meter: " + meter + "; i: " + i);
           if (meter === i) {
             meter.setValue(Math.random() * 100);
           }
