@@ -99,8 +99,8 @@ window.addEventListener('load', function () {
         intervals[x] = window.setInterval(function() {
           meters.forEach(function (meter) {
             meter.setValue(Math.random() * 100);
-          }
-        }, 5000);
+          }, 5000);
+        });
       }
     }
   }
