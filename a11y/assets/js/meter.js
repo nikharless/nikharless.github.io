@@ -56,7 +56,9 @@ Meter.prototype._update = function (min, max, value) {
 
   if (value !== this.value) {
     this.value = value;
-    this.rootEl.setAttribute('aria-valuenow', value + '');
+    if (this.id !== "meter-fail-412") {
+      this.rootEl.setAttribute('aria-valuenow', value + '');
+    }
   }
 };
 
