@@ -100,7 +100,24 @@ window.addEventListener('load', function () {
   var updateInterval = playMeters();
 
   // play/pause meter updates
-  var playButton = document.querySelector('.play-meters');
+  var playButtons = document.querySelectorAll('.play-meters');
+  for (let i=0; i < playButtons.length; i++) {
+    playButtons[i].addEventListener('click', function () {
+      var isPaused = playButtons[i].classList.contains('paused');
+      if (isPaused) {
+        updateInterval = playMeters();
+        playButtons[i].classList.remove('paused');
+        playButtons[i].innerHTML = 'Pause Updates';
+      } else {
+        clearInterval(updateInterval);
+        playButtons[i].classList.add('paused');
+        playButtons[i].innerHTML = 'Start Updates';
+      }
+    });
+  }
+
+
+  /*var playButton = document.querySelector('.play-meters');
   playButton.addEventListener('click', function () {
     var isPaused = playButton.classList.contains('paused');
 
@@ -113,5 +130,5 @@ window.addEventListener('load', function () {
       playButton.classList.add('paused');
       playButton.innerHTML = 'Start Updates';
     }
-  });
+  });*/
 });
