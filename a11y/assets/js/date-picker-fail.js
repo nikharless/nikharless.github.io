@@ -28,6 +28,19 @@ window.addEventListener('DOMContentLoaded', () => {
                 showTimePicker(btn);
             }
         });
+
+        btn.addEventListener('keydown', event => {
+            event.preventDefault();
+            var key = event.which || event.keyCode;
+
+            if (key === event.KeyCode.SPACE || key === event.KeyCode.RETURN) {
+                if (btn.dataset.pickerType === 'date') {
+                    showDatePicker(btn);
+                } else {
+                    showTimePicker(btn);
+                }
+            }
+        });
     });
 });
 
