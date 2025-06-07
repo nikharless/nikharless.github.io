@@ -40,8 +40,11 @@ last-modified: 6 June 2025
                     <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
                     <h3>Custom Meter</h3>
-                    <p>This example</p>
-                    <p>NVDA: ""</p>
+                    <p>This example does not communicate the current value to assistive technology.</p>
+                    <ul>
+                        <li>NVDA (regardless of value): "Progress bar, 0"</li>
+                        <li>NVDA (on change): No feedback</li>
+                    </ul>
                     <div class="example">
                         <p>This meter changes every 5 seconds. Use the pause button to stop changes.</p>
                         <p id="cpu_usage_label" style="font-weight: bold;">Central Processing Unit (CPU) Usage</p>
@@ -62,7 +65,10 @@ last-modified: 6 June 2025
                 <div>
                     <h3>Native HTML <code>&lt;meter&gt;</code></h3>
                     <p>This example</p>
-                    <p>NVDA: ""</p>
+                    <ul>
+                        <li>NVDA: "Progress bar, [current value]"</li>
+                        <li>NVDA (on change):</li>
+                    </ul>
                     <div class="example">
                         <label for="native-meter">Central Processing Unit (CPU) Usage</label>
                         <meter id="native-meter" min="0" max="100" value="90"> at 90/100</meter>
@@ -71,8 +77,11 @@ last-modified: 6 June 2025
                     </div>
 
                     <h3>Custom Meter</h3>
-                    <p>This example</p>
-                    <p>NVDA: ""</p>
+                    <p>This example uses <code>aria-valuenow</code> set to the current value to communicate the value to assistive technology.</p>
+                    <ul>
+                        <li>NVDA: "Progress bar, [current value]"</li>
+                        <li>NVDA (on change): Beeps which vary according to range between min and max</li>
+                    </ul>
                     <div class="example">
                         {% include examples/meter.html %}
                     </div>
