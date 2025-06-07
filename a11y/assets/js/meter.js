@@ -103,8 +103,8 @@ window.addEventListener('load', function () {
   var playButtons = document.querySelectorAll('.play-meters');
   for (let i=0; i < playButtons.length; i++) {
     playButtons[i].addEventListener('click', function () {
-      var isPaused = playButtons[i].classList.contains('paused');
-      if (isPaused) {
+      var isPaused[i] = playButtons[i].classList.contains('paused');
+      if (isPaused[i]) {
         updateInterval = playMeters();
         playButtons[i].classList.remove('paused');
         playButtons[i].innerHTML = 'Pause Updates';
