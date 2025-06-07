@@ -101,7 +101,7 @@ window.addEventListener('load', function () {
 
   // play/pause meter updates
   var playButtons = document.querySelectorAll('.play-meters');
-  var isPaused;
+  var isPaused = [];
   for (let i=0; i < playButtons.length; i++) {
     playButtons[i].addEventListener('click', function () {
       isPaused[i] = playButtons[i].classList.contains('paused');
