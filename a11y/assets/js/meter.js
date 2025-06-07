@@ -100,9 +100,6 @@ window.addEventListener('load', function () {
     }, 5000);
   }
 
-  // start meters
-  var updateInterval = playMeters();
-
   // play/pause meter updates
   var playButtons = document.querySelectorAll('.play-meters');
   var isPaused = [];
@@ -114,13 +111,19 @@ window.addEventListener('load', function () {
         playButtons[i].classList.remove('paused');
         playButtons[i].innerHTML = 'Pause Updates';
       } else {
-        clearInterval(updateInterval);
+        clearInterval(updateInterval[i]);
         playButtons[i].classList.add('paused');
         playButtons[i].innerHTML = 'Start Updates';
       }
     });
   }
 
+  // start meters
+  var updateInterval = [];
+  for (let i=0; i < playButtons.length; i++) {
+    updateInterval.push(i);
+    playMeters(i)
+  }
 
   /*var playButton = document.querySelector('.play-meters');
   playButton.addEventListener('click', function () {
