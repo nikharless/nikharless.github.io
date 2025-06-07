@@ -91,13 +91,7 @@ window.addEventListener('load', function () {
   function playMeters(i) {
     return window.setInterval(function () {
       if (i !== undefined) {
-        meters.forEach(function (meter) {
-          console.log(Object.keys(meter));  //(5) [div#meter-fail-412, svg.fill, 0, 100, 47.1160957580782]
-          console.log(Object.values(meter));  //(5) [div#meter-fail-412, svg.fill, 0, 100, 47.1160957580782]
-          if (meters.findIndex(meter.id === i)) {
-            meter.setValue(Math.random() * 100);
-          }
-        });
+        meters[i].setValue(Math.random() * 100);
       } else {
         meters.forEach(function (meter) {
           meter.setValue(Math.random() * 100);
