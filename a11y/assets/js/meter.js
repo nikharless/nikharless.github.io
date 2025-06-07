@@ -107,10 +107,12 @@ window.addEventListener('load', function () {
     playButtons[i].addEventListener('click', function () {
       isPaused[i] = playButtons[i].classList.contains('paused');
       if (isPaused[i]) {
+        console(isPaused[i]);
         updateInterval = playMeters(i);
         playButtons[i].classList.remove('paused');
         playButtons[i].innerHTML = 'Pause Updates';
       } else {
+        console(updateInterval[i]);
         clearInterval(updateInterval[i]);
         playButtons[i].classList.add('paused');
         playButtons[i].innerHTML = 'Start Updates';
