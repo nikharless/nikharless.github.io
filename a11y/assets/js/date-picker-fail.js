@@ -30,12 +30,12 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         btn.addEventListener('keydown', event => {
-            event.preventDefault();
             var key = event.which || event.keyCode;
 
             if (btn.dataset.pickerType === 'date') {
                 switch (event.key) {
                     case ' ':
+                        event.preventDefault();
                         showDatePicker(btn);
                         break;
 
