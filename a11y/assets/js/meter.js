@@ -122,7 +122,7 @@ window.addEventListener('load', function () {
   var updateInterval = [];
   for (let i=0; i < playButtons.length; i++) {
     updateInterval.push(i);
-    playMeters(i)
+    playMeters(i);
   }
 
   /*var playButton = document.querySelector('.play-meters');
