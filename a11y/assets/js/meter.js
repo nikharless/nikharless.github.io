@@ -89,9 +89,8 @@ window.addEventListener('load', function () {
 
   // returns an id for setInterval
   function playMeters(i) {
-    alert(i);
     return window.setInterval(function () {
-      if (i !== '') {
+      if (i !== undefined) {
         meters.forEach(function (meter) {
           if (meter === i) {
             meter.setValue(Math.random() * 100);
