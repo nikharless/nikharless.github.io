@@ -2,25 +2,30 @@
 
 /* ─── Variables ─────────────────────────────── */
 :root {
-    --box-light-hover: #f7f7f7;
-    --box-light-border: #eee;
-    --color-main: #0e0e0e;
+    --box-light-hover: #fff;
+    --box-light-border: #000;
+    --color-main: #000;
     --color-disabled: #aaa;
-    --color-accent: #0074d3;
+    --color-accent: #1e6ee6;
     --color-range: #cce6ff;
 }
 
 /* ─── Picker Buttons ───────────────────────── */
 .picker-button {
 	display: inline-block;
+	border: 1px solid black;
 	border-radius: 7px;
-	padding: 10px 15px;
 	background-color: var(--box-light-hover);
 	color: var(--color-main);
+	padding: 10px 15px;
 	width: 140px;
+	text-align: center;
+	font-weight: bold;
 }
 .picker-button:hover {
 	cursor: pointer;
+	background-color: #eee;
+	border-width: 2px;
 }
 .picker-button span {
 	color: var(--color-main);
@@ -54,7 +59,9 @@
 
 .date-picker-header {
 	position: sticky;
-	border-bottom: 1px solid var(--box-light-border);
+	background-color: var(--color-accent);
+	font-weight: bold;
+	color: white;
 }
 
 .date-picker .days-of-week {
@@ -88,7 +95,7 @@
 .date-picker-month {
 	width: 100%;
 	font-weight: 500;
-	color: #999;
+	color: #000;
 	margin-left: 5px;
 }
 
@@ -103,15 +110,16 @@
 	transition: 0.2s ease-in-out;
 }
 .date-picker-date:hover {
-	background-color: #bbb;
+	background-color: var(--color-accent);
+	color: white;
 	cursor: pointer;
 }
 .date-picker-date.date-disabled {
-	color: #ddd;
+	color: #aaa;
 	pointer-events: none;
 }
 .date-picker-date.today-outline {
-	border: 2px solid #bbb;
+	border: 2px solid var(--color-accent);
 	line-height: 30px;
 }
 .date-picker-date.active-date.today-outline {
