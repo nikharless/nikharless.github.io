@@ -1,8 +1,9 @@
-let ismdwn = 0;
-const dragSep = document.getElementById("separator");
-console.log(dragSep);
-dragSep.addEventListener('mousedown', mD);
+function initSep {
+  let ismdwn = 0;
+  const dragSep = document.getElementById("separator");
 
+  dragSep.addEventListener('mousedown', mD);
+}
 
 function mD(event) {
   ismdwn = 1;
