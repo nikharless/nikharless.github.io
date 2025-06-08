@@ -1,22 +1,23 @@
 let ismdwn = 0;
+const dragSep = document.getElementById("separator");
 
-rpanrResize.addEventListener('mousedown', mD);
+dragSep.addEventListener('mousedown', mD);
 
 function mD(event) {
-  ismdwn = 1
-  document.body.addEventListener('mousemove', mV)
-  document.body.addEventListener('mouseup', end)
+  ismdwn = 1;
+  document.body.addEventListener('mousemove', mV);
+  document.body.addEventListener('mouseup', end);
 }
 
 function mV(event) {
   if (ismdwn === 1) {
-    pane1.style.flexBasis = event.clientX + "px"
+    pane1.style.flexBasis = event.clientX + "px";
   } else {
-    end()
+    end();
   }
 }
 const end = (e) => {
-  ismdwn = 0
-  document.body.removeEventListener('mouseup', end)
-  rpanrResize.removeEventListener('mousemove', mV)
+  ismdwn = 0;
+  document.body.removeEventListener('mouseup', end);
+  dragSep.removeEventListener('mousemove', mV);
 }
