@@ -23,3 +23,5 @@ const end = (e) => {
   document.body.removeEventListener('mouseup', end);
   dragSep.removeEventListener('mousemove', mV);
 }
+
+window.onload = initSep;
