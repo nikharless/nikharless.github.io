@@ -1,7 +1,6 @@
 let ismdwn = 0;
-const separator = document.getElementById("separator");
 
-separator.addEventListener('mousedown', mD)
+rpanrResize.addEventListener('mousedown', mD);
 
 function mD(event) {
   ismdwn = 1
@@ -19,5 +18,5 @@ function mV(event) {
 const end = (e) => {
   ismdwn = 0
   document.body.removeEventListener('mouseup', end)
-  separator.removeEventListener('mousemove', mV)
+  rpanrResize.removeEventListener('mousemove', mV)
 }
