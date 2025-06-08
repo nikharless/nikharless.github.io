@@ -1,5 +1,5 @@
 let ismdwn = 0
-rpanrResize.addEventListener('mousedown', mD)
+separator.addEventListener('mousedown', mD)
 
 function mD(event) {
   ismdwn = 1
@@ -9,7 +9,7 @@ function mD(event) {
 
 function mV(event) {
   if (ismdwn === 1) {
-    pan1.style.flexBasis = event.clientX + "px"
+    pane1.style.flexBasis = event.clientX + "px"
   } else {
     end()
   }
@@ -17,5 +17,5 @@ function mV(event) {
 const end = (e) => {
   ismdwn = 0
   document.body.removeEventListener('mouseup', end)
-  rpanrResize.removeEventListener('mousemove', mV)
+  separator.removeEventListener('mousemove', mV)
 }
