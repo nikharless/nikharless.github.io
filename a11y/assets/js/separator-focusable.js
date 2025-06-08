@@ -1,4 +1,6 @@
-let ismdwn = 0
+let ismdwn = 0;
+const separator = document.getElementById("separator");
+
 separator.addEventListener('mousedown', mD)
 
 function mD(event) {
