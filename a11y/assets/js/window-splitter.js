@@ -5,6 +5,127 @@ console.clear();
  * OutOfRangeError
  * elementIsValid, attributeExists, attribtueIsValid, attributeIsOneOf, valueIsNumber
  */
+class ArrtibuteIsNotValidError extends Error {
+  constructor(attribute, element) {
+    super();
+
+    this.message = `Attribute ${attribute} does not exist on element ${element.tagName}`;
+    this.name = "ArrtibuteIsNotValidError";
+  }
+}
+
+class ElementIsNotValidError extends Error {
+  constructor() {
+    super();
+
+    this.message = `The element was not found in the DOM`;
+    this.name = "ElementIsNotValidError";
+  }
+}
+
+class ValueNotArrayOrStringError extends Error {
+  constructor(value) {
+    super();
+
+    this.message = `the value ${value} must be an array or a single string`;
+    this.name = "ValueNotArrayOrStringError";
+  }
+}
+
+class ArrayDoesNotIncludeError extends Error {
+  constructor(attribute, whitelist) {
+    super();
+
+    this.message = `The attribute ${attribute} must be of type ${whitelist}`;
+    this.name = "ArrayDoesNotIncludeError";
+  }
+}
+
+class ValueNotNumberError extends Error {
+  constructor(value) {
+    super();
+
+    this.message = `The value ${value} cannot be converted into a number`;
+    this.name = "ValueNotNumber";
+  }
+}
+
+class OutOfRangeError extends Error {
+  constructor(value) {
+    super();
+
+    this.message = `The value ${value} is out of range`;
+    this.name = "OutOfRangeError";
+  }
+}
+
+/**
+ * Checks if the element provided is an HTML element
+ * @param @required {HTMLElement} element -- Element to check
+ * @returns {HTMLElement}
+ */
+const elementIsValid = (element) => {
+  if (!element) throw new Error(`Element property is required`);
+  if (!(element instanceof HTMLElement)) throw new ElementIsNotValidError();
+
+  return element;
+};
+
+/**
+ * Check if attribute exists
+ * @param @required {HTMLElement} element -- Element to check against
+ * @param @required {string} attribute -- Attribute to test
+ * @returns {boolean | string} -- Returns false if attribute is not found, the attribute value if it exists
+ */
+const attributeExists = (element, attribute) => {
+  return element.hasAttribute(attribute)
+    ? element.getAttribute(attribute)
+    : false;
+};
+
+/**
+ * Checks if the given attribute is on an HTML element
+ * @param @required {HTMLElement} element -- Element to check against
+ * @param @required {string} attribute -- Attribute to test
+ * @returns {string} -- Attributes value
+ */
+const attribtueIsValid = (element, attribute) => {
+  element = elementIsValid(element);
+  if (!attribute || typeof attribute !== "string" || attribute.length <= 0)
+    throw new Error("Attribute property is required");
+
+  if (!element.hasAttribute(attribute))
+    throw new AttributeIsNotValidError(attribute, element);
+
+  return element.getAttribute(attribute);
+};
+
+/**
+ * Checks if the given attribute is one of the whitelisted attributes
+ * @param @required {Array<string> | string} whitelist -- Array of attributes as a whitelist
+ * @param @required {string} attribute -- Attribute to check
+ * @returns {string} -- Returns the attribute if it exists
+ */
+const attributeIsOneOf = (whitelist, attribute) => {
+  if (!Array.isArray(whitelist) && typeof whitelist !== "string")
+    throw new ValueNotArrayOrStringError(whitelist);
+
+  if (!whitelist.includes(attribute))
+    throw new ArrayDoesNotIncludeError(attribute, whitelist);
+
+  return attribute;
+};
+
+/**
+ * Checks if the given value is a number
+ * @param @required {string} value
+ * @returns {number} -- Returns the string as a number
+ */
+const valueIsNumber = (value) => {
+  if (isNaN(Number(value))) throw new ValueNotNumberError(value);
+
+  return Number(value);
+};
 
 const SEPARATOR_KEY = "js-separator";
 const SEPARATOR_CSS_VAR = "--js-primary-pane-size";
