@@ -36,13 +36,13 @@ function kD(event) {
         //pane1.style.flexBasis = 50%;
       }
       break;
-    case: "Home":
+    case "Home":
       //pane1.style.flexBasis = 0%;
       break;
-    case: "End":
+    case "End":
       //pane1.style.flexBasis = 100%;
       break;
-    case: "F6":
+    case "F6":
       break;
     default:
       return;
