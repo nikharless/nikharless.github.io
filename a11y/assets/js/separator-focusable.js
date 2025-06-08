@@ -1,4 +1,4 @@
-function initSep {
+function initSep () {
   let ismdwn = 0;
   const dragSep = document.getElementById("separator");
 
