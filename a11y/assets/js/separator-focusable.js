@@ -30,7 +30,7 @@ function kD(event) {
       //pane1.style.flexBasis = pane1.style.flexBasis + 10%;
       break;
     case "Enter":
-      if (pane1.style.flexBasis > 0%) {
+      if (pane1.style.flexBasis > 0) {
         //pane1.style.flexBasis = 0%;
       } else {
         //pane1.style.flexBasis = 50%;
