@@ -4,6 +4,7 @@ function initSep () {
 
   dragSep.addEventListener('mousedown', mD);
   dragSep.addEventListener('keydown', kD);
+  console.log(pane1.style.flexBasis);
 }
 
 function mD(event) {
@@ -23,7 +24,6 @@ function mV(event) {
 function kD(event) {
   switch (event.key) {
     case "ArrowLeft":
-      console.log(pane1.style.flexBasis);
       //pane1.style.flexBasis = pane1.style.flexBasis - 10%;
       break;
     case "ArrowRight":
