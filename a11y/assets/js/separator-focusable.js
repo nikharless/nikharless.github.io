@@ -1,6 +1,6 @@
 var ismdwn;
 var paneWidth;
-const dragSep;
+var dragSep;
 
 function initSep () {
   ismdwn = 0;
