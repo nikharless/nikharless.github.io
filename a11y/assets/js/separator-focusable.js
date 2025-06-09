@@ -71,7 +71,7 @@ function updateValueNow() {
   pane1.style.flexBasis = paneWidth + "px";
   let wPercent = Math.round((paneWidth / valueMax) * 100);
   dragSep.setAttribute("aria-valuenow", paneWidth);
-  dragSep.firstChild.innerHTML = wPercent + "%";
+  dragSep.setAttribute("aria-valuetext", wPercent + "%");
 }
 
 const end = (e) => {
