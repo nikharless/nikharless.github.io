@@ -1,12 +1,18 @@
-var ismdwn;
-var paneWidth;
-var dragSep;
+var ismdwn; // Is the mouse down?
+var paneWidth; // Width of the left pane
+var dragSep; // Separator
+var valueMin = 100; // Minimum width of left pane
+var valueMax = window.innerWidth - 100; // Maximum width of left pane
+var valueStart; // Original width of left pane (set in CSS)
 
 function initSep () {
   ismdwn = 0;
-  paneWidth = window.innerWidth / 2;
   dragSep = document.getElementById("separator");
+  valueStart = document.getElementById("pane1").offsetWidth;
+  paneWidth = valueStart;
   dragSep.setAttribute("aria-valuenow", paneWidth);
+  dragSep.setAttribute("aria-valuemin", valueMin);
+  dragSep.setAttribute("aria-valuemax", valueMax);
 
   dragSep.addEventListener('mousedown', mD);
   dragSep.addEventListener('keydown', kD);
@@ -30,27 +36,27 @@ function mV(event) {
 function kD(event) {
   switch (event.key) {
     case "ArrowLeft":
-      if (paneWidth > 100) {
+      if (paneWidth > valueMin) {
         paneWidth = paneWidth - 20;
       }
       break;
     case "ArrowRight":
-      if (paneWidth < (window.innerWidth - 100)) {
+      if (paneWidth < valueMax) {
         paneWidth = paneWidth + 20;
       }
       break;
     case "Enter":
-      if (paneWidth > 100) {
-        paneWidth = 100;
+      if (paneWidth > valueMin) {
+        paneWidth = valueMin;
       } else {
-        paneWidth = window.innerWidth / 2;
+        paneWidth = valueStart;
       }
       break;
     case "Home":
-      paneWidth = 100;
+      paneWidth = valueMin;
       break;
     case "End":
-      paneWidth = window.innerWidth - 100;
+      paneWidth = valueMax;
       break;
     case "F6":
       break;
