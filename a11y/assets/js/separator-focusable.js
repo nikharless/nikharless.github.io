@@ -6,10 +6,10 @@ function initSep () {
   ismdwn = 0;
   paneWidth = window.innerWidth / 2;
   dragSep = document.getElementById("separator");
+  dragSep.setAttribute("aria-valuenow", paneWidth);
 
   dragSep.addEventListener('mousedown', mD);
   dragSep.addEventListener('keydown', kD);
-  console.log("paneWidth: " + paneWidth);
 }
 
 function mD(event) {
@@ -31,37 +31,25 @@ function kD(event) {
     case "ArrowLeft":
       if (paneWidth > 100) {
         paneWidth = paneWidth - 20;
-        console.log("paneWidth: " + paneWidth);
-        pane1.style.flexBasis = paneWidth + "px";
       }
       break;
     case "ArrowRight":
       if (paneWidth < (window.innerWidth - 100)) {
         paneWidth = paneWidth + 20;
-        console.log("paneWidth: " + paneWidth);
-        pane1.style.flexBasis = paneWidth + "px";
       }
       break;
     case "Enter":
       if (paneWidth > 100) {
         paneWidth = 100;
-        console.log("paneWidth: " + paneWidth);
-        pane1.style.flexBasis = paneWidth + "px";
       } else {
         paneWidth = window.innerWidth / 2;
-        console.log("paneWidth: " + paneWidth);
-        pane1.style.flexBasis = paneWidth + "px";
       }
       break;
     case "Home":
       paneWidth = 100;
-      console.log("paneWidth: " + paneWidth);
-      pane1.style.flexBasis = paneWidth + "px";
       break;
     case "End":
       paneWidth = window.innerWidth - 100;
-      console.log("paneWidth: " + paneWidth);
-      pane1.style.flexBasis = paneWidth + "px";
       break;
     case "F6":
       break;
@@ -69,12 +57,19 @@ function kD(event) {
       return;
   }
   event.preventDefault();
+  updateValueNow();
+}
+
+function updateValueNow() {
+  pane1.style.flexBasis = paneWidth + "px";
+  dragSep.setAttribute("aria-valuenow", paneWidth);
 }
 
 const end = (e) => {
   ismdwn = 0;
   document.body.removeEventListener('mouseup', end);
   dragSep.removeEventListener('mousemove', mV);
+  dragSep.setAttribute("aria-valuenow", paneWidth);
 }
 
 window.onload = initSep;
