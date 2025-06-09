@@ -4,6 +4,7 @@ function initSep () {
 
   dragSep.addEventListener('mousedown', mD);
   dragSep.addEventListener('keydown', kD);
+  console.log(dragSep);
   console.log(pane1.style.flexBasis);
 }
 
