@@ -21,6 +21,7 @@ function mD(event) {
 function mV(event) {
   if (ismdwn === 1) {
     pane1.style.flexBasis = event.clientX + "px";
+    paneWidth = event.clientX;
   } else {
     end();
   }
@@ -63,13 +64,14 @@ function kD(event) {
 function updateValueNow() {
   pane1.style.flexBasis = paneWidth + "px";
   dragSep.setAttribute("aria-valuenow", paneWidth);
+  dragSep.firstChild.innerHTML = paneWidth;
 }
 
 const end = (e) => {
   ismdwn = 0;
   document.body.removeEventListener('mouseup', end);
   dragSep.removeEventListener('mousemove', mV);
-  dragSep.setAttribute("aria-valuenow", paneWidth);
+  updateValueNow();
 }
 
 window.onload = initSep;
