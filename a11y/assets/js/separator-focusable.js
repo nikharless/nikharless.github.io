@@ -69,8 +69,9 @@ function kD(event) {
 
 function updateValueNow() {
   pane1.style.flexBasis = paneWidth + "px";
+  let wPercent = Math.round((paneWidth / valueMax) * 100);
   dragSep.setAttribute("aria-valuenow", paneWidth);
-  dragSep.firstChild.innerHTML = paneWidth;
+  dragSep.firstChild.innerHTML = wPercent + "%";
 }
 
 const end = (e) => {
