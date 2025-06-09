@@ -6,8 +6,6 @@ function initSep () {
   dragSep.addEventListener('mousedown', mD);
   dragSep.addEventListener('keydown', kD);
   console.log("paneWidth: " + paneWidth);
-  console.log("dragSep: " + dragSep);
-  console.log("flexBasis: " + pane1.style.flexBasis);
 }
 
 function mD(event) {
@@ -27,23 +25,31 @@ function mV(event) {
 function kD(event) {
   switch (event.key) {
     case "ArrowLeft":
-      //pane1.style.flexBasis = pane1.style.flexBasis - 10%;
+      paneWidth = paneWidth - (paneWidth * .1);
+      console.log("paneWidth: " + paneWidth);
+      pane1.style.flexBasis = paneWidth + "px";
       break;
     case "ArrowRight":
-      //pane1.style.flexBasis = pane1.style.flexBasis + 10%;
+      paneWidth = paneWidth + (paneWidth * .1);
+      console.log("paneWidth: " + paneWidth);
+      pane1.style.flexBasis = paneWidth + "px";
       break;
     case "Enter":
       if (pane1.style.flexBasis > 0) {
-        //pane1.style.flexBasis = 0%;
+        paneWidth = 1;
+        pane1.style.flexBasis = paneWidth + "px";
       } else {
-        //pane1.style.flexBasis = 50%;
+        paneWidth = window.innerWidth / 2;
+        pane1.style.flexBasis = paneWidth + "px";
       }
       break;
     case "Home":
-      //pane1.style.flexBasis = 0%;
+      paneWidth = 1;
+      pane1.style.flexBasis = paneWidth + "px";
       break;
     case "End":
-      //pane1.style.flexBasis = 100%;
+      paneWidth = window.innerWidth;
+      pane1.style.flexBasis = paneWidth + "px";
       break;
     case "F6":
       break;
