@@ -39,8 +39,9 @@ function kD(event) {
       pane1.style.flexBasis = paneWidth + "px";
       break;
     case "Enter":
-      if (pane1.style.flexBasis > 0) {
+      if (paneWidth > 1) {
         paneWidth = 1;
+        console.log("paneWidth: " + paneWidth);
         pane1.style.flexBasis = paneWidth + "px";
       } else {
         paneWidth = window.innerWidth / 2;
@@ -50,6 +51,7 @@ function kD(event) {
       break;
     case "Home":
       paneWidth = 1;
+      console.log("paneWidth: " + paneWidth);
       pane1.style.flexBasis = paneWidth + "px";
       break;
     case "End":
