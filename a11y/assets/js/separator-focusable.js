@@ -1,5 +1,6 @@
 var ismdwn; // Is the mouse down?
 var paneWidth; // Width of the left pane
+var wPercent; // Width converted to percent
 var dragSep; // Separator
 var valueMin = 100; // Minimum width of left pane
 var valueMax = window.innerWidth - 100; // Maximum width of left pane
@@ -10,9 +11,11 @@ function initSep () {
   dragSep = document.getElementById("separator");
   valueStart = document.getElementById("pane1").offsetWidth;
   paneWidth = valueStart;
+  wPercent = Math.round((paneWidth / valueMax) * 100);
   dragSep.setAttribute("aria-valuenow", paneWidth);
   dragSep.setAttribute("aria-valuemin", valueMin);
   dragSep.setAttribute("aria-valuemax", valueMax);
+  dragSep.setAttribute("aria-valuetext", wPercent + "%");
 
   dragSep.addEventListener('mousedown', mD);
   dragSep.addEventListener('keydown', kD);
@@ -69,7 +72,7 @@ function kD(event) {
 
 function updateValueNow() {
   pane1.style.flexBasis = paneWidth + "px";
-  let wPercent = Math.round((paneWidth / valueMax) * 100);
+  wPercent = Math.round((paneWidth / valueMax) * 100);
   dragSep.setAttribute("aria-valuenow", paneWidth);
   dragSep.setAttribute("aria-valuetext", wPercent + "%");
 }

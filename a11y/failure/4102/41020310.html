@@ -46,7 +46,7 @@ last-modified: 7 June 2025
                     <div class="example">
                         
 
-                        <pre><code>&lt;div role="progressbar" aria-labelledby="proglabel"&gt;</code></pre>
+                        <pre><code></code></pre>
                     </div>
                 </div>
             </div>
@@ -55,12 +55,17 @@ last-modified: 7 June 2025
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>Window Splitter</h3>
-                    <p>This example uses <code>aria-valuenow</code> set to the current value to communicate the value to assistive technology.</p>
+                    <p>This example uses <code>aria-valuenow</code> set to the current value and <code>aria-valuetext</code> to communicate the value to assistive technology.</p>
                     <ul>
-                        <li>NVDA (on focus): "250, Table of Contents, separator, clickable"</li>
+                        <li>NVDA/Chrome (on focus): "[aria-valuenow], Table of Contents, separator, clickable"</li>
+                        <li>NVDA/Chrome (on change): "[aria-valuetext]"</li>
+                        <li>NVDA/Firefox (on focus): "Table of Contents, separator, clickable"</li>
+                        <li>NVDA/Firefox (on change): "[aria-valuetext]"</li>
                     </ul>
                     <div class="example">
-                        <p><a href="{{ baseurl }}/assets/examples/separator-focusable.html" target="_blank">Accessible Window Splitter Example (opens in a new window)</a></p>                        
+                        <p><a href="{{ baseurl }}/assets/examples/separator-focusable.html" target="_blank">Accessible Window Splitter Example (opens in a new window)</a></p>
+
+                        <pre><code>&lt;div id="separator" role="separator" aria-valuemin="100" aria-valuemax="1100" <strong>aria-valuenow="250" aria-valuetext="21%"</strong> aria-labelledby="tocLabel" aria-controls="pane1" tabindex="0"&gt;&lt;/div&gt;</code></pre>                    
                     </div>
                 </div>
             </div>
