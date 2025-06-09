@@ -1,7 +1,11 @@
+var ismdwn;
+var paneWidth;
+const dragSep;
+
 function initSep () {
-  var ismdwn = 0;
-  var paneWidth = window.innerWidth / 2;
-  const dragSep = document.getElementById("separator");
+  ismdwn = 0;
+  paneWidth = window.innerWidth / 2;
+  dragSep = document.getElementById("separator");
 
   dragSep.addEventListener('mousedown', mD);
   dragSep.addEventListener('keydown', kD);
