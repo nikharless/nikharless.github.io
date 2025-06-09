@@ -29,12 +29,12 @@ function mV(event) {
 function kD(event) {
   switch (event.key) {
     case "ArrowLeft":
-      paneWidth = paneWidth - (paneWidth * .1);
+      paneWidth = paneWidth - 20;
       console.log("paneWidth: " + paneWidth);
       pane1.style.flexBasis = paneWidth + "px";
       break;
     case "ArrowRight":
-      paneWidth = paneWidth + (paneWidth * .1);
+      paneWidth = paneWidth + 20;
       console.log("paneWidth: " + paneWidth);
       pane1.style.flexBasis = paneWidth + "px";
       break;
@@ -44,6 +44,7 @@ function kD(event) {
         pane1.style.flexBasis = paneWidth + "px";
       } else {
         paneWidth = window.innerWidth / 2;
+        console.log("paneWidth: " + paneWidth);
         pane1.style.flexBasis = paneWidth + "px";
       }
       break;
@@ -52,7 +53,8 @@ function kD(event) {
       pane1.style.flexBasis = paneWidth + "px";
       break;
     case "End":
-      paneWidth = window.innerWidth;
+      paneWidth = window.innerWidth - 20;
+      console.log("paneWidth: " + paneWidth);
       pane1.style.flexBasis = paneWidth + "px";
       break;
     case "F6":
