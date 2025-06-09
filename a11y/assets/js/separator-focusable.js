@@ -1,11 +1,13 @@
 function initSep () {
   var ismdwn = 0;
+  var paneWidth = window.innerWidth / 2;
   const dragSep = document.getElementById("separator");
 
   dragSep.addEventListener('mousedown', mD);
   dragSep.addEventListener('keydown', kD);
-  console.log(dragSep);
-  console.log(pane1.style.flexBasis);
+  console.log("paneWidth: " + paneWidth);
+  console.log("dragSep: " + dragSep);
+  console.log("flexBasis: " + pane1.style.flexBasis);
 }
 
 function mD(event) {
