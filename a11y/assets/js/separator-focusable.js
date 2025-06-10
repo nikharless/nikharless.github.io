@@ -12,11 +12,13 @@ function initSep () {
   valueStart = document.getElementById("pane1").offsetWidth;
   paneWidth = valueStart;
   wPercent = Math.round((paneWidth / valueMax) * 100);
-  dragSep.setAttribute("aria-valuenow", paneWidth);
+
   dragSep.setAttribute("aria-valuemin", valueMin);
   dragSep.setAttribute("aria-valuemax", valueMax);
-  dragSep.setAttribute("aria-valuetext", wPercent + "%");
-
+  if (dragSep.class !== "sepFail") {
+    dragSep.setAttribute("aria-valuenow", paneWidth);
+    dragSep.setAttribute("aria-valuetext", wPercent + "%");
+  }
   dragSep.addEventListener('mousedown', mD);
   dragSep.addEventListener('keydown', kD);
 }
@@ -73,8 +75,10 @@ function kD(event) {
 function updateValueNow() {
   pane1.style.flexBasis = paneWidth + "px";
   wPercent = Math.round((paneWidth / valueMax) * 100);
-  dragSep.setAttribute("aria-valuenow", paneWidth);
-  dragSep.setAttribute("aria-valuetext", wPercent + "%");
+  if (dragSep.class !== "sepFail") {
+    dragSep.setAttribute("aria-valuenow", paneWidth);
+    dragSep.setAttribute("aria-valuetext", wPercent + "%");
+  }
 }
 
 const end = (e) => {
