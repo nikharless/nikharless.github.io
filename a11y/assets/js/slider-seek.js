@@ -18,12 +18,15 @@ class SliderSeek {
     this.domNode = domNode;
 
     this.isMoving = false;
+    this.curValue = 100;
 
     this.svgNode = domNode.querySelector('svg');
     this.svgPoint = this.svgNode.createSVGPoint();
 
     this.railNode = domNode.querySelector('.rail');
-    this.sliderNode = domNode.querySelector('[role=slider]');
+    //this.sliderNode = domNode.querySelector('[role=slider]');
+    this.sliderNode = document.getElementById("id-seek"); // use id because I might have different types of sliders on the same page
+    this.sliderClass = sliderNode.getAttribute("class"); // get class to identify intentional fail
     this.sliderValueNode = this.sliderNode.querySelector('.value');
     this.sliderFocusNode = this.sliderNode.querySelector('.focus-ring');
     this.sliderThumbNode = this.sliderNode.querySelector('.thumb');
@@ -147,7 +150,11 @@ class SliderSeek {
   }
 
   getValue() {
-    return parseInt(this.sliderNode.getAttribute('aria-valuenow'));
+    if (this.sliderClass !== "seekFail") {
+      return parseInt(this.sliderNode.getAttribute('aria-valuenow'));
+    } else {
+      return curValue;
+    }
   }
 
   getValueMin() {
@@ -225,16 +232,22 @@ class SliderSeek {
 
     value = Math.min(Math.max(value, valueMin), valueMax);
 
-    this.sliderNode.setAttribute('aria-valuenow', value);
+    if (this.sliderClass !== "seekFail") {
+      this.sliderNode.setAttribute('aria-valuenow', value);
+    } else {
+      curValue = value;
+    }
 
     this.sliderValueNode.textContent = this.getValueMinutesSeconds(value);
 
     width = this.sliderValueNode.getBoundingClientRect().width;
 
-    this.sliderNode.setAttribute(
-      'aria-valuetext',
-      this.getValueTextMinutesSeconds(value)
-    );
+    if (this.sliderClass !== "seekFail") {
+      this.sliderNode.setAttribute(
+        'aria-valuetext',
+        this.getValueTextMinutesSeconds(value)
+      );
+    }
 
     pos =
       this.railX +
@@ -302,10 +315,12 @@ class SliderSeek {
   onSliderBlur() {
     this.domNode.classList.remove('focus');
     // Include total time in aria-valuetext
-    this.sliderNode.setAttribute(
-      'aria-valuetext',
-      this.getValueTextMinutesSeconds(this.getValue(), true)
-    );
+    if (this.sliderClass !== "seekFail") {
+      this.sliderNode.setAttribute(
+        'aria-valuetext',
+        this.getValueTextMinutesSeconds(this.getValue(), true)
+      );
+    }
   }
 
   onRailClick(event) {
