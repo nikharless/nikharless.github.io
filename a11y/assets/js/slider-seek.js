@@ -153,7 +153,7 @@ class SliderSeek {
     if (this.sliderClass !== "seekFail") {
       return parseInt(this.sliderNode.getAttribute('aria-valuenow'));
     } else {
-      return curValue;
+      return this.curValue;
     }
   }
 
@@ -235,7 +235,7 @@ class SliderSeek {
     if (this.sliderClass !== "seekFail") {
       this.sliderNode.setAttribute('aria-valuenow', value);
     } else {
-      curValue = value;
+      this.curValue = value;
     }
 
     this.sliderValueNode.textContent = this.getValueMinutesSeconds(value);
