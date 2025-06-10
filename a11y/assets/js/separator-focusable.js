@@ -16,7 +16,7 @@ function initSep () {
   dragSep.setAttribute("aria-valuemin", valueMin);
   dragSep.setAttribute("aria-valuemax", valueMax);
   console.log(dragSep.class);
-  if (dragSep.class !== "sepFail") {
+  if (dragSep.getAttribute("class") !== "sepFail") {
     dragSep.setAttribute("aria-valuenow", paneWidth);
     dragSep.setAttribute("aria-valuetext", wPercent + "%");
   }
@@ -76,7 +76,7 @@ function kD(event) {
 function updateValueNow() {
   pane1.style.flexBasis = paneWidth + "px";
   wPercent = Math.round((paneWidth / valueMax) * 100);
-  if (dragSep.class !== "sepFail") {
+  if (dragSep.getAttribute("class") !== "sepFail") {
     dragSep.setAttribute("aria-valuenow", paneWidth);
     dragSep.setAttribute("aria-valuetext", wPercent + "%");
   }
