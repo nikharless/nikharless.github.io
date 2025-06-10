@@ -15,7 +15,7 @@ function initSep () {
 
   dragSep.setAttribute("aria-valuemin", valueMin);
   dragSep.setAttribute("aria-valuemax", valueMax);
-  console.log(dragSep.class);
+  console.log(dragSep.getAttribute("class"));
   if (dragSep.getAttribute("class") !== "sepFail") {
     dragSep.setAttribute("aria-valuenow", paneWidth);
     dragSep.setAttribute("aria-valuetext", wPercent + "%");
