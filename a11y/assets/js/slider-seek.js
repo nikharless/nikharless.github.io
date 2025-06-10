@@ -116,10 +116,12 @@ class SliderSeek {
     this.sliderValueNode.removeAttribute('style');
 
     // Include total time in aria-valuetext when loaded
-    this.sliderNode.setAttribute(
-      'aria-valuetext',
-      this.getValueTextMinutesSeconds(this.getValue(), true)
-    );
+    if (this.sliderClass !== "seekFail") {
+      this.sliderNode.setAttribute(
+        'aria-valuetext',
+        this.getValueTextMinutesSeconds(this.getValue(), true)
+      );
+    }
   }
 
   getWidthFromLabelText() {
