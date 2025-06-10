@@ -13,7 +13,11 @@ var SpinButtonDate = function (domNode, values, callback) {
   this.callback = callback;
   this.wrap = true;
 
-  var initialValue = domNode.getAttribute('aria-valuetext');
+  if (domNode.getAttribute("class") !== "spinFail") {
+    var initialValue = domNode.getAttribute('aria-valuetext');
+  } else {
+    var initialValue = domNode.innerText;
+  }
 
   this.spinbuttonNode = domNode.querySelector('[role="spinbutton"]');
 
@@ -36,8 +40,13 @@ var SpinButtonDate = function (domNode, values, callback) {
   } else {
     this.valueMin = parseInt(this.spinbuttonNode.getAttribute('aria-valuemin'));
     this.valueMax = parseInt(this.spinbuttonNode.getAttribute('aria-valuemax'));
-    this.valueNow = parseInt(this.spinbuttonNode.getAttribute('aria-valuenow'));
-    this.valueText = this.spinbuttonNode.getAttribute('aria-valuenow');
+    if (this.spinbuttonNode.getAttribute("class") !== "spinFail") {
+      this.valueNow = parseInt(this.spinbuttonNode.getAttribute('aria-valuenow'));
+      this.valueText = this.spinbuttonNode.getAttribute('aria-valuenow');
+    } else {
+      this.valueNow = parseInt(this.spinbuttonNode.innerText);
+      this.valueText = this.spinbuttonNode.innerText;
+    }
   }
 
   this.keyCode = Object.freeze({
@@ -111,11 +120,13 @@ SpinButtonDate.prototype.setValue = function (value, flag) {
     }
   }
 
-  this.spinbuttonNode.setAttribute('aria-valuenow', this.valueNow);
+  if (this.spinbuttonNode.getAttribute("class") !== "spinFail") {
+    this.spinbuttonNode.setAttribute('aria-valuenow', this.valueNow);
 
-  if (this.values) {
-    this.spinbuttonNode.setAttribute('aria-valuetext', this.valueText);
-  }
+    if (this.values) {
+      this.spinbuttonNode.setAttribute('aria-valuetext', this.valueText);
+    }
+  }    
 
   this.spinbuttonNode.innerHTML = this.valueText;
 
@@ -126,7 +137,9 @@ SpinButtonDate.prototype.setValue = function (value, flag) {
 
 SpinButtonDate.prototype.setValueText = function (value) {
   this.valueText = value;
-  this.spinbuttonNode.setAttribute('aria-valuetext', value);
+  if (this.spinbuttonNode.getAttribute("class") !== "spinFail") {
+    this.spinbuttonNode.setAttribute('aria-valuetext', value);
+  }
 };
 
 SpinButtonDate.prototype.getValueMin = function () {
