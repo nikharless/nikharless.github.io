@@ -39,11 +39,28 @@ last-modified: 9 June 2025
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                     <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Rating Slider</h3>
+                    <h3>Custom Slider</h3>
+                    <p>This example does not communicate the current value to assistive technology.</p>
+                    <p>NVDA: ""</p>
                     <div class="example">
-                        <div class="slidecontainer">
-                            <input type="range" min="1" max="100" value="50" class="slider">
+                        <span id="sliderValue">50</span>
+                        <div id="failSlider" role="slider" aria-valuemin="0" aria-valuemax="100" aria-label="Volume" tabindex="0" style="width: 300px; height: 20px; background: #ccc;">
+                            <div style="width: 50%; height: 100%; background: #007bff;"></div>
                         </div>
+                        <script>
+                            const failSlider = document.getElementById("failSlider");
+
+                            failSlider.addEventListener('keydown', (event) => {
+                                let value = 50;
+                                if (event.key === 'ArrowRight' && value < 100) {
+                                    value++;
+                                } else if (event.key === 'ArrowLeft' && value > 0) {
+                                    value--;
+                                }
+                                slider.firstElementChild.style.width = value + '%';
+                                document.getElementById('sliderValue').innerText = value;
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
@@ -51,9 +68,22 @@ last-modified: 9 June 2025
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Rating Slider</h3>
+                    <h3>Native HTML Slider</h3>
+                    <p>This example uses the native HTML <code>&lt;input type="range"&gt;</code> element, which automatically communicates the current value to assistive technology.</p>
+                    <p>NVDA: ""</p>
+                    <div class="example">
+                        <input type="range" min="1" max="100" value="50" class="slider">
+
+                        <pre><code>&lt;input type="range" min="1" max="100" <strong>value="50"</strong>&gt;</code></pre>
+                    </div>
+
+                    <h3>ARIA Custom Slider</h3>
+                    <p>This example uses <code>aria-valuenow</code> to communicate the current value to assistive technology.</p>
+                    <p>NVDA: ""</p>
                     <div class="example">
                         {% include examples/slider-rating.html %}
+
+                        <pre><code>&lt;div role="slider" tabindex="0" aria-valuemin="0" <strong>aria-valuenow="0"</strong> aria-valuemax="10" aria-valuetext="Choose a rating from 1 to 10 where 10 is Strongly Disagree"&gt;</code></pre>
                     </div>
                 </div>
             </div>
