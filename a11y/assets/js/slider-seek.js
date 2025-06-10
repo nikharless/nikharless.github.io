@@ -26,7 +26,7 @@ class SliderSeek {
     this.railNode = domNode.querySelector('.rail');
     //this.sliderNode = domNode.querySelector('[role=slider]');
     this.sliderNode = document.getElementById("id-seek"); // use id because I might have different types of sliders on the same page
-    this.sliderClass = sliderNode.getAttribute("class"); // get class to identify intentional fail
+    this.sliderClass = this.sliderNode.getAttribute("class"); // get class to identify intentional fail
     this.sliderValueNode = this.sliderNode.querySelector('.value');
     this.sliderFocusNode = this.sliderNode.querySelector('.focus-ring');
     this.sliderThumbNode = this.sliderNode.querySelector('.thumb');
