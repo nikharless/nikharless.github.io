@@ -24,9 +24,12 @@ class TabsManual {
     for (var i = 0; i < this.tabs.length; i += 1) {
       var tab = this.tabs[i];
       var tabpanel = document.getElementById(tab.getAttribute('aria-controls'));
+      var tabclass = tab.getAttribute('class');
 
       tab.tabIndex = -1;
-      tab.setAttribute('aria-selected', 'false');
+      if (tabClass !== 'failTab') {
+        tab.setAttribute('aria-selected', 'false');
+      }
       this.tabpanels.push(tabpanel);
 
       tab.addEventListener('keydown', this.onKeydown.bind(this));
@@ -44,12 +47,18 @@ class TabsManual {
   setSelectedTab(currentTab) {
     for (var i = 0; i < this.tabs.length; i += 1) {
       var tab = this.tabs[i];
+      var tabclass = tab.getAttribute('class');
+
       if (currentTab === tab) {
-        tab.setAttribute('aria-selected', 'true');
+        if (tabclass !== 'failTab') {
+          tab.setAttribute('aria-selected', 'true');
+        }
         tab.removeAttribute('tabindex');
         this.tabpanels[i].classList.remove('is-hidden');
       } else {
-        tab.setAttribute('aria-selected', 'false');
+        if (tabclass !== 'failTab') {
+          tab.setAttribute('aria-selected', 'false');
+        }
         tab.tabIndex = -1;
         this.tabpanels[i].classList.add('is-hidden');
       }
