@@ -24,8 +24,8 @@ class TabsManual {
     for (var i = 0; i < this.tabs.length; i += 1) {
       var tab = this.tabs[i];
       var tabpanel = document.getElementById(tab.getAttribute('aria-controls'));
-      var tabclass = "";
-      console.log(tab.hasAttribute('class'));
+      var tabclass = "t";
+      console.log(tabClass);
       if (tab.hasAttribute('class')) { 
         tabClass = tab.getAttribute('class');
        }
