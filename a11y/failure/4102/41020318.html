@@ -3,7 +3,7 @@ layout: default
 current: 41020318
 criterion: 4102
 checkpoint: 410203
-css: table-selectable
+css: treegrid-1
 last-modified: 11 June 2025
 ---
 {% assign root=site.data.site.root %}
@@ -29,21 +29,20 @@ last-modified: 11 June 2025
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
-                    <p>Use the <code>aria-pressed</code> attribute on the toggle button. For a simple two-state toggle button, set it to "true" when pressed and to "false" when not pressed. It must be explicitly set, as the default value is "undefined".</p>
-                    <p><strong>Do not</strong> change the label on a toggle button (e.g., "Mute"/"Unmute") when the state changes.</p>
+                    <p>Use the <code>aria-selected</code> attribute on the row element. It may also be used on gridcell elements when individual grid cells are selectable.</p>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Regular Button</h3>
-                    <p>This button does not track pressed state changes.</p>
-                    <p>NVDA: "Mute, button"</p>
+                    <h3></h3>
+                    <p></p>
+                    <p>NVDA: ""</p>
                     <div class="example">
-                        <a tabindex="0" role="button" class="toggleButton">Mute <i class="fa-solid fa-volume-high" aria-hidden="true"></i></a>
+                        
 
-                        <pre><code>&lt;a tabindex="0" role="button"&gt;Mute&lt;/a&gt;</code></pre>
+                        <pre><code></code></pre>
                     </div>
                 </div>
             </div>
@@ -51,13 +50,13 @@ last-modified: 11 June 2025
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Toggle Button</h3>
+                    <h3>Email Grid</h3>
                     <p></p>
-                    <p>NVDA: "Mute, toggle button, not pressed"</p>
+                    <p>NVDA: ""</p>
                     <div class="example">
-                        {% include examples/table-selectable.html %}
+                        {% include examples/treegrid.html %}
 
-                        <pre><code>&lt;a tabindex="0" role="button" id="toggle" <strong>aria-pressed="false"</strong>&gt;Mute&lt;/a&gt;</code></pre>
+                        <pre><code></code></pre>
                     </div>
                 </div>
             </div>
@@ -66,8 +65,6 @@ last-modified: 11 June 2025
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
-                        <li><strong>Switch</strong>:<br>
-                            File under <a href="{{ site.data.4102.4102[41020306].link | prepend: baseurl }}">{{ site.data.4102.4102[41020306].name }}.</a></li>
                         <li><strong>Hidden</strong>:<br>
                             <code>&lt;div style="display:none;"&gt;Mute&lt;/div&gt;</code><br>
                             Does not appear in accessibility tree</li>
@@ -90,8 +87,11 @@ last-modified: 11 June 2025
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/examples/button/">WAI-ARIA: Button Examples</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria/#row">WAI-ARIA: row role</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/treegrid_role">MDN: ARIA: treegrid role</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria/#aria-selected">WAI-ARIA: aria-selected state</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-selected">MDN: ARIA: aria-selected attribute</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/treegrid/">WAI-ARIA: Treegrid Pattern</a></li>
                     </ul>
                 </div>
             </div>
