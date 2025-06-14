@@ -116,7 +116,8 @@ document.querySelector("table").addEventListener("keydown", (event) => {
       break;
     }
     case "Enter": {
-      console.log(event.target.textContent);
+      //console.log(event.target.textContent);
+      console.dir(event.target);
       break;
     }
   }
