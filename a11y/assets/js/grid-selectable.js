@@ -117,6 +117,11 @@ document.querySelector("table").addEventListener("keydown", (event) => {
     }
     case "Enter": {
       //console.log(event.target.textContent);
+      if (event.target.ariaSelected === "false") {
+        event.target.ariaSelected = "true";
+      } else {
+        event.target.ariaSelected = "false";
+      }
       console.dir(event.target);
       break;
     }
