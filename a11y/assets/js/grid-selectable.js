@@ -36,6 +36,16 @@ function moveTo(newRow, newCol) {
   return true;
 }
 
+document.querySelector("table").addEventListener("click", (event) => {
+  const col = parseInt(event.target.dataset.col, 10);
+  const row = parseInt(event.target.dataset.row, 10);
+  if (event.target.ariaSelected === "false") {
+    event.target.ariaSelected = "true";
+  } else {
+    event.target.ariaSelected = "false";
+  }
+}
+
 document.querySelector("table").addEventListener("keydown", (event) => {
   const col = parseInt(event.target.dataset.col, 10);
   const row = parseInt(event.target.dataset.row, 10);
@@ -122,7 +132,7 @@ document.querySelector("table").addEventListener("keydown", (event) => {
       } else {
         event.target.ariaSelected = "false";
       }
-      console.dir(event.target);
+      //console.dir(event.target);
       break;
     }
   }
