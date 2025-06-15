@@ -20,16 +20,16 @@ last-modified: 14 June 2025
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Selectable grid rows communicate the selected state to assistive technology.</div>
+                <div>Selectable grids communicate the selected state to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A selectable grid row does not communicate the selected state to assistive technology.</div>
+                <div>A selectable grid does not communicate the selected state to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
-                    <p>Use the <code>aria-selected</code> attribute on the row element. It may also be used on gridcell elements when individual grid cells are selectable.</p>
+                    <p>Use the <code>aria-selected</code> attribute on the gridcell element. It may also be used on row elements when entire rows are selectable.</p>
                 </div>
             </div>
             <div class="row block">
@@ -52,11 +52,14 @@ last-modified: 14 June 2025
                 <div>
                     <h3>Calendar Grid</h3>
                     <p></p>
-                    <p>NVDA: ""</p>
+                    <ul>
+                        <li>NVDA/Chrome (on focus): "1, not selected, Week 1, row 2, Sunday, column 2"</li>
+                        <li>NVDA/Chrome (on change): "selected" or "not selected"</li>
+                    </ul>
                     <div class="example">
                         {% include examples/grid-selectable.html %}
 
-                        <pre><code></code></pre>
+                        <pre><code>&lt;td role="gridcell" tabindex="-1" aria-selected="false"&gt;1&lt;/td&gt;</code></pre>
                     </div>
                 </div>
             </div>
