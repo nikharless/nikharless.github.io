@@ -3,7 +3,6 @@ layout: default
 current: 41020322
 criterion: 4102
 checkpoint: 410203
-last-modified: 1 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -13,166 +12,65 @@ last-modified: 1 June 2025
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
-        <div class="failure">
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>
-                    <p>Required controls communicate the required state to assistive technology.</p>
-                </div>
+    <div class="failure">
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>States, properties, and values are valid.</div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>A component has an invalid state, property, or value.</div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+                <ul>
+                    <li>Ensure states, properties, and values are valid.</li>
+                </ul>
             </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>Required control does not communicate the required state to assistive technology.</div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+
             </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <h3>Native HTML</h3>
-                    <p>Use the <code>required</code> attribute on a native HTML element. Use the CSS <code>:required</code> pseudo-class to style elements with the required property.</p>
-
-                    <p>The following elements support the <code>required</code> HTML attribute:</p>
-                    <ul>
-                        <li><code>&lt;input type="checkbox"&gt;</code></li>
-                        <li><code>&lt;input type="date"&gt;</code></li>
-                        <li><code>&lt;input type="datetime-local"&gt;</code></li>
-                        <li><code>&lt;input type="email"&gt;</code></li>
-                        <li><code>&lt;input type="file"&gt;</code></li>
-                        <li><code>&lt;input type="month"&gt;</code></li>
-                        <li><code>&lt;input type="number"&gt;</code></li>
-                        <li><code>&lt;input type="password"&gt;</code></li>
-                        <li><code>&lt;input type="radio"&gt;</code></li>
-                        <li><code>&lt;input type="search"&gt;</code></li>
-                        <li><code>&lt;input type="tel"&gt;</code></li>
-                        <li><code>&lt;input type="text"&gt;</code></li>
-                        <li><code>&lt;input type="time"&gt;</code></li>
-                        <li><code>&lt;input type="url"&gt;</code></li>
-                        <li><code>&lt;input type="week"&gt;</code></li>
-                        <li><code>&lt;select&gt;</code></li>
-                        <li><code>&lt;textarea&gt;</code></li>
-                    </ul>
-                    
-                    <h3>Custom Controls</h3>
-                    <p>Use the <code>aria-required</code> attribute on a custom control.</p>
-                    
-                    <p>The following roles support the <code>aria-required</code> property:</p>
-                    <ul>
-                        <li><code>checkbox</code></li>
-                        <li><code>columnheader</code></li>
-                        <li><code>combobox</code></li>
-                        <li><code>gridcell</code></li>
-                        <li><code>listbox</code></li>
-                        <li><code>radiogroup</code></li>
-                        <li><code>rowheader</code></li>
-                        <li><code>scrollbar</code></li>
-                        <li><code>searchbox</code></li>
-                        <li><code>spinbutton</code></li>
-                        <li><code>switch</code></li>
-                        <li><code>textbox</code></li>
-                        <li><code>tree</code></li>
-                        <li><code>treegrid</code></li>
-                    </ul>
-                </div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Hidden with CSS</strong>:<br>
+                        <code>&lt;input type="textbox" style="display:none;"&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                    <li><strong>Hidden with ARIA</strong>:<br>
+                        <code>&lt;input type="textbox" aria-hidden="true"&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                </ul>
             </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }} bad">Failing Examples<br>
-                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
-                <div>
-                    <h3>HTML</h3>
-                    <p>This native HTML example indicates with an asterisk in the label that it is required. However, it does not clearly communicate to assistive technology that it is required.</p>
-                    <p>NVDA: "Email*, edit, blank"</p>
-                    <div class="example">
-                        <form>
-                            <label>Email* <input type="email"></label>
-                            <input type="submit" value="Save">
-                        </form>
-
-                        <pre><code>&lt;input type="email"&gt;</code></pre>
-                    </div>
-
-                    <h3>ARIA</h3>
-                    <p>This custom textbox indicates with an asterisk in the label that it is required. However, it does not clearly communicate to assistive technology that it is required.</p>
-                    <p>NVDA: "Email*, edit, blank"</p>
-                    <div class="example">
-                        <div id="ariaLabel">Email* </div>
-                        <div role="textbox" contenteditable aria-multiline="false" aria-labelledby="ariaLabel" style="border: 1px solid black; width: 200px;"></div>
-                        <button>Save</button>
-
-                        <pre><code>&lt;div role="textbox" contenteditable aria-multiline="false"&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Examples<br>
-                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
-                <div>
-                    <h3>HTML</h3>
-                    <p>This native HTML example uses the <code>required</code> attribute on an email <code>&lt;input&gt;</code>.</p>
-                    <p>NVDA: "Email*, edit, required, blank"</p>
-                    <div class="example">
-                        <form>
-                            <label>Email* <input type="email" required></label>
-                            <input type="submit" value="Save">
-                        </form>
-
-                        <pre><code>&lt;input type="email" <strong>required</strong>&gt;</code></pre>
-                    </div>
-
-                    <h3>ARIA</h3>
-                    <p>This custom textbox uses <code>aria-required="true"</code> to communicate the required state to assistive technology.</p>
-                    <p>NVDA: "Email*, edit, required, blank"</p>
-                    <div class="example">
-                        <div id="ariaLabel">Email* </div>
-                        <div role="textbox" contenteditable aria-multiline="false" aria-labelledby="ariaLabel" aria-required="true" style="border: 1px solid black; width: 200px;"></div>
-                        <button>Save</button>
-
-                        <pre><code>&lt;div role="textbox" contenteditable aria-multiline="false" <strong>aria-required="true"</strong>&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <p>The following items are not applicable to this failure:</p>
-                    <ul>
-                        <li><strong>Hidden with CSS</strong>:<br>
-                            <code>&lt;input type="textbox" style="display:none;"&gt;</code><br>
-                            Does not appear in accessibility tree</li>
-                        <li><strong>Hidden with ARIA</strong>:<br>
-                            <code>&lt;input type="textbox" aria-hidden="true"&gt;</code><br>
-                            Does not appear in accessibility tree</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
-                        <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/required">MDN: HTML attribute: required</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#aria-required">WAI-ARIA: aria-required property</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-required">MDN: aria-required</a></li>
-                        <li><a href="https://www.w3schools.com/tags/att_required.asp">W3 Schools: HTML required Attribute</a></li>
-                    </ul>
-                </div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>Assistive technology only works well when code is done properly.</div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes">MDN: ARIA states and properties</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/example-index/#examples_by_props_label">Examples By Properties and States</a></li>
+                </ul>
             </div>
         </div>
     </div>
+</div>
 
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
-</div>

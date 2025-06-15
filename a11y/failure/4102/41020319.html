@@ -1,0 +1,170 @@
+---
+layout: default
+current: 41020319
+criterion: 4102
+checkpoint: 410203
+last-modified: 1 June 2025
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+{% assign cp=site.data.4102.4102[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>
+                    <p>Disabled controls communicate the disabled state to assistive technology.</p>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>Disabled control does not communicate the disabled state to assistive technology.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <h3>Native HTML</h3>
+                    <p>Use the <code>disabled</code> attribute on a native HTML element in order to identify it as disabled, remove the keyboard focus, remove the functionality, and make it visually appear disabled. Use the CSS <code>:disabled</code> pseudo-class to style the disabled state.</p>
+
+                    <p>The following elements support the <code>disabled</code> HTML attribute:</p>
+                    <ul>
+                        <li><code>&lt;button&gt;</code></li>
+                        <li><code>&lt;fieldset&gt;</code></li>
+                        <li><code>&lt;input&gt;</code></li>
+                        <li><code>&lt;optgroup&gt;</code></li>
+                        <li><code>&lt;option&gt;</code></li>
+                        <li><code>&lt;select&gt;</code></li>
+                        <li><code>&lt;textarea&gt;</code></li>
+                    </ul>
+                    
+                    <h3>Custom Controls</h3>
+                    <p>Use the <code>aria-disabled</code> attribute on a custom control in order to identify the control as disabled without changing the focusability, functionality or appearance. Use JavaScript to prevent interaction.</p>
+
+                    <p>The following roles support the <code>aria-disabled</code> property:</p>
+                    <ul>
+                        <li><code>application</code></li>
+                        <li><code>button</code></li>
+                        <li><code>checkbox</code></li>
+                        <li><code>columnheader</code> (in context of <code>grid</code> or <code>treegrid</code>)</li>
+                        <li><code>combobox</code></li>
+                        <li><code>grid</code></li>
+                        <li><code>gridcell</code></li>
+                        <li><code>group</code></li>
+                        <li><code>input</code></li>
+                        <li><code>link</code></li>
+                        <li><code>listbox</code></li>
+                        <li><code>menu</code></li>
+                        <li><code>menubar</code></li>
+                        <li><code>menuitem</code></li>
+                        <li><code>menuitemcheckbox</code></li>
+                        <li><code>menuitemradio</code></li>
+                        <li><code>option</code></li>
+                        <li><code>radio</code></li>
+                        <li><code>radiogroup</code></li>
+                        <li><code>row</code> (in context of <code>grid</code> or <code>treegrid</code>)</li>
+                        <li><code>rowheader</code> (in context of <code>grid</code> or <code>treegrid</code>)</li>
+                        <li><code>scrollbar</code></li>
+                        <li><code>searchbox</code></li>
+                        <li><code>select</code></li>
+                        <li><code>separator</code> (if focusable)</li>
+                        <li><code>slider</code></li>
+                        <li><code>spinbutton</code></li>
+                        <li><code>switch</code></li>
+                        <li><code>tab</code></li>
+                        <li><code>tablist</code></li>
+                        <li><code>textbox</code></li>
+                        <li><code>toolbar</code></li>
+                        <li><code>tree</code></li>
+                        <li><code>treegrid</code></li>
+                        <li><code>treeitem</code></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>ARIA</h3>
+                    <p>This example removes the functionality from the button and makes it visually appear disabled, but the disabled state is not communicated to assistive technology.</p>
+                    <p>NVDA: "Save, button"</p>
+                    <div class="example">
+                        <div role="button" tabindex="0" style="border: 1px solid black; border-radius: 5px; width: 50px; text-align: center; opacity: 0.5;">Save</div>
+
+                        <pre><code>&lt;div role="button" tabindex="0" style="opacity: 0.5;"&gt;Save&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>HTML</h3>
+                    <p>This native HTML example uses the <code>disabled</code> attribute to identify it as disabled to all users.</p>
+                    <p>NVDA: "Button, unavailable, Save" (Note that it is not in the keyboard tab order, so it is only available in reading mode.)</p>
+                    <div class="example">
+                        <button disabled>Save</button>
+
+                        <pre><code>&lt;button <strong>disabled</strong>&gt;Save&lt;/button&gt;</code></pre>
+                    </div>
+
+                    <h3>ARIA</h3>
+                    <p>This ARIA example removes the functionality from the button, makes it visually appear disabled, and uses <code>aria-disabled="true"</code> to communicate the disabled state to assistive technology.</p>
+                    <p>NVDA: "Save, button, unavailable"</p>
+                    <div class="example">
+                        <div role="button" tabindex="0" aria-disabled="true" style="border: 1px solid black; border-radius: 5px; width: 50px; text-align: center; opacity: 0.5;">Save</div>
+
+                        <pre><code>&lt;div role="button" tabindex="0" <strong>aria-disabled="true"</strong>&gt;Save&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Hidden with CSS</strong>:<br>
+                            <code>&lt;button style="display:none;"&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                        <li><strong>Hidden with ARIA</strong>:<br>
+                            <code>&lt;button aria-hidden="true"&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/disabled">MDN: HTML attribute: disabled</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria/#aria-disabled">WAI-ARIA: aria-disabled state</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled">MDN: aria-disabled</a></li>
+                        <li><a href="https://css-tricks.com/making-disabled-buttons-more-inclusive/">CSS-Tricks: Making Disabled Buttons More Inclusive</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/4102checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
