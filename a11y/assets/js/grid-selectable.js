@@ -40,6 +40,9 @@ document.querySelector("table").addEventListener("click", (event) => {
   const col = parseInt(event.target.dataset.col, 10);
   const row = parseInt(event.target.dataset.row, 10);
   if (event.target.ariaSelected === "false") {
+    document.querySelectorAll("[role=gridcell]").forEach((el) => {
+      el.setAttribute("aria-selected", "false");
+    });
     event.target.ariaSelected = "true";
   } else {
     event.target.ariaSelected = "false";
@@ -128,6 +131,9 @@ document.querySelector("table").addEventListener("keydown", (event) => {
     case "Enter": {
       //console.log(event.target.textContent);
       if (event.target.ariaSelected === "false") {
+        document.querySelectorAll("[role=gridcell]").forEach((el) => {
+          el.setAttribute("aria-selected", "false");
+        });
         event.target.ariaSelected = "true";
       } else {
         event.target.ariaSelected = "false";
