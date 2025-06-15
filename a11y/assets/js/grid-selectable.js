@@ -44,7 +44,7 @@ document.querySelector("table").addEventListener("click", (event) => {
   } else {
     event.target.ariaSelected = "false";
   }
-}
+});
 
 document.querySelector("table").addEventListener("keydown", (event) => {
   const col = parseInt(event.target.dataset.col, 10);
