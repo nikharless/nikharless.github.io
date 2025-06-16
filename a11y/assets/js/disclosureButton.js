@@ -82,8 +82,8 @@ window.addEventListener(
   'load',
   function () {
     var buttons = document.querySelectorAll(
-      // 'button[aria-expanded][aria-controls]'
-      '#disclosure_faq'
+      'button[aria-expanded][aria-controls]'
+      //'#disclosure_faq'
     );
 
     for (var i = 0; i < buttons.length; i++) {
@@ -93,7 +93,7 @@ window.addEventListener(
   false
 );
 
-if (document.getElementById('disclosure_faq2')) {
+/*if (document.getElementById('disclosure_faq2')) {
   window.addEventListener(
     'load',
     function () {
@@ -125,4 +125,4 @@ if (document.getElementById('disclosure_faqf')) {
     },
     false
   );
-}
+}*/
