@@ -39,7 +39,7 @@ last-modified: 14 June 2025
                 </tr>
                 <tr>
                     <td><code>aria-activedescendent</code></td>
-                    <td>valid ID reference</td>
+                    <td>existing ID reference</td>
                     <td>ID of the currently focused element</td>
                 </tr>
                 <tr>
@@ -94,7 +94,7 @@ last-modified: 14 June 2025
                 </tr>
                 <tr>
                     <td><code>aria-controls</code></td>
-                    <td>space-separated list of one or more valid ID values</td>
+                    <td>space-separated list of one or more existing ID values</td>
                     <td>IDs of the elements being controlled by the current element</td>
                 </tr>
                 <tr>
@@ -104,7 +104,7 @@ last-modified: 14 June 2025
                 </tr>
                 <tr>
                     <td><code>aria-describedby</code></td>
-                    <td>space-separated list of one or more valid ID values</td>
+                    <td>space-separated list of one or more existing ID values</td>
                     <td>ID values of elements that describe the current element</td>
                 </tr>
                 <tr>
@@ -114,7 +114,7 @@ last-modified: 14 June 2025
                 </tr>
                 <tr>
                     <td><code>aria-details</code></td>
-                    <td>space-separated list of one or more valid ID values</td>
+                    <td>space-separated list of one or more existing ID values</td>
                     <td>ID values of elements that provide or link to additional related information</td>
                 </tr>
                 <tr>
@@ -124,7 +124,7 @@ last-modified: 14 June 2025
                 </tr>
                 <tr>
                     <td><code>aria-errormessage</code></td>
-                    <td>space-separated list of one or more valid ID values</td>
+                    <td>space-separated list of one or more existing ID values</td>
                     <td>ID values of elements that contain the error message for the current element</td>
                 </tr>
                 <tr>
@@ -134,7 +134,7 @@ last-modified: 14 June 2025
                 </tr>
                 <tr>
                     <td><code>aria-flowto</code></td>
-                    <td>space-separated list of one or more valid ID values</td>
+                    <td>space-separated list of one or more existing ID values</td>
                     <td>ID values of elements that should be read next</td>
                 </tr>
                 <tr>
@@ -164,7 +164,7 @@ last-modified: 14 June 2025
                 </tr>
                 <tr>
                     <td><code>aria-labelledby</code></td>
-                    <td>space-separated list of one or more valid ID values</td>
+                    <td>space-separated list of one or more existing ID values</td>
                     <td>IDs of elements that label the current element</td>
                 </tr>
                 <tr>
@@ -199,7 +199,7 @@ last-modified: 14 June 2025
                 </tr>
                 <tr>
                     <td><code>aria-owns</code></td>
-                    <td>space-separated list of one or more valid ID values</td>
+                    <td>space-separated list of one or more existing ID values</td>
                     <td>ID values of elements owned by the current element</td>
                 </tr>
                 <tr>
@@ -209,7 +209,7 @@ last-modified: 14 June 2025
                 </tr>
                 <tr>
                     <td><code>aria-posinset</code></td>
-                    <td>integer greater than or equal to 1, less than or equal to the value of <code>aria-setsize</code></td>
+                    <td>integer, greater than or equal to 1, less than or equal to the value of <code>aria-setsize</code></td>
                     <td>current element's position in the current set of listitems or treeitems</td>
                 </tr>
                 <tr>
@@ -224,7 +224,7 @@ last-modified: 14 June 2025
                 </tr>
                 <tr>
                     <td><code>aria-relevant</code></td>
-                    <td>"additions", "removals", "text", or "all"</td>
+                    <td>space-separated list with one or more of the following: "additions", "removals", "text", or "all"</td>
                     <td>which aria-live notifications assistive technology communicates</td>
                 </tr>
                 <tr>
@@ -411,7 +411,26 @@ last-modified: 14 June 2025
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            
+            <h3 id="test1">Does the page contain user interface components?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the component communicated by assistive technology when the component receives focus?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value correct?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020401].link | prepend: baseurl }}">{{ site.data.4102.4102[41020401].name }}.</a></span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are the values in the component's attributes valid?</span>
+                            <ul role="group">
+                                <li role="treeitem"><span><strong>Yes</strong>:</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020402].link | prepend: baseurl }}">{{ site.data.4102.4102[41020402].name }}.</a></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
+            </ul>
         </div>
 
         <div class="block">
@@ -421,6 +440,7 @@ last-modified: 14 June 2025
             <h4>User Interface Components</h4>
             <ol>
                 <li>Using a screen reader, navigate to each user interface component which has a value that can be set by the user.</li>
+                <li>Verify that any value associated with the component is communicated by assistive technology.</li>
                 <li>Verify that the information conveyed by the value is correct.</li>
             </ol>
 
