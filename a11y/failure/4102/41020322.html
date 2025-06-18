@@ -3,7 +3,7 @@ layout: default
 current: 41020322
 criterion: 4102
 checkpoint: 410203
-last-modified: 14 June 2025
+last-modified: 18 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -37,13 +37,32 @@ last-modified: 14 June 2025
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-
+                    <h3>Button with <code>aria-checked</code></h3>
+                    <p>This button uses <code>aria-checked</code> to indicate the pressed state. However, <code>aria-checked</code> is not valid on a button. The correct attribute would be <code>aria-pressed</code>.</p>
+                    <ul>
+                        <li>NVDA: "Mute, button"</li>
+                    </ul>
+                    <div class="example">
+                        <button aria-checked="false">Mute</button>
+                        
+                        <pre><code>&lt;button <strong>aria-checked="false"</strong>&gt;Mute&lt;/button&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
+                    <h3>Button with <code>aria-pressed</code></h3>
+                    <p>This button uses <code>aria-pressed</code> to indicate the pressed state.</p>
+                    <ul>
+                        <li>NVDA: "Mute, button"</li>
+                    </ul>
+                    <div class="example">
+                        <button aria-pressed="false">Mute</button>
+                        
+                        <pre><code>&lt;button <strong>aria-pressed="false"</strong>&gt;Mute&lt;/button&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
