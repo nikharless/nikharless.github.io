@@ -49,13 +49,30 @@ last-modified: 16 June 2025
                         
                         <pre><code>&lt;button <strong>aria-haspopup="modal"</strong>&gt;Settings&lt;/button&gt;</code></pre>
                     </div>
+
+                    <h3 id="f2label">Invalid ID</h3>
+                    <p>This example uses <code>aria-describedby</code> to associate text with the form field. However, the ID it points to does not exist.</p>
+                    <ul>
+                        <li>NVDA: ""</li>
+                    </ul>
+                    <div class="example">
+                        <form aria-labelledby="f2label">
+                            <label for="email">Email Address:</label>
+                            <input id="email" type="text" aria-describedby="description">
+                            <p id="privacy">We will not share your email with any third party.</p>
+                        </form>
+                    </div>
+
+                    <pre><code>&lt;label for="email"&gt;Email Address:&lt;/label&gt;
+&lt;input id="email" type="text" <strong>aria-describedby="description"</strong>&gt;
+&lt;p id="privacy"&gt;We will not share your email with any third party.&lt;/p&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3><code>aria-haspopup</code></h3>
+                    <h3>Valid <code>aria-haspopup</code> value</h3>
                     <p>This example opens a dialog and <code>aria-haspopup</code> is correctly set to "dialog".</p>
                     <ul>
                         <li>NVDA: "Settings, button, opens dialog"</li>
@@ -65,6 +82,23 @@ last-modified: 16 June 2025
                         
                         <pre><code>&lt;button <strong>aria-haspopup="dialog"</strong>&gt;Settings&lt;/button&gt;</code></pre>
                     </div>
+
+                    <h3 id="p2label">Valid ID</h3>
+                    <p>This example uses <code>aria-describedby</code> to associate text with the form field. However, the ID it points to does not exist.</p>
+                    <ul>
+                        <li>NVDA: ""</li>
+                    </ul>
+                    <div class="example">
+                        <form aria-labelledby="p2label">
+                            <label for="email">Email Address:</label>
+                            <input id="email" type="text" aria-describedby="privacy">
+                            <p id="privacy">We will not share your email with any third party.</p>
+                        </form>
+                    </div>
+
+                    <pre><code>&lt;label for="email"&gt;Email Address:&lt;/label&gt;
+&lt;input id="email" type="text" <strong>aria-describedby="privacy"</strong>&gt;
+&lt;p id="privacy"&gt;We will not share your email with any third party.&lt;/p&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
