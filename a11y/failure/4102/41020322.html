@@ -3,6 +3,7 @@ layout: default
 current: 41020322
 criterion: 4102
 checkpoint: 410203
+css: toggle-button
 last-modified: 18 June 2025
 ---
 {% assign root=site.data.site.root %}
@@ -54,12 +55,14 @@ last-modified: 18 June 2025
                     <h3>Button with <code>aria-pressed</code></h3>
                     <p>This button uses <code>aria-pressed</code> to indicate the pressed state.</p>
                     <ul>
-                        <li>NVDA: "Mute, button"</li>
+                        <li>NVDA: "Mute, toggle button, not pressed"</li>
                     </ul>
                     <div class="example">
-                        <button aria-pressed="false">Mute</button>
+                        <a tabindex="0" role="button" id="toggle" aria-pressed="false" class="toggleButton">Mute <i class="fa-solid fa-volume-high" aria-hidden="true"></i></a>
                         
-                        <pre><code>&lt;button <strong>aria-pressed="false"</strong>&gt;Mute&lt;/button&gt;</code></pre>
+                        <script src="{{ baseurl }}/assets/js/toggle-button.js"></script>
+
+                        <pre><code>&lt;a tabindex="0" role="button" id="toggle" <strong>aria-pressed="false"</strong>&gt;Mute&lt;/a&gt;</code></pre>
                     </div>
                 </div>
             </div>
