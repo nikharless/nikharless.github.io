@@ -29,13 +29,11 @@ last-modified: 16 June 2025
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
-                    <ul>
-                        <li>Ensure the correct value is set on the attribute.</li>
-                    </ul>
+                    <p>Ensure the correct value is set on the attribute.</p>
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
                     <h3><code>aria-haspopup</code></h3>
@@ -48,6 +46,23 @@ last-modified: 16 June 2025
                         
                         <pre><code>&lt;button <strong>aria-haspopup="menu"</strong>&gt;Settings&lt;/button&gt;</code></pre>
                     </div>
+
+                    <h3 id="f2label">Incorrect ID</h3>
+                    <p>This example uses <code>aria-describedby</code> to associate text with the form field. However, it points to the wrong element's ID.</p>
+                    <ul>
+                        <li>NVDA: "Email Address:, edit, blank"</li>
+                    </ul>
+                    <div class="example">
+                        <form aria-labelledby="f2label">
+                            <label for="email" id="eLabel">Email Address:</label>
+                            <input id="email" type="text" aria-describedby="eLabel">
+                            <p id="privacy">We will not share your email with any third party.</p>
+                        </form>
+                    </div>
+
+                    <pre><code>&lt;label for="email" id="eLabel&gt;Email Address:&lt;/label&gt;
+&lt;input id="email" type="text" <strong>aria-describedby="eLabel"</strong>&gt;
+&lt;p id="privacy"&gt;We will not share your email with any third party.&lt;/p&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
@@ -64,6 +79,23 @@ last-modified: 16 June 2025
                         
                         <pre><code>&lt;button <strong>aria-haspopup="dialog"</strong>&gt;Settings&lt;/button&gt;</code></pre>
                     </div>
+
+                    <h3 id="p2label">Valid ID</h3>
+                    <p>This example uses <code>aria-describedby</code> to associate text with the form field.</p>
+                    <ul>
+                        <li>NVDA: "Email Address:, edit, We will not share your email with any third party., blank"</li>
+                    </ul>
+                    <div class="example">
+                        <form aria-labelledby="p2label">
+                            <label id="eLabel2" for="email2">Email Address:</label>
+                            <input id="email2" type="text" aria-describedby="privacy2">
+                            <p id="privacy2">We will not share your email with any third party.</p>
+                        </form>
+                    </div>
+
+                    <pre><code>&lt;label id="eLabel" for="email"&gt;Email Address:&lt;/label&gt;
+&lt;input id="email" type="text" <strong>aria-describedby="privacy"</strong>&gt;
+&lt;p id="privacy"&gt;We will not share your email with any third party.&lt;/p&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
