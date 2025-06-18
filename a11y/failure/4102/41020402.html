@@ -20,7 +20,7 @@ last-modified: 16 June 2025
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Any values associated with a component are correct.</div>
+                <div>Any values associated with a component are valid.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
@@ -29,9 +29,11 @@ last-modified: 16 June 2025
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
+                    <p>Ensure the value is valid for the attribute.</p>
                     <ul>
-                        <li>Ensure the value is valid for the attribute.</li>
                         <li>Ensure there are no typos in the value.</li>
+                        <li>If the attribute allows only certain tokens, ensure the value matches one (or more) of them.</li>
+                        <li>If the attribute points to an element's ID, ensure that ID exists in the current page.</li>
                     </ul>
                 </div>
             </div>
@@ -39,7 +41,7 @@ last-modified: 16 June 2025
                 <h2 class="{{ sc.level }} bad">Failing Examples<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3><code>aria-haspopup</code></h3>
+                    <h3>Invalid <code>aria-haspopup</code> Token</h3>
                     <p>This example opens a dialog but <code>aria-haspopup</code> is set to "modal" which isn't a valid option.</p>
                     <ul>
                         <li>NVDA: "Settings, button"</li>
@@ -72,7 +74,7 @@ last-modified: 16 June 2025
                 <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Valid <code>aria-haspopup</code> value</h3>
+                    <h3>Valid <code>aria-haspopup</code> Token</h3>
                     <p>This example opens a dialog and <code>aria-haspopup</code> is correctly set to "dialog".</p>
                     <ul>
                         <li>NVDA: "Settings, button, opens dialog"</li>
@@ -91,8 +93,8 @@ last-modified: 16 June 2025
                     <div class="example">
                         <form aria-labelledby="p2label">
                             <label for="email2">Email Address:</label>
-                            <input id="email2" type="text" aria-describedby="privacy">
-                            <p id="privacy">We will not share your email with any third party.</p>
+                            <input id="email2" type="text" aria-describedby="privacy2">
+                            <p id="privacy2">We will not share your email with any third party.</p>
                         </form>
                     </div>
 
@@ -108,6 +110,10 @@ last-modified: 16 June 2025
                     <ul>
                         <li><strong>Incorrect value</strong>:<br>
                             File under <a href="{{ site.data.4102.4102[41020401].link | prepend: baseurl }}">{{ site.data.4102.4102[41020401].name }}.</a></li>
+                        <li><strong>Missing Attribute</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[410203].link | prepend: baseurl }}">{{ site.data.4102.4102[410203].name }}.</a></li>
+                        <li><strong>Invalid Attribute</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[41020322].link | prepend: baseurl }}">{{ site.data.4102.4102[41020322].name }}.</a></li>
                         <li><strong>Hidden</strong>:<br>
                             <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
                             Does not appear in accessibility tree</li>
