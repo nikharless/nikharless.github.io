@@ -7,31 +7,30 @@ class AlertModal {
 
     constructor(alertNode) {
         this.alertNode = alertNode;
-        this.modal = this.alertNode.querySelector(".modal");
-        console.log("constructor: " + this.modal);
-        this.openModalBtn = this.alertNode.querySelector(".btn-open");
-        this.closeModalBtn = this.alertNode.querySelector(".btn-close");
-        this.submitBtn = this.alertNode.querySelector(".btn-submit");
+        var modal = this.alertNode.querySelector(".modal");
+        var openModalBtn = this.alertNode.querySelector(".btn-open");
+        var closeModalBtn = this.alertNode.querySelector(".btn-close");
+        var submitBtn = this.alertNode.querySelector(".btn-submit");
 
-        this.openModalBtn.addEventListener('click', function() { openModal(modal); });
-        this.closeModalBtn.addEventListener('click', function() { closeModal(modal); });
-        this.submitBtn.addEventListener('click', function() { closeModal(modal); });
+        openModalBtn.addEventListener('click', function() { openModal(modal); });
+        closeModalBtn.addEventListener('click', function() { closeModal(modal); });
+        submitBtn.addEventListener('click', function() { closeModal(modal); });
 
-        this.modal.addEventListener("keydown", function (e) {
-            if (e.key === "Escape" && !this.modal.classList.contains("hidden")) {
+        modal.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && !modal.classList.contains("hidden")) {
                 closeModal();
             }
         });
     }
 }
 
-openModal (modal) {
+function openModal (modal) {
         modal.classList.remove("hidden");
         overlay.classList.remove("hidden");
         overlay.style.display="block";
     };
 
-closeModal (modal) {
+function closeModal (modal) {
         modal.classList.add("hidden");
         overlay.classList.add("hidden");
         overlay.style.display="none";
