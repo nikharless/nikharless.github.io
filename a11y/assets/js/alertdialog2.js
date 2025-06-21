@@ -8,13 +8,13 @@ class AlertModal {
     constructor(alertNode) {
         this.alertNode = alertNode;
         var modal = this.alertNode.querySelector(".modal");
-        this.openModalBtn = this.alertNode.querySelector(".btn-open");
+        var openModalBtn = this.alertNode.querySelector(".btn-open");
         var closeModalBtn = this.alertNode.querySelector(".btn-close");
         var submitBtn = this.alertNode.querySelector(".btn-submit");
 
-        this.openModalBtn.addEventListener('click', function() { openModal(modal); });
-        closeModalBtn.addEventListener('click', function() { closeModal(modal); });
-        submitBtn.addEventListener('click', function() { closeModal(modal); });
+        openModalBtn.addEventListener('click', function() { openModal(modal); });
+        closeModalBtn.addEventListener('click', function() { closeModal(modal, openModalBtn); });
+        submitBtn.addEventListener('click', function() { closeModal(modal, openModalBtn); });
 
         modal.addEventListener("keydown", function (e) {
             if (e.key === "Escape" && !modal.classList.contains("hidden")) {
@@ -30,11 +30,11 @@ function openModal (modal) {
         overlay.style.display="block";
     };
 
-function closeModal (modal) {
+function closeModal (modal, openModalBtn) {
         modal.classList.add("hidden");
         overlay.classList.add("hidden");
         overlay.style.display="none";
-        modal.openModalBtn.focus();
+        openModalBtn.focus();
     };
 
 window.addEventListener(
