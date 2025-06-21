@@ -43,18 +43,35 @@ last-modified: 21 June 2025
                     </ul>
 
                     <div class="example">
-                        <button id="openBadModalBtn" onclick="openAlertDialog('badModal',this)">Open Failing Modal</button>
-                        <div class="dialog-backdrop no-scroll">
-                            <div id="badModal" aria-modal="true" aria-labelledby="badModalLabel" aria-describedby="badModalDesc" class="hidden">
-                                <h2 id="badModalLabel" class="dialog_label">Bad Modal</h2>
-                                <div id="badModalDesc" class="dialog_desc">
-                                    <p>This is an alert dialog!</p>
-                                </div>
-                                <div>
-                                    <button type="button" class="dialog_close_button" id="badModalClose" aria-label="Close" onclick="closeDialog(this)">X</button>
-                                </div>
+                        <button class="exButton">Open Failing Modal</button>
+                        <div id="badModal" aria-modal="true" aria-labelledby="badModalLabel" aria-describedby="badModalDesc" class="hidden">
+                            <h2 id="badModalLabel" class="dialog_label">Bad Modal</h2>
+                            <div id="badModalDesc" class="dialog_desc">
+                                <p>This is an alert dialog!</p>
+                            </div>
+                            <div>
+                                <button type="button" class="dialog_close_button" id="modalClose" aria-label="Close" onclick="closeDialog(this)">X</button>
                             </div>
                         </div>
+                        <script>
+                            let alertBox =
+                                document.getElementById("badModal");
+                            let custom_button =
+                                document.querySelector(".exButton");
+                            let close_img =
+                                document.querySelector(".dialog_close_button");
+
+                            custom_button.addEventListener
+                                ('click', function () {
+                                    alertBox.style.display = "block";
+                                });
+
+                            close_img.addEventListener
+                                ('click', function () {
+                                    alertBox.style.display = "none";
+                                });
+                        </script>
+
                         <pre><code>&lt;div aria-modal="true"&gt;</code></pre>
                     </div>
                 </div>
@@ -69,7 +86,7 @@ last-modified: 21 June 2025
                         <li>NVDA (when dialog is opened): "Good Modal, dialog, This is an alert dialog!"</li>
                     </ul>
                     <div class="example">
-                        <button id="openModalBtn" onclick="openAlertDialog('goodModal',this)">Open Passing Modal</button>
+                        <button id="openModalBtn" onclick="openAlertDialog('goodModal',this)" class="exButton">Open Passing Modal</button>
                         <div class="dialog-backdrop no-scroll">
                             <div id="goodModal" role="alertdialog" aria-modal="true" aria-labelledby="goodModalLabel" aria-describedby="goodModalDesc" class="hidden">
                                 <h2 id="goodModalLabel" class="dialog_label">Good Modal</h2>
