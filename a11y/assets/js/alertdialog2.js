@@ -8,11 +8,11 @@ class AlertModal {
     constructor(alertNode) {
         this.alertNode = alertNode;
         var modal = this.alertNode.querySelector(".modal");
-        var openModalBtn = this.alertNode.querySelector(".btn-open");
+        this.openModalBtn = this.alertNode.querySelector(".btn-open");
         var closeModalBtn = this.alertNode.querySelector(".btn-close");
         var submitBtn = this.alertNode.querySelector(".btn-submit");
 
-        openModalBtn.addEventListener('click', function() { openModal(modal); });
+        this.openModalBtn.addEventListener('click', function() { openModal(modal); });
         closeModalBtn.addEventListener('click', function() { closeModal(modal); });
         submitBtn.addEventListener('click', function() { closeModal(modal); });
 
