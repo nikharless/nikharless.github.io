@@ -1,7 +1,7 @@
 'use strict';
 
 const overlay = document.querySelector(".overlay");
-overlay.addEventListener("click", closeModal);
+//overlay.addEventListener("click", closeModal);
 
 class AlertModal {
     constructor(alertNode) {
