@@ -8,6 +8,7 @@ class AlertModal {
     constructor(alertNode) {
         this.alertNode = alertNode;
         this.modal = this.alertNode.querySelector(".modal");
+        console.log("constructor: " + this.modal);
         this.openModalBtn = this.alertNode.querySelector(".btn-open");
         this.closeModalBtn = this.alertNode.querySelector(".btn-close");
         this.submitBtn = this.alertNode.querySelector(".btn-submit");
