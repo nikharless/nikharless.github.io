@@ -4,36 +4,36 @@ const overlay = document.querySelector(".overlay");
 //overlay.addEventListener("click", closeModal);
 
 class AlertModal {
+
     constructor(alertNode) {
         this.alertNode = alertNode;
+        this.modal = this.alertNode.querySelector(".modal");
+        this.openModalBtn = this.alertNode.querySelector(".btn-open");
+        this.closeModalBtn = this.alertNode.querySelector(".btn-close");
+        this.submitBtn = this.alertNode.querySelector(".btn-submit");
 
-        var modal = this.alertNode.querySelector(".modal");
-        var openModalBtn = this.alertNode.querySelector(".btn-open");
-        var closeModalBtn = this.alertNode.querySelector(".btn-close");
-        var submitBtn = this.alertNode.querySelector(".btn-submit");
+        this.openModalBtn.addEventListener('click', this.openModal.bind(this.openModalBtn));
+        this.closeModalBtn.addEventListener('click', this.closeModal.bind(this.closeModalBtn));
+        this.submitBtn.addEventListener('click', this.closeModal.bind(this.submitBtn));
 
-        openModalBtn.addEventListener('click', this.openModal.bind(openModalBtn));
-        closeModalBtn.addEventListener('click', this.closeModal.bind(closeModalBtn));
-        submitBtn.addEventListener('click', this.closeModal.bind(submitBtn));
-
-        modal.addEventListener("keydown", function (e) {
-            if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+        this.modal.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && !this.modal.classList.contains("hidden")) {
                 closeModal();
             }
         });
     }
 
-    openModal = function () {
-        modal.classList.remove("hidden");
+    openModal = function (e) {
+        this.modal.classList.remove("hidden");
         overlay.classList.remove("hidden");
         overlay.style.display="block";
     };
 
-    closeModal = function () {
-        modal.classList.add("hidden");
+    closeModal = function (e) {
+        this.modal.classList.add("hidden");
         overlay.classList.add("hidden");
         overlay.style.display="none";
-        openModalBtn.focus();
+        this.openModalBtn.focus();
     };
 }
 
