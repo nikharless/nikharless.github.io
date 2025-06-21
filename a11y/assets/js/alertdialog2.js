@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 
 const overlay = document.querySelector(".overlay");
 //overlay.addEventListener("click", closeModal);
