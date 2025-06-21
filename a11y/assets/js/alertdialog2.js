@@ -23,13 +23,14 @@ class AlertModal {
         });
     }
 
-    openModal = function (e) {
+    openModal = function () {
+        console.log(this.modal);
         this.modal.classList.remove("hidden");
         overlay.classList.remove("hidden");
         overlay.style.display="block";
     };
 
-    closeModal = function (e) {
+    closeModal = function () {
         this.modal.classList.add("hidden");
         overlay.classList.add("hidden");
         overlay.style.display="none";
