@@ -3,7 +3,7 @@ layout: default
 current: 41020207
 criterion: 4102
 checkpoint: 410202
-css: alertdialog
+css: dialog
 last-modified: 21 June 2025
 ---
 {% assign root=site.data.site.root %}
@@ -43,36 +43,7 @@ last-modified: 21 June 2025
                     </ul>
 
                     <div class="example">
-                        <button class="exButton">Open Failing Modal</button>
-                        <div id="badModal" aria-modal="true" aria-labelledby="badModalLabel" aria-describedby="badModalDesc" class="hidden">
-                            <h2 id="badModalLabel" class="dialog_label">Bad Modal</h2>
-                            <div id="badModalDesc" class="dialog_desc">
-                                <p>This is an alert dialog!</p>
-                            </div>
-                            <div>
-                                <button type="button" class="dialog_close_button" aria-label="Close">X</button>
-                            </div>
-                        </div>
-                        <script>
-                            let alertBox =
-                                document.getElementById("badModal");
-                            let custom_button =
-                                document.querySelector(".exButton");
-                            let close_img =
-                                document.querySelector(".dialog_close_button");
-
-                            custom_button.addEventListener
-                                ('click', function () {
-                                    alertBox.style.display = "block";
-                                });
-
-                            close_img.addEventListener
-                                ('click', function () {
-                                    alertBox.style.display = "none";
-                                });
-                        </script>
-
-                        <pre><code>&lt;div aria-modal="true"&gt;</code></pre>
+                        
                     </div>
                 </div>
             </div>
@@ -83,25 +54,24 @@ last-modified: 21 June 2025
                     <h3>Alert Dialog</h3>
                     <p>This example uses <code>role="alertdialog"</code> to communicate the role to assistive technology.</p>
                     <ul>
-                        <li>NVDA (when dialog is opened): "Good Modal, dialog, This is an alert dialog!"</li>
+                        <li>NVDA (when dialog is opened): "Example Passing Alert, dialog, This is an alert dialog!"</li>
                     </ul>
                     <div class="example">
-                        <button id="openModalBtn" onclick="openAlertDialog('goodModal',this)" class="exButton">Open Passing Modal</button>
-                        <div class="dialog-backdrop no-scroll">
-                            <div id="goodModal" role="alertdialog" aria-modal="true" aria-labelledby="goodModalLabel" aria-describedby="goodModalDesc" class="hidden">
-                                <h2 id="goodModalLabel" class="dialog_label">Good Modal</h2>
-                                <div id="goodModalDesc" class="dialog_desc">
-                                    <p>This is an alert dialog!</p>
-                                </div>
-                                <div>
-                                    <button type="button" class="dialog_close_button" id="modalClose" aria-label="Close" onclick="closeDialog(this)">X</button>
+                        <button type="button" class="btn-open">Open Passing Modal</button>
+                        <section role="alertdialog" class="modal hidden" aria-labelledby="passDialog_label" id="passModal">
+                            <h2 id="passDialog_label" class="dialog_label">Example Passing Alert</h2>
+                            <p><strong>Alert!</strong></p>
+                            <p>Are you sure you want to do that?</p>
+                            <div class="dialog_form">
+                                <div class="dialog_form_actions">
+                                    <button type="button" class="btn-submit">Yes</button>
+                                    <button type="button" class="btn-close">Cancel</button>
                                 </div>
                             </div>
-                        </div>
-                        <pre><code>&lt;div <strong>role="alertdialog"</strong> aria-modal="true"&gt;</code></pre>
+                        </section>
+                        <div class="dialog-backdrop overlay"></div>
+                        <script src="{{ baseurl }}/assets/js/alertdialog2.js"></script>
                     </div>
-                    <script src="{{ baseurl }}/assets/js/utils.js"></script>
-                    <script src="{{ baseurl }}/assets/js/alertdialog.js"></script>
                 </div>
             </div>
             <div class="row block">
