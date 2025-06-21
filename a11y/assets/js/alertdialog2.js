@@ -15,6 +15,12 @@ class AlertModal {
         openModalBtn.addEventListener('click', this.openModal.bind(this.openModalBtn));
         closeModalBtn.addEventListener('click', this.closeModal.bind(this.closeModalBtn));
         submitBtn.addEventListener('click', this.closeModal.bind(this.submitBtn));
+
+        this.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+                closeModal();
+            }
+        });
     }
 
     openModal = function () {
@@ -29,12 +35,6 @@ class AlertModal {
         overlay.style.display="none";
         openModalBtn.focus();
     };
-
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && !modal.classList.contains("hidden")) {
-            closeModal();
-        }
-    });
 }
 
 window.addEventListener(
