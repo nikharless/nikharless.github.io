@@ -25,14 +25,14 @@ class AlertModal {
     }
 
     openModal = function () {
-        console.log(this.modal);
-        this.modal.classList.remove("hidden");
+        console.log(this.alertnode);
+        this.alertnode.modal.classList.remove("hidden");
         overlay.classList.remove("hidden");
         overlay.style.display="block";
     };
 
     closeModal = function () {
-        this.modal.classList.add("hidden");
+        this.alertnode.classList.add("hidden");
         overlay.classList.add("hidden");
         overlay.style.display="none";
         this.openModalBtn.focus();
