@@ -12,9 +12,9 @@ class AlertModal {
         var closeModalBtn = this.alertNode.querySelector(".btn-close");
         var submitBtn = this.alertNode.querySelector(".btn-submit");
 
-        openModalBtn.addEventListener('click', openModal.bind(openModalBtn));
-        closeModalBtn.addEventListener('click', closeModal.bind(closeModalBtn));
-        submitBtn.addEventListener('click', closeModal.bind(submitBtn));
+        openModalBtn.addEventListener('click', this.openModal.bind(openModalBtn));
+        closeModalBtn.addEventListener('click', this.closeModal.bind(closeModalBtn));
+        submitBtn.addEventListener('click', this.closeModal.bind(submitBtn));
 
         modal.addEventListener("keydown", function (e) {
             if (e.key === "Escape" && !modal.classList.contains("hidden")) {
