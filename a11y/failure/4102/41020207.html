@@ -42,7 +42,21 @@ last-modified: 21 June 2025
                         <li>NVDA: ""</li>
                     </ul>
 
-                    <pre><code></code></pre>
+                    <div class="example">
+                        <button id="openBadModalBtn" onclick="openAlertDialog('badModal',this)">Open Failing Modal</button>
+                        <div class="dialog-backdrop no-scroll">
+                            <div id="badModal" aria-modal="true" aria-labelledby="badModalLabel" aria-describedby="badModalDesc" class="hidden">
+                                <h2 id="badModalLabel" class="dialog_label">Bad Modal</h2>
+                                <div id="badModalDesc" class="dialog_desc">
+                                    <p>This is an alert dialog!</p>
+                                </div>
+                                <div>
+                                    <button type="button" class="dialog_close_button" id="badModalClose" aria-label="Close" onclick="closeDialog(this)">X</button>
+                                </div>
+                            </div>
+                        </div>
+                        <pre><code>&lt;div aria-modal="true"&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
@@ -52,7 +66,7 @@ last-modified: 21 June 2025
                     <h3>Alert Dialog</h3>
                     <p>This example uses <code>role="alertdialog"</code> to communicate the role to assistive technology.</p>
                     <ul>
-                        <li>NVDA: ""</li>
+                        <li>NVDA (when dialog is opened): "Good Modal, dialog, This is an alert dialog!"</li>
                     </ul>
                     <div class="example">
                         <button id="openModalBtn" onclick="openAlertDialog('goodModal',this)">Open Passing Modal</button>
@@ -67,7 +81,7 @@ last-modified: 21 June 2025
                                 </div>
                             </div>
                         </div>
-                        <pre><code></code></pre>
+                        <pre><code>&lt;div <strong>role="alertdialog"</strong> aria-modal="true"&gt;</code></pre>
                     </div>
                     <script src="{{ baseurl }}/assets/js/utils.js"></script>
                     <script src="{{ baseurl }}/assets/js/alertdialog.js"></script>
