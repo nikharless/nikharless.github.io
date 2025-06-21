@@ -10,11 +10,11 @@ class AlertModal {
         var modal = this.alertNode.querySelector(".modal");
         var openModalBtn = this.alertNode.querySelector(".btn-open");
         var closeModalBtn = this.alertNode.querySelector(".btn-close");
-        var submitBtn = this.alertNode.querySelector("btn-submit");
+        var submitBtn = this.alertNode.querySelector(".btn-submit");
 
-        openModalBtn.addEventListener('click', this.openModal.bind(openModalBtn));
-        closeModalBtn.addEventListener('click', this.closeModal.bind(closeModalBtn));
-        //submitBtn.addEventListener('click', this.closeModal.bind(submitBtn));
+        openModalBtn.addEventListener('click', openModal.bind(openModalBtn));
+        closeModalBtn.addEventListener('click', closeModal.bind(closeModalBtn));
+        submitBtn.addEventListener('click', closeModal.bind(submitBtn));
 
         modal.addEventListener("keydown", function (e) {
             if (e.key === "Escape" && !modal.classList.contains("hidden")) {
@@ -24,13 +24,13 @@ class AlertModal {
     }
 
     openModal = function () {
-        this.modal.classList.remove("hidden");
+        modal.classList.remove("hidden");
         overlay.classList.remove("hidden");
         overlay.style.display="block";
     };
 
     closeModal = function () {
-        this.modal.classList.add("hidden");
+        modal.classList.add("hidden");
         overlay.classList.add("hidden");
         overlay.style.display="none";
         openModalBtn.focus();
