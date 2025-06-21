@@ -16,7 +16,7 @@ class AlertModal {
         closeModalBtn.addEventListener('click', this.closeModal.bind(closeModalBtn));
         //submitBtn.addEventListener('click', this.closeModal.bind(submitBtn));
 
-        this.addEventListener("keydown", function (e) {
+        modal.addEventListener("keydown", function (e) {
             if (e.key === "Escape" && !modal.classList.contains("hidden")) {
                 closeModal();
             }
