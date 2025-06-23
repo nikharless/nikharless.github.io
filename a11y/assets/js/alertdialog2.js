@@ -28,6 +28,7 @@ function openModal (modal) {
         modal.classList.remove("hidden");
         overlay.classList.remove("hidden");
         overlay.style.display="block";
+        modal.focus();
     };
 
 function closeModal (modal, openModalBtn) {
