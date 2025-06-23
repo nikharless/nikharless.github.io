@@ -36,16 +36,16 @@ last-modified: 21 June 2025
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3></h3>
-                    <p></p>
+                    <h3>Alert Dialog</h3>
+                    <p>This example does not assign a role to the dialog.</p>
                     <ul>
-                        <li>NVDA: ""</li>
+                        <li>NVDA (when dialog is opened): "Example Failure, heading level 2, Are you sure you want to do that?, Yes, button, Cancel"</li>
                     </ul>
 
                     <div class="example">
                         <div class="alertdialog">
                             <button type="button" class="exButton btn-open" aria-haspopup="dialog">Open Failing Modal</button>
-                            <div class="modal hidden" aria-modal="true" aria-labelledby="failDialog_label" id="failModal" tabindex="-1">
+                            <div id="failModal" aria-modal="true" aria-labelledby="failDialog_label" class="modal hidden" tabindex="-1">
                                 <h2 id="failDialog_label" class="dialog_label">Example Failure</h2>
                                 <p>Are you sure you want to do that?</p>
                                 <div class="dialog_form">
@@ -56,6 +56,8 @@ last-modified: 21 June 2025
                                 </div>
                             </div>
                         </div>
+
+                        <pre><code>&lt;div id="modal" aria-modal="true" aria-labelledby="labelId"&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -64,9 +66,9 @@ last-modified: 21 June 2025
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>Alert Dialog</h3>
-                    <p>This example uses <code>role="alertdialog"</code> to communicate the role to assistive technology.</p>
+                    <p>This example uses <code>role="alertdialog"</code>.</p>
                     <ul>
-                        <li>NVDA (when dialog is opened): "Example Pass, dialog, This is an alert dialog!"</li>
+                        <li>NVDA (when dialog is opened): "Example Pass, heading level 2, Example Pass, Are you sure you want to do that?, button, Yes, button, Cancel"</li>
                     </ul>
                     <div class="example">
                         <div class="alertdialog">
@@ -82,6 +84,9 @@ last-modified: 21 June 2025
                                 </div>
                             </div>
                         </div>
+
+                        <pre><code>&lt;div id="modal" <strong>role="alertdialog"</strong> aria-modal="true" aria-labelledby="labelId"&gt;</code></pre>
+                        
                         <div class="dialog-backdrop overlay"></div>
                         <script src="{{ baseurl }}/assets/js/alertdialog2.js"></script>
                     </div>
