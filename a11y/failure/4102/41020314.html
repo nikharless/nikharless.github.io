@@ -3,7 +3,7 @@ layout: default
 current: 41020314
 criterion: 4102
 checkpoint: 410203
-css: tabs
+css: sliders
 last-modified: 10 June 2025
 ---
 {% assign root=site.data.site.root %}
@@ -20,76 +20,68 @@ last-modified: 10 June 2025
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>The currently selected tab communicates the selected state to assistive technology.</div>
+                <div>Sliders communicate the current value to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>The current tab does not communicate the selected state to assistive technology.</div>
+                <div>A slider does not communicate the current value to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
                     <ul>
-                        <li>Use <code>aria-selected="true"</code> on the currently selected tab control.</li>
-                        <li>Use <code>aria-selected="false"</code> on all non-selected tab controls.</li>
+                        <li>Use the native HTML <code>&lt;input type="range"&gt;</code> which automatically communicates the current value, <strong>OR</strong></li>
+                        <li>Use <code>aria-valuenow</code> on a custom slider element to represent the current value of the slider.
+                            <ul>
+                                <li>Optionally, use <code>aria-valuetext</code> on the slider element if the default number format does not make sense in the slider's context.</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
-                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                    <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Manually Activated Tab List</h3>
-                    <p>This example does not correctly communicate the selected state to assistive technology.</p>
+                    <h3>Custom Slider</h3>
+                    <p>This example does not communicate the current value to assistive technology.</p>
                     <ul>
-                        <li>NVDA/Chrome (regardless of selected state): "Maria Ahlefeldt, tab, selected, 1 of 4"</li>
+                        <li>NVDA/Chrome (on focus): "Seek, slider, 150"</li>
+                        <li>NVDA/Chrome (on change): No feedback</li>
                     </ul>
                     <div class="example">
-                        <div class="tabs" id="failTabs">
-                          <p id="tablist-f">Danish Composers</p>
-                          <div role="tablist" aria-labelledby="tablist-f" class="manual">
-                            <button id="tab-1f" type="button" role="tab" aria-controls="tabpanel-1f" class="failTab">
-                              <span class="focus">Maria Ahlefeldt</span>
-                            </button>
-                            <button id="tab-2f" type="button" role="tab" aria-controls="tabpanel-2f" tabindex="-1" class="failTab">
-                              <span class="focus">Carl Andersen</span>
-                            </button>
-                            <button id="tab-3f" type="button" role="tab" aria-controls="tabpanel-3f" tabindex="-1" class="failTab">
-                              <span class="focus">Ida da Fonseca</span>
-                            </button>
-                            <button id="tab-4f" type="button" role="tab" aria-controls="tabpanel-4f" tabindex="-1" class="failTab">
-                              <span class="focus">Peter Müller</span>
-                            </button>
-                          </div>
-                          <div id="tabpanel-1f" role="tabpanel" aria-labelledby="tab-1f">
-                            <p><a href="https://en.wikipedia.org/wiki/Maria_Theresia_Ahlefeldt">Maria Theresia Ahlefeldt</a> (16 January 1755 – 20 December 1810) was a Danish, (originally German), composer. She is known as the first female composer in Denmark. Maria Theresia composed music for several ballets, operas, and plays of the royal theatre. She was given good critic as a composer and described as a “<span lang="da">virkelig Tonekunstnerinde</span>” ('a True Artist of Music').</p>
-                          </div>
-                          <div id="tabpanel-2f" role="tabpanel" aria-labelledby="tab-2f" class="is-hidden">
-                            <p><a href="https://en.wikipedia.org/wiki/Joachim_Andersen_(composer)">Carl Joachim Andersen</a> (29 April 1847 – 7 May 1909) was a Danish flutist, conductor and composer born in Copenhagen, son of the flutist Christian Joachim Andersen. Both as a virtuoso and as composer of flute music, he is considered one of the best of his time. He was considered to be a tough leader and teacher and demanded as such a lot from his orchestras but through that style he reached a high level.</p>
-                          </div>
-                          <div id="tabpanel-3f" role="tabpanel" aria-labelledby="tab-3f" class="is-hidden">
-                            <p><a href="https://en.wikipedia.org/wiki/Ida_Henriette_da_Fonseca">Ida Henriette da Fonseca</a> (July 27, 1802 – July 6, 1858) was a Danish opera singer and composer. Ida Henriette da Fonseca was the daughter of Abraham da Fonseca (1776–1849) and Marie Sofie Kiærskou (1784–1863). She and her sister Emilie da Fonseca were students of Giuseppe Siboni, choir master of the Opera in Copenhagen. She was given a place at the royal Opera alongside her sister the same year she debuted in 1827.</p>
-                          </div>
-                          <div id="tabpanel-4f" role="tabpanel" aria-labelledby="tab-4f" class="is-hidden">
-                            <p>
-                              <a href="https://en.wikipedia.org/wiki/Peter_Lange-M%C3%BCller">Peter Erasmus Lange-Müller</a> (1 December 1850 – 26 February 1926) was a Danish composer and pianist. His compositional style was influenced by Danish folk music and by the work of Robert Schumann; Johannes Brahms; and his Danish countrymen, including J.P.E. Hartmann.</p>
-                            </div>
-                        </div>
+                        {% include examples/slider-seek-fail.html %}
+
+                        <pre><code>&lt;g role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="300" aria-labelledby="slider-label"&gt;</code></pre>
                     </div>
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Example<br>
-                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Manually Activated Tab List</h3>
-                    <p>This example uses <code>aria-selected</code> to communicate the selected state.</p>
+                    <h3>Native HTML Slider</h3>
+                    <p>This example uses the native HTML <code>&lt;input type="range"&gt;</code> element, which automatically communicates the current value to assistive technology.</p>
                     <ul>
-                        <li>NVDA/Chrome (selected): "Maria Ahlefeldt, tab, selected, 1 of 4"</li>
-                        <li>NVDA/Chrome (not selected): "Carl Andersen, tab, 2 of 4"</li>
+                        <li>NVDA/Chrome (on focus): "Slider, 50"</li>
+                        <li>NVDA/Chrome (on change): "[current value]"</li>
                     </ul>
                     <div class="example">
-                        {% include examples/tabs-manual.html %}
+                        <input type="range" min="1" max="100" value="50" class="slider">
+
+                        <pre><code>&lt;input type="range" min="1" max="100" <strong>value="50"</strong>&gt;</code></pre>
+                    </div>
+
+                    <h3>ARIA Custom Slider</h3>
+                    <p>This example uses <code>aria-valuenow</code> and <code>aria-valuetext</code> to communicate the current value to assistive technology.</p>
+                    <ul>
+                        <li>NVDA/Chrome (on focus): "Accessibility is the right thing to do. slider, Choose a rating from one to ten where 10 is strongly agree"</li>
+                        <li>NVDA/Chrome (on change): "one, strongly disagree" (aria-valuetext)</li>
+                    </ul>
+                    <div class="example">
+                        {% include examples/slider-rating.html %}
+
+                        <pre><code>&lt;div role="slider" tabindex="0" aria-valuemin="0" <strong>aria-valuenow="0"</strong> aria-valuemax="10" <strong>aria-valuetext="Choose a rating from 1 to 10 where 10 is Strongly Disagree"</strong>&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -120,11 +112,11 @@ last-modified: 10 June 2025
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#tab">WAI-ARIA: tab role</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tab_role">MDN: ARIA: tab role</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#aria-selected">WAI-ARIA: aria-selected state</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-selected">MDN: ARIA: aria-selected attribute</a></li>
-                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/">W3: Tabs Pattern</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria/#slider">WAI-ARIA: slider role</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/slider_role">MDN: ARIA: slider role</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria/#aria-valuenow">WAI-ARIA: aria-valuenow property</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-valuenow">MDN: ARIA: aria-valuenow attribute</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/slider/">WAI-ARIA: Slider Pattern</a></li>
                     </ul>
                 </div>
             </div>

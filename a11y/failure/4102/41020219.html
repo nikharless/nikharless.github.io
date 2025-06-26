@@ -1,0 +1,185 @@
+---
+layout: default
+current: 41020219
+criterion: 4102
+checkpoint: 410202
+last-modified: 23 June 2025
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+{% assign cp=site.data.4102.4102[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>Elements do not contain any invalid child elements or roles.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>An element contains an invalid child element or role.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <h3>HTML</h3>
+                    <p>Ensure that any child elements are valid.</p>
+                    <ul>
+                        <li><code>&lt;address&gt;</code> must not contain heading or sectioning content (<code>&lt;h1&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;header&gt;</code>, etc.).</li>
+                        <li><code>&lt;audio&gt;</code> must only contain <code>&lt;track&gt;</code> or <code>&lt;source&gt;</code> elements.</li>
+                        <li><code>&lt;colgroup&gt</code> (without a <code>span</code> attribute) must only contain <code>&lt;col&gt;</code> elements.</li>
+                        <li><code>&lt;dl&gt;</code> must only contain <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code>, <code>&lt;script&gt;</code>, or <code>&lt;template&gt;</code> elements.</li>
+                        <li><code>&lt;dt&gt;</code> must not contain heading or sectioning content (<code>&lt;h1&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;header&gt;</code>, etc.).</li>
+                        <li><code>&lt;form&gt;</code> must not contain nested <code>&lt;form&gt;</code> elements.</li>
+                        <li><code>&lt;header&gt;</code> must not contain nested <code>&lt;header&gt;</code> or <code>&lt;footer&gt;</code> elements.</li>
+                        <li><code>&lt;html&gt;</code> must only contain one <code>&lt;head&gt;</code> and one <code>&lt;body&gt;</code>.</li>
+                        <li><code>&lt;label&gt;</code> must not contain nested <code>&lt;label&gt;</code> elements.</li>
+                        <li><code>&lt;menu&gt;</code> must only contain <code>&lt;li&gt;</code>, <code>&lt;script&gt;</code>, or <code>&lt;template&gt;</code> elements.</li>
+                        <li><code>&lt;meter&gt;</code> must not contain nested <code>&lt;meter&gt;</code> elements.</li>
+                        <li><code>&lt;ol&gt;</code> must only contain <code>&lt;li&gt;</code>, <code>&lt;script&gt;</code>, or <code>&lt;template&gt;</code> elements.</li>
+                        <li><code>&lt;optgroup&gt;</code> must only contain <code>&lt;option&gt;</code> or a single <code>&lt;legend&gt;</code> elements.</li>
+                        <li><code>&lt;progress&gt;</code> must not contain nested <code>&lt;progress&gt;</code> elements.</li>
+                        <li><code>&lt;table&gt;</code> must only contain the following, in order: <code>&lt;caption&gt;</code>, <code>&lt;colgroup&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> or <code>&lt;tr&gt;</code> (required), <code>&lt;tfoot&gt;</code>.</li>
+                        <li><code>&lt;tbody&gt;</code> must only contain <code>&lt;tr&gt;</code> elements.</li>
+                        <li><code>&lt;tfoot&gt;</code> must only contain <code>&lt;tr&gt;</code> elements.</li>
+                        <li><code>&lt;th&gt;</code> must not contain heading or sectioning content (<code>&lt;h1&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;header&gt;</code>, etc.).</li>
+                        <li><code>&lt;thead&gt;</code> must only contain <code>&lt;tr&gt;</code> elements.</li>
+                        <li><code>&lt;tr&gt;</code> must only contain <code>&lt;td&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;script&gt;</code>, or <code>&lt;template&gt;</code> elements.</li>
+                        <li><code>&lt;ul&gt;</code> must only contain <code>&lt;li&gt;</code>, <code>&lt;script&gt;</code>, or <code>&lt;template&gt;</code> elements.</li>
+                        <li><code>&lt;video&gt;</code> must only contain <code>&lt;track&gt;</code> or <code>&lt;source&gt;</code> elements.</li>
+                    </ul>
+
+                    <p>The following elements must not contain any interactive content./p>
+                    <ul>
+                        <li><code>&lt;a&gt;</code></li>
+                        <li><code>&lt;button&gt;</code></li>
+                    </ul>
+
+                    <p>The following elements are void elements (they do not have end tags) and must not contain any content.</p>
+                    <ul>
+                        <li><code>&lt;area&gt;</code></li>
+                        <li><code>&lt;br&gt;</code></li>
+                        <li><code>&lt;col&gt;</code></li>
+                        <li><code>&lt;colgroup span="[value]"&gt;</code></li>
+                        <li><code>&lt;embed&gt;</code></li>
+                        <li><code>&lt;hr&gt;</code></li>
+                        <li><code>&lt;iframe&gt;</code> (has end tag)</li>
+                        <li><code>&lt;img&gt;</code></li>
+                        <li><code>&lt;input&gt;</code></li>
+                        <li><code>&lt;link&gt;</code></li>
+                        <li><code>&lt;meta&gt;</code></li>
+                        <li><code>&lt;source&gt;</code></li>
+                        <li><code>&lt;track&gt;</code></li>
+                    </ul>
+
+                    <h3>ARIA</h3>
+                    <p>Ensure that any child roles are valid.</p>
+                    <ul>
+                        <li><code>group</code> must only contain <code>option</code> elements.</li>
+                        <li><code>spinbutton</code> must only contain a single <code>textbox</code> and/or two <code>button</code> elements.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>List</h3>
+                    <p>This unordered list has another unordered list as a direct child.</p>
+                    <div class="example">
+                        <ul>
+                            <ul aria-label="nav list">
+                                <li><a href="javascript:void">Home</a></li>
+                                <li><a href="javascript:void">About</a></li>
+                            </ul>
+                            <ul aria-label="contact list">
+                                <li><a href="javascript:void">Email</a></li>
+                                <li><a href="javascript:void">Location</a></li>
+                            </ul>
+                        </ul>
+
+                        <pre><code>&lt;ul&gt;
+    &lt;ul aria-label="nav list"&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        ...</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>List</h3>
+                    <p>This unordered list properly nests the sub-lists inside list items.</p>
+                    <div class="example">
+                        <ul>
+                            <li>
+                                <ul aria-label="nav list">
+                                    <li><a href="javascript:void">Home</a></li>
+                                    <li><a href="javascript:void">About</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul aria-label="contact list">
+                                    <li><a href="javascript:void">Email</a></li>
+                                    <li><a href="javascript:void">Location</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <pre><code>&lt;ul&gt;
+    &lt;li&gt;
+        &lt;ul aria-label="nav list"&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+            ...
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    ...</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Missing required child:</strong><br>
+                            File under <a href="{{ site.data.4102.4102[41020209].link | prepend: baseurl }}">{{ site.data.4102.4102[41020209].name }}.</a></li>
+                        <li><strong>Role of "none"</strong>:<br>
+                            <code>&lt;li role="none"&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Vision Impairment:</strong> Programmatic roles enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Programmatic roles enable compatibility with assistive technology such as speech recognition software.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements">MDN: HTML elements reference</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria/#introroles">WAI-ARIA Roles</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/4102checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>

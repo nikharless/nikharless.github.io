@@ -1,9 +1,9 @@
 ---
 layout: default
-current: 41020207
+current: 41020328
 criterion: 4102
-checkpoint: 410202
-css: 41020202
+checkpoint: 410203
+last-modified: 14 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -19,41 +19,33 @@ css: 41020202
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Custom controls have valid roles.</div>
+                <div>State changes are communicated to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A custom control does not have a valid role.</div>
+                <div>A state change is not communicated to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
-                <div>Assign an appropriate role to the control (and any sub-components) using the <code>role</code> attribute.</div>
+                <div>
+                    <ul>
+                        <li>Use native HTML controls when possible, to automatically communicate state changes, <strong>OR</strong></li>
+                        <li>Update the value of the attribute to match the current state of the control, <strong>AND</strong></li>
+                        <li>Ensure state changes are spoken by the screen reader.</li>
+                    </ul>
+                </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                        
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <div class="example">
-                        <h3>Slider</h3>
-                        {% include examples/slider-rating.html %}
 
-                        <pre><code>&lt;div id="id-rating-label"&gt;Accessibility is the right thing to do.&lt;/div&gt;
-    &lt;div id="id-rating" <strong>role="slider"</strong> tabindex="0" aria-valuemin="0" aria-valuemax="10" aria-labelledby="id-rating-label"&gt;</code></pre>
-                    </div>
-
-                    <div class="example">
-                        <h3>Toolbar</h3>
-                        {% include examples/toolbar.html %}
-
-                        <pre><code>&lt;div <strong>role="toolbar"</strong> aria-controls="textarea1" aria-label="Text Formatting"&gt;</code></pre>
-                    </div>
                 </div>
             </div>
             <div class="row block">
@@ -61,11 +53,11 @@ css: 41020202
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
-                        <li><strong>Hidden</strong>:<br>
-                            <code>&lt;div style="display:none;"&gt;</code><br>
+                        <li><strong>Hidden with CSS</strong>:<br>
+                            <code>&lt;input type="textbox" style="display:none;"&gt;</code><br>
                             Does not appear in accessibility tree</li>
-                        <li><strong>Role of "none"</strong>:<br>
-                            <code>&lt;div role="none"&gt;</code><br>
+                        <li><strong>Hidden with ARIA</strong>:<br>
+                            <code>&lt;input type="textbox" aria-hidden="true"&gt;</code><br>
                             Does not appear in accessibility tree</li>
                     </ul>
                 </div>
@@ -74,8 +66,8 @@ css: 41020202
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Programmatic roles enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
-                        <li><strong>Motor Impairment:</strong> Programmatic roles enable compatibility with assistive technology such as speech recognition software.</li>
+                        <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
                     </ul>
                 </div>
             </div>
@@ -84,9 +76,9 @@ css: 41020202
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F59">Failure of Success Criterion 4.1.2 due to using script to make div or span a user interface control in HTML without providing a role for the control</a></li>
-                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
                     </ul>
                 </div>
             </div>

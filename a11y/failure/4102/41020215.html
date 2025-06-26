@@ -1,9 +1,10 @@
 ---
 layout: default
-current: 41020516
+current: 41020215
 criterion: 4102
 checkpoint: 410205
-css: tree
+css: treegrid-1
+last-modified: 23 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -19,39 +20,37 @@ css: tree
     <div class="failure">
         <div class="row block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Tree views have all appropriate roles and attributes.</div>
+            <div>Tree grids have all appropriate roles and attributes.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>A tree view does not have all the appropriate roles or attributes.</div>
+            <div>A tree grid does not have all the appropriate roles or attributes.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Solution</h2>
             <div>
                 <h3>Tree View</h3>
                 <ul>
-                    <li>Use the "tree" role on the main tree container.</li>
-                    <li>Use the "treeitem" role on each tree node element.</li>
-                    <li>Use the "group" role on each sub list container.</li>
-                    <li>Use the <code>aria-expanded</code> attribute on each expandable treeitem; set it to "true" if expanded or "false" if collapsed.</li>
-                    <li>If the tree allows multiple selections, use the <code>aria-multiselectable="true"</code> attribute on the tree element.</li>
-                    <li>Use the <code>aria-selected</code> OR <code>aria-checked</code> attribute on each selectable node; set to "true" if selected/checked or to "false" if not. (Only one node may be marked as true if <code>aria-multiselectable="true"</code> is not set.)
-                        <ul>
-                            <li>If the tree only allows a single selection, <code>aria-selected</code> is generally used.</li>
-                            <li>If the tree allows multiple selections, <code>aria-checked</code> is generally used.</li>
-                            <li>It is not recommended to use both in the same tree.</li>
-                        </ul>
-                    </li>
+                    <li>Use the "treegrid" role on the main tree grid container.</li>
+                    <li>Use the "row" role on each row container.</li>
+                    <li>Use the "columnheader" role on each column header cell.</li>
+                    <li>Use the "rowheader" role on each row header cell.</li>
+                    <li>Use the "gridcell" role on each non-header cell.</li>
+                    <li>Use the <code>aria-expanded</code> attribute on each expandable row or on a cell within the row; set it to "true" if expanded or "false" if collapsed.</li>
+                    <li>If the tree grid allows multiple selections, use the <code>aria-multiselectable="true"</code> attribute on the treegrid element.</li>
+                    <li>Use the <code>aria-selected</code> attribute on each selectable row; set to "true" if selected or to "false" if not. (Only one row may be marked as true if <code>aria-multiselectable="true"</code> is not set.)</li>
                     <li>Use the <code>aria-label</code> OR the <code>aria-labelledby</code> attribute on the tree element to provide an accessible name.</li>
+                    <li>If the tree grid has a caption, use <code>aria-describedby</code> on the treegrid element and point it to the <code>id</code> of the caption element.</li>
+                    <li>If the tree grid has sort functions, use the <code>aria-sort</code> attribute on the header cell element for the sorted column or row, and set it to an appropriate value.</li>
                 </ul>
             </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
-                <h3>File Explorer Tree View</h3>
+                <h3>Treegrid Email Inbox</h3>
                 <div class="example">
-                    {% include examples/treeview.html %}
+                    {% include examples/treegrid.html %}
                 </div>
             </div>
         </div>
@@ -79,7 +78,7 @@ css: tree
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
                     <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
                     <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
-                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/treeview/">W3: Tree View Pattern</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/treegrid/">W3: Treegrid Pattern</a></li>
                 </ul>
             </div>
         </div>

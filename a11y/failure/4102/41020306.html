@@ -3,8 +3,8 @@ layout: default
 current: 41020306
 criterion: 4102
 checkpoint: 410203
-css: menu-button-links
-last-modified: 2 June 2025
+css: datepickers
+last-modified: 6 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -20,60 +20,77 @@ last-modified: 2 June 2025
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>If a control opens a menu popup, it communicates this property to assistive technology.</div>
+                <div>Date picker controls communicate to assistive technology that they open a dialog.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A menu button does not communicate to assistive technology that it opens a menu.</div>
+                <div>A date picker control does not communicate to assistive technology that it opens a dialog.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
-                    <p>Use the <code>aria-haspopup</code> attribute on the menu button.</p>
+                    <ul>
+                        <li>Use the <code>aria-haspopup</code> attribute on the button or combobox input.</li>
+                        <li>Set it to "dialog" to indicate that it opens a dialog.</li>
+                    </ul>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Custom Menu Button</h3>
-                    <p>This example does not communicate to assistive technology that it opens a menu.</p>
-                    <p>NVDA: "WAI-ARIA Quick Links, button, collapsed"</p>
+                    <h3>Date picker button</h3>
+                    <p>This example does not communicate to assistive technology that it opens a dialog.</p>
+                    <p>NVDA: "Select Date, button"</p>
                     <div class="example">
-                        <div class="menu-button-links">
-                            <button type="button" id="menubutton1" aria-controls="menu1" aria-expanded="false">
-                                WAI-ARIA Quick Links
-                                <svg xmlns="http://www.w3.org/2000/svg" class="down" width="12" height="9" viewBox="0 0 12 9">
-                                    <polygon points="1 0, 11 0, 6 8"></polygon>
-                                </svg>
-                            </button>
-                            <ul id="menu1" role="menu" aria-labelledby="menubutton1">
-                                <li role="none"><a role="menuitem" href="https://www.w3.org/">W3C Home Page</a></li>
-                                <li role="none"><a role="menuitem" href="https://www.w3.org/standards/webdesign/accessibility">W3C Web Accessibility Initiative</a></li>
-                                <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria/">Accessible Rich Internet Application Specification</a></li>
-                                <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria-practices/">WAI-ARIA Authoring Practices</a></li>
-                                <li role="none"><a role="menuitem" href="https://www.w3.org/TR/wai-aria-implementation/">WAI-ARIA Implementation Guide</a></li>
-                                <li role="none"><a role="menuitem" href="https://www.w3.org/TR/accname-aam-1.1/">Accessible Name and Description</a></li>
-                            </ul>
+                        <div class="picker-button" id="default-today" data-picker-type="date" data-days-forward="7" data-days-back="7" data-default-today="true" data-allow-past-times="true" tabindex="0" role="button"><span class="picker-value">Select Date</span></div>
+                        <div id="picker-backdrop" class="picker-backdrop"></div>
+                        <div id="date-picker" class="date-picker">
+                            <div class="date-picker-header">
+                                <div class="days-of-week">
+                                    <span>M</span><span>T</span><span>W</span>
+                                    <span>T</span><span>F</span><span>S</span><span>S</span>
+                                </div>
+                            </div>
+                            <div id="date-picker-months" class="date-picker-months"></div>
                         </div>
+                        <div id="time-picker" class="time-picker"></div>
+                        <script src="{{ baseurl }}/assets/js/date-picker-fail.js"></script>
 
-                        <pre><code>&lt;button type="button" id="menubutton" aria-controls="menu2" aria-expanded="false"&gt;</code></pre>
+                        <pre><code>&lt;div tabindex="0" role="button"&gt;Select Date&lt;/div&gt;</code></pre>
                     </div>
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Custom Menu Button</h3>
-                    <p>This example uses <code>aria-haspopup="menu"</code> to communicate to assistive technology that it opens a menu.</p>
-                    <p>NVDA: "WAI-ARIA Quick Links, menu button, collapsed, subMenu"</p>
+                    <h3>Date picker button with <code>aria-haspopup</code></h3>
+                    <p>This example uses <code>aria-haspopup="dialog"</code> to communicate to assistive technology that it opens a dialog.</p>
+                    <p>Note that this date picker dialog is not keyboard accessible.</p>
+                    <p>NVDA: "Select Date, button, opens dialog"</p>
                     <div class="example">
-                        
-                        {% include examples/menu-button-links.html %}
-                        <script src="{{ baseurl }}/assets/js/menu-button-links.js"></script>
+                        <div class="picker-button" id="default-today" data-picker-type="date" data-days-forward="7" data-days-back="7" data-default-today="true" data-allow-past-times="true" tabindex="0" role="button" aria-haspopup="dialog"><span class="picker-value">Select Date</span></div>
 
-                        <pre><code>&lt;button type="button" id="menubutton" <strong>aria-haspopup="menu"</strong> aria-controls="menu2" aria-expanded="false"&gt;</code></pre>
+                        <pre><code>&lt;div tabindex="0" role="button" <strong>aria-haspopup="dialog"</strong>&gt;Select Date&lt;/div&gt;</code></pre>
+                    </div>
+
+                    <h3>Date picker combobox with <code>aria-haspopup</code></h3>
+                    <p>This example uses <code>aria-haspopup="dialog"</code> to communicate to assistive technology that it opens a dialog.</p>
+                    <p>NVDA: "Date, combobox, collapsed, editable, opens dialog, (date format: mm/dd/yyyy), blank"</p>
+                    <div class="example">
+                        {% include examples/combobox-datepicker.html %}
+                        <script src="{{ baseurl }}/assets/js/combobox-datepicker.js"></script>
+                        <p style="display: block; height: 1em;"></p>
+
+                        <pre><code>&lt;input type="text" 
+    aria-autocomplete="none" 
+    role="combobox" 
+    aria-expanded="false" 
+    <strong>aria-haspopup="dialog"</strong>
+    aria-controls="cb-dialog-1" 
+    aria-describedby="cb-description-1"&gt;
+...</code></pre>
                     </div>
                 </div>
             </div>
@@ -82,12 +99,8 @@ last-modified: 2 June 2025
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
-                        <li><strong>Toggle button</strong><br>
-                            File under <a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}.</a></li>
-                        <li><strong>Disclosure button</strong><br>
-                            File under <a href="{{ site.data.4102.4102[41020302].link | prepend: baseurl }}">{{ site.data.4102.4102[41020302].name }}.</a></li>
-                        <li><strong>Hidden</strong>:<br>
-                            <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
+                        <li><strong>Hidden with CSS</strong>:<br>
+                            <code>&lt;div role="textbox" style="display:none;"&gt;</code><br>
                             Does not appear in accessibility tree</li>
                     </ul>
                 </div>
@@ -108,9 +121,10 @@ last-modified: 2 June 2025
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/">WAI-ARIA: Menu Button Pattern</a></li>
                         <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-haspopup">MDN: ARIA: aria-haspopup attribute</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-datepicker/">WAI-ARIA: Date Picker Combobox Example</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/datepicker-dialog/">WAI-ARIA: Date Picker Dialog Example</a></li>
+                        <li><a href="https://www.cssscript.com/datetime-date-range-picker/">CSS Script: Easy Datetime & Date Range Pickers in Vanilla JavaScript</a> (<strong>Note: These examples are <em>not</em> accessible by default.</strong>)</li>
                     </ul>
                 </div>
             </div>

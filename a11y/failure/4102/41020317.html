@@ -3,8 +3,8 @@ layout: default
 current: 41020317
 criterion: 4102
 checkpoint: 410203
-css: toggle-button
-last-modified: 11 June 2025
+css: tabs
+last-modified: 10 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -20,30 +20,61 @@ last-modified: 11 June 2025
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>If a control functions as a toggle button, it communicates the pressed state to assistive technology.</div>
+                <div>The currently selected tab communicates the selected state to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A toggle button does not communicate the pressed state to assistive technology.</div>
+                <div>The current tab does not communicate the selected state to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
-                    <p>Use the <code>aria-pressed</code> attribute on the toggle button. For a simple two-state toggle button, set it to "true" when pressed and to "false" when not pressed. It must be explicitly set, as the default value is "undefined".</p>
-                    <p><strong>Do not</strong> change the label on a toggle button (e.g., "Mute"/"Unmute") when the state changes.</p>
+                    <ul>
+                        <li>Use <code>aria-selected="true"</code> on the currently selected tab control.</li>
+                        <li>Use <code>aria-selected="false"</code> on all non-selected tab controls.</li>
+                    </ul>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Regular Button</h3>
-                    <p>This button does not track pressed state changes.</p>
-                    <p>NVDA: "Mute, button"</p>
+                    <h3>Manually Activated Tab List</h3>
+                    <p>This example does not correctly communicate the selected state to assistive technology.</p>
+                    <ul>
+                        <li>NVDA/Chrome (regardless of selected state): "Maria Ahlefeldt, tab, selected, 1 of 4"</li>
+                    </ul>
                     <div class="example">
-                        <a tabindex="0" role="button" class="toggleButton">Mute <i class="fa-solid fa-volume-high" aria-hidden="true"></i></a>
-
-                        <pre><code>&lt;a tabindex="0" role="button"&gt;Mute&lt;/a&gt;</code></pre>
+                        <div class="tabs" id="failTabs">
+                          <p id="tablist-f">Danish Composers</p>
+                          <div role="tablist" aria-labelledby="tablist-f" class="manual">
+                            <button id="tab-1f" type="button" role="tab" aria-controls="tabpanel-1f" class="failTab">
+                              <span class="focus">Maria Ahlefeldt</span>
+                            </button>
+                            <button id="tab-2f" type="button" role="tab" aria-controls="tabpanel-2f" tabindex="-1" class="failTab">
+                              <span class="focus">Carl Andersen</span>
+                            </button>
+                            <button id="tab-3f" type="button" role="tab" aria-controls="tabpanel-3f" tabindex="-1" class="failTab">
+                              <span class="focus">Ida da Fonseca</span>
+                            </button>
+                            <button id="tab-4f" type="button" role="tab" aria-controls="tabpanel-4f" tabindex="-1" class="failTab">
+                              <span class="focus">Peter Müller</span>
+                            </button>
+                          </div>
+                          <div id="tabpanel-1f" role="tabpanel" aria-labelledby="tab-1f">
+                            <p><a href="https://en.wikipedia.org/wiki/Maria_Theresia_Ahlefeldt">Maria Theresia Ahlefeldt</a> (16 January 1755 – 20 December 1810) was a Danish, (originally German), composer. She is known as the first female composer in Denmark. Maria Theresia composed music for several ballets, operas, and plays of the royal theatre. She was given good critic as a composer and described as a “<span lang="da">virkelig Tonekunstnerinde</span>” ('a True Artist of Music').</p>
+                          </div>
+                          <div id="tabpanel-2f" role="tabpanel" aria-labelledby="tab-2f" class="is-hidden">
+                            <p><a href="https://en.wikipedia.org/wiki/Joachim_Andersen_(composer)">Carl Joachim Andersen</a> (29 April 1847 – 7 May 1909) was a Danish flutist, conductor and composer born in Copenhagen, son of the flutist Christian Joachim Andersen. Both as a virtuoso and as composer of flute music, he is considered one of the best of his time. He was considered to be a tough leader and teacher and demanded as such a lot from his orchestras but through that style he reached a high level.</p>
+                          </div>
+                          <div id="tabpanel-3f" role="tabpanel" aria-labelledby="tab-3f" class="is-hidden">
+                            <p><a href="https://en.wikipedia.org/wiki/Ida_Henriette_da_Fonseca">Ida Henriette da Fonseca</a> (July 27, 1802 – July 6, 1858) was a Danish opera singer and composer. Ida Henriette da Fonseca was the daughter of Abraham da Fonseca (1776–1849) and Marie Sofie Kiærskou (1784–1863). She and her sister Emilie da Fonseca were students of Giuseppe Siboni, choir master of the Opera in Copenhagen. She was given a place at the royal Opera alongside her sister the same year she debuted in 1827.</p>
+                          </div>
+                          <div id="tabpanel-4f" role="tabpanel" aria-labelledby="tab-4f" class="is-hidden">
+                            <p>
+                              <a href="https://en.wikipedia.org/wiki/Peter_Lange-M%C3%BCller">Peter Erasmus Lange-Müller</a> (1 December 1850 – 26 February 1926) was a Danish composer and pianist. His compositional style was influenced by Danish folk music and by the work of Robert Schumann; Johannes Brahms; and his Danish countrymen, including J.P.E. Hartmann.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,15 +82,14 @@ last-modified: 11 June 2025
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Toggle Button</h3>
-                    <p></p>
-                    <p>NVDA: "Mute, toggle button, not pressed"</p>
+                    <h3>Manually Activated Tab List</h3>
+                    <p>This example uses <code>aria-selected</code> to communicate the selected state.</p>
+                    <ul>
+                        <li>NVDA/Chrome (selected): "Maria Ahlefeldt, tab, selected, 1 of 4"</li>
+                        <li>NVDA/Chrome (not selected): "Carl Andersen, tab, 2 of 4"</li>
+                    </ul>
                     <div class="example">
-                        <a tabindex="0" role="button" id="toggle" aria-pressed="false" class="toggleButton">Mute <i class="fa-solid fa-volume-high" aria-hidden="true"></i></a>
-                        
-                        <script src="{{ baseurl }}/assets/js/toggle-button.js"></script>
-
-                        <pre><code>&lt;a tabindex="0" role="button" id="toggle" <strong>aria-pressed="false"</strong>&gt;Mute&lt;/a&gt;</code></pre>
+                        {% include examples/tabs-manual.html %}
                     </div>
                 </div>
             </div>
@@ -68,10 +98,8 @@ last-modified: 11 June 2025
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
-                        <li><strong>Switch</strong>:<br>
-                            File under <a href="{{ site.data.4102.4102[41020306].link | prepend: baseurl }}">{{ site.data.4102.4102[41020306].name }}.</a></li>
-                        <li><strong>Hidden</strong>:<br>
-                            <code>&lt;div style="display:none;"&gt;Mute&lt;/div&gt;</code><br>
+                        <li><strong>Role of "none"</strong>:<br>
+                            <code>&lt;div role="none"&gt;</code><br>
                             Does not appear in accessibility tree</li>
                     </ul>
                 </div>
@@ -90,10 +118,13 @@ last-modified: 11 June 2025
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/examples/button/">WAI-ARIA: Button Examples</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria/#tab">WAI-ARIA: tab role</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/tab_role">MDN: ARIA: tab role</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria/#aria-selected">WAI-ARIA: aria-selected state</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-selected">MDN: ARIA: aria-selected attribute</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/">W3: Tabs Pattern</a></li>
                     </ul>
                 </div>
             </div>

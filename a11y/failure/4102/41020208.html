@@ -3,6 +3,8 @@ layout: default
 current: 41020208
 criterion: 4102
 checkpoint: 410202
+css: dialog
+last-modified: 23 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -18,88 +20,51 @@ checkpoint: 410202
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Elements are contained within any required parent element or role.</div>
+                <div>Dialogs have the role of "dialog".</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>An element requires a particular parent element or role, but the parent is missing.</div>
+                <div>A dialog is missing the dialog role.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
-                    <h3>HTML</h3>
-                    <p>Ensure that any required parent elements are present.</p>
-                    <ul>
-                        <li><code>&lt;area&gt;</code> must be the descendent of <code>&lt;map&gt;</code>, but it doesn't have to be a direct child.</li>
-                        <li><code>&lt;caption&gt;</code> must be the first descendent of <code>&lt;table&gt;</code>.</li>
-                        <li><code>&lt;col&gt;</code> must be a child of <code>&lt;colgroup&gt;</code>.</li>
-                        <li><code>&lt;colgroup&gt;</code> must be a child of <code>&lt;table&gt;</code>. It must appear after any <code>&lt;caption&gt;</code> but before any <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>, or <code>&lt;tr&gt;</code>.</li>
-                        <li><code>&lt;dd&gt;</code> must be a child of <code>&lt;dl&gt;</code> (or a <code>&lt;div&gt;</code> that is a child of a <code>&lt;dl&gt;</code>).</li>
-                        <li><code>&lt;dt&gt;</code> must be a child of <code>&lt;dl&gt;</code> (or a <code>&lt;div&gt;</code> that is a child of a <code>&lt;dl&gt;</code>).</li>
-                        <li><code>&lt;figcaption&gt;</code> must be the first or last child of <code>&lt;figure&gt;</code>.</li>
-                        <li><code>&lt;head&gt;</code> must be the first child of <code>&lt;html&gt;</code>.</li>
-                        <li><code>&lt;legend&gt;</code> must be the first child of <code>&lt;fieldset&gt;</code> or a child of <code>&lt;optgroup&gt;</code>.</li>
-                        <li><code>&lt;li&gt;</code> must be a child of <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, or <code>&lt;menu&gt;</code>.</li>
-                        <li><code>&lt;optgroup&gt;</code> must be a child of <code>&lt;select&gt;</code>.</li>
-                        <li><code>&lt;option&gt;</code> must be a child of <code>&lt;select&gt;</code>, <code>&lt;optgroup&gt;</code>, or <code>&lt;datalist&gt;</code>.</li>
-                        <li><code>&lt;summary&gt;</code> must be a child of <code>&lt;details&gt;</code>.</li>
-                        <li><code>&lt;tbody&gt;</code> must be a child of <code>&lt;table&gt;</code>. It must be after any <code>&lt;caption&gt;</code>, <code>&lt;colgroup&gt;</code>, or <code>&lt;thead&gt;</code>.</li>
-                        <li><code>&lt;td&gt;</code> must be a child of <code>&lt;tr&gt;</code>.</li>
-                        <li><code>&lt;tfoot&gt;</code> must be a child of <code>&lt;table&gt;</code>. It must appear after any <code>&lt;caption&gt;</code>, <code>&lt;colgroup&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, or <code>&lt;tr&gt;</code>.</li>
-                        <li><code>&lt;th&gt;</code> must be a child of <code>&lt;tr&gt;</code>.</li>
-                        <li><code>&lt;thead&gt;</code> must be a child of <code>&lt;table&gt;</code>. It must appear after any <code>&lt;caption&gt;</code> or <code>&lt;colgroup&gt;</code> but before any <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>, or <code>&lt;tr&gt;</code>.</li>
-                        <li><code>&lt;title&gt;</code> must be a child of <code>&lt;head&gt;</code>. Only one <code>&lt;title&gt;</code> is permitted.</li>
-                        <li><code>&lt;tr&gt;</code> must be a child of <code>&lt;table&gt;</code> if the <code>&lt;table&gt;</code> has no <code>&lt;tbody&gt;</code>. In this case, it must appear after any <code>&lt;caption&gt;</code>, <code>&lt;colgroup&gt;</code>, or <code>&lt;thead&gt;</code>. Otherwise, it must be a child of <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, or <code>&lt;tfoot&gt;</code>.</li>
-                        <li><code>&lt;track&gt;</code> must be a child of <code>&lt;audio&gt;</code> or <code>&lt;video&gt;</code>.</li>
-                    </ul>
-
-                    <h3>ARIA</h3>
-                    <p>Ensure that any required parent roles are present.</p>
-                    <ul>
-                        <li><code>caption</code> must be a child of <code>figure</code>, <code>grid</code>, <code>table</code>, or <code>treegrid</code>.</li>
-                        <li><code>cell</code> must be a child of <code>row</code>.</li>
-                        <li><code>columnheader</code> must be a child of <code>row</code>.</li>
-                        <li><code>gridcell</code> must be a child of <code>row</code>.</li>
-                        <li><code>listitem</code> must be a child of <code>directory</code> or <code>list</code>.</li>
-                        <li><code>menuitem</code> must be a child of <code>group</code>, <code>menu</code>, or <code>menubar</code>.</li>
-                        <li><code>menuitemcheckbox</code> must be a child of <code>group</code>, <code>menu</code>, or <code>menubar</code>.</li>
-                        <li><code>menuitemradio</code> must be a child of <code>group</code>, <code>menu</code>, or <code>menubar</code>.</li>
-                        <li><code>option</code> must be a child of <code>group</code> or <code>listbox</code>.</li>
-                        <li><code>row</code> must be a child of <code>grid</code>, <code>rowgroup</code>, <code>table</code>, or <code>treegrid</code>.</li>
-                        <li><code>rowgroup</code> must be a child of <code>grid</code>, <code>table</code>, or <code>treegrid</code>.</li>
-                        <li><code>rowheader</code> must be a child of <code>row</code>.</li>
-                        <li><code>tab</code> must be a child of <code>tablist</code>.</li>
-                        <li><code>treeitem</code> must be a child of <code>group</code> or <code>tree</code>.</li>
-                    </ul>
+                    <p>Assign <code>role="dialog"</code> to the dialog element.</p>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
+                    <h3>Dialog</h3>
+                    <p>This example does not assign a role to the dialog.</p>
+                    <ul>
+                        <li>NVDA (when dialog is opened): ""</li>
+                    </ul>
+
+                    <div class="example">
                         
+
+                        <pre><code></code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>List</h3>
-                    <p>In this example, each <code>&lt;li&gt;</code> is a child of the <code>&lt;ul&gt;</code>.</p>
+                    <h3>Dialog</h3>
+                    <p>This example uses <code>role="dialog"</code>.</p>
+                    <ul>
+                        <li>NVDA (when dialog is opened): ""</li>
+                    </ul>
                     <div class="example">
-                        <p>Types of paint</p>
-                        <ul>
-                            <li>Watercolor</li>
-                            <li>Acrylic</li>
-                            <li>Oil</li>
-                        </ul>
+                        
 
-                        <pre><code>&lt;p&gt;Types of paint&lt;/p&gt;
-    <strong>&lt;ul&gt;</strong>
-        &lt;li&gt;Watercolor&lt;/li&gt;
-        &lt;li&gt;Acrylic&lt;/li&gt;
-        &lt;li&gt;Oil&lt;/li&gt;
-    <strong>&lt;/ul&gt;</strong></code></pre>
+                        <pre><code></code></pre>
+                        
+                        <div class="dialog-backdrop overlay"></div>
+                        <script src="{{ baseurl }}/assets/js/alertdialog2.js"></script>
                     </div>
                 </div>
             </div>
@@ -108,8 +73,8 @@ checkpoint: 410202
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
-                        <li><strong>Role of "none"</strong>:<br>
-                            <code>&lt;li role="none"&gt;</code><br>
+                        <li><strong>Hidden</strong>:<br>
+                            <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
                             Does not appear in accessibility tree</li>
                     </ul>
                 </div>
@@ -128,9 +93,14 @@ checkpoint: 410202
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements">MDN: HTML elements reference</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#introroles">WAI-ARIA Roles</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F59">Failure of Success Criterion 4.1.2 due to using script to make div or span a user interface control in HTML without providing a role for the control</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA4">ARIA4: Using a WAI-ARIA role to expose the role of a user interface component</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria/#dialog">WAI-ARIA: dialog role</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role">MDN: ARIA: dialog role</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">WAI-ARIA: Dialog (Modal) Pattern</a></li>
                     </ul>
                 </div>
             </div>

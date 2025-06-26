@@ -1,10 +1,10 @@
 ---
 layout: default
-current: 41020308
+8current: 41020308
 criterion: 4102
 checkpoint: 410203
-css: meter
-last-modified: 7 June 2025
+css: disclosure412
+last-modified: 6 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -20,76 +20,96 @@ last-modified: 7 June 2025
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Progress bars communicate the current value to assistive technology.</div>
+                <div>If a control functions as a disclosure button, it communicates the expanded/collapsed state to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A progress bar does not communicate the current value to assistive technology.</div>
+                <div>A disclosure button does not communicate the expanded/collapsed state to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
                     <ul>
-                        <li>Use the native HTML <code>&lt;progress&gt;</code> element, which automatically communicates the current value, <strong>OR</strong></li>
-                        <li>Use <code>aria-valuenow</code> on the progress element to represent the current value of the meter, and set it to the current value.</li>
+                        <li>Use the native HTML <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements to create the disclosure button, <strong>OR</strong></li>
+                        <li>Use the <code>aria-expanded</code> attribute on a custom disclosure button. Set it to "true" when expanded and to "false" when collapsed.</li>
                     </ul>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
-                    <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Custom Progress Bar</h3>
-                    <p>This example does not communicate the current value to assistive technology.</p>
-                    <ul>
-                        <li>NVDA: "busy indicator"</li>
-                    </ul>
+                    <h3>Custom Disclosure Button</h3>
+                    <p>This example does not communicate the expanded/collapsed state to assistive technology.</p>
+                    <p>NVDA: "What will we do with a drunken sailor? button"</p>
                     <div class="example">
-                        <div id="proglabel">Check Out Progress</div>
-                        <div role="progressbar" aria-labelledby="proglabel">
-                            <svg width="105" height="15">
-                                <rect height="10" width="100" rx="5" ry="5" x="2" y="2" style="fill:#4166f5;stroke-width:3;stroke:#4166f5"></rect>
-                                <rect height="10" width="70" rx="5" ry="5" x="2" y="2" style="fill:white;stroke-width:3;stroke:#4166f5"></rect>
-                            </svg>
-                        </div>
+                        <dl class="faq">
+                            <dt>
+                                <button type="button" aria-controls="faqf_desc" id="disclosure_faqf">
+                                    What will we do with a drunken sailor?
+                                </button>
+                            </dt>
+                            <dd>
+                                <div id="faqf_desc" class="desc">
+                                    <ul>
+                                        <li>Shave his belly with a rusty razor</li>
+                                        <li>Put him in a long boat until he's sober</li>
+                                        <li>Stick him in a scupper with a hosepipe bottom</li>
+                                        <li>Put him in the bed with the captain's daughter</li>
+                                    </ul>
+                                    <p>...early in the morning.</p>
+                                    <p>See <a href="#">Drunken Sailor Guidelines</a> for more information.</p>
+                                </div>
+                            </dd>
+                        </dl>
 
-                        <pre><code>&lt;div role="progressbar" aria-labelledby="proglabel"&gt;</code></pre>
+                        <pre><code>&lt;button type="button" aria-controls="faq_desc" id="disclosure_faq"&gt;</code>
                     </div>
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Native HTML <code>&lt;progress&gt;</code></h3>
-                    <p>This example uses the native HTML <code>&lt;progress&gt;</code> element with the <code>value</code> attribute set to the current value.</p>
-                    <p>Note that the <code>min</code> attribute is invalid for this element. The minimum is always 0.</p>
-                    <ul>
-                        <li>NVDA (current value = 70): "Progress bar, 70"</li>
-                    </ul>
+                    <h3>Native HTML</h3>
+                    <p>This example uses native HTML <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements, which automatically announce the expanded/collapsed state.</p>
+                    <p>NVDA: "What will we do with a drunken sailor? button, collapsed"</p>
                     <div class="example">
-                        <label for="native-progressbar">Check Out Progress</label>
-                        <progress id="native-progressbar" max="100" value="70">70%</progress>
+                        <details>
+                            <summary>What will we do with a drunken sailor?</summary>
+                            <ul>
+                                <li>Shave his belly with a rusty razor</li>
+                                <li>Put him in a long boat until he's sober</li>
+                                <li>Stick him in a scupper with a hosepipe bottom</li>
+                                <li>Put him in the bed with the captain's daughter</li>
+                            </ul>
+                            <p>...early in the morning.</p>
+                        </details>
 
-                        <pre><code>&lt;progress id="native-progressbar" max="100" <strong>value="70"</strong>&gt;70%&lt;/progress&gt;</code></pre>
+                        <pre><code><strong>&lt;details&gt;
+    &lt;summary&gt;</strong>What will we do with a drunken sailor?<strong>&lt;/summary&gt;</strong>
+    ...
+<strong>&lt;/details&gt;</strong></code></pre>
                     </div>
 
-                    <h3>Custom Progress Bar</h3>
-                    <p>This example uses <code>aria-valuenow</code> set to the current value to communicate the value to assistive technology.</p>
-                    <p>Note that <code>aria-valuemin</code> and <code>aria-valuemax</code> are <em>not</em> required and default to 0 and 100 respectively.</p>
-                    <ul>
-                        <li>NVDA (current value at 70): "progress bar, 70"</li>
-                    </ul>
+                    <h3>ARIA Button</h3>
+                    <p>This FAQ-style disclosure button announces the expanded/collapsed state on focus and on activation.</p>
+                    <p>NVDA: "What will we do with a drunken sailor? button, collapsed"</p>
                     <div class="example">
-                        <div id="proglabel">Check Out Progress</div>
-                        <div role="progressbar" aria-labelledby="proglabel" aria-valuenow="70">
-                            <svg width="105" height="15">
-                                <rect height="10" width="100" rx="5" ry="5" x="2" y="2" style="fill:#4166f5;stroke-width:3;stroke:#4166f5"></rect>
-                                <rect height="10" width="70" rx="5" ry="5" x="2" y="2" style="fill:white;stroke-width:3;stroke:#4166f5"></rect>
-                            </svg>
-                        </div>
+                        {% include examples/disclosure.html %}
 
-                        <pre><code>&lt;div role="progressbar" aria-labelledby="proglabel" <strong>aria-valuenow="70"</strong>&gt;</code></pre>
+                        <pre><code>&lt;button type="button" <strong>aria-expanded="false"</strong> aria-controls="faq1_desc"&gt;</code></pre>
+                    </div>
+
+                    <h3>ARIA Menu</h3>
+                    <p>This menu-style disclosure button announces the expanded/collapsed state on focus and on activation.</p>
+                    <p>NVDA: "About, button, collapsed"</p>
+                    <div class="example">
+                        
+                        {% include examples/disclosure-nav.html %}
+                        <script src="{{ baseurl }}/assets/js/disclosureMenu.js"></script>
+
+                        <pre><code>&lt;button type="button" <strong>aria-expanded="false"</strong> aria-controls="id_about_menu"&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -98,8 +118,11 @@ last-modified: 7 June 2025
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
-                        <li><strong>Role of "none"</strong>:<br>
-                            <code>&lt;div role="none"&gt;</code><br>
+                        <li><strong>Toggle button</strong><br>
+                            <code>&lt;a tabindex="0" role="button" id="toggle" aria-pressed="false"&gt;Mute&lt;/a&gt;</code><br>
+                            File under <a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}.</a></li>
+                        <li><strong>Hidden</strong>:<br>
+                            <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
                             Does not appear in accessibility tree</li>
                     </ul>
                 </div>
@@ -118,15 +141,11 @@ last-modified: 7 June 2025
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/progress">MDN: &lt;progress&gt;: The Progress indicator element</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#progressbar">WAI-ARIA: progressbar role</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/progressbar_role">MDN: ARIA: progressbar role</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#aria-valuenow">WAI-ARIA: aria-valuenow property</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-valuenow">MDN: ARIA: aria-valuenow attribute</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details">MDN: &lt;details&gt;: The Details disclosure element</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">WAI-ARIA: Disclosure (Show/Hide) Pattern</a></li>
                     </ul>
                 </div>
             </div>

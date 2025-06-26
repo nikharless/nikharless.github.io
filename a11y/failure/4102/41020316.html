@@ -3,7 +3,7 @@ layout: default
 current: 41020316
 criterion: 4102
 checkpoint: 410203
-css: table-sortable
+css: switches
 last-modified: 10 June 2025
 ---
 {% assign root=site.data.site.root %}
@@ -20,17 +20,17 @@ last-modified: 10 June 2025
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Sortable table headers communicate the sort state to assistive technology.</div>
+                <div>If a control functions as a switch, it communicates the checked state to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A sortable table header does not communicate the sort state to assistive technology</div>
+                <div>A switch does not communicate the checked state to assistive technology.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
                     <ul>
-                        <li>Use <code>aria-sort</code> on the sortable table header.</li>
+                        <li>Use the <code>aria-checked</code> attribute on the switch element.</li>
                     </ul>
                 </div>
             </div>
@@ -38,13 +38,19 @@ last-modified: 10 June 2025
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3></h3>
-                    <p>This example does not communicate the sort state to assistive technology.</p>
+                    <h3>Custom Switch</h3>
+                    <p>This switch does not communicate the checked state to assistive technology.</p>
                     <ul>
-                        <li>NVDA/Chrome: ""</li>
+                        <li>NVDA (on focus, regardless of state): "Toggle this switch, switch, off"</li>
+                        <li>NVDA (on change): Nothing is spoken</li>
                     </ul>
                     <div class="example">
-
+                        <button role="switch" id="id-switch-1" class="switch" name="switch-off">
+                            <span>off</span>
+                            <span>on</span>
+                        </button>
+                        <label for="id-switch-1" class="switch">Toggle this switch</label>
+                        <script src="{{ baseurl }}/assets/js/switch-fail-412.js"></script>
                     </div>
                 </div>
             </div>
@@ -52,16 +58,29 @@ last-modified: 10 June 2025
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3></h3>
-                    <p>This example uses <code>aria-sort</code> to communicate the sort state.</p>
+                    <h3>Custom Switch</h3>
+                    <p>This example uses <code>aria-checked</code> to communicate the checked state to assistive technology.</p>
                     <ul>
-                        <li>NVDA/Chrome (on focus): "column 2, sorted ascending, Last Name, button"</li>
-                        <li>NVDA/Chrome (on change): "sorted ascending" or "sorted descending"</li>
+                        <li>NVDA (on focus, when off): "Toggle this switch, switch, off"</li>
+                        <li>NVDA (on focus, when on): "Toggle this switch, switch, on"</li>
+                        <li>NVDA (on change): "on" and "off"</li>
                     </ul>
                     <div class="example">
-                        {% include examples/table-sortable.html %}
-
-                        <pre><code>&lt;th <strong>aria-sort="ascending"</strong>&gt;</code></pre>
+                        <script src="{{ baseurl }}/assets/js/switch.js"></script>
+                        <div class="switchExample">
+                            <label>
+                                <span class="label">Toggle this switch</span>
+                                <input id="id-switch-2" type="checkbox" role="switch">
+                                <span class="state">
+                                    <span class="container">
+                                        <span class="position" style="background-color:white; border: 2px solid #949494;">
+                                        </span>
+                                    </span>
+                                    <span class="on" aria-hidden="true">On</span>
+                                    <span class="off" aria-hidden="true">Off</span>
+                                </span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -70,8 +89,10 @@ last-modified: 10 June 2025
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
-                        <li><strong>Role of "none"</strong>:<br>
-                            <code>&lt;div role="none"&gt;</code><br>
+                        <li><strong>Checkbox</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[41020304].link | prepend: baseurl }}">{{ site.data.4102.4102[41020304].name }}.</a></li>
+                        <li><strong>Hidden</strong>:<br>
+                            <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
                             Does not appear in accessibility tree</li>
                     </ul>
                 </div>
@@ -90,10 +111,15 @@ last-modified: 10 June 2025
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#aria-sort">WAI-ARIA: aria-sort property</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-sort">MDN: ARIA: aria-sort attribute</a></li>
-                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/examples/sortable-table/">WAI-ARIA: Sortable Table Example</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4e8ab6/proposed/">Element with role attribute has required states and properties</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria/#switch">WAI-ARIA: switch role</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/switch_role">MDN: ARIA: switch role</a></li>
+                        <li><a href="https://www.w3.org/TR/wai-aria/#aria-checked">WAI-ARIA: aria-checked state</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-checked">MDN: ARIA: aria-checked attribute</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/switch/">WAI-ARIA: Switch Pattern</a></li>
                     </ul>
                 </div>
             </div>

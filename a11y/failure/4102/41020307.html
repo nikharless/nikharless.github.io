@@ -1,10 +1,10 @@
 ---
 layout: default
-current: 41020307
+current: 41020506
 criterion: 4102
-checkpoint: 410203
-css: meter
-last-modified: 7 June 2025
+checkpoint: 410307
+css: dialog
+last-modified: 26 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -14,121 +14,68 @@ last-modified: 7 June 2025
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
-        <div class="failure">
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Meters communicate the current value to assistive technology.</div>
+    <div class="failure">
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>Dialogs have all appropriate roles and attributes.</div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>A dialog does not have all the appropriate roles or attributes.</div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+                <ul>
+                    <li>Use the "dialog" role on the dialog element.</li>
+                    <li>Use <code>aria-modal="true"</code> on the dialog element to inform assistive technologies that the background content is unavailable.</li>
+                    <li>Use <code>aria-labelledby</code> to provide an accessible name by pointing to the visible title of the dialog.</li>
+                    <li>If there is additional content that describes the purpose of the dialog, use <code>aria-describedby</code> to point to it.</li>
+                </ul>
             </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A meter does not communicate the current value to assistive technology.</div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <ul>
-                        <li>Use the native HTML <code>&lt;meter&gt;</code> element with the <code>value</code> attribute set to the current value, <strong>OR</strong></li>
-                        <li>Use <code>aria-valuenow</code> on the meter element to represent the current value of the meter, and dynamically set it to the current value at regular intervals.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }} bad">Failing Examples<br>
-                    <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
-                <div>
-                    <h3>Custom Meter</h3>
-                    <p>This example does not communicate the current value to assistive technology.</p>
-                    <ul>
-                        <li>NVDA (regardless of value): "Progress bar, 0"</li>
-                        <li>NVDA (on change): No feedback</li>
-                    </ul>
-                    <div class="example">
-                        <p>This meter changes every 5 seconds. Use the pause button to stop changes.</p>
-                        <p id="cpu_usage_label2" style="font-weight: bold;">Central Processing Unit (CPU) Usage</p>
-                        <p><button type="button" class="play-meters">Pause Updates</button></p>
-                        <div role="meter" id="meter-fail-412" aria-valuemin="0" aria-valuemax="100" aria-labelledby="cpu_usage_label2">
-                            <svg width="100" height="100" class="fill" aria-hidden="true" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="0" y="0" width="100%" height="100%" fill="currentcolor"></rect>
-                            </svg>
-                        </div><span>0</span>
-
-                        <pre><code>&lt;div role="meter" id="meter-fail-412" aria-valuemin="0" aria-valuemax="100" aria-labelledby="cpu_usage_label"&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Example<br>
-                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
-                <div>
-                    <h3>Native HTML <code>&lt;meter&gt;</code></h3>
-                    <p>This example uses the native HTML <code>&lt;meter&gt;</code> element with the <code>value</code> attribute set to the current value.</p>
-                    <ul>
-                        <li>NVDA (current value = 90): "Progress bar, 90"</li>
-                    </ul>
-                    <div class="example">
-                        <label for="native-meter">Hit Points</label>
-                        <meter id="native-meter" min="0" max="100" value="90"> at 90/100</meter>
-
-                        <pre><code>&lt;meter id="native-meter" min="0" max="100" value="90"&gt; at 90/100&lt;/meter&gt;</code></pre>
-                    </div>
-
-                    <h3>Custom Meter</h3>
-                    <p>This example uses <code>aria-valuenow</code> set to the current value to communicate the value to assistive technology.</p>
-                    <ul>
-                        <li>NVDA: "Progress bar, [current value]"</li>
-                        <li>NVDA (on change): Beeps which vary according to range between min and max</li>
-                    </ul>
-                    <div class="example">
-                        {% include examples/meter.html %}
-
-                        <pre><code>&lt;div role="meter" aria-valuemin="0" aria-valuemax="100" <strong>aria-valuenow="93"</strong> aria-labelledby="cpu_usage_label"&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <p>The following items are not applicable to this failure:</p>
-                    <ul>
-                        <li><strong>Role of "none"</strong>:<br>
-                            <code>&lt;div role="none"&gt;</code><br>
-                            Does not appear in accessibility tree</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
-                        <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meter">MDN: &lt;meter&gt;: The HTML Meter element</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#meter">WAI-ARIA: meter role</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/meter_role">MDN: ARIA: meter role</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#aria-valuenow">WAI-ARIA: aria-valuenow property</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-valuenow">MDN: ARIA: aria-valuenow attribute</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
-                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/meter/">W3: Meter Pattern</a></li>
-                    </ul>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+                <h3>Modal Dialog</h3>
+                <div class="example">
+                    {% include examples/modal.html %}
                 </div>
             </div>
         </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Role of "none"</strong>:<br>
+                        <code>&lt;div role="none"&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>Assistive technology only works well when code is done properly.</div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">W3: Dialog (Modal) Pattern</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
+</div>
 
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
-</div>

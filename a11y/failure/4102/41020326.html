@@ -1,0 +1,163 @@
+---
+layout: default
+current: 41020326
+criterion: 4102
+checkpoint: 410203
+last-modified: 1 June 2025
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.4102.4102[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.4102.4102[page.criterion] %}
+{% assign cp=site.data.4102.4102[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>
+                    <p>Read-only controls are communicated to assistive technology.</p>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>A read-only control is not communicated to assistive technology.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>
+                    <h3>Native HTML</h3>
+                    <p>Use the <code>readonly</code> attribute on a native HTML element. Use the CSS <code>:read-only</code> pseudo-class to style elements with the <code>readonly</code> property.</p>
+                    <p>The following elements support the <code>readonly</code> HTML attribute:</p>
+                    <ul>
+                        <li><code>&lt;input type="date"&gt;</code></li>
+                        <li><code>&lt;input type="datetime-local"&gt;</code></li>
+                        <li><code>&lt;input type="email"&gt;</code></li>
+                        <li><code>&lt;input type="month"&gt;</code></li>
+                        <li><code>&lt;input type="number"&gt;</code></li>
+                        <li><code>&lt;input type="password"&gt;</code></li>
+                        <li><code>&lt;input type="search"&gt;</code></li>
+                        <li><code>&lt;input type="tel"&gt;</code></li>
+                        <li><code>&lt;input type="text"&gt;</code></li>
+                        <li><code>&lt;input type="time"&gt;</code></li>
+                        <li><code>&lt;input type="url"&gt;</code></li>
+                        <li><code>&lt;input type="week"&gt;</code></li>
+                        <li><code>&lt;textarea&gt;</code></li>
+                    </ul>
+
+                    <h3>Custom Controls</h3>
+                    <p>Use the <code>aria-readonly</code> attribute on a custom control. Use <code>tabindex="0"</code> to include the control in the tab order and <code>contenteditable="false"</code> on text inputs to prevent the text from being edited.</p>
+                    
+                    <p>The following roles support the <code>aria-readonly</code> property:</p>
+                    <ul>
+                        <li><code>checkbox</code></li>
+                        <li><code>columnheader</code></li>
+                        <li><code>combobox</code></li>
+                        <li><code>grid</code></li>
+                        <li><code>gridcell</code></li>
+                        <li><code>listbox</code></li>
+                        <li><code>radiogroup</code></li>
+                        <li><code>rowheader</code></li>
+                        <li><code>searchbox</code></li>
+                        <li><code>slider</code></li>
+                        <li><code>spinbutton</code></li>
+                        <li><code>switch</code></li>
+                        <li><code>textbox</code></li>
+                        <li><code>treegrid</code></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>Plain Text</h3>
+                    <p>In this example, a previously entered ID is provided for the user to refer to and copy/paste. However, the field is inserted into the form as plain text. When assistive technology reads the form in forms mode, this text will not be read to the user.</p>
+                    <p>NVDA: Not read in forms mode</p>
+                    <div class="example">
+                        <form>
+                            <p>ID: 12345</p>
+                            <label>Email: <input type="email"></label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Native HTML</h3>
+                    <p>This example uses a native HTML <code>&lt;input&gt;</code> element with the <code>readonly</code> attribute.</p>
+                    <p>NVDA: "ID:, edit, read only, selected 12345"</p>
+                    <div class="example">
+                        <form>
+                            <label>ID: <input type="text" value="12345" readonly></label>
+                            <label>Email: <input type="email"></label>
+                        </form>
+
+                        <pre><code>&lt;input type="text" value="12345" <strong>readonly</strong>&gt;</code></pre>
+                    </div>
+
+                    <h3>ARIA</h3>
+                    <p>This custom control uses <code>role="textbox"</code> and <code>aria-readonly="true"</code>.</p>
+                    <p>NVDA: "ID:, edit, read only, 12345"</p>
+                    <div class="example">
+                        <div id="ariaLabel">ID: </div>
+                        <div role="textbox" tabindex="0" aria-labelledby="ariaLabel" contenteditable="false" aria-readonly="true" aria-multiline="false" style="border: 1px solid black; width: 200px;">12345</div>
+                        <div id="ariaLabel2">Email: </div>
+                        <div role="textbox" aria-labelledby="ariaLabel2" contenteditable aria-multiline="false" style="border: 1px solid black; width: 200px;"></div>
+
+                        <pre><code>&lt;div role="textbox" <strong>tabindex="0" contenteditable="false" aria-readonly="true"</strong> aria-multiline="false"&gt;12345&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <p>The following items are not applicable to this failure:</p>
+                    <ul>
+                        <li><strong>Disabled controls</strong>:<br>
+                            File under <a href="{{ site.data.4102.4102[41020310].link | prepend: baseurl }}">{{ site.data.4102.4102[41020310].name }}.</a></li>
+                        <li><strong>Hidden with CSS</strong>:<br>
+                            <code>&lt;input type="textbox" style="display:none;"&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                        <li><strong>Hidden with ARIA</strong>:<br>
+                            <code>&lt;input type="textbox" aria-hidden="true"&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                        <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/readonly">MDN: HTML attribute: readonly</a></li>
+                        <li><a href="http://w3.org/TR/wai-aria/#aria-readonly">WAI-ARIA: aria-readonly property</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-readonly">MDN: aria-readonly</a></li>
+                        <li><a href="https://www.w3schools.com/tags/att_readonly.asp">W3 Schools: HTML readonly Attribute</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/4102checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>

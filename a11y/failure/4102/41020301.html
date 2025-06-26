@@ -3,8 +3,8 @@ layout: default
 current: 41020301
 criterion: 4102
 checkpoint: 410203
-css: checkbox
-last-modified: 2 June 2025
+css: accordion
+last-modified: 26 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -14,131 +14,79 @@ last-modified: 2 June 2025
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+    <h1>{{ currentpg.name }}</h1>
+    {% include breadcrumbs/bc-failure.html %}
 
-        <div class="failure">
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>If a control functions as a checkbox, it communicates the checked state to assistive technology.</div>
+    <div class="failure">
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>Custom accordion controls have all appropriate roles and attributes.</div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>A custom accordion control does not have all the appropriate roles or attributes.</div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>Assign the appropriate roles and attributes:
+                <ul>
+                    <li>Use the "button" role on the button which operates the accordion.</li>
+                    <li>Use the <code>aria-expanded</code> attribute on the button, and set it to "true" when expanded and "false" when collapsed.</li>
+                    <li>Use the <code>aria-controls</code> attribute on the button, and set it to the id of the associated accordion panel.</li>
+                    <li>Use the "region" role on the accordion panel.</li>
+                    <li>Use <code>aria-labelledby</code> on the accordion panel, pointing to the associated accordion button.</li>
+                </ul>
             </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A checkbox does not communicate the checked state to assistive technology.</div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <ul>
-                        <li>Use the native HTML <code>&lt;input type="checkbox"&gt;</code> mark-up to create the checkbox, <strong>OR</strong></li>
-                        <li>Use the <code>aria-checked</code> attribute on the custom checkbox element.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }} bad">Failing Example<br>
-                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
-                <div>
-                    <h3>Custom Checkbox</h3>
-                    <p>This custom checkbox does not communicate the checked state to assistive technology.</p>
-                    <ul>
-                        <li>NVDA (on focus, regardless of state): "Subscribe to the mailing list, checkbox, not checked"</li>
-                        <li>NVDA (on state change): Nothing spoken</li>
-                    </ul>
-                    <div class="example">
-                        <script src="{{ baseurl }}/assets/js/checkbox-fail-412.js"></script>
-                        <div class="cbExampleFailCheck">
-                            <div role="checkbox" tabindex="0">Subscribe to the mailing list
-                                <span id="ccbCheckedFail" class="ccbCheckbox ccbChecked" style="display: none;"></span>
-                                <span id="ccbNotCheckedFail" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
-                            </div>
-                        </div>
-                        <pre><code>&lt;div role="checkbox" tabindex="0"&gt; Subscribe to the mailing list
-    ...
-&lt;/div&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Examples<br>
-                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
-                <div>
-                    <h3>Native HTML</h3>
-                    <p>This example uses native HTML, which automatically communicates the checked state to assistive technology.</p>
-                    <ul>
-                        <li>NVDA (on focus when not checked): "Soup, checkbox, not checked"</li>
-                        <li>NVDA (on focus when checked): "Salad, checkbox, checked"</li>
-                        <li>NVDA (on state change): "checked" or "not checked"</li>
-                    </ul>
-                    <div class="example">
-                        <label><input type="checkbox"> Soup</label>
-                        <label><input type="checkbox" checked> Salad</label>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+                <div class="example">
+                    {% include examples/accordion.html %}
 
-                        <pre><code>&lt;input type="checkbox"&gt; Soup&lt;/label&gt;
-&lt;input type="checkbox" checked&gt; Salad&lt;/label&gt;</code></pre>
-                    </div>
-
-                    <h3>Custom Checkbox</h3>
-                    <p>This custom checkbox uses <code>aria-checked</code> to communicate the checked state to assistive technology.</p>
-                    <ul>
-                        <li>NVDA (on focus when not checked): "Subscribe to the mailing list, checkbox, not checked"</li>
-                        <li>NVDA (on focus when checked): "Subscribe to the mailing list, checkbox, checked"</li>
-                        <li>NVDA (on state change): "checked" or "not checked"</li>
-                    </ul>
-                    <div class="example">
-                        <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
-                        <div class="cbExample">
-                            <div role="checkbox" tabindex="0" aria-checked="false">Subscribe to the mailing list
-                                <span id="ccbChecked" class="ccbCheckbox ccbChecked" style="display: none;"></span>
-                                <span id="ccbNotChecked" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
-                            </div>
-                        </div>
-                        <pre><code>&lt;div role="checkbox" tabindex="0" <strong>aria-checked="false"</strong>&gt; Subscribe to the mailing list
-    ...
-&lt;/div&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <p>The following items are not applicable to this failure:</p>
-                    <ul>
-                        <li><strong>Switch</strong>:<br>
-                            File under <a href="{{ site.data.4102.4102[41020306].link | prepend: baseurl }}">{{ site.data.4102.4102[41020306].name }}.</a></li>
-                        <li><strong>Hidden</strong>:<br>
-                            <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
-                            Does not appear in accessibility tree</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
-                        <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4e8ab6/proposed/">Element with role attribute has required states and properties</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input">MDN: &lt;input&gt;: The HTML Input element</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-checked">MDN: ARIA: aria-checked attribute</a></li>
-                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/">WAI-ARIA: Checkbox Pattern</a></li>
-                    </ul>
+                    <pre><code>&lt;button <strong>aria-expanded="true" aria-controls="sect1"</strong> id="accordion1id"&gt;
+...
+&lt;div id="sect1" <strong>role="region" aria-labelledby="accordion1id"</strong>&gt;</code></pre>
                 </div>
             </div>
         </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Native HTML controls</strong>:<br>
+                        <code>&lt;input type="checkbox"&gt; Subscribe to the mailing list</code><br>
+                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
+                    <li><strong>Custom controls that function as native HTML controls</strong>:<br>
+                        <code>&lt;div role="checkbox" tabindex="0" aria-checked="false"&gt;Subscribe to the mailing list</code><br>
+                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
+                    <li><strong>Hidden</strong>:<br>
+                        <code>&lt;div style="display:none;"&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                    <li><strong>Role of "none"</strong>:<br>
+                        <code>&lt;div role="none"&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>Assistive technology only works well when code is done properly.</div>
+        </div>
+        <div class="row block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F59">Failure of Success Criterion 4.1.2 due to using script to make div or span a user interface control in HTML without providing a role for the control</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
+</div>
 
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
-</div>

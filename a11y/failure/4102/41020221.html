@@ -1,9 +1,10 @@
 ---
 layout: default
-current: 41020518
+current: 41020221
 criterion: 4102
 checkpoint: 410205
-css: menu-button-links
+css: listbox
+last-modified: 23 June 2025
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -19,44 +20,32 @@ css: menu-button-links
     <div class="failure">
         <div class="row block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Elements are contained within any required parent role.</div>
+            <div>Elements contain any required child roles.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>An element requires a particular parent role, but the parent role is missing.</div>
+            <div>An element requires a particular child role, but the child role is missing.</div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Solution</h2>
             <div>
-                Ensure that any required parent roles are present. 
+                Ensure that any required child roles are present. 
                 <ul>
-                    <li><code>role="cell"</code> must be a child of <code>role="row"</code></li>
-                    <li><code>role="gridcell"</code> must be a child of <code>role="row"</code></li>
-                    <li><code>role="menuitem"</code>, <code>role="menuitemcheckbox"</code>, and <code>role="menuitemradio"</code> must be a child of <code>role="menu"</code> or <code>role="menubar"</code></li>
-                    <li><code>role="option"</code> must be a child of <code>role="listbox"</code></li>
-                    <li><code>role="radio"</code> must be a child of <code>role="radiogroup"</code></li>
-                    <li><code>role="tab"</code> must be a child of <code>role="tablist"</code></li>
-                    <li><code>role="treeitem"</code> must be a child of <code>role="tree"</code></li>
+                    <li><code>role="listbox"</code> must contain one or more <code>role="option"</code> elements</li>
+                    <li><code>role="tablist"</code> must contain one or more <code>role="tab"</code> elements</li>
                 </ul>
             </div>
         </div>
         <div class="row block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
-                <h3>ARIA</h3>
+                <h3>Listbox</h3>
                 <div class="example">
-                    <div class="menu-button-links">
-                        <button type="button" id="menubutton" aria-haspopup="true" aria-controls="menu2" aria-expanded="false">My Account</button>
-                        <ul id="menu2" role="menu" aria-labelledby="menubutton">
-                            <li role="none"><a role="menuitem" href="#">Profile</a></li>
-                            <li role="none"><a role="menuitem" href="#">Preferences </a></li>
-                        </ul>
-                        <script src="{{ baseurl }}/assets/js/menu-button-links.js"></script>
-                    </div>
+                    {% include examples/listbox-multi-select.html %}
 
-                    <pre><code>&lt;ul id="myaccount" <strong>role="menu"</strong> aria-label="My Account"&gt;
-    &lt;li role="none"&gt;&lt;a role="menuitem" href="#" tabindex="0"&gt;Profile&lt;/a&gt;&lt;/li&gt;
-    &lt;li role="none"&gt;&lt;a role="menuitem" href="#" tabindex="0"&gt;Preferences&lt;/a&gt;&lt;/li&gt;
+                    <pre><code>&lt;ul <strong>role="listbox"</strong> aria-multiselectable="true">
+    &lt;li <strong>role="option"</strong> aria-selected="false">Leather seats&lt;/li&gt;
+    &lt;li <strong>role="option"</strong> aria-selected="false">Front seat warmers&gt;&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
                 </div>
             </div>
@@ -89,4 +78,3 @@ css: menu-button-links
 
     {% include checkpoints/4102checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
-</div>
