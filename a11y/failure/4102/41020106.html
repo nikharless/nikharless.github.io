@@ -3,7 +3,7 @@ layout: default
 current: 41020106
 criterion: 4102
 checkpoint: 410201
-css: radio-color
+last-modified:
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -19,88 +19,33 @@ css: radio-color
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>If the labels for individual controls in a group of controls do not provide enough context to understand the purpose of the controls, the form element group has an accessible name.</div>
+                <div>
+                    <p>Iframes with non-equivalent resources have different accessible names.</p>
+                    <p>Note: Resources don't have to be identical to share the same accessible name. This checkpoint may pass if the sources of two iframes are equivalent even if they have different urls, different navigation options, differently worded information, or different layouts.</p>
+                </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>The labels for individual controls in a group of controls do not provide enough context to understand the purpose of the controls, but the form element group does not have an accessible name.</div>
+                <div>Iframes with non-equivalent resources have the same accessible name.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
-                    <p>Provide an accessible name for the form element group, using one of the following methods:</p>
-                    <ul>
-                        <li>Use the <code>&lt;fieldset&gt;</code> element to group form controls, and place the accessible name in the <code>legend</code> element, <strong>OR</strong></li>
-                        <li>Use the <code>aria-labelledby</code> attribute on the element with <code>role="group"</code> or <code>role="radiogroup"</code> and set it to the id value of the visible label to function as the accessible name, <strong>OR</strong></li>
-                        <li>Use the <code>aria-label</code> attribute on the element with <code>role="group"</code> or <code>role="radiogroup"</code> and set it to the accessible name.</li>
-                    </ul>
+                    <p>Provide a unique accessible name for each iframe resource.</p>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Examples<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>No radio group name</h3>
-                    <p>This example shows two radio button groups. When browsing this form with assistive technology in forms mode, it is not clear what the color choices are for. The group label must be programmatically associated with the radio group.</p>
-                    <p>NVDA: "Black, radio button, not checked, 1 of 6", "Black, radio button, not checked, 4 of 6"</p>
+                    <h3>Same accessible name for different resources</h3>
+                    <p><code>title</code> attribute and different source documents</p>
                     <div class="example">
-                        <div>Fill color</div>
-                        <label><input type="radio" name="fc" value="black"> Black</label>
-                        <label><input type="radio" name="fc" value="blue"> Blue</label>
-                        <label><input type="radio" name="fc" value="red"> Red</label>
+                        <iframe title="Top Ten Songs" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+                        <iframe title="Top Ten Songs" src="{{ baseurl }}/assets/docs/topten3.html"></iframe>
 
-                        <div>Outline color</div>
-                        <label><input type="radio" name="oc" value="black"> Black</label>
-                        <label><input type="radio" name="oc" value="blue"> Blue</label>
-                        <label><input type="radio" name="oc" value="red"> Red</label>
-
-                        <pre><code>&lt;div&gt;Fill color&lt;/div&gt;
-&lt;label&gt;&lt;input type="radio" name="fc" value="black"&gt; Black&lt;/label&gt;
-&lt;label&gt;&lt;input type="radio" name="fc" value="blue"&gt; Blue&lt;/label&gt;
-...</code></pre>
-                    </div>
-
-                    <h3>No checkbox group name</h3>
-                    <p>This example shows two checkbox groups. When browsing this form with assistive technology in forms mode, it is not clear what the two groups of choices are for. The group label must be programmatically associated with the checkbox group.</p>
-                    <p>NVDA: "Pepperoni, checkbox, not checked", "Pepperoni, checkbox, not checked"</p>
-                    <div class="example">
-                        <div><strong>Choose your toppings</strong></div>
-                        <div>First pizza</div>
-                        <label><input type="checkbox" name="pizza1" value="pepperoni"> Pepperoni</label>
-                        <label><input type="checkbox" name="pizza1" value="mushrooms"> Mushrooms</label>
-                        <label><input type="checkbox" name="pizza1" value="pineapple"> Pineapple</label>
-
-                        <div>Second pizza</div>
-                        <label><input type="checkbox" name="pizza2" value="pepperoni"> Pepperoni</label>
-                        <label><input type="checkbox" name="pizza2" value="mushrooms"> Mushrooms</label>
-                        <label><input type="checkbox" name="pizza2" value="pineapple"> Pineapple</label>
-
-                        <pre><code>&lt;div&gt;First pizza&lt;/div&gt;
-&lt;label&gt;&lt;input type="checkbox" name="pizza1" value="pepperoni"&gt; Pepperoni&lt;/label&gt;
-&lt;label&gt;&lt;input type="checkbox" name="pizza1" value="mushrooms"&gt; Mushrooms&lt;/label&gt;
-...</code></pre>
-                    </div>
-
-                    <h3>No input group name</h3>
-                    <p></p>
-                    <p>NVDA: "Name:, edit, blank", "Name:, edit, blank"</p>
-                    <div class="example">
-                        <div>Shipping Address</div>
-                        <label>Name: <input type="text"></label>
-                        <label>Street Address: <input type="text"></label>
-                        <label>City: <input type="text"></label>
-                        <label>Postal Code: <input type="text"></label>
-
-                        <div>Billing Address</div>
-                        <label>Name: <input type="text"></label>
-                        <label>Street Address: <input type="text"></label>
-                        <label>City: <input type="text"></label>
-                        <label>Postal Code: <input type="text"></label>
-
-                        <pre><code>&lt;div&gt;Shipping Address&lt;/div&gt;
-&lt;label&gt;Name: &lt;input type="text"&gt;&lt;/label&gt;
-&lt;label&gt;Street Address: &lt;input type="text"&gt;&lt;/label&gt;
-...</code></pre>
+                        <pre><code>&lt;iframe <strong>title="Top Ten Songs"</strong> src="topten.html"&gt;&lt;/iframe&gt;
+&lt;iframe <strong>title="Top Ten Songs"</strong> src="topten3.html"&gt;&lt;/iframe&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -108,214 +53,50 @@ css: radio-color
                 <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Fieldset and legend for radio group</h3>
-                    <p>This example uses <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> elements to provide a group name for each radio group, so assistive technology users understand what they are picking a color for.</p>
-                    <p>NVDA: "Fill color, grouping, Black, radio button, not checked, 1 of 3", "Outline color, grouping, Black, radio button, not checked, 1 of 3"</p>
+                    <h3><code>title</code> attribute and same source document</h3>
+                    <p>This example uses the <code>title</code> attribute to provide the same accessible name for two iframes pointing to the same source document.</p>
                     <div class="example">
-                        <fieldset>
-                            <legend>Fill color</legend>
-                            <label><input type="radio" name="fc" value="black"> Black</label>
-                            <label><input type="radio" name="fc" value="blue"> Blue</label>
-                            <label><input type="radio" name="fc" value="red"> Red</label>
-                        </fieldset>
+                        <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+                        <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
 
-                        <fieldset>
-                            <legend>Outline color</legend>
-                            <label><input type="radio" name="oc" value="black"> Black</label>
-                            <label><input type="radio" name="oc" value="blue"> Blue</label>
-                            <label><input type="radio" name="oc" value="red"> Red</label>
-                        </fieldset>
-
-                        <pre><code>&lt;fieldset&gt;
-    <strong>&lt;legend&gt;Fill color&lt;/legend&gt;</strong>
-    &lt;label&gt;&lt;input type="radio" name="fc" value="black"&gt; Black&lt;/label&gt;
-    &lt;label&gt;&lt;input type="radio" name="fc" value="blue"&gt; Blue&lt;/label&gt;
-    ...
-&lt;/fieldset&gt;</code></pre>
+                        <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;
+&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
                     </div>
 
-                    <h3>Radiogroup role and <code>aria-labelledby</code></h3>
-                    <p>This example uses the ARIA "radiogroup" role and <code>aria-labelledby</code> to provide a group name for each radio group.</p>
-                    <p>NVDA: "Fill color, grouping, Black, radio button, not checked, 1 of 3", "Outline color, grouping, Black, radio button, not checked, 1 of 3"</p>
+                    <h3><code>title</code> attribute and equivalent source documents</h3>
+                    <p>This example uses the <code>title</code> attribute to provide the same accessible name for two iframes pointing to equivalent source documents.</p>
                     <div class="example">
-                        <p id="fill_group_label">Fill color</p>
-                        <div role="radiogroup" aria-labelledby="fill_group_label">
-                            <input type="radio" name="fc" id="fblack">
-                            <label for="fblack" style="display:inline-block;">Black</label><br>
-                            <input type="radio" name="fc" id="fblue">
-                            <label for="fblue" style="display:inline-block;">Blue</label><br>
-                            <input type="radio" name="fc" id="fred">
-                            <label for="fred" style="display:inline-block;">Red</label>
-                        </div>
+                        <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+                        <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten2.html"></iframe>
 
-                        <p id="outline_group_label">Outline color</p>
-                        <div role="radiogroup" aria-labelledby="outline_group_label">
-                            <input type="radio" name="oc" id="oblack">
-                            <label for="oblack" style="display:inline-block;">Black</label><br>
-                            <input type="radio" name="oc" id="oblue">
-                            <label for="oblue" style="display:inline-block;">Blue</label><br>
-                            <input type="radio" name="oc" id="ored">
-                            <label for="ored" style="display:inline-block;">Red</label>
-                        </div>
-
-                        <pre><code>&lt;p id="fill_group_label"&gt;Fill color&lt;/p&gt;
-    &lt;div role="radiogroup" <strong>aria-labelledby="fill_group_label"</strong>&gt;
-        &lt;input type="radio" name="fc" id="black"&gt;
-        &lt;label for="black"&gt;Black&lt;/label&gt;&lt;br&gt;
-        &lt;input type="radio" name="fc" id="blue"&gt;
-        &lt;label for="blue"&gt;Blue&lt;/label>&lt;br&gt;
-        &lt;input type="radio" name="fc" id="red"&gt;
-        &lt;label for="red"&gt;Red&lt;/label&gt;
-    &lt;/div&gt;</code></pre>
+                        <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;
+&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten2.html"&gt;&lt;/iframe&gt;</code></pre>
                     </div>
 
-                    <h3>Radiogroup role and <code>aria-label</code></h3>
-                    <p>This example uses the ARIA "radiogroup" role and <code>aria-label</code> to provide a group name for the radio group.</p>
-                    <p>NVDA: "Mug Color grouping, black, radio button, checked, 1 of 3"</p>
+                    <h3><code>title</code> and <code>aria-label</code> attributes and same source document</h3>
+                    <p>This example uses the <code>title</code> and <code>aria-label</code> attributes to provide the same accessible name for two iframes pointing to the same source document.</p>
                     <div class="example">
-                        <p><strong>Choose a color:</strong></p>
-                        <div style="display: flex;">
-                            <form>
-                                <div role="radiogroup" aria-label="Mug Color" style="padding: 1em;">
-                                    <input aria-label="black" type="radio" name="mc" class="radio black" value="black" checked onclick="changeImage('black')" onkeyup="changeImage('black')">
-                                    <input aria-label="blue" type="radio" name="mc" class="radio blue" value="blue" onclick="changeImage('blue')" onkeyup="changeImage('blue')">
-                                    <input aria-label="pink" type="radio" name="mc" class="radio pink" value="pink" onclick="changeImage('pink')" onkeyup="changeImage('pink')">
-                                </div>
-                            </form>
-                            <div><img id="prodImg" src="{{baseurl}}/assets/images/mug-black.jpg" alt="white mug with black interior"></div>
-                        </div>
+                        <iframe title="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
+                        <iframe aria-label="Top Ten Songs of 1972" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
 
-                        <pre><code>&lt;div role="radiogroup" <strong>aria-label="Mug Color"</strong>&gt;
-    &lt;input aria-label="black" type="radio" name="mc" value="black" checked&gt;
-    &lt;input aria-label="blue" type="radio" name="mc" value="blue"&gt;
-    &lt;input aria-label="pink" type="radio" name="mc" value="pink"&gt;
-&lt;/div&gt;</code></pre>
-
-                        <script>
-                            function changeImage(mugColor) {
-                                var image=document.getElementById('prodImg');
-                                if (mugColor === 'black') {
-                                    image.src="{{baseurl}}/assets/images/mug-black.jpg";
-                                    image.alt="white mug with black interior";
-                                } else if (mugColor === 'blue') {
-                                    image.src="{{baseurl}}/assets/images/mug-blue.jpg";
-                                    image.alt="white mug with blue interior";
-                                } else {
-                                  image.src="{{ baseurl }}/assets/images/mug-pink.jpg";
-                                  image.alt="white mug with pink interior";
-                                }
-                            }
-                        </script>
+                        <pre><code>&lt;iframe <strong>title="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;
+&lt;iframe <strong>aria-label="Top Ten Songs of 1972"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
                     </div>
 
-                    <h3>Fieldset and legend for checkbox group</h3>
-                    <p>This example uses <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> elements to provide a group name for each checkbox group, so assistive technology users understand what they are picking toppings for.</p>
-                    <p>NVDA: "First pizza, grouping, Pepperoni, checkbox, not checked", "Second pizza, grouping, Pepperoni, checkbox, not checked"</p>
+                    <h3>Reference to visible text</h3>
+                    <p>This example uses <code>aria-labelledby</code> attributes pointing to existing text to provide the same accessible name for two iframes pointing to the same source document.</p>
                     <div class="example">
-                        <div><strong>Choose your toppings</strong></div>
-                        <fieldset>
-                            <legend>First pizza</legend>
-                            <label><input type="checkbox" name="pizza1" value="pepperoni"> Pepperoni</label>
-                            <label><input type="checkbox" name="pizza1" value="mushrooms"> Mushrooms</label>
-                            <label><input type="checkbox" name="pizza1" value="pineapple"> Pineapple</label>
-                        </fieldset>
+                        <div id="ititle">Top Ten Songs of 1972</div>
+                        <iframe aria-labelledby="ititle" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
 
-                        <fieldset>
-                            <legend>Second pizza</legend>
-                            <label><input type="checkbox" name="pizza2" value="pepperoni"> Pepperoni</label>
-                            <label><input type="checkbox" name="pizza2" value="mushrooms"> Mushrooms</label>
-                            <label><input type="checkbox" name="pizza2" value="pineapple"> Pineapple</label>
-                        </fieldset>
+                        <div id="ititle2">Top Ten Songs of 1972</div>
+                        <iframe aria-labelledby="ititle2" src="{{ baseurl }}/assets/docs/topten.html"></iframe>
 
-                        <pre><code>&lt;fieldset&gt;
-    <strong>&lt;legend&gt;First pizza&lt;/legend&gt;</strong>
-    &lt;label&gt;&lt;input type="checkbox" name="pizza1" value="pepperoni"&gt; Pepperoni&lt;/label&gt;
-    &lt;label&gt;&lt;input type="checkbox" name="pizza1" value="mushrooms"&gt; Mushrooms&lt;/label&gt;
-    ...
-&lt;/fieldset&gt;</code></pre>
-                    </div>
+                        <pre><code>&lt;div id="ititle"&gt;Top Ten Songs of 1972&lt;/div&gt;
+&lt;iframe <strong>aria-labelledby="ititle"</strong> src="topten.html"&gt;&lt;/iframe&gt;
 
-                    <h3>Group role and <code>aria-labelledby</code></h3>
-                    <p>This example uses the ARIA "group" role and <code>aria-labelledby</code> to provide a group name for each checkbox group.</p>
-                    <p>NVDA: "First pizza, grouping, Pepperoni, checkbox, not checked", "Second pizza, grouping, Pepperoni, checkbox, not checked"</p>
-                    <div class="example">
-                        <p id="pizza1_label">First pizza</p>
-                        <div role="group" aria-labelledby="pizza1_label">
-                            <label><input type="checkbox" name="pizza1" value="pepperoni"> Pepperoni</label>
-                            <label><input type="checkbox" name="pizza1" value="mushrooms"> Mushrooms</label>
-                            <label><input type="checkbox" name="pizza1" value="pineapple"> Pineapple</label>
-                        </div>
-
-                        <p id="pizza2_label">Second pizza</p>
-                        <div role="group" aria-labelledby="pizza2_label">
-                            <label><input type="checkbox" name="pizza2" value="pepperoni"> Pepperoni</label>
-                            <label><input type="checkbox" name="pizza2" value="mushrooms"> Mushrooms</label>
-                            <label><input type="checkbox" name="pizza2" value="pineapple"> Pineapple</label>
-                        </div>
-
-                        <pre><code>&lt;p id="pizza1_label"&gt;First pizza&lt;/p&gt;
-&lt;div role="group" <strong>aria-labelledby="pizza1_label"</strong>&gt;
-    &lt;label&gt;&lt;input type="checkbox" name="pizza1" value="pepperoni"&gt; Pepperoni&lt;/label&gt;
-    &lt;label&gt;&lt;input type="checkbox" name="pizza1" value="mushrooms"&gt; Mushrooms&lt;/label&gt;
-    ...
-&lt;/div&gt;</code></pre>
-                    </div>
-
-                    <h3>Fieldset and legend for input group</h3>
-                    <p>This example uses <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> elements to provide a group name for each input group, so assistive technology users understand what address they are entering.</p>
-                    <p>NVDA: "Shipping Address, grouping, Name:, edit, blank", "Billing Address, grouping, Name:, edit, blank"</p>
-                    <div class="example">
-                        <div><strong>Choose your toppings</strong></div>
-                        <fieldset>
-                            <legend>Shipping Address</legend>
-                            <label>Name: <input type="text"></label>
-                            <label>Street Address: <input type="text"></label>
-                            <label>City: <input type="text"></label>
-                            <label>Postal Code: <input type="text"></label>
-                        </fieldset>
-
-                        <fieldset>
-                            <legend>Billing Address</legend>
-                            <label>Name: <input type="text"></label>
-                            <label>Street Address: <input type="text"></label>
-                            <label>City: <input type="text"></label>
-                            <label>Postal Code: <input type="text"></label>
-                        </fieldset>
-
-                        <pre><code>&lt;fieldset&gt;
-    <strong>&lt;legend&gt;Shipping Address&lt;/legend&gt;</strong>
-    &lt;label&gt;Name: &lt;input type="text"&gt;&lt;/label&gt;
-    &lt;label&gt;Street Address: &lt;input type="text"&gt;&lt;/label&gt;
-    ...
-&lt;/fieldset&gt;</code></pre>
-                    </div>
-
-                    <h3>Group role and <code>aria-labelledby</code></h3>
-                    <p>This example uses the ARIA "group" role and <code>aria-labelledby</code> to provide a group name for each input group.</p>
-                    <p>NVDA: "Shipping Address, grouping, Name:, edit, blank", "Billing Address, grouping, Name:, edit, blank"</p>
-                    <div class="example">
-                        <p id="ship_label">Shipping Address</p>
-                        <div role="group" aria-labelledby="ship_label">
-                            <label>Name: <input type="text"></label>
-                            <label>Street Address: <input type="text"></label>
-                            <label>City: <input type="text"></label>
-                            <label>Postal Code: <input type="text"></label>
-                        </div>
-
-                        <p id="bill_label">Billing Address</p>
-                        <div role="group" aria-labelledby="bill_label">
-                            <label>Name: <input type="text"></label>
-                            <label>Street Address: <input type="text"></label>
-                            <label>City: <input type="text"></label>
-                            <label>Postal Code: <input type="text"></label>
-                        </div>
-
-                        <pre><code>&lt;p id="ship_label"&gt;Shipping Address&lt;/p&gt;
-&lt;div role="group" <strong>aria-labelledby="ship_label"</strong>&gt;
-    &lt;label&gt;Name: &lt;input type="text"&gt;&lt;/label&gt;
-    &lt;label&gt;Street Address: &lt;input type="text"&gt;&lt;/label&gt; 
-    ...
-&lt;/div&gt;</code></pre>
+&lt;div id="ititle2"&gt;Top Ten Songs of 1972&lt;/div&gt;
+&lt;iframe <strong>aria-labelledby="ititle2"</strong> src="topten.html"&gt;&lt;/iframe&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -324,10 +105,19 @@ css: radio-color
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
-                        <li><strong>No groups</strong>:<br>
-                            No groups of related form elements on the page</li>
-                        <li><strong>Group label not required</strong>:<br>
-                            Group label is not required to understand the full purpose of the individual controls</li>
+                        <li><strong>One iframe element</strong>:<br>
+                            Only one iframe on the page</li>
+                        <li><strong>Multiple iframes with different accessible names</strong>:<br>
+                            No multiple iframes with the same accessible name</li>
+                        <li><strong>Hidden with <code>display</code> property</strong>:<br>
+                            <code>&lt;iframe title="Page One" style="display: none;"&gt;&lt;/iframe&gt;</code><br>
+                            Has same name but does not appear in accessibility tree</li>
+                        <li><strong>Hidden with <code>aria-hidden</code></strong>:<br>
+                            <code>&lt;iframe title="Page One" aria-hidden="true"&gt;&lt;/iframe&gt;</code><br>
+                            Has same name but does not appear in accessibility tree</li>
+                        <li><strong>No accessible name</strong>:<br>
+                            <code>&lt;iframe src="page.html"&gt;&lt;/iframe&gt;</code><br>
+                            File under <a href="{{ site.data.4102.4102[41020105].link | prepend: baseurl }}">{{ site.data.4102.4102[41020105].name }}.</a></li>
                     </ul>
                 </div>
             </div>
@@ -345,9 +135,11 @@ css: radio-color
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H64">H64: Using the title attribute of the iframe element</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/4b1c6c/proposed/">Iframe elements with identical accessible names have equivalent purpose</a></li>
                     </ul>
                 </div>
             </div>

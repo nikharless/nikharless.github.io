@@ -3,6 +3,8 @@ layout: default
 current: 41020108
 criterion: 4102
 checkpoint: 410201
+css: 41020201
+last-modified: 
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
@@ -18,30 +20,62 @@ checkpoint: 410201
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Accessible names of components accurately describe the purpose of the component.</div>
+                <div>Custom controls have accessible names.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>The accessible name of a component does not accurately or fully describe the purpose of the component.</div>
+                <div>A custom control does not have an accessible name.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
                 <div>
-                    <p>Provide a descriptive accessible name for each component.</p>
+                    <h3>HTML</h3>
+                    <p>Provide an accessible name for the custom control, using one of the following methods:</p>
+                    <ul>
+                        <li>Use the <code>aria-label</code> attribute and set the value to the name, <strong>OR</strong></li>
+                        <li>Use the <code>aria-labelledby</code> attribute and point it to a text element which can function as the accessible name, <strong>OR</strong></li>
+                        <li>Use text between the start and end tags of the element as the accessible name.</li>
+                    </ul>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    
+                    <h3>Slider with no accessible name</h3>
+                    <p>This slider has instructions, but it does not have an accessible name to inform the user what they are rating.</p>
+                    <p>NVDA: "Slider, Choose a rating from one to ten where 10 is Strongly Agree"</p>
+                    <div class="example">
+                        {% include examples/slider-rating-fail.html %}
+
+                        <pre><code>&lt;div&gt;Accessibility is the right thing to do.&lt;/div&gt;
+    &lt;div id="id-rating" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="10"&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    
+                    <h3>Slider with <code>aria-labelledby</code></h3>
+                    <p>This slider uses <code>aria-labelledby</code> to provide an accessible name.</p>
+                    <p>NVDA: "Accessibility is the right thing to do. Slider. Choose a rating from one to ten where 10 is strongly agree"</p>
+                    <div class="example">
+                        {% include examples/slider-rating.html %}
+
+                        <pre><code>&lt;div id="id-rating-label"&gt;Accessibility is the right thing to do.&lt;/div&gt;
+    &lt;div id="id-rating" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="10" <strong>aria-labelledby="id-rating-label"</strong>&gt;</code></pre>
+                    </div>
+
+                    <h3>Carousel with <code>aria-label</code></h3>
+                    <p>This carousel uses <code>aria-label</code> to provide an accessible name.</p>
+                    <p>NVDA: "Cats of House Harless, carousel"</p>
+                    <div class="example">
+                        {% include examples/carousel.html %}
+                        <script src="{{ baseurl }}/assets/js/carousel-tablist.js"></script>
+
+                        <pre><code>&lt;section id="myCarousel" aria-roledescription="carousel" <strong>aria-label="Cats of House Harless"</strong>&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
@@ -49,24 +83,22 @@ checkpoint: 410201
                 <div>
                     <p>The following items are not applicable to this failure:</p>
                     <ul>
-                        <li><strong>Buttons with no accessible name</strong>:<br>
+                        <li><strong>Buttons</strong>:<br>
                             File under <a href="{{ site.data.4102.4102[41020101].link | prepend: baseurl }}">{{ site.data.4102.4102[41020101].name }}.</a></li>
-                        <li><strong>Form fields with no accessible name</strong>:<br>
+                        <li><strong>Form fields</strong>:<br>
                             File under <a href="{{ site.data.4102.4102[41020102].link | prepend: baseurl }}">{{ site.data.4102.4102[41020102].name }}.</a></li>
-                        <li><strong>Image buttons with no accessible name</strong>:<br>
+                        <li><strong>Image buttons</strong>:<br>
                             File under <a href="{{ site.data.4102.4102[41020103].link | prepend: baseurl }}">{{ site.data.4102.4102[41020103].name }}.</a></li>
-                        <li><strong>Links with no accessible name</strong>:<br>
+                        <li><strong>Links</strong>:<br>
                             File under <a href="{{ site.data.4102.4102[41020104].link | prepend: baseurl }}">{{ site.data.4102.4102[41020104].name }}.</a></li>
-                        <li><strong>Iframes with no accessible name</strong>:<br>
+                        <li><strong>Iframes</strong>:<br>
                             File under <a href="{{ site.data.4102.4102[41020105].link | prepend: baseurl }}">{{ site.data.4102.4102[41020105].name }}.</a></li>
-                        <li><strong>Frames with no accessible name</strong>:<br>
+                        <li><strong>Frames</strong>:<br>
                             File under <a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}.</a></li>
-                        <li><strong>Dialogs with no accessible name</strong>:<br>
+                        <li><strong>Dialogs</strong>:<br>
                             File under <a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}.</a></li>
-                        <li><strong>Form element groups with no accessible name</strong>:<br>
+                        <li><strong>Form element groups</strong>:<br>
                             File under <a href="{{ site.data.4102.4102[41020106].link | prepend: baseurl }}">{{ site.data.4102.4102[41020106].name }}.</a></li>
-                        <li><strong>Other components with no accessible name</strong>:<br>
-                            File under <a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}.</a></li>
                         <li><strong>Hidden</strong>:<br>
                             <code>&lt;div style="display:none;"&gt;</code><br>
                             Does not appear in accessibility tree</li>
@@ -90,6 +122,7 @@ checkpoint: 410201
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F68">F68: Failure of Success Criterion 4.1.2 due to a user interface control not having a programmatically determined name</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
                     </ul>
