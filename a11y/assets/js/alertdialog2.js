@@ -14,7 +14,9 @@ class AlertModal {
 
         openModalBtn.addEventListener('click', function() { openModal(modal); });
         closeModalBtn.addEventListener('click', function() { closeModal(modal, openModalBtn); });
-        submitBtn.addEventListener('click', function() { closeModal(modal, openModalBtn); });
+        if (submitBtn !== null) {
+            submitBtn.addEventListener('click', function() { closeModal(modal, openModalBtn); });
+        }
 
         modal.addEventListener("keydown", function (e) {
             if (e.key === "Escape" && !modal.classList.contains("hidden")) {
