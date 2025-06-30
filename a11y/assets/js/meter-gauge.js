@@ -16,4 +16,4 @@ function rotateDial()
 	dial.css({'-webkit-transform': 'rotate('+deg+'deg)'});
 }
 
-setInterval(rotateDial, 2000);
+setInterval(rotateDial, 5000);
