@@ -19,7 +19,7 @@ Gauge.prototype._rotateDial = function(min, max, value) {
 	var value = Math.round(Math.random()*100);
 	deg = (value * 177.5) / 100;
 
-	this.gauge_value.html(value + "%");
+	this.gaugeValue.html(value + "%");
 
 	this.dial.css({'transform': 'rotate('+deg+'deg)'});
 	this.dial.css({'-ms-transform': 'rotate('+deg+'deg)'});
@@ -46,14 +46,14 @@ Gauge.prototype._rotateDial = function(min, max, value) {
 /* Code for example page */
 
 window.addEventListener('load', function () {
-  // init meters
+  // init gauges
   var gaugeEls = document.querySelectorAll('.gauge');
   var gauges = [];
   Array.prototype.slice.call(gaugeEls).forEach(function (gaugeEl) {
     gauges.push(new Gauge(gaugeEl));
   });
 
-  // randomly update meter values
+  // randomly update gauge values
 
   // returns an id for setInterval
   var intervals = [];
