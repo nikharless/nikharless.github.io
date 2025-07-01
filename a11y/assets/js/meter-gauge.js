@@ -9,7 +9,7 @@ var Gauge = function (element) {
   	var min = element.getAttribute('aria-valuemin');
   	var max = element.getAttribute('aria-valuemax');
   	var value = element.getAttribute('aria-valuenow');
-  	this._update(parseFloat(min), parseFloat(max), parseFloat(value));
+  	this._rotateDial(parseFloat(min), parseFloat(max), parseFloat(value));
 };
 
 /* Private methods */
