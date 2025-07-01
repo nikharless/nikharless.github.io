@@ -3,7 +3,7 @@
 var Gauge = function (element) {
 	this.rootEl = element;
 	this.dial = element.querySelector('.dial .inner');
-	this.gaugeValue = element.querySelector('.gauge .value');
+	var gaugeValue = element.querySelector('.gauge .value');
 
 	// set up min, max, and current value
   	var min = element.getAttribute('aria-valuemin');
@@ -18,8 +18,8 @@ Gauge.prototype._rotateDial = function(min, max, value) {
 	var deg = 0;
 	var value = Math.round(Math.random()*100);
 	deg = (value * 177.5) / 100;
-
-	this.gaugeValue.html(value + "%");
+console.log(gaugeValue);
+	gaugeValue.html(value + "%");
 
 	this.dial.css({'transform': 'rotate('+deg+'deg)'});
 	this.dial.css({'-ms-transform': 'rotate('+deg+'deg)'});
