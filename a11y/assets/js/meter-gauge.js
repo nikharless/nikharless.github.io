@@ -18,7 +18,8 @@ Gauge.prototype._rotateDial = function(min, max, value) {
 	var deg = 0;
 	var value = Math.round(Math.random()*100);
 	deg = (value * 177.5) / 100;
-console.log(gaugeValue);
+
+  var gaugeValue = element.querySelector('.gauge .value');
 	gaugeValue.html(value + "%");
 
 	this.dial.css({'transform': 'rotate('+deg+'deg)'});
