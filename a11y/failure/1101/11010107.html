@@ -18,53 +18,31 @@ checkpoint: 110101
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>
-                    If a link or button contains only an image AND the link or button itself doesn't have alternative text, the image must have alternative text which describes the destination or function.
-                </div>
+        		<div>The text alternative for the meaningful image includes all meaningful text.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>
-                    The link or button contains only an image, but the image does not have alternative text and the link or button does not have an accessible name.
-                </div>
+        		<div>The meaningful image has a text alternative, but it does not include all meaningful text in the image.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Add a text alternative which describes the purpose of the functional image using one of the following methods:
-                    <ul>
-                        <li>Add an <code>aria-label</code> attribute to the image element's tag, <strong>OR</strong></li>
-                        <li>Add an <code>aria-labelledby</code> attribute to the image element's tag, set to the <code>id</code> value of the text to use as a label.</li>
-                    </ul>
-                </div>
+        		<div>Change the text alternative to include all the meaningful text in the image.</div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }} bad">Failing Example<br>
-                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <h2 class="{{ sc.level }}">Examples</h2>
                 <div>
-                    
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Example<br>
-                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
-                <div>
-                    
+                    <p>Describing this image as "Scrabble tiles on a table" leaves out the meaningful text that they spell out.</p>
+                    <h3>Photo</h3>
+                    <img src="{{ baseurl }}/assets/images/11010206-carpe-diem.jpg" alt="Scrabble tiles on a table that spell out Carpe Diem">
+        <pre><code>&lt;img src="carpe-diem.jpg" <strong>alt="Scrabble tiles on a table that spell out Carpe Diem"</strong>&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Functional <code>&lt;img&gt;</code> images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010101].link | prepend: baseurl }}">{{ site.data.1101.1101[11010101].name }}.</a></li>
-                        <li><strong>Functional <code>&lt;svg&gt;</code> images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010102].link | prepend: baseurl }}">{{ site.data.1101.1101[11010102].name }}.</a></li>
-                        <li><strong><code>&lt;input&gt;</code> images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010103].link | prepend: baseurl }}">{{ site.data.1101.1101[11010103].name }}.</a></li>
-                        <li><strong>Functional CSS background images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010104].link | prepend: baseurl }}">{{ site.data.1101.1101[11010104].name }}.</a></li>
-                        <li><strong>Meaningful non-interactive images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
                         <li><strong>Complex images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
                         <li><strong>Decorative images:</strong><br>
@@ -78,7 +56,7 @@ checkpoint: 110101
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
                         <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
                     </ul>
                 </div>
@@ -88,13 +66,14 @@ checkpoint: 110101
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G94">G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content</a></li>
+                        <li><a href="https://uxdesign.cc/how-to-write-an-image-description-2f30d3bf5546">How to write an image description</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>

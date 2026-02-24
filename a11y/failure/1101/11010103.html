@@ -16,53 +16,41 @@ checkpoint: 110101
         {% include breadcrumbs/bc-failure.html %}
 
         <div class="failure">
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>If a link or button contains only an image AND the link or button itself doesn't have alternative text, the image must have alternative text which describes the destination or function.</div>
-        	</div>
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The <code>&lt;input&gt;</code> control is labeled with only an image, but the image does not have alternative text and the control does not have an accessible name.</div>
-        	</div>
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Add a text alternative which describes the purpose of the functional image using one of the following methods:
-                    <ul>
-                        <li>Add an <code>alt</code> attribute to the <code>&lt;input&gt;</code> tag, <strong>OR</strong></li>
-                        <li>Add an <code>aria-label</code> attribute to the <code>&lt;input&gt;</code> tag.</li>
-                    </ul>
-                </div>
-        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>All meaningful images must have a text alternative that conveys the same information as the image.</div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} bad">Failing Example<br>
-                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
-                <div>
-                    
-                </div>
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>The meaningful CSS background image does not have a text alternative.</div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Example<br>
-                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>Mark the image up as an actual image, and add a text alternative which describes the purpose of the meaningful image.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Example</h2>
                 <div>
-                    <h3>Submit Button</h3>
-                    <p><input type="image" name="submit" src="{{ baseurl }}/assets/images/11010103-submit.png" alt="Submit"></p>
-                    <pre><code>&lt;input type="image" name="submit" src="submit.png"
-    <strong>alt="Submit"</strong>&gt;</code></pre>
+                    <h3>Background Image with Text</h3>
+                    <p>Assume this background image's text relates to the text content placed on top of it. In this case, the background image is meaningful and needs a text alternative.</p>
+                    <p>If the element with the background image did not have other content inside it, you could use <code>role="img"</code> and <code>aria-label</code> to give it a text alternative. However, in that case, there's no reason not to just use the simpler <code>&lt;img alt="..."&gt;</code> markup.</p>
+                    <p>Since the element does contain other content, it cannot have a text alternative. The image needs to be marked up as an image, and the block of text as a separate element positioned with CSS.</p>
+                    <div id="bg" aria-label="Time for Change">
+                        <div id="divText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.</div>
+                    </div>
+        <pre><code>&lt;div id="bg"&gt; /* This element has the background image. */
+    &lt;div id="divText">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Functional <code>&lt;img&gt;</code> images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010101].link | prepend: baseurl }}">{{ site.data.1101.1101[11010101].name }}.</a></li>
-                        <li><strong>Functional <code>&lt;svg&gt;</code> images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010102].link | prepend: baseurl }}">{{ site.data.1101.1101[11010102].name }}.</a></li>
-                        <li><strong>Functional CSS background images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010104].link | prepend: baseurl }}">{{ site.data.1101.1101[11010104].name }}.</a></li>
-                        <li><strong>Meaningful non-interactive images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
                         <li><strong>Complex images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
                         <li><strong>Decorative images:</strong><br>
@@ -76,7 +64,7 @@ checkpoint: 110101
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
                         <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
                     </ul>
                 </div>
@@ -86,8 +74,8 @@ checkpoint: 110101
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F65">F65: Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H36">H37: Using alt attributes on images used as submit buttons</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F3">Failure of Success Criterion 1.1.1 due to using CSS to include images that convey important information</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
                     </ul>
                 </div>
             </div>

@@ -16,88 +16,39 @@ checkpoint: 110101
         {% include breadcrumbs/bc-failure.html %}
 
         <div class="failure">
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>If a control contains only an image AND the control itself doesn't have alternative text, the image must have alternative text which describes the destination or function.</div>
-        	</div>
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The custom control contains only a CSS background image, but the control does not have alternative text.</div>
-        	</div>
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Add a text alternative which describes the purpose of the functional image using one of the following methods:
-                    <ul>
-                        <li>Add an <code>aria-label</code> attribute to the control element's tag, <strong>OR</strong></li>
-                        <li>Add an <code>aria-labelledby</code> attribute to the control element's tag and set the value to the <code>id</code> of the text used as a label, <strong>OR</strong></li>
-                        <li>Change the background image to an actual image element (e.g., <code>&lt;img&gt;</code>) and give the image alternative text according to the appropriate checkpoint.</li>
-                    </ul>
-                </div>
-        	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }} bad">Failing Example<br>
-                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
-                <div>
-                    
+                <h2 class="{{ sc.level }}">Expected Result</h2>
+                <div>All meaningful images must have a text alternative that conveys the same information as the image.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Actual Result</h2>
+                <div>The meaningful emoji does not have a text alternative.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Solution</h2>
+                <div>Add a text alternative which describes the purpose of the meaningful emoji using the following method:
+                    <ol>
+                        <li>Add a <code>&lt;span&gt;</code> tag around the emoji.</li>
+                        <li>Add <code>role="img"</code> to the <code>&lt;span&gt;</code>.</li>
+                        <li>Add an <code>aria-label</code> attribute to the <code>&lt;span&gt;</code>.</li>
+                        <li>Set the value to a text alternative that makes sense in context.</li>
+                    </ol>
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Example<br>
-                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <h2 class="{{ sc.level }}">Example</h2>
                 <div>
-                    <h3>Custom Button</h3>
-                    <style>
-                        #action {
-                            background-image: url("{{ baseurl }}/assets/images/11010103-submit.png");
-                            width: 113px;
-                            height: 36px;
-                        }
-                    </style>
-                    <div tabindex="0" role="button" id="action" aria-label="Submit"></div>
-                    <pre><code>&lt;style&gt;
-    #action {
-        background-image: url("submit.png");
-    }
-&lt;/style&gt;
-&lt;div tabindex="0" role="button" id="action" <strong>aria-label="Submit"</strong>&gt;&lt;/div&gt;</code></pre>
-                    <h3>Font Awesome CSS Pseudo-element</h3>
-                    <p>Icon fonts are commonly used in CSS pseudo-elements.</p>
-                    <style>
-                        .fb::before {
-                            display: inline-block;
-                            text-rendering: auto;
-                            -webkit-font-smoothing: antialiased;
-                            font: var(--fa-font-brands);
-                            font-size: 48px;
-                            content: "\f09a";
-                            color: #4267B2;
-                        }
-                    </style>
-                    <p><a href="https://www.facebook.com/niksebastianartist/"><span class="fb fa-brands fa-facebook" aria-label="Nik's Facebook Page"></span></a></p>
-                    <pre><code>&lt;style&gt;
-    .fb::before {
-        display: inline-block;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        font: var(--fa-font-brands);
-        content: "\f09a";
-    }
-&lt;/style&gt;
-&lt;p&gt;&lt;a href="#"&gt;&lt;span class="fb fa-brands fa-facebook" <strong>aria-label="Nik's Facebook Page"</strong>&gt;&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;</code></pre>
+                    <h3>World Peace</h3>
+                    <p><span role="img" aria-label="World">🌏</span><span role="img" aria-label="peace">☮️</span></p>
+        <pre><code>&lt;span <strong>role="img" aria-label="World"</strong>&gt;🌏&lt;/span&gt;&lt;span <strong>role="img" aria-label="Peace"&gt;☮️&lt;/span&gt;</strong></code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Functional <code>&lt;img&gt;</code> images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010101].link | prepend: baseurl }}">{{ site.data.1101.1101[11010101].name }}.</a></li>
-                        <li><strong>Functional <code>&lt;svg&gt;</code> images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010102].link | prepend: baseurl }}">{{ site.data.1101.1101[11010102].name }}.</a></li>
-                        <li><strong><code>&lt;input&gt;</code> images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010103].link | prepend: baseurl }}">{{ site.data.1101.1101[11010103].name }}.</a></li>
-                        <li><strong>Meaningful non-interactive images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
                         <li><strong>Complex images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
                         <li><strong>Decorative images:</strong><br>
@@ -111,7 +62,7 @@ checkpoint: 110101
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
                         <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
                     </ul>
                 </div>
@@ -121,9 +72,7 @@ checkpoint: 110101
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F3">Failure of Success Criterion 1.1.1 due to using CSS to include images that convey important information</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H86">H86: Providing text alternatives for emojis, emoticons, ASCII art, and leetspeak</a></li>
                     </ul>
                 </div>
             </div>

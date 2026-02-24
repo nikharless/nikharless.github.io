@@ -4,8 +4,8 @@ current: 110101
 criterion: 1101
 ---
 {% assign root=site.data.site.root %}
-{% assign baseurl=site.data.site.base %}
 {% assign currentpg=site.data.1101.1101[page.current] %}
+{% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1101.1101[page.criterion] %}
 
 {% include sidebar.html %}
@@ -16,93 +16,12 @@ criterion: 1101
 
         <div class="block">
             <h2>Overview</h2>
+            <p>Text alternatives depend on context. The same image might convey different information in different situations.</p>
 
-            <h3>Examples</h3>
-            <p>Functional images include the following:</p>
-            <h4>Image as Link</h4>
-            <p>This link's function on the site is to view the home page, so this is what the text alternative should describe. The fact that it is a logo is not relevant and should not be included in the text alternative.</p>
-            <p><a href="#"><img src="{{ baseurl }}/assets/images/110101-github-mark.png" width="60" height="60" alt="GitHub home"></a></p>
-            <pre><code>&lt;a href="http://github.com"&gt;
-    &lt;img 
-    src="github-mark.png" 
-    <strong>alt="GitHub home"</strong>&gt;
-&lt;/a&gt;</code></pre>
+            <h3>Example</h3>
+            <img src="{{ baseurl }}/assets/images/110102-fallingwater_640.jpg" alt="Frank Lloyd Wright's Fallingwater" />
+            <p>If this image were used in an article about Frank Lloyd Wright, the text alternative might be "Frank Lloyd Wright's Fallingwater". However, if it were in a tutorial about photography, it might include information relevant to the lesson's content.</p>
 
-            <h4>Informational Image within Link</h4>
-            <p>This link's function is to open a PDF file. The image's function within the link is to convey the file type. Since the link already contains text describing its target, the image's text alternative only needs to identify the target as a PDF.</p>
-            <p><a href="#">Download the User Guide <img src="{{ baseurl }}/assets/images/110101-pdf-icon_60.png" width="24" height="24" alt="PDF"></a></p>
-            <pre><code>&lt;a href="user-guide.pdf"&gt;
-    Download the User Guide 
-    &lt;img 
-    src="pdf-icon.png" 
-    <strong>alt="PDF"</strong>&gt;
-&lt;/a&gt;</code></pre>
-
-            <h4>Image as Button</h4>
-            <p>This button's function is to add an item to the cart, so this is what the text alternative should convey. Using "Shopping Cart" would be inappropriate, as that does not describe the actual function, and the user would assume that they are going to a page displaying their cart contents.</p>
-            <p>Because the image is within a <code>&lt;button&gt;</code>, it's best to attach the alternative text to the button rather than the image. This prevents the screen reader from unnecessarily saying "graphic". In this case, the <code>&lt;img&gt;</code> should have a null <code>alt</code> attribute.</p>
-            <p><button aria-label="Add to Cart" style="background-color: transparent; border: 0;"><img src="{{ baseurl }}/assets/images/110101-shopping-cart.png" alt=""></button></p>
-            <pre><code>&lt;button <strong>aria-label="Add to Cart"</strong>&gt;
-    &lt;img 
-    src="shopping-cart.png" 
-    <strong>alt=""</strong>&gt;
-&lt;/button&gt;</code></pre>
-
-            <h4>Input Image</h4>
-            <p>This button's function is to submit a form and continue to the next step in a process, so this is what the text alternative should convey.</p>
-            <p><input type="image" src="{{ baseurl }}/assets/images/110101-next-arrow_60.png" alt="Submit and continue"></p>
-            <pre><code>&lt;input type="image" 
-    src="next-button.png" 
-    <strong>alt="Submit and continue"</strong>&gt;</code></pre>
-
-           <h4>Client-side Image Map</h4>
-            <p>Each circle on this example image is an <code>&lt;area&gt;</code> which is a link. The alt text for each area must describe the target of the link.</p>
-            <img src="{{ baseurl }}/assets/images/110101-infographic.png"
-             alt="Steps of the Process"
-             usemap="#csimap">
-            <map id="csimap" name="Sample Image Map">
-                <area shape="rect"
-                    coords="0,0,168,334"
-                    href="#"
-                    onclick="alert('Step 1')"
-                    alt="Step 1 Details">
-                <area shape="rect"
-                    coords="168,0,319,334"
-                    href="#"
-                    onclick="alert('Step 2')"
-                    alt="Step 2 Details">
-                <area shape="rect"
-                    coords="319,0,471,334"
-                    href="#"
-                    onclick="alert('Step 3')"
-                    alt="Step 3 Details">
-                <area shape="rect"
-                    coords="471,0,640,334"
-                    href="#"
-                    onclick="alert('Step 4')"
-                    alt="Step 4 Details">
-            </map>
-            <pre><code>&lt;img src="infographic.png"
-    alt="Steps of the Process"
-    usemap="#csimap"&gt;
-&lt;map id="csimap" name="Sample Image Map"&gt; 
-    &lt;area shape="rect"
-        coords="0,0,168,334"
-        href="#"
-        <strong>alt="Step 1 Details"</strong>&gt;
-    &lt;area shape="rect"
-        coords="168,0,319,334"
-        href="#"
-        <strong>alt="Step 2 Details"</strong>&gt;
-    &lt;area shape="rect"
-        coords="319,0,471,334"
-        href="#"
-        <strong>alt="Step 3 Details"</strong>&gt;
-    &lt;area shape="rect"
-        coords="471,0,640,334"
-        href="#"
-        <strong>alt="Step 4 Details"</strong>&gt;
-&lt;/map&gt;</code></pre>
         </div>
 
         <div class="block">
@@ -110,104 +29,71 @@ criterion: 1101
             <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
                 <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a control is labeled with only an image AND the control itself does not have alternative text, the image must have alternative text which describes the function or destination of the control.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If a control is labeled with both an image and text:
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Meaningful images must have a descriptive text alternative that conveys the same information as the image in context.
                     <ul>
-                        <li>If the image provides information not conveyed by the associated text, the image's alternative text along with the visible text must together describe the function or destination of the control.</li>
-                        <li>If the image does not provide any information not conveyed by the associated text, check against <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                        <li>If the image does not provide any information not already conveyed elsewhere on the page, it may be considered redundant. Check against <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}</a>.</li>
                     </ul>
                 </li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Client-side image map <code>&lt;area&gt;</code> elements must have alternative text describing the area of the image it represents.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Server-side image maps must have an alternative list of accessible links.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Meaningful images must not be presented as background images.</li>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If the image contains meaningful text, the text alternative must contain that exact text.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for linked images should not duplicate adjacent link text for the same destination. Combine the image and text into a single link and check the image against <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for functional images should not include words such as "link" or "button".</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives for meaningful images should not include words such as "image" or "graphic".</li>
                 <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Trademarks, copyright symbols, etc. on an image should be included in the text alternative.</li>
                 <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text alternatives should be as succinct as possible.</li>
             </ul>
 
-            <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want to hear a description of the functional image so that I can understand what the control is for.</div>
+            <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want to hear a description of the meaningful image so that I can get the information it conveys.</div>
 
-            <div class="success"><strong>Success:</strong> If you could not see the image, when you read it with a screen reader, you would hear a description of the destination, purpose, or function of the control.</div>
+            <div class="success"><strong>Success:</strong> If you could not see the image, when you read it with a screen reader, you would hear a meaningful description of the image.</div>
 
-            <p>Text alternatives for functional images include the following:</p>
+            <p>Methods for providing text alternatives for meaningful images include the following:</p>
             <ul>
                 <li><code>alt</code> attribute value</li>
                 <li><code>title</code> attribute value</li>
                 <li><code>aria-label</code> property</li>
                 <li><code>aria-labelledby</code> property</li>
+                <li>CSS clipped text</li>
             </ul>
+
         </div>
 
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            <h3 id="test1">Are there images on the page which function as interactive components (links or buttons)?</h3>
+            <h3 id="test1">Are there meaningful non-interactive images on the page?</h3>
             <ul role="tree" aria-labelledby="test1">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the image part of a link or button along with text?</span>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the meaningful image have a text alternative?</span>
                     <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image have a text alternative?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative serve the same purpose as the image?</span>
                             <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative repeat the text already within the link or button?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image contain any informative text?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="na"><span><strong>Yes</strong>; The image is redundant. Test under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the text alternative accurately describe the purpose of the image?</span>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative include the informative text?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010108].link | prepend: baseurl }}">{{ site.data.1101.1101[11010108].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010207].link | prepend: baseurl }}">{{ site.data.1101.1101[11010207].name }}.</a></span></li>
                                             </ul>
                                         </li>
+                                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                     </ul>
-                                </li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the image have meaning beyond the accompanying text?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative accurately describe the purpose of the image?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010111].link | prepend: baseurl }}">{{ site.data.1101.1101[11010111].name }}.</a></span></li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" class="na"><span><strong>No</strong>; The image is redundant. Test under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></span></li>
-                                    </ul>
-                                </li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010206].link | prepend: baseurl }}">{{ site.data.1101.1101[11010206].name }}.</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the image have a text alternative?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there text on the page that conveys the same information as the image?</span>
                             <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative accurately describe the purpose of the image?</span>
+                                <li role="treeitem" class="na"><span><strong>Yes</strong>; This checkpoint is not applicable. Test under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;img&gt;</code> element?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010108].link | prepend: baseurl }}">{{ site.data.1101.1101[11010108].name }}.</a></span></li>
-                                    </ul>
-                                </li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the containing link or button have a text alternative?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;img&gt;</code> element?</span>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010201].link | prepend: baseurl }}">{{ site.data.1101.1101[11010201].name }}.</a></span></li>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;svg&gt;</code> element?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010101].link | prepend: baseurl }}">{{ site.data.1101.1101[11010101].name }}.</a></span></li>
-                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;svg&gt;</code> element?</span>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010202].link | prepend: baseurl }}">{{ site.data.1101.1101[11010202].name }}.</a></span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image a CSS background image?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010102].link | prepend: baseurl }}">{{ site.data.1101.1101[11010102].name }}.</a></span></li>
-                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an <code>&lt;input type="image"&gt;</code> element?</span>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010203].link | prepend: baseurl }}">{{ site.data.1101.1101[11010203].name }}.</a></span></li>
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image a meaningful emoji?</span>
                                                             <ul role="group">
-                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010103].link | prepend: baseurl }}">{{ site.data.1101.1101[11010103].name }}.</a></span></li>
-                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image a CSS background image?</span>
-                                                                    <ul role="group">
-                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010104].link | prepend: baseurl }}">{{ site.data.1101.1101[11010104].name }}.</a></span></li>
-                                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in an image map <code>&lt;area&gt;</code> element?</span>
-                                                                            <ul role="group">
-                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010105].link | prepend: baseurl }}">{{ site.data.1101.1101[11010105].name }}.</a></span></li>
-                                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image in a server-side image map?</span>
-                                                                                    <ul role="group">
-                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010106].link | prepend: baseurl }}">{{ site.data.1101.1101[11010106].name }}.</a></span></li>
-                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010107].link | prepend: baseurl }}">{{ site.data.1101.1101[11010107].name }}.</a></span></li>
-                                                                                    </ul>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </li>
-                                                                    </ul>
-                                                                </li>
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1101.1101[11010204].link | prepend: baseurl }}">{{ site.data.1101.1101[11010204].name }}.</a></span></li>
+                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010205].link | prepend: baseurl }}">{{ site.data.1101.1101[11010205].name }}.</a></span></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
@@ -223,12 +109,12 @@ criterion: 1101
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
 
-            <h3 id="test2">Are there functional images which change dynamically (e.g., a button that changes from Play to Pause)?</h3>
+            <h3 id="test2">Are there meaningful images which change dynamically?</h3>
             <ul role="tree" aria-labelledby="test2">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative change to match the current functional image?</span>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative change to match the current image?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010110].link | prepend: baseurl }}">{{ site.data.1101.1101[11010110].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010208].link | prepend: baseurl }}">{{ site.data.1101.1101[11010208].name }}.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
@@ -239,27 +125,30 @@ criterion: 1101
             <h2>Web Test Procedure</h2>
             <h3>Desktop</h3>
             <ol>
-                <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> or <a href="https://wave.webaim.org/extension/">WAVE</a> to flag missing text alternatives.</li>
-                <li>Use <a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a>: focusable elements and/or ANDI links/buttons to check the ANDI Output of keyboard-focusable images.</li>
-                <li>Verify that the ANDI Output provides an accurate description of the purpose of the functional image.</li>
+                <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> to flag missing text alternatives.</li>
+                <li>Use <a href="https://www.ssa.gov/accessibility/andi/help/install.html">ANDI</a>: graphics/images to find all meaningful images on the page.</li>
+                <li>Verify that the ANDI Output provides an accurate description of the image.</li>
+            </ol>
+
+            <h4>Screen Reader</h4>
+            <ol>
+                <li>Locate each meaningful image on the page using one or more of the following methods:
+                    <ul>
+                        <li><strong>Windows / NVDA</strong>: Use the <kbd>G</kbd> key to cycle through images.</li>
+                        <li><strong>MacOS / VoiceOver</strong>: Use <kbd>VO+Command+G</kbd> to cycle through images.</li>
+                    </ul>
+                </li>
+                <li>Verify that each meaningful image has a text alternative which accurately describes its purpose.</li>
             </ol>
 
             <h3>Mobile</h3>
             <ol>
                 <li>For iOS devices, <a href="https://support.apple.com/en-us/111799">turn off image recognition features</a>.</li>
-                <li>Navigate to each functional image.</li>
-                <li>Verify that the name spoken by the screen reader accurately describes the purpose of the functional image.</li>
+                <li>Navigate to each meaningful image.</li>
+                <li>Verify that the name spoken by the screen reader accurately describes the purpose of the image.</li>
             </ol>
 
-            <h2>Mobile App Test Procedure</h2>
-            <ul>
-                <li>Follow the procedure for Web Mobile.</li>
-                <li>iOS: Verify that the button, button image, or link image trait is spoken, AND/OR hint text such as "Double tap to activate" is spoken.</li>
-                <li>Android: Verify that the button role is spoken, AND/OR hint text such as "Double tap to activate" is spoken.</li>
-            </ul>
-
             <h2>PDF Test Procedure</h2>
-
             <h3>Find missing text alternatives.</h3>
 
             <h4>PDF Accessibility Checker</h4>
@@ -272,40 +161,38 @@ criterion: 1101
 
             <h4>Adobe Acrobat Pro</h4>
             <ol>
-                <li>To find missing text alternatives, select <strong>Accessibility > Accessibility Check</strong> in the Task pane to open the Accessibility Checker Options dialog.</li>
+                <li>Select <strong>Accessibility > Accessibility Check</strong> in the Task pane to open the Accessibility Checker Options dialog.</li>
                 <li>Select <strong>Alternate Text and Headings</strong> from the Category drop-down, and make sure <strong>Figures require alternate text</strong> is checked.</li>
             </ol>
 
             <h3>Verify the text alternatives are sufficient.</h3>
             <ol>
-                <li>Locate each functional image in the PDF using one or more of the following methods:
+                <li>Locate each meaningful image in the PDF using one or more of the following methods:
                     <ul>
-                        <li><strong>Mouse</strong>: Hover over images, noting cursor change if they are functional.</li>
-                        <li><strong>Keyboard</strong>: Use the <kbd>Tab</kbd> key to focus functional images.</li>
+                        <li>Visually</li>
                         <li><strong>Windows / NVDA</strong>: Use the <kbd>G</kbd> key to cycle through images.</li>
                         <li><strong>MacOS / VoiceOver</strong>: Use <kbd>VO+Command+G</kbd> to cycle through images.</li>
                     </ul>
                 </li>
-                <li>Verify that each functional image has a text alternative which accurately describes its purpose.</li>
+                <li>Verify that each image has a text alternative which accurately describes its purpose.</li>
             </ol>
+
         </div>
 
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1101.1101[11010101].link | prepend: baseurl }}">{{ site.data.1101.1101[11010101].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1101.1101[11010102].link | prepend: baseurl }}">{{ site.data.1101.1101[11010102].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1101.1101[11010103].link | prepend: baseurl }}">{{ site.data.1101.1101[11010103].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1101.1101[11010104].link | prepend: baseurl }}">{{ site.data.1101.1101[11010104].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1101.1101[11010105].link | prepend: baseurl }}">{{ site.data.1101.1101[11010105].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1101.1101[11010106].link | prepend: baseurl }}">{{ site.data.1101.1101[11010106].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1101.1101[11010107].link | prepend: baseurl }}">{{ site.data.1101.1101[11010107].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1101.1101[11010108].link | prepend: baseurl }}">{{ site.data.1101.1101[11010108].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1101.1101[11010109].link | prepend: baseurl }}">{{ site.data.1101.1101[11010109].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1101.1101[11010110].link | prepend: baseurl }}">{{ site.data.1101.1101[11010110].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1101.1101[11010111].link | prepend: baseurl }}">{{ site.data.1101.1101[11010111].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1101.1101[11010112].link | prepend: baseurl }}">{{ site.data.1101.1101[11010112].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1101.1101[11010201].link | prepend: baseurl }}">{{ site.data.1101.1101[11010201].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1101.1101[11010202].link | prepend: baseurl }}">{{ site.data.1101.1101[11010202].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1101.1101[11010203].link | prepend: baseurl }}">{{ site.data.1101.1101[11010203].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1101.1101[11010204].link | prepend: baseurl }}">{{ site.data.1101.1101[11010204].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1101.1101[11010205].link | prepend: baseurl }}">{{ site.data.1101.1101[11010205].name }}.</a> (High)</li>
+                <li><a href="{{ site.data.1101.1101[11010206].link | prepend: baseurl }}">{{ site.data.1101.1101[11010206].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1101.1101[11010207].link | prepend: baseurl }}">{{ site.data.1101.1101[11010207].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1101.1101[11010208].link | prepend: baseurl }}">{{ site.data.1101.1101[11010208].name }}.</a> (Medium)</li>
+                <li><a href="{{ site.data.1101.1101[11010209].link | prepend: baseurl }}">{{ site.data.1101.1101[11010209].name }}.</a> (High)</li>
             </ul>
+
         </div>
 
         <div class="block">
@@ -330,6 +217,7 @@ criterion: 1101
                     </ul>
                 </li>
             </ul>
+
         </div>
 
         <div class="block">
@@ -357,15 +245,16 @@ criterion: 1101
                     </ul>
                 </li>
             </ul>
+
             <h3>Additional Information</h3>
             <ul>
-                <li><a href="https://ictbaseline.access-board.gov/web-baselines/10Forms/">Section 508 ICT Testing Baseline Portfolio: Forms (Web)</a></li>
-                <li><a href="https://www.w3.org/WAI/tutorials/images/functional/">W3: Functional Images</a></li>
-                <li><a href="https://www.w3.org/WAI/tutorials/images/imagemap/">W3: Image Maps</a></li>
-                <li><a href="https://webaim.org/techniques/hypertext/link_text#alt_link">WebAIM: Links and Hypertext - Link Text and Apeparance</a></li>
+                <li><a href="https://ictbaseline.access-board.gov/web-baselines/06Images/">Section 508 ICT Testing Baseline Portfolio: Images (Web)</a></li>
+                <li><a href="https://webaim.org/techniques/alttext/">WebAIM: Alternative Text</a></li>
+                <li><a href="https://webaim.org/techniques/css/invisiblecontent/#absolutepositioning">WebAIM: CSS in Action - Invisible Content Just for Screen Reader Users</a></li>
                 <li><a href="https://fontawesome.com/v4/accessibility/">Font Awesome & Accessibility</a></li>
                 <li><a href="https://learn.levelaccess.com/l/487581/2018-04-18/28w4fc">Level Access: Accessibility Basics Webinar Series #3 - Non-text Elements</a> (0:00 - 13:30)</li>
                 <li><a href="https://uxdesign.cc/how-to-write-an-image-description-2f30d3bf5546">How to write an image description</a></li>
+                <li><a href="https://18f.gsa.gov/2015/03/24/making-twitter-images-more-accessible/">18F: Making Twitter images accessible</a></li>
             </ul>
         </div>
     </div>

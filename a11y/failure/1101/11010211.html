@@ -1,8 +1,8 @@
 ---
 layout: default
-current: 11010110
+current: 11010211
 criterion: 1101
-checkpoint: 110101
+checkpoint: 110102
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1101.1101[page.current] %}
@@ -18,15 +18,26 @@ checkpoint: 110101
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>When the functional image changes dynamically, the text alternative updates to match.</div>
+        		<div>
+                    If a link or button contains both an image and text AND the image adds information not conveyed by the text, the image must have alternate text which conveys the same information as the image.
+                </div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>When the functional image changes dynamically, the text alternative does not update to match.</div>
+        		<div>
+                    The link or button contains both an image and text, and the image adds information not conveyed by the text, but the image does not have alternative text.
+                </div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Code the page to update the text alternative whenever the image changes.</div>
+        		<div>Add a text alternative which describes the purpose of the functional image using one of the following methods:
+                    <ul>
+                        <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
+                        <li>Add an <code>aria-label</code> attribute to the image element's tag, <strong>OR</strong></li>
+                        <li>Add an <code>aria-labelledby</code> attribute to the image element's tag, set to the <code>id</code> value of the text to use as a label, <strong>OR</strong></li>
+                        <li>Add a <code>title</code> attribute to the <code>&lt;img&gt;</code> tag</li>
+                    </ul>
+                </div>
         	</div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
@@ -39,54 +50,23 @@ checkpoint: 110101
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Play/Pause Button</h3>
-                    <p>This button uses JavaScript and CSS to change the <code>aria-labelledby</code> value along with the displayed image. The text alternative in this case is attached to the swapped images, and <code>aria-labelledby</code> is used to label the control with the image.</p>
-
-                    <div class="player" role="button" tabindex="0" aria-labelledby="play">
-                        <img id="play" src="{{ baseurl }}/assets/images/11010109-play.png" class="play" aria-hidden="true" alt="Play"> 
-                        <img id="pause" src="{{ baseurl }}/assets/images/11010109-pause.png" class="pause" aria-hidden="true" alt="Pause">
-                    </div>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
-                    
-                    <script id="rendered-js">
-                        $( document ).ready(function() {
-    /* on('select')? */
-                            jQuery('.player').on('click', function () {
-
-                                if(jQuery(this).hasClass('active')) {
-                                    jQuery(this).removeClass('active');
-                                    jQuery(this).attr("aria-labelledby","play");
-                                } else {
-                                    jQuery(this).addClass('active');
-                                    jQuery(this).attr("aria-labelledby","pause");
-                                }
-                            });
-                            jQuery('.player').on('keypress', function (e) {
-                                if(e.which==13) {
-
-                                    if(jQuery(this).hasClass('active')) {
-                                        jQuery(this).removeClass('active');
-                                        jQuery(this).attr("aria-labelledby","play");
-                                    } else {
-                                        jQuery(this).addClass('active');
-                                        jQuery(this).attr("aria-labelledby","pause");
-                                    }
-                                }
-                            });
-                        });
-                    </script>
-
-                    <pre><code>&lt;div class="player" role="button" tabindex="0" <strong>aria-labelledby="play"</strong>&gt;
-    &lt;img id="play" src="play.png" class="play" aria-hidden="true" alt="Play"&gt;
-    &lt;img id="pause" src="pause.png" class="pause" aria-hidden="true" alt="Pause"&gt;
-&lt;/div&gt;</code></pre>
+                    <h3>Informational <code>&lt;img&gt;</code> within Link</h3>
+                    <p>This link's function is to open a PDF file. The image's function within the link is to convey the file type. Since the link already contains text describing its target, the image's text alternative only needs to identify the target as a PDF.</p>
+                    <p><a href="#">Download the User Guide <img src="{{ baseurl }}/assets/images/110101-pdf-icon_60.png" width="24" height="24" alt="PDF" /></a></p>
+                    <pre><code>&lt;a href="user-guide.pdf"&gt;
+    Download the User Guide 
+    &lt;img 
+    src="pdf-icon.png" 
+    <strong>alt="PDF"</strong> /&gt;
+&lt;/a&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Functional images which do not dynamically change</strong></li>
+                        <li><strong>Redundant images within links and buttons:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a>
                         <li><strong>Meaningful non-interactive images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
                         <li><strong>Complex images:</strong><br>
@@ -112,16 +92,16 @@ checkpoint: 110101
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F20">Failure of Success Criterion 1.1.1 and 4.1.2 due to not updating text alternatives when changes to non-text content occur</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G82">G82: Providing a text alternative that identifies the purpose of the non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F65">F65: Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H65">H65: Using the title attribute to identify form controls when the label element cannot be used</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>

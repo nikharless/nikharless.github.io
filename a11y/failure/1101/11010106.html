@@ -18,55 +18,35 @@ checkpoint: 110101
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Server-side image maps must have an alternative list of accessible links.</div>
+        		<div>The text alternative for the meaningful image conveys the same information as the image in context.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A server-side image map is used, but there is no text alternative for the links.</div>
+        		<div>The meaningful image has a text alternative, but it does not convey the same information as the image in context.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ol>
-                        <li>Add an <code>&lt;alt&gt;</code> attribute to the <code>&lt;img&gt;</code> tag summarizing the purpose of the image map.</li>
-                        <li>Add an alternate list of text links containing all the same links in the image map.</li>
-                    </ol>
-                </div>
+        		<div>Change the text alternative to text which sufficiently conveys the same information as the image in context.</div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }} bad">Failing Example<br>
-                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <h2 class="{{ sc.level }}">Examples</h2>
                 <div>
-                    
-                </div>
-            </div>
-            <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Example<br>
-                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
-                <div>
-                    <h3>Server-Side Image Map</h3>
-                    <a href="#"><img ismap src="{{ baseurl }}/assets/images/11010106-map_640.png" alt="World Map"></a>
-                    <ul>
-                        <li><a href="#">North America</a></li>
-                        <li><a href="#">South America</a></li>
-                        <li>etc.</li>
-                    </ul>
-                    <pre><code>&lt;a href="ismap.map"&gt;&lt;img ismap src="map.jpg" alt="World Map"&gt;&lt;/a&gt;
-&lt;ul&gt;
-    &lt;li&gt;<strong>&lt;a href="north-america.html"&gt;North America&lt;/a&gt;</strong>&lt;/li&gt;
-    &lt;li&gt;<strong>&lt;a href="south-america.html"&gt;South America&lt;/a&gt;</strong>&lt;/li&gt;
-    ...
-&lt;/ul&gt;</code></pre>
+                    <p>The image in the following examples might literally be described as "an old photograph of a mustached man in a cap driving an old car with no roof or windows". However, that may not convey the information intended by its context.</p>
+                    <h3>In an article about old cars</h3>
+                    <img src="{{ baseurl }}/assets/images/11010205-itala.jpg" alt="1907 Itala motor car">
+        <pre><code>&lt;img src="itala.jpg" <strong>alt="1907 Itala motor car"</strong>&gt;</code></pre>
+
+                    <h3>In an article about Prince Scipione Borghese</h3>
+                    <img src="{{ baseurl }}/assets/images/11010205-itala.jpg" alt="Borghese's chauffeur, Ettore Guizzardi">
+        <pre><code>&lt;img src="itala.jpg" <strong>alt="Borghese's chauffeur, Ettore Guizzardi"</strong>&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Client-side image maps:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010105].link | prepend: baseurl }}">{{ site.data.1101.1101[11010105].name }}.</a></li>
-                        <li><strong>Meaningful non-interactive images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
                         <li><strong>Complex images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
                         <li><strong>Decorative images:</strong><br>
@@ -79,9 +59,8 @@ checkpoint: 110101
             <div class="row block">
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
-                    <p>Server-side image maps send the coordinates of mouse clicks to be calculated server-side, after which a link is returned. There is nothing for keyboard users to focus on, and no way to add a text alternative to the areas of the image map.</p>
                     <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
                         <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
                     </ul>
                 </div>
@@ -91,7 +70,10 @@ checkpoint: 110101
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://osec.doc.gov/webresources/accessibility/ruleef.htm">Server-Side and Client-Side Image Maps</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F13">Failure of Success Criterion 1.1.1 and 1.4.1 due to having a text alternative that does not include information that is conveyed by color differences in the image</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F30">Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G94">G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content</a></li>
+                        <li><a href="https://uxdesign.cc/how-to-write-an-image-description-2f30d3bf5546">How to write an image description</a></li>
                     </ul>
                 </div>
             </div>
