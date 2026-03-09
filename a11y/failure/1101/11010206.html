@@ -18,7 +18,7 @@ checkpoint: 110102
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Server-side image maps must have an alternative list of accessible links.</div>
+        		<div>Server-side image maps have an alternative list of accessible links.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
@@ -27,17 +27,17 @@ checkpoint: 110102
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>
-                    <ol>
-                        <li>Add an <code>&lt;alt&gt;</code> attribute to the <code>&lt;img&gt;</code> tag summarizing the purpose of the image map.</li>
-                        <li>Add an alternate list of text links containing all the same links in the image map.</li>
-                    </ol>
+                    Add an alternate list of text links containing all the same links in the image map.</li>
                 </div>
         	</div>
             <div class="row block">
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    
+                    <h3>Server-Side Image Map</h3>
+                    <a href="#"><img ismap src="{{ baseurl }}/assets/images/11010106-map_640.png" alt="World Map"></a>
+
+                    <pre><code>&lt;a href="ismap.map"&gt;&lt;img ismap src="map.jpg" alt="World Map"&gt;&lt;/a&gt;</pre>
                 </div>
             </div>
             <div class="row block">
@@ -63,6 +63,8 @@ checkpoint: 110102
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
+                        <li><strong>Server-side image map <code>&lt;img&gt;</code> element doesn't have an alt attribute</strong><br>
+                            File under <a href="{{ site.data.1101.1101[11010201].link | prepend: baseurl }}">{{ site.data.1101.1101[11010201].name }}.</a></li>
                         <li><strong>Client-side image maps:</strong><br>
                             File under <a href="{{ site.data.1101.1101[11010105].link | prepend: baseurl }}">{{ site.data.1101.1101[11010105].name }}.</a></li>
                         <li><strong>Meaningful non-interactive images:</strong><br>
