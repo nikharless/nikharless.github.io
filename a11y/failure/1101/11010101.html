@@ -22,14 +22,24 @@ checkpoint: 110101
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The meaningful <code>&lt;img&gt;</code> does not have an <code>alt</code> attribute.</div>
+        		<div>A meaningful <code>&lt;img&gt;</code> does not have an <code>alt</code> attribute.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag.</div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Example</h2>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>PNG Image</h3>
+                    <p><img src="{{ baseurl }}/assets/images/11010201-mars-rover.png"></p>
+        <pre><code>&lt;img src="mars-rover.png"</code></pre>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>PNG Image</h3>
                     <p><img src="{{ baseurl }}/assets/images/11010201-mars-rover.png" alt="An artist's concept of a NASA Mars Exploration Rover on the surface of Mars."></p>
@@ -43,7 +53,7 @@ checkpoint: 110101
                 <div>
                     <ul>
                         <li><strong>Functional images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
                         <li><strong>Complex images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
                         <li><strong>Decorative images:</strong><br>
