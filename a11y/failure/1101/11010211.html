@@ -19,23 +19,23 @@ checkpoint: 110102
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
         		<div>
-                    If a link or button contains both an image and text AND the image adds information not conveyed by the text, the image must have alternate text which conveys the same information as the image.
+                    If a link or button contains both an image and text, AND the image adds information not conveyed by the text, the image has a text alternative that conveys the same information as the image.
                 </div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
         		<div>
-                    The link or button contains both an image and text, and the image adds information not conveyed by the text, but the image does not have alternative text.
+                    A link or button contains both an image and text, and the image adds information not conveyed by the text, but the image does not have a text alternative.
                 </div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Add a text alternative which describes the purpose of the functional image using one of the following methods:
+        		<div>Add a text alternative that describes the purpose of the functional image using one of the following methods:
                     <ul>
                         <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
                         <li>Add an <code>aria-label</code> attribute to the image element's tag, <strong>OR</strong></li>
                         <li>Add an <code>aria-labelledby</code> attribute to the image element's tag, set to the <code>id</code> value of the text to use as a label, <strong>OR</strong></li>
-                        <li>Add a <code>title</code> attribute to the <code>&lt;img&gt;</code> tag</li>
+                        <li>Add a <code>title</code> attribute to the <code>&lt;svg&gt;</code> tag</li>
                     </ul>
                 </div>
         	</div>
@@ -43,7 +43,14 @@ checkpoint: 110102
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    
+                    <h3>Informational <code>&lt;img&gt;</code> within Link</h3>
+                    <p><a href="#">Download the User Guide <img src="{{ baseurl }}/assets/images/110101-pdf-icon_60.png" width="24" height="24"></a></p>
+                    <pre><code>&lt;a href="user-guide.pdf"&gt;
+    Download the User Guide 
+    &lt;img 
+    src="pdf-icon.png" 
+    <strong>alt="PDF"</strong>&gt;
+&lt;/a&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
@@ -52,12 +59,12 @@ checkpoint: 110102
                 <div>
                     <h3>Informational <code>&lt;img&gt;</code> within Link</h3>
                     <p>This link's function is to open a PDF file. The image's function within the link is to convey the file type. Since the link already contains text describing its target, the image's text alternative only needs to identify the target as a PDF.</p>
-                    <p><a href="#">Download the User Guide <img src="{{ baseurl }}/assets/images/110101-pdf-icon_60.png" width="24" height="24" alt="PDF" /></a></p>
+                    <p><a href="#">Download the User Guide <img src="{{ baseurl }}/assets/images/110101-pdf-icon_60.png" width="24" height="24" alt="PDF"></a></p>
                     <pre><code>&lt;a href="user-guide.pdf"&gt;
     Download the User Guide 
     &lt;img 
     src="pdf-icon.png" 
-    <strong>alt="PDF"</strong> /&gt;
+    <strong>alt="PDF"</strong>&gt;
 &lt;/a&gt;</code></pre>
                 </div>
             </div>
@@ -68,7 +75,7 @@ checkpoint: 110102
                         <li><strong>Redundant images within links and buttons:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a>
                         <li><strong>Meaningful non-interactive images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
                         <li><strong>Complex images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
                         <li><strong>Decorative images:</strong><br>
