@@ -18,22 +18,40 @@ checkpoint: 110103
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>The short text alternative for the complex image summarizes the information provided by the image.</div>
+        		<div>The short text alternative for complex images summarizes the information provided by the image.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The complex image has a short text alternative, but it does not sufficiently summarize the information provided by the image.</div>
+        		<div>A complex image has a short text alternative, but it does not sufficiently summarize the information provided by the image.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>Change the short text alternative to sufficiently summarize the information provided by the image.</div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Example</h2>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
                     <h3>Complex Image with Link to Long Description</h3>
-                    <p>A short text alternative that reads "chart" would not sufficiently summarize the content of the image.</p>
+                    <p>A short text alternative that reads "chart" does not sufficiently summarize the content of the image.</p>
+                    <figure>
+                        <img src="{{ baseurl }}/assets/images/110103-constellations_640.png" height="300" width="300" alt="chart">
+                        <figcaption><a href="#">Follow this link for a description of the chart.</a></figcaption>
+                    </figure>
 
+                    <pre><code>&lt;figure&gt;
+        &lt;img src="constellations.png" <strong>alt="chart"</strong>&gt;
+        &lt;figcaption&gt;
+            &lt;a href="long-description.html"&gt;Follow this link for a detailed description of the chart.&lt;/a&gt;
+        &lt;/figcaption&gt;
+    &lt;/figure&gt;</code></pre>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Complex Image with Link to Long Description</h3>
                     <figure>
                         <img src="{{ baseurl }}/assets/images/110103-constellations_640.png" height="300" width="300" alt="Historical chart of constellations.">
                         <figcaption><a href="#">Follow this link for a description of the chart.</a></figcaption>
@@ -51,9 +69,9 @@ checkpoint: 110103
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Interactive images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
                         <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
+                        <li><strong>Interactive images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
                         <li><strong>Decorative images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
