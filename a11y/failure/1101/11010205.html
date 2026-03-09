@@ -18,15 +18,15 @@ checkpoint: 110102
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Client-side image map <code>&lt;area&gt;</code> elements must have alternative text describing the area of the image it represents.</div>
+        		<div>Client-side image map <code>&lt;area&gt;</code> elements have an <code>alt</code> attribute with alternative text describing the purpose of the link.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The client-side image map <code>&lt;area&gt;</code> element does not have alternative text.</div>
+        		<div>The client-side image map <code>&lt;area&gt;</code> element does not have an <code>alt</code> attribute.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Add a text alternative which describes the purpose of the image <code>&lt;area&gt;</code> using the following method:
+        		<div>
                     <ul>
                         <li>Add an <code>alt</code> attribute to each <code>&lt;area&gt;</code> tag in the image map.</li>
                         <li>Set it to a concise text alternative describing the purpose of the link.</li>
@@ -37,7 +37,23 @@ checkpoint: 110102
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    
+                    <h3>Client-Side Image Map</h3>
+                    <img src="{{ baseurl }}/assets/images/110101-infographic.png" style="max-width: 480px;" alt="Steps of the Process" usemap="#csimapf">
+                    <map id="csimapf" name="csimapf">
+                        <area shape="rect" coords="0,0,168,334" href="#" onclick="alert('Step 1')">
+                        <area shape="rect" coords="168,0,319,334" href="#" onclick="alert('Step 2')">
+                        <area shape="rect" coords="319,0,471,334" href="#" onclick="alert('Step 3')">
+                        <area shape="rect" coords="471,0,640,334" href="#" onclick="alert('Step 4')">
+                    </map>
+                    <pre><code>&lt;img src="infographic.png"
+    alt="Steps of the Process"
+    usemap="#csimap"&gt;
+&lt;map id="csimap" name="Sample Image Map"&gt; 
+    &lt;area shape="rect"
+        coords="0,0,168,334"
+        href="step1.html"&gt;
+        ...
+&lt;/map&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
@@ -69,9 +85,9 @@ checkpoint: 110102
                 <div>
                     <ul>
                         <li><strong>Server-side image maps:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010106].link | prepend: baseurl }}">{{ site.data.1101.1101[11010106].name }}.</a></li>
+                            File under <a href="{{ site.data.1101.1101[11010206].link | prepend: baseurl }}">{{ site.data.1101.1101[11010206].name }}.</a></li>
                         <li><strong>Meaningful non-interactive images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
                         <li><strong>Complex images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
                         <li><strong>Decorative images:</strong><br>
