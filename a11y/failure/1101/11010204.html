@@ -18,15 +18,15 @@ checkpoint: 110102
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>If a control contains only an image AND the control itself doesn't have alternative text, the image must have alternative text which describes the destination or function.</div>
+        		<div>If a control contains only a CSS background image, the control has alternative text which describes the control's purpose.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The custom control contains only a CSS background image, but the control does not have alternative text.</div>
+        		<div>A control contains only a CSS background image, and the control does not have alternative text.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Add a text alternative which describes the purpose of the functional image using one of the following methods:
+        		<div>Add a text alternative which describes the purpose of the control using one of the following methods:
                     <ul>
                         <li>Add an <code>aria-label</code> attribute to the control element's tag, <strong>OR</strong></li>
                         <li>Add an <code>aria-labelledby</code> attribute to the control element's tag and set the value to the <code>id</code> of the text used as a label, <strong>OR</strong></li>
@@ -38,11 +38,25 @@ checkpoint: 110102
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    
+                    <h3>Custom Button</h3>
+                    <style>
+                        #action {
+                            background-image: url("{{ baseurl }}/assets/images/11010103-submit.png");
+                            width: 113px;
+                            height: 36px;
+                        }
+                    </style>
+                    <div tabindex="0" role="button" id="action"></div>
+                    <pre><code>&lt;style&gt;
+    #action {
+        background-image: url("submit.png");
+    }
+&lt;/style&gt;
+&lt;div tabindex="0" role="button" id="action"&gt;&lt;/div&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>Custom Button</h3>
@@ -60,6 +74,7 @@ checkpoint: 110102
     }
 &lt;/style&gt;
 &lt;div tabindex="0" role="button" id="action" <strong>aria-label="Submit"</strong>&gt;&lt;/div&gt;</code></pre>
+
                     <h3>Font Awesome CSS Pseudo-element</h3>
                     <p>Icon fonts are commonly used in CSS pseudo-elements.</p>
                     <style>
@@ -91,13 +106,13 @@ checkpoint: 110102
                 <div>
                     <ul>
                         <li><strong>Functional <code>&lt;img&gt;</code> images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010101].link | prepend: baseurl }}">{{ site.data.1101.1101[11010101].name }}.</a></li>
+                            File under <a href="{{ site.data.1101.1101[11010201].link | prepend: baseurl }}">{{ site.data.1101.1101[11010201].name }}.</a></li>
                         <li><strong>Functional <code>&lt;svg&gt;</code> images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010102].link | prepend: baseurl }}">{{ site.data.1101.1101[11010102].name }}.</a></li>
+                            File under <a href="{{ site.data.1101.1101[11010202].link | prepend: baseurl }}">{{ site.data.1101.1101[11010202].name }}.</a></li>
                         <li><strong><code>&lt;input&gt;</code> images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010103].link | prepend: baseurl }}">{{ site.data.1101.1101[11010103].name }}.</a></li>
+                            File under <a href="{{ site.data.1101.1101[11010203].link | prepend: baseurl }}">{{ site.data.1101.1101[11010203].name }}.</a></li>
                         <li><strong>Meaningful non-interactive images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
                         <li><strong>Complex images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
                         <li><strong>Decorative images:</strong><br>
