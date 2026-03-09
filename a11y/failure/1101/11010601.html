@@ -12,60 +12,67 @@ checkpoint: 110106
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Each audio element must have a text alternative which summarizes its purpose.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The audio element does not have a text alternative.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Add a text alternative which summarizes the content of the audio:
-                <ul>
-                    <li>Add an <code>aria-label</code> attribute to the element, <strong>OR</strong></li>
-                    <li>Add an <code>aria-labelledby</code> attribute to the element, set to the <code>id</code> value of the text to use as a label</li>
-                </ul>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Each audio element has a text alternative which summarizes its purpose.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>An audio element does not have a text alternative.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Add a text alternative which summarizes the content of the audio:
+                    <ul>
+                        <li>Add an <code>aria-label</code> attribute to the element, <strong>OR</strong></li>
+                        <li>Add an <code>aria-labelledby</code> attribute to the element, set to the <code>id</code> value of the text to use as a label</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>HTML <code>&lt;audio&gt;</code></h3>
-                <p>What a horse says:</p>
-                <audio controls aria-label="horse neighing">
-                    <source src="{{ baseurl }}/assets/media/11010601-horse.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-    <pre><code>What a horse says:
-&lt;audio controls <strong>aria-label="horse neighing"</strong>&gt;
-    &lt;source src="horse.mp3" type="audio/mpeg"&gt;
-    Your browser does not support the audio element.
-&lt;/audio&gt;</code></pre>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>HTML <code>&lt;audio&gt;</code></h3>
+                    <p>What a horse says:</p>
+                    <audio controls aria-label="horse neighing">
+                        <source src="{{ baseurl }}/assets/media/11010601-horse.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <pre><code>What a horse says:
+    &lt;audio controls <strong>aria-label="horse neighing"</strong>&gt;
+        &lt;source src="horse.mp3" type="audio/mpeg"&gt;
+        Your browser does not support the audio element.
+    &lt;/audio&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Blind and visually impaired users need to have a text alternative to embedded audio so they know what it is without having to play it.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-text content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6.html">ARIA6: Using aria-label to provide labels for objects</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>Blind and visually impaired users need to have a text alternative to embedded audio so they know what it is without having to play it.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6.html">ARIA6: Using aria-label to provide labels for objects</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
