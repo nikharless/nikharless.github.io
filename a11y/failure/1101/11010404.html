@@ -18,11 +18,11 @@ checkpoint: 110104
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Redundant images must be hidden from screen readers.</div>
+        		<div>Redundant images are hidden from assistive technology.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The redundant image is read by screen readers.</div>
+        		<div>A redundant image is read by assistive technology.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
@@ -35,10 +35,39 @@ checkpoint: 110104
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
                     <h3>Image with Caption Text</h3>
-                    <p>This image has adjacent text describing its content. Repeating this in the alt text would be redundant, so <code>alt=""</code> is appropriate here.</p>
+                    <p>This image has adjacent text describing its content. Repeating this in the alt text is redundant.</p>
+                    <div style="border: 1px solid black; padding: 5px; max-width: 286px; text-align: center;">
+                        <img src="{{ baseurl }}/assets/images/110104-bates-pettet.jpg" alt="Alan Bates and Joanna Pettet on Broadway in Poor Richard">
+                        <p style="font-weight: bold;">Alan Bates and Joanna Pettet on Broadway in "Poor Richard"</p>
+                    </div>
+
+                    <pre><code>&lt;img src="bates-pettet.jpg" <strong>alt="Alan Bates and Joanna Pettet on Broadway in Poor Richard"&gt;</strong></code></pre>
+
+                    <h3>Combined Image and Text Link</h3>
+                    <p>Flag images are used in a list of country links simply to illustrate each one. Since the name of the country is already provided in text, the image is redundant.</p>
+                    <div style="border: 1px solid black; padding: 5px; max-width: 286px; text-align: center;">
+                        <a href="#">
+                            <img src="{{ baseurl }}/assets/images/11010404-norway-flag.png" alt="Norway flag"><br>
+                            Norway
+                        </a>
+                    </div>
+
+                    <pre><code>&lt;a href="norway.html"&gt;
+    &lt;img src="norway-flag.png" <strong>alt="Norway flag"</strong>&gt;
+    Norway
+&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Image with Caption Text</h3>
+                    <p>Use <code>alt=""</code> to avoid repetitive readings of the same information by assistive technology.</p>
                     <div style="border: 1px solid black; padding: 5px; max-width: 286px; text-align: center;">
                         <img src="{{ baseurl }}/assets/images/110104-bates-pettet.jpg" alt="">
                         <p style="font-weight: bold;">Alan Bates and Joanna Pettet on Broadway in "Poor Richard"</p>
@@ -47,7 +76,7 @@ checkpoint: 110104
                     <pre><code>&lt;img src="bates-pettet.jpg" <strong>alt=""&gt;</strong></code></pre>            
 
                     <h3>Combined Image and Text Link</h3>
-                    <p>Flag images are used in a list of country links simply to illustrate each one. Since the name of the country is already provided in text, the image is redundant. The link and image should be combined within a single link and the image hidden from screen readers.</p>
+                    <p>The link and image should be combined within a single link and the image hidden from screen readers.</p>
                     <div style="border: 1px solid black; padding: 5px; max-width: 286px; text-align: center;">
                         <a href="#">
                             <img src="{{ baseurl }}/assets/images/11010404-norway-flag.png" alt=""><br>
@@ -77,9 +106,9 @@ checkpoint: 110104
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Non-redundant interactive images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
                         <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
+                        <li><strong>Non-redundant functional images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
                         <li><strong>Complex images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
