@@ -18,11 +18,11 @@ checkpoint: 110101
         <div class="failure">
             <div class="row block">
                 <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>All meaningful images must have a text alternative that conveys the same information as the image.</div>
+                <div>Meaningful CSS background images have a text alternative.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>The meaningful CSS background image does not have a text alternative.</div>
+                <div>Meaningful CSS background image does not have a text alternative.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Solution</h2>
@@ -34,8 +34,9 @@ checkpoint: 110101
                     <h3>Background Image with Text</h3>
                     <p>Assume this background image's text relates to the text content placed on top of it. In this case, the background image is meaningful and needs a text alternative.</p>
                     <p>If the element with the background image did not have other content inside it, you could use <code>role="img"</code> and <code>aria-label</code> to give it a text alternative. However, in that case, there's no reason not to just use the simpler <code>&lt;img alt="..."&gt;</code> markup.</p>
-                    <p>Since the element does contain other content, it cannot have a text alternative. The image needs to be marked up as an image, and the block of text as a separate element positioned with CSS.</p>
-                    <div id="bg" aria-label="Time for Change">
+                    <p>Since the element does contain other content, it cannot have a text alternative. The screen reader will not read both. The image needs to be marked up as an image, and the block of text as a separate element positioned with CSS.</p>
+                    <div id="bg">
+                        <img src="/a11y/assets/images/11010203-time-for-change.jpg" id="divImg" alt="Time for Change">
                         <div id="divText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.</div>
                     </div>
         <pre><code>&lt;div id="bg"&gt; /* This element has the background image. */
