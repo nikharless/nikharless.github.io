@@ -26,17 +26,37 @@ checkpoint: 110103
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Add a short text alternative which summarizes the information provided by the image using one of the following methods:
+        		<div>Add a short text alternative that summarizes the information provided by the image using one of the following methods:
                     <ul>
                         <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag, <strong>OR</strong></li>
                         <li>Add an <code>aria-label</code> attribute to the image tag, <strong>OR</strong></li>
-                        <li>Add an <code>aria-labelledby</code> attribute to the image tag, set to the <code>id</code> value of the text to use as a label, <strong>OR</strong></li>
-                        <li>Add a <code>title</code> attribute to the <code>&lt;img&gt;</code> tag</li>
+                        <li>Add an <code>aria-labelledby</code> attribute to the image tag, set to the <code>id</code> value of the text element to use as a label, <strong>OR</strong></li>
+                        <li>Add a <code>title</code> attribute to the <code>&lt;svg&gt;</code> tag</li>
                     </ul>
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Example</h2>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>Complex Image with Link to Long Description</h3>
+
+                    <figure>
+                        <img src="{{ baseurl }}/assets/images/110103-constellations_640.png" height="300" width="300">
+                        <figcaption><a href="#">Follow this link for a description of the chart.</a></figcaption>
+                    </figure>
+
+                    <pre><code>&lt;figure&gt;
+    &lt;img src="constellations.png"&gt;
+    &lt;figcaption&gt;
+        &lt;a href="long-description.html"&gt;Follow this link for a detailed description of the chart.&lt;/a&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>Complex Image with Link to Long Description</h3>
 
@@ -57,9 +77,9 @@ checkpoint: 110103
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Interactive images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
                         <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
+                        <li><strong>Interactive images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
                         <li><strong>Decorative images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
