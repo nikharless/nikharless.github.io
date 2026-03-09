@@ -18,11 +18,11 @@ checkpoint: 110104
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Decorative images using the <code>&lt;img&gt;</code> tag must have a null <code>alt</code> value.</div>
+        		<div>Decorative images using the <code>&lt;img&gt;</code> tag have a null <code>alt</code> attribute.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The decorative <code>&lt;img&gt;</code> does not have a null <code>alt</code> attribute.</div>
+        		<div>A decorative <code>&lt;img&gt;</code> does not have a null <code>alt</code> attribute.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
@@ -34,7 +34,21 @@ checkpoint: 110104
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Example</h2>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>JPG Image</h3>
+                    <div style="border: 1px solid black; padding: 5px; overflow: hidden;">
+                        <p><img src="{{ baseurl }}/assets/images/11010401-smiling-child.jpg" style="float: left; padding-right: 20px;"></p>
+                        <p>If your children need health coverage, they may be eligible for the Children's Health Insurance Program (CHIP).</p>
+                        <p>CHIP provides low-cost health coverage to children in families that earn too much money to qualify for Medicaid. In some states, CHIP covers pregnant women. Each state offers CHIP coverage, and works closely with its state Medicaid program.</p>
+                    </div>
+        <pre style="clear: both;"><code>&lt;img src="smiling-child.jpg"&gt;</code></pre>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>JPG Image</h3>
                     <div style="border: 1px solid black; padding: 5px; overflow: hidden;">
@@ -49,9 +63,9 @@ checkpoint: 110104
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Interactive images:</strong><br>
-                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
                         <li><strong>Meaningful non-interactive images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
+                        <li><strong>Functional images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
                         <li><strong>Complex images:</strong><br>
                             File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
