@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 13010101
+current: 13010105
 criterion: 1301
 checkpoint: 130101
 last-modified: March 10, 2026
@@ -19,22 +19,19 @@ last-modified: March 10, 2026
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Visible sections of a web page are marked up semantically as landmarks.</div>
+        		<div>Single-use landmarks (banner, contentinfo) appear only once per page.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Visible sections of a web page are not marked up semantically as landmarks.</div>
+        		<div>Multiple instances of a single-use landmark exist.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>
-                    <p>Mark up visible page regions as landmarks:</p>
+                    Remove or consolidate multiple instances of the following:
                     <ul>
                         <li>Header: <code>&lt;header&gt;</code> or <code>role="banner"</code></li>
                         <li>Footer: <code>&lt;footer&gt;</code> or <code>role="contentinfo"</code></li>
-                        <li>Navigation: <code>&lt;nav&gt;</code> or <code>role="navigation"</code></li>
-                        <li>Main: <code>&lt;main&gt;</code> or <code>role="main"</code></li>
-                        <li>Complementary: <code>&lt;aside&gt;</code> or <code>role="complementary"</code></li>
                     </ul>
                 </div>
         	</div>
@@ -43,34 +40,33 @@ last-modified: March 10, 2026
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <pre><code>&lt;html&gt;
-    &lt;header&gt;
-        &lt;img src="logo.png" alt="Yoyodyne Home"&gt;
-        &lt;nav aria-label="main&gt;
+        &lt;header&gt;
+            &lt;img src="logo.png" alt="Yoyodyne Home"&gt;
+            &lt;nav aria-label="main&gt;
+                ...
+            &lt;/nav&gt;
+        &lt;/header&gt;
+        &lt;main&gt;
             ...
-        &lt;/nav&gt;
-        &lt;form aria-label="site search"&gt; ... &lt;/form&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-        ...
-        &lt;aside aria-labelledby="recent"&gt;
-            &lt;h2 id="recent"&gt;Recent Articles&lt;/h2&gt;
-        &lt;/aside&gt;
-    &lt;/main&gt;
-    &lt;footer&gt;
-        &copy; 2024 Yoyodyne Propulsion Systems
-        &lt;nav aria-label="footer"&gt;
-            ...
-        &lt;/nav&gt;
-    &lt;/footer&gt;
-&lt;/html&gt;</code></pre>
+            &lt;aside aria-labelledby="recent"&gt;
+                &lt;h2 id="recent"&gt;Recent Articles&lt;/h2&gt;
+            &lt;/aside&gt;
+        &lt;/main&gt;
+        &lt;footer&gt;
+            &copy; 2024 Yoyodyne Propulsion Systems
+            &lt;nav aria-label="footer"&gt;
+                ...
+            &lt;/nav&gt;
+        &lt;/footer&gt;
+    &lt;/html&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Invalid landmarks:</strong><br>
-                            File under <a href="{{ site.data.1301.1301[13010102].link | prepend: baseurl }}">{{ site.data.1301.1301[13010102].name }}.</a></li>
+                        <li><strong>Missing landmarks:</strong><br>
+                            File under <a href="{{ site.data.1301.1301[13010101].link | prepend: baseurl }}">{{ site.data.1301.1301[13010101].name }}.</a></li>
                         <li><strong>Incorrect landmarks:</strong><br>
                             File under <a href="{{ site.data.1301.1301[13010103].link | prepend: baseurl }}">{{ site.data.1301.1301[13010102].name }}.</a></li>
                     </ul>
@@ -82,7 +78,6 @@ last-modified: March 10, 2026
                     <ul>
                         <li><strong>Blindness/vision impairment:</strong> Page regions are visible at a glance for sighted users. Landmarks allow assistive technology users to have this same information and to easily navigate to different areas of the page.</li>
                     </ul>
-                </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">References</h2>
