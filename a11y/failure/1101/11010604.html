@@ -12,54 +12,84 @@ checkpoint: 110106
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Each video element must have a text alternative which summarizes its purpose.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The video element has a text alternative, but it does not adequately summarize the content of the video.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Change the text alternative to a summary of the content of the video.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <h3>HTML <code>&lt;video&gt;</code></h3>
-                <p>A text alternative that is something like "video player" would not tell the user what the video content is.</p>
-                <video width="320" height="240" controls aria-label="blue tit chirping">
-                    <source src="11010602-blue-tit.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-    <pre><code>&lt;video width="320" height="240" controls <strong>aria-label="blue tit chirping"</strong>&gt;
-    &lt;source src="blue-tit.mp4" type="video/mp4"&gt;
-    Your browser does not support the video tag.
-&lt;/video&gt;</code></pre>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Each video element has a text alternative that summarizes its purpose.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>A video element has a text alternative, but it does not adequately summarize the content of the video.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Change the text alternative to a summary of the content of the video.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>HTML <code>&lt;video&gt;</code></h3>
+                    <p>A text alternative like "video player" does not tell the user what the video content is.</p>
+                    <video width="320" height="240" controls aria-label="video player">
+                        <source src="11010602-blue-tit.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <pre><code>&lt;video width="320" height="240" controls <strong>aria-label="blue tit chirping"</strong>&gt;
+        &lt;source src="blue-tit.mp4" type="video/mp4"&gt;
+        Your browser does not support the video tag.
+    &lt;/video&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Blind and visually impaired users need to have a text alternative to embedded video which summarizes the content so they know what it is without having to play it.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F30">F30: Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-text content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6.html">ARIA6: Using aria-label to provide labels for objects</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>HTML <code>&lt;video&gt;</code></h3>
+                    <video width="320" height="240" controls aria-label="blue tit chirping">
+                        <source src="11010602-blue-tit.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <pre><code>&lt;video width="320" height="240" controls <strong>aria-label="blue tit chirping"</strong>&gt;
+        &lt;source src="blue-tit.mp4" type="video/mp4"&gt;
+        Your browser does not support the video tag.
+    &lt;/video&gt;</code></pre>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Missing text alternative:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[11010602].link | prepend: baseurl }}">{{ site.data.1101.1101[11010602].name }}.</a></li>
+                        <li><strong>Missing audio description or text transcript:</strong><br>
+                            File under <a href="{{ site.data.1201.1201[12010201].link | prepend: baseurl }}">{{ site.data.1201.1201[12010201].name }}.</a></li>
+                        <li><strong>Missing captions:</strong><br>
+                            File under <a href="{{ site.data.1202.1202[12020101].link | prepend: baseurl }}">{{ site.data.1202.1202[12020101].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>Blind and visually impaired users need to have a text alternative to embedded video which summarizes the content so they know what it is without having to play it.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F30">F30: Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6.html">ARIA6: Using aria-label to provide labels for objects</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
