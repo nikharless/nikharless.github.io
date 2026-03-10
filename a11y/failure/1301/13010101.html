@@ -3,6 +3,7 @@ layout: default
 current: 13010101
 criterion: 1301
 checkpoint: 130101
+last-modified: March 10, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1301.1301[page.current] %}
@@ -12,35 +13,36 @@ checkpoint: 130101
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Visible sections of a web page are marked up semantically as landmarks.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Visible sections of the web page are not marked up semantically as landmarks.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <p>Mark up visible page regions as landmarks:</p>
-                <ul>
-                    <li>Header: <code>&lt;header&gt;</code> or <code>role="banner"</code></li>
-                    <li>Footer: <code>&lt;footer&gt;</code> or <code>role="contentinfo"</code></li>
-                    <li>Navigation: <code>&lt;nav&gt;</code> or <code>role="navigation"</code></li>
-                    <li>Main: <code>&lt;main&gt;</code> or <code>role="main"</code></li>
-                    <li>Complementary: <code>&lt;aside&gt;</code> or <code>role="complementary"</code></li>
-                </ul>
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <pre><code>&lt;html&gt;
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Visible sections of a web page are marked up semantically as landmarks.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Visible sections of a web page are not marked up semantically as landmarks.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <p>Mark up visible page regions as landmarks:</p>
+                    <ul>
+                        <li>Header: <code>&lt;header&gt;</code> or <code>role="banner"</code></li>
+                        <li>Footer: <code>&lt;footer&gt;</code> or <code>role="contentinfo"</code></li>
+                        <li>Navigation: <code>&lt;nav&gt;</code> or <code>role="navigation"</code></li>
+                        <li>Main: <code>&lt;main&gt;</code> or <code>role="main"</code></li>
+                        <li>Complementary: <code>&lt;aside&gt;</code> or <code>role="complementary"</code></li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <pre><code>&lt;html&gt;
     &lt;header&gt;
         &lt;img src="logo.png" alt="Yoyodyne Home"&gt;
         &lt;nav aria-label="main&gt;
@@ -61,25 +63,39 @@ checkpoint: 130101
         &lt;/nav&gt;
     &lt;/footer&gt;
 &lt;/html&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Page regions are visible at a glance for sighted users. Landmarks allow assistive technology users to have this same information and to easily navigate to different areas of the page.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA11">ARIA11: Using ARIA landmarks to identify regions of a page</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA20">ARIA20: Using the region role to identify a region of the page</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H101">H101: Using semantic HTML elements to identify regions of a page</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Audio-only (Prerecorded):</strong><br>
+                            File under <a href="{{ site.data.1201.1201[12010103].link | prepend: baseurl }}">{{ site.data.1201.1201[12010103].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/vision impairment:</strong> Page regions are visible at a glance for sighted users. Landmarks allow assistive technology users to have this same information and to easily navigate to different areas of the page.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA11">ARIA11: Using ARIA landmarks to identify regions of a page</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA20">ARIA20: Using the region role to identify a region of the page</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H101">H101: Using semantic HTML elements to identify regions of a page</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
