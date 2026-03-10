@@ -2,6 +2,7 @@
 layout: default
 current: 130101
 criterion: 1301
+last-modified: March 10, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1301.1301[page.current] %}
@@ -11,143 +12,131 @@ criterion: 1301
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Overview</h2>
 
-    <p>Examples of scenarios that fall under this checkpoint include:</p>
-    <ul>
-        <li>Page landmarks</li>
-        <li>Blockquotes</li>
-        <li>Inserted and/or deleted text</li>
-        <li>Relationships conveyed by visual characteristics such as color or shape</li>
-    </ul>
+        <p>Examples of scenarios that fall under this checkpoint include:</p>
+        <ul>
+            <li>Page landmarks</li>
+            <li>Blockquotes</li>
+            <li>Inserted and/or deleted text</li>
+            <li>Relationships conveyed by visual characteristics such as color or shape</li>
+        </ul>
 
+        </div>
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+        <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+            <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+        <ul>
+            <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Landmark regions should be marked up with native HTML elements if possible. Adding the ARIA role in addition to these is no longer necessary.</li>
+            <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> All page content should be included in landmarks.</li>
+        </ul>
+
+        <div class="userstory"><strong>User Story:</strong> As a blind user, I want to understand the structure of the page.</div>
+
+        <div class="success"><strong>Success:</strong> If you could not see the structure of a page, when you read the page with a screen reader, you would be able to distinguish the regions.</div>
+
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+        <script src="{{ baseurl }}/assets/js/tree.js"></script>
+        <h3 id="test1">Is the page visually divided into distinct regions such as header, footer, navigation, and main content?</h3>
+        <ul role="tree" aria-labelledby="test1">
+            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the essential regions (header, footer, navigation, and main) marked up as landmarks?</span>
+                <ul role="group">
+                    <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the landmarks valid?</span>
+                        <ul role="group">
+                            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the landmarks used according to their semantic meaning?</span>
+                                <ul role="group">
+                                    <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are header, main, aside, and footer regions top-level landmarks and not nested within other landmarks?</span>
+                                        <ul role="group">
+                                            <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there more than one of a particular type of landmark?</span>
+                                                <ul role="group">
+                                                    <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the landmark a header, footer, or main content area?</span>
+                                                        <ul role="group">
+                                                            <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010105].link | prepend: baseurl }}">{{ site.data.1301.1301[13010105].name }}.</a></span></li>
+                                                            <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does each instance have a unique label?</span>
+                                                                <ul role="group">
+                                                                    <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                                    <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010106].link | prepend: baseurl }}">{{ site.data.1301.1301[13010106].name }}.</a></span></li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                                                </ul>
+                                            <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010104].link | prepend: baseurl }}">{{ site.data.1301.1301[13010104].name }}.</a></span></li>
+                                        </ul>
+                                    </li>
+                                    <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010103].link | prepend: baseurl }}">{{ site.data.1301.1301[13010103].name }}.</a></span></li>
+                                </ul>
+                            </li>
+                            <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010102].link | prepend: baseurl }}">{{ site.data.1301.1301[13010102].name }}.</a></span></li>
+                        </ul>
+                    <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010101].link | prepend: baseurl }}">{{ site.data.1301.1301[13010101].name }}.</a></span></li>
+                </ul>
+            </li>
+            <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable.</span></li>
+        </ul>
+
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+        <ul>
+            <li><a href="{{ site.data.1301.1301[13010101].link | prepend: baseurl }}">{{ site.data.1301.1301[13010101].name }}</a> (Medium)</li>
+            <li><a href="{{ site.data.1301.1301[13010102].link | prepend: baseurl }}">{{ site.data.1301.1301[13010102].name }}</a> (Medium)</li>
+            <li><a href="{{ site.data.1301.1301[13010103].link | prepend: baseurl }}">{{ site.data.1301.1301[13010103].name }}</a> (Medium)</li>
+            <li><a href="{{ site.data.1301.1301[13010104].link | prepend: baseurl }}">{{ site.data.1301.1301[13010104].name }}</a> (Medium)</li>
+            <li><a href="{{ site.data.1301.1301[13010105].link | prepend: baseurl }}">{{ site.data.1301.1301[13010105].name }}</a> (Medium)</li>
+            <li><a href="{{ site.data.1301.1301[13010106].link | prepend: baseurl }}">{{ site.data.1301.1301[13010106].name }}</a> (Medium)</li>
+        </ul>
+
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+        <ul>
+            <li>Screen reader</li>
+            <li>Web:
+                <ul>
+                    <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
+                    <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+        <h3>WCAG</h3>
+        <ul>
+            <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
+            <li>Related Techniques:
+                <ul>
+                    <li>General:
+                        <ul>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G115">G115: Using semantic elements to mark up structure</a></li>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G140">G140: Separating information and structure from presentation to enable different presentations</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Additional Information</h3>
+        <ul>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/">W3: Landmark Regions</a></li>
+        </ul>
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Landmark regions should be marked up with native HTML elements if possible. Adding the ARIA role in addition to these is no longer necessary.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> All page content should be included in landmarks.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a blind user, I want to understand the structure of the page.</div>
-
-    <div class="success"><strong>Success:</strong> If you could not see the structure of a page, when you read the page with a screen reader, you would be able to distinguish the regions.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is the page visually divided into distinct regions such as header, footer, navigation, and main content?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the essential regions (header, footer, navigation, and main) marked up as landmarks?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the landmarks used according to their semantic meaning?</span>
-                    <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are header, main, aside, and footer regions top-level landmarks and not nested within other landmarks?</span>
-                            <ul role="group">
-                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there more than one of a particular type of landmark?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the landmark a header, footer, or main content area?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; Remove or combine any multiples of these. There must be only one of each.</span></li>
-                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does each instance have a unique label?</span>
-                                                    <ul role="group">
-                                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; Give each instance a unique label.</span></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-                                    </ul>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; Move header, main, aside, and footer landmarks to the top level beneath the <code>&lt;body&gt;</code> tag.</span></li>
-                            </ul>
-                        </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Ensure correct and valid tags or ARIA roles are used.</span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the region a header?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; Use <code>&lt;header&gt;</code> or <code>role="banner"</code> to mark the region as a header.</span>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the region a footer?</span>
-                            <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; Use <code>&lt;footer&gt;</code> or <code>role="contentinfo"</code> to mark the region as a footer.</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the region a navigation area?</span>
-                                    <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; Use <code>&lt;nav&gt;</code> or <code>role="navigation"</code> to mark the region as a navigation area.</span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the region the main content area?</span>
-                                            <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; Use <code>&lt;main&gt;</code> or <code>role="main"</code> to mark the region as the main content area.</span></li>
-                                                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1301.1301[13010101].link | prepend: baseurl }}">{{ site.data.1301.1301[13010101].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1301.1301[13010102].link | prepend: baseurl }}">{{ site.data.1301.1301[13010102].name }}</a> (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-        <li>Web:
-            <ul>
-                <li><a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Chrome Developer Tools</a></li>
-                <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Firefox Web Developer Tools</a></li>
-            </ul>
-        </li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
-        <li>Related Techniques:
-            <ul>
-                <li>General:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G115">G115: Using semantic elements to mark up structure</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G140">G140: Separating information and structure from presentation to enable different presentations</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/">W3: Landmark Regions</a></li>
-    </ul>
-    </div>
-</div>
     {% include checkpoints/1301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
