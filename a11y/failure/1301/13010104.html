@@ -19,19 +19,16 @@ last-modified: March 10, 2026
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Visible sections of a web page are marked up semantically as landmarks.</div>
+        		<div>Top-level landmarks (banner, complementary, contentinfo, main) are not nested within other landmarks.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Visible sections of a web page are marked up as landmarks, but a landmark is invalid.</div>
+        		<div>A top-level landmark is incorrectly nested within another landmark.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>
-                    Ensure regions are nested correctly:
-                    <ul>
-                        <li>The <code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> elements must reside at the top level. If they are nested, they are not recognized as header or footer regions.</li>
-                    </ul>
+                    Move banner, complementary, contentinfo, and main landmarks to the top level.
                 </div>
         	</div>
             <div class="row block">
