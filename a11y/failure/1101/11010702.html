@@ -3,6 +3,7 @@ layout: default
 current: 11010702
 criterion: 1101
 checkpoint: 110107
+last-modified: March 9, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1101.1101[page.current] %}
@@ -12,38 +13,50 @@ checkpoint: 110107
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Text characters used to represent images have a text alternative describing their meaning.</div>
-    	</div>
-    	<div class="row block">
-    		<h2>Actual Result</h2>
-    		<div>Text characters used to represent images do not have a text alternative describing their meaning.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ol>
-                    <li>Enclose the text image in a <code>&lt;span&gt;</code> element and give it <code>role="img"</code>.</li>
-                    <li>Add an <code>aria-label</code> attribute to the <code>&lt;span&gt;</code> element and set it to a text alternative which describes its meaning.</li>
-                </ol>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Text characters used to represent images have a text alternative describing their meaning.</div>
+        	</div>
+        	<div class="row block">
+        		<h2>Actual Result</h2>
+        		<div>Text characters used to represent images do not have a text alternative describing their meaning.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ol>
+                        <li>Enclose the text image in a <code>&lt;span&gt;</code> element and give it <code>role="img"</code>.</li>
+                        <li>Add an <code>aria-label</code> attribute to the <code>&lt;span&gt;</code> element and set it to a text alternative which describes its meaning.</li>
+                    </ol>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>Emoticons</h3>
+                    <p>:)</p>
+                    <p>&gt;_&gt;</p>
+                    <pre><code>:)
+&gt;_&gt;</code></pre>
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <h3>Emoticons</h3>
-                <p><span role="img" aria-label="smile">:)</span></p>
-                <p><span role="img" aria-label="sideways glance">&gt;_&gt;</span></p>
-                <pre><code><strong>&lt;span role="img" aria-label="smile"&gt;</strong> :) <strong>&lt;/span&gt;</strong>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Emoticons</h3>
+                    <p><span role="img" aria-label="smile">:)</span></p>
+                    <p><span role="img" aria-label="sideways glance">&gt;_&gt;</span></p>
+                    <pre><code><strong>&lt;span role="img" aria-label="smile"&gt;</strong> :) <strong>&lt;/span&gt;</strong>
 <strong>&lt;span role="img" aria-label="sideways glance"&gt;</strong> &gt;_&gt; <strong>&lt;/span&gt;</strong></code></pre>
 
-                <h3>ASCII Art</h3>
-                <pre aria-label="cat" role="img">      \    /\
+                    <h3>ASCII Art</h3>
+                    <pre aria-label="cat" role="img">      \    /\
        )  ( ')
       (  /  )
        \(__)|</pre>
@@ -51,26 +64,44 @@ checkpoint: 110107
        )  ( ')
       (  /  )
        \(__)|&lt;/pre&gt;</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Without a text alternative, blind and visually impaired users would hear the actual text characters rather than what the author intended them to mean.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F72">F72: Failure of Success Criterion 1.1.1 due to using ASCII art without providing a text alternative</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-text content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H86">H86: Providing text alternatives for emojis, emoticons, ASCII art, and leetspeak</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Meaningful images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110101].link | prepend: baseurl }}">{{ site.data.1101.1101[110101].name }}.</a></li>
+                        <li><strong>Functional images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110102].link | prepend: baseurl }}">{{ site.data.1101.1101[110102].name }}.</a></li>
+                        <li><strong>Complex images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110103].link | prepend: baseurl }}">{{ site.data.1101.1101[110103].name }}.</a></li>
+                        <li><strong>Decorative images:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                        <li><strong>CAPTCHA:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[110105].link | prepend: baseurl }}">{{ site.data.1101.1101[110105].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>Without a text alternative, blind and visually impaired users would hear the actual text characters rather than what the author intended them to mean.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.1.1: Non-text Content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F72">F72: Failure of Success Criterion 1.1.1 due to using ASCII art without providing a text alternative</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G100">G100: Providing a short text alternative which is the accepted name or a descriptive name of the non-text content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H86">H86: Providing text alternatives for emojis, emoticons, ASCII art, and leetspeak</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1101checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
