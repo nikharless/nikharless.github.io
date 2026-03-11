@@ -3,6 +3,7 @@ layout: default
 current: 13010304
 criterion: 1301
 checkpoint: 130103
+last-modified: March 11, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1301.1301[page.current] %}
@@ -12,85 +13,91 @@ checkpoint: 130103
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>If the label for an individual control in a group of controls does not provide enough context to understand the purpose of the control, the control is programmatically associated with the group label.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>The label for an individual option in a group of options in a selection list does not provide enough context to understand the purpose of the option, and the option is not programmatically associated with the group label.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <p>Use the <code>&lt;optgroup&gt;</code> element to group the options.</p>
-                <ul>
-                    <li>Enclose the entire group of options in an <code>&lt;optgroup&gt;</code> element.</li>
-                    <li>Place the group label in a <code>label</code> attribute in the <code>&lt;optgroup&gt;</code> element.</li>
-                </ul>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>If the label for an individual option in a group of options in a <code>&lt;select&gt;</code> control does not provide enough context to understand the purpose of the option, the option group is programmatically associated with the option group label.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>The label for an individual option in a group of options in a <code>&lt;select&gt;</code> control does not provide enough context to understand the purpose of the option, and the option group is not programmatically associated with the group label.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <p>Use the <code>&lt;optgroup&gt;</code> element to group the options.</p>
+                    <ul>
+                        <li>Enclose the entire group of options in an <code>&lt;optgroup&gt;</code> element.</li>
+                        <li>Place the group label in a <code>label</code> attribute in the <code>&lt;optgroup&gt;</code> element.</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <label for="pancakeToppings">Pancake Toppings</label>
+                    <select id="pancakeToppings" name="pancakeToppings">
+                        <optgroup label="Fruits">
+                            <option value="1">Apples</option>
+                            <option value="2">Bananas</option>
+                            <option value="3">Blueberries</option>
+                        </optgroup>
+                        <optgroup label="Syrups">
+                            <option value="4">Maple</option>
+                            <option value="5">Blueberry</option>
+                            <option value="6">Strawberry</option>
+                        </optgroup>
+                        <optgroup label="Extras">
+                            <option value="7">Cinnamon</option>
+                            <option value="8">Pecans</option>
+                            <option value="9">Whipped Cream</option>
+                        </optgroup>
+                    </select>
+                    <pre><code>&lt;label for="pancakeToppings">Pancake Toppings&lt;/label>
+    &lt;select id="pancakeToppings" name="pancakeToppings">
+        &lt;optgroup <strong>label="Fruits"</strong>&gt;
+            &lt;option value="1">Apples&lt;/option&gt;
+            &lt;option value="2">Bananas&lt;option&gt;
+            &lt;option value="3">Blueberries&lt;option&gt;
+        &lt;/optgroup&gt;
+        &lt;optgroup <strong>label="Syrups"</strong>&gt;
+            &lt;option value="4">Maple&lt;option&gt;
+            &lt;option value="5">Blueberry&lt;option&gt;
+            &lt;option value="6">Strawberry&lt;option&gt;
+        &lt;/optgroup>
+        &lt;optgroup <strong>label="Extras"</strong>&gt;
+            &lt;option value="7">Cinnamon&lt;/option>
+            &lt;option value="8">Pecans&lt;option&gt;
+            &lt;option value="9">Whipped Cream&lt;option&gt;
+        &lt;/optgroup&gt;
+    &lt;/select&gt;</code></pre>
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <label for="pancakeToppings">Pancake Toppings</label>
-                <select id="pancakeToppings" name="pancakeToppings">
-                    <optgroup label="Fruits">
-                        <option value="1">Apples</option>
-                        <option value="2">Bananas</option>
-                        <option value="3">Blueberries</option>
-                    </optgroup>
-                    <optgroup label="Syrups">
-                        <option value="4">Maple</option>
-                        <option value="5">Blueberry</option>
-                        <option value="6">Strawberry</option>
-                    </optgroup>
-                    <optgroup label="Extras">
-                        <option value="7">Cinnamon</option>
-                        <option value="8">Pecans</option>
-                        <option value="9">Whipped Cream</option>
-                    </optgroup>
-                </select>
-                <pre><code>&lt;label for="pancakeToppings">Pancake Toppings&lt;/label>
-&lt;select id="pancakeToppings" name="pancakeToppings">
-    <strong>&lt;optgroup label="Fruits"&gt;</strong>
-        &lt;option value="1">Apples&lt;/option&gt;
-        &lt;option value="2">Bananas&lt;option&gt;
-        &lt;option value="3">Blueberries&lt;option&gt;
-    <strong>&lt;/optgroup&gt;
-    &lt;optgroup label="Syrups"&gt;</strong>
-        &lt;option value="4">Maple&lt;option&gt;
-        &lt;option value="5">Blueberry&lt;option&gt;
-        &lt;option value="6">Strawberry&lt;option&gt;
-    <strong>&lt;/optgroup>
-    &lt;optgroup label="Extras"&gt;</strong>
-        &lt;option value="7">Cinnamon&lt;/option>
-        &lt;option value="8">Pecans&lt;option&gt;
-        &lt;option value="9">Whipped Cream&lt;option&gt;
-    <strong>&lt;/optgroup&gt;</strong>
-&lt;/select&gt;</code></pre>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blindness/Visual Impairment:</strong> Assistive technology users browsing through a form will not hear group labels unless they are programmatically associated. Screen readers in forms mode will ignore any text that is not programmatically associated with form controls.</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Assistive technology users browsing through a form will not hear group labels unless they are programmatically associated. Screen readers in forms mode will ignore any text that is not programmatically associated with form controls.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H85">H85: Using optgroup to group option elements inside a select</a></li>
-                    <li><a href="https://www.w3.org/WAI/tutorials/forms/grouping/">W3: Grouping Controls</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H85">H85: Using optgroup to group option elements inside a select</a></li>
+                        <li><a href="https://www.w3.org/WAI/tutorials/forms/grouping/">W3: Grouping Controls</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1301checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
