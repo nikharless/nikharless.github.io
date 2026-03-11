@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 13010301
+current: 13010305
 criterion: 1301
 checkpoint: 130103
 css: checkbox
@@ -20,24 +20,29 @@ last-modified: March 11, 2026
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>If the label for an individual checkbox in a group of checkboxes does not provide enough context to understand the purpose of the checkbox, the checkbox group is programmatically associated with the group label.</div>
+        		<div>If individual labels for controls in a group do not provide enough context to understand the purpose of the control, the controls are programmatically grouped.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The label for an individual checkbox in a group of checkboxes does not provide enough context to understand the purpose of the checkbox, and the checkbox group is not programmatically associated with the group label.</div>
+        		<div>The individual labels for controls in a group do not provide enough context to understand the purpose of the control, and the controls are not programmatically grouped.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>
                     <h3>Native HTML (Preferred Method)</h3>
-                    <p>Place the group label inside a <code>&lt;legend&gt;</code> element as a child of the <code>&lt;fieldset&gt;</code> element.</p>
-
-                    <strong>OR</strong>
-
-                    <h3>ARIA</h3>
+                    <p>Use the <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> tags to group the controls.</p>
                     <ul>
+                        <li>Enclose the entire group of controls in a <code>&lt;fieldset&gt;</code> element.</li>
+                        <li>Place the group label inside a <code>&lt;legend&gt;</code> element as a child of the <code>&lt;fieldset&gt;</code> element.</li>
+                    </ul>
+                    <strong>OR</strong>
+                    <h3>ARIA</h3>
+                    <p>Use ARIA to group the controls.</p>
+                    <ul>
+                        <li>Create a parent element for the control group.</li>
+                        <li>Add the <code>role="group"</code> attribute to the parent element.</li>
                         <li>Add an <code>id</code> attribute to the tag containing the group label text, and set it to a unique value.</li>
-                        <li>Add an <code>aria-labelledby</code> attribute to the <code>role="group"</code> element and point it to the <code>id</code> of the group label tag.</li>
+                        <li>Add an <code>aria-labelledby</code> attribute to the parent (group) element and point it to the <code>id</code> of the group label tag.</li>
                     </ul>
                 </div>
         	</div>
@@ -52,15 +57,15 @@ last-modified: March 11, 2026
                         <label for="berries"><input type="checkbox" name="toppings" id="berries"> Blueberries</label><br>
                         <label for="cream"><input type="checkbox" name="toppings" id="cream"> Whipped cream</label>
                     </fieldset>
-                    <pre><code>&lt;fieldset&gt;
-        <strong>&lt;legend&gt;Pancake Toppings&lt;/legend&gt;</strong>
+                    <pre><code><strong>&lt;fieldset&gt;
+        &lt;legend&gt;Pancake Toppings&lt;/legend&gt;</strong>
         &lt;input type="checkbox" name="toppings" id="syrup"&gt;
         &lt;label for="syrup"&gt;Maple syrup&lt;/label&gt;&lt;br&gt;
         &lt;input type="checkbox" name="toppings" id="berries"&gt;
         &lt;label for="berries"&gt;Blueberries&lt;/label>&lt;br&gt;
         &lt;input type="checkbox" name="toppings" id="cream"&gt;
         &lt;label for="cream"&gt;Whipped cream&lt;/label&gt;
-    &lt;/fieldset&gt;</code></pre>
+    <strong>&lt;/fieldset&gt;</strong></code></pre>
 
                     <h3>ARIA</h3>
                     <p id="toppingsLabel">Pancake Toppings</p>
@@ -70,7 +75,7 @@ last-modified: March 11, 2026
                       <label for="cream2"><input type="checkbox" name="toppings" id="cream2"> Whipped cream</label>
                     </div>
                     <pre><code>&lt;p <strong>id="toppingsLabel"</strong>&gt;Pancake Toppings&lt;/p&gt;
-    &lt;div role="group" <strong>aria-labelledby="toppingsLabel"</strong>&gt;
+    &lt;div <strong>role="group" aria-labelledby="toppingsLabel"</strong>&gt;
         &lt;input type="checkbox" name="toppings" id="syrup"&gt;
         &lt;label for="syrup"&gt;Maple syrup&lt;/label&gt;&lt;br&gt;
         &lt;input type="checkbox" name="toppings" id="berries"&gt;
@@ -81,12 +86,23 @@ last-modified: March 11, 2026
                 </div>
             </div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Assistive technology users browsing through a form will not hear group labels unless they are programmatically associated. Screen readers in forms mode will ignore any text that is not programmatically associated with form controls.</li>
+                        <li><strong>Grouped checkboxes:</strong><br>
+                            File under <a href="{{ site.data.1301.1301[13010301].link | prepend: baseurl }}">{{ site.data.1301.1301[13010301].name }}.</a></li>
+                        <li><strong>Grouped radio buttons:</strong><br>
+                            File under <a href="{{ site.data.1301.1301[13010302].link | prepend: baseurl }}">{{ site.data.1301.1301[13010302].name }}.</a></li>
+                        <li><strong>Grouped form controls:</strong><br>
+                            File under <a href="{{ site.data.1301.1301[13010303].link | prepend: baseurl }}">{{ site.data.1301.1301[13010303].name }}.</a></li>
+                        <li><strong>Grouped <code>&lt;select&gt;</code> options:</strong><br>
+                            File under <a href="{{ site.data.1301.1301[13010304].link | prepend: baseurl }}">{{ site.data.1301.1301[13010304].name }}.</a></li>
                     </ul>
                 </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>Assistive technology users browsing through a form will not hear group labels unless they are programmatically associated. Screen readers in forms mode will ignore any text that is not programmatically associated with form controls.</div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">References</h2>
@@ -94,7 +110,6 @@ last-modified: March 11, 2026
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H71">H71: Providing a description for groups of form controls using fieldset and legend elements</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA17">ARIA17: Using grouping roles to identify related form controls</a></li>
                         <li><a href="https://www.w3.org/WAI/tutorials/forms/grouping/">W3: Grouping Controls</a></li>
                     </ul>
