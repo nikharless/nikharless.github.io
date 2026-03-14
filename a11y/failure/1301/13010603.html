@@ -1,0 +1,100 @@
+---
+layout: default
+current: 13010603
+criterion: 1301
+checkpoint: 130106
+css: table
+last-modified: March 14, 2026
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.1301.1301[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.1301.1301[page.criterion] %}
+{% assign cp=site.data.1301.1301[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Form elements are programmatically associated with their visible associations.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>A form element is not programmatically associated with a visible association.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Error Next to Field</h3>
+                    <div class="example">
+                        <p>All fields are required.</p>
+                        <form>
+                            <label style="margin-bottom: 10px">First Name:<br>
+                                <input type="text" required aria-invalid="true" aria-describedby="fnameError" readonly><br>
+                                <span id="fnameError" class="error-text">First Name is required.</span><br>
+                            </label>
+                            <label style="margin-bottom: 10px">Last Name:<br>
+                                <input type="text" value="Smith" required value="Smith" readonly>
+                            </label>
+                            <label>Date of Birth (mm/dd/yyyy):<br>
+                                <input type="text" required aria-invalid="true" aria-describedby="dobError" value="Jan 1 1999" readonly><br>
+                                <span id="dobError" class="error-text">Date of Birth must be in format: mm/dd/yyyy</span>
+                            </label>
+                        </form>
+
+                        <pre><code>&lt;label>First Name:
+    &lt;input type="text" required aria-invalid="true" <strong>aria-describedby="fnameError"</strong>&gt;
+    &lt;span <strong>id="fnameError"</strong>&gt;First Name is required.&lt;/span&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Data tables</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Blind/visual impairment:</strong> Screen reader users hear the table header cell text when they navigate to the form element cell without having to search around to find it.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F91">F91: Failure of Success Criterion 1.3.1 for not correctly marking up table headers</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H63">H63: Using the scope attribute to associate header cells with data cells in data tables</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H43">H43: Using id and headers attributes to associate data cells with header cells in data tables</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/1301checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
