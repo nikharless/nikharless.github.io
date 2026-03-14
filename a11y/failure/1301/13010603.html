@@ -36,6 +36,27 @@ last-modified: March 14, 2026
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
+                    <h3>Error Next to Field</h3>
+                    <div class="example">
+                        <p>All fields are required.</p>
+                        <form>
+                            <label style="margin-bottom: 10px">First Name:<br>
+                                <input type="text" required aria-invalid="true" readonly><br>
+                                <span id="fnameError" class="error-text">First Name is required.</span><br>
+                            </label>
+                            <label style="margin-bottom: 10px">Last Name:<br>
+                                <input type="text" value="Smith" required value="Smith" readonly>
+                            </label>
+                            <label>Date of Birth (mm/dd/yyyy):<br>
+                                <input type="text" required aria-invalid="true" value="Jan 1 1999" readonly><br>
+                                <span id="dobError" class="error-text">Date of Birth must be in format: mm/dd/yyyy</span>
+                            </label>
+                        </form>
+
+                        <pre><code>&lt;label>First Name:
+    &lt;input type="text" required aria-invalid="true"&gt;
+    &lt;span <strong>id="fnameError"</strong>&gt;First Name is required.&lt;/span&gt;</code></pre>
+                    </div>
                 </div>
             </div>
             <div class="row block">
