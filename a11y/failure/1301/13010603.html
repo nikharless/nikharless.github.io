@@ -29,7 +29,11 @@ last-modified: March 14, 2026
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>
-
+                    <h3>Error message</h3>
+                    <ol>
+                        <li>Add an <code>id</code> attribute to the error message container and set it to a unique name.</li>
+                        <li>Add the <code>aria-describedby</code> attribute to the <code>&lt;input&gt;</code> field and point it to the <code>id</code> value of the error message.</li>
+                    </ol>
                 </div>
         	</div>
             <div class="row block">
@@ -40,14 +44,14 @@ last-modified: March 14, 2026
                     <div class="example">
                         <p>All fields are required.</p>
                         <form>
-                            <label style="margin-bottom: 10px">First Name:<br>
+                            <label class="block_label" style="margin-bottom: 10px">First Name:<br>
                                 <input type="text" required aria-invalid="true" readonly><br>
                                 <span id="fnameError" class="error-text">First Name is required.</span><br>
                             </label>
-                            <label style="margin-bottom: 10px">Last Name:<br>
+                            <label class="block_label" style="margin-bottom: 10px">Last Name:<br>
                                 <input type="text" value="Smith" required value="Smith" readonly>
                             </label>
-                            <label>Date of Birth (mm/dd/yyyy):<br>
+                            <label class="block_label">Date of Birth (mm/dd/yyyy):<br>
                                 <input type="text" required aria-invalid="true" value="Jan 1 1999" readonly><br>
                                 <span id="dobError" class="error-text">Date of Birth must be in format: mm/dd/yyyy</span>
                             </label>
@@ -55,7 +59,7 @@ last-modified: March 14, 2026
 
                         <pre><code>&lt;label>First Name:
     &lt;input type="text" required aria-invalid="true"&gt;
-    &lt;span <strong>id="fnameError"</strong>&gt;First Name is required.&lt;/span&gt;</code></pre>
+    &lt;span id="fnameError"&gt;First Name is required.&lt;/span&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -67,14 +71,14 @@ last-modified: March 14, 2026
                     <div class="example">
                         <p>All fields are required.</p>
                         <form>
-                            <label style="margin-bottom: 10px">First Name:<br>
+                            <label class="block_label" style="margin-bottom: 10px">First Name:<br>
                                 <input type="text" required aria-invalid="true" aria-describedby="fnameError1" readonly><br>
                                 <span id="fnameError1" class="error-text">First Name is required.</span><br>
                             </label>
-                            <label style="margin-bottom: 10px">Last Name:<br>
+                            <label class="block_label" style="margin-bottom: 10px">Last Name:<br>
                                 <input type="text" value="Smith" required value="Smith" readonly>
                             </label>
-                            <label>Date of Birth (mm/dd/yyyy):<br>
+                            <label class="block_label">Date of Birth (mm/dd/yyyy):<br>
                                 <input type="text" required aria-invalid="true" aria-describedby="dobError1" value="Jan 1 1999" readonly><br>
                                 <span id="dobError1" class="error-text">Date of Birth must be in format: mm/dd/yyyy</span>
                             </label>
