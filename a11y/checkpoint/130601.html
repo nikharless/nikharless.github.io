@@ -32,17 +32,62 @@ last-modified: March 16, 2026
         <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
-            <h3 id="test1">?</h3>
+
+            <h3 id="test1">Does the page contain informational icons?</h3>
             <ul role="tree" aria-labelledby="test1">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; ?</span>
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the icon have a text alternative?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See </span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative accurately describe the purpose of the icon?</span>
+                            <ul role="group">
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the text alternative for each icon consistent across the site?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1306.1306[13060105].link | prepend: baseurl }}">{{ site.data.1306.1306[13060105].name }}</a>.</span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1306.1306[13060101].link | prepend: baseurl }}">{{ site.data.1306.1306[13060101].name }}</a>.</span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010101].link | prepend: baseurl }}">{{ site.data.1101.1101[1101].name }}</a>.</span></li>
                     </ul>
-                </li>
-                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
             </ul>
 
+            <h3 id="test2">Does the page contain form elements?</h3>
+            <ul role="tree" aria-labelledby="test2">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the form elements have a programmatically identifiable purpose?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the programmatically identifiable purpose consistent across the site?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1306.1306[13060105].link | prepend: baseurl }}">{{ site.data.1306.1306[13060105].name }}</a>.</span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1306.1306[13060102].link | prepend: baseurl }}">{{ site.data.1306.1306[13060102].name }}</a>.</span></li>
+                    </ul>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
+            </ul>
+
+            <h3 id="test3">Does the page contain links?</h3>
+            <ul role="tree" aria-labelledby="test3">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the purpose of each link be programmatically determined?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the programmatically determined link purpose consistent across the site?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1306.1306[13060105].link | prepend: baseurl }}">{{ site.data.1306.1306[13060105].name }}</a>.</span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1306.1306[13060103].link | prepend: baseurl }}">{{ site.data.1306.1306[13060103].name }}</a>.</span></li>
+                    </ul>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
+            </ul>
+
+            <h3 id="test4">Are all page regions marked up as landmarks?</h3>
+            <ul role="tree" aria-labelledby="test4">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1306.1306[13060104].link | prepend: baseurl }}">{{ site.data.1306.1306[13060104].name }}</a></span></li>
+            </ul>
         </div>
 
         <div class="block">
@@ -50,11 +95,11 @@ last-modified: March 16, 2026
 
             <h3>Desktop</h3>
             <ol>
-                <li>Verify that landmark regions are marked up programmatically.
+                <li>Verify that icons have a programmatically determinable purpose.
                     <ol>
-                        <li>Visually locate the regions of the web page.</li>
-                        <li>Use ANDI: structures and select "landmarks".</li>
-                        <li>Verify that ANDI identifies a landmark region for each visible page region.</li>
+                        <li>Use ANDI: graphics/images to check the ANDI Output of informational icons.</li>
+                        <li>Verify that the ANDI Output provides an accurate description of the purpose of the icon.</li>
+                        <li>Verify that icons with the same purpose are identified consistently.</li>
                     </ol>
                 </li>
                 <li>Verify that user interface components have a programmatically determinable purpose.
@@ -71,14 +116,14 @@ last-modified: March 16, 2026
                         <li>Verify that links with the same destination are identified consistently.</li>
                     </ol>
                 </li>
-                <li>Verify that icons have a programmatically determinable purpose.
+                <li>Verify that landmark regions are marked up programmatically.
                     <ol>
-                        <li>Use ANDI: graphics/images to check the ANDI Output of informational icons.</li>
-                        <li>Verify that the ANDI Output provides an accurate description of the purpose of the icon.</li>
-                        <li>Verify that icons with the same purpose are identified consistently.</li>
+                        <li>Visually locate the regions of the web page.</li>
+                        <li>Use ANDI: structures and select "landmarks".</li>
+                        <li>Verify that ANDI identifies a landmark region for each visible page region.</li>
                     </ol>
                 </li>
-                <li>
+                <li>Verify that the programmatically determinable purpose for informational icons, user interface components, and links are consistent across the site.</li>
             </ol>
         </div>
 
