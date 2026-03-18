@@ -30,7 +30,7 @@ last-modified: March 18, 2026
         		<div>
                     <p>Add the purpose of the user interface component using the following methods:
                     <ul>
-                        <li>Use native HTML elements (<code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>) where possible.</li>
+                        <li>Use native HTML elements (<code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>/<code>&lt;label&gt;</code>, <code>&lt;select&gt;</code>) where possible.</li>
                         <li>Add the purpose of the user interface component using an <code>aria-label</code>, <code>aria-labelledby</code>, or <code>aria-describedby</code> attribute.</li>
                     </ul>
                 </div>
@@ -46,9 +46,12 @@ last-modified: March 18, 2026
                     <pre><code>&lt;button&gt;🔍&lt;/button&gt;</code></pre>
 
                     <h3>Search field</h3>
+                    <p>This example has a visible label that describes its purpose, but it is not programmatically associated with the input.</p>
+                    <p><b>Search</b></p>
                     <p><input type="text" placeholder="Search..."></p>
                     
-                    <pre><code>&lt;input type="text" placeholder="Search..."&gt;</code></pre>
+                    <pre><code>&lt;b&gt;Search&lt;/b&gt;
+&lt;input type="text" placeholder="Search..."&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
@@ -62,9 +65,11 @@ last-modified: March 18, 2026
                     <pre><code>&lt;button aria-label="search"&gt;🔍&lt;/button&gt;</code></pre>
 
                     <h3>Search field</h3>
-                    <p><input type="text" placeholder="Search..." aria-label="Search"></p>
+                    <p><label for="search-field"><b>Search</b></label></p>
+                    <p><input id="search-field" type="text" placeholder="Search..."></p>
 
-                    <pre><code>&lt;input type="text" placeholder="Search..." <strong>aria-label="Search"</strong>&gt;</code></pre>
+                    <pre><code><strong>&lt;label for="search-field"&gt;&lt;b&gt;Search&lt;/b&gt;&lt;/label&gt;</strong>
+&lt;input <strong>id="search-field"</strong> type="text" placeholder="Search..."&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
