@@ -19,19 +19,22 @@ last-modified: March 18, 2026
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>The purpose of user interface components can be programmatically determined.</div>
+        		<div>Page regions are marked up as landmarks.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The purpose of a user interface component cannot be programmatically determined.</div>
+        		<div>A page region is not marked up as a landmark.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>
-                    <p>Add the purpose of the user interface component using the following methods:
+                    <p>Mark up visible page regions as landmarks:</p>
                     <ul>
-                        <li>Use native HTML elements (<code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>/<code>&lt;label&gt;</code>, <code>&lt;select&gt;</code>) where possible.</li>
-                        <li>Add the purpose of the user interface component using an <code>aria-label</code>, <code>aria-labelledby</code>, or <code>aria-describedby</code> attribute.</li>
+                        <li>Header: <code>&lt;header&gt;</code> or <code>role="banner"</code></li>
+                        <li>Footer: <code>&lt;footer&gt;</code> or <code>role="contentinfo"</code></li>
+                        <li>Navigation: <code>&lt;nav&gt;</code> or <code>role="navigation"</code></li>
+                        <li>Main: <code>&lt;main&gt;</code> or <code>role="main"</code></li>
+                        <li>Complementary: <code>&lt;aside&gt;</code> or <code>role="complementary"</code></li>
                     </ul>
                 </div>
         	</div>
@@ -39,45 +42,61 @@ last-modified: March 18, 2026
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Button</h3>
-                    <p>The purpose of this button is to open a search bar. This example has no means of communicating the purpose to assistive technology.</p>
-                    <p><button style="width:44px; height: 44px; font-size: larger;">🔍</button></p>
-
-                    <pre><code>&lt;button&gt;🔍&lt;/button&gt;</code></pre>
-
-                    <h3>Search field</h3>
-                    <p>This example has a visible label that describes its purpose, but it is not programmatically associated with the input.</p>
-                    <p><b>Search</b></p>
-                    <p><input type="text" placeholder="Search..."></p>
-                    
-                    <pre><code>&lt;b&gt;Search&lt;/b&gt;
-&lt;input type="text" placeholder="Search..."&gt;</code></pre>
+                    <pre><code>&lt;html&gt;
+    &lt;div id="header"&gt;
+        &lt;img src="logo.png" alt="Yoyodyne Home"&gt;
+        &lt;div&gt;
+            [navigation bar]
+        &lt;/div&gt;
+        &lt;form aria-label="site search"&gt; ... &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;div id="main"&gt;
+        ...
+        &lt;div aria-labelledby="recent"&gt;
+            &lt;h2 id="recent"&gt;Recent Articles&lt;/h2&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="footer"&gt;
+        &copy; 2024 Yoyodyne Propulsion Systems
+        &lt;div aria-label="footer"&gt;
+            [navigation links]
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/html&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Button</h3>
-                    <p>The <code>aria-label</code> attribute provides the purpose.</p>
-                    <p><button style="width:44px; height: 44px; font-size: larger;" aria-label="search">🔍</button></p>
-
-                    <pre><code>&lt;button aria-label="search"&gt;🔍&lt;/button&gt;</code></pre>
-
-                    <h3>Search field</h3>
-                    <p><label for="search-field"><b>Search</b></label></p>
-                    <p><input id="search-field" type="text" placeholder="Search..."></p>
-
-                    <pre><code><strong>&lt;label for="search-field"&gt;&lt;b&gt;Search&lt;/b&gt;&lt;/label&gt;</strong>
-&lt;input <strong>id="search-field"</strong> type="text" placeholder="Search..."&gt;</code></pre>
+                    <pre><code>&lt;html&gt;
+    &lt;header&gt;
+        &lt;img src="logo.png" alt="Yoyodyne Home"&gt;
+        &lt;nav aria-label="main&gt;
+            ...
+        &lt;/nav&gt;
+        &lt;form aria-label="site search"&gt; ... &lt;/form&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+        ...
+        &lt;aside aria-labelledby="recent"&gt;
+            &lt;h2 id="recent"&gt;Recent Articles&lt;/h2&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &copy; 2024 Yoyodyne Propulsion Systems
+        &lt;nav aria-label="footer"&gt;
+            ...
+        &lt;/nav&gt;
+    &lt;/footer&gt;
+&lt;/html&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Missing name</strong><br>
-                            File under <a href="{{ site.data.4102.4102[410201].link | prepend: baseurl }}">{{ site.data.4102.4102[410201].name }}</a>.</li>
+                        
                         <li><strong>Links</strong><br>
                             File under <a href="{{ site.data.1306.1306[13060103].link | prepend: baseurl }}">{{ site.data.1306.1306[13060103].name }}</a>.</li>
                     </ul>
@@ -87,7 +106,7 @@ last-modified: March 18, 2026
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div> 
                     <ul>
-                        <li><strong>Cognitive Impairment:</strong> Users with language, memory, or executive function issues may implement personalization, such as substituting icons with familiar symbols.</li>
+                        <li><strong>Cognitive Impairment:</strong> Users with language, memory, or executive function issues may implement personalization, such as collapsing parts of a web page.</li>
                     </ul>
                 </div>
             </div>
@@ -96,9 +115,10 @@ last-modified: March 18, 2026
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.6 Identify Purpose</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA15">ARIA15: Using aria-describedby to provide descriptions of images</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H101">H101: Using semantic HTML elements to identify regions of a page</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA11">ARIA11: Using ARIA landmarks to identify regions of a page</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA13">ARIA13: Using aria-labelledby to name regions and landmarks</a></li>
                     </ul>
                 </div>
             </div>
