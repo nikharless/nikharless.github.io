@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 13060102
+current: 13060103
 criterion: 1306
 checkpoint: 130601
 last-modified: March 18, 2026
@@ -19,19 +19,19 @@ last-modified: March 18, 2026
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>The purpose of user interface components can be programmatically determined.</div>
+        		<div>The purpose of links can be programmatically determined.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The purpose of a user interface component cannot be programmatically determined.</div>
+        		<div>The purpose of a link cannot be programmatically determined</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>
-                    <p>Add the purpose of the user interface component using the following methods:
+                    <p>Add the purpose of the link using the following methods:
                     <ul>
-                        <li>Use native HTML elements (<code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>) where possible.</li>
-                        <li>Add the purpose of the user interface component using an <code>aria-label</code>, <code>aria-labelledby</code>, or <code>aria-describedby</code> attribute.</li>
+                        <li>Use the native HTML <code>&lt;a&gt;</code> element where possible.</li>
+                        <li>Add the purpose of the link using an <code>aria-label</code>, <code>aria-labelledby</code>, or <code>aria-describedby</code> attribute.</li>
                     </ul>
                 </div>
         	</div>
@@ -39,42 +39,31 @@ last-modified: March 18, 2026
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Button</h3>
-                    <p>The purpose of this button is to open a search bar. This example has no means of communicating the purpose to assistive technology.</p>
-                    <p><button style="width:44px; height: 44px; font-size: larger;">🔍</button></p>
+                    <h3>Navigation link</h3>
+                    <p>The purpose of this link is to go to the home page. This example has no means of communicating the purpose to assistive technology.</p>
+                    <p><a href="javascript:none;" aria-label="home">🏠</a></p>
 
-                    <pre><code>&lt;button&gt;🔍&lt;/button&gt;</code></pre>
-
-                    <h3>Search field</h3>
-                    <p><input type="text" placeholder="Search..."></p>
-                    
-                    <pre><code>&lt;input type="text" placeholder="Search..."&gt;</code></pre>
+                    <pre><code>&lt;a href="/"&gt;🏠&lt;/a&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Button</h3>
-                    <p>The <code>aria-label</code> attribute provides the purpose.</p>
-                    <p><button style="width:44px; height: 44px; font-size: larger;" aria-label="search">🔍</button></p>
+                    <h3>Navigation link</h3>
+                    <p><a href="javascript:none;" aria-label="home">🏠</a></p>
 
-                    <pre><code>&lt;button aria-label="search"&gt;🔍&lt;/button&gt;</code></pre>
-
-                    <h3>Search field</h3>
-                    <p><input type="text" placeholder="Search..." aria-label="Search"></p>
-
-                    <pre><code>&lt;input type="text" placeholder="Search..." <strong>aria-label="Search"</strong>&gt;</code></pre>
+                    <pre><code>&lt;a href="/" <strong>aria-label="home"</strong>&gt;🏠&lt;/a&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Missing name</strong><br>
+                        <li><strong>Missing name:</strong><br>
                             File under <a href="{{ site.data.4102.4102[410201].link | prepend: baseurl }}">{{ site.data.4102.4102[410201].name }}</a>.</li>
-                        <li><strong>Links</strong><br>
-                            File under <a href="{{ site.data.1306.1306[13060103].link | prepend: baseurl }}">{{ site.data.1306.1306[13060103].name }}</a>.</li>
+                        <li><strong>User interface components:</strong><br>
+                            File under <a href="{{ site.data.1306.1306[13060102].link | prepend: baseurl }}">{{ site.data.1306.1306[13060102].name }}</a>.</li>
                     </ul>
                 </div>
             </div>
