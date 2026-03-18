@@ -3,6 +3,7 @@ layout: default
 current: 14010101
 criterion: 1401
 checkpoint: 140101
+last-modified: March 18, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1401.1401[page.current] %}
@@ -29,30 +30,73 @@ checkpoint: 140101
         		<div>Provide a visual means of conveying the information in addition to color.</div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
                     <h3>Required Fields Are Red</h3>
                     <form>
-                        <p>In addition to the red highlighting, the labels also indicate the required status with text.</p>
+                        <p>In this example, red text is the only visual indication that a field is required. While the fields have the <code>required</code> attribute, programmatic indicators don't satisfy this checkpoint.</p>
+                        <label for="firstName">First Name<br>
+                            <input type="text" id="firstName" style="border: 2px solid #888; border-radius: 4px;">
+                        </label><br>
+                        <label for="lastName" style="color: #ee0000;">Last Name<br>
+                            <input required type="text" id="lastName" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;">
+                        </label><br>
+                        <label for="email" style="color: #ee0000;">Email<br>
+                            <input required type="text" id="email" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;">
+                        </label>
+                        <p>* Required fields are in red.</p>
+                    </form>
+
+                    <pre><code>&lt;label for="lastName" style="color: #ee0000;"&gt;Last Name
+&lt;input required type="text" id="lastName" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;"&gt;
+&lt;/label&gt;</code></pre>
+
+                    <h3>Error is in Red</h3>
+                    <p>Fields with errors are highlighted in red, but no other visual indicator exists. The <code>aria-invalid</code> attribute does not count as an additional means because it's not visual.</p>
+                    <p>Note: This example would also fail <a href="{{ site.data.3301.3301[3301].link | prepend: baseurl }}">{{ site.data.3301.3301[3301].name }}</a> due to its lack of an error message.</p>
+                    <form>
+                        <label for="name">Postal code:</label><br>
+                        <input type="text" name="zip" id="zip" aria-invalid="true" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;">
+                    </form>
+
+                    <pre><code>&lt;label for="name"&gt;Postal code:&lt;/label&gt;
+&lt;input type="text" name="zip" id="zip" aria-invalid="true" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;"&gt;</code></pre>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Required Fields Are Red</h3>
+                    <form>
+                        <p>Adding text to the labels provides a means other than color for indicating required fields.</p>
                         <label for="firstName">First Name<br>
                             <input type="text" id="firstName" style="border: 2px solid #888; border-radius: 4px;">
                         </label><br>
                         <label for="lastName" style="color: #ee0000;">Last Name (required)<br>
-                            <input type="text" id="lastName" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;">
+                            <input required type="text" id="lastName" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;">
                         </label><br>
                         <label for="email" style="color: #ee0000;">Email (required)<br>
-                            <input type="text" id="email" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;">
+                            <input required type="text" id="email" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;">
                         </label>
                     </form>
+
+                    <pre><code>&lt;label for="lastName" style="color: #ee0000;"&gt;Last Name <strong>(required)</strong>
+&lt;input required type="text" id="lastName" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;"&gt;
+&lt;/label&gt;</code></pre>
 
                     <h3>Error is in Red</h3>
                     <p>In addition to the symbol and the red highlighting, the error is also in text.</p>
                     <form>
                         <span class="fa fa-exclamation-triangle" style="color: #ee0000;"></span>
-                        <label for="name">Name:</label><br>
-                        <input type="text" name="name" id="name" aria-invalid="true" aria-describedby="errorMsg" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;"><br>
-                        <span id="errorMsg" style="color: #ee0000;">Error: Please enter a name</span>
+                        <label for="name">Postal code:</label><br>
+                        <input type="text" name="zip" id="zip" aria-invalid="true" aria-describedby="errorMsg" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;"><br>
+                        <span id="errorMsg" style="color: #ee0000;">Error: Please enter a valid postal code.</span>
                     </form>
+                    <pre><code>&lt;label for="name"&gt;Postal code:&lt;/label&gt;
+&lt;input type="text" name="zip" id="zip" aria-invalid="true" aria-describedby="errorMsg" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;"&gt;
+&lt;span id="errorMsg" style="color: #ee0000;"&gt;Error: Please enter a valid postal code.&lt;/span&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
@@ -60,7 +104,7 @@ checkpoint: 140101
                 <div>
                     <ul>
                         <li><strong>Blindness/Visual Impairment:</strong> Users cannot see colors or have limited color vision.</li>
-                        <li><strong>Colorblind:</strong> Users cannot distinguish between colors.</li>
+                        <li><strong>Color blindness:</strong> Users cannot distinguish between colors.</li>
                         <li><strong>Cognitive Impairment:</strong> Users may benefit from additional text cues.</li>
                     </ul>
                 </div>
