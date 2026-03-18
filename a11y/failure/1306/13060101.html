@@ -19,19 +19,18 @@ last-modified: March 18, 2026
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>The purpose of informational icons can be programmatically determined.</div>
+        		<div>The purpose of user interface components can be programmatically determined.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The purpose of an informational icon cannot be programmatically determined.</div>
+        		<div>The purpose of a user interface component cannot be programmatically determined.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>
                     <ul>
-                        <li><code>&lt;img&gt;</code>: Add the purpose of the icon to the <code>alt</code> attribute.</li>
-                        <li><code>&lt;svg&gt;</code>: Add the purpose of the icon to the <code>&lt;title&gt;</code> element within the <code>&lt;svg&gt;</code>.</li>
-                        <li>Other image types: Use <code>role="img"</codes> and add the purpose of the icon using an <code>aria-label</code>, <code>aria-labelledby</code>, or <code>aria-describedby</code> attribute.</li>
+                        <li>Use native HTML elements where possible.</li>
+                        <li>Add the purpose of the user interface component.</li>
                     </ul>
                 </div>
         	</div>
@@ -39,30 +38,28 @@ last-modified: March 18, 2026
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Caution icon</h3>
-                    <p>The purpose of this non-interactive icon is to indicate a warning. This example has no means of communicating the purpose to assistive technology.</p>
-                    <p><i class="fa-solid fa-triangle-exclamation fa-2xl"></i></p>
-
-                    <pre><code>&lt;i class="fa-solid fa-triangle-exclamation fa-2xl"&gt;&lt;/i&gt;</code></pre>
+                    Because this checkpoint is largely geared toward future functionality, real-world failures that aren't covered by other criteria are rare. Test Level A and Level AA success criteria first and file any failures accordingly.
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Caution icon</h3>
-                    <p>This example uses <code>role="img"</code> to identify the element as an image and <code>aria-label</code> to communicate the purpose.</p>
-                    <p><i class="fa-solid fa-triangle-exclamation fa-2xl" aria-label="caution" role="img"></i></p>
-
-                    <pre><code>&lt;i class="fa-solid fa-triangle-exclamation fa-2xl" <strong>aria-label="caution" role="img"</strong>&gt;&lt;/i&gt;</code></pre>
+                    TBD
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Decorative icons</strong><br>
+                        <li><strong>Decorative icon:</strong><br>
                             File under <a href="{{ site.data.1101.1101[11010402].link | prepend: baseurl }}">{{ site.data.1101.1101[11010402].name }}.</a></li>
+                        <li><strong>Missing text alternative:</strong><br>
+                            File under <a href="{{ site.data.1101.1101[1101].link | prepend: baseurl }}">{{ site.data.1101.1101[1101].name }}</a>.</li>
+                        <li><strong>Missing name:</strong><br>
+                            File under <a href="{{ site.data.4102.4102[410201].link | prepend: baseurl }}">{{ site.data.4102.4102[410201].name }}</a>.</li>
+                        <li><strong>Missing link destination description:</strong><br>
+                            File under <a href="{{ site.data.2404.2404[240401].link | prepend: baseurl }}">{{ site.data.2404.2404[240401].name }}</a>.</li>
                     </ul>
                 </div>
             </div>
@@ -79,11 +76,15 @@ last-modified: March 18, 2026
                 <div>
                     <ul>
                         <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.6 Identify Purpose</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA7">ARIA7: Using aria-labelledby for link purpose</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA8">ARIA8: Using aria-label for link purpose</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA15">ARIA15: Using aria-describedby to provide descriptions of images</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA24">ARIA24: Semantically identifying a font icon with role="img"</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
                     </ul>
                 </div>
             </div>
