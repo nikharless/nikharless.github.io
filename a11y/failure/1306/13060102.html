@@ -1,6 +1,6 @@
 ---
 layout: default
-current: 13060101
+current: 13060102
 criterion: 1306
 checkpoint: 130601
 last-modified: March 18, 2026
@@ -19,19 +19,19 @@ last-modified: March 18, 2026
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>The purpose of informational icons can be programmatically determined.</div>
+        		<div>The purpose of user interface components can be programmatically determined.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The purpose of an informational icon cannot be programmatically determined.</div>
+        		<div>A user interface component does not have programmatically identifiable purpose.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>
+                    <p>Add the purpose of the user interface component
                     <ul>
-                        <li><code>&lt;img&gt;</code>: Add the purpose of the icon to the <code>alt</code> attribute.</li>
-                        <li><code>&lt;svg&gt;</code>: Add the purpose of the icon to the <code>&lt;title&gt;</code> element within the <code>&lt;svg&gt;</code>.</li>
-                        <li>Other image types: Add the purpose of the icon using an <code>aria-label</code>, <code>aria-labelledby</code>, or <code>aria-describedby</code> attribute.</li>
+                        <li>Use native HTML elements (<code>&lt;button&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>) where possible.</li>
+                        <li>Add the purpose of the user interface component using an <code>aria-label</code>, <code>aria-labelledby</code>, or <code>aria-describedby</code> attribute.</li>
                     </ul>
                 </div>
         	</div>
@@ -39,30 +39,32 @@ last-modified: March 18, 2026
                 <h2 class="{{ sc.level }} bad">Failing Example<br>
                 <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
                 <div>
-                    <h3>Caution icon</h3>
-                    <p>The purpose of this non-interactive icon is to indicate a warning. This example has no means of communicating the purpose to assistive technology.</p>
-                    <p><i class="fa-solid fa-triangle-exclamation fa-2xl"></i></p>
+                    <h3>Button</h3>
+                    <p>The purpose of this button is to open a search bar. This example has no means of communicating the purpose to assistive technology.</p>
+                    <p><button>🔍</button></p>
 
-                    <pre><code>&lt;i class="fa-solid fa-triangle-exclamation fa-2xl"&gt;&lt;/i&gt;</code></pre>
+                    <pre><code>&lt;button&gt;🔍&lt;/button&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                 <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
-                    <h3>Caution icon</h3>
-                    <p>This example uses <code>role="img"</code> to identify the element as an image and <code>aria-label</code> to communicate the purpose.</p>
-                    <p><i class="fa-solid fa-triangle-exclamation fa-2xl" aria-label="caution" role="img"></i></p>
+                    <h3>Button</h3>
+                    <p>The purpose of this button is to open a search bar. This example has no means of communicating the purpose to assistive technology.</p>
+                    <p><button aria-label="search">🔍</button></p>
 
-                    <pre><code>&lt;i class="fa-solid fa-triangle-exclamation fa-2xl" <strong>aria-label="caution" role="img"</strong>&gt;&lt;/i&gt;</code></pre>
+                    <pre><code>&lt;button aria-label="search"&gt;🔍&lt;/button&gt;</code></pre>
                 </div>
             </div>
             <div class="row block">
                 <h2 class="{{ sc.level }}">Not Applicable</h2>
                 <div>
                     <ul>
-                        <li><strong>Decorative icons</strong><br>
-                            File under <a href="{{ site.data.1101.1101[11010402].link | prepend: baseurl }}">{{ site.data.1101.1101[11010402].name }}.</a></li>
+                        <li><strong>Informational icons</strong><br>
+                            File under <a href="{{ site.data.1306.1306[13060101].link | prepend: baseurl }}">{{ site.data.1306.1306[13060101].name }}</a>.</li>
+                        <li><strong>Links</strong><br>
+                            File under <a href="{{ site.data.1306.1306[13060103].link | prepend: baseurl }}">{{ site.data.1306.1306[13060103].name }}</a>.</li>
                     </ul>
                 </div>
             </div>
@@ -82,8 +84,6 @@ last-modified: March 18, 2026
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA15">ARIA15: Using aria-describedby to provide descriptions of images</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA24">ARIA24: Semantically identifying a font icon with role="img"</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
                     </ul>
                 </div>
             </div>
