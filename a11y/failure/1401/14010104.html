@@ -3,6 +3,7 @@ layout: default
 current: 14010104
 criterion: 1401
 checkpoint: 140101
+last-modified: March 26, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1401.1401[page.current] %}
@@ -35,7 +36,13 @@ checkpoint: 140101
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>Bar Chart</h3>
                     <p>Rather than relying on the color of the bars, each bar is labeled with text.</p>
@@ -73,11 +80,22 @@ checkpoint: 140101
                 </div>
             </div>
             <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Error messages</strong>:<br>
+                            File under <a href="{{ site.data.1401.1401[14010101].link | prepend: baseurl }}">{{ site.data.1401.1401[14010101].name }}</a>.</li>
+                        <li><strong>Required fields</strong>:<br>
+                            File under <a href="{{ site.data.1401.1401[14010101].link | prepend: baseurl }}">{{ site.data.1401.1401[14010101].name }}</a>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
                         <li><strong>Blindness/Visual Impairment:</strong> Users cannot see colors or have limited color vision.</li>
-                        <li><strong>Colorblind:</strong> Users cannot distinguish between colors.</li>
+                        <li><strong>Color blindness:</strong> Users cannot distinguish between colors.</li>
                         <li><strong>Cognitive Impairment:</strong> Users may benefit from additional text cues.</li>
                     </ul>
                 </div>
