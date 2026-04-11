@@ -4,6 +4,7 @@ current: 14010201
 criterion: 1401
 checkpoint: 140102
 css: link-examples
+last-modified: April 10, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1401.1401[page.current] %}
@@ -30,7 +31,18 @@ css: link-examples
         		<div>Provide a visual means of distinguishing links from regular text in addition to color.</div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>Color Alone</h3>
+                    <p>Only color is used here to distinguish the link.</p>
+                    <div style="border: 1px solid black; padding: 12px;">
+                        <p>We have unlimited opportunities for antiquing, golfing, boating, museums, historical sites, concerts and so much more! <a href="#" class="example-link" id="color-link">Download our Experience Guide</a> to help you plan your next great escape!</p>
+                    </div>
+                </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <h3>Underline</h3>
                     <p>The most universally understood indicator of links is underlining.</p>
@@ -80,11 +92,22 @@ css: link-examples
                 </div>
             </div>
             <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Error messages</strong>:<br>
+                            File under <a href="{{ site.data.1401.1401[14010101].link | prepend: baseurl }}">{{ site.data.1401.1401[14010101].name }}</a>.</li>
+                        <li><strong>Required fields</strong>:<br>
+                            File under <a href="{{ site.data.1401.1401[14010101].link | prepend: baseurl }}">{{ site.data.1401.1401[14010101].name }}</a>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
                         <li><strong>Blindness/Visual Impairment:</strong> Users cannot see colors or have limited color vision.</li>
-                        <li><strong>Colorblind:</strong> Users cannot distinguish between colors.</li>
+                        <li><strong>Color blindness:</strong> Users cannot distinguish between colors.</li>
                         <li><strong>Cognitive Impairment:</strong> Users may benefit from additional text cues.</li>
                     </ul>
                 </div>
