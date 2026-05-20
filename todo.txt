@@ -55,3 +55,17 @@ Prohibited states and properties:
 - subscript: "
 - superscript: "
 
+CASE NOTES:
+- Button within wrapper that has tabindex="0". Fails 2.4.3
+	<span tabindex="0">
+		<button aria-label="open-menu">
+			<svg><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" data-cds-icon="menu" viewBox="0 0 16 16"><path d="M15.5.5v3H.5v-3h15Zm0 6v3H.5v-3h15Zm0 6v3H.5v-3h15Z"></path></svg></svg>
+		</button>
+	</span>
+- Footnotes: There's no specific code for footnotes, no specific way to implement them; however, the relationship needs to be programmatically conveyed for 1.3.1.
+- Tooltips with no keyboard/screen reader access. No popup with kb because no focus.
+  - Add tabindex="0" (2.1.1)
+  - Add role="link" (4.1.2)
+  - Add event listener for keyboard focus to match mouse listeners that open tooltip hover content (2.1.1)
+  - Add id/aria-describedby to read tooltip text on focus (2.4.4)
+  - Make hover content hoverable (1.4.13)
