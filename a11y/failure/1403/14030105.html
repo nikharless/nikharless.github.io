@@ -3,6 +3,7 @@ layout: default
 current: 14030105
 criterion: 1403
 checkpoint: 140301
+last-modified: June 7, 2026
 css: background-image
 ---
 {% assign root=site.data.site.root %}
@@ -19,27 +20,38 @@ css: background-image
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Regular sized text over a moving background has at least a 4.5:1 contrast ratio with the background in all places.</div>
+        		<div>Regular-sized text over a moving background has a contrast ratio of at least a 4.5:1 with the background in all places.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Regular sized text over a moving background does not have at least a 4.5:1 contrast ratio with the background in all places.</div>
+        		<div>Regular-sized text over a moving background does not have a contrast ratio of at least 4.5:1 with the background in all places.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>
                     <ul>
-                        <li>Ensure regular sized text over a moving background has at least 4.5:1 contrast with the background at all times.</li>
+                        <li>Ensure regular-sized text over a moving background has a contrast ratio of at least 4.5:1 with the background at all times.</li>
                     </ul>
                 </div>
         	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <p>This placeholder text fails the minimum contrast requirement with a contrast ratio of 2.8:1.</p>
+                    <div class="video-bg-container">
+                        <div id="moving-bg-moon">
+                        <div class="moving-bg-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.</div>
+                    </div>
+                </div>
+            </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                     <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
                 <div>
                     <p>Adding a background color behind text that's over a moving image can help ensure that the text maintains enough contrast throughout the animation.</p>
-                    <div id="moving-bg">
-                        <div id="moving-bg-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.</div>
+                    <div id="moving-bg-lock">
+                        <div class="moving-bg-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.</div>
                     </div>
                 </div>
             </div>
