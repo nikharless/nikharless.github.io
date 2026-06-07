@@ -3,6 +3,7 @@ layout: default
 current: 14030106
 criterion: 1403
 checkpoint: 140301
+last-modified: June 7, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1403.1403[page.current] %}
@@ -18,21 +19,29 @@ checkpoint: 140301
         <div class="failure">
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Regular sized synchronized media captions have at least a 4.5:1 contrast ratio with the background in all places.</div>
+        		<div>Regular-sized synchronized media captions have a contrast ratio of at least 4.5:1 with the background in all places.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Regular sized synchronized media captions do not have at least a 4.5:1 contrast ratio with the background in all places, AND the appearance of the text cannot be adjusted by the user.</div>
+        		<div>Regular-sized synchronized media captions do not have a contrast ratio of at least 4.5:1 with the background in all places, AND the appearance of the text cannot be adjusted by the user.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div> 
                     <ul>
-                        <li>Ensure regular sized captions have at least 4.5:1 contrast with the background at all times, <strong>OR</strong></li>
+                        <li>Ensure regular-sized captions have a contrast ratio of at least 4.5:1 with the background at all times, <strong>OR</strong></li>
                         <li>Use a video player which allows the user to adjust the appearance of the captions.</li>
                     </ul>
                 </div>
         	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <p>The captions on the right do not have sufficient color contrast with all parts of the background at all times.</p>
+                    <img src="{{ baseurl }}/assets/images/14030106-caption-contrast.png" alt="Screenshot of yellow captions with low contrast over certain areas">
+                </div>
+            </div>
             <div class="row block">
                 <h2 class="{{ sc.level }} good">Passing Example<br>
                     <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
@@ -57,8 +66,8 @@ checkpoint: 140301
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
-                        <li><strong>Vision impaired:</strong> Users often have difficulty reading low contrast text.</li>
-                        <li><strong>Colorblind:</strong> Some color deficiencies lower the contrast in the user's vision.</li>
+                        <li><strong>Visual Impairment:</strong> Users often have difficulty reading low contrast text.</li>
+                        <li><strong>Color Blindness:</strong> Some color deficiencies lower the contrast in the user's vision.</li>
                     </ul>
                 </div>
             </div>
