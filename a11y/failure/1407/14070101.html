@@ -3,6 +3,7 @@ layout: default
 current: 14070101
 criterion: 1407
 checkpoint: 140701
+last-modified: June 30, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1407.1407[page.current] %}
@@ -41,13 +42,9 @@ checkpoint: 140701
                 </div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
-                    <h3 class="good">Good Example</h3>
-                    <p><img src="{{ baseurl }}/assets/images/140701-good-contrast.jpg"></p>
-                    <p><a href="https://www.w3.org/WAI/WCAG22/working-examples/audio-contrast/good-contrast.mp3">Audio Example: Foreground is 20 decibels above the background</a> (mp3)</p>
-
-                    <h3 class="bad">Bad Example</h3>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div class="contrast-fail-bg">
                     <p><img src="{{ baseurl }}/assets/images/140701-bad-contrast.jpg"></p>
                     <p><a href="https://www.w3.org/WAI/WCAG22/working-examples/audio-contrast/bad-contrast.mp3">Audio Example: Foreground is less than 20 decibels above the background</a> (mp3)</p>
 
@@ -55,11 +52,28 @@ checkpoint: 140701
                 </div>
             </div>
             <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <p><img src="{{ baseurl }}/assets/images/140701-good-contrast.jpg"></p>
+                    <p><a href="https://www.w3.org/WAI/WCAG22/working-examples/audio-contrast/good-contrast.mp3">Audio Example: Foreground is 20 decibels above the background</a> (mp3)</p>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li>Audio CAPTCHA</li>
+                        <li>Singing or rapping</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
-                        <li><strong>Hard of hearing:</strong> People who are hard of hearing often have difficulty separating speech from background sound.</li>
-                        <li><strong>Information processing:</strong> People who have the ability to hear may also have difficulty separating speech from background sound.</li>
+                        <li><strong>Hearing Impairment:</strong> People who are hard of hearing often have difficulty separating speech from background sound.</li>
+                        <li><strong>Cognitive Impairment:</strong> People who have the ability to hear may also have difficulty separating speech from background sound.</li>
                     </ul>
                 </div>
             </div>
