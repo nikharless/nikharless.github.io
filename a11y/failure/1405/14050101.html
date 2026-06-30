@@ -3,6 +3,7 @@ layout: default
 current: 14050101
 criterion: 1405
 checkpoint: 140501
+last-modified: June 30, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1405.1405[page.current] %}
@@ -22,15 +23,26 @@ checkpoint: 140501
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>An image of text is used where real text is possible, AND there is no means to visually customize the text.</div>
+        		<div>An image of text is used where real text is possible, and there is no means to visually customize the text.</div>
         	</div>
         	<div class="row block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>Replace the image of text with real text, using CSS styling to retain the desired visual appearance.</div>
         	</div>
             <div class="row block">
-                <h2 class="{{ sc.level }}">Examples</h2>
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div class="contrast-fail-bg">
+                    <p>This text is an image of text that could be recreated using CSS.</p>
+                    <p><img src="/a11y/assets/images/145-image-as-text.png" alt="Accessibility Matters"></p>
+                    <pre><code>&lt;img src="accessibility-matters.png" alt="Accessibility Matters"></code></pre>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2><div class="row block">
                 <div>
+                    <p>This text is rendered in CSS and can be easily read at any zoom level.</p>
                     <div style="background-color: #010a00;">
                         <div style="padding: 1rem; font-family: Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif; font-size: 2rem; font-weight: 400; letter-spacing: 5px; text-align: center; text-transform: uppercase; color: #fff; text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;">Accessibility Matters</div>
                     </div>
@@ -50,7 +62,7 @@ checkpoint: 140501
                 <h2 class="{{ sc.level }}">Disabilities Affected</h2>
                 <div>
                     <ul>
-                        <li><strong>Visually impaired:</strong> Users often need to adjust the text in order to read it.</li>
+                        <li><strong>Visual Impairment:</strong> Users often need to adjust the text in order to read it.</li>
                         <li><strong>Cognitive Impairment:</strong> Users with reading disabilities often need to adjust the text in order to read it.</li>
                     </ul>
                 </div>
