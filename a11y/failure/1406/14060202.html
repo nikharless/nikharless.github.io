@@ -3,6 +3,8 @@ layout: default
 current: 14060202
 criterion: 1406
 checkpoint: 140602
+last-modified: June 30, 2026
+css: contrast
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1406.1406[page.current] %}
@@ -12,45 +14,71 @@ checkpoint: 140602
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Large size link text, including all states of the link, has a contrast ratio of at least 4.5:1 with the background.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Large link text does not have a contrast ratio of at least 4.5:1 with the background on hover or focus.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Change the text or background color so that the contrast ratio between the text and the background is at least 4.5:1 in all states.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div style="background-color: #F5FFF2">
-                <p><a href="#" style="color: #253F00; font-size: 24px;" onmouseover="this.style.color='#4C8200'" onmouseout="this.style.color='#253F00'" onfocus="this.style.color='#4C8200'; this.style.outline='none';"; onblur="this.style.color='#253F00'">This link text has passing contrast with the background at 4.5:1 in the hover state.</a></p>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Hover and focus states of large link text have a contrast ratio of at least 4.5:1 with the background.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Hover and focus states of large link text do not have a contrast ratio of at least 4.5:1 with the background.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Change the text or background color of the hover or focus state so that the contrast ratio between the text and the background is at least 4.5:1.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Examples<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div class="contrast-fail-bg">
+                    <p class="large-text"><a href="#" class="hover-contrast-fail-lg-aa">This link text fails the minimum contrast requirement with the background at 2.4:1 in the hover state.</a></p>
+                    <p class="large-text-bold"><a href="#" class="hover-contrast-fail-lg-aa">This link text fails the minimum contrast requirement with the background at 2.4:1 in the hover state.</a></p>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Vision impaired and color blind users need sufficient contrast in order to be able to read text.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G18">G18: Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div  class="contrast-pass-bg">
+                    <p class="large-text"><a href="#" class="hover-contrast-pass-aaa">This link text has passing contrast with the background at 9.89:1 in the hover state.</a></p>
+                    <p class="large-text-bold"><a href="#" class="hover-contrast-pass-aaa">This link text has passing contrast with the background at 9.89:1 in the hover state.</a></p>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Regular-sized text:</strong><br>
+                            File under <a href="{{ site.data.1406.1406[14060102].link | prepend: baseurl }}">{{ site.data.1406.1406[14060102].name }}.</a></li>
+                        <li><strong>Visited link text</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Visual Impairment:</strong> Users often have difficulty reading low contrast text.</li>
+                        <li><strong>Color Blindness:</strong> Some color deficiencies lower the contrast in the user's vision.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G18">G18: Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1406checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
