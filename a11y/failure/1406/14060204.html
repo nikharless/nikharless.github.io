@@ -3,6 +3,8 @@ layout: default
 current: 14060204
 criterion: 1406
 checkpoint: 140602
+css: contrast
+last-modified: June 30, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1406.1406[page.current] %}
@@ -12,50 +14,77 @@ checkpoint: 140602
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Large placeholder text has a contrast ratio of at least 4.5:1 with its background.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Large placeholder text does not have a contrast ratio of at least 4.5:1 with its background.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Change the text or background so that the contrast ratio between the placeholder text and the background is at least 4.5:1.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Example</h2>
-            <div>
-                <p>This placeholder text is styled to use the color #767676, which has a contrast ratio of 4.5:1 with the white background.</p>
-                <input type="text" placeholder="Search users" style="font-size: 24px;"> <button style="font-size: 24px;">Search</button>
-                <pre><code>input::placeholder {
-  color: #767676;
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Large placeholder text has a contrast ratio of at least 4.5:1 with its background.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Large placeholder text does not have a contrast ratio of at least 4.5:1 with its background.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Change the text or background so that the contrast ratio between the placeholder text and the background is at least 4.5:1.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <p>This placeholder text fails the minimum contrast requirement with a contrast ratio of 1.91:1.</p>
+                    <input class="placeholder-fail-lg" type="text" placeholder="Search users"> <button class="large-text">Search</button>
+                    <pre><code>input::placeholder {
+    color: #bbbbbb;
 }</code></pre>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Vision impaired and color blind users need sufficient contrast in order to be able to read text.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G18">G18: Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
-                    <li><a href="https://www.deque.com/blog/accessible-forms-the-problem-with-placeholders/">The Anatomy of Accessible Forms: The Problem with Placeholders</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <p>This placeholder has a contrast ratio of 7:1 with the white background.</p>
+                    <input class="placeholder-pass-lg-aaa" type="text" placeholder="Search users"> <button class="large-text">Search</button>
+                    <pre><code>input::placeholder {
+      color: #767676;
+    }</code></pre>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Regular-sized text:</strong><br>
+                            File under <a href="{{ site.data.1403.1403[14030104].link | prepend: baseurl }}">{{ site.data.1403.1403[14030104].name }}.</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Visual Impairment:</strong> Users often have difficulty reading low contrast text.</li>
+                        <li><strong>Color Blindness:</strong> Some color deficiencies lower the contrast in the user's vision.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G18">G18: Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                        <li><a href="https://www.deque.com/blog/accessible-forms-the-problem-with-placeholders/">The Anatomy of Accessible Forms: The Problem with Placeholders</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1406checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
