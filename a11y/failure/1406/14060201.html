@@ -3,6 +3,8 @@ layout: default
 current: 14060201
 criterion: 1406
 checkpoint: 140602
+css: contrast
+last-modified: June 30, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1406.1406[page.current] %}
@@ -12,48 +14,75 @@ checkpoint: 140602
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Large text, including images of large text, has a contrast ratio of at least 4.5:1 with the background.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Large text does not have a contrast ratio of at least 4.5:1 with the background.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Change the text or background color so that the contrast ratio between the text and the background is at least 4.5:1.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div style="background-color: #F5FFF2">
-                <p style="font-size: 24px; color: #4C8200">This text has passing contrast with the background at 4.5:1.</p>
-                <p style="font-size: 19px; font-weight: bold; color: #4C8200">This text has passing contrast with the background at 4.5:1.</p>
-                <p style="font-size: 24px; color: #315400">This text has very good contrast with the background at 8.5:1.</p>
-                <p style="font-size: 19ox; font-weight: bold; color: #315400">This text has very good contrast with the background at 8.5:1.</p>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Large text, including images of large text, has a contrast ratio of at least 4.5:1 with the background.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Large text does not have a contrast ratio of at least 4.5:1 with the background.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Change the text or background color so that the contrast ratio between the text and the background is at least 4.5:1.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div class="contrast-fail-bg">
+                    <p class="large-text contrast-fail-lg-aa">This text fails with a contrast ratio of 2.34:1 with the background.</p>
+                    <p class="large-text-bold contrast-fail-lg-aa">This text fails with a contrast ratio of 2.34:1 with the background.</p>
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Vision impaired and color blind users need sufficient contrast in order to be able to read text.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G18">G18: Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div class="contrast-pass-bg">
+                    <p class="large-text contrast-pass-lg-aaa">This text has passing contrast with the background at 5.92:1.</p>
+                    <p class="large-text-bold contrast-pass-lg-aaa">This text has passing contrast with the background at 5.92:1.</p>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Not Applicable</h2>
+                <div>
+                    <ul>
+                        <li><strong>Regular-sized text:</strong><br>
+                            File under <a href="{{ site.data.1406.1406[14060101].link | prepend: baseurl }}">{{ site.data.1406.1406[14060101].name }}.</a></li>
+                        <li>Disabled form controls</li>
+                        <li>Purely decorative text</li>
+                        <li>Visited link text</li>
+                        <li>Logo text</li>
+                        <li>Text within an image that contains significant other visual content</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><strong>Visual Impairment:</strong> Users often have difficulty reading low contrast text.</li>
+                        <li><strong>Color Blindness:</strong> Some color deficiencies lower the contrast in the user's vision.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G18">G18: Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1406checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
