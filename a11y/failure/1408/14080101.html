@@ -3,6 +3,7 @@ layout: default
 current: 14080101
 criterion: 1408
 checkpoint: 140801
+last-modified: July 3, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1408.1408[page.current] %}
@@ -12,54 +13,66 @@ checkpoint: 140801
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Foreground and background colors can be adjusted by the user to suit their needs.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Foreground and background colors cannot be adjusted by the user.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Do not prevent the user from being able to adjust the colors, <strong>OR</strong></li>
-                    <li>Do not specify foreground or background colors, <strong>OR</strong></li>
-                    <li>Provide a color selection tool at the top of the page which allows the user to change the colors</li>
-                </ul>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Foreground and background colors can be adjusted by the user to suit their needs.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Foreground and background colors cannot be adjusted by the user.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Do not prevent the user from being able to adjust the colors, <strong>OR</strong></li>
+                        <li>Do not specify foreground or background colors, <strong>OR</strong></li>
+                        <li>Provide a color selection tool at the top of the page which allows the user to change the colors</li>
+                    </ul>
+                </div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div class="contrast-fail-bg">
+                    <p><img src="{{ baseurl }}/assets/images/140701-bad-contrast.jpg"></p>
+                    <p><a href="https://www.w3.org/WAI/WCAG22/working-examples/audio-contrast/bad-contrast.mp3">Audio Example: Foreground is less than 20 decibels above the background</a> (mp3)</p>
+
+                    <p><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G56">Image source</a></p>
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Example<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Users with certain visual or cognitive disabilities may have difficulty reading text in certain color combinations.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F24">F24: Failure of Success Criterion 1.4.3, 1.4.6 and 1.4.8 due to specifying foreground colors without specifying background colors or vice versa</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G156">G156: Using a technology that has commonly-available user agents that can change the foreground and background of blocks of text</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G175">G175: Providing a multi color selection tool on the page for foreground and background colors</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C23">C23: Specifying text and background colors of secondary content such as banners, features and navigation in CSS while not specifying text and background colors of the main content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C25">C25: Specifying borders and layout in CSS to delineate areas of a Web page while not specifying text and text-background colors</a></li>
-                </ul>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>Users with certain visual or cognitive disabilities may have difficulty reading text in certain color combinations.</div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F24">F24: Failure of Success Criterion 1.4.3, 1.4.6 and 1.4.8 due to specifying foreground colors without specifying background colors or vice versa</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G156">G156: Using a technology that has commonly-available user agents that can change the foreground and background of blocks of text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G175">G175: Providing a multi color selection tool on the page for foreground and background colors</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C23">C23: Specifying text and background colors of secondary content such as banners, features and navigation in CSS while not specifying text and background colors of the main content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C25">C25: Specifying borders and layout in CSS to delineate areas of a Web page while not specifying text and text-background colors</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1408checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
