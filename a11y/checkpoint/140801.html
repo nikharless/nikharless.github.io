@@ -2,6 +2,7 @@
 layout: default
 current: 140801
 criterion: 1408
+last-modified: July 3, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1408.1408[page.current] %}
@@ -11,113 +12,107 @@ criterion: 1408
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-
-    <p>Authors can make color choices that are sufficient for most users, but some individuals require color combinations that don't fit into the general guidelines. In these cases, the user may set colors in the browser, using an extension, or using a replacement stylesheet.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
-        Foreground and background colors must be adjustable by the user.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> 
-        Page regions that are visually distinguished should remain distinguishable when the colors are overridden.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a visual or cognitive disability, I want to be able to adjust the colors on a web page so that I can more easily read the content.</div>
-
-    <div class="success"><strong>Success:</strong> If you had low vision, when you encountered text that you found difficult to read, you would be able to adjust the foreground and background colors to suit your specific needs.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is the page content styled with non-default colors?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the foreground and background colors both be overridden with user-specified colors from the user agent?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes;</strong> PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No;</strong> Is there a mechanism on the web page that allows the user to change the colors?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1408.1408[14080101].link | prepend: baseurl }}">{{ site.data.1408.1408[14080101].name }}</a></span></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-
-    <h3>Desktop</h3>
-    <ol>
-        <li>In Firefox Settings, under Colors, activate <strong>Manage Colors...</strong>.</li>
-        <li>In the Colors dialog, select colors that are different from the page, uncheck <strong>Use system colors</strong>, and select <strong>Always</strong> for "Override the colors specified by the page with your selections above". Click <strong>OK</strong>.</li>
-        <li>View the web page and verify that the colors were changed to the ones you selected.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1408.1408[14080101].link | prepend: baseurl }}">{{ site.data.1408.1408[14080101].name }}</a> (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Firefox</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>Related Techniques:
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li>General:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G156">G156: Using a technology that has commonly-available user agents that can change the foreground and background of blocks of text</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G175">G175: Providing a multi color selection tool on the page for foreground and background colors</a></li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
+                Foreground and background colors must be adjustable by the user.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> 
+                Page regions that are visually distinguished should remain distinguishable when the colors are overridden.</li>
+            </ul>
+
+            <div class="userstory"><strong>User Story:</strong> As a user with a visual or cognitive disability, I want to be able to adjust the colors on a web page so that I can more easily read the content.</div>
+
+            <div class="success"><strong>Success:</strong> If you had low vision, when you encountered text that you found difficult to read, you would be able to adjust the foreground and background colors to suit your specific needs.</div>
+        </div>
+
+        <div class="block">
+            <h2>Overview</h2>
+
+            <p>Authors can make color choices that are sufficient for most users, but some individuals require color combinations that don't fit into the general guidelines. In these cases, the user may set colors in the browser, using an extension, or using a replacement stylesheet.</p>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is the page content styled with non-default colors?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the foreground and background colors both be overridden with user-specified colors from the user agent?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes;</strong> PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No;</strong> Is there a mechanism on the web page that allows the user to change the colors?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1408.1408[14080101].link | prepend: baseurl }}">{{ site.data.1408.1408[14080101].name }}</a></span></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
-                <li>CSS:
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+
+            <h3>Desktop</h3>
+            <ol>
+                <li>In Firefox Settings, under Colors, activate <strong>Manage Colors...</strong>.</li>
+                <li>In the Colors dialog, select colors that are different from the page, uncheck <strong>Use system colors</strong>, and select <strong>Always</strong> for "Override the colors specified by the page with your selections above". Click <strong>OK</strong>.</li>
+                <li>View the web page and verify that the colors were changed to the ones you selected.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.1408.1408[14080101].link | prepend: baseurl }}">{{ site.data.1408.1408[14080101].name }}</a> (Medium)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Firefox</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>Related Techniques:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C23">C23: Specifying text and background colors of secondary content such as banners, features and navigation in CSS while not specifying text and background colors of the main content</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C25">C25: Specifying borders and layout in CSS to delineate areas of a Web page while not specifying text and text-background colors</a></li>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G148">G148: Not specifying background color, not specifying text color, and not using technology features that change those defaults</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G156">G156: Using a technology that has commonly-available user agents that can change the foreground and background of blocks of text</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G175">G175: Providing a multi color selection tool on the page for foreground and background colors</a></li>
+                            </ul>
+                        </li>
+                        <li>CSS:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C23">C23: Specifying text and background colors of secondary content such as banners, features and navigation in CSS while not specifying text and background colors of the main content</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C25">C25: Specifying borders and layout in CSS to delineate areas of a Web page while not specifying text and text-background colors</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://support.mozilla.org/en-US/kb/change-fonts-and-colors-websites-use">Mozilla: Change the fonts and colors websites use</a></li>
-        <li><a href="https://www.makeuseof.com/edge-chrome-firefox-change-website-background-color/">How to Change Website Background Colors in Edge, Chrome, and Firefox</a></li>
-    </ul>
+        <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://support.mozilla.org/en-US/kb/change-fonts-and-colors-websites-use">Mozilla: Change the fonts and colors websites use</a></li>
+                <li><a href="https://www.makeuseof.com/edge-chrome-firefox-change-website-background-color/">How to Change Website Background Colors in Edge, Chrome, and Firefox</a></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/1408checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
