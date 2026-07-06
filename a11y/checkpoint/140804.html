@@ -2,6 +2,7 @@
 layout: default
 current: 140804
 criterion: 1408
+last-modified: July 6, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1408.1408[page.current] %}
@@ -11,114 +12,108 @@ criterion: 1408
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
+                Line spacing must be adjustable to at least 1.5.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
+                Paragraph spacing must be adjustable to at least 1.5 times the line spacing.</li>
+            </ul>
 
-    </div>
+            <div class="userstory"><strong>User Story:</strong> As a user with a visual or cognitive disability, I want text to be spaced so that I can more easily read the content.</div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
-        Line spacing must be adjustable to at least 1.5.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
-        Paragraph spacing must be adjustable to at least 1.5 times the line spacing.</li>
-    </ul>
+            <div class="success"><strong>Success:</strong> If you had difficulty reading tightly spaced text, when you encountered blocks of text with line spacing of less than 1.5, you would be able to adjust the line spacing.</div>
+        </div>
 
-    <div class="userstory"><strong>User Story:</strong> As a user with a visual or cognitive disability, I want text to be spaced so that I can more easily read the content.</div>
+        <div class="block">
+            <h2>Overview</h2>
+        </div>
 
-    <div class="success"><strong>Success:</strong> If you had difficulty reading tightly spaced text, when you encountered blocks of text with line spacing of less than 1.5, you would be able to adjust the line spacing.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the page have blocks of text with line spacing less than 1.5?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a mechanism on the page to adjust the line spacing?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the paragraph spacing at least 1.5 times the line spacing?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Does the page have blocks of text with line spacing less than 1.5?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a mechanism on the page to adjust the line spacing?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism on the page to adjust the paragraph spacing?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the paragraph spacing at least 1.5 times the line spacing?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1408.1408[14080402].link | prepend: baseurl }}">{{ site.data.1408.1408[14080402].name }}</a></span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism on the page to adjust the paragraph spacing?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1408.1408[14080402].link | prepend: baseurl }}">{{ site.data.1408.1408[14080402].name }}</a></span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1408.1408[14080401].link | prepend: baseurl }}">{{ site.data.1408.1408[14080401].name }}</a></span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+
+            <h3>Desktop</h3>
+            <ol>
+                <li>Check if there are blocks of text with line spacing of less than 1.5.</li>
+                <li>If so, verify that there is a mechanism available to adjust the line spacing to at least 1.5.</li>
+                <li>Check if there are blocks of text with paragraph spacing of less than 1.5 times the line spacing.</li>
+                <li>If so, verify that there is a mechanism available to adjust the paragraph spacing to at least 1.5 times the line spacing.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.1408.1408[14080401].link | prepend: baseurl }}">{{ site.data.1408.1408[14080401].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1408.1408[14080402].link | prepend: baseurl }}">{{ site.data.1408.1408[14080402].name }}</a> (Medium)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Web browser</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>Related Techniques:
+                    <ul>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G188">G188: Providing a button on the page to increase line spaces and paragraph spaces</a></li>
+                            </ul>
+                        </li>
+                        <li>CSS:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C21">C21: Specifying line spacing in CSS</a></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1408.1408[14080401].link | prepend: baseurl }}">{{ site.data.1408.1408[14080401].name }}</a></span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
 
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-
-    <h3>Desktop</h3>
-    <ol>
-        <li>Check if there are blocks of text with line spacing of less than 1.5.</li>
-        <li>If so, verify that there is a mechanism available to adjust the line spacing to at least 1.5.</li>
-        <li>Check if there are blocks of text with paragraph spacing of less than 1.5 times the line spacing.</li>
-        <li>If so, verify that there is a mechanism available to adjust the paragraph spacing to at least 1.5 times the line spacing.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1408.1408[14080401].link | prepend: baseurl }}">{{ site.data.1408.1408[14080401].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1408.1408[14080402].link | prepend: baseurl }}">{{ site.data.1408.1408[14080402].name }}</a> (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Web browser</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>Related Techniques:
+            <h3>Additional Information</h3>
             <ul>
-                <li>General:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G188">G188: Providing a button on the page to increase line spaces and paragraph spaces</a></li>
-                    </ul>
-                </li>
-                <li>CSS:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C21">C21: Specifying line spacing in CSS</a></li>
-                    </ul>
-                </li>
+                <li></li>
             </ul>
-        </li>
-    </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-        <li></li>
-    </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/1408checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>

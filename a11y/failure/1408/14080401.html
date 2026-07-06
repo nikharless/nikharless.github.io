@@ -3,6 +3,7 @@ layout: default
 current: 14080401
 criterion: 1408
 checkpoint: 140804
+last-modified: July 6, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1408.1408[page.current] %}
@@ -12,58 +13,76 @@ checkpoint: 140804
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Line spacing is adjustable to at least 1.5.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Line spacing is less than 1.5 and is not adjustable.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>
-                <ul>
-                    <li>Set the <code>line-height</code> to at least 1.5, <strong>OR</strong></li>
-                    <li>Provide a mechanism to change the <code>line-height</code></li>
-                </ul>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Line spacing is adjustable to at least 1.5.</div>
+        	</div>
+
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Line spacing is less than 1.5 and is not adjustable.</div>
+        	</div>
+
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Set the <code>line-height</code> to at least 1.5, <strong>OR</strong></li>
+                        <li>Provide a mechanism to change the <code>line-height</code></li>
+                    </ul>
+                </div>
+        	</div>
+
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+                    <h3>Single Spaced</h3>
+                    <div style="line-height: 1; border: 1px solid #888;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et ultrices enim. Pellentesque pulvinar massa orci, sed ultrices tellus hendrerit ac. Ut turpis dui, dapibus id augue id, fermentum consectetur velit. Pellentesque pharetra hendrerit erat, ac convallis est lacinia quis.</div>
+                    <pre><code>line-height: 1;</code></pre>
+                </div>
             </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>                
-                <h3 style="color: red;">Bad Example: Single Spaced</h3>
-                <div style="line-height: 1; border: 1px solid #888;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et ultrices enim. Pellentesque pulvinar massa orci, sed ultrices tellus hendrerit ac. Ut turpis dui, dapibus id augue id, fermentum consectetur velit. Pellentesque pharetra hendrerit erat, ac convallis est lacinia quis.</div>
-                <pre><code>line-height: 1;</code></pre>
 
-                <h3 style="color: green;">Good Example: Space and a Half (1.5)</h3>
-                <div style="line-height: 1.5; border: 1px solid #888;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et ultrices enim. Pellentesque pulvinar massa orci, sed ultrices tellus hendrerit ac. Ut turpis dui, dapibus id augue id, fermentum consectetur velit. Pellentesque pharetra hendrerit erat, ac convallis est lacinia quis.</div>
-                <pre><code>line-height: 1.5;</code></pre>
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                <div>                
+                    <h3>Space and a Half (1.5)</h3>
+                    <div style="line-height: 1.5; border: 1px solid #888;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et ultrices enim. Pellentesque pulvinar massa orci, sed ultrices tellus hendrerit ac. Ut turpis dui, dapibus id augue id, fermentum consectetur velit. Pellentesque pharetra hendrerit erat, ac convallis est lacinia quis.</div>
+                    <pre><code>line-height: 1.5;</code></pre>
 
-                <h3 style="color: green;">Good Example: Double Spaced (2)</h3>
-                <div style="line-height: 2; border: 1px solid #888;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et ultrices enim. Pellentesque pulvinar massa orci, sed ultrices tellus hendrerit ac. Ut turpis dui, dapibus id augue id, fermentum consectetur velit. Pellentesque pharetra hendrerit erat, ac convallis est lacinia quis.</div>
-                <pre><code>line-height: 2;</code></pre>   
+                    <h3>Double Spaced (2)</h3>
+                    <div style="line-height: 2; border: 1px solid #888;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et ultrices enim. Pellentesque pulvinar massa orci, sed ultrices tellus hendrerit ac. Ut turpis dui, dapibus id augue id, fermentum consectetur velit. Pellentesque pharetra hendrerit erat, ac convallis est lacinia quis.</div>
+                    <pre><code>line-height: 2;</code></pre>   
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Users with certain cognitive disabilities have difficulty reading blocks of text which are single spaced.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G188">G188: Providing a button on the page to increase line spaces and paragraph spaces</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C21">C21: Specifying line spacing in CSS</a></li>
-                </ul>
+
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><b>Cognitive Impairment:</b> Users with certain cognitive impairments have difficulty reading blocks of text which are single spaced.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G188">G188: Providing a button on the page to increase line spaces and paragraph spaces</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C21">C21: Specifying line spacing in CSS</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1408checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
