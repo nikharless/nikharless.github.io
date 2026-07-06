@@ -2,6 +2,7 @@
 layout: default
 current: 140805
 criterion: 1408
+last-modified: July 6, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1408.1408[page.current] %}
@@ -11,120 +12,113 @@ criterion: 1408
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-
-    <p>This checkpoint applies to blocks of text rather than an entire page. It is possible that a page might require horizontal scrolling while individual blocks of text do not. The intention is that a user wouldn't have to scroll left to right to read a single block of text.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
-        When text is resized up to 200%, it must not require horizontal scrolling.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a visual or cognitive disability, I want to be able to increase the size of text without having to scroll horizontally so that I don't become disoriented.</div>
-
-    <div class="success"><strong>Success:</strong> If you had low vision, when you resized the text up to 200%, you would be able to read the full line of text without having to scroll horizontally.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Can the text be resized without assistive technology up to 200%?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When resized to 200%, is horizontal scrolling required to read a full line of text on a full-screen window?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the text an item not meant for reading, such as a long url?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1408.1408[14080501].link | prepend: baseurl }}">{{ site.data.1408.1408[14080501].name }}</a></span></li>
-                    </ul>
-                </li>
-                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-            </ul>
-        </li>
-        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1404.1404[1404].link | prepend: baseurl }}">{{ site.data.1404.1404[1404].name }}</a>.</span></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-
-    <h3>Desktop</h3>
-    <ol>
-        <li>Resize the browser window to full screen.</li>
-        <li>Zoom the text to 200%.</li>
-        <li>Verify that horizontal scrolling is not required to read a full line of text.</li>
-    </ol>
-
-    <h2>Mobile</h2>
-    <p>This checkpoint does not apply to mobile.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1408.1408[14080501].link | prepend: baseurl }}">{{ site.data.1408.1408[14080501].name }}</a> (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Web browser</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>Related Techniques:
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li>General:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G146">G146: Using liquid layout</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G204">G204: Not interfering with the user agent's reflow of text as the viewing window is narrowed</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G206">G206: Providing options within the content to switch to a layout that does not require the user to scroll horizontally to read a line of text</a></li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
+                When text is resized up to 200%, it must not require horizontal scrolling.</li>
+            </ul>
+
+            <div class="userstory"><strong>User Story:</strong> As a user with a visual or cognitive disability, I want to be able to increase the size of text without having to scroll horizontally so that I don't become disoriented.</div>
+
+            <div class="success"><strong>Success:</strong> If you had low vision, when you resized the text up to 200%, you would be able to read the full line of text without having to scroll horizontally.</div>
+        </div>
+
+        <div class="block">
+            <h2>Overview</h2>
+            <p>This checkpoint applies to blocks of text rather than an entire page. It is possible that a page might require horizontal scrolling while individual blocks of text do not. The intention is that a user wouldn't have to scroll left to right to read a single block of text.</p>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Can the text be resized without assistive technology up to 200%?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When resized to 200%, is horizontal scrolling required to read a full line of text on a full-screen window?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the text an item not meant for reading, such as a long url?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1408.1408[14080501].link | prepend: baseurl }}">{{ site.data.1408.1408[14080501].name }}</a></span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                     </ul>
                 </li>
-                <li>CSS:
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1404.1404[1404].link | prepend: baseurl }}">{{ site.data.1404.1404[1404].name }}</a>.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+
+            <h3>Desktop</h3>
+            <ol>
+                <li>Resize the browser window to full screen.</li>
+                <li>Zoom the text to 200%.</li>
+                <li>Verify that horizontal scrolling is not required to read a full line of text.</li>
+            </ol>
+
+            <h2>Mobile</h2>
+            <p>This checkpoint does not apply to mobile.</p>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ site.data.1408.1408[14080501].link | prepend: baseurl }}">{{ site.data.1408.1408[14080501].name }}</a> (Medium)</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Web browser</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>Related Techniques:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C12">C12: Using percent for font sizes</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C13">C13: Using named font sizes</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C14">C14: Using em units for font sizes</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C24">C24: Using percentage values in CSS for container sizes</a></li>
-                    </ul>
-                </li>
-                <li>JavaScript:
-                    <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR34">SCR34: Calculating size and position in a way that scales with text size</a></li>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G146">G146: Using liquid layout</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G204">G204: Not interfering with the user agent's reflow of text as the viewing window is narrowed</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G206">G206: Providing options within the content to switch to a layout that does not require the user to scroll horizontally to read a line of text</a></li>
+                            </ul>
+                        </li>
+                        <li>CSS:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C12">C12: Using percent for font sizes</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C13">C13: Using named font sizes</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C14">C14: Using em units for font sizes</a></li>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C24">C24: Using percentage values in CSS for container sizes</a></li>
+                            </ul>
+                        </li>
+                        <li>JavaScript:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR34">SCR34: Calculating size and position in a way that scales with text size</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li></li>
-    </ul>
+            <h3>Additional Information</h3>
+            <ul>
+                <li></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/1408checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
