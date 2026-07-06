@@ -3,6 +3,7 @@ layout: default
 current: 14100102
 criterion: 1410
 checkpoint: 141001
+last-modified: July 6, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1410.1410[page.current] %}
@@ -12,56 +13,75 @@ checkpoint: 141001
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>All content can be accessed when the screen is resized.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Elements are removed entirely when the content is resized.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Use a responsive layout which restructures the screen when the screen size changes. Some options for simplifying the layout without removing content include the following:
-                <ul>
-                    <li>Reflow sidebars to appear in the vertical flow</li>
-                    <li>Consolidate horizontal menus into pop-up menus</li>
-                    <li>Move content blocks inside disclosure widgets or pop-ups</li>
-                    <li>Move content to separate pages and provide links</li>
-                    <li>Resize meaningful images instead of removing them</li> 
-                </ul>    
-            </div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>All content can be accessed when the screen is resized.</div>
+        	</div>
 
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Elements are removed entirely when the content is resized.</div>
+        	</div>
+
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Use a responsive layout which restructures the screen when the screen size changes. Some options for simplifying the layout without removing content include the following:
+                    <ul>
+                        <li>Reflow sidebars to appear in the vertical flow</li>
+                        <li>Consolidate horizontal menus into pop-up menus</li>
+                        <li>Move content blocks inside disclosure widgets or pop-ups</li>
+                        <li>Move content to separate pages and provide links</li>
+                        <li>Resize meaningful images instead of removing them</li> 
+                    </ul>    
+                </div>
+        	</div>
+
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+
+                </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Users with visual disabilities need to be able to view and use the content when zoomed.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F102">F102: Failure of Success Criterion 1.4.10 due to content disappearing and not being available when content has reflowed</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C31">C31: Using CSS Flexbox to reflow content</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C32">C32: Using media queries and grid CSS to reflow columns</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C33">C33: Allowing for Reflow with Long URLs and Strings of Text</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C37">C37: Using CSS max-width and height to fit images</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C38">C38: Using CSS width, max-width and flexbox to fit labels and inputs</a></li>
-                </ul>
+
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+
+                </div>
+            </div>
+            
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><b>Visual Impairment:</b> Users with visual impairments need to be able to view and use the content when zoomed.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F102">F102: Failure of Success Criterion 1.4.10 due to content disappearing and not being available when content has reflowed</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C31">C31: Using CSS Flexbox to reflow content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C32">C32: Using media queries and grid CSS to reflow columns</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C33">C33: Allowing for Reflow with Long URLs and Strings of Text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C37">C37: Using CSS max-width and height to fit images</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C38">C38: Using CSS width, max-width and flexbox to fit labels and inputs</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1410checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
