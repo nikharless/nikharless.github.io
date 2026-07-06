@@ -1,0 +1,104 @@
+---
+layout: default
+current: 14100104
+criterion: 1410
+checkpoint: 141001
+last-modified: July 6, 2026
+---
+{% assign root=site.data.site.root %}
+{% assign currentpg=site.data.1410.1410[page.current] %}
+{% assign baseurl=site.data.site.base %}
+{% assign sc=site.data.1410.1410[page.criterion] %}
+{% assign cp=site.data.1410.1410[page.checkpoint] %}
+{% include sidebar.html %}
+<div class="content row {{ sc.level }}" id="main">
+    <div class="cpcontent {{ sc.level }}link">
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
+
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>When horizontal-scrolling content is resized to 256 CSS pixels high, content is not cropped or rendered unreachable.</div>
+        	</div>
+
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Elements are cropped or rendered unreachable when the content is resized to 256 CSS pixels high.</div>
+        	</div>
+
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>
+                    <ul>
+                        <li>Use a layout which reflows when the screen size changes, <strong>AND</strong></li>
+                        <li>Use relative measurements for fonts, controls, images, and containers</li>
+                    </ul>      
+                </div>
+        	</div>
+
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
+
+                </div>
+            </div>
+
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <h3>Responsive Design</h3>
+                    <p>The following working examples resize and reflow elements to fit them within the viewport.</p>
+                    <ul>
+                        <li>Working example: <a href="https://www.w3.org/WAI/WCAG22/working-examples/css-grid/">Using media queries and grid CSS to reflow columns</a></li>
+                        <li>Working example: <a href="https://www.w3.org/WAI/WCAG22/working-examples/css-flexbox/">Using CSS Flexbox for Reflow</a></li>
+                        <li>Working example: <a href="https://www.w3.org/WAI/WCAG22/working-examples/css-fit-labels-inputs/">Using Adjustable Labels and Inputs for Reflow</a></li>
+                    </ul>
+
+                    <h3>Preformatted Text</h3>
+                    <p>By default, pre-formatted text does not wrap, causing it to be cropped and unreadable when the content is wider than the container width. You must explicitly set it to wrap.</p>
+                    <pre style="border: 1px solid #888;"><code>&lt;a href="https://www.beavercountypa.gov/"&gt;
+    &lt;img src="BeaverCountyLogo.png" alt="Beaver County, Pennsylvania. Divided by rivers, united by people"&gt;
+&lt;/a&gt;</code></pre>
+                    <pre><code>pre {
+    background-color: #f1f1f1;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><b>Visual Impairment:</b> Users with visual impairments need to be able to view and use the content when resized.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C31">C31: Using CSS Flexbox to reflow content</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C32">C32: Using media queries and grid CSS to reflow columns</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C33">C33: Allowing for Reflow with Long URLs and Strings of Text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C37">C37: Using CSS max-width and height to fit images</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C38">C38: Using CSS width, max-width and flexbox to fit labels and inputs</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include checkpoints/1410checkpoints.html %}
+    <script>document.title = "{{ currentpg.name }}";</script>
+</div>
