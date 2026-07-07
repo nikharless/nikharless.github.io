@@ -5,6 +5,7 @@ criterion: 1411
 guideline: perceivable
 level: aa
 css: 1411
+last-modified: July 7, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1411.1411[page.current] %}
@@ -14,121 +15,122 @@ css: 1411
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Visual indicators of a control's boundaries must have at least 3:1 contrast with the background.</li>
+                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> User controls should have visual boundaries to distinguish the hit area.</li>
+            </ul>
 
-    <p>Visual indicators of a control's boundaries must have at least 3:1 contrast with the background. This includes both internal and external boundaries. For example, a slider button must have sufficient contrast with the slider bar, and the slider bar must have sufficient contrast with the page background.</p>
+            <div class="userstory"><strong>User Story:</strong> As a user with low vision, I want controls to have sufficient contrast so that I can distinguish them.</div>
 
-    <p><em>Note: Visual indicators of the boundaries are not required. This checkpoint only applies if the boundaries are the only way to identify the control.</em></p>
-
-    <p>Exceptions include:</p>
-    <ul>
-        <li>User agent default controls</li>
-        <li>Disabled controls</li>
-        <li>Buttons with text or icons</li>
-        <li>Text inputs with text inside them</li>
-    </ul>
-
-    <h3>Examples</h3>
-
-    <h4>Custom Checkboxes</h4>
-    <div class="cbExample">
-        <div role="checkbox" tabindex="0" aria-checked="false">Check this box
-            <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
-            <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
+            <div class="success"><strong>Success:</strong> If you had low vision, when you encountered controls, you would be able to distinguish them from surrounding content.</div>
         </div>
-    </div>
-    <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
 
-    <h4>Custom Radio Buttons</h4>
-    <div class="radioExample" role="radiogroup">
-        <div role="radio" tabindex="0" aria-checked="false">Check this radio button
-            <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
-            <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
-        </div>
-        <div role="radio" tabindex="-1" aria-checked="false">Check this radio button
-            <span id="crbChecked2" class="crbRadio crbChecked" style="display: none;"></span>
-            <span id="crbNotChecked2" class="crbRadio crbNotChecked" style="display: block;"></span>
-        </div>
-    </div>
-    <script src="{{ baseurl }}/assets/js/radio.js"></script>
+        <div class="block">
+            <h2>Overview</h2>
 
-    <h4>Text Fields</h4>
-    <label for="firstName"> First Name</label><br>
-        <input type="text" id="firstName">
-    </label>
+            <p>Visual indicators of a control's boundaries must have at least 3:1 contrast with the background. This includes both internal and external boundaries. For example, a slider button must have sufficient contrast with the slider bar, and the slider bar must have sufficient contrast with the page background.</p>
 
-    <h4>Switches</h4>
-    <script src="{{ baseurl }}/assets/js/switch.js"></script>
-    <div class="switchExample">
-        <label>
-            <span class="label">Toggle this switch</span>
-            <input id="id-switch-1" type="checkbox" role="switch">
-            <span class="state">
-                <span class="container">
-                    <span class="position">
+            <p><em>Note: Visual indicators of the boundaries are not required. This checkpoint only applies if the boundaries are the only way to identify the control.</em></p>
+
+            <p>Exceptions include:</p>
+            <ul>
+                <li>User agent default controls</li>
+                <li>Disabled controls</li>
+                <li>Buttons with text or icons</li>
+                <li>Text inputs with text inside them</li>
+            </ul>
+
+            <h3>Examples</h3>
+
+            <h4>Custom Checkboxes</h4>
+            <div class="cbExample">
+                <div role="checkbox" tabindex="0" aria-checked="false">Check this box
+                    <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                    <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
+                </div>
+            </div>
+            <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
+
+            <h4>Custom Radio Buttons</h4>
+            <div class="radioExample" role="radiogroup">
+                <div role="radio" tabindex="0" aria-checked="false">Check this radio button
+                    <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
+                    <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
+                </div>
+                <div role="radio" tabindex="-1" aria-checked="false">Check this radio button
+                    <span id="crbChecked2" class="crbRadio crbChecked" style="display: none;"></span>
+                    <span id="crbNotChecked2" class="crbRadio crbNotChecked" style="display: block;"></span>
+                </div>
+            </div>
+            <script src="{{ baseurl }}/assets/js/radio.js"></script>
+
+            <h4>Text Fields</h4>
+            <label for="firstName"> First Name</label><br>
+                <input type="text" id="firstName">
+            </label>
+
+            <h4>Switches</h4>
+            <script src="{{ baseurl }}/assets/js/switch.js"></script>
+            <div class="switchExample">
+                <label>
+                    <span class="label">Toggle this switch</span>
+                    <input id="id-switch-1" type="checkbox" role="switch">
+                    <span class="state">
+                        <span class="container">
+                            <span class="position">
+                            </span>
+                        </span>
+                        <span class="on" aria-hidden="true">On</span>
+                        <span class="off" aria-hidden="true">Off</span>
                     </span>
-                </span>
-                <span class="on" aria-hidden="true">On</span>
-                <span class="off" aria-hidden="true">Off</span>
-            </span>
-        </label>
-    </div>
+                </label>
+            </div>
 
-    <h4>Sliders</h4>
-    <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-    </div>
+            <h4>Sliders</h4>
+            <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            </div>
 
-    </div>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Visual indicators of a control's boundaries must have at least 3:1 contrast with the background.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> User controls should have visual boundaries to distinguish the hit area.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with low vision, I want controls to have sufficient contrast so that I can distinguish them.</div>
-
-    <div class="success"><strong>Success:</strong> If you had low vision, when you encountered controls, you would be able to distinguish them from surrounding content.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the page include active user interface components which have visual boundaries indicating the hit area?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the visual boundaries the only means of distinguishing the control (e.g., no text or icon inside it)?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the visual boundary have at least 3:1 contrast with the background?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Does the page include active user interface components which have visual boundaries indicating the hit area?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the visual boundaries the only means of distinguishing the control (e.g., no text or icon inside it)?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control disabled?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the visual boundary have at least 3:1 contrast with the background?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control the default appearance for the user agent?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control disabled?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a checkbox or radio button?</span>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control the default appearance for the user agent?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1411.1411[14110101].link | prepend: baseurl }}">{{ site.data.1411.1411[14110101].name }}</a></span></li>
-                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a text field?</span>
+                                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a checkbox or radio button?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1411.1411[14110102].link | prepend: baseurl }}">{{ site.data.1411.1411[14110102].name }}</a></span></li>
-                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a switch?</span>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1411.1411[14110101].link | prepend: baseurl }}">{{ site.data.1411.1411[14110101].name }}</a></span></li>
+                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a text field?</span>
                                                             <ul role="group">
-                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1411.1411[14110103].link | prepend: baseurl }}">{{ site.data.1411.1411[14110103].name }}</a></span></li>
-                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a slider?</span>
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1411.1411[14110102].link | prepend: baseurl }}">{{ site.data.1411.1411[14110102].name }}</a></span></li>
+                                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a switch?</span>
                                                                     <ul role="group">
-                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1411.1411[14110104].link | prepend: baseurl }}">{{ site.data.1411.1411[14110104].name }}</a></span></li>
-                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1411.1411[14110105].link | prepend: baseurl }}">{{ site.data.1411.1411[14110105].name }}</a></span></li>
+                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1411.1411[14110103].link | prepend: baseurl }}">{{ site.data.1411.1411[14110103].name }}</a></span></li>
+                                                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a slider?</span>
+                                                                            <ul role="group">
+                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1411.1411[14110104].link | prepend: baseurl }}">{{ site.data.1411.1411[14110104].name }}</a></span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1411.1411[14110105].link | prepend: baseurl }}">{{ site.data.1411.1411[14110105].name }}</a></span></li>
+                                                                            </ul>
+                                                                        </li>
                                                                     </ul>
                                                                 </li>
                                                             </ul>
@@ -141,111 +143,105 @@ css: 1411
                                 </li>
                             </ul>
                         </li>
+                        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+         
+            <ol>
+                <li>Load the page so that controls are in their default state.</li>
+                <li>Locate any active controls that are not the browser default and that do not have text or icons inside them (links, buttons, and form controls).</li>
+                <li>Identify the visual indicators of the component that are required to identify that a control exists.</li>
+                <li>Determine if the visual indicator is the only means of distinguishing it from the background.</li>
+                <li>Use a tool such as one listed in the Testing Tools below to check the contrast between the visual indicator and the background.
+                    <p><em>Note: Check hex codes rather than using an eyedropper tool whenever possible to ensure you're checking the exact color.</em></p>
+                </li>
+                <li>Verify that the visual indicator has at least 3:1 contrast with the background.</li>
+            </ol>
 
-    <h3>Desktop</h3>
- 
-    <ol>
-        <li>Load the page so that controls are in their default state.</li>
-        <li>Locate any active controls that are not the browser default and that do not have text or icons inside them (links, buttons, and form controls).</li>
-        <li>Identify the visual indicators of the component that are required to identify that a control exists.</li>
-        <li>Determine if the visual indicator is the only means of distinguishing it from the background.</li>
-        <li>Use a tool such as one listed in the Testing Tools below to check the contrast between the visual indicator and the background.
-            <p><em>Note: Check hex codes rather than using an eyedropper tool whenever possible to ensure you're checking the exact color.</em></p>
-        </li>
-        <li>Verify that the visual indicator has at least 3:1 contrast with the background.</li>
-    </ol>
+            <h3>Mobile</h3>
+            <ol>
+                <li>Open the page on a desktop computer in Chrome.</li>
+                <li>Right-click on the page and select <strong>Inspect</strong> or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd> to open the Developer Tools.</li>
+                <li>Activate the <strong>Toggle device toolbar</strong> button or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>.</li>
+                <li>Select a mobile device from the <strong>Dimensions</strong> drop-down menu.</li>
+                <li>Follow the procedure for Desktop Web.</li>
+            </ol>
 
-    <h3>Mobile</h3>
-    <ol>
-        <li>Open the page on a desktop computer in Chrome.</li>
-        <li>Right-click on the page and select <strong>Inspect</strong> or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd> to open the Developer Tools.</li>
-        <li>Activate the <strong>Toggle device toolbar</strong> button or press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>.</li>
-        <li>Select a mobile device from the <strong>Dimensions</strong> drop-down menu.</li>
-        <li>Follow the procedure for Desktop Web.</li>
-    </ol>
+            <h2>Mobile App Test Procedure</h2>
+            <h3>iOS and Android</h3>
+            <ol>
+                <li>Ensure that any contrast enhancements, such as <a href="https://www.supportyourtech.com/iphone/enhancing-iphone-display-ios-17-contrast-settings/">Increase Contrast</a> on iOS, are turned OFF.</li>
+                <li>Locate any active controls that are not the system default and that do not have text or icons inside them.</li>
+                <li>Determine if they have a visual boundary that is the only means of distinguishing them from the background.</li>
+                <li>Visually check for boundaries which appear to have poor contrast with the background.</li>
+                <li>Take a screenshot on the device and open it on a desktop computer.</li>
+                <li>Use a manual tool such as one listed in the Testing Tools below to check the contrast ratio of the colors in the screenshot.</li>
+                <li>Verify that the contrast ratio between the visual boundary and its background is at least 3:1.</li>
+                <li>If the app supports Dark Mode, test both Light and Dark Mode.</li>
+                <li>If the app has any alternate themes that affect the control colors, test each of these.</li>
+            </ol>
 
-    <h2>Mobile App Test Procedure</h2>
-    <h3>iOS and Android</h3>
-    <ol>
-        <li>Ensure that any contrast enhancements, such as <a href="https://www.supportyourtech.com/iphone/enhancing-iphone-display-ios-17-contrast-settings/">Increase Contrast</a> on iOS, are turned OFF.</li>
-        <li>Locate any active controls that are not the system default and that do not have text or icons inside them.</li>
-        <li>Determine if they have a visual boundary that is the only means of distinguishing them from the background.</li>
-        <li>Visually check for boundaries which appear to have poor contrast with the background.</li>
-        <li>Take a screenshot on the device and open it on a desktop computer.</li>
-        <li>Use a manual tool such as one listed in the Testing Tools below to check the contrast ratio of the colors in the screenshot.</li>
-        <li>Verify that the contrast ratio between the visual boundary and its background is at least 3:1.</li>
-        <li>If the app supports Dark Mode, test both Light and Dark Mode.</li>
-        <li>If the app has any alternate themes that affect the control colors, test each of these.</li>
-    </ol>
+            <h2>PDF Test Procedure</h2>
+            <ol>
+                <li>Locate any active controls that are not the system default and that do not have text or icons inside them.</li>
+                <li>Determine if they have a visual boundary that is the only means of distinguishing them from the background.</li>
+                <li>Use a manual tool such as one listed in the Testing Tools below to manually check any visual boundaries.</li>
+            </ol>
+        </div>
 
-    <h2>PDF Test Procedure</h2>
-    <ol>
-        <li>Locate any active controls that are not the system default and that do not have text or icons inside them.</li>
-        <li>Determine if they have a visual boundary that is the only means of distinguishing them from the background.</li>
-        <li>Use a manual tool such as one listed in the Testing Tools below to manually check any visual boundaries.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.1411.1411[14110101].link | prepend: baseurl }}">{{ site.data.1411.1411[14110101].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1411.1411[14110102].link | prepend: baseurl }}">{{ site.data.1411.1411[14110102].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1411.1411[14110103].link | prepend: baseurl }}">{{ site.data.1411.1411[14110103].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1411.1411[14110104].link | prepend: baseurl }}">{{ site.data.1411.1411[14110104].name }}</a> (Medium)</li>
-        <li><a href="{{ site.data.1411.1411[14110105].link | prepend: baseurl }}">{{ site.data.1411.1411[14110105].name }}</a> (Medium)</li>
-
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li><a href="https://www.tpgi.com/color-contrast-checker/">TPGi Colour Contrast Analyzer</a></li>
-        <li><a href="https://dequeuniversity.com/color-contrast">Deque Color Contrast Analyzer</a></li>
-        <li><a href="https://coolors.co/contrast-checker/112a46-acc8e5">Coolors Color Contrast Checker</a></li>
-        <li><a href="https://webaim.org/resources/contrastchecker/">WebAIM Contrast Checker</a></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>Related Techniques:
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li>General:
+                <li><a href="{{ site.data.1411.1411[14110101].link | prepend: baseurl }}">{{ site.data.1411.1411[14110101].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1411.1411[14110102].link | prepend: baseurl }}">{{ site.data.1411.1411[14110102].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1411.1411[14110103].link | prepend: baseurl }}">{{ site.data.1411.1411[14110103].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1411.1411[14110104].link | prepend: baseurl }}">{{ site.data.1411.1411[14110104].name }}</a> (Medium)</li>
+                <li><a href="{{ site.data.1411.1411[14110105].link | prepend: baseurl }}">{{ site.data.1411.1411[14110105].name }}</a> (Medium)</li>
+            </ul>
+
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li><a href="https://www.tpgi.com/color-contrast-checker/">TPGi Colour Contrast Analyzer</a></li>
+                <li><a href="https://dequeuniversity.com/color-contrast">Deque Color Contrast Analyzer</a></li>
+                <li><a href="https://coolors.co/contrast-checker/112a46-acc8e5">Coolors Color Contrast Checker</a></li>
+                <li><a href="https://webaim.org/resources/contrastchecker/">WebAIM Contrast Checker</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>Related Techniques:
                     <ul>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                        <li>General:
+                            <ul>
+                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://webaim.org/articles/contrast/">WebAIM: Contrast and Color Accessibility</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast">MDN: Color contrast</a></li>
-    </ul>
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://webaim.org/articles/contrast/">WebAIM: Contrast and Color Accessibility</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast">MDN: Color contrast</a></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/1411checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
 </div>
