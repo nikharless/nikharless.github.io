@@ -4,6 +4,7 @@ current: 14110104
 criterion: 1411
 checkpoint: 141101
 css: 1411
+last-modified: July 15, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1411.1411[page.current] %}
@@ -13,52 +14,67 @@ css: 1411
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Visual indicators of a slider's boundaries must have at least 3:1 contrast with the background.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Visual indicators of a slider's boundaries do not have at least 3:1 contrast with the background.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Change the color of the boundary to have at least 3:1 contrast with the background.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <script src="{{ baseurl }}/assets/js/switch.js"></script>
-                <h3>Background</h3>
-                <p>The background of the slider bar has a contrast ratio of at least 3:1 with the external background. In addition, the slider thumb has a contrast ratio of at least 3:1 with the slider background.</p>
-                <div class="slidecontainer">
-                    <input type="range" min="1" max="100" value="50" class="slider">
-                </div>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Visual indicators of a slider's boundaries have a contrast ratio of at least 3:1 with the background.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Visual indicators of a slider's boundaries do not have a contrast ratio of at least 3:1 with the background.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Change the color of the boundary to have a contrast ratio of at least 3:1 with the background.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
 
-                <div class="slidecontainer">
-                    <input type="range" min="1" max="100" value="50" class="slider2">
                 </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Color blind and visually impaired users need to be able to distinguish non-text user controls.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
-                </ul>
+
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <script src="{{ baseurl }}/assets/js/switch.js"></script>
+                    <h3>Fill</h3>
+                    <p>The fill of the slider bar has a contrast ratio of at least 3:1 with the page background on both sides. In addition, the slider thumb has a contrast ratio of at least 3:1 with the slider fill.</p>
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="100" value="50" class="slider">
+                    </div>
+
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="100" value="50" class="slider2">
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><b>Color Blindness:</b> Users need to be able to distinguish non-text user controls.</li>
+                        <li><b>Visual Impairment:</b> Users need to be able to distinguish non-text user controls.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1411checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
