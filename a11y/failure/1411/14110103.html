@@ -4,6 +4,7 @@ current: 14110103
 criterion: 1411
 checkpoint: 141101
 css: 1411
+last-modified: July 15, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1411.1411[page.current] %}
@@ -13,76 +14,91 @@ css: 1411
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-failure.html %}
 
-    <div class="failure">
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Expected Result</h2>
-    		<div>Visual indicators of a switch's boundaries must have at least 3:1 contrast with the background.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Actual Result</h2>
-    		<div>Visual indicators of a switch's boundaries do not have at least 3:1 contrast with the background.</div>
-    	</div>
-    	<div class="row block">
-    		<h2 class="{{ sc.level }}">Solution</h2>
-    		<div>Change the color of the boundary to have at least 3:1 contrast with the background.</div>
-    	</div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Examples</h2>
-            <div>
-                <script src="{{ baseurl }}/assets/js/switch.js"></script>
-                <h3>Border</h3>
-                <p>The borders of both the switch container and the switch thumb have a contrast ratio of at least 3:1 with both the internal and external backgrounds.</p>
-                <div class="switchExample">
-                    <label>
-                        <span class="label">Toggle this switch</span>
-                        <input id="id-switch-1" type="checkbox" role="switch">
-                        <span class="state">
-                            <span class="container">
-                                <span class="position" style="background-color:white; border: 2px solid #949494;">
-                                </span>
-                            </span>
-                            <span class="on" aria-hidden="true">On</span>
-                            <span class="off" aria-hidden="true">Off</span>
-                        </span>
-                    </label>
-                </div>
+        <div class="failure">
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Expected Result</h2>
+        		<div>Visual indicators of a switch's boundaries have a contrast ratio of at least 3:1 with the background.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Actual Result</h2>
+        		<div>Visual indicators of a switch's boundaries do not have a contrast ratio of at least 3:1 with the background.</div>
+        	</div>
+        	<div class="row block">
+        		<h2 class="{{ sc.level }}">Solution</h2>
+        		<div>Change the color of the boundary to have a contrast ratio of at least 3:1 with the background.</div>
+        	</div>
+            <div class="row block">
+                <h2 class="{{ sc.level }} bad">Failing Example<br>
+                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
+                <div>
 
-                <h3>Background</h3>
-                <p>The backgrounds of both the switch container and the switch thumb have a contrast ratio of at least 3:1 with their external backgrounds.</p>
-                <div class="switchExample">
-                    <label>
-                        <span class="label">Toggle this switch</span>
-                        <input id="id-switch-2" type="checkbox" role="switch">
-                        <span class="state">
-                            <span class="container" style="background-color:#5499D1; border-color:#5499D1;">
-                                <span class="position" style="background-color:white !important; border-color:white !important;">
-                                </span>
-                            </span>
-                            <span class="on" aria-hidden="true">On</span>
-                            <span class="off" aria-hidden="true">Off</span>
-                        </span>
-                    </label>
                 </div>
             </div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Color blind and visually impaired users need to be able to distinguish non-text user controls.</div>
-        </div>
-        <div class="row block">
-            <h2 class="{{ sc.level }}">References</h2>
-            <div>
-                <ul>
-                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
-                </ul>
+
+            <div class="row block">
+                <h2 class="{{ sc.level }} good">Passing Examples<br>
+                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
+                <div>
+                    <script src="{{ baseurl }}/assets/js/switch.js"></script>
+                    <h3>Border</h3>
+                    <p>The borders of both the switch container and the switch thumb have a contrast ratio of at least 3:1 with both the fill and the page background.</p>
+                    <div class="switchExample">
+                        <label>
+                            <span class="label">Toggle this switch</span>
+                            <input id="id-switch-1" type="checkbox" role="switch">
+                            <span class="state">
+                                <span class="container">
+                                    <span class="position" style="background-color:white; border: 2px solid #949494;">
+                                    </span>
+                                </span>
+                                <span class="on" aria-hidden="true">On</span>
+                                <span class="off" aria-hidden="true">Off</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <h3>Fill</h3>
+                    <p>The fills of both the switch container and the switch thumb have a contrast ratio of at least 3:1 with their respective backgrounds.</p>
+                    <div class="switchExample">
+                        <label>
+                            <span class="label">Toggle this switch</span>
+                            <input id="id-switch-2" type="checkbox" role="switch">
+                            <span class="state">
+                                <span class="container" style="background-color:#5499D1; border-color:#5499D1;">
+                                    <span class="position" style="background-color:white !important; border-color:white !important;">
+                                    </span>
+                                </span>
+                                <span class="on" aria-hidden="true">On</span>
+                                <span class="off" aria-hidden="true">Off</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+                <div>
+                    <ul>
+                        <li><b>Color Blindness:</b> Users need to be able to distinguish non-text user controls.</li>
+                        <li><b>Visual Impairment:</b> Users need to be able to distinguish non-text user controls.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row block">
+                <h2 class="{{ sc.level }}">References</h2>
+                <div>
+                    <ul>
+                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     {% include checkpoints/1411checkpoints.html %}
     <script>document.title = "{{ currentpg.name }}";</script>
+</div>
