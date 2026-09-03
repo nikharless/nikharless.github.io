@@ -1,0 +1,106 @@
+---
+layout: tuts
+last-modified: July 7, 2026
+---
+<h1>Accordions</h1>
+
+<p>An accordion is a vertically stacked set of interactive headings that expand and collapse to reveal or hide associated panels of content.</p>
+
+<h2>Requirements</h2>
+<ul>
+    <li>Each accordion heading has a role of button.</li>
+    <li>Each accordion header button is inside a heading of the correct level. No other elements are within the heading.</li>
+    <li>The header button has <code>aria-expanded="false"</code> when the panel is not visible, and <code>aria-expanded="true"</code> when the panel is visible.</li>
+    <li>The header button has <code>aria-controls</code> set to the id of the panel element.</li>
+</ul>
+
+<h2>Practical Test Sequence</h2>
+<table>
+    <tr>
+        <th>Step</th>
+        <th>Focus</th>
+        <th>Applicable Criteria</th>
+    </tr>
+    <tr>
+        <td>Semantics</td>
+        <td>Confirm each visible accordion label has an appropriate heading structure where it functions as a page section heading. Confirm the activation control is a native <code>&lt;button&gt;</code>, where feasible, or has <code>role="button"</code>.</td>
+        <td>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels">WCAG 2.2: Understanding SC 2.4.6 Headings and Labels (Level AA)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification">WCAG 2.2: Understanding SC 3.2.4 Consistent Identification (Level AA)</a></li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>Screen reader</td>
+        <td>With a screen reader or accessibility tree, verify a meaningful name, button role, and correct collapsed/expanded state. Expand and collapse each header and confirm the state updates.</td>
+        <td>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence">WCAG 2.2: Understanding SC 1.3.2 Meaningful Sequence (Level A)</a> (content remains ordered when expanded)</li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name">WCAG 2.2: Understanding SC 2.5.3 Label in Name (Level A)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a> (role, name, expanded state)</li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages">WCAG 2.2: Understanding SC 4.1.3 Status Messages (Level AA)</a></li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>Keyboard only</td>
+        <td>Use <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>, <kbd>Enter</kbd>, and <kbd>Space</kbd>. Verify every header expands/collapses with both <kbd>Enter</kbd> and <kbd>Space</kbd>, focus remains visible, revealed interactive content becomes reachable, and collapsed content does not retain keyboard focusability. When a panel is collapsed, ensure its visual content is not exposed as active keyboard stops. When expanded, ensure content is actually rendered/exposed appropriately and follows its trigger logically. Test especially when focus is in the panel and the panel is then collapsed through scripting or another control.</td>
+        <td>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a> (Tab navigation and Enter and Space activation required)</li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap">WCAG 2.2: Understanding SC 2.1.2 No Keyboard Trap (Level A)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/character-key-shortcuts">WCAG 2.2: Understanding SC 2.1.4 Character Key Shortcuts (Level A)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order">WCAG 2.2: Understanding SC 2.4.3 Focus Order (Level A)</a> (focus lost or moved on activation, skips revealed controls, goes to collapsed content)</li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible">WCAG 2.2: Understanding SC 2.4.7 Focus Visible (Level AA)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus">WCAG 2.2: Understanding SC 3.2.1 On Focus (Level A)</a> (tabbing to header automatically expands it)</li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>Inspect visual aspects</td>
+        <td>Check contrast, 200% text resize, 400% browser zoom/reflow, text spacing overrides, and narrow viewports. Inspect whether long labels wrap rather than clip and whether the full header remains an adequately sized target.</td>
+        <td>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/sensory-characteristics">WCAG 2.2: Understanding SC 1.3.3 Sensory Characteristics (Level A)</a> ("select the arrow on the right...")</li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum">WCAG 2.2: Understanding SC 1.4.3 Contrast (Minimum) (Level AA)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text">WCAG 2.2: Understanding SC 1.4.4 Resize Text (Level AA)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow">WCAG 2.2: Understanding SC 1.4.10 Reflow (Level AA)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast">WCAG 2.2: Understanding SC 1.4.11 Non-text Contrast (Level AA)</a> (outline, icon, focus boundary)</li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing">WCAG 2.2: Understanding SC 1.4.12 Text Spacing (Level AA)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+<h2>Resources</h2>
+
+<h3>Native HTML</h3>
+<ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details">MDN: &lt;details&gt; HTML details disclosure element</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/summary">MDN: &lt;summary&gt; HTML disclosure summary element</a></li>
+    <li><a href="https://www.scottohara.me/blog/2022/09/12/details-summary.html">Scott O'Hara: The details and summary elements, again</a></li>
+</ul>
+
+<h3>Custom ARIA</h3>
+<ul>
+    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">w3: APG Accordion Pattern (Sections With Show/Hide Functionality)</a></li>
+    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">w3: APG Disclosure (Show/Hide) Pattern</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded">MDN: ARIA: aria-expanded attribute</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-controls">MDN: ARIA: aria-controls attribute</a></li>
+</ul>
+
+<h3>Additional Information</h3>
+<ul>
+    <li><a href="https://adrianroselli.com/2023/08/progressively-enhanced-html-accordion.html">Adrian Roselli: Progressively Enhanced HTML Accordion</a></li>
+    <li><a href="https://webaim.org/techniques/disclosures/">WebAIM: Disclosures and Accordions</a></li>
+    <li><a href="https://dequeuniversity.com/library/aria/accordion-multi">Deque University: Accordion (Multiselect)</a></li>
+    <li><a href="https://dequeuniversity.com/library/aria/accordion-single">Deque University: Accordion (Single)</a></li>
+    <li><a href="https://dequeuniversity.com/library/aria/expand-collapse">Deque University: Expand/Collapse</a></li>
+    <li><a href="https://dequeuniversity.com/library/aria/expand-collapse-summary">Deque University: Expand/Collapse (based on Details/Summary)</a></li>
+    <li><a href="https://www.thewcag.com/examples/accordions">the WCAG: Accessible Accordions</a></li>
+</ul>
