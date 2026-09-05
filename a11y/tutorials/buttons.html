@@ -19,33 +19,32 @@ last-modified: July 7, 2026
 
     <h3>All Buttons</h3>
     <ul>
-        <li>The button has a programmatically determinable accessible name that describes its action or purpose.</li>
-        <li>The control exposes the button role.</li>
-        <li>The button is operable with a keyboard.</li>
-        <li>A native button responds to <kbd>Enter</kbd> and <kbd>Space</kbd> according to its native behavior. A custom button must reproduce equivalent keyboard behavior.</li>
-        <li>The button's state and properties are programmatically exposed and updated when they change.</li>
-        <li>The button has a visible focus indicator when it receives keyboard focus.</li>
-        <li>The button's label and purpose are understandable without relying only on visual position, shape, color, or an icon.</li>
-        <li>The button remains usable when text is enlarged, spacing is increased, or the viewport is narrow.</li>
-        <li>The pointer target is at least 24 by 24 CSS pixels, unless a WCAG 2.2 exception applies.</li>
-        <li>The button is not completely hidden by sticky headers, banners, dialogs, or other author-created content when it receives focus.</li>
-        <li>The button does not cause an unexpected context change merely because it receives focus.</li>
-        <li>If activating the button causes a significant context change, the user is informed where appropriate.</li>
-        <li>If the button is disabled, unavailable, loading, pressed, expanded, or otherwise stateful, that state is communicated visually and programmatically.</li>
+        <li>The button has a programmatically determinable accessible name that describes its action or purpose. (4.1.2)</li>
+        <li>The control exposes the button role. (4.1.2)</li>
+        <li>The button is operable with a keyboard. (2.1.1)</li>
+        <li>A native button responds to <kbd>Enter</kbd> and <kbd>Space</kbd> according to its native behavior. A custom button must reproduce equivalent keyboard behavior. (2.1.1)</li>
+        <li>The button's state and properties are programmatically exposed and updated when they change. (4.1.2)</li>
+        <li>The button has a visible focus indicator when it receives keyboard focus. (2.4.7)</li>
+        <li>The button remains usable when text is enlarged, spacing is increased, or the viewport is narrow. (1.4.4, 1.4.10, 1.4.11)</li>
+        <li>The pointer target is at least 24 by 24 CSS pixels, unless a WCAG 2.2 exception applies. (2.5.8)</li>
+        <li>The button is not completely hidden by sticky headers, banners, dialogs, or other author-created content when it receives focus. (2.4.11)</li>
+        <li>The button does not cause an unexpected context change merely because it receives focus. (3.2.1)</li>
+        <li>If activating the button causes a significant context change, the user is informed where appropriate. (3.2.2)</li>
+        <li>If the button is disabled, unavailable, loading, pressed, expanded, or otherwise stateful, that state is communicated visually and programmatically. (4.1.2)</li>
         <li>A disabled button must not appear operable or respond inconsistently with its disabled state.</li>
-        <li>An icon-only button has an accessible name independent of the icon's appearance.</li>
-        <li>A button's visible text is included in its accessible name. This is especially important for icon buttons with visible text labels.</li>
-        <li>Buttons that perform destructive, legal, financial, or data-submission actions provide appropriate error prevention or confirmation where required.</li>
+        <li>An icon-only button has an accessible name independent of the icon's appearance. (2.4.6)</li>
+        <li>A button's visible text is included in its accessible name. This is especially important for icon buttons with visible text labels. (2.5.3)</li>
+        <li>Buttons that perform destructive, legal, financial, or data-submission actions provide appropriate error prevention or confirmation where required. (3.3.4)</li>
     </ul>
 
     <h3>Command Buttons</h3>
     <p>A command button performs an action, such as Save, Delete, Print, Add Item, Cancel, Submit, Start or Stop playback.</p>
     <ul>
-        <li>The accessible name identifies the action, such as "Delete report."</li>
-        <li>The name remains sufficiently specific when several buttons appear together.</li>
-        <li>If the action is asynchronous, the user receives an appropriate status or completion indication.</li>
-        <li>If activation changes the button's state, the new state is exposed.</li>
-        <li>A destructive command should identify its consequences and, where applicable, provide confirmation or an undo mechanism.</li>
+        <li>The accessible name identifies the action, such as "Delete report." (2.4.6)</li>
+        <li>The name remains sufficiently specific when several buttons appear together (2.4.6).</li>
+        <li>If the action is asynchronous, the user receives an appropriate status or completion indication. (4.1.3)</li>
+        <li>If activation changes the button's state, the new state is exposed. (4.1.2)</li>
+        <li>A destructive command should identify its consequences and, where applicable, provide confirmation or an undo mechanism. (3.3.4)</li>
         <li>A button inside a form must have an intentional <code>type</code>. Without an explicit <code>type</code>, a button inside a form may unintentionally submit it. (3.2.2)</li>
     </ul>
 
@@ -59,11 +58,11 @@ last-modified: July 7, 2026
     <h3>Toggle Buttons</h3>
     <p>A toggle button switches between two states, such as Bold on/off, Mute/unmute, Show/hide a toolbar, Favorite/unfavorite, Start/stop a mode.</p>
     <ul>
-        <li>The accessible name describes the function, not only the current state. For example, "Mute" is generally preferable to changing the name between "Mute" and "Unmute".</li>
-        <li>The current state is exposed with <code>aria-pressed="true"</code> or <code>aria-pressed="false"</code> when using the ARIA toggle-button pattern.</li>
-        <li>The visual state changes clearly.</li>
-        <li>The programmatic state updates at the same time as the visual state.</li>
-        <li>A toggle button's state remains available to users of screen readers and other assistive technologies.</li>
+        <li>The accessible name describes the function, not only the current state. (2.4.6)</li>
+        <li>The current state is exposed with <code>aria-pressed="true"</code> or <code>aria-pressed="false"</code> when using the ARIA toggle-button pattern. (4.1.2)</li>
+        <li>The programmatic state updates at the same time as the visual state. (4.1.2)</li>
+        <li>The pressed state meets minimum contrast requirements. (1.4.3, 1.4.11)</li>
+        <li>The pressed state must be visually distinguishable from the default state when color is ignored. (1.4.1)</li>
     </ul>
 
     <h4>Examples</h4>
@@ -74,13 +73,12 @@ last-modified: July 7, 2026
     <p>A disclosure button shows or hides associated content, such as an FAQ answer, filter panel, or additional options.</p>
 
     <ul>
-        <li>The button identifies the content it controls.</li>
-        <li>Its expanded state is exposed with <code>aria-expanded="true"</code> or <code>aria-expanded="false"</code>.</li>
-        <li>The state changes when the content opens or closes.</li>
-        <li>The controlled content is not keyboard-focusable or exposed as available content when it is actually collapsed.</li>
-        <li>The button remains in a logical position relative to the content it controls.</li>
-        <li>Focus does not move unexpectedly unless the interaction pattern requires it.</li>
-        <li>The visible indicator, such as a chevron, is not the only way to identify the state.</li>
+        <li>The button identifies the content it controls using <code>aria-controls</code>. (4.1.2)</li>
+        <li>Its expanded state is exposed with <code>aria-expanded="true"</code> or <code>aria-expanded="false"</code>. (4.1.2)</li>
+        <li>The expanded state changes when the content opens or closes. (4.1.2)</li>
+        <li>The controlled content is not keyboard-focusable or exposed as available content when it is actually collapsed. (2.4.3)</li>
+        <li>The button remains in a logical position relative to the content it controls. (2.4.3)</li>
+        <li>Focus does not move unexpectedly unless the interaction pattern requires it. (3.2.2)</li>
     </ul>
 
     <h4>Example</h4>
@@ -101,15 +99,10 @@ last-modified: July 7, 2026
     <p>A dialog-opening button launches a modal or non-modal dialog, such as "Edit profile," "Share," "Delete account," or "Choose date."</p>
 
     <ul>
-        <li>The button's accessible name describes the dialog or action it opens.</li>
-        <li>The button indicates that it opens a dialog when that is not otherwise clear. WAI-ARIA's APG gives an ellipsis, such as "Save as...," as one common convention.</li>
-        <li>Focus moves into the dialog when a modal dialog opens.</li>
-        <li>The dialog has an accessible name, usually through a visible heading.</li>
-        <li>Focus is managed within the dialog according to the dialog pattern.</li>
-        <li>The dialog has an operable close button with an accessible name such as "Close."</li>
-        <li>For a modal dialog, keyboard focus cannot move to inactive page content behind it.</li>
-        <li>When the dialog closes, focus returns to the button that opened it, unless a different logical destination is necessary.</li>
-        <li>If opening the dialog changes context or presents a consequential action, the user receives enough information to understand what happened.</li>
+        <li>The button's accessible name describes the dialog or action it opens. (4.1.2)</li>
+        <li>The button visually indicates that it opens a dialog when that is not otherwise clear. WAI-ARIA's APG gives an ellipsis, such as "Save as...," as one common convention.</li>
+        <li>The button programmatically indicates that it opens a dialog using <code>aria-haspopup="dialog"</code>. (4.1.2)</li>
+        <li>When the dialog closes, focus returns to the button that opened it, unless a different logical destination is necessary. (2.4.3)</li>
     </ul>
 
     <h3>Menu Buttons</h3>
@@ -117,25 +110,21 @@ last-modified: July 7, 2026
     <p>A menu button opens a menu of choices or commands. Do not use a menu button for a simple list of ordinary page links unless the interaction genuinely requires a menu pattern.</p>
 
     <ul>
-        <li>The button has an accessible name.</li>
-        <li>It communicates that it opens a menu, typically with <code>aria-haspopup="menu"</code> or an equivalent supported implementation.</li>
-        <li>Its expanded state is communicated with <code>aria-expanded</code>.</li>
-        <li>The menu opens and closes predictably.</li>
-        <li>Keyboard interaction follows the menu-button pattern, including appropriate focus behavior and <kbd>Escape</kbd> handling.</li>
-        <li>Menu items have appropriate roles and keyboard behavior.</li>
-        <li>Focus is not lost when the menu opens.</li>
-        <li>If the menu closes, focus returns to the menu button or another logical location.</li>
+        <li>The button communicates that it opens a menu, typically with <code>aria-haspopup="menu"</code> or an equivalent supported implementation. (4.1.2)</li>
+        <li>Its expanded state is communicated with <code>aria-expanded</code>. (4.1.2)</li>
+        <li>The menu opens and closes with <kbd>Enter</kbd> and <kbd>Space</kbd>. (2.1.1)</li>
+        <li>Keyboard interaction follows the menu-button pattern, including appropriate focus behavior and <kbd>Escape</kbd> handling. (2.1.1)</li>
+        <li>Menu items have appropriate roles and keyboard behavior. (4.1.2, 2.1.1)</li>
+        <li>Focus is not lost when the menu opens. (2.4.3)</li>
+        <li>If the menu closes, focus returns to the menu button or another logical location. (2.4.3)</li>
     </ul>
 
     <h3>Submit and Reset Buttons</h3>
 
     <ul>
-        <li>The submit button identifies the operation, such as "Place order" or "Search."</li>
-        <li>Form validation errors are associated with the relevant fields.</li>
-        <li>The user is not prevented from identifying or correcting errors.</li>
-        <li>A reset button is used only when its behavior is genuinely needed, because clearing entered information can be disruptive.</li>
+        <li>The submit button identifies the operation, such as "Place order" or "Search." (2.4.6)</li>
         <li>A reset action does not occur accidentally when the user intended to submit the form.</li>
-        <li>For legal, financial, or data-modifying submissions, the applicable error-prevention requirements are met.</li>
+        <li>For legal, financial, or data-modifying submissions, the applicable error-prevention requirements are met. (3.3.4)</li>
     </ul>
 
     <h2>Best Practices</h2>
@@ -160,6 +149,7 @@ last-modified: July 7, 2026
         <li>Use a confirmation step or undo for destructive actions when accidental activation could cause significant harm.</li>
         <li>Avoid using a link styled as a button when the control performs an in-page action.</li>
         <li>Avoid using a button styled as a link when it navigates to another location.</li>
+        <li>A reset button is used only when its behavior is genuinely needed, because clearing entered information can be disruptive.</li>
     </ul>
 
     <h2>Practical Test Sequence</h2>
