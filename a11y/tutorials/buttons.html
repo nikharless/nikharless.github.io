@@ -46,13 +46,13 @@ last-modified: July 7, 2026
         <li>If the action is asynchronous, the user receives an appropriate status or completion indication.</li>
         <li>If activation changes the button's state, the new state is exposed.</li>
         <li>A destructive command should identify its consequences and, where applicable, provide confirmation or an undo mechanism.</li>
+        <li>A button inside a form must have an intentional <code>type</code>. Without an explicit <code>type</code>, a button inside a form may unintentionally submit it. (3.2.2)</li>
     </ul>
 
     <h4>Examples</h4>
     <pre><code>&lt;button type="button"&gt;Save changes&lt/button&lt;
 &lt;button type="button"&gt;Delete project&lt;/button&lt;</code></pre>
 
-    <p>A button inside a form should have an intentional <code>type</code>. Without an explicit <code>type</code>, a button inside a form may unintentionally submit it.</p>
     <pre><code>&lt;button type="submit"&gt;Submit application&lt;/button&gt;
 &lt;button type="button"&gt;Cancel&lt;/button&gt;</code></pre>
 
@@ -63,7 +63,6 @@ last-modified: July 7, 2026
         <li>The current state is exposed with <code>aria-pressed="true"</code> or <code>aria-pressed="false"</code> when using the ARIA toggle-button pattern.</li>
         <li>The visual state changes clearly.</li>
         <li>The programmatic state updates at the same time as the visual state.</li>
-        <li>The control does not use <code>aria-pressed</code> if it is actually a checkbox, switch, disclosure button, or menu button. Use the semantic pattern that matches the behavior.</li>
         <li>A toggle button's state remains available to users of screen readers and other assistive technologies.</li>
     </ul>
 
@@ -171,20 +170,35 @@ last-modified: July 7, 2026
             <th>Applicable Criteria</th>
         </tr>
         <tr>
+            <td>Identify function</td>
+            <td>
+                <ul>
+                    <li>Determine what the button does.</li>
+                    <li>Confirm that <code>button</code> is the correct role.</li>
+                    <li>Determine what type of button it is (e.g., command, toggle, disclosure, menu button, dialog trigger, submit, or reset button).</li>
+                    <li>Determine whether it is a native HTML button or a custom button.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
             <td>Semantics and language</td>
             <td>
                 <ul>
-                    <li>Confirm each visible accordion label has an appropriate heading structure where it functions as a page section heading.</li>
-                    <li>Confirm the activation control is a native <code>&lt;button&gt;</code>, where feasible, or has <code>role="button"</code>.</li>
-                    <li>Confirm headings describe the section's topic or purpose.</li>
-                    <li>If the accordions appear across multiple pages, confirm that they are identified consistently.</li>
+                    <li>Confirm the button is a native <code>&lt;button&gt;</code>, where feasible, or has <code>role="button"</code>. It should not have additional roles, contain nested controls, or be nested inside other controls. (4.1.2)</li>
+                    <li>Confirm the button has an accessible name that describes its action and includes any visible label text. (4.1.2, 2.4.6, 2.5.3)</li>
+                    <li>If the button appears across multiple pages, confirm that it is identified consistently. (3.2.4)</li>
+                    <li>If the button is inside a form, confirm it has an explicit <code>type</code>. (3.2.2)</li>
+                    <li>Confirm that any referenced IDs are valid.</li>
                 </ul>
             </td>
             <td>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels">WCAG 2.2: Understanding SC 2.4.6 Headings and Labels (Level AA)</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name">WCAG 2.2: Understanding SC 2.5.3 Label in Name (Level A)</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification">WCAG 2.2: Understanding SC 3.2.4 Consistent Identification (Level AA)</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a> (role, name, expanded state)</li>
                 </ul>
             </td>
         </tr>
@@ -192,13 +206,19 @@ last-modified: July 7, 2026
             <td>Screen reader</td>
             <td>
                 <ul>
-                    <li>With a screen reader or accessibility tree, verify a meaningful name, button role, and correct collapsed/expanded state.</li>
-                    <li>Expand and collapse each header and confirm the state updates.</li>
+                    <li>Confirm the button is identified as a button. (4.1.2)</li>
+                    <li>Verify a meaningful name. Visible labels must be included in the accessible name. Decorative icons should not be read. (4.1.2, 2.5.3, 1.1.1)</li>
+                    <li>Verify pressed, disabled, expanded, or popup states are communicated when applicable. (4.1.2)</li>
+                    <li>If multiple buttons have the same visible label, verify that the accessible name is unambiguous. (2.4.6)</li>
+                    <li>Confirm that the button and any content that it controls are read in a meaningful order. (1.3.2)</li>
+                    <li>Confirm any status messages are read when the button is activated. There should always be feedback when an action is performed. (4.1.3)</li>
                 </ul>
             </td>
             <td>
                 <ul>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence">WCAG 2.2: Understanding SC 1.3.2 Meaningful Sequence (Level A)</a> (content remains ordered when expanded)</li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content">WCAG 2.2: Understanding SC 1.1.1 Non-text Content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence">WCAG 2.2: Understanding SC 1.3.2 Meaningful Sequence (Level A)</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels">WCAG 2.2: Understanding SC 2.4.6 Headings and Labels (Level AA)</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name">WCAG 2.2: Understanding SC 2.5.3 Label in Name (Level A)</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a> (role, name, expanded state)</li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages">WCAG 2.2: Understanding SC 4.1.3 Status Messages (Level AA)</a></li>
@@ -207,7 +227,15 @@ last-modified: July 7, 2026
         </tr>
         <tr>
             <td>Keyboard only</td>
-            <td>Use <kbd>Tab</kbd>, <kbd>Shift</kbd>+<kbd>Tab</kbd>, <kbd>Enter</kbd>, and <kbd>Space</kbd>. Verify every header expands/collapses with both <kbd>Enter</kbd> and <kbd>Space</kbd>, focus remains visible, revealed interactive content becomes reachable, and collapsed content does not retain keyboard focusability. When a panel is collapsed, ensure its visual content is not exposed as active keyboard stops. When expanded, ensure content is actually rendered/exposed appropriately and follows its trigger logically. Test especially when focus is in the panel and the panel is then collapsed through scripting or another control.</td>
+            <td>
+                <ul>
+                    <li>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to focus and unfocus the button. Use <kbd>Enter</kbd> and <kbd>Space</kbd> to activate it. Keyboard activation should perform the same function as a mouse click. The page should not scroll unexpectedly when <kbd>Space</kbd> is used to activate the button. Disabled buttons should not be activatable. (2.1.1, 2.1.2)</li>
+                    <li>Confirm that the button has a visible focus indicator. (2.4.7)</li>
+                    <li>Confirm that the button appears in a logical focus order. Check the focus order of any additional content, such as menus or expanded regions, that is controlled by the button. (2.4.3)</li>
+                    <li>If the button exposes additional content, confirm that it does not completely obscure the focus of other controls. (2.4.11)</li>
+                    <li>Confirm that no unexpected context changes occur when the button is focused or activated. Focus should not be removed or moved on activation, unless the button's purpose requires it. Only submit buttons may submit forms. (3.2.1, 3.2.2)
+                </ul>
+             </td>
             <td>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a> (Tab navigation and Enter and Space activation required)</li>
@@ -222,15 +250,22 @@ last-modified: July 7, 2026
             </td>
         </tr>
         <tr>
-            <td>Inspect visual aspects</td>
-            <td>Check contrast, 200% text resize, 400% browser zoom/reflow, text spacing overrides, and narrow viewports. Inspect whether long labels wrap rather than clip and whether the full header remains an adequately sized target.</td>
+            <td>Visual presentation</td>
             <td>
                 <ul>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/sensory-characteristics">WCAG 2.2: Understanding SC 1.3.3 Sensory Characteristics (Level A)</a> ("select the arrow on the right...")</li>
+                    <li>Check contrast for text and icons in all states (focus, active, pressed). Check contrast for the focus indicator. (1.4.3, 1.4.11)</li>
+                    <li>Confirm states are not conveyed by color alone. (1.4.1)
+                    <li>Check 200% text resize, 320-CSS-pixel-wide viewport, and text spacing overides. The button and any controlled content must remain visible, unclipped, unobscured, and usable. Horizontal scrolling should not be required. (1.4.4, 1.4.10, 1.4.12)</li>
+                    <li>Confirm target size or sufficient spacing. (2.5.8)</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color">WCAG 2.2: Understanding SC 1.4.1 Use of Color (Level A)</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum">WCAG 2.2: Understanding SC 1.4.3 Contrast (Minimum) (Level AA)</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text">WCAG 2.2: Understanding SC 1.4.4 Resize Text (Level AA)</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow">WCAG 2.2: Understanding SC 1.4.10 Reflow (Level AA)</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast">WCAG 2.2: Understanding SC 1.4.11 Non-text Contrast (Level AA)</a> (outline, icon, focus boundary)</li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast">WCAG 2.2: Understanding SC 1.4.11 Non-text Contrast (Level AA)</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing">WCAG 2.2: Understanding SC 1.4.12 Text Spacing (Level AA)</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
                 </ul>
