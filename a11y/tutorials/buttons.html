@@ -25,9 +25,9 @@ last-modified: July 7, 2026
     </ul>
     <p>Buttons swap the page content without any of the above.</p>
 
-    <h2>WCAG Requirements</h2>
+    <h2>WCAG requirements</h2>
 
-    <h3>All Buttons</h3>
+    <h3>All buttons</h3>
     <ul>
         <li>The button has a programmatically determinable accessible name that describes its action or purpose. (4.1.2)</li>
         <li>The control exposes the button role. (4.1.2)</li>
@@ -41,21 +41,21 @@ last-modified: July 7, 2026
         <li>The button does not cause an unexpected context change merely because it receives focus. (3.2.1)</li>
         <li>If activating the button causes a significant context change, the user is informed where appropriate. (3.2.2)</li>
         <li>If the button is disabled, unavailable, loading, pressed, expanded, or otherwise stateful, that state is communicated visually and programmatically. (4.1.2)</li>
-        <li>A disabled button must not appear operable or respond inconsistently with its disabled state.</li>
+        <li>A disabled button does appear operable or respond inconsistently with its disabled state. (4.1.2)</li>
         <li>An icon-only button has an accessible name independent of the icon's appearance. (2.4.6)</li>
-        <li>A button's visible text is included in its accessible name. This is especially important for icon buttons with visible text labels. (2.5.3)</li>
+        <li>A button's visible text is included in its accessible name. (2.5.3)</li>
         <li>Buttons that perform destructive, legal, financial, or data-submission actions provide appropriate error prevention or confirmation where required. (3.3.4)</li>
     </ul>
 
-    <h3>Command Buttons</h3>
+    <h3>Command buttons</h3>
     <p>A command button performs an action, such as Save, Delete, Print, Add Item, Cancel, Submit, Start or Stop playback.</p>
     <ul>
         <li>The accessible name identifies the action, such as "Delete report." (2.4.6)</li>
         <li>The name remains sufficiently specific when several buttons appear together (2.4.6).</li>
         <li>If the action is asynchronous, the user receives an appropriate status or completion indication. (4.1.3)</li>
         <li>If activation changes the button's state, the new state is exposed. (4.1.2)</li>
-        <li>A destructive command should identify its consequences and, where applicable, provide confirmation or an undo mechanism. (3.3.4)</li>
-        <li>A button inside a form must have an intentional <code>type</code>. Without an explicit <code>type</code>, a button inside a form may unintentionally submit it. (3.2.2)</li>
+        <li>A destructive command identifies its consequences and, where applicable, provide confirmation or an undo mechanism. (3.3.4)</li>
+        <li>A button inside a form has an explicit <code>type</code>. Without it, the button may unintentionally submit the form. (3.2.2)</li>
     </ul>
 
     <h4>Examples</h4>
@@ -65,14 +65,14 @@ last-modified: July 7, 2026
     <pre><code>&lt;button type="submit"&gt;Submit application&lt;/button&gt;
 &lt;button type="button"&gt;Cancel&lt;/button&gt;</code></pre>
 
-    <h3>Toggle Buttons</h3>
+    <h3>Toggle buttons</h3>
     <p>A toggle button switches between two states, such as Bold on/off, Mute/unmute, Show/hide a toolbar, Favorite/unfavorite, Start/stop a mode.</p>
     <ul>
         <li>The accessible name describes the function, not only the current state. (2.4.6)</li>
         <li>The current state is exposed with <code>aria-pressed="true"</code> or <code>aria-pressed="false"</code> when using the ARIA toggle-button pattern. (4.1.2)</li>
         <li>The programmatic state updates at the same time as the visual state. (4.1.2)</li>
         <li>The pressed state meets minimum contrast requirements. (1.4.3, 1.4.11)</li>
-        <li>The pressed state must be visually distinguishable from the default state when color is ignored. (1.4.1)</li>
+        <li>The pressed state is visually distinguishable from the default state when color is ignored. (1.4.1)</li>
     </ul>
 
     <h4>Examples</h4>
@@ -104,55 +104,81 @@ last-modified: July 7, 2026
     ...
 &lt;/div&gt;</code></pre>
 
-    <h3>Buttons That Open Dialogs</h3>
+    <h3>Buttons that open dialogs</h3>
 
     <p>A dialog-opening button launches a modal or non-modal dialog, such as "Edit profile," "Share," "Delete account," or "Choose date."</p>
 
     <ul>
-        <li>The button's accessible name describes the dialog or action it opens. (4.1.2)</li>
-        <li>The button visually indicates that it opens a dialog when that is not otherwise clear. WAI-ARIA's APG gives an ellipsis, such as "Save as...," as one common convention.</li>
+        <li>The button's accessible name describes the dialog or action it opens. (2.4.6)</li>
         <li>The button programmatically indicates that it opens a dialog using <code>aria-haspopup="dialog"</code>. (4.1.2)</li>
+        <li>When the dialog opens, focus moves to the dialog. (2.4.3)</li>
         <li>When the dialog closes, focus returns to the button that opened it, unless a different logical destination is necessary. (2.4.3)</li>
     </ul>
 
-    <h3>Menu Buttons</h3>
+    <h3>Menu buttons</h3>
 
-    <p>A menu button opens a menu of choices or commands. Do not use a menu button for a simple list of ordinary page links unless the interaction genuinely requires a menu pattern.</p>
+    <p>A menu button opens a menu of choices or commands. A menu button should only be used for application-style menus that meet the following criteria:</p>
 
+    <ul>
+        <li><strong>Action-oriented items:</strong> The menu items trigger immediate client-side actions, commands, or state changes (e.g., Save, Export as PDF, Duplicate, Delete).</li>
+        <li><strong>Application context:</strong> The component functions as part of a Web Application UI (e.g., an "Actions" drop-down next to a table row, or a context menu).</li>
+        <li><strong>Complex keyboard navigation is required:</strong> The design deliberately calls for desktop-style arrow key navigation:
+            <ul>
+                <li><kbd>Tab</kbd> moves focus onto the trigger button.</li>
+                <li><kbd>Enter</kbd>, <kbd>Space</kbd>, or <kbd>Down Arrow</kbd> opens the menu and moves focus to the first item.</li>
+                <li><kbd>Up Arrow</kbd> / <kbd>Down Arrow</kbd> keys navigate between <code>menuitem</code> elements.</li>
+                <li><kbd>Tab</kbd> closes the menu and immediately moves focus out to the next focusable page element.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>Menu buttons should not be used in the following scenarios:</p>
+
+    <ul>
+        <li><strong>Site navigation / header links:</strong> <code>role="menu"</code> should not be used for site-wide navigation drop-downs (e.g., "Products", "About Us", "Services"). Standard HTML <code>&lt;nav&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;a&gt;</code>, and collapsible disclosure buttons (<code>aria-expanded</code>) should be used instead so keyboard users can tab through links normally.</li>
+        <li><strong>Form option selection:</strong> If the menu is meant to select a single option from a list for a form input, an HTML <code>&lt;select&gt;</code> or the ARIA Select/Listbox pattern (<code>role="listbox"</code> / <code>role="option</code>) should be used.</li>
+        <li><strong>Simple show/hide content:</strong> If opening the menu toggles a panel containing arbitrary interactive controls (like inputs, checkboxes, or unrelated buttons), use the Disclosure pattern or a Dialog/Popover instead.</li>
+    </ul>
+
+    <p>Requirements:</p>
     <ul>
         <li>The button communicates that it opens a menu, typically with <code>aria-haspopup="menu"</code> or an equivalent supported implementation. (4.1.2)</li>
         <li>Its expanded state is communicated with <code>aria-expanded</code>. (4.1.2)</li>
-        <li>The menu opens and closes with <kbd>Enter</kbd> and <kbd>Space</kbd>. (2.1.1)</li>
+        <li>The menu opens and closes with <kbd>Enter</kbd> and <kbd>Space</kbd>. Options are accessed with <kbd>Down Arrow</kbd> and <kbd>Up Arrow</kbd>. (2.1.1)</li>
         <li>Keyboard interaction follows the menu-button pattern, including appropriate focus behavior and <kbd>Escape</kbd> handling. (2.1.1)</li>
         <li>Menu items have appropriate roles and keyboard behavior. (4.1.2, 2.1.1)</li>
         <li>Focus is not lost when the menu opens. (2.4.3)</li>
         <li>If the menu closes, focus returns to the menu button or another logical location. (2.4.3)</li>
     </ul>
 
-    <h3>Submit and Reset Buttons</h3>
+    <h3>Submit and reset buttons</h3>
 
     <ul>
         <li>The submit button identifies the operation, such as "Place order" or "Search." (2.4.6)</li>
-        <li>A reset action does not occur accidentally when the user intended to submit the form.</li>
-        <li>For legal, financial, or data-modifying submissions, the applicable error-prevention requirements are met. (3.3.4)</li>
+        <li>For legal, financial, or data-modifying submissions, the applicable error-prevention requirements are met. This includes instances where a reset button clears all data in a form (e.g., a dialog asking "Are you sure you want to clear all entered data?"). (3.3.4)</li>
     </ul>
 
-    <h2>Best Practices</h2>
+    <h2>Best practices</h2>
     <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
 
     <ul>
         <li>Prefer native <code>&lt;button&gt;</code> elements.</li>
         <li>Give every button a visible text label when space and context permit.</li>
         <li>Use an accessible name that describes the result of activation: "Download invoice" is better than "Download."</li>
-        <li>Keep button labels stable where possible, especially for toggles. Communicate the state separately.</li>
+        <li>Keep button labels stable where possible, especially for toggles (e.g., "Mute" rather than "Mute"/"Unmute"). Communicate the state separately.</li>
         <li>Use sentence case and concise action-oriented labels.</li>
         <li>Do not use an icon alone when the icon's meaning may be ambiguous.</li>
         <li>Provide a tooltip for an unfamiliar icon, but do not rely on a tooltip as the only accessible name.</li>
-        <li>Use <code>aria-pressed</code> for toggle buttons, <code>aria-expanded</code> for disclosure controls, and <code>aria-haspopup</code> for menu buttons only when those patterns accurately describe the behavior.</li>
-        <li>Do not add ARIA when native HTML already supplies the necessary semantics.</li>
+        <li>Do not add ARIA when native HTML already supplies the necessary semantics (e.g., <code>&lt;a role="link"&gt;</code>).</li>
         <li>Avoid placing multiple adjacent icon-only buttons without sufficient spacing or clear names.</li>
         <li>Preserve the button's position and accessible name across states unless changing them is necessary.</li>
-        <li>Make loading behavior clear. Prevent duplicate activation where appropriate, but do not remove the accessible name or trap focus unnecessarily.</li>
+        <li>Make loading behavior clear.
+            <ul>
+               <li>Give visual and screen reader feedback when a button triggers a process that takes some time to complete.</li>
+                <li>Prevent duplicate activation where appropriate. Temporarily disable the button to stop users from activating it multiple times while waiting for the process to complete. Use <code>aria-disabled="true"</code> rather than <code>disabled</code> to avoid moving keyboard focus, which may cause a 3.2.2 On Input or 2.4.3 Focus Order failure.</li>
+                <li>Do not remove the accessible name (e.g., replacing it with a loading animation) while in the loading state.</li>
+            </ul>
+        </li>
         <li>Avoid disabling a button solely because an error exists. When possible, allow activation and explain the validation errors.</li>
         <li>Ensure hover, active, pressed, disabled, and focus states are visually distinguishable.</li>
         <li>Keep the entire visible button area clickable, not only the text or icon.</li>
@@ -160,9 +186,11 @@ last-modified: July 7, 2026
         <li>Avoid using a link styled as a button when the control performs an in-page action.</li>
         <li>Avoid using a button styled as a link when it navigates to another location.</li>
         <li>A reset button is used only when its behavior is genuinely needed, because clearing entered information can be disruptive.</li>
+        <li>If a reset button is necessary, use a low-emphasis visual style to differentiate it from the submit button and separate the two buttons spacially.</li>
+        <li>A button that opens a dialog visually indicates this (e.g., an ellipsis: "Save as...").</li>
     </ul>
 
-    <h2>Practical Test Sequence</h2>
+    <h2>Practical test sequence</h2>
     <table>
         <tr>
             <th>Focus</th>
@@ -290,7 +318,7 @@ last-modified: July 7, 2026
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-controls">MDN: ARIA: aria-controls attribute</a></li>
     </ul>
 
-    <h3>Additional Information</h3>
+    <h3>Additional information</h3>
     <ul>
         <li><a href="https://adrianroselli.com/2023/08/progressively-enhanced-html-accordion.html">Adrian Roselli: Progressively Enhanced HTML Accordion</a></li>
         <li><a href="https://webaim.org/techniques/disclosures/">WebAIM: Disclosures and Accordions</a></li>
