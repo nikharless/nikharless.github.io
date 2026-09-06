@@ -1,0 +1,221 @@
+---
+layout: tuts
+last-modified: September 6, 2026
+---
+<div class="content row" id="main" style="max-width: 1140px;">
+    <div class="cpcontent">
+        <h1>Carousels</h1>
+
+        <p>A carousel is a set of related items that can be viewed by moving between slides or by scrolling through a horizontal collection. A carousel may display one slide at a time or several items at once.</p>
+
+        <p>Carousels may include previous and next buttons, slide-picker controls, scroll buttons, automatic rotation, or touch and pointer gestures. A carousel that displays several cards in a horizontal row may also be described as a horizontal scroller or multi-item carousel.</p>
+
+        <h2>WCAG requirements</h2>
+        <ul>
+            <li>The carousel has a programmatically determinable name when its purpose or boundaries are not otherwise clear. (1.3.1, 2.4.6, 4.1.2)</li>
+            <li>Previous, next, pause, play, and slide-picker controls have accessible names that describe their purpose. (2.4.6, 4.1.2)</li>
+            <li>Carousel controls are operable with a keyboard. (2.1.1)</li>
+            <li>Carousel controls have a visible focus indicator. (2.4.7)</li>
+            <li>The current slide or item is programmatically identified when the carousel provides a selected or current state. (1.3.1, 4.1.2)</li>
+            <li>Slide-picker controls expose which slide is currently selected, where slide-picker controls are provided. (4.1.2)</li>
+            <li>Content that is visually hidden because it is outside the current view remains available through an accessible interaction, unless it is intentionally inactive or unavailable. (2.1.1, 4.1.2)</li>
+            <li>If the carousel automatically rotates, users can pause or stop the rotation. (2.2.2)</li>
+            <li>When a carousel automatically rotates, the rotation stops when a user focuses within the carousel or hovers over it. (2.2.2)</li>
+            <li>Carousel movement does not prevent users from reading or operating the content. (2.2.2)</li>
+            <li>Changing slides does not cause an unexpected change of context or move focus unexpectedly. (3.2.1, 3.2.2, 2.4.3)</li>
+            <li>Text alternatives are provided for meaningful images within slides. (1.1.1)</li>
+            <li>Slide content and controls appear in a meaningful reading and focus order. (1.3.2, 2.4.3)</li>
+            <li>Visible labels for carousel controls are included in their accessible names. (2.5.3)</li>
+            <li>The carousel remains usable when text is enlarged, spacing is increased, or the viewport is narrow. (1.4.4, 1.4.10, 1.4.12)</li>
+            <li>Carousel controls and important visual indicators have sufficient contrast. (1.4.3, 1.4.11)</li>
+            <li>Carousel state is not conveyed by color alone. (1.4.1)</li>
+            <li>Carousel controls meet the minimum target-size requirement or an applicable exception applies. (2.5.8)</li>
+            <li>Focused carousel controls are not completely hidden by other author-created content. (2.4.11)</li>
+        </ul>
+
+        <h2>Best practices</h2>
+        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
+        <ul>
+            <li>Use a native <code>&lt;button&gt;</code> for previous, next, pause, play, and slide-picker controls whenever possible.</li>
+            <li>Give the carousel a visible heading when it represents a distinct section of the page.</li>
+            <li>Use specific control names such as <code>Next slide</code> and <code>Previous slide</code> rather than ambiguous names such as <code>Right</code> and <code>Left</code>.</li>
+            <li>Use an accessible name for icon-only controls, and hide decorative arrow icons from assistive technology.</li>
+            <li>Do not automatically rotate content unless there is a strong reason to do so.</li>
+            <li>Provide a clearly visible pause or stop button for an automatically rotating carousel.</li>
+            <li>Stop automatic rotation when the carousel receives keyboard focus or pointer hover.</li>
+            <li>Do not restart automatic rotation unexpectedly after a user pauses it.</li>
+            <li>Keep focus on the activated control when moving between slides unless the interaction requires a different focus destination.</li>
+            <li>Do not move focus to a slide merely because the carousel changes visually.</li>
+            <li>Ensure that users can reach all slides or cards without relying on a mouse, touch gesture, or drag.</li>
+            <li>For a horizontal card carousel, provide usable scroll buttons when native scrolling alone is not sufficient for discovering additional content.</li>
+            <li>Do not hide cards from the accessibility tree only because they are outside the visible portion of a horizontal scroller.</li>
+            <li>Use a list structure for a collection of peer cards when that structure accurately represents the content.</li>
+            <li>Do not use <code>role="slider"</code> for a carousel. The ARIA slider role is for selecting a value within a range.</li>
+            <li>Make the entire visible control target large enough to activate, not just a small arrow or icon.</li>
+            <li>Ensure that slide transitions do not cause content to flash, move rapidly, or create a seizure or motion concern.</li>
+            <li>Provide meaningful alternative text for informative images and empty alternative text for decorative images.</li>
+            <li>Ensure that each slide has a meaningful heading or accessible identification when users need to distinguish slides.</li>
+            <li>Do not use slide-picker dots as the only way to determine how many slides are available or which slide is current.</li>
+        </ul>
+
+        <h2>Practical test sequence</h2>
+        <table>
+            <tr>
+                <th>Focus</th>
+                <th>Details</th>
+                <th>Applicable criteria</th>
+            </tr>
+            <tr>
+                <td>Semantics and language</td>
+                <td>
+                    <ul>
+                        <li>Confirm the carousel has an appropriate visible heading or accessible name when its purpose is not otherwise clear. (1.3.1, 2.4.6, 4.1.2)</li>
+                        <li>Confirm previous, next, pause, play, and slide-picker controls are native <code>&lt;button&gt;</code> elements where feasible, or expose the correct button semantics. (4.1.2)</li>
+                        <li>Confirm each control has a meaningful name that describes its action. (2.4.6, 4.1.2)</li>
+                        <li>Confirm the carousel's slides or cards have an appropriate structure and appear in a meaningful order. (1.3.1, 1.3.2)</li>
+                        <li>For a horizontal card carousel, confirm that the cards are represented as a coherent collection, such as a list when appropriate. (1.3.1)</li>
+                        <li>If similar carousels appear across multiple pages, confirm that they are identified consistently. (3.2.4)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence">WCAG 2.2: Understanding SC 1.3.2 Meaningful Sequence (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels">WCAG 2.2: Understanding SC 2.4.6 Headings and Labels (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification">WCAG 2.2: Understanding SC 3.2.4 Consistent Identification (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Screen reader</td>
+                <td>
+                    <ul>
+                        <li>Confirm the carousel is identified by an appropriate name when necessary. (1.3.1, 4.1.2)</li>
+                        <li>Verify that previous, next, pause, play, and slide-picker controls are announced with meaningful names and as buttons. (4.1.2)</li>
+                        <li>Verify that visible control text is included in the accessible name. Decorative icons should not be announced. (1.1.1, 2.5.3, 4.1.2)</li>
+                        <li>Confirm the current slide or selected slide-picker control is identified programmatically. (4.1.2)</li>
+                        <li>When a slide changes, confirm that users can determine which slide or item is now available without an unexpected focus change. (4.1.2, 3.2.2)</li>
+                        <li>Confirm that all available slides or cards can be reached and read, including content outside the initial visual viewport. (1.3.1, 2.1.1)</li>
+                        <li>For a horizontal card carousel, confirm that cards are not incorrectly exposed as hidden merely because they are outside the visible scroll area. (1.3.1, 4.1.2)</li>
+                        <li>Confirm that meaningful images have appropriate alternative text. (1.1.1)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content">WCAG 2.2: Understanding SC 1.1.1 Non-text Content (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name">WCAG 2.2: Understanding SC 2.5.3 Label in Name (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Keyboard only</td>
+                <td>
+                    <ul>
+                        <li>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to reach every carousel control. (2.1.1)</li>
+                        <li>Use <kbd>Enter</kbd> and <kbd>Space</kbd> to activate previous, next, pause, play, and slide-picker buttons. Keyboard activation should perform the same function as a mouse click. (2.1.1)</li>
+                        <li>Confirm that the page does not scroll unexpectedly when <kbd>Space</kbd> activates a button. (2.1.1)</li>
+                        <li>Confirm that every focused control has a visible focus indicator and is not completely hidden by other content. (2.4.7, 2.4.11)</li>
+                        <li>Confirm that controls and slide content appear in a logical focus order. (2.4.3)</li>
+                        <li>Confirm that users can reach every slide or card without using a pointer, touch gesture, or drag operation. (2.1.1)</li>
+                        <li>For an automatically rotating carousel, confirm that rotation stops when focus enters the carousel. (2.2.2)</li>
+                        <li>Confirm that slide changes do not unexpectedly move focus to another control or location. (2.4.3, 3.2.2)</li>
+                        <li>Confirm that the carousel does not create a keyboard trap. (2.1.2)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap">WCAG 2.2: Understanding SC 2.1.2 No Keyboard Trap (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order">WCAG 2.2: Understanding SC 2.4.3 Focus Order (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible">WCAG 2.2: Understanding SC 2.4.7 Focus Visible (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide">WCAG 2.2: Understanding SC 2.2.2 Pause, Stop, Hide (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Automatic rotation and movement</td>
+                <td>
+                    <ul>
+                        <li>Determine whether the carousel rotates automatically without user activation. (2.2.2)</li>
+                        <li>If it rotates automatically, confirm that a visible pause or stop control is available before or while the content moves. (2.2.2)</li>
+                        <li>Confirm that the pause or stop control has an accessible name that reflects its current action. (4.1.2)</li>
+                        <li>Confirm that rotation stops when the carousel receives keyboard focus. (2.2.2)</li>
+                        <li>Confirm that rotation stops while the pointer is over the carousel. (2.2.2)</li>
+                        <li>Confirm that the carousel does not restart rotation unexpectedly after the user pauses it. (2.2.2)</li>
+                        <li>Verify that moving content does not prevent users from reading, activating controls, or reaching links within the carousel. (2.2.2)</li>
+                        <li>Check for excessive flashing or rapid movement. (2.3.1, 2.3.3)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide">WCAG 2.2: Understanding SC 2.2.2 Pause, Stop, Hide (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/three-flashes-or-below-threshold">WCAG 2.2: Understanding SC 2.3.1 Three Flashes or Below Threshold (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions">WCAG 2.2: Understanding SC 2.3.3 Animation from Interactions (Level AAA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Inspect visual aspects</td>
+                <td>
+                    <ul>
+                        <li>Check contrast for slide text, controls, icons, indicators, and focus indicators in all states. (1.4.3, 1.4.11)</li>
+                        <li>Confirm that the current slide or selected state is not conveyed by color alone. (1.4.1)</li>
+                        <li>Confirm that slide-picker controls have a visible distinction between current and non-current states. (1.4.11)</li>
+                        <li>Check 200% text resize, a 320-CSS-pixel-wide viewport, and text-spacing overrides. The carousel, controls, and slide content must remain visible, usable, and unclipped. (1.4.4, 1.4.10, 1.4.12)</li>
+                        <li>For a horizontal card carousel, confirm that cards do not become inaccessible because of clipping or unexpected two-dimensional scrolling. (1.4.10)</li>
+                        <li>Confirm that controls meet the minimum target size or have sufficient spacing from adjacent targets. (2.5.8)</li>
+                        <li>Confirm that focused controls are not obscured by sticky headers, banners, or other author-created content. (2.4.11)</li>
+                        <li>Confirm that meaningful images have sufficient text alternatives and that decorative images are not announced. (1.1.1)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content">WCAG 2.2: Understanding SC 1.1.1 Non-text Content (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color">WCAG 2.2: Understanding SC 1.4.1 Use of Color (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum">WCAG 2.2: Understanding SC 1.4.3 Contrast (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text">WCAG 2.2: Understanding SC 1.4.4 Resize Text (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow">WCAG 2.2: Understanding SC 1.4.10 Reflow (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast">WCAG 2.2: Understanding SC 1.4.11 Non-text Contrast (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing">WCAG 2.2: Understanding SC 1.4.12 Text Spacing (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Resources</h2>
+
+        <h3>Native HTML</h3>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/section">MDN: &lt;section&gt; HTML generic section element</a></li>
+        </ul>
+
+        <h3>Custom ARIA</h3>
+        <ul>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/carousel/">w3: APG Carousel (Slide Show or Image Rotator) Pattern</a></li>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/">w3: APG Tabs Pattern</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role">MDN: ARIA: region role</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role">MDN: ARIA: group role</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-roledescription">MDN: ARIA: aria-roledescription attribute</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">MDN: ARIA: aria-label attribute</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live">MDN: ARIA: aria-live attribute</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-controls">MDN: ARIA: aria-controls attribute</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-selected">MDN: ARIA: aria-selected attribute</a></li>
+        </ul>
+
+        <h3>Additional information</h3>
+        <ul>
+            <li><a href="https://dequeuniversity.com/library/aria/carousel">Deque University: Code Library of Accessibility Examples: Carousel (based on a tabpanel)</a></li>
+            <li><a href="https://www.w3.org/WAI/tutorials/carousels/">w3: WAI Carousels Tutorial</a></li>
+            <li><a href="https://www.smashingmagazine.com/2023/02/guide-building-accessible-carousels/">Smashing Magazine: A Step-By-Step Guide to Building Accessible Carousels</a></li>
+            <li><a href="https://www.a11y-collective.com/blog/how-to-test-and-improve-carousel-accessibility/">A11y Collective: How to Test and Improve Carousel Accessibility</a></li>
+        </ul>
+    </div>
+</div>
