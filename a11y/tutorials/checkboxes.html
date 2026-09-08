@@ -19,10 +19,12 @@ last-modified: September 7, 2026
 
         <h2>WCAG requirements</h2>
         <ul>
-            <li>Each checkbox has a programmatically determinable accessible name. (1.3.1, 4.1.2)</li>
+            <li>Each checkbox has a programmatically determinable accessible name. (4.1.2)</li>
             <li>The checkbox exposes the checkbox role. A native <code>&lt;input type="checkbox"&gt;</code> provides this role automatically. (4.1.2)</li>
+            <li>For a custom checkbox, use <code>role="checkbox"</code> and keep <code>aria-checked</code> synchronized with the visual state. (4.1.2)</li>
             <li>The checked or unchecked state is programmatically determinable and updates when the state changes. (4.1.2)</li>
-            <li>A visible label identifies the checkbox and is associated with it programmatically. (1.3.1, 4.1.2)</li>
+            <li>Use <code>aria-checked="mixed"</code> only when a tri-state checkbox genuinely represents a partially selected state. Do not use the indeterminate state merely as a decorative visual style. It should represent a meaningful relationship, such as a parent option with only some child options selected. (1.3.1, 4.1.2)</li>
+            <li>A visible label identifies the checkbox and is associated with it programmatically. (1.3.1, 3.3.2)</li>
             <li>The visible label is included in the checkbox's accessible name. (2.5.3)</li>
             <li>The checkbox is operable with a keyboard. (2.1.1)</li>
             <li>The checkbox has a visible focus indicator when it receives keyboard focus. (2.4.7)</li>
@@ -35,6 +37,7 @@ last-modified: September 7, 2026
             <li>If a group of checkboxes has a common purpose, the group has an appropriate programmatic label. (1.3.1, 2.4.6)</li>
             <li>If a checkbox controls another part of the interface, the relationship and resulting state are programmatically determinable. (1.3.1, 4.1.2)</li>
             <li>If a checkbox is required, the required status and any resulting validation errors are communicated to users. (1.3.1, 3.3.1, 4.1.2)</li>
+            <li>Do not automatically submit a form or cause an unexpected context change when a checkbox is selected unless the behavior is clearly communicated and appropriate. (3.2.2)</li>
         </ul>
 
         <h2>Best practices</h2>
@@ -49,11 +52,7 @@ last-modified: September 7, 2026
             <li>Use a <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> for a related group of checkboxes when the group has a common question or purpose.</li>
             <li>Do not use a checkbox when selecting it immediately turns a setting on or off and a switch would better communicate that behavior.</li>
             <li>Do not use <code>aria-checked</code> on a native checkbox. The native checked state is exposed automatically.</li>
-            <li>For a custom checkbox, use <code>role="checkbox"</code> and keep <code>aria-checked</code> synchronized with the visual state.</li>
-            <li>Use <code>aria-checked="mixed"</code> only when a tri-state checkbox genuinely represents a partially selected state.</li>
-            <li>Do not use the indeterminate state merely as a decorative visual style. It should represent a meaningful relationship, such as a parent option with only some child options selected.</li>
-            <li>Do not automatically submit a form or cause an unexpected context change when a checkbox is selected unless the behavior is clearly communicated and appropriate.</li>
-            <li>Place additional instructions, error messages, and descriptions so they are associated with the checkbox or group.</li>
+            <li>Place additional instructions, error messages, and descriptions so they are visually associated with the checkbox or group.</li>
             <li>Do not disable a checkbox merely to prevent validation errors when users could instead receive an explanation and correct the problem.</li>
             <li>Ensure checked, unchecked, indeterminate, disabled, hover, and focus states are visually distinguishable.</li>
         </ul>
@@ -127,6 +126,7 @@ last-modified: September 7, 2026
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order">WCAG 2.2: Understanding SC 2.4.3 Focus Order (Level A)</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible">WCAG 2.2: Understanding SC 2.4.7 Focus Visible (Level AA)</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
                     </ul>
                 </td>
             </tr>
@@ -136,8 +136,8 @@ last-modified: September 7, 2026
                     <ul>
                         <li>Submit the form with the checkbox unselected and confirm that a required checkbox is identified as needing attention. (3.3.1)</li>
                         <li>Confirm the error message identifies the checkbox or group and explains what must be done. (3.3.1, 3.3.3)</li>
-                        <li>Confirm the error message is programmatically associated with the checkbox or group. (1.3.1, 4.1.2)</li>
-                        <li>Confirm the user can identify and correct the error without relying only on color, position, or visual styling. (1.3.1, 3.3.1)</li>
+                        <li>Confirm the error message is programmatically associated with the checkbox or group. (1.3.1)</li>
+                        <li>Confirm the user can identify and correct the error without relying only on color, position, or visual styling. (1.4.1, 3.3.1)</li>
                         <li>Confirm that checked values are submitted when appropriate and unchecked values are handled as intended. (4.1.2)</li>
                         <li>Confirm that selecting or clearing the checkbox does not submit the form or change context unexpectedly. (3.2.2)</li>
                     </ul>
@@ -145,9 +145,10 @@ last-modified: September 7, 2026
                 <td>
                     <ul>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color">WCAG 2.2: Understanding SC 1.4.1 Use of Color (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification">WCAG 2.2: Understanding SC 3.3.1 Error Identification (Level A)</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion">WCAG 2.2: Understanding SC 3.3.3 Error Suggestion (Level AA)</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
                     </ul>
                 </td>
@@ -160,7 +161,7 @@ last-modified: September 7, 2026
                         <li>Confirm checked and unchecked states are not distinguished by color alone. (1.4.1)</li>
                         <li>Check the checkbox at 200% text resize, a 320-CSS-pixel-wide viewport, and with text-spacing overrides. The checkbox, label, instructions, and error messages must remain visible, usable, and unclipped. (1.4.4, 1.4.10, 1.4.12)</li>
                         <li>Confirm the checkbox and its associated label provide an adequate pointer target. (2.5.8)</li>
-                        <li>Confirm the focus indicator is visible against the surrounding colors and is not completely hidden by other content. (2.4.7, 2.4.11)</li>
+                        <li>Confirm the focus indicator is visible against the surrounding colors and is not completely hidden by other content. (1.4.11, 2.4.11)</li>
                         <li>Confirm disabled styling does not make the label or state impossible to understand when users need that information. (1.4.3, 1.4.11)</li>
                     </ul>
                 </td>
@@ -172,8 +173,9 @@ last-modified: September 7, 2026
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow">WCAG 2.2: Understanding SC 1.4.10 Reflow (Level AA)</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast">WCAG 2.2: Understanding SC 1.4.11 Non-text Contrast (Level AA)</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing">WCAG 2.2: Understanding SC 1.4.12 Text Spacing (Level AA)</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
+                        
                     </ul>
                 </td>
             </tr>

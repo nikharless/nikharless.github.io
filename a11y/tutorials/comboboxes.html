@@ -1,0 +1,332 @@
+Below is a combobox document following the same structure as your accordion, carousel, and checkbox documents. It separates select-only, editable, autocomplete, and multi-select considerations. The WAI-ARIA APG identifies select-only comboboxes and several editable autocomplete behaviors, including no autocomplete, manual selection, and automatic selection. [w3](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)
+
+```html
+---
+layout: tuts
+last-modified: September 8, 2026
+---
+<div class="content row {{ sc.level }}" id="main" style="max-width: 1140px;">
+    <div class="cpcontent">
+        <h1>Comboboxes</h1>
+
+        <p>A combobox is an input or select-like control that allows a user to choose a value from a popup list of options. A combobox may be select-only, or it may allow users to enter text and receive autocomplete suggestions.</p>
+
+        <p>Comboboxes differ from related controls:</p>
+        <ul>
+            <li>Use a native <code>&lt;select&gt;</code> when users choose one option from a fixed list and text entry or custom behavior is not needed.</li>
+            <li>Use an editable combobox when users can enter text and may optionally choose a matching suggestion.</li>
+            <li>Use a listbox when the options are persistently displayed rather than shown in a popup.</li>
+            <li>Use a menu button for a list of commands or navigation links rather than a list of values.</li>
+            <li>Use a multiselect listbox or a group of checkboxes when users can select multiple values. Do not represent a multi-select control as a single-select combobox.</li>
+            <li>Prefer native HTML controls when they provide the required behavior.</li>
+        </ul>
+
+        <h2>WCAG requirements</h2>
+        <ul>
+            <li>The combobox has a programmatically determinable accessible name. (1.3.1, 3.3.2, 4.1.2)</li>
+            <li>The control exposes the combobox role, or uses a native control with equivalent semantics. (4.1.2)</li>
+            <li>The expanded or collapsed state of the popup is programmatically determinable. (4.1.2)</li>
+            <li>The relationship between the combobox and its popup list is programmatically determinable. (1.3.1, 4.1.2)</li>
+            <li>The popup has the appropriate role, such as <code>listbox</code>, and its options have appropriate option semantics. (1.3.1, 4.1.2)</li>
+            <li>The combobox and its popup can be operated using a keyboard. (2.1.1)</li>
+            <li>Keyboard focus remains visible and is not completely hidden by other content. (2.4.7, 2.4.11)</li>
+            <li>Users can move through the options, identify the current option, and accept or dismiss a selection. (2.1.1, 4.1.2)</li>
+            <li>The current value, selected option, and active option are exposed and updated when they change. (4.1.2)</li>
+            <li>The combobox has a logical focus order and does not create a keyboard trap. (2.1.2, 2.4.3)</li>
+            <li>The visible label is included in the accessible name. (2.5.3)</li>
+            <li>Instructions, required status, descriptions, and error messages are programmatically associated with the combobox where applicable. (1.3.1, 3.3.1, 3.3.2, 4.1.2)</li>
+            <li>The combobox and popup options remain usable when text is enlarged, spacing is increased, or the viewport is narrow. (1.4.4, 1.4.10, 1.4.12)</li>
+            <li>Text, borders, option states, and focus indicators have sufficient contrast. (1.4.3, 1.4.11)</li>
+            <li>The pointer target meets the minimum target-size requirement or an applicable exception applies. (2.5.8)</li>
+            <li>Opening or selecting an option does not cause an unexpected change of context. (3.2.1, 3.2.2)</li>
+            <li>If the popup filters as the user types, the available results and any no-results message are communicated appropriately. (1.3.1, 4.1.2, 4.1.3)</li>
+        </ul>
+
+        <h2>Best practices</h2>
+        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
+
+        <ul>
+            <li>Use a native <code>&lt;select&gt;</code> when it provides the required functionality.</li>
+            <li>Use a visible label rather than relying on placeholder text as the only label.</li>
+            <li>Give the popup a clear visual relationship to the combobox and keep it close to the control.</li>
+            <li>Use <code>aria-expanded</code> to reflect whether the popup is open.</li>
+            <li>Use <code>aria-controls</code> to identify the popup list when the relationship is implemented with ARIA.</li>
+            <li>Use <code>aria-autocomplete="none"</code>, <code>list</code>, or <code>both</code> to accurately describe editable autocomplete behavior.</li>
+            <li>Use <code>aria-activedescendant</code> only when focus remains on the combobox while a popup option receives visual or virtual focus.</li>
+            <li>Do not move DOM focus into the listbox unexpectedly if the implemented pattern is designed to keep focus in the text field.</li>
+            <li>Make the selected or active option visually distinguishable without relying on color alone.</li>
+            <li>Provide a clear way to dismiss the popup, such as <kbd>Escape</kbd>.</li>
+            <li>Do not automatically select a suggestion on blur unless the behavior is clearly communicated and consistent with the chosen autocomplete pattern.</li>
+            <li>Do not treat arbitrary typed text as a valid value unless the component is intended to accept values that are not in the suggestion list.</li>
+            <li>Do not use <code>aria-haspopup="menu"</code> for a list of selectable values. A combobox generally controls a <code>listbox</code>, not a menu.</li>
+            <li>Do not use a combobox for multiple selections unless the implementation clearly communicates the selected values and uses an appropriate multi-select pattern.</li>
+            <li>Keep option labels stable and sufficiently specific.</li>
+            <li>Provide a useful no-results message when filtering produces no matches.</li>
+            <li>Do not close the popup merely because the pointer moves between the combobox and the popup.</li>
+            <li>Do not make the popup dependent on hover or a drag gesture.</li>
+        </ul>
+
+        <h2>Select-only comboboxes</h2>
+
+        <p>A select-only combobox does not allow text entry. The user opens a popup and chooses one option from the list. It is functionally similar to a native single-select <code>&lt;select&gt;</code>.</p>
+
+        <ul>
+            <li>The combobox has an accessible name and exposes the collapsed or expanded state. (4.1.2)</li>
+            <li>Opening the popup does not change the current selection. (3.2.2)</li>
+            <li>The current selection is distinguishable from the other options. (1.3.1, 4.1.2)</li>
+            <li>Users can open the popup, move through the options, select an option, and close the popup using the keyboard. (2.1.1)</li>
+            <li>Users can dismiss the popup without changing the selection. (2.1.1)</li>
+            <li>When the popup closes, focus remains on the combobox or returns to another logical location. (2.4.3)</li>
+            <li>The selected value is communicated after selection. (4.1.2)</li>
+        </ul>
+
+        <h3>Typical keyboard behavior</h3>
+
+        <ul>
+            <li><kbd>Enter</kbd> or <kbd>Space</kbd> opens the popup without changing the current selection.</li>
+            <li><kbd>Down Arrow</kbd> opens the popup or moves through the options according to the implementation.</li>
+            <li><kbd>Up Arrow</kbd> moves through the options according to the implementation.</li>
+            <li><kbd>Home</kbd> and <kbd>End</kbd> may move to the first and last options.</li>
+            <li><kbd>Enter</kbd> accepts the active option.</li>
+            <li><kbd>Escape</kbd> closes the popup without changing the selection.</li>
+        </ul>
+
+        <h2>Editable comboboxes</h2>
+
+        <p>An editable combobox contains a text input. Users may type a value, receive suggestions, and either accept a suggestion or keep the value they entered, depending on the implementation.</p>
+
+        <ul>
+            <li>The text input has an accessible name and exposes the combobox role or equivalent native semantics. (3.3.2, 4.1.2)</li>
+            <li>The input's autocomplete behavior is accurately communicated with <code>aria-autocomplete</code> when the ARIA pattern is used. (4.1.2)</li>
+            <li>Typing does not unexpectedly move focus or erase the user's input. (2.1.1, 3.2.2)</li>
+            <li>The popup opens and filters according to a predictable rule. (3.2.2, 4.1.2)</li>
+            <li>The active suggestion is distinguishable and programmatically exposed. (1.3.1, 4.1.2)</li>
+            <li>Users can accept a suggestion, dismiss the popup, and edit or clear the value. (2.1.1)</li>
+            <li>If arbitrary text is allowed, users can leave the field without selecting a suggestion. (2.1.1, 4.1.2)</li>
+            <li>If only suggested values are valid, invalid or unselected text is identified and explained. (3.3.1, 3.3.3)</li>
+        </ul>
+
+        <h2>Autocomplete behavior</h2>
+
+        <h3>No autocomplete</h3>
+
+        <p>The popup contains a fixed set of options that does not change based on the characters typed.</p>
+
+        <ul>
+            <li>Confirm that typing does not incorrectly suggest that the list has been filtered.</li>
+            <li>Confirm that users can open the list, move through the options, and accept one without losing their typed value unexpectedly.</li>
+            <li>Confirm that <code>aria-autocomplete</code> accurately reflects the behavior.</li>
+        </ul>
+
+        <h3>Manual selection</h3>
+
+        <p>The popup presents suggestions related to the typed text, but no suggestion becomes selected automatically. The user's typed text remains the value unless the user explicitly selects a suggestion.</p>
+
+        <ul>
+            <li>Confirm that the list filters according to the typed text.</li>
+            <li>Confirm that no suggestion is automatically committed when the user leaves the field.</li>
+            <li>Confirm that users can accept a suggestion with the keyboard.</li>
+            <li>Confirm that users can dismiss the suggestions and retain or edit their typed value.</li>
+        </ul>
+
+        <h3>Automatic selection</h3>
+
+        <p>The first matching suggestion is automatically highlighted as the user types. The suggestion may become the value when the combobox loses focus, depending on the implementation.</p>
+
+        <ul>
+            <li>Confirm that the automatically highlighted suggestion is visually and programmatically distinguishable.</li>
+            <li>Confirm that users can move to another suggestion before the value is committed.</li>
+            <li>Confirm that users can edit the text and remove the automatic completion.</li>
+            <li>Confirm that the value committed on blur is predictable and consistent with the instructions.</li>
+        </ul>
+
+        <h3>Inline autocomplete</h3>
+
+        <p>The component displays the remainder of a suggested value inline after the text entered by the user. The completion must be distinguishable from the user's own text.</p>
+
+        <ul>
+            <li>Confirm that the inline completion is visually distinct from the text entered by the user.</li>
+            <li>Confirm that assistive technology receives an understandable value and active suggestion.</li>
+            <li>Confirm that the user can accept, replace, or reject the completion using the keyboard.</li>
+            <li>Confirm that the completion does not obscure or overwrite the user's typed text unexpectedly.</li>
+        </ul>
+
+        <h2>Practical test sequence</h2>
+        <table>
+            <tr>
+                <th>Focus</th>
+                <th>Details</th>
+                <th>Applicable Criteria</th>
+            </tr>
+            <tr>
+                <td>Semantics and language</td>
+                <td>
+                    <ul>
+                        <li>Confirm that the control is a native <code>&lt;select&gt;</code> when custom behavior is unnecessary, or that the custom control exposes appropriate combobox semantics. (4.1.2)</li>
+                        <li>Confirm that the combobox has a visible, descriptive label. (2.4.6, 3.3.2)</li>
+                        <li>Confirm that the visible label is included in the accessible name. (2.5.3)</li>
+                        <li>Confirm that the popup has the appropriate role, normally <code>listbox</code>, and that its options have appropriate semantics. (1.3.1, 4.1.2)</li>
+                        <li>Confirm that the combobox identifies the popup and exposes its expanded state. (1.3.1, 4.1.2)</li>
+                        <li>Confirm that the control is not actually a menu button, listbox, checkbox group, or multi-select widget. (1.3.1, 4.1.2)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels">WCAG 2.2: Understanding SC 2.4.6 Headings and Labels (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name">WCAG 2.2: Understanding SC 2.5.3 Label in Name (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions">WCAG 2.2: Understanding SC 3.3.2 Labels or Instructions (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Screen reader</td>
+                <td>
+                    <ul>
+                        <li>Confirm that the control is announced as a combobox or an equivalent native select control. (4.1.2)</li>
+                        <li>Verify the accessible name and current value. (3.3.2, 4.1.2)</li>
+                        <li>Open the popup and confirm that its expanded state is announced. (4.1.2)</li>
+                        <li>Confirm that the popup and its options are identified correctly. (1.3.1, 4.1.2)</li>
+                        <li>Move through the options and confirm that the active or selected option is communicated. (4.1.2)</li>
+                        <li>Select an option and confirm that the new value is announced or otherwise available when focus returns to the combobox. (4.1.2)</li>
+                        <li>For an editable combobox, type characters and confirm that filtering, suggestions, no-results messages, and accepted values are understandable. (1.3.1, 4.1.2, 4.1.3)</li>
+                        <li>Confirm that instructions, descriptions, required status, and error messages are available when applicable. (1.3.1, 3.3.1, 3.3.2)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification">WCAG 2.2: Understanding SC 3.3.1 Error Identification (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions">WCAG 2.2: Understanding SC 3.3.2 Labels or Instructions (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages">WCAG 2.2: Understanding SC 4.1.3 Status Messages (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Keyboard only</td>
+                <td>
+                    <ul>
+                        <li>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to move to and away from the combobox. (2.1.1, 2.4.3)</li>
+                        <li>For a select-only combobox, use <kbd>Enter</kbd> or <kbd>Space</kbd> to open the popup. Confirm that opening it does not change the selection. (2.1.1, 3.2.2)</li>
+                        <li>For an editable combobox, type text and confirm that the input remains editable and that suggestions appear according to the documented behavior. (2.1.1, 4.1.2)</li>
+                        <li>Use <kbd>Down Arrow</kbd> and <kbd>Up Arrow</kbd> to move through available options. (2.1.1)</li>
+                        <li>Use <kbd>Enter</kbd> to accept the active option and confirm that the popup closes appropriately. (2.1.1)</li>
+                        <li>Use <kbd>Escape</kbd> to dismiss the popup without an unintended selection. (2.1.1)</li>
+                        <li>Confirm that focus remains visible and is not completely hidden by the popup or other content. (2.4.7, 2.4.11)</li>
+                        <li>Confirm that the popup does not create a keyboard trap. (2.1.2)</li>
+                        <li>Confirm that focus moves in a logical order and does not jump unexpectedly when the popup opens or closes. (2.4.3)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap">WCAG 2.2: Understanding SC 2.1.2 No Keyboard Trap (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order">WCAG 2.2: Understanding SC 2.4.3 Focus Order (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible">WCAG 2.2: Understanding SC 2.4.7 Focus Visible (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Inspect states and relationships</td>
+                <td>
+                    <ul>
+                        <li>Confirm that <code>aria-expanded="false"</code> is used when the popup is closed and <code>aria-expanded="true"</code> when it is open. (4.1.2)</li>
+                        <li>Confirm that <code>aria-controls</code>, when used, identifies the correct popup element. (1.3.1, 4.1.2)</li>
+                        <li>For an editable combobox, confirm that <code>aria-autocomplete</code> accurately describes the behavior. (4.1.2)</li>
+                        <li>When DOM focus remains in the input, confirm that <code>aria-activedescendant</code>, when used, identifies the correct active option. (4.1.2)</li>
+                        <li>Confirm that the active option, selected option, and input value do not become inconsistent. (4.1.2)</li>
+                        <li>Confirm that filtered results, no-results messages, and loading results are exposed appropriately. (4.1.2, 4.1.3)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages">WCAG 2.2: Understanding SC 4.1.3 Status Messages (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Forms and validation</td>
+                <td>
+                    <ul>
+                        <li>Submit the form without a required value and confirm that the combobox is identified as needing attention. (3.3.1)</li>
+                        <li>Confirm that an error message identifies the combobox and explains how to correct the error. (3.3.1, 3.3.3)</li>
+                        <li>Confirm that error messages and instructions are programmatically associated with the control. (1.3.1, 4.1.2)</li>
+                        <li>For restricted-value comboboxes, enter or leave an invalid value and confirm that the result is identified clearly. (3.3.1, 3.3.3)</li>
+                        <li>For editable comboboxes that allow arbitrary text, confirm that valid typed text is not incorrectly rejected merely because it was not one of the suggestions. (3.3.1)</li>
+                        <li>Confirm that selecting an option does not submit the form or change context unexpectedly. (3.2.2)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification">WCAG 2.2: Understanding SC 3.3.1 Error Identification (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion">WCAG 2.2: Understanding SC 3.3.3 Error Suggestion (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Inspect visual aspects</td>
+                <td>
+                    <ul>
+                        <li>Check contrast for the label, input text, popup, options, selected option, active option, borders, icons, and focus indicator. (1.4.3, 1.4.11)</li>
+                        <li>Confirm that the selected or active option is not identified by color alone. (1.4.1)</li>
+                        <li>Check 200% text resize, a 320-CSS-pixel-wide viewport, and text-spacing overrides. The label, input, popup, options, and error messages must remain visible, usable, and unclipped. (1.4.4, 1.4.10, 1.4.12)</li>
+                        <li>Confirm that the popup is not clipped by its container or positioned where users cannot reach its options. (1.4.10)</li>
+                        <li>Confirm that the input, popup button, and relevant options meet the minimum target size or have sufficient spacing. (2.5.8)</li>
+                        <li>Confirm that the popup does not obscure the input or focused option in a way that prevents operation. (2.4.11)</li>
+                        <li>Confirm that inline autocomplete text is visually distinguishable from text entered by the user. (1.3.1, 1.4.3)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color">WCAG 2.2: Understanding SC 1.4.1 Use of Color (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum">WCAG 2.2: Understanding SC 1.4.3 Contrast (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text">WCAG 2.2: Understanding SC 1.4.4 Resize Text (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow">WCAG 2.2: Understanding SC 1.4.10 Reflow (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast">WCAG 2.2: Understanding SC 1.4.11 Non-text Contrast (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing">WCAG 2.2: Understanding SC 1.4.12 Text Spacing (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Resources</h2>
+
+        <h3>Native HTML</h3>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/select">MDN: &lt;select&gt; HTML select element</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/option">MDN: &lt;option&gt; HTML option element</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input">MDN: &lt;input&gt; HTML input element</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/datalist">MDN: &lt;datalist&gt; HTML data list element</a></li>
+        </ul>
+
+        <h3>ARIA patterns</h3>
+        <ul>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/">W3C WAI-ARIA APG: Combobox Pattern</a></li>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/">W3C WAI-ARIA APG: Select-Only Combobox Example</a></li>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-autocomplete-list/">W3C WAI-ARIA APG: Editable Combobox with List Autocomplete Example</a></li>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/listbox/">W3C WAI-ARIA APG: Listbox Pattern</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/combobox_role">MDN: ARIA: combobox role</a></li>
+        </ul>
+
+        <h3>Additional information</h3>
+        <ul>
+            <li><a href="https://designsystem.digital.gov/components/combo-box/accessibility-tests/">U.S. Web Design System: Combo box accessibility tests</a></li>
+            <li><a href="https://www.w3.org/WAI/tutorials/forms/labels/">W3C WAI Forms Tutorial: Labeling Controls</a></li>
+            <li><a href="https://www.w3.org/WAI/tutorials/forms/notifications/">W3C WAI Forms Tutorial: Notifications</a></li>
+        </ul>
+    </div>
+</div>
+```
+
+The main distinction in testing is that a **select-only combobox** must support opening and choosing from the popup, while an **editable combobox** must additionally support text entry, filtering or suggestion behavior, acceptance or dismissal of suggestions, and clearly defined behavior when the user leaves typed text unselected. The APG documents these keyboard differences explicitly. [w3](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/)
