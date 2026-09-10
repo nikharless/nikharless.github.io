@@ -46,6 +46,7 @@ last-modified: September 8, 2026
         <ul>
             <li>Use a native <code>&lt;select&gt;</code> when it provides the required functionality.</li>
             <li>Use a visible label rather than relying on placeholder text as the only label.</li>
+            <li>Associate an instruction with the input, such as "Suggestions appear as you type."
             <li>Give the popup a clear visual relationship to the combobox and keep it close to the control.</li>
             <li>Use <code>aria-expanded</code> to reflect whether the popup is open.</li>
             <li>Use <code>aria-controls</code> to identify the popup list when the relationship is implemented with ARIA.</li>
@@ -211,14 +212,15 @@ last-modified: September 8, 2026
                 <td>
                     <ul>
                         <li>For a no-autocomplete combobox, confirm that typing does not incorrectly suggest that the options have been filtered.</li>
+                        <li>For an autocomplete combobox, type characters into the text field and confirm that the availability of suggestions is understandable to screen reader users. The implementation does not necessarily need to announce the number of results after every keystroke, but the popup, options, and active option must be programmatically available.</li>
                         <li>For manual-selection autocomplete, type matching text and confirm that suggestions appear without one being automatically committed.</li>
-                        <li>Move through the suggestions with the keyboard and confirm that the active suggestion is visually and programmatically identified.</li>
+                        <li>Move through the suggestions with the keyboard and confirm that the active suggestion is visually and programmatically identified and announced by a screen reader.</li>
                         <li>Accept a suggestion and confirm that the input value and selected option update correctly.</li>
                         <li>Dismiss the suggestions with <kbd>Escape</kbd> and confirm that the value is not changed unexpectedly.</li>
                         <li>For automatic-selection autocomplete, confirm that the automatically highlighted suggestion is distinguishable and that users can choose a different suggestion.</li>
                         <li>For inline autocomplete, confirm that the completion is visually distinguishable from the user's text and can be accepted, replaced, or rejected.</li>
                         <li>Leave the field without selecting a suggestion and confirm that the resulting behavior is predictable and consistent with the instructions.</li>
-                        <li>Enter text that produces no results and confirm that an understandable no-results message is provided when needed.</li>
+                        <li>Enter text that produces no results and confirm that an understandable no-results message is provided to both sighted and screen reader users when needed.</li>
                     </ul>
                 </td>
                 <td>
