@@ -40,6 +40,17 @@ last-modified: September 8, 2026
             <li>If the combobox popup element is a <code>tree</code>, <code>grid</code>, or <code>dialog</code>, the combobox has an <code>aria-haspopup</code> attribute set to the correct value. The <code>aria-haspopup</code> attribute is not required if the popup element is a <code>listbox</code>. (4.1.2)</li>
         </ul>
 
+        <h3>Editable autocomplete comboboxes</h3>
+        <ul>
+            <li>The autocomplete behavior is predictable and is accurately communicated to users. (3.2.2, 4.1.2)</li>
+            <li>Suggestions that appear as the user types are available through the keyboard. (2.1.1)</li>
+            <li>The active suggestion is visually distinguishable and programmatically identified. (1.3.1, 4.1.2)</li>
+            <li>Users can accept a suggestion, dismiss the suggestions, and edit or clear the value. (2.1.1, 4.1.2)</li>
+            <li>If arbitrary text is not allowed, invalid or unselected text is identified and explained. (3.3.1, 3.3.3)</li>
+            <li>If arbitrary text is allowed, valid user-entered text is not incorrectly rejected because it does not match a suggestion. (3.3.1)</li>
+            <li>Any inline completion is distinguishable from text entered by the user. (1.3.1, 4.1.2)</li>
+        </ul>
+
         <h2>Best practices</h2>
         <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
 
@@ -237,6 +248,33 @@ last-modified: September 8, 2026
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Autocomplete behavior</td>
+                <td>
+                    <ul>
+                        <li>For a no-autocomplete combobox, confirm that typing does not incorrectly suggest that the options have been filtered.</li>
+                        <li>For manual-selection autocomplete, type matching text and confirm that suggestions appear without one being automatically committed.</li>
+                        <li>Move through the suggestions with the keyboard and confirm that the active suggestion is visually and programmatically identified.</li>
+                        <li>Accept a suggestion and confirm that the input value and selected option update correctly.</li>
+                        <li>Dismiss the suggestions with <kbd>Escape</kbd> and confirm that the value is not changed unexpectedly.</li>
+                        <li>For automatic-selection autocomplete, confirm that the automatically highlighted suggestion is distinguishable and that users can choose a different suggestion.</li>
+                        <li>For inline autocomplete, confirm that the completion is visually distinguishable from the user's text and can be accepted, replaced, or rejected.</li>
+                        <li>Leave the field without selecting a suggestion and confirm that the resulting behavior is predictable and consistent with the instructions.</li>
+                        <li>Enter text that produces no results and confirm that an understandable no-results message is provided when needed.</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification">WCAG 2.2: Understanding SC 3.3.1 Error Identification (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion">WCAG 2.2: Understanding SC 3.3.3 Error Suggestion (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages">WCAG 2.2: Understanding SC 4.1.3 Status Messages (Level AA)</a></li>
                     </ul>
                 </td>
             </tr>
