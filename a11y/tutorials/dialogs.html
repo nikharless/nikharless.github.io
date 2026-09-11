@@ -18,62 +18,34 @@ last-modified: September 10, 2026
 
         <h2>WCAG requirements</h2>
         <ul>
-            <li>The dialog has an accessible name, usually provided by a visible heading referenced with <code>aria-labelledby</code>. (4.1.2)</li>
-            <li>The dialog exposes the dialog role. A native <code>&lt;dialog&gt;</code> provides dialog semantics, while a custom implementation may use <code>role="dialog"</code>. (4.1.2)</li>
-            <li>A modal dialog exposes its modal state appropriately and prevents interaction with the page behind it. (4.1.2)</li>
+            <li>The dialog exposes the dialog role and has a programmatically determinable accessible name. (4.1.2)</li>
+            <li>The dialog's accessible name is provided by a visible heading when possible. (4.1.2)</li>
+            <li>A modal dialog exposes its modal state appropriately and prevents interaction with the page behind it while open. (4.1.2)</li>
             <li>When the modal opens, focus moves into the dialog. (2.4.3)</li>
-            <li>Keyboard focus remains within the modal dialog while it is open. (2.1.1, 2.1.2, 2.4.3)</li>
+            <li>Keyboard focus remains within the modal dialog while it is open. Users can't interact with the background through keyboard, pointer, touch, or assistive technology. (2.1.1, 2.4.3, 4.1.2)</li>
             <li>Users can close the modal dialog with a keyboard-operable control. (2.1.1)</li>
             <li>When supported by the design, <kbd>Escape</kbd> closes the modal dialog. (2.1.1)</li>
-            <li>When the dialog closes, focus returns to the control that opened it, unless another logical destination is necessary. (2.4.3)</li>
+            <li>When the dialog closes, focus returns to the control that opened it. If the invoking control no longer exists or returning focus there would be illogical, focus moves to the most logical available destination. (2.4.3)</li>
             <li>All controls within the dialog have accessible names, appropriate roles, and programmatically determinable states and values. (4.1.2)</li>
             <li>The dialog and its controls have a logical focus order. (2.4.3)</li>
-            <li>The dialog does not create a keyboard trap from which users cannot exit using a standard keyboard interaction. (2.1.2)</li>
+            <li>The dialog does not prevent users from exiting the modal with a standard keyboard interaction. (2.1.2)</li>
             <li>Keyboard focus is visible and is not completely hidden by other content. (2.4.7, 2.4.11)</li>
-            <li>The dialog title, text, controls, and focus indicators have sufficient contrast. (1.4.3, 1.4.11)</li>
-            <li>The dialog remains usable when text is enlarged, spacing is increased, or the viewport is narrow. (1.4.4, 1.4.10, 1.4.12)</li>
+            <li>The dialog text, controls, meaningful graphics, and focus indicators have sufficient contrast. (1.4.3, 1.4.11)</li>
+            <li>The dialog remains usable at 200% text resize, at a 320-CSS-pixel-wide viewport, and when text-spacing overrides are applied. (1.4.4, 1.4.10, 1.4.12)</li>
             <li>The dialog does not cause an unexpected change of context merely because it receives focus. (3.2.1)</li>
             <li>The control that opens the dialog has a meaningful accessible name that describes the dialog or action. (2.4.6, 4.1.2)</li>
             <li>If the dialog contains a form, its fields, instructions, validation errors, and submission behavior meet the applicable form requirements. (1.3.1, 3.3.1, 3.3.2, 3.3.3, 4.1.2)</li>
         </ul>
 
-        <h2>Best practices</h2>
-        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
-
-        <ul>
-            <li>Prefer the native <code>&lt;dialog&gt;</code> element and <code>showModal()</code> when they provide the required behavior.</li>
-            <li>Give every dialog a visible heading whenever possible.</li>
-            <li>Use <code>aria-labelledby</code> to associate the dialog with its visible heading.</li>
-            <li>Use <code>aria-describedby</code> for a short description when users need additional context.</li>
-            <li>Use <code>aria-modal="true"</code> only when the dialog is genuinely modal and the background is actually inert.</li>
-            <li>Do not use <code>aria-hidden="true"</code> on the background as a substitute for making it non-interactive. The page behind a modal must not be reachable by keyboard or pointer.</li>
-            <li>Move focus to the first meaningful control, the dialog heading, or another carefully chosen element when the dialog opens. Do not always place focus on the close button.</li>
-            <li>Place initial focus on a heading or static text when users need to read substantial introductory content before choosing an action.</li>
-            <li>Provide a clearly labeled close button inside the dialog.</li>
-            <li>Allow users to close the dialog with <kbd>Escape</kbd> unless there is a strong reason not to.</li>
-            <li>Return focus to the invoking control when the dialog closes.</li>
-            <li>If the invoking control no longer exists, return focus to the most logical available destination.</li>
-            <li>Do not allow interaction with content behind a modal dialog.</li>
-            <li>Do not move focus to the backdrop or to an element behind the dialog.</li>
-            <li>Keep the dialog within the viewport or provide a usable way to scroll its content without losing access to the title and controls.</li>
-            <li>Do not close the dialog merely because the pointer moves outside it.</li>
-            <li>Use a confirmation dialog for destructive actions only when confirmation provides meaningful protection against accidental activation.</li>
-            <li>Use an alert dialog sparingly. Do not use it for ordinary informational content that does not require immediate attention.</li>
-            <li>Make the primary and secondary actions clear, especially when one action is destructive.</li>
-            <li>Do not change the dialog's purpose or accessible name without communicating the change.</li>
-        </ul>
-
-        <h2>Modal dialog types</h2>
-
         <h3>Informational dialogs</h3>
 
-        <p>An informational dialog presents additional text, instructions, or details. It should have a meaningful title and an operable way to close it.</p>
+        <p>An informational dialog presents additional content without requiring a form submission or confirmation decision.</p>
 
         <ul>
-            <li>Confirm that the dialog title identifies its subject. (4.1.2)</li>
-            <li>Confirm that initial focus is placed where users can begin reading or operating the dialog. (2.4.3)</li>
-            <li>Confirm that the dialog can be closed with its close button and, where supported, <kbd>Escape</kbd>. (2.1.1)</li>
-            <li>Confirm that focus returns to the invoking control when the dialog closes. (2.4.3)</li>
+            <li>The dialog title identifies the subject of the information. (2.4.6)</li>
+            <li>Initial focus is placed where users can begin reading or operating the dialog. (2.4.3)</li>
+            <li>The dialog can be closed with its close button and, where supported, <kbd>Escape</kbd>. (2.1.1)</li>
+            <li>Closing the dialog returns focus to the invoking control or another logical destination. (2.4.3)</li>
         </ul>
 
         <h3>Form dialogs</h3>
@@ -81,12 +53,13 @@ last-modified: September 10, 2026
         <p>A form dialog contains inputs or other controls that allow users to complete a task, such as editing a profile or adding an address.</p>
 
         <ul>
-            <li>Confirm that every form control has a visible label and an accessible name. (1.3.1, 3.3.2, 4.1.2)</li>
-            <li>Confirm that the dialog provides instructions needed to complete the form. (3.3.2)</li>
-            <li>Confirm that validation errors identify the affected fields and explain how to correct them. (3.3.1, 3.3.3)</li>
-            <li>Confirm that users can reach and operate every form control with the keyboard. (2.1.1)</li>
-            <li>Confirm that submitting or cancelling the form has predictable results. (3.2.2)</li>
-            <li>Confirm that focus is managed appropriately after successful submission, validation failure, or cancellation. (2.4.3)</li>
+            <li>Each form control has a visible label and an accessible name. (1.3.1, 3.3.2, 4.1.2)</li>
+            <li>Instructions needed to complete the form are available to users. (3.3.2)</li>
+            <li>Required fields and other input requirements are identified. (3.3.2, 4.1.2)</li>
+            <li>Validation errors are programmatically associated with the relevant fields, identify the affected fields, and explain how to correct them. (1.3.1, 3.3.1, 3.3.3, 4.1.2)</li>
+            <li>Submitting or cancelling the form has predictable results. (3.2.2)</li>
+            <li>After successful submission, validation failure, or cancellation, focus moves to an appropriate logical destination. (2.4.3)</li>
+            <li>For legal, financial, or data-related submissions, users can review, correct, confirm, or reverse the submission as applicable. (3.3.4)</li>
         </ul>
 
         <h3>Confirmation dialogs</h3>
@@ -94,11 +67,12 @@ last-modified: September 10, 2026
         <p>A confirmation dialog asks the user to confirm an action, often before deleting, submitting, or changing important information.</p>
 
         <ul>
-            <li>Confirm that the dialog clearly identifies the action being confirmed. (2.4.6, 4.1.2)</li>
-            <li>Confirm that the consequences of the action are understandable. (3.3.2)</li>
-            <li>Confirm that the least destructive or safest action is not obscured or made difficult to reach.</li>
-            <li>For legal, financial, or data-related submissions, confirm that the applicable error-prevention requirements are met. (3.3.4)</li>
-            <li>Confirm that cancelling or closing the dialog does not perform the action. (3.2.2)</li>
+            <li>The dialog clearly identifies the action being confirmed. (2.4.6, 4.1.2)</li>
+            <li>The consequences of the action are understandable from the dialog's name, description, or controls. (3.3.2)</li>
+            <li>The confirm and cancel controls have specific names that distinguish their actions. (2.4.6, 4.1.2)</li>
+            <li>Cancelling or closing the dialog does not perform the action. (3.2.2)</li>
+            <li>For legal, financial, or data-related submissions, the applicable error-prevention requirements are met. (3.3.4)</li>
+            <li>Initial focus is place on an appropriate control. For a destructive action, focus should not be placed in a way that makes accidental confirmation likely. (2.4.3)</li>
         </ul>
 
         <h3>Alert dialogs</h3>
@@ -106,11 +80,24 @@ last-modified: September 10, 2026
         <p>An alert dialog is a special type of dialog used for a brief, important message that requires the user's immediate attention. It should not be used for every modal message.</p>
 
         <ul>
-            <li>Confirm that the alert dialog uses <code>role="alertdialog"</code> only when the message requires immediate attention. (4.1.2)</li>
-            <li>Confirm that the alert dialog has an accessible name and, when appropriate, an accessible description. (4.1.2)</li>
-            <li>Confirm that initial focus is placed on an appropriate element, such as the least destructive action or the alert text. (2.4.3)</li>
-            <li>Confirm that the alert dialog can be dismissed or resolved with the keyboard. (2.1.1, 2.1.2)</li>
-            <li>Confirm that the alert dialog does not allow interaction with the page behind it. (2.1.2, 4.1.2)</li>
+            <li>The <code>alertdialog</code> role is only used when the message requires the user's immediate attention. (4.1.2)</li>
+            <li>The alert dialog has an accessible name, normally associated with a visible title. (1.3.1, 4.1.2)</li>
+            <li>The alert message or description is programmatically associated with the alert dialog. (1.3.1, 4.1.2)</li>
+            <li>The alert dialog communicates a brief, important message and does not contain unnecessary content that delays understanding of the alert. (4.1.2)</li>
+            <li>Initial focus is placed on an appropriate element, such as the safest action, the least destructive action, or the alert message. (2.4.3)</li>
+        </ul>
+
+        <h2>Best practices</h2>
+        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
+
+        <ul>
+            <li>Prefer the native <code>&lt;dialog&gt;</code> element and <code>showModal()</code> when they provide the required behavior.</li>
+            <li>Use a visible heading for the dialog and associate it with the dialog using <code>aria-labelledby</code> when necessary.</li>
+            <li>Use <code>aria-describedby</code> for a short description when users need additional context.</li>
+            <li>Use <code>aria-modal="true"</code> only when the dialog is genuinely modal and the background is actually inert.</li>
+            <li>Provide a clearly labeled close button inside the dialog.</li>
+            <li>Keep the dialog within the viewport or provide a usable way to scroll its content without losing access to the title and controls.</li>
+            <li>Use alert dialogs sparingly. Do not use them for ordinary information that does not require immediate attention.</li>
         </ul>
 
         <h2>Practical test sequence</h2>
