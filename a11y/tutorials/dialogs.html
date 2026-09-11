@@ -95,6 +95,7 @@ last-modified: September 10, 2026
             <li>Use a visible heading for the dialog and associate it with the dialog using <code>aria-labelledby</code> when necessary.</li>
             <li>Use <code>aria-describedby</code> for a short description when users need additional context.</li>
             <li>Use <code>aria-modal="true"</code> only when the dialog is genuinely modal and the background is actually inert.</li>
+            <li>Move focus to the first focusable element in the dialog after pressing <kbd>Tab</kbd> from the last focusable element. Move focus to the last focusable element in the dialog after pressing <kbd>Shift</kbd>+<kbd>Tab</kbd> from the first focusable element.</li>
             <li>Provide a clearly labeled close button inside the dialog.</li>
             <li>Keep the dialog within the viewport or provide a usable way to scroll its content without losing access to the title and controls.</li>
             <li>Use alert dialogs sparingly. Do not use them for ordinary information that does not require immediate attention.</li>
@@ -106,6 +107,18 @@ last-modified: September 10, 2026
                 <th>Focus</th>
                 <th>Details</th>
                 <th>Applicable Criteria</th>
+            </tr>
+            <tr>
+                <td>Identify function</td>
+                <td>
+                    <ul>
+                        <li>Confirm that the component functions as, or should function as, a modal dialog.</li>
+                        <li>Determine what type of dialog it is (e.g., informational, form, confirmation, alert).</li>
+                        <li>Determine whether it is a native HTML <code>&lt;dialog&gt;</code> or a custom dialog.</li>
+                    </ul>
+                </td>
+                <td>
+                </td>
             </tr>
             <tr>
                 <td>Semantics and language</td>
@@ -136,14 +149,13 @@ last-modified: September 10, 2026
                         <li>Confirm that controls within the dialog have meaningful names, roles, and states. (4.1.2)</li>
                         <li>Confirm that background content is not presented as available for interaction while the modal is open. (4.1.2)</li>
                         <li>Confirm that validation messages, status messages, and errors within the dialog are available when applicable. (3.3.1, 4.1.3)</li>
-                        <li>Close and reopen the dialog and confirm that its name, state, and initial focus behavior remain consistent. (3.2.4, 4.1.2)</li>
                     </ul>
                 </td>
                 <td>
                     <ul>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification">WCAG 2.2: Understanding SC 3.3.1 Error Identification (Level A)</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages">WCAG 2.2: Understanding SC 4.1.3 Status Messages (Level AA)</a></li>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages">WCAG 2.2: Understanding SC 4.1.3 Status Messages (Level AA)</a></li>
                     </ul>
                 </td>
             </tr>
@@ -151,14 +163,11 @@ last-modified: September 10, 2026
                 <td>Keyboard only</td>
                 <td>
                     <ul>
-                        <li>Use <kbd>Tab</kbd> to open the modal and confirm that focus moves into the dialog. (2.1.1, 2.4.3)</li>
-                        <li>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to move through the dialog. Focus must not move to the page behind the modal. (2.1.2, 2.4.3)</li>
-                        <li>From the last focusable element, press <kbd>Tab</kbd> and confirm that focus moves to the first focusable element in the dialog. From the first element, press <kbd>Shift</kbd>+<kbd>Tab</kbd> and confirm that focus moves to the last. (2.1.2, 2.4.3)</li>
-                        <li>Activate the close button with the keyboard. (2.1.1)</li>
-                        <li>Press <kbd>Escape</kbd> and confirm that the dialog closes when this behavior is supported. (2.1.1)</li>
+                        <li>Use the keyboard to open the dialog and confirm that focus moves into it. (2.1.1, 2.4.3)</li>
+                        <li>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to move through the dialog, and confirm that focus remains within the modal. (2.1.1, 2.4.3)</li>
                         <li>Confirm that focus is visible on every focusable element and is not completely hidden by the dialog or other content. (2.4.7, 2.4.11)</li>
-                        <li>Close the dialog and confirm that focus returns to the control that opened it or another logical destination. (2.4.3)</li>
-                        <li>Confirm that the modal does not create a trap from which users cannot exit using the close control or another standard method. (2.1.2)</li>
+                        <li>Close the dialog with the keyboard using the Close button and the <kbd>Escape</kbd> key when supported. (2.1.1, 2.1.2)</li>
+                        <li>Upon closing, confirm that focus returns to the control that opened it or another logical destination. (2.4.3)</li>
                     </ul>
                 </td>
                 <td>
