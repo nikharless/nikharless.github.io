@@ -1,0 +1,244 @@
+---
+layout: tuts
+last-modified: September 14, 2026
+---
+<div class="content row {{ sc.level }}" id="main" style="max-width: 1140px;">
+    <div class="cpcontent">
+        <h1>Links</h1>
+
+        <p>A link is an interactive element that navigates a user to another page, a location within the current page, a file, an email address, a telephone number, or another URL-addressable resource.</p>
+
+        <p>Links differ from buttons:</p>
+        <ul>
+            <li>Use a link when activation navigates to another location or resource.</li>
+            <li>Use a button when activation performs an action within the current page or application, such as opening a dialog, submitting a form, revealing content, or changing a setting.</li>
+            <li>Use a native <code>&lt;a&gt;</code> element with a valid <code>href</code> whenever possible.</li>
+            <li>Do not use a link with <code>href="#"</code> or <code>javascript:</code> to perform an action that should be implemented as a button.</li>
+        </ul>
+
+        <h2>WCAG requirements</h2>
+        <ul>
+            <li>Each link has a programmatically determinable accessible name. (4.1.2)</li>
+            <li>The link purpose can be determined from its text alone or from its text together with programmatically determinable context, except where the purpose would be ambiguous to users in general. (2.4.4)</li>
+            <li>The link exposes link semantics. A native <code>&lt;a&gt;</code> element with an <code>href</code> provides link semantics automatically. (4.1.2)</li>
+            <li>The link is operable using a keyboard. A native link can be activated with <kbd>Enter</kbd>. (2.1.1)</li>
+            <li>The link has a visible focus indicator when it receives keyboard focus. (2.4.7)</li>
+            <li>Links appear in a logical focus order. (2.4.3)</li>
+            <li>Focused links are not completely hidden by sticky headers, banners, dialogs, or other author-created content. (2.4.11)</li>
+            <li>Links are visually distinguishable from surrounding non-link text without relying on color alone. (1.4.1)</li>
+            <li>Link text has sufficient contrast against its background. (1.4.3)</li>
+            <li>Link indicators, icons, and focus indicators that are needed to identify or operate links have sufficient non-text contrast. (1.4.11)</li>
+            <li>Visible link text is included in the accessible name. (2.5.3)</li>
+            <li>Links remain visible, identifiable, and operable at 200% text resize, at a 320-CSS-pixel-wide viewport, and when text-spacing overrides are applied. (1.4.4, 1.4.10, 1.4.12)</li>
+            <li>Links meet the minimum target-size requirement or an applicable exception applies. (2.5.8)</li>
+            <li>A link does not cause an unexpected change of context when it receives focus. (3.2.1)</li>
+            <li>Link labels, destinations, and behavior are identified consistently when the same function appears across multiple pages. (3.2.4)</li>
+            <li>Meaningful images used as the only content of a link have text alternatives that identify the link destination or purpose. (1.1.1, 2.4.4)</li>
+        </ul>
+
+        <h2>Best practices</h2>
+        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
+
+        <ul>
+            <li>Use specific, action-oriented link text, such as <code>Download the 2026 annual report (PDF)</code>, rather than <code>Click here</code> or <code>Read more</code>.</li>
+            <li>Make the link text meaningful when read out of context whenever practical, even though WCAG 2.4.4 allows programmatically determinable context.</li>
+            <li>Use the same link text for the same destination whenever possible.</li>
+            <li>Do not give different destinations the same accessible name when they appear in the same context.</li>
+            <li>Do not rely solely on a title attribute to provide the link's accessible name or destination information.</li>
+            <li>Use text in addition to an icon when the icon's meaning may be unclear.</li>
+            <li>For an icon-only link, provide an accessible name that describes the destination or action, and hide a decorative icon from assistive technology.</li>
+            <li>Ensure the entire visible link area is clickable, rather than only a small part of an icon or text treatment.</li>
+            <li>Use a visible visited-link style when it is useful for users to distinguish previously visited content.</li>
+            <li>Do not use a link styled as a button when it performs an in-page action.</li>
+            <li>Do not use a button styled as a link when it navigates to another page or resource.</li>
+            <li>Do not remove link underlines unless another non-color visual distinction remains available in all relevant states.</li>
+            <li>Use a descriptive file type and size for links that download substantial documents or media when practical.</li>
+            <li>Warn users when a link opens a new browser tab, window, or external application, unless the behavior is clearly expected.</li>
+            <li>Use an appropriate in-page target and move focus to it when an in-page link changes the user's current reading location.</li>
+        </ul>
+
+        <h2>In-page and skip links</h2>
+
+        <p>An in-page link moves a user to another location within the same page. A skip link is an in-page link that allows users to bypass repeated page content, such as a site header or navigation menu.</p>
+
+        <ul>
+            <li>The link destination exists and is programmatically focusable when keyboard focus needs to move to it. (2.4.1, 2.4.3)</li>
+            <li>Activating the in-page link moves focus to the destination or otherwise preserves a meaningful keyboard location. (2.4.3)</li>
+            <li>Skip links allow users to bypass repeated blocks of content. (2.4.1)</li>
+            <li>The target is not completely obscured by sticky headers or other author-created content after the link is activated. (2.4.11)</li>
+            <li>The destination is identified with a meaningful heading, landmark, or other appropriate structure. (1.3.1, 2.4.6)</li>
+        </ul>
+
+        <h2>Links that open new contexts</h2>
+
+        <p>A link may open a new browser tab, a new window, a separate application, an email client, a telephone application, or another context. The change should be understandable before users activate the link when it would be unexpected.</p>
+
+        <ul>
+            <li>The link purpose identifies the result or destination. (2.4.4)</li>
+            <li>The link does not open a new window, tab, or other context merely because it receives focus. (3.2.1)</li>
+            <li>If a link opens a new browser context unexpectedly, users are informed before activation through link text, associated text, or another accessible indication. (3.2.2)</li>
+            <li>A link that opens a file, email client, telephone application, or external application identifies that result when the result would otherwise be unclear. (2.4.4, 3.2.2)</li>
+            <li>If an icon is used to communicate that a link opens a new window or external site, the information is available to assistive technology. (1.1.1, 4.1.2)</li>
+        </ul>
+
+        <h2>Image and icon links</h2>
+
+        <p>An image link is a link whose content is an image, icon, logo, or other non-text graphic. Its accessible name should describe the link destination or purpose, not merely the image's appearance.</p>
+
+        <ul>
+            <li>An image-only link has text alternative that identifies the link's destination or purpose. (1.1.1, 2.4.4)</li>
+            <li>Decorative images inside a text link are hidden from assistive technology. (1.1.1)</li>
+            <li>An icon-only link has an accessible name independent of the icon's visual appearance. (4.1.2)</li>
+            <li>When a visible text label accompanies an icon, the visible label is included in the link's accessible name. (2.5.3)</li>
+            <li>The image or icon is sufficiently distinguishable when it is needed to identify the link or its destination. (1.4.11)</li>
+        </ul>
+
+        <h2>Practical test sequence</h2>
+        <table>
+            <tr>
+                <th>Focus</th>
+                <th>Details</th>
+                <th>Applicable Criteria</th>
+            </tr>
+            <tr>
+                <td>Semantics and language</td>
+                <td>
+                    <ul>
+                        <li>Confirm that the element is a link because activation navigates to a location or resource, rather than performing an in-page action. (1.3.1, 4.1.2)</li>
+                        <li>Confirm that the link uses a native <code>&lt;a&gt;</code> element with an <code>href</code>, where feasible. (4.1.2)</li>
+                        <li>Confirm that the link has a meaningful accessible name. (4.1.2)</li>
+                        <li>Confirm that the purpose of the link can be determined from the link text alone or from its link text and programmatically determinable context. (2.4.4)</li>
+                        <li>Confirm that visible link text is included in the accessible name. (2.5.3)</li>
+                        <li>When multiple links have the same name in the same context, confirm that they lead to the same or equivalent destinations. (2.4.4)</li>
+                        <li>Confirm that links with the same purpose are identified consistently across pages. (3.2.4)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context">WCAG 2.2: Understanding SC 2.4.4 Link Purpose (In Context) (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name">WCAG 2.2: Understanding SC 2.5.3 Label in Name (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification">WCAG 2.2: Understanding SC 3.2.4 Consistent Identification (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Screen reader</td>
+                <td>
+                    <ul>
+                        <li>Confirm that the element is announced as a link. (4.1.2)</li>
+                        <li>Verify the accessible name and confirm that it identifies the link purpose or destination. (2.4.4, 4.1.2)</li>
+                        <li>Use a links list or other screen-reader link navigation feature, where available, and confirm that link names remain understandable. (2.4.4)</li>
+                        <li>Confirm that visible link text is included in the announced name. (2.5.3)</li>
+                        <li>Confirm that decorative icons and images are not announced unnecessarily. (1.1.1)</li>
+                        <li>For image-only or icon-only links, confirm that the announced name describes the destination or purpose rather than the image's appearance. (1.1.1, 2.4.4)</li>
+                        <li>For links that open a new window, download a file, or launch another application, confirm that the relevant behavior is available to assistive technology when it is not obvious from the link name. (1.1.1, 2.4.4)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content">WCAG 2.2: Understanding SC 1.1.1 Non-text Content (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context">WCAG 2.2: Understanding SC 2.4.4 Link Purpose (In Context) (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name">WCAG 2.2: Understanding SC 2.5.3 Label in Name (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Keyboard only</td>
+                <td>
+                    <ul>
+                        <li>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to reach and move away from each link. Confirm that links appear in a logical focus order. (2.1.1, 2.4.3)</li>
+                        <li>Confirm that each link has a visible focus indicator and that the focused link is not completely hidden by sticky headers, banners, dialogs, or other author-created content. (2.4.7, 2.4.11)</li>
+                        <li>Activate each link with <kbd>Enter</kbd>. Confirm that keyboard activation produces the same result as pointer activation. (2.1.1)</li>
+                        <li>Confirm that the link does not activate merely because it receives focus. (3.2.1)</li>
+                        <li>Confirm that custom links, if present, can be reached with <kbd>Tab</kbd> and activated with <kbd>Enter</kbd>. (2.1.1, 4.1.2)</li>
+                        <li>For in-page links, confirm that focus moves to the destination and that the new location is not obscured. (2.4.1, 2.4.3, 2.4.11)</li>
+                        <li>For skip links, confirm that activation bypasses repeated content and moves focus to the beginning of the main content or another appropriate destination. (2.4.1, 2.4.3)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks">WCAG 2.2: Understanding SC 2.4.1 Bypass Blocks (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order">WCAG 2.2: Understanding SC 2.4.3 Focus Order (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible">WCAG 2.2: Understanding SC 2.4.7 Focus Visible (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus">WCAG 2.2: Understanding SC 3.2.1 On Focus (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Destinations and behavior</td>
+                <td>
+                    <ul>
+                        <li>Activate the link and confirm that it reaches the expected destination, resource, file, application, or in-page target. (2.4.4)</li>
+                        <li>Confirm that the destination corresponds to the link's visible text and accessible name. (2.4.4)</li>
+                        <li>For links that open a new tab, window, email client, telephone application, external application, or file download, confirm that the resulting behavior is understandable before activation when it would otherwise be unexpected. (2.4.4, 3.2.2)</li>
+                        <li>Confirm that a link does not unexpectedly open a new window, tab, or application because it receives focus. (3.2.1)</li>
+                        <li>For links that download files, confirm that file type and other useful information are provided when needed to understand the result. (2.4.4)</li>
+                        <li>For in-page links, confirm that the destination exists, is meaningful, and can receive focus where focus movement is required. (1.3.1, 2.4.3)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context">WCAG 2.2: Understanding SC 2.4.4 Link Purpose (In Context) (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus">WCAG 2.2: Understanding SC 3.2.1 On Focus (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Inspect visual aspects</td>
+                <td>
+                    <ul>
+                        <li>Confirm that links are distinguishable from surrounding non-link text without relying on color alone. (1.4.1)</li>
+                        <li>Check link-text contrast in default, visited, hover, active, and focus states. (1.4.3)</li>
+                        <li>Check contrast for link icons, external-link indicators, underlines, and focus indicators when those indicators are necessary to identify or operate the link. (1.4.11)</li>
+                        <li>Check 200% text resize, a 320-CSS-pixel-wide viewport, and text-spacing overrides. Links must remain visible, identifiable, and operable without clipping, overlap, or unnecessary horizontal scrolling. (1.4.4, 1.4.10, 1.4.12)</li>
+                        <li>Confirm that each link meets the minimum target size or has sufficient spacing from adjacent targets. (2.5.8)</li>
+                        <li>Confirm that icon-only links have a visible indication of their purpose where needed and an adequate activation area. (1.4.11, 2.5.8)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color">WCAG 2.2: Understanding SC 1.4.1 Use of Color (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum">WCAG 2.2: Understanding SC 1.4.3 Contrast (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text">WCAG 2.2: Understanding SC 1.4.4 Resize Text (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow">WCAG 2.2: Understanding SC 1.4.10 Reflow (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast">WCAG 2.2: Understanding SC 1.4.11 Non-text Contrast (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing">WCAG 2.2: Understanding SC 1.4.12 Text Spacing (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Resources</h2>
+
+        <h3>Native HTML</h3>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a">MDN: &lt;a&gt; HTML anchor element</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/href">MDN: href attribute</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/id">MDN: id global attribute</a></li>
+        </ul>
+
+        <h3>WAI-ARIA</h3>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/link_role">MDN: ARIA link role</a></li>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/">W3C WAI-ARIA APG: Button Pattern</a></li>
+        </ul>
+
+        <h3>Additional information</h3>
+        <ul>
+            <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context">WCAG 2.2: Understanding SC 2.4.4 Link Purpose (In Context)</a></li>
+            <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-link-only">WCAG 2.2: Understanding SC 2.4.9 Link Purpose (Link Only)</a></li>
+            <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks">WCAG 2.2: Understanding SC 2.4.1 Bypass Blocks</a></li>
+            <li><a href="https://webaim.org/techniques/hypertext/">WebAIM: Links and Hypertext</a></li>
+            <li><a href="https://webaim.org/techniques/skipnav/">WebAIM: Skip Navigation Links</a></li>
+            <li><a href="https://www.w3.org/WAI/tutorials/page-structure/skipnav/">W3C WAI Tutorial: Bypass Blocks</a></li>
+        </ul>
+    </div>
+</div>
