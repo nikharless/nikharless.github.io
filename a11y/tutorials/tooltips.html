@@ -35,30 +35,6 @@ last-modified: September 16, 2026
             <li>The tooltip does not cause an unexpected change of context merely because the trigger receives focus. (3.2.1)</li>
         </ul>
 
-        <h2>Best practices</h2>
-        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
-
-        <ul>
-            <li>Use native HTML labels, visible text, instructions, and help text before relying on a tooltip.</li>
-            <li>Keep tooltip content brief and directly related to its trigger.</li>
-            <li>Use plain language and avoid duplicating the trigger's label without adding useful information.</li>
-            <li>Use a short delay before displaying a pointer-hover tooltip to avoid showing tooltips accidentally as users move the pointer across the page.</li>
-            <li>Do not use a tooltip for long instructions, legal text, error messages, or content users must read before continuing.</li>
-            <li>Do not put links, buttons, form fields, or other interactive controls inside a tooltip.</li>
-            <li>Do not make the tooltip itself keyboard focusable.</li>
-            <li>Use <code>role="tooltip"</code> on a custom tooltip container.</li>
-            <li>Use <code>aria-describedby</code> on the trigger to reference the tooltip when the tooltip supplies a description that should be available to assistive technology.</li>
-            <li>Do not use <code>aria-label</code> or <code>aria-labelledby</code> on the tooltip itself to replace the trigger's accessible name.</li>
-            <li>Use <kbd>Escape</kbd> as a conventional method for dismissing a tooltip when a dismissal method is needed.</li>
-            <li>Ensure that dismissing a tooltip does not move keyboard focus or change the trigger's state.</li>
-            <li>Position the tooltip close to its trigger without obscuring the trigger, adjacent controls, or the content it describes.</li>
-            <li>Ensure the tooltip stays within the viewport and can be read at high zoom.</li>
-            <li>Do not use hover-only tooltips for touch-only functionality. Provide the information by another available means.</li>
-            <li>When an icon-only element needs a name, provide an accessible name on the button or link itself; a tooltip may provide supplementary visible help.</li>
-        </ul>
-
-        <h2>Tooltip types</h2>
-
         <h3>Tooltips for labeled controls</h3>
 
         <p>A labeled control tooltip provides supplemental information about an already understandable button, link, form field, or other control.</p>
@@ -91,6 +67,28 @@ last-modified: September 16, 2026
             <li>Error messages are not provided only in a tooltip. Error information identifies the field and is available after validation. (3.3.1, 3.3.3)</li>
         </ul>
 
+        <h2>Best practices</h2>
+        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
+
+        <ul>
+            <li>Use native HTML labels, visible text, instructions, and help text before relying on a tooltip.</li>
+            <li>Keep tooltip content brief and directly related to its trigger.</li>
+            <li>Use plain language and avoid duplicating the trigger's label without adding useful information.</li>
+            <li>Use a short delay before displaying a pointer-hover tooltip to avoid showing tooltips accidentally as users move the pointer across the page.</li>
+            <li>Do not use a tooltip for long instructions, legal text, error messages, or content users must read before continuing.</li>
+            <li>Do not put links, buttons, form fields, or other interactive controls inside a tooltip.</li>
+            <li>Do not make the tooltip itself keyboard focusable.</li>
+            <li>Use <code>role="tooltip"</code> on a custom tooltip container.</li>
+            <li>Use <code>aria-describedby</code> on the trigger to reference the tooltip when the tooltip supplies a description that should be available to assistive technology.</li>
+            <li>Do not use <code>aria-label</code> or <code>aria-labelledby</code> on the tooltip itself to replace the trigger's accessible name.</li>
+            <li>Use <kbd>Escape</kbd> as a conventional method for dismissing a tooltip when a dismissal method is needed.</li>
+            <li>Ensure that dismissing a tooltip does not move keyboard focus or change the trigger's state.</li>
+            <li>Position the tooltip close to its trigger without obscuring the trigger, adjacent controls, or the content it describes.</li>
+            <li>Ensure the tooltip stays within the viewport and can be read at high zoom.</li>
+            <li>Do not use hover-only tooltips for touch-only functionality. Provide the information by another available means.</li>
+            <li>When an icon-only element needs a name, provide an accessible name on the button or link itself; a tooltip may provide supplementary visible help.</li>
+        </ul>
+
         <h2>Practical test sequence</h2>
         <table>
             <tr>
@@ -99,10 +97,24 @@ last-modified: September 16, 2026
                 <th>Applicable Criteria</th>
             </tr>
             <tr>
-                <td>Semantics and language</td>
+                <td>Identify function</td>
                 <td>
                     <ul>
                         <li>Confirm that the popup is a tooltip: it provides brief, non-interactive descriptive text and does not require users to take an action within it. (1.3.1, 4.1.2)</li>
+                        <li>Determine what type of tooltip it is (e.g., labeled control, icon-only control, form field help).</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Semantics and language</td>
+                <td>
+                    <ul>
                         <li>Confirm that the trigger has a meaningful accessible name that does not depend on the tooltip. (2.4.6, 4.1.2)</li>
                         <li>Confirm that essential instructions, labels, and error information are not supplied only through a tooltip. (3.3.1, 3.3.2)</li>
                         <li>For a custom tooltip, confirm that the tooltip container has <code>role="tooltip"</code>. (4.1.2)</li>
