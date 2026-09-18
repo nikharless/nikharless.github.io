@@ -37,30 +37,6 @@ last-modified: September 18, 2026
             <li>Information such as success, warning, or error status is not communicated by color alone. (1.4.1)</li>
         </ul>
 
-        <h2>Best practices</h2>
-        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
-
-        <ul>
-            <li>Use concise, specific messages, such as <code>Invoice downloaded</code> or <code>Address saved</code>.</li>
-            <li>Use <code>role="status"</code> for ordinary confirmations and advisory updates.</li>
-            <li>Reserve <code>role="alert"</code> for urgent messages. Avoid interrupting users for routine confirmations.</li>
-            <li>Render the live-region container in the DOM before adding or changing its message content, where feasible, to improve announcement reliability.</li>
-            <li>Keep a toast visible long enough to read. Avoid short fixed timeouts.</li>
-            <li>Allow users to dismiss a toast when it remains visible, but do not automatically move focus to the close control.</li>
-            <li>Do not move keyboard focus to a toast that only reports status.</li>
-            <li>Do not use a toast as the only error presentation for a form field users must correct.</li>
-            <li>Do not put essential instructions, lengthy content, legal text, or confirmation decisions in a toast.</li>
-            <li>Do not put multiple unrelated controls in a toast.</li>
-            <li>Use a persistent notification center, inline message, dialog, or another durable location for information users may need to revisit.</li>
-            <li>When multiple messages may appear, queue or consolidate them to avoid overlapping visual messages and excessive screen-reader announcements.</li>
-            <li>Ensure a dismiss button, if provided, has an accessible name such as <code>Dismiss notification</code> or <code>Dismiss: Address saved</code>.</li>
-            <li>Do not rely on a checkmark, warning icon, or color alone to convey the message or its severity.</li>
-            <li>Position toasts so they do not obscure the focused control, form error, or other content users need to operate.</li>
-            <li>Do not use <code>role="alertdialog"</code> for a standard toast. An alert dialog is modal and requires focus management.</li>
-        </ul>
-
-        <h2>Toast types</h2>
-
         <h3>Success and advisory toasts</h3>
 
         <p>A success or advisory toast provides non-urgent confirmation or status information, such as "Profile saved," "File uploaded," or "Added to favorites."</p>
@@ -96,6 +72,7 @@ last-modified: September 18, 2026
             <li>When a correction is known and appropriate, the user receives a suggestion for correcting the error. (3.3.3)</li>
             <li>If the toast includes Retry, View details, or another response action, the action is keyboard-operable and has an accessible name. (2.1.1, 4.1.2)</li>
             <li>The toast does not rely on an error icon or red color alone to communicate that an error occurred. (1.4.1)</li>
+            <li>When a toast reports an automatically detected input error that users must correct, the item in error is identified and the error is described in text. The error remains available through a persistent, field-specific message, error summary, or another method that allows users to locate and correct the item. (3.3.1)</li>
         </ul>
 
         <h3>Actionable toasts</h3>
@@ -109,6 +86,27 @@ last-modified: September 18, 2026
             <li>The toast remains visible long enough for users to reach and operate its actions, or users can extend, adjust, or turn off the time limit when required. (2.2.1)</li>
             <li>The toast does not disappear while a user is interacting with one of its controls. (2.2.1, 2.4.3)</li>
             <li>The action's result is communicated to assistive technology. (4.1.3)</li>
+        </ul>
+
+        <h2>Best practices</h2>
+        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
+
+        <ul>
+            <li>Use concise, specific messages, such as "Invoice downloaded" or "Address saved".</li>
+            <li>Use <code>role="status"</code> for ordinary confirmations and advisory updates.</li>
+            <li>Reserve <code>role="alert"</code> for urgent messages. Avoid interrupting users for routine confirmations.</li>
+            <li>Render the live-region container in the DOM before adding or changing its message content, where feasible, to improve announcement reliability.</li>
+            <li>Keep a toast visible long enough to read. Avoid short fixed timeouts.</li>
+            <li>Allow users to dismiss a toast when it remains visible, but do not automatically move focus to the close control.</li>
+            <li>Do not move keyboard focus to a toast that only reports status.</li>
+            <li>Do not put essential instructions, lengthy content, legal text, or confirmation decisions in a toast.</li>
+            <li>Do not put multiple unrelated controls in a toast.</li>
+            <li>Use a persistent notification center, inline message, dialog, or another durable location for information users may need to revisit.</li>
+            <li>When multiple messages may appear, queue or consolidate them to avoid overlapping visual messages and excessive screen-reader announcements.</li>
+            <li>Ensure a dismiss button, if provided, has an accessible name such as "Dismiss notification" or "Dismiss: Address saved".</li>
+            <li>Do not rely on a checkmark, warning icon, or color alone to convey the message or its severity.</li>
+            <li>Position toasts so they do not obscure the focused control, form error, or other content users need to operate.</li>
+            <li>Do not use <code>role="alertdialog"</code> for a standard toast. An alert dialog is modal and requires focus management.</li>
         </ul>
 
         <h2>Practical test sequence</h2>
