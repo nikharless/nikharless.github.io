@@ -46,7 +46,6 @@ last-modified: September 18, 2026
             <li>The toast is exposed as a non-urgent status message and is announced without moving focus. (4.1.3)</li>
             <li>The toast does not interrupt the user's current screen-reader speech unnecessarily. (4.1.3)</li>
             <li>If the toast disappears automatically, it remains available long enough to read or meets an applicable time-limit exception. (2.2.1)</li>
-            <li>If the action can be reversed, an available Undo control is keyboard-operable and has an accessible name. (2.1.1, 4.1.2)</li>
         </ul>
 
         <h3>Loading and progress toasts</h3>
@@ -72,7 +71,6 @@ last-modified: September 18, 2026
             <li>When a correction is known and appropriate, the user receives a suggestion for correcting the error. (3.3.3)</li>
             <li>If the toast includes Retry, View details, or another response action, the action is keyboard-operable and has an accessible name. (2.1.1, 4.1.2)</li>
             <li>The toast does not rely on an error icon or red color alone to communicate that an error occurred. (1.4.1)</li>
-            <li>When a toast reports an automatically detected input error that users must correct, the item in error is identified and the error is described in text. The error remains available through a persistent, field-specific message, error summary, or another method that allows users to locate and correct the item. (3.3.1)</li>
         </ul>
 
         <h3>Actionable toasts</h3>
@@ -85,7 +83,7 @@ last-modified: September 18, 2026
             <li>Action controls have visible focus indicators and appear in a logical focus order. (2.4.3, 2.4.7)</li>
             <li>The toast remains visible long enough for users to reach and operate its actions, or users can extend, adjust, or turn off the time limit when required. (2.2.1)</li>
             <li>The toast does not disappear while a user is interacting with one of its controls. (2.2.1, 2.4.3)</li>
-            <li>The action's result is communicated to assistive technology. (4.1.3)</li>
+            <li>The result of an action, such as Undo or Retry, is communicated to assistive technology. (4.1.3)</li>
         </ul>
 
         <h2>Best practices</h2>
@@ -117,14 +115,27 @@ last-modified: September 18, 2026
                 <th>Applicable Criteria</th>
             </tr>
             <tr>
-                <td>Semantics and language</td>
+                <td>Identify function</td>
                 <td>
                     <ul>
                         <li>Confirm that the notification is a toast: it is non-modal, does not move focus, and communicates a brief status, result, progress, warning, or error. (4.1.3)</li>
-                        <li>Confirm that the toast message communicates the relevant status in text and does not rely only on color, an icon, sound, or placement. (1.3.1, 1.4.1, 4.1.3)</li>
-                        <li>Confirm that an ordinary success or advisory toast uses an appropriate status-message implementation, such as <code>role="status"</code> or <code>aria-live="polite"</code>. (4.1.3)</li>
-                        <li>Confirm that an urgent error or warning uses an appropriate assertive implementation, such as <code>role="alert"</code> or <code>aria-live="assertive"</code>, when interruption is warranted. (4.1.3)</li>
-                        <li>Confirm that a toast with controls uses native buttons or links where feasible and that each control has an accessible name. (2.1.1, 4.1.2)</li>
+                        <li>Determine what type of toast it is (e.g., success/advisory, loading/progress, error/warning, or actionable).</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages">WCAG 2.2: Understanding SC 4.1.3 Status Messages (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Semantics and language</td>
+                <td>
+                    <ul>
+                        <li>Confirm that the toast message communicates the relevant status in text and does not rely only on color, an icon, sound, or placement. (1.4.1, 4.1.3)</li>
+                        <li>For a success or advisory toast, confirm that it uses an appropriate status-message implementation, such as <code>role="status"</code> or <code>aria-live="polite"</code>. (4.1.3)</li>
+                        <li>For an urgent error or warning toast, confirm that it uses an appropriate assertive implementation, such as <code>role="alert"</code> or <code>aria-live="assertive"</code>, when interruption is warranted. (4.1.3)</li>
+                        <li>For an actionable toast, confirm that the controls use native buttons or links where feasible and that each control has an accessible name. (4.1.2)</li>
                         <li>Confirm that an error requiring correction is also available through a persistent method rather than only through the temporary toast. (3.3.1)</li>
                     </ul>
                 </td>
@@ -192,6 +203,7 @@ last-modified: September 18, 2026
                         <li>Confirm that essential information, form errors, and consequential results remain available after the toast disappears. (3.3.1, 4.1.3)</li>
                         <li>Confirm that an actionable toast remains available while users are interacting with it. (2.2.1, 2.4.3)</li>
                         <li>Trigger several notifications in quick succession and confirm that they do not overlap, disappear before being announced, or create excessive announcements. (4.1.3)</li>
+                        <li>For a toast with an Undo or other action control, use keyboard navigation and a screen reader where applicable to confirm that the toast remains available long enough to reach and operate the control. Do not rush; real world users may be slow to get there. If it dismisses automatically, confirm that users can extend, adjust, or turn off the time limit when required. (2.1.1, 2.2.1, 4.1.2)</li>
                     </ul>
                 </td>
                 <td>
