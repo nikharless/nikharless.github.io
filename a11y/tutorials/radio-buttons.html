@@ -21,7 +21,7 @@ last-modified: September 21, 2026
         <ul>
             <li>Each radio button has a programmatically determinable accessible name. (4.1.2)</li>
             <li>Each radio button exposes radio-button semantics. A native <code>&lt;input type="radio"&gt;</code> provides this role automatically. (4.1.2)</li>
-            <li>For a custom radio button, use <code>role="radio"</code> and keep <code>aria-checked</code> synchronized with the visual state. (4.1.2)</li>
+            <li>Custom radio buttons use <code>role="radio"</code> and keep <code>aria-checked</code> synchronized with the visual state. (4.1.2)</li>
             <li>The selected and unselected states are programmatically determinable and update when the selection changes. (4.1.2)</li>
             <li>Only one radio button in a radio group is selected at a time, unless no selection is allowed before the user makes a choice. (1.3.1, 4.1.2)</li>
             <li>Each radio group has a programmatically determinable accessible name that identifies the question, category, or purpose of the group. (1.3.1, 2.4.6)</li>
@@ -38,7 +38,9 @@ last-modified: September 21, 2026
             <li>The pointer target meets the minimum target-size requirement or an applicable exception applies. (2.5.8)</li>
             <li>A radio button that is disabled or unavailable exposes that state programmatically and does not respond as an available radio button. (4.1.2)</li>
             <li>If a radio group is required, the required status and any resulting validation errors are communicated to users. (1.3.1, 3.3.1, 3.3.2, 4.1.2)</li>
+            <li>Focusing on a radio button does not automatically change its value. (3.2.2)</li>
             <li>Changing a radio-button selection does not automatically submit a form or cause an unexpected change of context unless the behavior is clearly communicated and appropriate. (3.2.2)</li>
+            <li>When choosing a radio option reveals dependent content, keep the relationship clear and do not unexpectedly move focus into the revealed content. (1.3.1, 3.2.2)</li>
         </ul>
 
         <h2>Best practices</h2>
@@ -50,7 +52,7 @@ last-modified: September 21, 2026
             <li>Use concise labels that describe the available choices, such as <code>Email</code>, <code>Phone</code>, and <code>Text message</code>.</li>
             <li>Use a group label that asks the question or identifies the category, such as <code>Preferred contact method</code>.</li>
             <li>Make the visible label clickable in addition to the radio button itself.</li>
-            <li>Make the entire radio button and label area an adequate activation target.</li>
+            <li>Make the entire radio button and label area an adequate activation target. Using a properly associated <code>&lt;label&gt;</code> does this automatically.</li>
             <li>Present radio options in a meaningful order, such as chronological, alphabetical, most-to-least common, or a logical task sequence.</li>
             <li>Do not use radio buttons when users need to select more than one option.</li>
             <li>Do not use radio buttons when users can reasonably make no selection and a checkbox or another control would better express the choice.</li>
@@ -59,7 +61,6 @@ last-modified: September 21, 2026
             <li>Do not use a selected radio button as a substitute for a submit or confirmation action.</li>
             <li>Place shared instructions, required information, descriptions, and error messages near the group and associate them with the group where possible.</li>
             <li>Ensure selected, unselected, disabled, hover, and focus states are visually distinguishable.</li>
-            <li>When choosing a radio option reveals dependent content, keep the relationship clear and do not unexpectedly move focus into the revealed content.</li>
         </ul>
 
         <h2>Practical test sequence</h2>
@@ -141,7 +142,7 @@ last-modified: September 21, 2026
                         <li>Confirm that the focused radio button has a visible focus indicator and is not completely hidden by other content. (2.4.7, 2.4.11)</li>
                         <li>Confirm that the radio group does not create a keyboard trap and that focus moves in a logical order before and after the group. (2.1.2, 2.4.3)</li>
                         <li>Confirm that a disabled radio button cannot be selected or activated. (2.1.1, 4.1.2)</li>
-                        <li>Confirm that changing the selection does not unexpectedly submit a form, open a dialog, move focus, or cause another unexpected change of context. (2.4.3, 3.2.2)</li>
+                        <li>Confirm that focusing on a radio button does not automatically change its value, and that changing the selection does not unexpectedly submit a form, open a dialog, move focus, or cause another unexpected change of context. (2.4.3, 3.2.2)</li>
                     </ul>
                 </td>
                 <td>
