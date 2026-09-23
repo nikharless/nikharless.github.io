@@ -1,0 +1,91 @@
+---
+layout: tuts
+last-modified: September 23, 2026
+---
+<div class="content row" id="main" style="max-width: 1140px;">
+    <div class="cpcontent">
+        <h1>Switches</h1>
+
+        <p>A switch is a two-state control that represents whether a setting, feature, or service is on or off. Selecting a switch generally takes effect immediately.</p>
+
+        <p>Switches differ from other controls:</p>
+        <ul>
+            <li>Use a switch when users can immediately turn a single setting or service on or off.</li>
+            <li>Use a checkbox when users select or deselect an option, especially when selections are submitted together as part of a form.</li>
+            <li>Use a radio group when users must choose one option from a group of mutually exclusive choices.</li>
+            <li>Use a toggle button when users turn a mode, tool, or command state on or off.</li>
+            <li>Use a disclosure button when the control shows or hides associated content rather than changing an on/off setting.</li>
+            <li>Use a native <code>&lt;input type="checkbox"&gt;</code> with <code>role="switch"</code> whenever possible when a switch presentation is required.</li>
+        </ul>
+
+        <h2>WCAG requirements</h2>
+        <ul>
+            <li>Each switch has a programmatically determinable accessible name. (4.1.2)</li>
+            <li>The control exposes switch semantics. A native <code>&lt;input type="checkbox" role="switch"&gt;</code> or custom element with <code>role="switch"</code> provides switch semantics. (4.1.2)</li>
+            <li>The switch exposes <code>aria-checked="false"</code> when off and <code>aria-checked="true"</code> when on. For a native checkbox with <code>role="switch"</code>, the native checked state is exposed automatically. (4.1.2)</li>
+            <li>The switch state is programmatically determinable and updates when the state changes. (4.1.2)</li>
+            <li>A switch does not use <code>aria-checked="mixed"</code>. Switches have only on and off states. (4.1.2)</li>
+            <li>Each switch has a visible label that identifies the setting, feature, or service it controls and is associated with it programmatically. (1.3.1, 3.3.2)</li>
+            <li>The visible label is included in the switch's accessible name. (2.5.3)</li>
+            <li>The switch is operable with a keyboard. (2.1.1)</li>
+            <li>The switch can be reached and operated in a logical focus order. (2.4.3)</li>
+            <li>The switch has a visible focus indicator when it receives keyboard focus. (2.4.7)</li>
+            <li>The on and off states are not conveyed by color alone. (1.4.1)</li>
+            <li>The switch label, state indicator, and focus indicator have sufficient contrast. (1.4.3, 1.4.11)</li>
+            <li>The switch remains usable when text is enlarged, spacing is increased, or the viewport is narrow. (1.4.4, 1.4.10, 1.4.12)</li>
+            <li>The pointer target meets the minimum target-size requirement or an applicable exception applies. (2.5.8)</li>
+            <li>A switch that is disabled or unavailable exposes that state programmatically and does not respond as an available switch. (4.1.2)</li>
+            <li>If a group of switches has a common purpose, the group has an appropriate programmatic label. (1.3.1, 2.4.6)</li>
+            <li>If a switch controls another part of the interface, the relationship and resulting state are programmatically determinable. (1.3.1, 4.1.2)</li>
+            <li>If the switch affects a required form setting or preference, relevant instructions and validation errors are communicated to users. (1.3.1, 3.3.1, 3.3.2, 4.1.2)</li>
+            <li>Changing a switch state does not cause an unexpected change of context. (3.2.2)</li>
+        </ul>
+
+        <h2>Best practices</h2>
+        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
+
+        <ul>
+            <li>Use a native <code>&lt;input type="checkbox" role="switch"&gt;</code> with an associated <code>&lt;label&gt;</code> whenever possible.</li>
+            <li>Use a concise, stable label that names the setting or service, such as <code>Dark mode</code>, <code>Notifications</code>, or <code>Auto-play videos</code>.</li>
+            <li>Do not change the accessible name between states, such as changing <code>Enable notifications</code> to <code>Disable notifications</code>. The label identifies the setting; the on/off state communicates its current value.</li>
+            <li>Make the visible label clickable in addition to the switch itself.</li>
+            <li>Make the entire switch and label area an adequate activation target.</li>
+            <li>Provide a visible text or graphic indication of the on and off states in addition to a color change, such as <code>On</code>/<code>Off</code>, a changed thumb position, or a state icon.</li>
+            <li>If visible text indicates the state, hide duplicate <code>On</code> and <code>Off</code> text from assistive technology when the switch role and state already communicate it.</li>
+            <li>Use a fieldset and legend when a related group of switches has a common question or purpose.</li>
+            <li>Do not use a switch when the change should be reviewed, submitted, or confirmed with other form values before taking effect.</li>
+            <li>Do not use a switch for a selection that supports a mixed or partially selected state. Use a checkbox when a mixed state is meaningful.</li>
+            <li>Do not use <code>aria-checked</code> directly on a native checkbox with <code>role="switch"</code>. The browser maps the checked state automatically.</li>
+            <li>Make immediate effects clear. If a switch starts, stops, exposes, removes, or changes significant content, provide appropriate feedback without moving focus unexpectedly.</li>
+            <li>Ensure on, off, disabled, hover, and focus states are visually distinguishable.</li>
+            <li>Do not use a switch solely as a visual style for a button, checkbox, disclosure, or another control with different semantics.</li>
+        </ul>
+
+        <h2>Practical test sequence</h2>
+        <table>
+            <tr>
+                <th>Focus</th>
+                <th>Details</th>
+                <th>Applicable Criteria</th>
+            </tr>
+            <tr>
+                <td>Identify function</td>
+                <td>
+                    <ul>
+                        <li>Confirm that <code>switch</code> is the correct role and that the control represents an immediate on/off setting, feature, or service. (1.3.1, 4.1.2)</li>
+                        <li>Confirm that the component is not more accurately represented as a checkbox, toggle button, radio button, disclosure button, or another control.</li>
+                        <li>Determine whether the component uses a native checkbox with <code>role="switch"</code> or a custom switch implementation.</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Semantics and language</td>
+                <td>
+                    <ul>
+                        <li>Confirm that
