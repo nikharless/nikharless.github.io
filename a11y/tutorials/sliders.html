@@ -1,0 +1,305 @@
+---
+layout: tuts
+last-modified: September 25, 2026
+---
+<div class="content row" id="main" style="max-width: 1140px;">
+    <div class="cpcontent">
+        <h1>Sliders</h1>
+
+        <p>A slider is a range input that allows a user to select a numeric or otherwise ordered value between a minimum and maximum by moving a thumb along a track. Examples include volume, brightness, price, playback position, temperature, or a numeric filter.</p>
+
+        <p>Sliders differ from other controls:</p>
+        <ul>
+            <li>Use a slider when users select a value from a continuous or ordered range and the approximate position within the range is useful.</li>
+            <li>Use a native number input, select, <a href="radio-buttons.html">radio group</a>, or other control when users need to enter or choose an exact value and a slider would be inefficient or imprecise.</li>
+            <li>Use a <a href="switches.html">switch</a> for an immediate on/off setting.</li>
+            <li>Use a <a href="carousels.html">carousel, horizontal scroller</a>, or <a href="tabs.html">tab list</a> for moving between content items. Do not use <code>role="slider"</code> for those patterns.</li>
+            <li>Use a progress bar when a value reports system progress and users cannot set the value.</li>
+            <li>Use a native <code>&lt;input type="range"&gt;</code> whenever possible.</li>
+        </ul>
+
+        <h2>WCAG requirements</h2>
+        <ul>
+            <li>The slider has a programmatically determinable accessible name that identifies the value being set. (4.1.2)</li>
+            <li>The control exposes slider semantics. A native <code>&lt;input type="range"&gt;</code> provides the slider role automatically; a custom slider uses <code>role="slider"</code>. (4.1.2)</li>
+            <li>The slider's current value, minimum value, and maximum value are programmatically determinable. A custom slider exposes <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code>. (4.1.2)</li>
+            <li>When the numeric value alone does not adequately communicate the value, the slider exposes a human-readable value with <code>aria-valuetext</code>. (4.1.2)</li>
+            <li>The programmatic value updates whenever the visible slider value changes. (4.1.2)</li>
+            <li>The slider is operable using a keyboard. (2.1.1)</li>
+            <li>The slider can be reached and operated in a logical focus order. (2.4.3)</li>
+            <li>The slider has a visible focus indicator when it receives keyboard focus. (2.4.7)</li>
+            <li>Focused sliders are not completely hidden by sticky headers, banners, dialogs, or other author-created content. (2.4.11)</li>
+            <li>The slider's current value, minimum value, maximum value, and step behavior are understandable to users. (1.3.1, 3.3.2, 4.1.2)</li>
+            <li>The current value and position are not conveyed by color alone. (1.4.1)</li>
+            <li>The slider track, thumb, value indicator, labels, and focus indicator have sufficient contrast where needed to identify or operate the control. (1.4.3, 1.4.11)</li>
+            <li>The slider remains usable when text is enlarged, spacing is increased, or the viewport is narrow. (1.4.4, 1.4.10, 1.4.12)</li>
+            <li>The slider thumb or another available pointer target meets the minimum target-size requirement or an applicable exception applies. (2.5.8)</li>
+            <li>If moving the thumb requires dragging, the same functionality can be achieved with a single-pointer operation without dragging, unless an exception applies. (2.5.7)</li>
+            <li>If a slider uses a multipoint or path-based pointer gesture, the functionality can be operated with a single pointer without a path-based gesture, unless an exception applies. (2.5.1)</li>
+            <li>A disabled slider exposes its unavailable state programmatically and cannot be changed as though it were available. (4.1.2)</li>
+            <li>Changing the slider value does not cause an unexpected change of context. (3.2.2)</li>
+            <li>If changing the value causes a significant update without moving focus, the resulting status is communicated to assistive technology when required. (4.1.3)</li>
+        </ul>
+
+        <h2>Range sliders</h2>
+
+        <p>A range slider has two or more thumbs and allows users to select a lower and upper value, such as a price range, date range, or temperature range.</p>
+
+        <ul>
+            <li>Each thumb has a programmatically determinable accessible name that identifies which value it controls, such as "Minimum price" and "Maximum price". (4.1.2)</li>
+            <li>Each thumb exposes its own role, current value, minimum, and maximum. (4.1.2)</li>
+            <li>The relationship between the thumbs is understandable. Users can determine the selected lower and upper values. (1.3.1, 4.1.2)</li>
+            <li>When one thumb's allowed range depends on the other thumb, its programmatic minimum or maximum updates accordingly. (4.1.2)</li>
+            <li>Thumbs remain separately keyboard-operable and appear in a logical focus order. (2.1.1, 2.4.3)</li>
+            <li>Each thumb retains a stable identity and remains in a consistent tab order regardless of its current visual position on the track. If a thumb moves past another thumb, the tab order does not change. (2.4.3, 4.1.2)</li>
+            <li>When thumb values represent an ordered relationship, such as minimum and maximum price or start and end date, the slider prevents invalid values, such as minimum being higher than maximum, or updates the available minimum and maximum values predictably. (1.3.1, 4.1.2)</li>
+        </ul>
+
+        <h2>Discrete and nonnumeric sliders</h2>
+
+        <p>A discrete slider represents a fixed set of ordered values, such as low/medium/high, a rating from one to five, a day of the week, or a predefined speed setting.</p>
+
+        <ul>
+            <li>The current option is communicated in a meaningful form, using <code>aria-valuetext</code> when the numeric value is insufficient. (4.1.2)</li>
+            <li>The available order, minimum, maximum, and step behavior are understandable. (1.3.1, 3.3.2, 4.1.2)</li>
+            <li>Keyboard adjustment moves through the available values in a predictable order. (2.1.1)</li>
+            <li>If the values are few and discrete, consider radio buttons, a select element, or another control that may be easier to operate and understand. (1.3.1, 2.1.1)</li>
+        </ul>
+
+        <h2>Best practices</h2>
+        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
+
+        <ul>
+            <li>Use a native <code>&lt;input type="range"&gt;</code> whenever it provides the required behavior.</li>
+            <li>Provide a visible label that identifies what the slider changes, such as "Volume", "Price", or "Playback speed".</li>
+            <li>Provide a visible current-value display when users need to know the exact selected value.</li>
+            <li>Use clear units, such as "%", "$", "minutes", "degrees", or "Mbps".</li>
+            <li>Use <code>aria-valuetext</code> for meaningful nonnumeric values, such as "Low", "Medium", "High", "Monday", or "$50".</li>
+            <li>Choose a step size that allows users to select meaningful values without requiring excessive arrow-key presses.</li>
+            <li>Provide a visible alternative for entering an exact value when precision is important, such as a number input, text field, or select control.</li>
+            <li>Do not rely solely on dragging. Support keyboard adjustment and a simple pointer alternative such as clicking/tapping an available value or providing an equivalent input.</li>
+            <li>Do not require users to drag the thumb to make small adjustments when arrow keys, buttons, or direct numeric entry can serve the same function.</li>
+            <li>Do not use a slider for a very large range when users must reliably choose a precise value.</li>
+            <li>Provide clearly visible minimum and maximum labels when they are useful for understanding the range.</li>
+            <li>Ensure the thumb remains distinguishable from the track in all states, including hover, active, disabled, and focus.</li>
+            <li>Do not use color alone to communicate the selected range, minimum/maximum values, or whether the slider is enabled.</li>
+            <li>For a media seek slider, provide another way to select or adjust the playback position when practical.</li>
+            <li>If changing the slider value triggers an expensive operation, consider delaying the update until the user finishes adjusting the control or provide feedback that an update is in progress.</li>
+        </ul>
+
+        <h2>Practical test sequence</h2>
+        <table>
+            <tr>
+                <th>Focus</th>
+                <th>Details</th>
+                <th>Applicable Criteria</th>
+            </tr>
+            <tr>
+                <td>Identify function</td>
+                <td>
+                    <ul>
+                        <li>Confirm that <code>slider</code> is the correct role and that the control sets a value within a minimum-to-maximum range. (1.3.1, 4.1.2)</li>
+                        <li>Confirm that the component is not more accurately represented as a progress bar, switch, radio group, number input, select, carousel, horizontal scroller, or another control.</li>
+                        <li>Determine whether the slider is single-thumb, multi-thumb/range, continuous, or discrete.</li>
+                        <li>Determine whether the implementation uses a native <code>&lt;input type="range"&gt;</code> or a custom ARIA slider.</li>
+                        <li>Determine whether the slider requires dragging or another gesture to set its value.</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Semantics and language</td>
+                <td>
+                    <ul>
+                        <li>Confirm that the slider is a native <code>&lt;input type="range"&gt;</code> where feasible, or exposes <code>role="slider"</code>. (4.1.2)</li>
+                        <li>Confirm that the slider has a visible, descriptive label associated with it using a <code>&lt;label&gt;</code>, <code>for</code>/<code>id</code>, or an equivalent valid method. (1.3.1, 3.3.2, 4.1.2)</li>
+                        <li>Confirm the accessible name contains the visible label text. (2.5.3)</li>
+                        <li>Confirm that the current value, minimum value, and maximum value are exposed. For a custom slider, inspect <code>aria-valuenow</code>, <code>aria-valuemin</code>, and <code>aria-valuemax</code>. (4.1.2)</li>
+                        <li>Confirm that <code>aria-valuetext</code> is provided when the numeric value does not sufficiently describe the current value. (4.1.2)</li>
+                        <li>Confirm that instructions explain the unit, range, and adjustment behavior when those are not otherwise obvious. (3.3.2)</li>
+                        <li>For a range slider, confirm that each thumb has a unique name and independently exposed values. (4.1.2)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name">WCAG 2.2: Understanding SC 2.5.3 Label in Name (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions">WCAG 2.2: Understanding SC 3.3.2 Labels or Instructions (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Screen reader</td>
+                <td>
+                    <ul>
+                        <li>Confirm that the control is announced as a slider. (4.1.2)</li>
+                        <li>Verify that the slider has a meaningful accessible name that identifies the value being set. (4.1.2)</li>
+                        <li>Verify that the current value, minimum, and maximum are announced or otherwise available. (4.1.2)</li>
+                        <li>For a nonnumeric or discrete slider, confirm that the meaningful current value is announced rather than only an unexplained number. (4.1.2)</li>
+                        <li>Adjust the slider value and confirm that the announced value updates correctly. (4.1.2)</li>
+                        <li>For a range slider, confirm that each thumb has an understandable name and communicates the correct current value and limits. (1.3.1, 4.1.2)</li>
+                        <li>If a slider is disabled, confirm that its unavailable state is announced. (4.1.2)</li>
+                        <li>If the value change affects other content or produces a status message, confirm that the result is understandable and announced where required. (1.3.1, 4.1.3)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages">WCAG 2.2: Understanding SC 4.1.3 Status Messages (Level AA)</a></li> 
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Keyboard only</td>
+                <td>
+                    <ul>
+                        <li>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to move to and away from the slider. For a range slider, confirm that each thumb can receive focus. (2.1.1, 2.1.2, 2.4.3)</li>
+                        <li>Use <kbd>Right Arrow</kbd> and <kbd>Up Arrow</kbd> to increase the value by one step. Use <kbd>Left Arrow</kbd> and <kbd>Down Arrow</kbd> to decrease the value by one step. (2.1.1)</li>
+                        <li>Use <kbd>Home</kbd> to set the slider to its minimum value and <kbd>End</kbd> to set it to its maximum value. (2.1.1)</li>
+                        <li>If supported, use <kbd>Page Up</kbd> and <kbd>Page Down</kbd> to make larger value adjustments. (2.1.1)</li>
+                        <li>Confirm that keyboard adjustment updates the visible value, the programmatic value, and any associated output consistently. (4.1.2)</li>
+                        <li>Confirm that the slider has a visible focus indicator and is not completely hidden by other content. (2.4.7, 2.4.11)</li>
+                        <li>Confirm that a disabled slider cannot be adjusted. (2.1.1, 4.1.2)</li>
+                        <li>Confirm that adjusting the slider does not create a keyboard trap, move focus unexpectedly, submit a form, or cause an unexpected change of context. (2.1.2, 2.4.3, 3.2.2)</li>
+                        <li>For a multi-thumb slider, use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to confirm that each thumb receives focus in a stable order. Move one thumb past another, when permitted, and confirm that the tab order does not change. (2.4.3)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap">WCAG 2.2: Understanding SC 2.1.2 No Keyboard Trap (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order">WCAG 2.2: Understanding SC 2.4.3 Focus Order (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible">WCAG 2.2: Understanding SC 2.4.7 Focus Visible (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Pointer, touch, and dragging</td>
+                <td>
+                    <ul>
+                        <li>Use a pointer or touch input to set values across the slider's full range. Confirm that pointer operation produces the same values and results as keyboard operation. (2.1.1)</li>
+                        <li>If the slider supports dragging, confirm that users can achieve the same value-setting function with a single pointer without dragging, unless dragging is essential or another WCAG exception applies. (2.5.7)</li>
+                        <li>Confirm that a pointer user can select or adjust a value without following a prescribed path or using a multipoint gesture, unless an exception applies. (2.5.1)</li>
+                        <li>For a range slider, confirm that each thumb can be selected and adjusted independently with pointer and touch input. (2.1.1, 2.5.7)</li>
+                        <li>Confirm that slider operation does not require a long press, precise drag, or complex gesture as the only method of setting a value. (2.5.1, 2.5.7)</li>
+                        <li>Confirm that the slider thumb or another pointer target meets the minimum target size or has sufficient spacing from other targets. (2.5.8)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures">WCAG 2.2: Understanding SC 2.5.1 Pointer Gestures (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements">WCAG 2.2: Understanding SC 2.5.7 Dragging Movements (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Values and resulting changes</td>
+                <td>
+                    <ul>
+                        <li>Set the slider to its minimum, maximum, and several intermediate values. Confirm that the visual position, exposed value, and any displayed output remain synchronized. (4.1.2)</li>
+                        <li>For a discrete slider, confirm that each available value can be selected and that values are reached in the correct order. (2.1.1, 4.1.2)</li>
+                        <li>For a range slider, move each thumb to its permitted limits and confirm that it does not produce invalid lower/upper values or cross another thumb unexpectedly. (4.1.2)</li>
+                        <li>When a slider affects results, prices, media, filters, or other page content, confirm that the resulting change is understandable and is announced as a status message when required. (1.3.1, 4.1.3)</li>
+                        <li>When slider movement changes a value that users must review before submitting, confirm that the selected value remains available and understandable at submission. (1.3.1, 3.3.2, 4.1.2)</li>
+                        <li>For a multi-thumb slider that permits thumbs to cross, move each thumb past another and confirm that each retains a meaningful accessible name, correct current value, and predictable keyboard operation. (1.3.1, 4.1.2)</li>
+                        <li>For thumbs that represent ordered boundaries, such as minimum/maximum or start/end, confirm that invalid relationships cannot be created or are clearly identified and handled predictably. (1.3.1, 3.3.1, 4.1.2)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification">WCAG 2.2: Understanding SC 3.3.1 Error Identification (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions">WCAG 2.2: Understanding SC 3.3.2 Labels or Instructions (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages">WCAG 2.2: Understanding SC 4.1.3 Status Messages (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Inspect visual aspects</td>
+                <td>
+                    <ul>
+                        <li>Check contrast for the slider label, track, thumb, selected-range indicator, value display, tick marks when meaningful, and focus indicator. (1.4.3, 1.4.11)</li>
+                        <li>Confirm that current position, selected range, enabled/disabled state, and minimum/maximum information are not conveyed by color alone. (1.4.1)</li>
+                        <li>Check the slider at 200% text resize, a 320-CSS-pixel-wide viewport, and with text-spacing overrides. The slider, labels, value display, instructions, and related content must remain visible, usable, and unclipped. (1.4.4, 1.4.10, 1.4.12)</li>
+                        <li>Confirm that the slider remains operable without inappropriate two-dimensional page scrolling at narrow widths or high zoom. (1.4.10)</li>
+                        <li>Confirm that the thumb, focus indicator, and active value remain visible and are not completely obscured by sticky content or another author-created element. (1.4.11, 2.4.11)</li>
+                        <li>Confirm that the slider thumb or another available pointer target meets the minimum target size or has sufficient spacing from adjacent targets. (2.5.8)</li>
+                        <li>Confirm disabled styling does not make the label, range, or current value impossible to understand when users need that information. (1.4.3, 1.4.11)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color">WCAG 2.2: Understanding SC 1.4.1 Use of Color (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum">WCAG 2.2: Understanding SC 1.4.3 Contrast (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text">WCAG 2.2: Understanding SC 1.4.4 Resize Text (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow">WCAG 2.2: Understanding SC 1.4.10 Reflow (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast">WCAG 2.2: Understanding SC 1.4.11 Non-text Contrast (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing">WCAG 2.2: Understanding SC 1.4.12 Text Spacing (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Resources</h2>
+
+        <h3>Native HTML</h3>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range">MDN: &lt;input type="range"&gt; HTML attribute value</a>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#min">MDN: min attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#max">MDN: max attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#step">MDN: step attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#value">MDN: value attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/disabled">MDN: disabled attribute</a></li>
+                </ul>
+            </li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label">MDN: &lt;label&gt; HTML label element</a>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/for">MDN: for HTML attribute</a></li>
+                </ul>
+            </li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/output">MDN: &lt;output&gt; HTML output element</a>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/for">MDN: for HTML attribute</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Custom ARIA</h3>
+        <ul>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/slider/">W3C WAI-ARIA APG: Slider Pattern</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/slider_role">MDN: ARIA slider role</a>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex">MDN: tabindex HTML global attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-valuemin">MDN: ARIA aria-valuemin attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-valuemax">MDN: ARIA aria-valuemax attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-valuenow">MDN: ARIA aria-valuenow attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-valuetext">MDN: ARIA aria-valuetext attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">MDN: ARIA: aria-labelledby attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-orientation">MDN: ARIA: aria-orientation attribute</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Additional information</h3>
+        <ul>
+            <li><a href="https://accessibility.build/guides/accessible-slider">Accessibility.build: Accessible Slider & Range Input Guide</a></li>
+        </ul>
+    </div>
+</div>
