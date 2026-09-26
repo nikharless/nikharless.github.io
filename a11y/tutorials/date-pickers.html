@@ -1,0 +1,327 @@
+---
+layout: tuts
+last-modified: September 26, 2026
+---
+<div class="content row" id="main" style="max-width: 1140px;">
+    <div class="cpcontent">
+        <h1>Datepickers</h1>
+
+        <p>A datepicker is a control that allows users to enter or select a date. A datepicker may use a native date input, a text input with a calendar popup, a combobox with date suggestions, or a date-range control with two date fields and a calendar interface.</p>
+
+        <p>Datepickers differ from related controls:</p>
+        <ul>
+            <li>Use a native <code>&lt;input type="date"&gt;</code> when it provides the required behavior and supported browser and platform experience is acceptable.</li>
+            <li>Use a text input with clear formatting instructions when users need to type a date and a calendar picker is unnecessary.</li>
+            <li>Use a custom datepicker only when a native date input does not provide required functionality, such as date-range selection, unavailable-date rules, booking availability, or a consistent specialized interface.</li>
+            <li>Use a time input or timepicker for time-only values.</li>
+            <li>Use a datetime input or separate date and time controls when users must provide both a date and a time.</li>
+            <li>Do not use a calendar grid as the only method of entering a date when users may need to enter a date outside the currently displayed month or year.</li>
+        </ul>
+
+        <h2>WCAG requirements</h2>
+        <ul>
+            <li>The date input has a programmatically determinable accessible name that identifies the requested date, such as "Start date", "Date of birth", or "Appointment date". (3.3.2, 4.1.2)</li>
+            <li>The visible label is included in the date input's accessible name. (2.5.3)</li>
+            <li>Date-format instructions are available to users when a particular typed format is required. (1.3.1, 3.3.2)</li>
+            <li>Date-format instructions, descriptions, required status, and error messages are programmatically associated with the date input where applicable. (1.3.1, 3.3.1, 3.3.2, 4.1.2)</li>
+            <li>The date input and datepicker trigger are operable with a keyboard. (2.1.1)</li>
+            <li>If a button opens a calendar popup or dialog, it has a meaningful accessible name, such as "Choose date" or "Change appointment date". (2.4.6, 4.1.2)</li>
+            <li>A datepicker popup or dialog has appropriate semantics and exposes its name, role, and relevant state. (1.3.1, 4.1.2)</li>
+            <li>If the calendar opens as a modal dialog, focus moves into the dialog, remains within it while open, and returns to the invoking control or another logical destination when it closes. (2.1.1, 2.1.2, 2.4.3)</li>
+            <li>The calendar grid exposes appropriate grid semantics, including rows, cells, and meaningful accessible names for selectable dates. (1.3.1, 4.1.2)</li>
+            <li>Each date cell communicates its full date, not only the day number. (4.1.2)</li>
+            <li>The currently selected date is programmatically determinable. (4.1.2)</li>
+            <li>The current date, unavailable dates, and other meaningful date states are programmatically determinable when they are conveyed visually. (1.3.1, 4.1.2)</li>
+            <li>Disabled or unavailable dates expose their unavailable state and cannot be selected as though they were available. (4.1.2)</li>
+            <li>The displayed month and year are available to assistive technologies and update when navigation changes the calendar view. (1.3.1, 4.1.2, 4.1.3)</li>
+            <li>Calendar navigation controls have accessible names that describe their action, such as "Next month" or "Previous year". (2.4.6, 4.1.2)</li>
+            <li>The datepicker has a logical focus order and does not create a keyboard trap. (2.1.2, 2.4.3)</li>
+            <li>Keyboard focus is visible and is not completely hidden by other content. (2.4.7, 2.4.11)</li>
+            <li>Selected, current, unavailable, focused, and range-boundary states are not conveyed by color alone. (1.4.1)</li>
+            <li>Datepicker text, controls, date-state indicators, and focus indicators have sufficient contrast. (1.4.3, 1.4.11)</li>
+            <li>The datepicker remains usable when text is enlarged, spacing is increased, or the viewport is narrow. (1.4.4, 1.4.10, 1.4.12)</li>
+            <li>Date inputs, trigger buttons, calendar navigation controls, and selectable dates meet the minimum target-size requirement or an applicable exception applies. (2.5.8)</li>
+            <li>Moving focus through a calendar or opening a datepicker does not cause an unexpected change of context. (3.2.1)</li>
+            <li>Selecting a date does not cause an unexpected change of context unless the behavior is clearly communicated and appropriate. (3.2.2)</li>
+        </ul>
+
+        <h2>Native date inputs</h2>
+
+        <p>A native date input uses <code>&lt;input type="date"&gt;</code>. The appearance and interaction of its date-selection interface vary by browser and operating system, while the submitted value is normalized as <code>yyyy-mm-dd</code>.</p>
+
+        <ul>
+            <li>The native date input has a visible label and programmatically determinable accessible name. (3.3.2, 4.1.2)</li>
+            <li>The input's required, disabled, minimum, maximum, and validation states are programmatically determinable when used. (1.3.1, 4.1.2)</li>
+            <li>Users can enter or select a date using supported keyboard and platform interactions. (2.1.1)</li>
+            <li>Date-format expectations and validation errors are understandable to users. (3.3.1, 3.3.2, 3.3.3)</li>
+            <li>If browser or platform support does not provide a usable native date-selection interface for the target users, provide an accessible alternative. (2.1.1, 4.1.2)</li>
+        </ul>
+
+        <h2>Custom datepicker dialogs</h2>
+
+        <p>A custom datepicker dialog typically includes a date input, a button that opens a modal dialog, month and year navigation controls, and a calendar grid of selectable dates.</p>
+
+        <ul>
+            <li>The dialog has an accessible name and exposes dialog semantics. (4.1.2)</li>
+            <li>The dialog is genuinely modal if it prevents interaction with page content behind it. (4.1.2)</li>
+            <li>Opening the dialog moves focus to the selected date or, when no valid date is selected, to the current date or another logical initial date. (2.4.3)</li>
+            <li>The calendar grid exposes appropriate grid semantics, and only the active date is in the normal <kbd>Tab</kbd> sequence. (2.1.1, 2.4.3, 4.1.2)</li>
+            <li>Users can move among dates with arrow keys and select a date with <kbd>Enter</kbd> or <kbd>Space</kbd>. (2.1.1)</li>
+            <li>Users can change the displayed month and year using keyboard-operable controls. (2.1.1)</li>
+            <li>The displayed month and year update programmatically when navigation occurs. (4.1.2, 4.1.3)</li>
+            <li>Closing the dialog with <kbd>Escape</kbd> or a close/cancel control does not unintentionally change the date value. (2.1.1, 3.2.2)</li>
+            <li>Selecting a date updates the date input, selected-date state, and other associated values consistently. (1.3.1, 4.1.2)</li>
+            <li>When the dialog closes after selection, focus returns to the invoking control or another logical destination. (2.4.3)</li>
+        </ul>
+
+        <h2>Date-range pickers</h2>
+
+        <p>A date-range picker allows users to select a start date and end date. It may use two date inputs, a calendar with two selection points, or another clearly labeled range-selection interface.</p>
+
+        <ul>
+            <li>Start and end date fields have distinct, programmatically determinable accessible names. (3.3.2, 4.1.2)</li>
+            <li>The relationship between the start date and end date is understandable visually and programmatically. (1.3.1)</li>
+            <li>The selected start date, end date, and dates within the selected range are distinguishable without relying on color alone. (1.4.1, 1.4.11)</li>
+            <li>Users can determine which date is currently being selected or adjusted. (1.3.1, 4.1.2)</li>
+            <li>If the end date cannot precede the start date, the datepicker prevents invalid selections or clearly identifies the error. (3.3.1, 4.1.2)</li>
+            <li>If selecting a new start date changes the available end dates, the updated limits and unavailable dates are communicated appropriately. (1.3.1, 4.1.2)</li>
+            <li>Users can select, edit, and correct both dates using a keyboard. (2.1.1)</li>
+            <li>Validation errors identify the affected field or range and explain how to correct the error when a correction is known. (3.3.1, 3.3.3)</li>
+        </ul>
+
+        <h2>Best practices</h2>
+        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
+
+        <ul>
+            <li>Prefer a native <code>&lt;input type="date"&gt;</code> when it meets the product requirements and its browser/platform behavior is acceptable.</li>
+            <li>Always provide a visible label for each date field.</li>
+            <li>Use a visible date-format example when manual entry is permitted, such as "MM/DD/YYYY", and ensure it matches the expected format.</li>
+            <li>Allow users to type a date as well as choose one from a calendar whenever practical.</li>
+            <li>Use unambiguous date formats and avoid relying on locale assumptions where confusion could occur.</li>
+            <li>Use meaningful trigger-button names. After a date is selected, consider including the selected date in the trigger name, such as "Change date, September 26, 2026".</li>
+            <li>Provide a clear visual indication for the selected date, current date, focused date, unavailable dates, and date-range boundaries.</li>
+            <li>Do not use color alone to distinguish date states. Use borders, underlines, icons, text, patterns, or other visual cues where appropriate.</li>
+            <li>Provide controls to move by month and, for date ranges spanning years, by year.</li>
+            <li>Provide a fast way to reach dates far from the current month, such as month/year controls or typed entry.</li>
+            <li>Do not trap users in a calendar grid or require them to navigate month by month over many years to enter a date of birth.</li>
+            <li>Ensure that a chosen date is reflected consistently in the text input, the calendar selection, associated output, and any trigger-button name.</li>
+            <li>Do not automatically select or overwrite a typed date merely because a user moves focus into the calendar.</li>
+            <li>Keep the calendar open when users need to make a deliberate confirmation, such as selecting both start and end dates in a range picker.</li>
+            <li>Do not use placeholder text as the only visible label or date-format instruction.</li>
+            <li>When a date is unavailable, provide an explanation when users need one to choose another date.</li>
+            <li>Keep the calendar within the viewport and avoid obscuring the date input, focused date, or essential controls.</li>
+            <li>For a datepicker dialog, provide a visible close or cancel mechanism in addition to supporting <kbd>Escape</kbd> where appropriate.</li>
+        </ul>
+
+        <h2>Practical test sequence</h2>
+        <table>
+            <tr>
+                <th>Focus</th>
+                <th>Details</th>
+                <th>Applicable Criteria</th>
+            </tr>
+            <tr>
+                <td>Identify function</td>
+                <td>
+                    <ul>
+                        <li>Confirm that the component is a datepicker and that users are expected to enter or select a calendar date. (1.3.1, 4.1.2)</li>
+                        <li>Determine whether the implementation is a native date input, text input with a calendar popup, combobox datepicker, modal datepicker dialog, or date-range picker.</li>
+                        <li>Determine whether users can type dates, select dates from the calendar, or both.</li>
+                        <li>Determine whether the calendar is modal, non-modal, inline, dynamically loaded, or part of another widget.</li>
+                        <li>Determine whether the component includes date limits, unavailable dates, required values, date ranges, time values, or booking rules.</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Semantics and language</td>
+                <td>
+                    <ul>
+                        <li>Confirm that each date input has a visible, descriptive label associated with it using a <code>&lt;label&gt;</code>, <code>for</code>/<code>id</code>, or an equivalent valid method. (1.3.1, 3.3.2, 4.1.2)</li>
+                        <li>Confirm the accessible name contains the visible label text. (2.5.3)</li>
+                        <li>Confirm that date-format instructions are visible when needed and programmatically associated with the input. (1.3.1, 3.3.2)</li>
+                        <li>For a custom datepicker, confirm that the trigger button has a meaningful accessible name. (2.4.6, 4.1.2)</li>
+                        <li>Confirm that a datepicker dialog has an accessible name, dialog semantics, and modal state when applicable. (4.1.2)</li>
+                        <li>Confirm that the calendar uses an appropriate grid structure and that each selectable date has a meaningful accessible name that includes the full date. (1.3.1, 4.1.2)</li>
+                        <li>Confirm that current, selected, unavailable, and range-related states are programmatically exposed when present. (1.3.1, 4.1.2)</li>
+                        <li>For a date range, confirm that start and end controls have unique labels and that their relationship is clear. (1.3.1, 4.1.2)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels">WCAG 2.2: Understanding SC 2.4.6 Headings and Labels (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name">WCAG 2.2: Understanding SC 2.5.3 Label in Name (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions">WCAG 2.2: Understanding SC 3.3.2 Labels or Instructions (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Screen reader</td>
+                <td>
+                    <ul>
+                        <li>Confirm that each date input is announced with its name, role, current value, required state, and relevant description. (3.3.2, 4.1.2)</li>
+                        <li>Confirm that format instructions, date limits, unavailable-date information, and error messages are available when applicable. (1.3.1, 3.3.1, 3.3.2)</li>
+                        <li>Open the custom datepicker and confirm that the dialog or popup, its name, and the calendar structure are announced appropriately. (1.3.1, 4.1.2)</li>
+                        <li>Move through dates and confirm that each date is announced with a complete, understandable date rather than only a day number. (2.4.6, 4.1.2)</li>
+                        <li>Confirm that selected, current, unavailable, and range-boundary states are announced when relevant. (1.3.1, 4.1.2)</li>
+                        <li>Change the month and year and confirm that the updated month/year is announced or otherwise available. (4.1.2, 4.1.3)</li>
+                        <li>Select a date and confirm that the input value, selected state, and trigger name or other associated output update consistently. (4.1.2)</li>
+                        <li>For a date range, confirm that start-date and end-date selection states remain understandable throughout the interaction. (1.3.1, 4.1.2)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels">WCAG 2.2: Understanding SC 2.4.6 Headings and Labels (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification">WCAG 2.2: Understanding SC 3.3.1 Error Identification (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions">WCAG 2.2: Understanding SC 3.3.2 Labels or Instructions (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages">WCAG 2.2: Understanding SC 4.1.3 Status Messages (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Keyboard only</td>
+                <td>
+                    <ul>
+                        <li>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to reach and move away from each date input and calendar trigger. (2.1.1, 2.4.3)</li>
+                        <li>For a native date input, confirm that supported browser and platform keyboard interactions allow users to enter or select a date. (2.1.1)</li>
+                        <li>For a custom datepicker, use <kbd>Enter</kbd>, <kbd>Space</kbd>, <kbd>Down Arrow</kbd>, or the documented key to open the calendar. (2.1.1)</li>
+                        <li>When a modal calendar opens, confirm that focus moves into the dialog and does not move to page content behind it. (2.1.1, 2.4.3)</li>
+                        <li>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to move through calendar controls. Confirm that only the active date is in the normal tab sequence within the calendar grid. (2.1.1, 2.4.3)</li>
+                        <li>Use <kbd>Right Arrow</kbd> and <kbd>Left Arrow</kbd> to move to the next and previous date. Use <kbd>Up Arrow</kbd> and <kbd>Down Arrow</kbd> to move to the same day in the previous and next week. (2.1.1)</li>
+                        <li>Use <kbd>Home</kbd> and <kbd>End</kbd> to move to the first and last day of the current week when the datepicker implements the APG calendar interaction. (2.1.1)</li>
+                        <li>Use <kbd>Page Up</kbd> and <kbd>Page Down</kbd> to move to the prior and next month, and use modified page commands to move by year when those commands are implemented. (2.1.1)</li>
+                        <li>Use <kbd>Enter</kbd> and <kbd>Space</kbd> to select the focused date. Confirm that selection updates the field and closes or retains the calendar according to the documented interaction. (2.1.1, 4.1.2)</li>
+                        <li>Use <kbd>Escape</kbd> to close the calendar dialog when supported. Confirm that focus returns to the invoking control and that an unconfirmed date is not applied unexpectedly. (2.1.1, 2.4.3, 3.2.2)</li>
+                        <li>Confirm that focused date cells and controls have a visible focus indicator and are not completely hidden by other content. (2.4.7, 2.4.11)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap">WCAG 2.2: Understanding SC 2.1.2 No Keyboard Trap (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order">WCAG 2.2: Understanding SC 2.4.3 Focus Order (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible">WCAG 2.2: Understanding SC 2.4.7 Focus Visible (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Date limits, ranges, and validation</td>
+                <td>
+                    <ul>
+                        <li>Enter and select valid dates, invalid dates, dates outside the permitted range, and unavailable dates. Confirm that the component handles each outcome predictably. (3.2.2, 4.1.2)</li>
+                        <li>Submit the form with an invalid, incomplete, or missing required date and confirm that the error identifies the affected input and describes the problem in text. (3.3.1)</li>
+                        <li>Confirm that a correction suggestion is available when the correct date format or valid range is known. (3.3.3)</li>
+                        <li>Confirm that error messages and descriptions are programmatically associated with the affected date input or range. (1.3.1, 4.1.2)</li>
+                        <li>For a date range, select a start date later than the end date and confirm that the invalid relationship is prevented or clearly identified. (3.3.1, 4.1.2)</li>
+                        <li>For a date range, change the start date and confirm that end-date limits, unavailable dates, and selected-range visuals update consistently. (1.3.1, 4.1.2)</li>
+                        <li>Confirm that users can correct an invalid date or date range using both keyboard and pointer input. (2.1.1)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-identification">WCAG 2.2: Understanding SC 3.3.1 Error Identification (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion">WCAG 2.2: Understanding SC 3.3.3 Error Suggestion (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Inspect visual aspects</td>
+                <td>
+                    <ul>
+                        <li>Check contrast for labels, input text, calendar headings, date text, navigation controls, borders, state indicators, and focus indicators. (1.4.3, 1.4.11)</li>
+                        <li>Confirm that selected, current, unavailable, focused, start-date, end-date, and in-range states are not distinguished by color alone. (1.4.1)</li>
+                        <li>Check the datepicker at 200% text resize, a 320-CSS-pixel-wide viewport, and with text-spacing overrides. Inputs, calendar controls, date cells, labels, instructions, and error messages must remain visible, usable, and unclipped. (1.4.4, 1.4.10, 1.4.12)</li>
+                        <li>Confirm that the calendar remains within the viewport and can be used without inappropriate two-dimensional page scrolling. (1.4.10)</li>
+                        <li>Confirm that date cells, trigger buttons, navigation controls, and close controls meet the minimum target size or have sufficient spacing from adjacent targets. (2.5.8)</li>
+                        <li>Confirm that focused dates and controls are not obscured by sticky content, the calendar container, or another author-created element. (2.4.11)</li>
+                        <li>Confirm that unavailable dates remain understandable and distinguishable without making their labels or state impossible to perceive. (1.4.3, 1.4.11)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color">WCAG 2.2: Understanding SC 1.4.1 Use of Color (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum">WCAG 2.2: Understanding SC 1.4.3 Contrast (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text">WCAG 2.2: Understanding SC 1.4.4 Resize Text (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow">WCAG 2.2: Understanding SC 1.4.10 Reflow (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast">WCAG 2.2: Understanding SC 1.4.11 Non-text Contrast (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing">WCAG 2.2: Understanding SC 1.4.12 Text Spacing (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Resources</h2>
+
+        <h3>Native HTML</h3>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/date">MDN: &lt;input type="date"&gt; HTML attribute value</a>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/min">MDN: min attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/max">MDN: max attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/required">MDN: required attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/disabled">MDN: disabled attribute</a></li>
+                </ul>
+            </li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label">MDN: &lt;label&gt; HTML label element</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/output">MDN: &lt;output&gt; HTML output element</a></li>
+        </ul>
+
+        <h3>WAI-ARIA</h3>
+        <ul>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-datepicker/">W3C WAI-ARIA APG: Date Picker Combobox Example</a>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-haspopup">MDN: ARIA: aria-haspopup attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded">MDN: ARIA: aria-expanded attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-autocomplete">MDN: ARIA: aria-autocomplete attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-controls">MDN: ARIA: aria-controls attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby">MDN: ARIA aria-describedby attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex">MDN: tabindex HTML global attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">MDN: ARIA: aria-label attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-modal">MDN: ARIA: aria-modal attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live">MDN: ARIA: aria-live attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">MDN: ARIA: aria-labelledby attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-selected">MDN: ARIA: aria-selected attribute</a></li>
+                </ul>
+            </li>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/datepicker-dialog/">W3C WAI-ARIA APG: Date Picker Dialog Example</a>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby">MDN: ARIA aria-describedby attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">MDN: ARIA: aria-label attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby">MDN: ARIA: aria-labelledby attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-modal">MDN: ARIA: aria-modal attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-live">MDN: ARIA: aria-live attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/tabindex">MDN: tabindex HTML global attribute</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-selected">MDN: ARIA: aria-selected attribute</a></li>
+                </ul>
+            </li>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/grid/">W3C WAI-ARIA APG: Grid Pattern</a></li>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">W3C WAI-ARIA APG: Dialog (Modal) Pattern</a></li>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/">W3C WAI-ARIA APG: Combobox Pattern</a></li>
+        </ul>
+
+        <h3>Additional information</h3>
+        <ul>
+            <li><a href="https://www.digitala11y.com/accessible-date-pickers-roundup/">DigitalA11Y: Accessible Date Pickers Roundup</a></li>
+            <li><a href="https://designsystemproblems.com/accessibility-compliance/date-picker-accessibility/">Design System Problems: Date Picker Accessibility</a></li>
+            <li><a href="https://designsystem.digital.gov/components/date-picker/accessibility-tests/">USWDS: Date picker accessibility tests</a></li>
+        </ul>
+    </div>
+</div>
