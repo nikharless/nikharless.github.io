@@ -1,0 +1,261 @@
+---
+layout: tuts
+last-modified: September 28, 2026
+---
+<div class="content row" id="main" style="max-width: 1140px;">
+    <div class="cpcontent">
+        <h1>Drag and drop</h1>
+
+        <p>Drag and drop is an interaction in which users move, reorder, assign, copy, or otherwise manipulate an item by dragging it from one location and dropping it at another. Examples include reordering list items, moving cards between columns, uploading files, assigning items to categories, and arranging page content.</p>
+
+        <p>Drag and drop differs from related interactions:</p>
+        <ul>
+            <li>Use drag and drop only when direct manipulation provides a meaningful benefit, such as visual rearrangement, spatial placement, or movement between containers.</li>
+            <li>Provide an alternative when the same task can be completed by buttons, menus, dialogs, select controls, cut-and-paste commands, or another method.</li>
+            <li>Do not use drag and drop as the only means of reordering, moving, assigning, uploading, or deleting content unless dragging is essential.</li>
+            <li>Do not use deprecated <code>aria-grabbed</code> or <code>aria-dropeffect</code> attributes as the primary accessibility solution.</li>
+            <li>Use standard HTML controls and familiar interaction patterns wherever they can provide the same function more simply.</li>
+        </ul>
+
+        <h2>WCAG requirements</h2>
+        <ul>
+            <li>All drag-and-drop functionality is operable through a keyboard interface, unless the underlying function requires an input that depends on the path of the user's movement rather than only the endpoints. (2.1.1)</li>
+            <li>When functionality uses a dragging movement, the same function can be achieved with a single pointer without dragging, unless dragging is essential or the function is determined by the user agent and not modified by the author. (2.5.7)</li>
+            <li>If the drag interaction uses a multipoint or path-based gesture, the functionality can be achieved with a single pointer without a path-based gesture, unless an exception applies. (2.5.1)</li>
+            <li>Draggable items and available destinations have programmatically determinable names, roles, states, and values where applicable. (4.1.2)</li>
+            <li>Users can determine which item is selected, being moved, or otherwise active in the alternative interaction. (1.3.1, 4.1.2)</li>
+            <li>Users can determine the available destination, resulting location, order, assignment, or other outcome of the drag-and-drop operation. (1.3.1, 4.1.2)</li>
+            <li>The alternative interaction exposes status changes, including successful moves, failed moves, invalid destinations, and updated order or assignment, when the status is presented without moving focus. (4.1.3)</li>
+            <li>Keyboard focus moves through draggable items, drag handles, destination controls, and related actions in a logical order. (2.4.3)</li>
+            <li>Keyboard focus is visible on draggable items, drag handles, destination controls, and alternative controls. (2.4.7)</li>
+            <li>Focused drag-and-drop controls are not completely hidden by sticky headers, banners, dialogs, or other author-created content. (2.4.11)</li>
+            <li>The interaction does not create a keyboard trap. Users can cancel, leave, or complete the operation with the keyboard. (2.1.2)</li>
+            <li>Instructions needed to begin, perform, cancel, or complete the alternative interaction are available to users. (1.3.1, 3.3.2)</li>
+            <li>Draggable, selected, destination, invalid-destination, and drop-result states are not conveyed by color alone. (1.4.1)</li>
+            <li>Text, drag handles, icons, destination indicators, focus indicators, and other meaningful non-text elements have sufficient contrast. (1.4.3, 1.4.11)</li>
+            <li>The drag-and-drop interaction and its alternatives remain usable when text is enlarged, spacing is increased, or the viewport is narrow. (1.4.4, 1.4.10, 1.4.12)</li>
+            <li>Drag handles, buttons, destination controls, and other pointer targets meet the minimum target-size requirement or an applicable exception applies. (2.5.8)</li>
+            <li>Beginning a drag, moving focus, or choosing an item does not cause an unexpected change of context. (3.2.1, 3.2.2)</li>
+            <li>If an operation is destructive, irreversible, legal, financial, or data-modifying, appropriate confirmation, reversal, review, or error-prevention measures are available when applicable. (3.3.4)</li>
+        </ul>
+
+        <h2>Reorderable lists and tables</h2>
+
+        <p>A reorderable list or table allows users to change the sequence of items, rows, cards, or sections.</p>
+
+        <ul>
+            <li>Users can move an item to every available position without dragging. (2.1.1, 2.5.7)</li>
+            <li>Users can determine the current position and resulting position of an item, such as <code>3 of 8</code>. (1.3.1, 4.1.2)</li>
+            <li>Users receive confirmation after a move, including the updated position when relevant. (4.1.3)</li>
+            <li>The alternative interaction preserves a logical focus location after moving an item. (2.4.3)</li>
+            <li>When items are moved with controls such as Move up or Move down, the controls become unavailable or are updated appropriately at the first and last positions. (4.1.2)</li>
+            <li>When a move changes the table or list reading order, the programmatic order changes to match the visual order. (1.3.2)</li>
+        </ul>
+
+        <h2>Move and assignment interactions</h2>
+
+        <p>A move or assignment interaction transfers an item between containers, categories, columns, folders, or groups. Examples include moving a task between workflow columns, assigning a file to a folder, or adding an item to a category.</p>
+
+        <ul>
+            <li>Users can choose an item and an available destination without dragging. (2.1.1, 2.5.7)</li>
+            <li>The alternative interaction identifies the item being moved and the available destination choices. (1.3.1, 4.1.2)</li>
+            <li>Invalid or unavailable destinations are identified and cannot be selected as valid destinations. (1.3.1, 4.1.2)</li>
+            <li>After the move, users receive confirmation of the new destination and, when relevant, the new position. (4.1.3)</li>
+            <li>Focus remains at a logical location after the move, such as the moved item in its new container, the original action control, or a confirmation message with an appropriate next action. (2.4.3)</li>
+            <li>When moving an item removes it from a visible collection, users can determine what happened and can undo or otherwise recover the item when appropriate. (1.3.1, 3.3.4, 4.1.3)</li>
+        </ul>
+
+        <h2>File-upload drop zones</h2>
+
+        <p>A file-upload drop zone allows users to add files by dropping them into a designated area. Dropping must not be the only method of selecting files.</p>
+
+        <ul>
+            <li>A keyboard-operable file-selection control is available, such as a native <code>&lt;input type="file"&gt;</code> or a button that activates it. (2.1.1, 2.5.7)</li>
+            <li>The file-selection control has a meaningful accessible name. (4.1.2)</li>
+            <li>Instructions identify accepted file types, size limits, file-count limits, and other requirements when applicable. (3.3.2)</li>
+            <li>Upload progress, completion, failure, and validation results are communicated to assistive technology. (3.3.1, 4.1.3)</li>
+            <li>Users can remove or replace selected files using keyboard-operable controls. (2.1.1, 4.1.2)</li>
+            <li>Error messages identify the affected file and describe the problem in text. (3.3.1)</li>
+        </ul>
+
+        <h2>Best practices</h2>
+        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
+
+        <ul>
+            <li>Provide an alternative interaction that is at least as capable as drag and drop, rather than an alternative that only supports a limited subset of moves.</li>
+            <li>Provide visible controls such as Move up, Move down, Move to column, Move before, Move after, Assign to, or Remove.</li>
+            <li>Use a button or menu to start a move operation when an item has multiple possible destinations.</li>
+            <li>Provide a clear cancel operation, such as <kbd>Escape</kbd>, Cancel, or an equivalent control.</li>
+            <li>Announce or visibly report the result of a move, such as "Task moved to In progress, position 3 of 7."</li>
+            <li>Provide an Undo action when an accidental move, reorder, or assignment could be difficult to reverse.</li>
+            <li>Keep the name and identity of the moved item stable throughout the interaction.</li>
+            <li>Keep the original location available until users confirm a move when the interaction is complex or consequential.</li>
+            <li>Use a visible drag handle when only part of an item can be dragged, and ensure the handle has an accessible name such as "Reorder Project Alpha."</li>
+            <li>Do not make a small icon, tiny grip, or invisible area the only draggable target.</li>
+            <li>Provide clear visual indications of valid and invalid destinations without relying on color alone.</li>
+            <li>Do not require precision dragging, long presses, timed movements, or dragging across long distances as the only method of completing a task.</li>
+            <li>Do not rely on <code>aria-grabbed</code> or <code>aria-dropeffect</code>; they are deprecated and do not provide a complete, reliable drag-and-drop interaction model.</li>
+            <li>Use a simpler control such as a select menu, checkbox group, form field, or button set when direct manipulation is not essential to the task.</li>
+            <li>For a file upload drop zone, provide a keyboard-operable file-selection control in addition to dropping files.</li>
+            <li>For a sortable list, provide an alternative such as Move up/Move down controls or a position selector.</li>
+            <li>For a board or workflow, provide an alternative such as an Assign to or Move to menu that lists available columns and positions.</li>
+        </ul>
+
+        <h2>Practical test sequence</h2>
+        <table>
+            <tr>
+                <th>Focus</th>
+                <th>Details</th>
+                <th>Applicable Criteria</th>
+            </tr>
+            <tr>
+                <td>Identify function</td>
+                <td>
+                    <ul>
+                        <li>Identify every operation supported by dragging, such as reordering, moving, copying, assigning, uploading, deleting, resizing, or placing an item. (2.5.7)</li>
+                        <li>Determine whether dragging is genuinely essential to the underlying function or whether the same result can be achieved through endpoints, commands, or another control. (2.5.7)</li>
+                        <li>Determine whether the interaction uses mouse drag, touch drag, long press, path-based gestures, multi-pointer gestures, or another input method. (2.5.1)</li>
+                        <li>Identify every draggable item, drag handle, valid destination, invalid destination, status message, cancel action, and completion action.</li>
+                        <li>Identify whether the operation changes order, assignment, data, files, page structure, or another consequential state.</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures">WCAG 2.2: Understanding SC 2.5.1 Pointer Gestures (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements">WCAG 2.2: Understanding SC 2.5.7 Dragging Movements (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Semantics and language</td>
+                <td>
+                    <ul>
+                        <li>Confirm that draggable items, drag handles, alternative move controls, and destination controls have meaningful accessible names. (4.1.2)</li>
+                        <li>Confirm that the collection structure is programmatically available, such as a list, table, grid, tree, board, or another appropriate structure. (1.3.1)</li>
+                        <li>Confirm that instructions explain how to use the non-drag alternative when that interaction is not self-evident. (3.3.2)</li>
+                        <li>Confirm that users can determine the item currently selected or being moved in the alternative interaction. (1.3.1, 4.1.2)</li>
+                        <li>Confirm that destination options have meaningful names and that unavailable destinations are identified appropriately. (1.3.1, 4.1.2)</li>
+                        <li>Confirm that deprecated <code>aria-grabbed</code> and <code>aria-dropeffect</code> are not relied on as the sole method of exposing drag state or destination information.</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions">WCAG 2.2: Understanding SC 3.3.2 Labels or Instructions (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Keyboard only</td>
+                <td>
+                    <ul>
+                        <li>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to reach and move away from each draggable item, drag handle, alternative move control, destination control, cancel control, and Undo control. (2.1.1, 2.1.2, 2.4.3)</li>
+                        <li>Complete every drag-and-drop function without a pointer. Confirm that the keyboard alternative supports the same available items, destinations, positions, and outcomes. (2.1.1)</li>
+                        <li>Confirm that users can begin an alternative move operation, choose a destination or position, confirm the move, and cancel the operation using the keyboard. (2.1.1, 2.1.2)</li>
+                        <li>Confirm that keyboard focus remains visible, is not completely obscured, and moves to a logical location after each move, cancellation, or error. (2.4.3, 2.4.7, 2.4.11)</li>
+                        <li>Confirm that the interaction does not create a keyboard trap. Users must be able to cancel or exit a move operation with a documented keyboard method. (2.1.2)</li>
+                        <li>Confirm that moving focus among items does not automatically move, delete, assign, or otherwise alter an item. (3.2.1)</li>
+                        <li>Confirm that completing a move does not unexpectedly navigate away, submit a form, or otherwise change context unless the result is clearly expected. (3.2.2)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap">WCAG 2.2: Understanding SC 2.1.2 No Keyboard Trap (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order">WCAG 2.2: Understanding SC 2.4.3 Focus Order (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible">WCAG 2.2: Understanding SC 2.4.7 Focus Visible (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus">WCAG 2.2: Understanding SC 3.2.1 On Focus (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-input">WCAG 2.2: Understanding SC 3.2.2 On Input (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Pointer, touch, and drag alternative</td>
+                <td>
+                    <ul>
+                        <li>Use a mouse or touch input to perform each drag-and-drop operation. Confirm that items can be moved to every intended destination. Complete the same operation with a single pointer without dragging, such as selecting an item and selecting a destination, using Move controls, or using a destination menu. Confirm that the non-drag pointer alternative supports the same destinations, positions, and results as dragging. (2.5.7)</li>
+                        <li>When a path-based or multipoint gesture is provided, confirm that users can complete the same task with a single pointer without a path-based gesture. (2.5.1)</li>
+                        <li>Confirm that pointer interaction does not require a long press, fine motor precision, prolonged dragging, or a prescribed path as the only way to complete the task. (2.5.1, 2.5.7)</li>
+                        <li>Confirm that drag handles, alternative buttons, and destination controls meet the minimum target size or have sufficient spacing from adjacent targets. (2.5.8)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures">WCAG 2.2: Understanding SC 2.5.1 Pointer Gestures (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements">WCAG 2.2: Understanding SC 2.5.7 Dragging Movements (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Results and status feedback</td>
+                <td>
+                    <ul>
+                        <li>Move or reorder an item and confirm that the visual result, programmatic structure, and announced status agree. (1.3.1, 4.1.2, 4.1.3)</li>
+                        <li>Confirm that users receive an understandable confirmation after a successful move, including the item and new destination or position when relevant. (4.1.3)</li>
+                        <li>Attempt an invalid move and confirm that users receive an understandable error or unavailable-destination message. (1.3.1, 4.1.3)</li>
+                        <li>For a reordered list or table, confirm that the programmatic reading order matches the resulting visual order. (1.3.2)</li>
+                        <li>For a move between containers, confirm that the item is removed from its original location and available in its new location as intended. (1.3.1, 4.1.2)</li>
+                        <li>Test any Undo, Retry, Cancel, Restore, or confirmation feature. Confirm that it is keyboard-operable, has an accessible name, and remains available long enough to use when it has a time limit. (2.1.1, 2.2.1, 4.1.2)</li>
+                        <li>For consequential actions, confirm that users can review, confirm, reverse, or otherwise prevent errors when applicable. (3.3.4)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/meaningful-sequence">WCAG 2.2: Understanding SC 1.3.2 Meaningful Sequence (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable">WCAG 2.2: Understanding SC 2.2.1 Timing Adjustable (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data">WCAG 2.2: Understanding SC 3.3.4 Error Prevention (Legal, Financial, Data) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/status-messages">WCAG 2.2: Understanding SC 4.1.3 Status Messages (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Inspect visual aspects</td>
+                <td>
+                    <ul>
+                        <li>Check contrast for draggable-item text, drag handles, icons, destination indicators, invalid-destination indicators, selection states, drop-position indicators, and focus indicators. (1.4.3, 1.4.11)</li>
+                        <li>Confirm that draggable, selected, valid-destination, invalid-destination, dragged, and completed states are not distinguished by color alone. (1.4.1)</li>
+                        <li>Check the interaction at 200% text resize, a 320-CSS-pixel-wide viewport, and with text-spacing overrides. Draggable items, alternative controls, instructions, destinations, status messages, and error messages must remain visible, usable, and unclipped. (1.4.4, 1.4.10, 1.4.12)</li>
+                        <li>Confirm that an item being dragged or moved does not obscure important controls or make the destination indicator unusable at high zoom or narrow widths. (1.4.10)</li>
+                        <li>Confirm that drag handles and alternative controls are sufficiently large or spaced to avoid accidental activation. (2.5.8)</li>
+                        <li>Confirm that keyboard focus remains visible throughout the alternative interaction and is not obscured by overlays, sticky content, or other author-created elements. (1.4.11, 2.4.11)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color">WCAG 2.2: Understanding SC 1.4.1 Use of Color (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum">WCAG 2.2: Understanding SC 1.4.3 Contrast (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text">WCAG 2.2: Understanding SC 1.4.4 Resize Text (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow">WCAG 2.2: Understanding SC 1.4.10 Reflow (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast">WCAG 2.2: Understanding SC 1.4.11 Non-text Contrast (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing">WCAG 2.2: Understanding SC 1.4.12 Text Spacing (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Resources</h2>
+
+        <h3>WAI-ARIA and HTML</h3>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API">MDN: HTML Drag and Drop API</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/draggable">MDN: draggable global attribute</a></li>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/listbox/">W3C WAI-ARIA APG: Listbox Pattern</a></li>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/grid/">W3C WAI-ARIA APG: Grid Pattern</a></li>
+        </ul>
+
+        <h3>Additional information</h3>
+        <ul>
+            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19">W3C Technique ARIA19: Using role=alert or Live Regions to Identify Errors</a></li>
+            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA22">W3C Technique ARIA22: Using role=status to present status messages</a></li>
+            <li><a href="https://pauljadam.com/demos/draggable.html">Paul J. Adam: Draggable accessibility demo</a></li>
+        </ul>
+    </div>
+</div>
