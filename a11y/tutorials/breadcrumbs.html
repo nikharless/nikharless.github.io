@@ -1,0 +1,261 @@
+---
+layout: tuts
+last-modified: September 28, 2026
+---
+<div class="content row" id="main" style="max-width: 1140px;">
+    <div class="cpcontent">
+        <h1>Breadcrumbs</h1>
+
+        <p>A breadcrumb trail is a secondary navigation pattern that shows a user's location within a website or application hierarchy. It typically contains links to ancestor pages followed by the current page.</p>
+
+        <p>Breadcrumbs differ from other navigation patterns:</p>
+        <ul>
+            <li>Use breadcrumbs to show hierarchical location and provide links back to parent pages or sections.</li>
+            <li>Use primary navigation for major site sections and primary routes.</li>
+            <li>Use a back link or browser back behavior when users need to return to the page they visited immediately before the current page.</li>
+            <li>Use pagination to move among sequential pages within a collection.</li>
+            <li>Do not use breadcrumbs as the only way to navigate a site or application.</li>
+            <li>Do not use breadcrumbs to reproduce a user's exact browsing history unless the product intentionally provides history-based navigation.</li>
+        </ul>
+
+        <h2>WCAG requirements</h2>
+        <ul>
+            <li>Each breadcrumb link has a programmatically determinable accessible name. (4.1.2)</li>
+            <li>The purpose of each breadcrumb link can be determined from its text alone or from its text together with programmatically determinable context. (2.4.4)</li>
+            <li>Breadcrumb links expose link semantics. A native <code>&lt;a&gt;</code> element with an <code>href</code> provides link semantics automatically. (4.1.2)</li>
+            <li>Breadcrumb links are operable using a keyboard. A native link can be activated with <kbd>Enter</kbd>. (2.1.1)</li>
+            <li>Breadcrumb links appear in a logical focus order that follows the displayed hierarchy. (2.4.3)</li>
+            <li>Breadcrumb links have a visible focus indicator when they receive keyboard focus. (2.4.7)</li>
+            <li>Focused breadcrumb links are not completely hidden by sticky headers, banners, dialogs, or other author-created content. (2.4.11)</li>
+            <li>Breadcrumb links are visually distinguishable from surrounding non-link text without relying on color alone. (1.4.1)</li>
+            <li>Breadcrumb-link text has sufficient contrast against its background. (1.4.3)</li>
+            <li>Link indicators, separators needed to understand the hierarchy, and focus indicators have sufficient non-text contrast where required. (1.4.11)</li>
+            <li>Visible breadcrumb-link text is included in the accessible name. (2.5.3)</li>
+            <li>Breadcrumbs remain visible, identifiable, and operable at 200% text resize, at a 320-CSS-pixel-wide viewport, and when text-spacing overrides are applied. (1.4.4, 1.4.10, 1.4.12)</li>
+            <li>Standalone breadcrumb links meet the minimum target-size requirement or an applicable exception applies. Inline breadcrumb links whose size is constrained by the line height of non-target text may qualify for the inline exception. (2.5.8)</li>
+            <li>If the current page is included as a link, it is programmatically identified as the current page with <code>aria-current="page"</code>. (1.3.1, 4.1.2)</li>
+            <li>When visual separators between breadcrumb items are decorative, they are not exposed to assistive technology. If a separator conveys information beyond ordinary hierarchy, its meaning is available programmatically or in text. (1.1.1, 1.3.1)</li>
+            <li>If the current page is presented as non-link text, it is distinguishable from the linked breadcrumb items. (1.3.1, 1.4.1)</li>
+            <li>When breadcrumb navigation is repeated across multiple pages within a set of pages, it occurs in the same relative order each time it is repeated. (3.2.3)</li>
+            <li>Breadcrumb labels, destinations, and current-page treatment are identified consistently when the same pattern appears across multiple pages. (3.2.4)</li>
+            <li>Breadcrumb links do not cause an unexpected change of context when they receive focus. (3.2.1)</li>
+        </ul>
+
+        <h3>Hierarchical breadcrumbs</h3>
+
+        <p>Hierarchical breadcrumbs show the current page's location within the site or application structure. This is the most common breadcrumb pattern.</p>
+
+        <ul>
+            <li>The breadcrumb sequence accurately reflects the hierarchy from ancestor page or section to current page. (1.3.1)</li>
+            <li>Each ancestor item links to the correct parent page or section. (2.4.4)</li>
+            <li>The current page is represented as the final item when included. (1.3.1)</li>
+            <li>If the current page is a link, it exposes <code>aria-current="page"</code>. (4.1.2)</li>
+        </ul>
+
+        <h3>Location breadcrumbs without current-page link</h3>
+
+        <p>Some breadcrumb trails include the current page as plain text rather than as a link. This avoids adding a redundant link and tab stop for the current location.</p>
+
+        <ul>
+            <li>All ancestor items are links to their corresponding locations. (2.4.4, 4.1.2)</li>
+            <li>The current page appears as the final item in the breadcrumb trail and is distinguishable from linked ancestor items. (1.3.1, 1.4.1)</li>
+            <li>When the current page is presented as non-link text, <code>aria-current="page"</code> is optional but may provide additional programmatic context. (1.3.1, 4.1.2)</li>
+        </ul>
+
+        <h3>Responsive and truncated breadcrumbs</h3>
+
+        <p>Responsive breadcrumbs may wrap, truncate labels, or provide an overflow mechanism when there is insufficient horizontal space to show every item.</p>
+
+        <ul>
+            <li>All breadcrumb destinations remain available through a keyboard-operable interaction. (2.1.1)</li>
+            <li>Truncated text does not make a link's destination ambiguous. The accessible name provides the full destination name when necessary. (2.4.4, 4.1.2)</li>
+            <li>An overflow control has an accessible name that identifies its purpose, such as "Show 3 hidden breadcrumb items." (2.4.6, 4.1.2)</li>
+            <li>The overflow mechanism has appropriate semantics and keyboard behavior for its implemented pattern. (2.1.1, 4.1.2)</li>
+            <li>Wrapping, truncation, or overflow behavior does not require two-dimensional page scrolling at narrow widths or high zoom. (1.4.10)</li>
+        </ul>
+
+        <h2>Best practices</h2>
+        <p>These practices improve usability and robustness, although not all are separate WCAG requirements in every implementation.</p>
+
+        <ul>
+            <li>Place breadcrumbs consistently near the beginning of the main content, typically after the site header and before the page heading.</li>
+            <li>Use a navigation landmark with an accessible name such as <code>Breadcrumb</code> or <code>Breadcrumb navigation</code>.</li>
+            <li>Use an ordered list to represent the hierarchy from the highest-level ancestor to the current page.</li>
+            <li>Use concise labels that match or closely correspond to the titles of the linked pages or sections.</li>
+            <li>Ensure the sequence reflects the site's hierarchy rather than simply a user's browsing history.</li>
+            <li>Include the current page as the final item when doing so helps users understand their location.</li>
+            <li>Choose one consistent current-page treatment: present it as non-link text, or retain it as a link marked with <code>aria-current="page"</code>.</li>
+            <li>Generate decorative separators with CSS where possible. If they are in the DOM, hide them from assistive technology.</li>
+            <li>Use CSS-generated or otherwise hidden decorative separators when the ordered-list and navigation semantics already convey the breadcrumb relationship.</li>
+            <li>Allow breadcrumb items to wrap at narrow widths rather than clipping them or forcing horizontal page scrolling.</li>
+            <li>Do not truncate a breadcrumb label in a way that makes the linked destination unclear. Provide an accessible full name when visual truncation is unavoidable.</li>
+            <li>When the hierarchy is very deep, provide a usable responsive treatment, such as wrapping or a clearly labeled overflow pattern, rather than hiding intermediate levels without an accessible method to access them.</li>
+            <li>Use a visible current-page treatment in addition to any programmatic indication, such as plain text, font treatment, or a non-color distinction.</li>
+            <li>Do not use title attributes as the sole method of providing a full breadcrumb label or destination name.</li>
+        </ul>
+
+        <h2>Practical test sequence</h2>
+        <table>
+            <tr>
+                <th>Focus</th>
+                <th>Details</th>
+                <th>Applicable Criteria</th>
+            </tr>
+            <tr>
+                <td>Identify function</td>
+                <td>
+                    <ul>
+                        <li>Confirm that the component is a breadcrumb trail and that it communicates hierarchical location or navigation to ancestor pages or sections. (1.3.1)</li>
+                        <li>Confirm that the component is not primary navigation, a back link, pagination, a progress indicator, or a history trail with a different purpose.</li>
+                        <li>Determine whether the trail includes the current page and whether the current-page item is a link or plain text.</li>
+                        <li>Determine whether the breadcrumbs can wrap, truncate items, or use an overflow control at narrow widths.</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Semantics and language</td>
+                <td>
+                    <ul>
+                        <li>Confirm that the breadcrumb trail is contained in a <code>&lt;nav&gt;</code> landmark or an equivalent navigation region with an accessible name such as "Breadcrumb". (1.3.1, 4.1.2)</li>
+                        <li>Confirm that the trail uses an ordered list or another programmatically determinable structure that communicates the hierarchy. (1.3.1)</li>
+                        <li>Confirm that each ancestor item is a native <code>&lt;a&gt;</code> element with an <code>href</code>, where feasible. (4.1.2)</li>
+                        <li>Confirm that each link has a meaningful accessible name and that the visible link text is included in the accessible name. (2.4.4, 2.5.3, 4.1.2)</li>
+                        <li>Confirm that the sequence represents the correct hierarchy from ancestor to current location. (1.3.1)</li>
+                        <li>If the current page is a link, confirm it exposes <code>aria-current="page"</code>. (1.3.1, 4.1.2)</li>
+                        <li>Confirm that decorative separators are hidden from assistive technology. Confirm that the breadcrumb navigation landmark and ordered-list structure convey the trail's purpose and sequence. (1.1.1, 1.3.1)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-content">WCAG 2.2: Understanding SC 1.1.1 Non-text Content (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context">WCAG 2.2: Understanding SC 2.4.4 Link Purpose (In Context) (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/label-in-name">WCAG 2.2: Understanding SC 2.5.3 Label in Name (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Screen reader</td>
+                <td>
+                    <ul>
+                        <li>Confirm that the breadcrumb navigation landmark is announced with its accessible name. (1.3.1, 4.1.2)</li>
+                        <li>Confirm that each ancestor item is announced as a link with a meaningful name. (2.4.4, 4.1.2)</li>
+                        <li>Confirm that the current page is identified as current when it is a link. (1.3.1, 4.1.2)</li>
+                        <li>If the current page is plain text, confirm that it is available in the expected final position and distinguishable from the links. (1.3.1)</li>
+                        <li>Confirm that decorative separators do not create confusing, redundant, or excessively verbose announcements. (1.3.1)</li>
+                        <li>Use a screen-reader links list or links navigation feature, where available, and confirm that breadcrumb link names remain understandable out of context. (2.4.4)</li>
+                        <li>For truncated items, confirm that the accessible name communicates the full destination when needed. (2.4.4, 4.1.2)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context">WCAG 2.2: Understanding SC 2.4.4 Link Purpose (In Context) (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/name-role-value">WCAG 2.2: Understanding SC 4.1.2 Name, Role, Value (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Keyboard only</td>
+                <td>
+                    <ul>
+                        <li>Use <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> to move to and away from each breadcrumb link. Confirm that links appear in the same logical order as the displayed hierarchy. (2.1.1, 2.1.2, 2.4.3)</li>
+                        <li>Confirm that each breadcrumb link has a visible focus indicator and is not completely hidden by sticky headers, banners, dialogs, or other author-created content. (2.4.7, 2.4.11)</li>
+                        <li>Activate each breadcrumb link with <kbd>Enter</kbd> and confirm that it reaches the expected parent page or section. (2.1.1, 2.4.4)</li>
+                        <li>Confirm that breadcrumb links do not activate merely because they receive focus. (3.2.1)</li>
+                        <li>For an overflow mechanism, confirm that the control is keyboard-operable, opens predictably, and allows users to reach hidden breadcrumb destinations. (2.1.1, 2.4.3)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap">WCAG 2.2: Understanding SC 2.1.2 No Keyboard Trap (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-order">WCAG 2.2: Understanding SC 2.4.3 Focus Order (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context">WCAG 2.2: Understanding SC 2.4.4 Link Purpose (In Context) (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-visible">WCAG 2.2: Understanding SC 2.4.7 Focus Visible (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus">WCAG 2.2: Understanding SC 3.2.1 On Focus (Level A)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Hierarchy and destinations</td>
+                <td>
+                    <ul>
+                        <li>Compare the breadcrumb sequence against the site's information architecture and confirm that each item represents the correct ancestor page or section. (1.3.1)</li>
+                        <li>Activate each ancestor link and confirm that it reaches the destination identified by the link text. (2.4.4)</li>
+                        <li>Confirm that the final item correctly represents the current page or current location. (1.3.1)</li>
+                        <li>Confirm that the current-page treatment is consistent across comparable pages. (3.2.4)</li>
+                        <li>For responsive overflow behavior, confirm that intermediate ancestor destinations remain available rather than being permanently removed. (2.1.1, 2.4.4)</li>
+                        <li>Navigate to comparable pages within the same set and confirm that the breadcrumb navigation occurs in the same relative order, with the same ancestor-to-current-page direction, each time it is repeated. (3.2.3)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships">WCAG 2.2: Understanding SC 1.3.1 Info and Relationships (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/keyboard">WCAG 2.2: Understanding SC 2.1.1 Keyboard (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context">WCAG 2.2: Understanding SC 2.4.4 Link Purpose (In Context) (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation">WCAG 2.2: Understanding SC 3.2.3 Consistent Navigation (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification">WCAG 2.2: Understanding SC 3.2.4 Consistent Identification (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Inspect visual aspects</td>
+                <td>
+                    <ul>
+                        <li>Confirm that breadcrumb links are distinguishable from surrounding non-link text without relying on color alone. (1.4.1)</li>
+                        <li>Check contrast for breadcrumb-link text in default, hover, active, visited, and focus states. (1.4.3)</li>
+                        <li>Check contrast for separators, current-page indicators, overflow controls, icons, and focus indicators when they are needed to identify or operate the breadcrumb trail. (1.4.11)</li>
+                        <li>Confirm that the current page is visually distinguishable from linked ancestor items without relying on color alone. (1.4.1)</li>
+                        <li>Check 200% text resize, a 320-CSS-pixel-wide viewport, and text-spacing overrides. Breadcrumb labels, links, separators, and overflow controls must remain visible, identifiable, and operable without clipping, overlap, or unnecessary horizontal scrolling. (1.4.4, 1.4.10, 1.4.12)</li>
+                        <li>For standalone breadcrumb links or an overflow control, confirm that the target meets the minimum target size or an applicable exception applies. Inline breadcrumb links whose size is constrained by surrounding text may qualify for the inline exception. (2.5.8)</li>
+                        <li>Confirm that focused breadcrumb links and controls are visible against surrounding colors and are not completely hidden by other content. (1.4.11, 2.4.11)</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/use-of-color">WCAG 2.2: Understanding SC 1.4.1 Use of Color (Level A)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum">WCAG 2.2: Understanding SC 1.4.3 Contrast (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/resize-text">WCAG 2.2: Understanding SC 1.4.4 Resize Text (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/reflow">WCAG 2.2: Understanding SC 1.4.10 Reflow (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast">WCAG 2.2: Understanding SC 1.4.11 Non-text Contrast (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/text-spacing">WCAG 2.2: Understanding SC 1.4.12 Text Spacing (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum">WCAG 2.2: Understanding SC 2.4.11 Focus Not Obscured (Minimum) (Level AA)</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum">WCAG 2.2: Understanding SC 2.5.8 Target Size (Minimum) (Level AA)</a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <h2>Resources</h2>
+
+        <h3>Native HTML</h3>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/nav">MDN: &lt;nav&gt; HTML navigation section element</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/ol">MDN: &lt;ol&gt; HTML ordered list element</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a">MDN: &lt;a&gt; HTML anchor element</a></li>
+        </ul>
+
+        <h3>WAI-ARIA</h3>
+        <ul>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/">W3C WAI-ARIA APG: Breadcrumb Pattern</a></li>
+            <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/examples/breadcrumb/">W3C WAI-ARIA APG: Breadcrumb Example</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-current">MDN: ARIA aria-current attribute</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label">MDN: ARIA: aria-label attribute</a></li>
+        </ul>
+
+        <h3>Additional information</h3>
+        <ul>
+            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G65">W3C Technique G65: Providing a breadcrumb trail</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/How_to/Layout_cookbook/Breadcrumb_navigation">MDN: Breadcrumb navigation</a></li>
+            <li><a href="https://accessibility.build/guides/accessible-breadcrumbs">Accessibility.build: Accessible Breadcrumb Navigation</a></li>
+        </ul>
+    </div>
+</div>
