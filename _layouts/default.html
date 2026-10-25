@@ -2,7 +2,10 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>{{ currentpg.name }}</title>
+		{% assign data_folder = page.criterion | append: "" %}
+		{% assign checkpoint_data = site.data[data_folder][data_folder] %}
+		{% assign currentpg = checkpoint_data[page.current] %}
+		<title>{{ currentpg.name | escape }}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="/a11y/assets/css/styles.css">
 		{% if page.css %}<link rel="stylesheet" href="/a11y/assets/css/{{ page.css }}.css">{% endif %}
