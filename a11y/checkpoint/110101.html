@@ -2,11 +2,15 @@
 layout: default
 current: "110101"
 criterion: "1101"
+guideline: perceivable
+level: aa
+last-modified: October 25, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1101.1101[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign checkpoint_data = site.data["1411"]["1411"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -15,19 +19,10 @@ criterion: "1101"
         {% include breadcrumbs/bc-checkpoint.html %}
 
         <div class="block">
-            <h2>Overview</h2>
-            <p>Text alternatives depend on context. The same image might convey different information in different situations.</p>
-
-            <h3>Example</h3>
-            <img src="{{ baseurl }}/assets/images/110102-fallingwater_640.jpg" alt="Frank Lloyd Wright's Fallingwater" />
-            <p>If this image were used in an article about Frank Lloyd Wright, the text alternative might be "Frank Lloyd Wright's Fallingwater". However, if it were in a tutorial about photography, it might include information relevant to the lesson's content.</p>
-
-        </div>
-
-        <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br />
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
                 <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Meaningful images must have a descriptive text alternative that conveys the same information as the image in context.
                     <ul>
@@ -53,6 +48,15 @@ criterion: "1101"
                 <li><code>aria-labelledby</code> property</li>
                 <li>CSS clipped text</li>
             </ul>
+        </div>
+
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Text alternatives depend on context. The same image might convey different information in different situations.</p>
+
+            <h3>Example</h3>
+            <img src="{{ baseurl }}/assets/images/110102-fallingwater_640.jpg" alt="Frank Lloyd Wright's Fallingwater" />
+            <p>If this image were used in an article about Frank Lloyd Wright, the text alternative might be "Frank Lloyd Wright's Fallingwater". However, if it were in a tutorial about photography, it might include information relevant to the lesson's content.</p>
 
         </div>
 
