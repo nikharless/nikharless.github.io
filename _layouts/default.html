@@ -23,7 +23,14 @@
 		<!-- The flexible grid (content) -->
 		<main id="main-container" class="row">
 			{% include sidebar.html %}
-			{{ content }}
+			<div class="content row {{ sc.level }}">
+				<div class="cpcontent {{ sc.level }}link">
+					<h1>{{ currentpg.name | escape }}</h1>
+        			{% include breadcrumbs/bc-checkpoint.html %}
+					{{ content }}
+					{% include checkpoints/1101checkpoints.html %}
+				</div>
+			</div>
 			<script src="{{ '/assets/js/accordion.js' | relative_url }}"></script>
 			<script>
 				var button1 = document.getElementById("accordion1id");
