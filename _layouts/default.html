@@ -4,6 +4,7 @@
 {% assign criterion_id = page.criterion | append: "" %}
 {% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
 {% assign current_id = page.current | append: "" %}
+{% assign current_length = current_id | size %}
 
 {% assign currentpg = checkpoint_data[current_id] %}
 {% assign sc = checkpoint_data[criterion_id] %}
@@ -26,9 +27,15 @@
 			<div class="content row {{ sc.level }}">
 				<div class="cpcontent {{ sc.level }}link">
 					<h1>{{ currentpg.name | escape }}</h1>
-        			{% include breadcrumbs/bc-checkpoint.html %}
+
+					{% if current_length == 6 %}
+					  {% include breadcrumbs/bc-checkpoint.html %}
+					{% elsif current_length == 8 %}
+					  {% include breadcrumbs/bc-failure.html %}
+					{% endif %}
+        			
 					{{ content }}
-					{% include checkpoints/1101checkpoints.html %}
+					{% include checkpoints/{{ criterion_id }}checkpoints.html %}
 				</div>
 			</div>
 			<script src="{{ '/assets/js/accordion.js' | relative_url }}"></script>
