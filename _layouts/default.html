@@ -1,6 +1,5 @@
 <!doctype html>
 {% assign root = site.data.site.root %}
-{% assign baseurl = site.data.site.base %}
 
 {% assign criterion_id = page.criterion | append: "" %}
 {% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
@@ -13,11 +12,10 @@
 		<meta charset="utf-8">
 		<title>{{ currentpg.name | escape }}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="/a11y/assets/css/styles.css">
-		{% if page.css %}<link rel="stylesheet" href="/a11y/assets/css/{{ page.css }}.css">{% endif %}
+		<link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+		{% if page.css %}<link rel="stylesheet" href=" {{ '/assets/css/{{ page.css }}.css' | relative_url }}">{% endif %}
 		<script src="https://kit.fontawesome.com/a2a3f8fa39.js" crossorigin="anonymous"></script>
 	</head>
-
 	<body>
 		<!-- Header -->
 		  	{% include navigation.html %}
@@ -25,7 +23,7 @@
 		<!-- The flexible grid (content) -->
 		<main id="main-container" class="row">
 			{{ content }}
-			<script src="/a11y/assets/js/accordion.js"></script>
+			<script src="{{ '/assets/js/accordion.js' | relative_url }}"></script>
 			<script>
 				var button1 = document.getElementById("accordion1id");
 				var button2 = document.getElementById("accordion2id");
