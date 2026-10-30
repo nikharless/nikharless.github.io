@@ -5,7 +5,6 @@
 {% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
 {% assign current_id = page.current | append: "" %}
 {% assign current_length = current_id | size %}
-{% capture checkpoint_include %}checkpoints/{{ criterion_id }}checkpoints.html{% endcapture %}
 
 {% assign currentpg = checkpoint_data[current_id] %}
 {% assign sc = checkpoint_data[criterion_id] %}
@@ -38,8 +37,8 @@
         			
 					{{ content }}
 
-					{{ checkpoint_include | inspect }}
-					
+					{% capture checkpoint_include %}checkpoints/{{ criterion_id }}checkpoints.html{% endcapture %}
+					{% include {{ checkpoint_include }} %}					
 				</div>
 			</div>
 			<script src="{{ '/assets/js/accordion.js' | relative_url }}"></script>
