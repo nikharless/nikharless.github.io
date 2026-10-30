@@ -2,12 +2,16 @@
 layout: default
 current: "330801"
 criterion: "3308"
+guideline: understandable
+level: aaa
+last-modified: October 29, 2026
 css: disclosure-faq
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.3308.3308[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.3308.3308[page.criterion] %}
+{% assign checkpoint_data = site.data["3308"]["3308"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -30,17 +34,14 @@ css: disclosure-faq
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> A cognitive function test must not be required for authentication unless an alternative or assistive mechanism is provided or the test involves object recognition or personal non-text content.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Object recognition and personal content cognitive function tests should be avoided.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> When entering a password is essential (such as creating one to be saved by a password manager), it should be possible to show the password.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> A cognitive function test must not be required for authentication unless an alternative or assistive mechanism is provided or the test involves object recognition or personal non-text content.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Object recognition and personal content cognitive function tests should be avoided.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> When entering a password is essential (such as creating one to be saved by a password manager), it should be possible to show the password.</li>
             </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a user with a cognitive impairment, I want to be able to authenticate without a cognitive function test so that I can log in without excessive cognitive effort.</div>
-
-            <div class="success"><strong>Success:</strong> If you were a user with a cognitive impairment, when logging in, a cognitive function test would not be required.</div>
         </div>
 
         <div class="block">
@@ -60,7 +61,7 @@ css: disclosure-faq
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the cognitive function test identifying non-text content provided by the user?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="na"><span><strong>Yes</strong>; Not applicable</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3308.3308[33080101].link | prepend: baseurl }}">{{ site.data.3308.3308[33080101].name }}</a>.</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["33080101"].link | prepend: baseurl }}">{{ checkpoint_data["33080101"].name }}</a>.</span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -86,7 +87,7 @@ css: disclosure-faq
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.3308.3308[33080101].link | prepend: baseurl }}">{{ site.data.3308.3308[33080101].name }}</a>.</li>
+                <li><a href="{{ checkpoint_data["33080101"].link | prepend: baseurl }}">{{ checkpoint_data["33080101"].name }}</a></li>
             </ul>
         </div>
 
@@ -115,5 +116,5 @@ css: disclosure-faq
         </div>
     </div>
     {% include checkpoints/3308checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

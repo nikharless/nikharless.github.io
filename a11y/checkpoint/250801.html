@@ -2,67 +2,68 @@
 layout: default
 current: "250801"
 criterion: "2508"
+guideline: perceivable
+level: aa
+last-modified: October 28, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2508.2508[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2508.2508[page.criterion] %}
+{% assign checkpoint_data = site.data["2508"]["2508"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>Exceptions to this criterion include:</p>
-    <ul>
-        <li>Undersized targets which are spaced so that a 24 CSS pixel diameter circle is centered on the bounding box of each, the circles do not intersect</li>
-        <li>When there is another control on the same page that performs the same function and meets the criterion</li>
-        <li>The control is inline with text</li>
-        <li>The control is the user agent default</li>
-        <li>The presentation of the control is essential</li>
-    </ul>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The target size for controls must be at least 24 x 24 CSS pixels.</li>
+            </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Exceptions to this criterion include:</p>
+            <ul>
+                <li>Undersized targets which are spaced so that a 24 CSS pixel diameter circle is centered on the bounding box of each, the circles do not intersect</li>
+                <li>When there is another control on the same page that performs the same function and meets the criterion</li>
+                <li>The control is inline with text</li>
+                <li>The control is the user agent default</li>
+                <li>The presentation of the control is essential</li>
+            </ul>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The target size for controls must be at least 24 x 24 CSS pixels.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a movement disability, I want controls to have a larger target size so that I can more easily use them.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a user with a movement disability, when you interact with controls, you can easily hit the target area.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is the target size of all interactive elements at least 24 x 24 CSS pixels?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the size of the target determined by the user agent and not the author?</span>
-            <ul role="group">
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is the target size of all interactive elements at least 24 x 24 CSS pixels?</h3>
+            <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the target inline with a sentence or otherwise constrained by the line-height of non-target text?</span>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the size of the target determined by the user agent and not the author?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there sufficient spacing between targets to make up for the size?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the target inline with a sentence or otherwise constrained by the line-height of non-target text?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the function be achieved using a different control on the same page which passes this criterion?</span>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there sufficient spacing between targets to make up for the size?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the presentation of the target essential or legally required?</span>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Can the function be achieved using a different control on the same page which passes this criterion?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2508.2508[25080101].link | prepend: baseurl }}">{{ site.data.2508.2508[25080101].name }}</a>.</span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the presentation of the target essential or legally required?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["25080101"].link | prepend: baseurl }}">{{ checkpoint_data["25080101"].name }}</a>.</span></li>
+                                                    </ul>
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -72,81 +73,75 @@ criterion: "2508"
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Locate any interactive controls on the page.</li>
+                <li>Open the Developer tools:
+                    <ul>
+                        <li>Right-click the control and select <strong>Inspect</strong>, OR</li>
+                        <li>From the Customize and control Google Chrome menu, select <strong>More tools > Developer tools</strong>, OR</li>
+                        <li>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></li>
+                    </ul>
+                </li>
+                <li>Verify that each control has a target area of at least 24 x 24 CSS pixels or falls under one of the exceptions.</li>
+            </ol>
 
-    <h3>Desktop</h3>
-    <ol>
-        <li>Locate any interactive controls on the page.</li>
-        <li>Open the Developer tools:
+            <h3>Mobile</h3>
+            <ol>
+                <li>Open the page on a desktop computer in Chrome.</li>
+                <li>Open the Developer tools:
+                    <ul>
+                        <li>Right-click the control and select <strong>Inspect</strong>, OR</li>
+                        <li>From the Customize and control Google Chrome menu, select <strong>More tools > Developer tools</strong>, OR</li>
+                        <li>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></li>
+                    </ul>
+                </li>
+                <li>Activate <strong>Toggle device toolbar</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>) to view the page as a mobile device.</li>
+                <li>Select a device from the <strong>Dimensions</strong> drop-down.</li>
+                <li>Follow the procedure for Desktop Web.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li>Right-click the control and select <strong>Inspect</strong>, OR</li>
-                <li>From the Customize and control Google Chrome menu, select <strong>More tools > Developer tools</strong>, OR</li>
-                <li>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></li>
+                <li><a href="{{ checkpoint_data["25080101"].link | prepend: baseurl }}">{{ checkpoint_data["25080101"].name }}</a></li>
             </ul>
-        </li>
-        <li>Verify that each control has a target area of at least 24 x 24 CSS pixels or falls under one of the exceptions.</li>
-    </ol>
+        </div>
 
-    <h3>Mobile</h3>
-    <ol>
-        <li>Open the page on a desktop computer in Chrome.</li>
-        <li>Open the Developer tools:
+        <div class="block">
+            <h2>Testing Tools</h2>
             <ul>
-                <li>Right-click the control and select <strong>Inspect</strong>, OR</li>
-                <li>From the Customize and control Google Chrome menu, select <strong>More tools > Developer tools</strong>, OR</li>
-                <li>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></li>
+                <li>Chrome Developer Tools > <a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Accessibility Pane</a></li>
+                <li>Firefox Web Developer Tools > <a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Accessibility Inspector</a></li>
             </ul>
-        </li>
-        <li>Activate <strong>Toggle device toolbar</strong> (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd>) to view the page as a mobile device.</li>
-        <li>Select a device from the <strong>Dimensions</strong> drop-down.</li>
-        <li>Follow the procedure for Desktop Web.</li>
-    </ol>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2508.2508[25080101].link | prepend: baseurl }}">{{ site.data.2508.2508[25080101].name }}</a>. (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Chrome Developer Tools > <a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Accessibility Pane</a></li>
-        <li>Firefox Web Developer Tools > <a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Accessibility Inspector</a></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>CSS:
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C42">C42: Using min-height and min-width to ensure sufficient target spacing</a></li>
-            </ul>
-        </li>
-     </ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>CSS:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C42">C42: Using min-height and min-width to ensure sufficient target spacing</a></li>
+                    </ul>
+                </li>
+             </ul>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/">Apple: Apple touch target size recommendations</a></li>
-        <li><a href="https://learn.microsoft.com/en-us/windows/apps/design/input/guidelines-for-targeting">Microsoft: Guidelines for touch targets</a></li>
-        <li><a href="https://material.io/design/layout/spacing-methods.html#touch-targets">Google Material Design Touch targets</a></li>
-    </ul>
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://developer.apple.com/design/human-interface-guidelines/ios/visual-design/adaptivity-and-layout/">Apple: Apple touch target size recommendations</a></li>
+                <li><a href="https://learn.microsoft.com/en-us/windows/apps/design/input/guidelines-for-targeting">Microsoft: Guidelines for touch targets</a></li>
+                <li><a href="https://material.io/design/layout/spacing-methods.html#touch-targets">Google Material Design Touch targets</a></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/2508checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

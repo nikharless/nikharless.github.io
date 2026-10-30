@@ -2,17 +2,32 @@
 layout: default
 current: "130201"
 criterion: "1302"
+guideline: perceivable
+level: a
+last-modified: October 26, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1302.1302[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1302.1302[page.criterion] %}
+{% assign checkpoint_data = site.data["1302"]["1302"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The reading order of page content must be logical and intuitive without CSS positioning.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Reading order should match the visual order, but it is not a failure unless the difference changes meaning.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -27,20 +42,6 @@ criterion: "1302"
         </div>
 
         <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The reading order of page content must be logical and intuitive without CSS positioning.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Reading order should match the visual order, but it is not a failure unless the difference changes meaning.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want the content to be read in a meaningful sequence so that I can understand the content.</div>
-
-            <div class="success"><strong>Success:</strong> If you could not see the web page, when you use a screen reader, you would hear the content in an order that makes logical sense.</div>
-        </div>
-
-        <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
             <h3 id="test1">Is there content on the page that is positioned with CSS?</h3>
@@ -48,7 +49,7 @@ criterion: "1302"
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the content presented in a logical order when CSS is turned off?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1302.1302[13020101].link | prepend: baseurl }}">{{ site.data.1302.1302[13020101].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13020101"].link | prepend: baseurl }}">{{ checkpoint_data["13020101"].name }}.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
@@ -91,7 +92,7 @@ criterion: "1302"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1302.1302[13020101].link | prepend: baseurl }}">{{ site.data.1302.1302[13020101].name }}.</a> (High)</li>
+                <li><a href="{{ checkpoint_data["13020101"].link | prepend: baseurl }}">{{ checkpoint_data["13020101"].name }}.</a></li>
             </ul>
         </div>
 
@@ -149,5 +150,5 @@ criterion: "1302"
         </div>
     </div>
     {% include checkpoints/1302checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

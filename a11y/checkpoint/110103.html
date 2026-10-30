@@ -2,17 +2,49 @@
 layout: default
 current: "110103"
 criterion: "1101"
+guideline: perceivable
+level: a
+last-modified: October 24, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign root = site.data.site.root %}
+{% assign baseurl = site.data.site.base %}
+
+{% assign criterion_id = page.criterion | append: "" %}
+{% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
+{% assign current_id = page.current | append: "" %}
+
+{% assign currentpg = checkpoint_data[current_id] %}
+{% assign sc = checkpoint_data[criterion_id] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> Complex images that cannot be sufficiently described with a short text alternative must also have a long description that fully conveys all the information provided by the image.</li>
+                <li><span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> Complex images must have a short descriptive text alternative that summarizes the information provided by the image.</li>
+                <li><span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> The short text alternative should reference the location of the long description.</li>
+                <li><span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> Short text alternatives for complex images should not include words such as "image" or "graphic". Words like "graph" or "chart" may be used.</li>
+                <li><span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> Short text alternatives should be as succinct as possible.</li>
+            </ul>
+
+            <p>Text alternatives for complex images may be provided in context or on a separate page, such as by:</p>
+            <ul>
+                <li>Providing a long description in the form of adjacent text, preferably with a reference in the short text alternative</li>
+                <li>Providing graph information in table format in addition to the complex image</li>
+                <li>Providing a link to a long description, placed immediately adjacent to the complex image</li>
+                <li>Providing a long description that is hidden within a collapsible region</li>
+                <li>Providing a long description in a dialog that is opened by user choice</li>
+                <li>Providing a link to a long description on another page via the <code>longdesc</code> attribute in addition to a visible link to the same</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -24,43 +56,6 @@ criterion: "1101"
                 <img src="{{ baseurl }}/assets/images/110103-constellations_640.png" height="300" width="300" alt="Historical chart of constellations.">
                 <figcaption><a href="#">Follow this link for a description of the chart.</a></figcaption>
             </figure>
-        </div>
-
-        <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" role="img" aria-label="Requirement"></span> = Requirement<br>
-                <span class="fa-solid fa-circle-check" style="color: #28a228;" role="img" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" role="img" aria-label="Requirement"></span> Complex images that cannot be sufficiently described with a short text alternative must also have a long description that fully conveys all the information provided by the image.</li>
-                <li><span class="fa-solid fa-circle-exclamation" style="color: #e00000;" role="img" aria-label="Requirement"></span> Complex images must have a short descriptive text alternative that summarizes the information provided by the image.</li>
-                <li><span class="fa-solid fa-circle-check" style="color: #28a228;" role="img" aria-label="Best Practice"></span> The short text alternative should reference the location of the long description.</li>
-                <li><span class="fa-solid fa-circle-check" style="color: #28a228;" role="img" aria-label="Best Practice"></span> Short text alternatives for complex images should not include words such as "image" or "graphic". Words like "graph" or "chart" may be used.</li>
-                <li><span class="fa-solid fa-circle-check" style="color: #28a228;" role="img" aria-label="Best Practice"></span> Short text alternatives should be as succinct as possible.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> 
-                <ul>
-                    <li>As a blind screen reader user, I want to hear a short description of the complex image so that I know if I want to explore it further.</li>
-                    <li>As a blind screen reader user, I want to hear a long description of the complex image so that I get all the information it conveys.</li>
-                </ul>
-            </div>
-
-            <div class="success"><strong>Success:</strong>
-                <ul>
-                    <li>If you could not see the image, when you read it with a screen reader, you would hear a short description of the complex image summarizing its purpose.</li>
-                    <li>If you could not see the image, when you read the page with a screen reader, you could easily find and hear a long description of the complex image which conveys all the information in the image.</li>
-                </ul>
-            </div>
-
-            <p>Text alternatives for complex images may be provided in context or on a separate page, such as by:</p>
-            <ul>
-                <li>Providing a long description in the form of adjacent text, preferably with a reference in the short text alternative</li>
-                <li>Providing graph information in table format in addition to the complex image</li>
-                <li>Providing a link to a long description, placed immediately adjacent to the complex image</li>
-                <li>Providing a long description that is hidden within a collapsible region</li>
-                <li>Providing a long description in a dialog that is opened by user choice</li>
-                <li>Providing a link to a long description on another page via the <code>longdesc</code> attribute in addition to a visible link to the same</li>
-            </ul>
         </div>
 
         <div class="block">
@@ -79,19 +74,19 @@ criterion: "1101"
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the long text alternative sufficiently describe all visual complexities and relationships conveyed visually?</span>
                                                     <ul role="group">
                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010304].link | prepend: baseurl }}">{{ site.data.1101.1101[11010304].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010304"].link | prepend: baseurl }}">{{ checkpoint_data["11010304"].name }}.</a></span></li>
                                                     </ul>
                                                 </li>
                                                 <li role="treeitem" class="fail"><span><strong>No</strong>; Place the long text description in context or via an adjacent link.</span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010303].link | prepend: baseurl }}">{{ site.data.1101.1101[11010303].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010303"].link | prepend: baseurl }}">{{ checkpoint_data["11010303"].name }}.</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010302].link | prepend: baseurl }}">{{ site.data.1101.1101[11010302].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010302"].link | prepend: baseurl }}">{{ checkpoint_data["11010302"].name }}.</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010301].link | prepend: baseurl }}">{{ site.data.1101.1101[11010301].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010301"].link | prepend: baseurl }}">{{ checkpoint_data["11010301"].name }}.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
@@ -144,10 +139,10 @@ criterion: "1101"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1101.1101[11010301].link | prepend: baseurl }}">{{ site.data.1101.1101[11010301].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1101.1101[11010302].link | prepend: baseurl }}">{{ site.data.1101.1101[11010302].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1101.1101[11010303].link | prepend: baseurl }}">{{ site.data.1101.1101[11010303].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1101.1101[11010304].link | prepend: baseurl }}">{{ site.data.1101.1101[11010304].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["11010301"].link | prepend: baseurl }}">{{ checkpoint_data["11010301"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["11010302"].link | prepend: baseurl }}">{{ checkpoint_data["11010302"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["11010303"].link | prepend: baseurl }}">{{ checkpoint_data["11010303"].name }}.</a> (High)</li>
+                <li><a href="{{ checkpoint_data["11010304"].link | prepend: baseurl }}">{{ checkpoint_data["11010304"].name }}.</a> (Medium)</li>
             </ul>
         </div>
 
@@ -214,5 +209,5 @@ criterion: "1101"
         </div>
     </div>
     {% include checkpoints/1101checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

@@ -11,6 +11,7 @@ last-modified: July 7, 2026
 {% assign currentpg=site.data.1411.1411[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1411.1411[page.criterion] %}
+{% assign checkpoint_data = site.data["1411"]["1411"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -20,11 +21,12 @@ last-modified: July 7, 2026
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Visual indicators of a control's states must have a contrast ratio of at least 3:1 with the background.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> User controls should have visual indicators to distinguish all states.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Visual indicators of a control's states must have a contrast ratio of at least 3:1 with the background.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> User controls should have visual indicators to distinguish all states.</li>
             </ul>
 
             <div class="userstory"><strong>User Story:</strong> As a user with low vision, I want controls to have sufficient contrast in all states so that I can distinguish them.</div>
@@ -110,7 +112,7 @@ last-modified: July 7, 2026
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control the default appearance for the user agent?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1411.1411[14110101].link | prepend: baseurl }}">{{ site.data.1411.1411[14110101].name }}</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14110101"].link | prepend: baseurl }}">{{ checkpoint_data["14110101"].name }}</a></span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -173,11 +175,11 @@ last-modified: July 7, 2026
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1411.1411[14110201].link | prepend: baseurl }}">{{ site.data.1411.1411[14110201].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1411.1411[14110202].link | prepend: baseurl }}">{{ site.data.1411.1411[14110202].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1411.1411[14110203].link | prepend: baseurl }}">{{ site.data.1411.1411[14110203].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1411.1411[14110204].link | prepend: baseurl }}">{{ site.data.1411.1411[14110204].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1411.1411[14110205].link | prepend: baseurl }}">{{ site.data.1411.1411[14110205].name }}</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["14110201"].link | prepend: baseurl }}">{{ checkpoint_data["14110201"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["14110202"].link | prepend: baseurl }}">{{ checkpoint_data["14110202"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["14110203"].link | prepend: baseurl }}">{{ checkpoint_data["14110203"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["14110204"].link | prepend: baseurl }}">{{ checkpoint_data["14110204"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["14110205"].link | prepend: baseurl }}">{{ checkpoint_data["14110205"].name }}</a></li>
             </ul>
         </div>
 
@@ -215,5 +217,5 @@ last-modified: July 7, 2026
         </div>
     </div>
     {% include checkpoints/1411checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

@@ -2,130 +2,125 @@
 layout: default
 current: "240102"
 criterion: "2401"
+guideline: perceivable
+level: a
+last-modified: October 28, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2401.2401[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2401.2401[page.criterion] %}
+{% assign checkpoint_data = site.data["2401"]["2401"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>When page content is presented in <code>&lt;iframe&gt;</code>s, screen reader users can navigate to these in the same way they can navigate to section headings.</p>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> <code>&lt;iframe&gt;</code>s must have a <code>title</code> attribute set to a unique, descriptive name for the content.</li>
+            </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>When page content is presented in <code>&lt;iframe&gt;</code>s, screen reader users can navigate to these in the same way they can navigate to section headings.</p>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> <code>&lt;iframe&gt;</code>s must have a <code>title</code> attribute set to a unique, descriptive name for the content.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a keyboard or screen reader user, I want to be able to skip blocks of repeated content so that I do not have to navigate through it each time I encounter it.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a keyboard-only user, when blocks of content are repeated across pages, you would be able to skip past them to the content you want.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the page use <code>&lt;iframe&gt;</code> elements to group blocks of repeated material?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each <code>&lt;iframe&gt;</code> have a <code>title</code> attribute?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the title describe the <code>&lt;iframe&gt;</code>'s content?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Does the page use <code>&lt;iframe&gt;</code> elements to group blocks of repeated material?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each <code>&lt;iframe&gt;</code> have a <code>title</code> attribute?</span>
                     <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the title unique?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the title describe the <code>&lt;iframe&gt;</code>'s content?</span>
                             <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2401.2401[24010203].link | prepend: baseurl }}">{{ site.data.2401.2401[24010203].name }}</a>.</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the title unique?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24010203"].link | prepend: baseurl }}">{{ checkpoint_data["24010203"].name }}</a>.</span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24010202"].link | prepend: baseurl }}">{{ checkpoint_data["24010202"].name }}</a>.</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2401.2401[24010202].link | prepend: baseurl }}">{{ site.data.2401.2401[24010202].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24010201"].link | prepend: baseurl }}">{{ checkpoint_data["24010201"].name }}</a>.</span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2401.2401[24010201].link | prepend: baseurl }}">{{ site.data.2401.2401[24010201].name }}</a>.</span></li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> to flag any <code>&lt;iframe&gt;</code> with a missing <code>title</code> attribute.</li>
+                <li>Verify that every <code>&lt;iframe&gt;</code> on the page has <code>title</code> text that describes its purpose.</li>
+                <li>Verify that each <code>&lt;iframe&gt; title</code> is unique.</li>
+            </ol>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Run <a href="https://deque.com/axe/devtools/">axe DevTools</a> to flag any <code>&lt;iframe&gt;</code> with a missing <code>title</code> attribute.</li>
-        <li>Verify that every <code>&lt;iframe&gt;</code> on the page has <code>title</code> text that describes its purpose.</li>
-        <li>Verify that each <code>&lt;iframe&gt; title</code> is unique.</li>
-    </ol>
+            <h3>Desktop Screen Reader (NVDA)</h3>
+            <ol>
+                <li>Open web page in Chrome with NVDA turned on.</li>
+                <li>Press the <kbd>M</kbd> key and listen for occurrences of <code>&lt;iframe&gt;</code>s.</li>
+                <li>Press the <kbd>M</kbd> key for each <code>&lt;iframe&gt;</code> found.</li>
+                <li>Verify that the text description provided for each <code>&lt;iframe&gt;</code> properly describes its purpose.</li>
+            </ol>
 
-    <h3>Desktop Screen Reader (NVDA)</h3>
-    <ol>
-        <li>Open web page in Chrome with NVDA turned on.</li>
-        <li>Press the <kbd>M</kbd> key and listen for occurrences of <code>&lt;iframe&gt;</code>s.</li>
-        <li>Press the <kbd>M</kbd> key for each <code>&lt;iframe&gt;</code> found.</li>
-        <li>Verify that the text description provided for each <code>&lt;iframe&gt;</code> properly describes its purpose.</li>
-    </ol>
+            <h3>Mobile</h3>
+            <ol>
+                <li>Open the page in Chrome on a desktop computer.</li>
+                <li>Press <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>, OR right-click in the page and select <strong>Inspect</strong>, OR from the 3-vertical-dot menu on the top right, select <strong>More tools > Developer tools</strong>.</li>
+                <li>Within Developer Tools, activate <strong>Toggle device toolbar</strong> to on.</li>
+                <li>From the Dimensions drop-down, select the appropriate iPhone or Android device.</li>
+                <li>Follow the procedure for Desktop.</li>
+            </ol>
+        </div>
 
-    <h3>Mobile</h3>
-    <ol>
-        <li>Open the page in Chrome on a desktop computer.</li>
-        <li>Press <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>, OR right-click in the page and select <strong>Inspect</strong>, OR from the 3-vertical-dot menu on the top right, select <strong>More tools > Developer tools</strong>.</li>
-        <li>Within Developer Tools, activate <strong>Toggle device toolbar</strong> to on.</li>
-        <li>From the Dimensions drop-down, select the appropriate iPhone or Android device.</li>
-        <li>Follow the procedure for Desktop.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2401.2401[24010201].link | prepend: baseurl }}">{{ site.data.2401.2401[24010201].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2401.2401[24010202].link | prepend: baseurl }}">{{ site.data.2401.2401[24010202].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2401.2401[24010203].link | prepend: baseurl }}">{{ site.data.2401.2401[24010203].name }}</a>. (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
-        <li>Chrome Developer Tools</li>
-        <li>Screen reader</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>HTML:
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H64">H64: Using the title attribute of the iframe element</a></li>
+                <li><a href="{{ checkpoint_data["24010201"].link | prepend: baseurl }}">{{ checkpoint_data["24010201"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["24010202"].link | prepend: baseurl }}">{{ checkpoint_data["24010202"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["24010203"].link | prepend: baseurl }}">{{ checkpoint_data["24010203"].name }}</a></li>
             </ul>
-        </li>
-    </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://www.boia.org/blog/why-are-iframe-titles-important-for-accessibility">BOIA: Why Are iFrame Titles Important for Accessibility?</a></li>
-    </ul>
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li><a href="https://deque.com/axe/devtools/">axe DevTools</a></li>
+                <li>Chrome Developer Tools</li>
+                <li>Screen reader</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H64">H64: Using the title attribute of the iframe element</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://www.boia.org/blog/why-are-iframe-titles-important-for-accessibility">BOIA: Why Are iFrame Titles Important for Accessibility?</a></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/2401checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

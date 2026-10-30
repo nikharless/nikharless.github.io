@@ -2,11 +2,15 @@
 layout: default
 current: "240201"
 criterion: "2402"
+guideline: perceivable
+level: a
+last-modified: October 28, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2402.2402[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2402.2402[page.criterion] %}
+{% assign checkpoint_data = site.data["2402"]["2402"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -15,25 +19,20 @@ criterion: "2402"
         {% include breadcrumbs/bc-checkpoint.html %}
 
         <div class="block">
-            <h2>Overview</h2>
-            <p>This checkpoint applies to every web page.</p>
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Web pages must have a <code>&lt;title&gt;</code> element.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Web page titles must describe the topic or purpose of the page.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> When page content is changed dynamically, such as in Single Page Applications (SPAs), the page title must be updated to reflect the current contents.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Each page title should be unique within the website.</li>
+            </ul>
         </div>
 
         <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-        <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-            <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-        <ul>
-            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Web pages must have a <code>&lt;title&gt;</code> element.</li>
-            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Web page titles must describe the topic or purpose of the page.</li>
-            <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When page content is changed dynamically, such as in Single Page Applications (SPAs), the page title must be updated to reflect the current contents.</li>
-            <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Each page title should be unique within the website.</li>
-        </ul>
-
-        <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want to be able to hear a descriptive title for each web page so that I know what the content is without having to read through the page.</div>
-
-        <div class="success"><strong>Success:</strong> If you were a screen reader user, when you have multiple browser tabs open, you would be able to differentiate between them.</div>
-
+            <h2>Overview</h2>
+            <p>This checkpoint applies to every web page.</p>
         </div>
 
         <div class="block">
@@ -48,16 +47,16 @@ criterion: "2402"
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When the page content updates, does the title also update to reflect the current content?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2402.2402[24020103].link | prepend: baseurl }}">{{ site.data.2402.2402[24020103].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24020103"].link | prepend: baseurl }}">{{ checkpoint_data["24020103"].name }}.</a></span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2402.2402[24020102].link | prepend: baseurl }}">{{ site.data.2402.2402[24020102].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24020102"].link | prepend: baseurl }}">{{ checkpoint_data["24020102"].name }}.</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2402.2402[24020101].link | prepend: baseurl }}">{{ site.data.2402.2402[24020101].name }}.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24020101"].link | prepend: baseurl }}">{{ checkpoint_data["24020101"].name }}.</a></span></li>
             </ul>
 
             <h3 id="test2">Does the mobile app have a screen title or main heading?</h3>
@@ -65,10 +64,10 @@ criterion: "2402"
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the title or heading accurately describe the content of the screen?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2402.2402[24020105].link | prepend: baseurl }}">{{ site.data.2402.2402[24020105].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24020105"].link | prepend: baseurl }}">{{ checkpoint_data["24020105"].name }}.</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2402.2402[24020104].link | prepend: baseurl }}">{{ site.data.2402.2402[24020104].name }}.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24020104"].link | prepend: baseurl }}">{{ checkpoint_data["24020104"].name }}.</a></span></li>
             </ul>
 
             <h3 id="test3">Does the PDF document have a title displayed in the browser or document tab?</h3>
@@ -76,10 +75,10 @@ criterion: "2402"
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the title or heading accurately describe the content of the screen?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2402.2402[24020106].link | prepend: baseurl }}">{{ site.data.2402.2402[24020106].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24020106"].link | prepend: baseurl }}">{{ checkpoint_data["24020106"].name }}.</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2402.2402[24020107].link | prepend: baseurl }}">{{ site.data.2402.2402[24020107].name }}.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24020107"].link | prepend: baseurl }}">{{ checkpoint_data["24020107"].name }}.</a></span></li>
             </ul>
         </div>
 
@@ -168,13 +167,13 @@ criterion: "2402"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.2402.2402[24020101].link | prepend: baseurl }}">{{ site.data.2402.2402[24020101].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.2402.2402[24020102].link | prepend: baseurl }}">{{ site.data.2402.2402[24020102].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.2402.2402[24020103].link | prepend: baseurl }}">{{ site.data.2402.2402[24020103].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.2402.2402[24020104].link | prepend: baseurl }}">{{ site.data.2402.2402[24020104].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.2402.2402[24020105].link | prepend: baseurl }}">{{ site.data.2402.2402[24020105].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.2402.2402[24020106].link | prepend: baseurl }}">{{ site.data.2402.2402[24020106].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.2402.2402[24020107].link | prepend: baseurl }}">{{ site.data.2402.2402[24020107].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["24020101"].link | prepend: baseurl }}">{{ checkpoint_data["24020101"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["24020102"].link | prepend: baseurl }}">{{ checkpoint_data["24020102"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["24020103"].link | prepend: baseurl }}">{{ checkpoint_data["24020103"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["24020104"].link | prepend: baseurl }}">{{ checkpoint_data["24020104"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["24020105"].link | prepend: baseurl }}">{{ checkpoint_data["24020105"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["24020106"].link | prepend: baseurl }}">{{ checkpoint_data["24020106"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["24020107"].link | prepend: baseurl }}">{{ checkpoint_data["24020107"].name }}</a></li>
             </ul>
         </div>
 
@@ -217,5 +216,5 @@ criterion: "2402"
         </div>
     </div>
     {% include checkpoints/2402checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

@@ -2,19 +2,33 @@
 layout: default
 current: "410203"
 criterion: "4102"
-last-modified: 31 May 2025
+guideline: robust
+level: a
+last-modified: October 29, 2026
 css: disclosure-faq
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.4102.4102[page.criterion] %}
+{% assign checkpoint_data = site.data["4102"]["4102"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The states of user interface components which can be set by the user must be programmatically determinable by assistive technologies.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Notifications of changes to states of user interface components must be communicated to assistive technologies.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -74,20 +88,6 @@ css: disclosure-faq
         </div>
 
         <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The states of user interface components which can be set by the user must be programmatically determinable by assistive technologies.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Notifications of changes to states of user interface components must be communicated to assistive technologies.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the states of user interface components to be programmatically determinable so that I can get this information via my screen reader.</div>
-
-            <div class="success"><strong>Success:</strong> If you were a screen reader user, when accessing user interface components, you would be able to determine the states of the components.</div>
-        </div>
-
-        <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
 
@@ -98,16 +98,16 @@ css: disclosure-faq
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the checked state spoken when changed?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020126].link | prepend: baseurl }}">{{ site.data.4102.4102[41020126].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020126"].link | prepend: baseurl }}">{{ checkpoint_data["41020126"].name }}</a>.</span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a checkbox?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020116].link | prepend: baseurl }}">{{ site.data.4102.4102[41020116].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020116"].link | prepend: baseurl }}">{{ checkpoint_data["41020116"].name }}</a>.</span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a radio button?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020117].link | prepend: baseurl }}">{{ site.data.4102.4102[41020117].name }}</a>.</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020118].link | prepend: baseurl }}">{{ site.data.4102.4102[41020118].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020117"].link | prepend: baseurl }}">{{ checkpoint_data["41020117"].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020118"].link | prepend: baseurl }}">{{ checkpoint_data["41020118"].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -124,7 +124,7 @@ css: disclosure-faq
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the pressed state spoken by the screen reader?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020113].link | prepend: baseurl }}">{{ site.data.4102.4102[41020113].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020113"].link | prepend: baseurl }}">{{ checkpoint_data["41020113"].name }}</a>.</span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the button control expandable content?</span>
@@ -138,16 +138,16 @@ css: disclosure-faq
                                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the button identified as a menu button?</span>
                                                             <ul role="group">
                                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020115].link | prepend: baseurl }}">{{ site.data.4102.4102[41020115].name }}</a>.</span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020115"].link | prepend: baseurl }}">{{ checkpoint_data["41020115"].name }}</a>.</span></li>
                                                             </ul>
                                                         </li>
                                                         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                                     </ul>
                                                 </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020126].link | prepend: baseurl }}">{{ site.data.4102.4102[41020126].name }}</a>.</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020126"].link | prepend: baseurl }}">{{ checkpoint_data["41020126"].name }}</a>.</span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020114].link | prepend: baseurl }}">{{ site.data.4102.4102[41020114].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020114"].link | prepend: baseurl }}">{{ checkpoint_data["41020114"].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -163,7 +163,7 @@ css: disclosure-faq
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader announce the disabled state?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data.4102.4102[41020122].link | prepend: baseurl }}">{{ site.data.4102.4102[41020122].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ checkpoint_data["41020122"].link | prepend: baseurl }}">{{ checkpoint_data["41020122"].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -174,7 +174,7 @@ css: disclosure-faq
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader announce the required state?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data.4102.4102[41020123].link | prepend: baseurl }}">{{ site.data.4102.4102[41020123].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ checkpoint_data["41020123"].link | prepend: baseurl }}">{{ checkpoint_data["41020123"].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -185,7 +185,7 @@ css: disclosure-faq
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader announce the read-only state?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data.4102.4102[41020124].link | prepend: baseurl }}">{{ site.data.4102.4102[41020124].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ checkpoint_data["41020124"].link | prepend: baseurl }}">{{ checkpoint_data["41020124"].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -344,34 +344,34 @@ css: disclosure-faq
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.4102.4102[41020301].link | prepend: baseurl }}">{{ site.data.4102.4102[41020301].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020302].link | prepend: baseurl }}">{{ site.data.4102.4102[41020302].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020303].link | prepend: baseurl }}">{{ site.data.4102.4102[41020303].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020304].link | prepend: baseurl }}">{{ site.data.4102.4102[41020304].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020305].link | prepend: baseurl }}">{{ site.data.4102.4102[41020305].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020306].link | prepend: baseurl }}">{{ site.data.4102.4102[41020306].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020307].link | prepend: baseurl }}">{{ site.data.4102.4102[41020307].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020308].link | prepend: baseurl }}">{{ site.data.4102.4102[41020308].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020309].link | prepend: baseurl }}">{{ site.data.4102.4102[41020309].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020310].link | prepend: baseurl }}">{{ site.data.4102.4102[41020310].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020311].link | prepend: baseurl }}">{{ site.data.4102.4102[41020311].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020312].link | prepend: baseurl }}">{{ site.data.4102.4102[41020312].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020313].link | prepend: baseurl }}">{{ site.data.4102.4102[41020313].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020314].link | prepend: baseurl }}">{{ site.data.4102.4102[41020314].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020315].link | prepend: baseurl }}">{{ site.data.4102.4102[41020315].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020316].link | prepend: baseurl }}">{{ site.data.4102.4102[41020316].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020317].link | prepend: baseurl }}">{{ site.data.4102.4102[41020317].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020318].link | prepend: baseurl }}">{{ site.data.4102.4102[41020318].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020319].link | prepend: baseurl }}">{{ site.data.4102.4102[41020319].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020320].link | prepend: baseurl }}">{{ site.data.4102.4102[41020320].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020321].link | prepend: baseurl }}">{{ site.data.4102.4102[41020321].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020322].link | prepend: baseurl }}">{{ site.data.4102.4102[41020322].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020323].link | prepend: baseurl }}">{{ site.data.4102.4102[41020323].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020324].link | prepend: baseurl }}">{{ site.data.4102.4102[41020324].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020325].link | prepend: baseurl }}">{{ site.data.4102.4102[41020325].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020326].link | prepend: baseurl }}">{{ site.data.4102.4102[41020326].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020327].link | prepend: baseurl }}">{{ site.data.4102.4102[41020327].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020328].link | prepend: baseurl }}">{{ site.data.4102.4102[41020328].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020301"].link | prepend: baseurl }}">{{ checkpoint_data["41020301"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020302"].link | prepend: baseurl }}">{{ checkpoint_data["41020302"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020303"].link | prepend: baseurl }}">{{ checkpoint_data["41020303"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020304"].link | prepend: baseurl }}">{{ checkpoint_data["41020304"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020305"].link | prepend: baseurl }}">{{ checkpoint_data["41020305"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020306"].link | prepend: baseurl }}">{{ checkpoint_data["41020306"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020307"].link | prepend: baseurl }}">{{ checkpoint_data["41020307"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020308"].link | prepend: baseurl }}">{{ checkpoint_data["41020308"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020309"].link | prepend: baseurl }}">{{ checkpoint_data["41020309"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020310"].link | prepend: baseurl }}">{{ checkpoint_data["41020310"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020311"].link | prepend: baseurl }}">{{ checkpoint_data["41020311"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020312"].link | prepend: baseurl }}">{{ checkpoint_data["41020312"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020313"].link | prepend: baseurl }}">{{ checkpoint_data["41020313"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020314"].link | prepend: baseurl }}">{{ checkpoint_data["41020314"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020315"].link | prepend: baseurl }}">{{ checkpoint_data["41020315"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020316"].link | prepend: baseurl }}">{{ checkpoint_data["41020316"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020317"].link | prepend: baseurl }}">{{ checkpoint_data["41020317"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020318"].link | prepend: baseurl }}">{{ checkpoint_data["41020318"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020319"].link | prepend: baseurl }}">{{ checkpoint_data["41020319"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020320"].link | prepend: baseurl }}">{{ checkpoint_data["41020320"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020321"].link | prepend: baseurl }}">{{ checkpoint_data["41020321"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020322"].link | prepend: baseurl }}">{{ checkpoint_data["41020322"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020323"].link | prepend: baseurl }}">{{ checkpoint_data["41020323"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020324"].link | prepend: baseurl }}">{{ checkpoint_data["41020324"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020325"].link | prepend: baseurl }}">{{ checkpoint_data["41020325"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020326"].link | prepend: baseurl }}">{{ checkpoint_data["41020326"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020327"].link | prepend: baseurl }}">{{ checkpoint_data["41020327"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020328"].link | prepend: baseurl }}">{{ checkpoint_data["41020328"].name }}.</a></li>
             </ul>
         </div>
 
@@ -429,5 +429,5 @@ css: disclosure-faq
         </div>
     </div>
     {% include checkpoints/4102checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

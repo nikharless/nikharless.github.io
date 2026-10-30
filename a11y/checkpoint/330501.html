@@ -2,110 +2,103 @@
 layout: default
 current: "330501"
 criterion: "3305"
+guideline: understandable
+level: aaa
+last-modified: October 29, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.3305.3305[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.3305.3305[page.criterion] %}
+{% assign checkpoint_data = site.data["3305"]["3305"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-
-
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Context-sensitive help must be provided when labels are not enough to explain all functionality.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Available context-sensitive help must be obvious to the user.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to have access to context-sensitive help so that I can understand how to perform an action.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a user with a disability, when completing a form, you would have access to context-sensitive help.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/js/tree.js"></script>
-    <h3 id="test1">Does the page have text inputs where the label is not sufficient to describe all functionality?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text input require a specific data format?</span>
-            <ul role="group">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3305.3305[33050102].link | prepend: baseurl }}">{{ site.data.3305.3305[33050102].name }}</a>.</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3305.3305[33050101].link | prepend: baseurl }}">{{ site.data.3305.3305[33050101].name }}</a>.</span></li>
-            </ul>
-        <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>Locate any forms which require text input.</li>
-        <li>Check if the labels include all information need to understand how to complete the form.</li>
-        <li>If not, verify that context-sensitive help is available.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Web.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3305.3305[33050101].link | prepend: baseurl }}">{{ site.data.3305.3305[33050101].name }}</a>.</li>
-        <li><a href="{{ site.data.3305.3305[33050102].link | prepend: baseurl }}">{{ site.data.3305.3305[33050102].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G71">G71: Providing a help link on every Web page</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G89">G89: Providing expected data format and example</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G184">G184: Providing text instructions at the beginning of a form or set of fields that describes the necessary input</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G193">G193: Providing help by an assistant in the Web page</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G194">G194: Providing spell checking and suggestions for text input</a></li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Context-sensitive help must be provided when labels are not enough to explain all functionality.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Available context-sensitive help must be obvious to the user.</li>
             </ul>
-        </li>
-        <li>HTML:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H89">H89: Using the title attribute to provide context-sensitive help</a></li>
-            </ul>
-        </li>
-     </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-    </ul>
+        <div class="block">
+            <h2>Overview</h2>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/js/tree.js"></script>
+            <h3 id="test1">Does the page have text inputs where the label is not sufficient to describe all functionality?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text input require a specific data format?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["33050102"].link | prepend: baseurl }}">{{ checkpoint_data["33050102"].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["33050101"].link | prepend: baseurl }}">{{ checkpoint_data["33050101"].name }}</a>.</span></li>
+                    </ul>
+                <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Locate any forms which require text input.</li>
+                <li>Check if the labels include all information need to understand how to complete the form.</li>
+                <li>If not, verify that context-sensitive help is available.</li>
+            </ol>
+
+            <h2>Mobile App Test Procedure</h2>
+            <p>Follow the procedure for Web.</p>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ checkpoint_data["33050101"].link | prepend: baseurl }}">{{ checkpoint_data["33050101"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["33050102"].link | prepend: baseurl }}">{{ checkpoint_data["33050102"].name }}</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G71">G71: Providing a help link on every Web page</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G89">G89: Providing expected data format and example</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G184">G184: Providing text instructions at the beginning of a form or set of fields that describes the necessary input</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G193">G193: Providing help by an assistant in the Web page</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G194">G194: Providing spell checking and suggestions for text input</a></li>
+                    </ul>
+                </li>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H89">H89: Using the title attribute to provide context-sensitive help</a></li>
+                    </ul>
+                </li>
+             </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/3305checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

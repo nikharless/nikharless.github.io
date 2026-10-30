@@ -2,11 +2,19 @@
 layout: default
 current: "110105"
 criterion: "1101"
+guideline: perceivable
+level: a
+last-modified: October 24, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign root = site.data.site.root %}
+{% assign baseurl = site.data.site.base %}
+
+{% assign criterion_id = page.criterion | append: "" %}
+{% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
+{% assign current_id = page.current | append: "" %}
+
+{% assign currentpg = checkpoint_data[current_id] %}
+{% assign sc = checkpoint_data[criterion_id] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -16,26 +24,13 @@ criterion: "1101"
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> CAPTCHAs must have a text alternative that describes its purpose (but not the visual elements).</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> CAPTCHAs must have alternate forms for different types of sensory perception.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> CAPTCHAs must have a text alternative that describes its purpose (but not the visual elements).</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> CAPTCHAs must have alternate forms for different types of sensory perception.</li>
             </ul>
-
-            <div class="userstory"><strong>User Story:</strong> 
-                <ul>
-                    <li>As a blind screen reader user, I want to hear a short description of the CAPTCHA so that I know what it is.</li>
-                    <li>As a blind screen reader user, I want to have an alternate method (such as audio) of completing the CAPTCHA, so that I am able to complete it.</li>
-                </ul>
-            </div>
-
-            <div class="success"><strong>Success:</strong> 
-                <ul>
-                    <li>If you could not see the CAPTCHA, when you read it with a screen reader, you would hear a description of the CAPTCHA.</li>
-                    <li>If you could not see the CAPTCHA, when you read it with a screen reader, you could find an alternate method of completion (such as audio) and be able to verify yourself.</li>
-                </ul>
-            </div>
         </div>
 
         <div class="block">
@@ -52,16 +47,16 @@ criterion: "1101"
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there an alternate non-visual method to complete the CAPTCHA?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010504].link | prepend: baseurl }}">{{ site.data.1101.1101[11010504].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010504"].link | prepend: baseurl }}">{{ checkpoint_data["11010504"].name }}.</a></span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010503].link | prepend: baseurl }}">{{ site.data.1101.1101[11010503].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010503"].link | prepend: baseurl }}">{{ checkpoint_data["11010503"].name }}.</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010502].link | prepend: baseurl }}">{{ site.data.1101.1101[11010502].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010502"].link | prepend: baseurl }}">{{ checkpoint_data["11010502"].name }}.</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010501].link | prepend: baseurl }}">{{ site.data.1101.1101[11010501].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010501"].link | prepend: baseurl }}">{{ checkpoint_data["11010501"].name }}.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
@@ -91,10 +86,10 @@ criterion: "1101"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1101.1101[11010501].link | prepend: baseurl }}">{{ site.data.1101.1101[11010501].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1101.1101[11010502].link | prepend: baseurl }}">{{ site.data.1101.1101[11010502].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1101.1101[11010503].link | prepend: baseurl }}">{{ site.data.1101.1101[11010503].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1101.1101[11010504].link | prepend: baseurl }}">{{ site.data.1101.1101[11010504].name }}.</a> (High)</li>
+                <li><a href="{{ checkpoint_data["11010501"].link | prepend: baseurl }}">{{ checkpoint_data["11010501"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["11010502"].link | prepend: baseurl }}">{{ checkpoint_data["11010502"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["11010503"].link | prepend: baseurl }}">{{ checkpoint_data["11010503"].name }}.</a> (High)</li>
+                <li><a href="{{ checkpoint_data["11010504"].link | prepend: baseurl }}">{{ checkpoint_data["11010504"].name }}.</a> (High)</li>
 
             </ul>
         </div>
@@ -138,5 +133,5 @@ criterion: "1101"
         </div>
     </div>
     {% include checkpoints/1101checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

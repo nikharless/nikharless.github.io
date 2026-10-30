@@ -2,124 +2,119 @@
 layout: default
 current: "250401"
 criterion: "2504"
+guideline: perceivable
+level: a
+last-modified: October 28, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2504.2504[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2504.2504[page.criterion] %}
+{% assign checkpoint_data = site.data["2504"]["2504"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Functionality that can be triggered by moving or gesturing towards a device must have an alternate means of operation.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Functionality that can be triggered by moving or gesturing towards a device must have a means of disabling the motion response.</li>
+            </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Overview</h2>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Functionality that can be triggered by moving or gesturing towards a device must have an alternate means of operation.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Functionality that can be triggered by moving or gesturing towards a device must have a means of disabling the motion response.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a movement disability, I want an alternate means of using the functionality so that I am able to use it.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a user with a movement disability, when you encounter functionality that is triggered by movement, you could turn it off.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is there any functionality that uses device motion or user motion?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the motion essential for the functionality?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are there alternate accessible user interface controls for the same functionality?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is there any functionality that uses device motion or user motion?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the motion essential for the functionality?</span>
                     <ul role="group">
-                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the motion actuation be turned off?</span>
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are there alternate accessible user interface controls for the same functionality?</span>
                             <ul role="group">
-                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2504.2504[25040102].link | prepend: baseurl }}">{{ site.data.2504.2504[25040102].name }}</a>.</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the motion actuation be turned off?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["25040102"].link | prepend: baseurl }}">{{ checkpoint_data["25040102"].name }}</a>.</span></li>
+                                    </ul>
+                                </li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["25040101"].link | prepend: baseurl }}">{{ checkpoint_data["25040101"].name }}</a>.</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2504.2504[25040101].link | prepend: baseurl }}">{{ site.data.2504.2504[25040101].name }}</a>.</span></li>
                     </ul>
                 </li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
+            <h3>Mobile</h3>
+            <ol>
+                <li>Because motion actuation might not be obvious, ask the developer if any motion actuation functionality was implemented.</li>
+                <li>Identify any functionality that can be triggered by:
+                    <ul>
+                        <li>Device motion such as shaking or tilting, <strong>OR</strong></li>
+                        <li>User motion detected by the device.</li>
+                    </ul>
+                </li>
+                <li>Verify that both of the following are true:
+                    <ul>
+                        <li>Motion actuation can be disabled, <strong>AND</strong></li>
+                        <li>The functionality can be operated without using motion.</li>
+                    </ul>
+                </li>
+            </ol>
 
-    <h3>Mobile</h3>
-    <ol>
-        <li>Because motion actuation might not be obvious, ask the developer if any motion actuation functionality was implemented.</li>
-        <li>Identify any functionality that can be triggered by:
+            <h2>Mobile App Test Procedure</h2>
+            <p>Follow the Mobile Web test procedure.</p>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li>Device motion such as shaking or tilting, <strong>OR</strong></li>
-                <li>User motion detected by the device.</li>
+                <li><a href="{{ checkpoint_data["25040101"].link | prepend: baseurl }}">{{ checkpoint_data["25040101"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["25040102"].link | prepend: baseurl }}">{{ checkpoint_data["25040102"].name }}</a></li>
             </ul>
-        </li>
-        <li>Verify that both of the following are true:
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
             <ul>
-                <li>Motion actuation can be disabled, <strong>AND</strong></li>
-                <li>The functionality can be operated without using motion.</li>
+                <li>Mobile device</li>
             </ul>
-        </li>
-    </ol>
+        </div>
 
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the Mobile Web test procedure.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2504.2504[25040101].link | prepend: baseurl }}">{{ site.data.2504.2504[25040101].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2504.2504[25040102].link | prepend: baseurl }}">{{ site.data.2504.2504[25040102].name }}</a>. (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Mobile device</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G213">G213: Provide conventional controls and an application setting for motion activated input</a></li>
-            </ul>
-        </li>
-     </ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G213">G213: Provide conventional controls and an application setting for motion activated input</a></li>
+                    </ul>
+                </li>
+             </ul>
 
-    <h3>Additional Information</h3>
-    <ul>
-        
-    </ul>
+            <h3>Additional Information</h3>
+            <ul>
+                
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/2504checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

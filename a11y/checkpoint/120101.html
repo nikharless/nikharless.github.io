@@ -2,17 +2,37 @@
 layout: default
 current: "120101"
 criterion: "1201"
+guideline: perceivable
+level: a
+last-modified: October 24, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1201.1201[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1201.1201[page.criterion] %}
+{% assign checkpoint_data = site.data["1201"]["1201"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Prerecorded audio-only content must have a text transcript.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Text transcript must include all dialogue and narration.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Text transcript must identify speakers.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Text transcript must include important sounds.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Text transcript must be an actual text alternative.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> If audio-only media is used as a media alternative to text, it must be clearly labeled as such.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> The text transcript should be presented next to the audio and be easy to find.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -29,25 +49,6 @@ criterion: "1201"
         </div>
 
         <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded audio-only content must have a text transcript.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text transcript must include all dialogue and narration.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text transcript must identify speakers.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text transcript must include important sounds.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text transcript must be an actual text alternative.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If audio-only media is used as a media alternative to text, it must be clearly labeled as such.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The text transcript should be presented next to the audio and be easy to find.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a deaf user, I want to read a transcript of the audio content so that I can get all of the same information.</div>
-
-            <div class="success"><strong>Success:</strong> If you could not hear the audio, when you read the transcript, you would get all of the information conveyed in the audio content.</div>
-        </div>
-
-        <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
             <h3 id="test1">Does the page contain any audio-only content?</h3>
@@ -57,7 +58,7 @@ criterion: "1201"
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it clearly labeled as such?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010106].link | prepend: baseurl }}">{{ site.data.1201.1201[12010106].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12010106"].link | prepend: baseurl }}">{{ checkpoint_data["12010106"].name }}.</a></span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the audio-only content accompanied by a full transcript?</span>
@@ -69,16 +70,16 @@ criterion: "1201"
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the transcript include important sound effects?</span>
                                                     <ul role="group">
                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010104].link | prepend: baseurl }}">{{ site.data.1201.1201[12010104].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12010104"].link | prepend: baseurl }}">{{ checkpoint_data["12010104"].name }}.</a></span></li>
                                                     </ul>
                                                 </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010103].link | prepend: baseurl }}">{{ site.data.1201.1201[12010103].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12010103"].link | prepend: baseurl }}">{{ checkpoint_data["12010103"].name }}.</a></span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010102].link | prepend: baseurl }}">{{ site.data.1201.1201[12010102].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12010102"].link | prepend: baseurl }}">{{ checkpoint_data["12010102"].name }}.</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010101].link | prepend: baseurl }}">{{ site.data.1201.1201[12010101].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12010101"].link | prepend: baseurl }}">{{ checkpoint_data["12010101"].name }}.</a></span></li>
                             </ul>
                         </li>
                     </ul>
@@ -104,12 +105,12 @@ criterion: "1201"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1201.1201[12010101].link | prepend: baseurl }}">{{ site.data.1201.1201[12010101].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1201.1201[12010102].link | prepend: baseurl }}">{{ site.data.1201.1201[12010102].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1201.1201[12010103].link | prepend: baseurl }}">{{ site.data.1201.1201[12010103].name }}.</a> (Low)</li>
-                <li><a href="{{ site.data.1201.1201[12010104].link | prepend: baseurl }}">{{ site.data.1201.1201[12010104].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1201.1201[12010105].link | prepend: baseurl }}">{{ site.data.1201.1201[12010105].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1201.1201[12010106].link | prepend: baseurl }}">{{ site.data.1201.1201[12010106].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["12010101"].link | prepend: baseurl }}">{{ checkpoint_data["12010101"].name }}.</a> (High)</li>
+                <li><a href="{{ checkpoint_data["12010102"].link | prepend: baseurl }}">{{ checkpoint_data["12010102"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["12010103"].link | prepend: baseurl }}">{{ checkpoint_data["12010103"].name }}.</a> (Low)</li>
+                <li><a href="{{ checkpoint_data["12010104"].link | prepend: baseurl }}">{{ checkpoint_data["12010104"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["12010105"].link | prepend: baseurl }}">{{ checkpoint_data["12010105"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["12010106"].link | prepend: baseurl }}">{{ checkpoint_data["12010106"].name }}.</a> (Medium)</li>
             </ul>
         </div>
 
@@ -146,5 +147,5 @@ criterion: "1201"
         </div>
     </div>
     {% include checkpoints/1201checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

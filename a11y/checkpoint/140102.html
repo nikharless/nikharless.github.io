@@ -2,17 +2,36 @@
 layout: default
 current: "140102"
 criterion: "1401"
+guideline: perceivable
+level: a
+last-modified: October 26, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1401.1401[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1401.1401[page.criterion] %}
+{% assign checkpoint_data = site.data["1401"]["1401"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Color alone must not be used to distinguish links from regular text.
+                    <ul>
+                        <li>If links have a contrast ratio of at least 3:1 with regular text, this counts as an additional visual distinction.</li>
+                    </ul>
+                </li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Links should not be indistinguishable from surrounding text. However, this scenario would not fail this success criterion, because no users are able to distinguish the links.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -30,24 +49,6 @@ criterion: "1401"
         </div>
 
         <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Color alone must not be used to distinguish links from regular text.
-                    <ul>
-                        <li>If links have a contrast ratio of at least 3:1 with regular text, this counts as an additional visual distinction.</li>
-                    </ul>
-                </li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Links should not be indistinguishable from surrounding text. However, this scenario would not fail this success criterion, because no users are able to distinguish the links.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a color blind user, I want to have an alternative non-color-related means to distinguish links so that I get the same information that non-color blind users get.</div>
-
-            <div class="success"><strong>Success:</strong> If you could not see colors, when you view the page, you would be able to distinguish the links from surrounding text.</div>
-        </div>
-
-        <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
             <h3 id="test1">Is font color alone being used to distinguish links from regular text content?</h3>
@@ -59,13 +60,13 @@ criterion: "1401"
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there another means besides color to convey this meaning?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1401.1401[14010202].link | prepend: baseurl }}">{{ site.data.1401.1401[14010202].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14010202"].link | prepend: baseurl }}">{{ checkpoint_data["14010202"].name }}.</a></span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1401.1401[14010201].link | prepend: baseurl }}">{{ site.data.1401.1401[14010201].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14010201"].link | prepend: baseurl }}">{{ checkpoint_data["14010201"].name }}.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
@@ -89,8 +90,8 @@ criterion: "1401"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1401.1401[14010201].link | prepend: baseurl }}">{{ site.data.1401.1401[14010201].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1401.1401[14010202].link | prepend: baseurl }}">{{ site.data.1401.1401[14010202].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["14010201"].link | prepend: baseurl }}">{{ checkpoint_data["14010201"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["14010202"].link | prepend: baseurl }}">{{ checkpoint_data["14010202"].name }}.</a></li>
             </ul>
 
         </div>
@@ -136,5 +137,5 @@ criterion: "1401"
         </div>
     </div>
     {% include checkpoints/1401checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

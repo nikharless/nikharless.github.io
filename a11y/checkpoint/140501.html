@@ -2,12 +2,15 @@
 layout: default
 current: "140501"
 criterion: "1405"
+guideline: perceivable
+level: aa
 last-modified: June 29, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1405.1405[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1405.1405[page.criterion] %}
+{% assign checkpoint_data = site.data["1405"]["1405"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -17,15 +20,12 @@ last-modified: June 29, 2026
         
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If it is possible to use real text, real text must be used instead of images of text.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> If it is possible to use real text, real text must be used instead of images of text.</li>
             </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a user with a visual impairment, I want text to be zoomable and customizable so that I can adjust it to be easier for me to read.</div>
-
-            <div class="success"><strong>Success:</strong> If you had a visual impairment, when you encountered text, you would be able to enlarge or adjust it to make it easier to read.</div>
         </div>
 
         <div class="block">
@@ -48,8 +48,8 @@ last-modified: June 29, 2026
                         <li>A photo of a car at an intersection with a stop sign visible in the background</li>
                     </ul>
                 </li>
-                <li>Decorative images: This checkpoint does not apply to decorative images. They should be tested against <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
-                <li>Redundant images: If the text in the image is available elsewhere on the page, then the image is redundant and should be tested against <a href="{{ site.data.1101.1101[110104].link | prepend: baseurl }}">{{ site.data.1101.1101[110104].name }}.</a></li>
+                <li>Decorative images: This checkpoint does not apply to decorative images. They should be tested against <a href="{{ checkpoint_data["110104"].link | prepend: baseurl }}">{{ checkpoint_data["110104"].name }}.</a></li>
+                <li>Redundant images: If the text in the image is available elsewhere on the page, then the image is redundant and should be tested against <a href="{{ checkpoint_data["110104"].link | prepend: baseurl }}">{{ checkpoint_data["110104"].name }}.</a></li>
             </ul>
 
             <h3>SVG Images</h3>
@@ -77,7 +77,7 @@ last-modified: June 29, 2026
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the presentation of the text essential (e.g., a logo)?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1405.1405[14050101].link | prepend: baseurl }}">{{ site.data.1405.1405[14050101].name }}</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14050101"].link | prepend: baseurl }}">{{ checkpoint_data["14050101"].name }}</a></span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -140,8 +140,8 @@ last-modified: June 29, 2026
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1405.1405[14050101].link | prepend: baseurl }}">{{ site.data.1405.1405[14050101].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1405.1405[14050102].link | prepend: baseurl }}">{{ site.data.1405.1405[14050102].name }}.</a> (High)</li>
+                <li><a href="{{ checkpoint_data["14050101"].link | prepend: baseurl }}">{{ checkpoint_data["14050101"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["14050102"].link | prepend: baseurl }}">{{ checkpoint_data["14050102"].name }}.</a></li>
             </ul>
         </div>
 
@@ -186,5 +186,5 @@ last-modified: June 29, 2026
         </div>
     </div>
     {% include checkpoints/1405checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

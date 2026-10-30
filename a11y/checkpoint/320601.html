@@ -2,124 +2,118 @@
 layout: default
 current: "320601"
 criterion: "3206"
+guideline: understandable
+level: aaa
+last-modified: October 29, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.3206.3206[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.3206.3206[page.criterion] %}
+{% assign checkpoint_data = site.data["3206"]["3206"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>Help mechanisms may include:</p>
-    <ul>
-        <li>Link to Contact page</li>
-        <li>Phone number</li>
-        <li>Email address</li>
-        <li>Physical address</li>
-        <li>Hours of operation</li>
-        <li>Messaging system</li>
-        <li>Chat client</li>
-        <li>Social media links</li>
-        <li>FAQ</li>
-        <li>Link to Support page</li>
-        <li>Chatbot</li>
-    </ul>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Help mechanisms which appear on multiple web pages must appear in the same relative order on each page.</li>
+            </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Help mechanisms may include:</p>
+            <ul>
+                <li>Link to Contact page</li>
+                <li>Phone number</li>
+                <li>Email address</li>
+                <li>Physical address</li>
+                <li>Hours of operation</li>
+                <li>Messaging system</li>
+                <li>Chat client</li>
+                <li>Social media links</li>
+                <li>FAQ</li>
+                <li>Link to Support page</li>
+                <li>Chatbot</li>
+            </ul>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Help mechanisms which appear on multiple web pages must appear in the same relative order on each page.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want the help mechanisms to be in the same place each time they appear so that I don't have to rediscover them.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a user with a disability, when help mechanisms appear on multiple web pages in a set, they appear in the same relative position each time.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/js/tree.js"></script>
-    <h3 id="test1">Are there help mechanisms that are repeated across multiple web pages in a set of pages?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do they appear in the same relative order each time they appear?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Has the zoom level, orientation, or viewport size been changed by the user between pages?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/js/tree.js"></script>
+            <h3 id="test1">Are there help mechanisms that are repeated across multiple web pages in a set of pages?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do they appear in the same relative order each time they appear?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3206.3206[32060101].link | prepend: baseurl }}">{{ site.data.3206.3206[32060101].name }}</a>.</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Has the zoom level, orientation, or viewport size been changed by the user between pages?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["32060101"].link | prepend: baseurl }}">{{ checkpoint_data["32060101"].name }}</a>.</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Review the web pages within a site, a logical section of a site, or a web application. Do not change zoom level, orientation, or viewport size between pages.</li>
+                <li>Look for help mechanisms such as human contact details, human contact mechanisms, self-help options, and automated contact mechanisms that are repeated on multiple pages.</li>
+                <li>Verify that the help mechanisms are in the same relative order on each page.</li>
+            </ol>
+
+            <h2>Mobile App Test Procedure</h2>
+            <p>Follow the procedure for Web.</p>
+
+            <h2>PDF Test Procedure</h2>
+            <ol>
+                <li>Review the pages within the document.</li>
+                <li>Look for help mechanisms that are repeated on multiple pages.</li>
+                <li>Verify that they are in the same reading order on each page that they appear.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ checkpoint_data["32060101"].link | prepend: baseurl }}">{{ checkpoint_data["32060101"].name }}</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G220">G220: Provide a contact-us link in a consistent location</a></li>
                     </ul>
                 </li>
-            </ul>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+             </ul>
 
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>Review the web pages within a site, a logical section of a site, or a web application. Do not change zoom level, orientation, or viewport size between pages.</li>
-        <li>Look for help mechanisms such as human contact details, human contact mechanisms, self-help options, and automated contact mechanisms that are repeated on multiple pages.</li>
-        <li>Verify that the help mechanisms are in the same relative order on each page.</li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Web.</p>
-
-    <h2>PDF Test Procedure</h2>
-    <ol>
-        <li>Review the pages within the document.</li>
-        <li>Look for help mechanisms that are repeated on multiple pages.</li>
-        <li>Verify that they are in the same reading order on each page that they appear.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3206.3206[32060101].link | prepend: baseurl }}">{{ site.data.3206.3206[32060101].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+            <h3>Additional Information</h3>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G220">G220: Provide a contact-us link in a consistent location</a></li>
+
             </ul>
-        </li>
-     </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-
-    </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/3206checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

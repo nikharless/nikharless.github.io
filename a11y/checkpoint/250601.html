@@ -2,132 +2,127 @@
 layout: default
 current: "250601"
 criterion: "2506"
+guideline: perceivable
+level: aaa
+last-modified: October 28, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2506.2506[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2506.2506[page.criterion] %}
+{% assign checkpoint_data = site.data["2506"]["2506"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>This criterion does not apply if the restriction is:</p>
-    <ul>
-        <li>Essential, such as a typing tutorial</li>
-        <li>Required to ensure the security of the content</li>
-        <li>Required to respect user settings</li>
-    </ul>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Users must be able to switch between different modes of input.</li>
+            </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>This criterion does not apply if the restriction is:</p>
+            <ul>
+                <li>Essential, such as a typing tutorial</li>
+                <li>Required to ensure the security of the content</li>
+                <li>Required to respect user settings</li>
+            </ul>
+        </div>
 
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Users must be able to switch between different modes of input.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to be able to switch between methods of input so that I can interact with the content in ways that are easiest for me.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a user with a disability, when you switched methods of input, you could interact with the content.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is the user restricted to certain methods of input?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the restriction essential to the content or required to ensure the security of the content?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the restriction required to respect user settings?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is the user restricted to certain methods of input?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the restriction essential to the content or required to ensure the security of the content?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2506.2506[25060101].link | prepend: baseurl }}">{{ site.data.2506.2506[25060101].name }}</a>.</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the restriction required to respect user settings?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["25060101"].link | prepend: baseurl }}">{{ checkpoint_data["25060101"].name }}</a>.</span></li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Verify that you can interact with all web content using various methods of input, such as:
+                    <ul>
+                        <li>Keyboard</li>
+                        <li>Mouse</li>
+                        <li>Switch</li>
+                        <li>Voice control</li>
+                        <li>Touchscreen</li>
+                    </ul>
+                </li>
+            </ol>
 
-    <h3>Desktop</h3>
-    <ol>
-        <li>Verify that you can interact with all web content using various methods of input, such as:
+            <h3>Mobile</h3>
+            <ol>
+                <li>Verify that you can interact with all web content using various methods of input, such as:
+                    <ul>
+                        <li>Touchscreen</li>
+                        <li>Bluetooth keyboard and mouse</li>
+                        <li>Switch</li>
+                        <li>Voice control</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ checkpoint_data["25060101"].link | prepend: baseurl }}">{{ checkpoint_data["25060101"].name }}</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
             <ul>
                 <li>Keyboard</li>
                 <li>Mouse</li>
-                <li>Switch</li>
-                <li>Voice control</li>
                 <li>Touchscreen</li>
+                <li><a href="https://support.apple.com/guide/mac-help/use-switch-control-mh43607/mac">macOS Switch Control</a></li>
+                <li><a href="https://support.apple.com/en-us/119835">iOS Switch Control</a></li>
+                <li><a href="https://support.google.com/accessibility/android/answer/6122836?hl=en">Android Switch Access</a></li>
+                <li><a href="https://support.microsoft.com/en-us/topic/get-started-with-voice-access-bd2aa2dc-46c2-486c-93ae-3d75f7d053a4">Windows Voice Access</a></li>
+                <li><a href="https://support.apple.com/en-us/102225">macOS Voice Control</a></li>
+                <li><a href="https://support.apple.com/en-us/111778">iOS Voice Control</a></li>
+                <li><a href="https://support.google.com/accessibility/android/answer/6151848?hl=en">Android Voice Access</a></li>
             </ul>
-        </li>
-    </ol>
+        </div>
 
-    <h3>Mobile</h3>
-    <ol>
-        <li>Verify that you can interact with all web content using various methods of input, such as:
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
             <ul>
-                <li>Touchscreen</li>
-                <li>Bluetooth keyboard and mouse</li>
-                <li>Switch</li>
-                <li>Voice control</li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+             </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+
             </ul>
-        </li>
-    </ol>
-
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2506.2506[25060101].link | prepend: baseurl }}">{{ site.data.2506.2506[25060101].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Keyboard</li>
-        <li>Mouse</li>
-        <li>Touchscreen</li>
-        <li><a href="https://support.apple.com/guide/mac-help/use-switch-control-mh43607/mac">macOS Switch Control</a></li>
-        <li><a href="https://support.apple.com/en-us/119835">iOS Switch Control</a></li>
-        <li><a href="https://support.google.com/accessibility/android/answer/6122836?hl=en">Android Switch Access</a></li>
-        <li><a href="https://support.microsoft.com/en-us/topic/get-started-with-voice-access-bd2aa2dc-46c2-486c-93ae-3d75f7d053a4">Windows Voice Access</a></li>
-        <li><a href="https://support.apple.com/en-us/102225">macOS Voice Control</a></li>
-        <li><a href="https://support.apple.com/en-us/111778">iOS Voice Control</a></li>
-        <li><a href="https://support.google.com/accessibility/android/answer/6151848?hl=en">Android Voice Access</a></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-     </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-
-    </ul>
-    </div>
-</div>
     {% include checkpoints/2506checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

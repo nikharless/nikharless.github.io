@@ -2,17 +2,33 @@
 layout: default
 current: "120501"
 criterion: "1205"
+guideline: perceivable
+level: aa
+last-modified: October 24, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1205.1205[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1205.1205[page.criterion] %}
+{% assign checkpoint_data = site.data["1205"]["1205"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Prerecorded synchronized media must have an audio alternative (audio descriptions) that includes all of the information presented in the visual content.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> The audio description should be presented next to the video and be easy to find.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> A text transcript should also be provided for the benefit of deafblind users.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -33,21 +49,6 @@ criterion: "1205"
         </div>
 
         <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded synchronized media must have an audio alternative (audio descriptions) that includes all of the information presented in the visual content.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The audio description should be presented next to the video and be easy to find.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A text transcript should also be provided for the benefit of deafblind users.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a blind user, I want to listen to an audio description along with the video so that I can get all of the same information that is conveyed in the visual portion of the video.</div>
-
-            <div class="success"><strong>Success:</strong> If you could not see the video, when you listen to the audio description you would get all of the information conveyed in the video portion.</div>
-        </div>
-
-        <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
             <h3 id="test1">Does the page contain synchronized media (e.g., video with dialogue)?</h3>
@@ -60,10 +61,10 @@ criterion: "1205"
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio description include all the important actions, visuals, and text in the video?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1205.1205[12050101].link | prepend: baseurl }}">{{ site.data.1205.1205[12050102].name }}.</a> </span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12050102"].link | prepend: baseurl }}">{{ checkpoint_data["12050102"].name }}.</a> </span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1205.1205[12050101].link | prepend: baseurl }}">{{ site.data.1205.1205[12050101].name }}.</a> </span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12050101"].link | prepend: baseurl }}">{{ checkpoint_data["12050101"].name }}.</a> </span></li>
                             </ul>
                         </li>
                     </ul>
@@ -87,8 +88,8 @@ criterion: "1205"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1205.1205[12050101].link | prepend: baseurl }}">{{ site.data.1205.1205[12050101].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1205.1205[12050102].link | prepend: baseurl }}">{{ site.data.1205.1205[12050102].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["12050101"].link | prepend: baseurl }}">{{ checkpoint_data["12050101"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["12050102"].link | prepend: baseurl }}">{{ checkpoint_data["12050102"].name }}.</a></li>
             </ul>
         </div>
 
@@ -128,5 +129,5 @@ criterion: "1205"
     </div>
 
      {% include checkpoints/1205checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

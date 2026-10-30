@@ -2,17 +2,31 @@
 layout: default
 current: "310201"
 criterion: "3102"
+guideline: perceivable
+level: aa
+last-modified: October 29, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.3102.3102[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.3102.3102[page.criterion] %}
+{% assign checkpoint_data = site.data["3102"]["3102"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Text that is in a different language than the default page language must be marked up with the correct language code.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -23,19 +37,6 @@ criterion: "3102"
                 <li>Words of indeterminate language</li>
                 <li>Words or phrases that have become part of the vernacular of the page language</li>
             </ul>
-        </div>
-
-        <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text that is in a different language than the default page language must be marked up with the correct language code.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the language of text set so that my screen reader knows how to pronounce the page content.</div>
-
-            <div class="success"><strong>Success:</strong> If you were a screen reader user, when you read the page, the screen reader would pronounce the content correctly.</div>
         </div>
 
         <div class="block">
@@ -53,13 +54,13 @@ criterion: "3102"
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the <code>lang</code> attribute set to the correct language?</span>
                                             <ul role="group">
                                                  <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3102.3102[31020103].link | prepend: baseurl }}">{{ site.data.3102.3102[31020103].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["31020103"].link | prepend: baseurl }}">{{ checkpoint_data["31020103"].name }}.</a></span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3102.3102[31020102].link | prepend: baseurl }}">{{ site.data.3102.3102[31020102].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["31020102"].link | prepend: baseurl }}">{{ checkpoint_data["31020102"].name }}.</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3102.3102[31020101].link | prepend: baseurl }}">{{ site.data.3102.3102[31020101].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["31020101"].link | prepend: baseurl }}">{{ checkpoint_data["31020101"].name }}.</a></span></li>
                             </ul>
                         </li>
                     </ul>
@@ -96,10 +97,10 @@ criterion: "3102"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.3102.3102[31020101].link | prepend: baseurl }}">{{ site.data.3102.3102[31020101].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.3102.3102[31020102].link | prepend: baseurl }}">{{ site.data.3102.3102[31020102].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.3102.3102[31020103].link | prepend: baseurl }}">{{ site.data.3102.3102[31020103].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.3102.3102[31020104].link | prepend: baseurl }}">{{ site.data.3102.3102[31020104].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["31020101"].link | prepend: baseurl }}">{{ checkpoint_data["31020101"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["31020102"].link | prepend: baseurl }}">{{ checkpoint_data["31020102"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["31020103"].link | prepend: baseurl }}">{{ checkpoint_data["31020103"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["31020104"].link | prepend: baseurl }}">{{ checkpoint_data["31020104"].name }}</a></li>
             </ul>
         </div>
 
@@ -138,5 +139,5 @@ criterion: "3102"
         </div>
     </div>
     {% include  checkpoints/3102checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

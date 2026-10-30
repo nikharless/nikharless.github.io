@@ -2,12 +2,15 @@
 layout: default
 current: "130501"
 criterion: "1305"
+guideline: perceivable
+level: aa
 last-modified: March 16, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1305.1305[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1305.1305[page.criterion] %}
+{% assign checkpoint_data = site.data["1305"]["1305"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -17,15 +20,16 @@ last-modified: March 16, 2026
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-            <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+            <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Form inputs which collect personal data that map to items on W3's <a href="https://www.w3.org/TR/WCAG22/#input-purposes">Input Purposes for User Interface Components</a> must use the <code>autocomplete</code> attribute set to the matching value on the list.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Form inputs which collect personal data that map to items on W3's <a href="https://www.w3.org/TR/WCAG22/#input-purposes">Input Purposes for User Interface Components</a> must use the <code>autocomplete</code> attribute set to the matching value on the list.</li>
             </ul>
+        </div>
 
-            <div class="userstory"><strong>User Story:</strong> As a user with dexterity impairments, I want frequently used personal information automatically filled in for me so that I can complete forms more efficiently.</div>
-
-            <div class="success"><strong>Success:</strong> If you have difficulty entering information, when you view a form with frequently used personal information, it could be filled in automatically for you.</div>
+        <div class="block">
+            <h2>Overview</h2>
+            <p></p>
         </div>
 
         <div class="block">
@@ -38,10 +42,10 @@ last-modified: March 16, 2026
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the field use a valid and appropriate autocomplete value?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1305.1305[13050102].link | prepend: baseurl }}">{{ site.data.1305.1305[13050102].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13050102"].link | prepend: baseurl }}">{{ checkpoint_data["13050102"].name }}</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1305.1305[13050101].link | prepend: baseurl }}">{{ site.data.1305.1305[13050101].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13050101"].link | prepend: baseurl }}">{{ checkpoint_data["13050101"].name }}</a></span></li>
                             </ul>
                         </li>
                     </ul>
@@ -74,9 +78,9 @@ last-modified: March 16, 2026
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1305.1305[13050101].link | prepend: baseurl }}">{{ site.data.1305.1305[13050101].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1305.1305[13050102].link | prepend: baseurl }}">{{ site.data.1305.1305[13050102].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1305.1305[13050103].link | prepend: baseurl }}">{{ site.data.1305.1305[13050103].name }}</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["13050101"].link | prepend: baseurl }}">{{ checkpoint_data["13050101"].name }}</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["13050102"].link | prepend: baseurl }}">{{ checkpoint_data["13050102"].name }}</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["13050103"].link | prepend: baseurl }}">{{ checkpoint_data["13050103"].name }}</a> (Medium)</li>
             </ul>
         </div>
 
@@ -111,5 +115,5 @@ last-modified: March 16, 2026
         </div>
     </div>
     {% include checkpoints/1305checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

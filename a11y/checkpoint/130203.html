@@ -2,11 +2,15 @@
 layout: default
 current: "130203"
 criterion: "1302"
+guideline: perceivable
+level: a
+last-modified: October 26, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1302.1302[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1302.1302[page.criterion] %}
+{% assign checkpoint_data = site.data["1302"]["1302"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -15,22 +19,19 @@ criterion: "1302"
         {% include breadcrumbs/bc-checkpoint.html %}
 
         <div class="block">
-            <h2>Overview</h2>
-            <p>When content is inserted into or unhidden in a web page, the reading order must remain logical both from the overall page sequence and starting from the user's current position. It's not logical, for instance, to insert new content before the user's current position in the page unless the user is alerted that it has been inserted.</p>
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The reading order of content which is dynamically inserted or unhidden must be logical and intuitive in the context of the page.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Dynamic content should be inserted after the triggering element.</li>
+            </ul>
         </div>
 
         <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The reading order of content which is dynamically inserted or unhidden must be logical and intuitive in the context of the page.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Dynamic content should be inserted after the triggering element.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want the content to be read in a meaningful sequence so that I can understand the content.</div>
-
-            <div class="success"><strong>Success:</strong> If you could not see the web page, when you use a screen reader, you would hear the content in an order that makes logical sense.</div>
+            <h2>Overview</h2>
+            <p>When content is inserted into or unhidden in a web page, the reading order must remain logical both from the overall page sequence and starting from the user's current position. It's not logical, for instance, to insert new content before the user's current position in the page unless the user is alerted that it has been inserted.</p>
         </div>
 
         <div class="block">
@@ -41,7 +42,7 @@ criterion: "1302"
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the added content read in a logical order by assistive technology?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1302.1302[13020301].link | prepend: baseurl }}">{{ site.data.1302.1302[13020301].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13020301"].link | prepend: baseurl }}">{{ checkpoint_data["13020301"].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
@@ -68,7 +69,7 @@ criterion: "1302"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1302.1302[13020301].link | prepend: baseurl }}">{{ site.data.1302.1302[13020301].name }}.</a> (High)</li>
+                <li><a href="{{ checkpoint_data["13020301"].link | prepend: baseurl }}">{{ checkpoint_data["13020301"].name }}.</a> (High)</li>
             </ul>
         </div>
 
@@ -113,5 +114,5 @@ criterion: "1302"
         </div>
     </div>
     {% include checkpoints/1302checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

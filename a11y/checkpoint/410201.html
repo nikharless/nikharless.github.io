@@ -2,18 +2,37 @@
 layout: default
 current: "410201"
 criterion: "4102"
+guideline: robust
+level: a
+last-modified: October 29, 2026
 css: disclosure-faq
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.4102.4102[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.4102.4102[page.criterion] %}
+{% assign checkpoint_data = site.data["4102"]["4102"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The name of user interface components must be programmatically determinable by assistive technologies.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The accessible name and description of user interface components must accurately describe the component's purpose.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> If the name of the component changes during interaction, the name must be programmatically updated.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> An <code>aria-label</code> should be provided to describe sections with <code>role="region"</code>.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> When multiple navigation regions are present on a page, <code>aria-label</code>s should be used to distinguish the purpose of each.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> The tabpanel (content section) of the tab should have an accessible name.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -47,24 +66,6 @@ css: disclosure-faq
         </div>
 
         <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The name of user interface components must be programmatically determinable by assistive technologies.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The accessible name and description of user interface components must accurately describe the component's purpose.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If the name of the component changes during interaction, the name must be programmatically updated.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> An <code>aria-label</code> should be provided to describe sections with <code>role="region"</code>.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> When multiple navigation regions are present on a page, <code>aria-label</code>s should be used to distinguish the purpose of each.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The tabpanel (content section) of the tab should have an accessible name.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the name of user interface components to be programmatically determinable so that I can get this information via my screen reader.</div>
-
-            <div class="success"><strong>Success:</strong> If you were a screen reader user, when accessing user interface components, you would be able to determine the purpose of the components.</div>
-        </div>
-
-        <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
             <h3 id="test1">Does the page contain user interface components?</h3>
@@ -74,33 +75,33 @@ css: disclosure-faq
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the name adequately describe the purpose of the control?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020108].link | prepend: baseurl }}">{{ site.data.4102.4102[41020108].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020108"].link | prepend: baseurl }}">{{ checkpoint_data["41020108"].name }}.</a></span></li>
                             </ul>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a button?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020101].link | prepend: baseurl }}">{{ site.data.4102.4102[41020101].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020101"].link | prepend: baseurl }}">{{ checkpoint_data["41020101"].name }}.</a></span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a text field, checkbox, radio button, or select?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020102].link | prepend: baseurl }}">{{ site.data.4102.4102[41020102].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020102"].link | prepend: baseurl }}">{{ checkpoint_data["41020102"].name }}.</a></span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component an image button?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020103].link | prepend: baseurl }}">{{ site.data.4102.4102[41020103].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020103"].link | prepend: baseurl }}">{{ checkpoint_data["41020103"].name }}.</a></span></li>
                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a link?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020104].link | prepend: baseurl }}">{{ site.data.4102.4102[41020104].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020104"].link | prepend: baseurl }}">{{ checkpoint_data["41020104"].name }}.</a></span></li>
                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component an iframe?</span>
                                                             <ul role="group">
-                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020105].link | prepend: baseurl }}">{{ site.data.4102.4102[41020105].name }}.</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020105"].link | prepend: baseurl }}">{{ checkpoint_data["41020105"].name }}.</a></span></li>
                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a dialog?</span>
                                                                     <ul role="group">
-                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}.</a></span></li>
+                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020110"].link | prepend: baseurl }}">{{ checkpoint_data["41020110"].name }}.</a></span></li>
                                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a frame?</span>
                                                                             <ul role="group">
-                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}.</a></span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020109"].link | prepend: baseurl }}">{{ checkpoint_data["41020109"].name }}.</a></span></li>
                                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component part of a group of components?</span>
                                                                                     <ul role="group">
-                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.4102.4102[41020106].link | prepend: baseurl }}">{{ site.data.4102.4102[41020106].name }}.</a></span></li>
-                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}.</a></span></li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020106"].link | prepend: baseurl }}">{{ checkpoint_data["41020106"].name }}.</a></span></li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020107"].link | prepend: baseurl }}">{{ checkpoint_data["41020107"].name }}.</a></span></li>
                                                                                     </ul>
                                                                                 </li>
                                                                             </ul>
@@ -344,17 +345,17 @@ css: disclosure-faq
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.4102.4102[41020101].link | prepend: baseurl }}">{{ site.data.4102.4102[41020101].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020102].link | prepend: baseurl }}">{{ site.data.4102.4102[41020102].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020103].link | prepend: baseurl }}">{{ site.data.4102.4102[41020103].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020104].link | prepend: baseurl }}">{{ site.data.4102.4102[41020104].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020105].link | prepend: baseurl }}">{{ site.data.4102.4102[41020105].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020106].link | prepend: baseurl }}">{{ site.data.4102.4102[41020106].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020107].link | prepend: baseurl }}">{{ site.data.4102.4102[41020107].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020108].link | prepend: baseurl }}">{{ site.data.4102.4102[41020108].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020109].link | prepend: baseurl }}">{{ site.data.4102.4102[41020109].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020110].link | prepend: baseurl }}">{{ site.data.4102.4102[41020110].name }}.</a></li>
-                <li><a href="{{ site.data.4102.4102[41020111].link | prepend: baseurl }}">{{ site.data.4102.4102[41020111].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["41020101"].link | prepend: baseurl }}">{{ checkpoint_data["41020101"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["41020102"].link | prepend: baseurl }}">{{ checkpoint_data["41020102"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["41020103"].link | prepend: baseurl }}">{{ checkpoint_data["41020103"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["41020104"].link | prepend: baseurl }}">{{ checkpoint_data["41020104"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["41020105"].link | prepend: baseurl }}">{{ checkpoint_data["41020105"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["41020106"].link | prepend: baseurl }}">{{ checkpoint_data["41020106"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["41020107"].link | prepend: baseurl }}">{{ checkpoint_data["41020107"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["41020108"].link | prepend: baseurl }}">{{ checkpoint_data["41020108"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["41020109"].link | prepend: baseurl }}">{{ checkpoint_data["41020109"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["41020110"].link | prepend: baseurl }}">{{ checkpoint_data["41020110"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["41020111"].link | prepend: baseurl }}">{{ checkpoint_data["41020111"].name }}.</a></li>
             </ul>
         </div>
 
@@ -419,5 +420,5 @@ css: disclosure-faq
         </div>
     </div>
     {% include checkpoints/4102checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

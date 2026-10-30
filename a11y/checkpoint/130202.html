@@ -2,17 +2,34 @@
 layout: default
 current: "130202"
 criterion: "1302"
+guideline: perceivable
+level: a
+last-modified: October 26, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1302.1302[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1302.1302[page.criterion] %}
+{% assign checkpoint_data = site.data["1302"]["1302"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The reading order of page content must be logical and intuitive.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> All meaningful content must be readable by assistive technology.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Content meant to be hidden from all users must not be readable by assistive technology.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Reading order should match the visual order, but it is not a failure unless the difference changes meaning.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -27,22 +44,6 @@ criterion: "1302"
         </div>
 
         <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The reading order of page content must be logical and intuitive.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All meaningful content must be readable by assistive technology.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content meant to be hidden from all users must not be readable by assistive technology.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Reading order should match the visual order, but it is not a failure unless the difference changes meaning.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want the content to be read in a meaningful sequence so that I can understand the content.</div>
-
-            <div class="success"><strong>Success:</strong> If you could not see the web page, when you use a screen reader, you would hear the content in an order that makes logical sense.</div>
-        </div>
-
-        <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
             <h3 id="test2">Does assistive technology, such as a screen reader, read all visible content on the page?</h3>
@@ -51,13 +52,13 @@ criterion: "1302"
                     <ul role="group">
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does assistive technology read hidden content which is meant to be hidden from all users?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1302.1302[13020203].link | prepend: baseurl }}">{{ site.data.1302.1302[13020203].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["13020203"].link | prepend: baseurl }}">{{ checkpoint_data["13020203"].name }}.</a></span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the content read by assistive technology match the visual content?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the difference change the meaning?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1302.1302[13020204].link | prepend: baseurl }}">{{ site.data.1302.1302[13020204].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["13020204"].link | prepend: baseurl }}">{{ checkpoint_data["13020204"].name }}.</a></span></li>
                                                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                             </ul>
                                         </li>
@@ -65,9 +66,9 @@ criterion: "1302"
                                 </li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1302.1302[13020201].link | prepend: baseurl }}">{{ site.data.1302.1302[13020201].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13020201"].link | prepend: baseurl }}">{{ checkpoint_data["13020201"].name }}.</a></span></li>
                     </ul>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1302.1302[13020202].link | prepend: baseurl }}">{{ site.data.1302.1302[13020202].name }}.</a></span></li>   
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13020202"].link | prepend: baseurl }}">{{ checkpoint_data["13020202"].name }}.</a></span></li>   
             </ul>
         </div>
 
@@ -111,10 +112,10 @@ criterion: "1302"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1302.1302[13020201].link | prepend: baseurl }}">{{ site.data.1302.1302[13020201].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1302.1302[13020202].link | prepend: baseurl }}">{{ site.data.1302.1302[13020202].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1302.1302[13020203].link | prepend: baseurl }}">{{ site.data.1302.1302[13020203].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1302.1302[13020204].link | prepend: baseurl }}">{{ site.data.1302.1302[13020204].name }}.</a> (High)</li>
+                <li><a href="{{ checkpoint_data["13020201"].link | prepend: baseurl }}">{{ checkpoint_data["13020201"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["13020202"].link | prepend: baseurl }}">{{ checkpoint_data["13020202"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["13020203"].link | prepend: baseurl }}">{{ checkpoint_data["13020203"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["13020204"].link | prepend: baseurl }}">{{ checkpoint_data["13020204"].name }}.</a></li>
             </ul>
         </div>
 
@@ -160,5 +161,5 @@ criterion: "1302"
         </div>
     </div>
     {% include checkpoints/1302checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

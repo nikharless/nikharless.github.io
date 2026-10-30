@@ -2,150 +2,145 @@
 layout: default
 current: "250101"
 criterion: "2501"
+guideline: perceivable
+level: a
+last-modified: October 28, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2501.2501[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2501.2501[page.criterion] %}
+{% assign checkpoint_data = site.data["2501"]["2501"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>This criterion does not apply to user agent gestures that are not controlled by the page authored content.</p>
-
-    <p>Examples of multipoint gestures:
-    <ul>
-        <li>Two-finger pinch zoom</li>
-        <li>Split tap</li>
-        <li>Two or more finger tap</li>
-        <li>Two or more finger swipe</li>
-    </ul>
-
-    <p>Examples of path-based gestures:
-    <ul>
-        <li>Swiping</li>
-        <li>Sliders and carousels which require swiping in a particular direction</li>
-        <li>Gestures that trace a prescribed path</li>
-        <li>Drawing</li>
-    </ul>
-    <p><em>Note: Drag-and-drop isn't path-based, since the path between the start and end doesn't matter.</em></p>
-
-    <p>Examples of acceptable single-pointer gestures:</p>
-    <ul>
-        <li>Single taps and clicks</li>
-        <li>Double taps and clicks</li>
-        <li>Long presses</li>
-        <li>Click and hold</li>
-        <li>Dragging (not path-based)</li>
-    </ul>
-    <p><em>Note: Keyboard controls are not sufficient to pass this criterion.</em></p>
-
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All functionality must be operable with a single pointer.</li>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Path-based gestures must not be required to use any functionality.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a movement disability, I want all functionality to be usable with one finger and reduced gestures so that I can operate it.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a user with a movement disability, when you need to interact with a page, you could do so with one finger and limited movement.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is there any functionality that uses a multipoint gesture?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the multipoint gesture essential?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an alternate single point, non-path-based means of operation for the same functionality?</span>
-                    <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2501.2501[25010101].link | prepend: baseurl }}">{{ site.data.2501.2501[25010101].name }}</a>.</span></li>
-                    </ul>
-                </li>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> All functionality must be operable with a single pointer.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Path-based gestures must not be required to use any functionality.</li>
             </ul>
-        </li>
-        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there any functionality that uses a path-based gesture?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the path-based gesture essential?</span>
+        </div>
+
+        <div class="block">
+            <h2>Overview</h2>
+            <p>This criterion does not apply to user agent gestures that are not controlled by the page authored content.</p>
+
+            <p>Examples of multipoint gestures:
+            <ul>
+                <li>Two-finger pinch zoom</li>
+                <li>Split tap</li>
+                <li>Two or more finger tap</li>
+                <li>Two or more finger swipe</li>
+            </ul>
+
+            <p>Examples of path-based gestures:
+            <ul>
+                <li>Swiping</li>
+                <li>Sliders and carousels which require swiping in a particular direction</li>
+                <li>Gestures that trace a prescribed path</li>
+                <li>Drawing</li>
+            </ul>
+            <p><em>Note: Drag-and-drop isn't path-based, since the path between the start and end doesn't matter.</em></p>
+
+            <p>Examples of acceptable single-pointer gestures:</p>
+            <ul>
+                <li>Single taps and clicks</li>
+                <li>Double taps and clicks</li>
+                <li>Long presses</li>
+                <li>Click and hold</li>
+                <li>Dragging (not path-based)</li>
+            </ul>
+            <p><em>Note: Keyboard controls are not sufficient to pass this criterion.</em></p>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is there any functionality that uses a multipoint gesture?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the multipoint gesture essential?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an alternate single point, non-path-based means of operation for the same functionality?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2501.2501[25010102].link | prepend: baseurl }}">{{ site.data.2501.2501[25010102].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["25010101"].link | prepend: baseurl }}">{{ checkpoint_data["25010101"].name }}</a>.</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there any functionality that uses a path-based gesture?</span>
+                    <ul role="group">
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the path-based gesture essential?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there an alternate single point, non-path-based means of operation for the same functionality?</span>
+                                    <ul role="group">
+                                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["25010102"].link | prepend: baseurl }}">{{ checkpoint_data["25010102"].name }}</a>.</span></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
             </ul>
-        </li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Identify any functionality that can be triggered by multipoint or path-based gestures.</li>
+                <li>For each such functionality, verify that the functionality can also be operated with the use of single-pointer actions that are not path-based.</li>
+            </ol>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>Identify any functionality that can be triggered by multipoint or path-based gestures.</li>
-        <li>For each such functionality, verify that the functionality can also be operated with the use of single-pointer actions that are not path-based.</li>
-    </ol>
+            <h2>Mobile App Test Procedure</h2>
+            <p>Follow the Web test procedure.</p>
+        </div>
 
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the Web test procedure.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2501.2501[25010101].link | prepend: baseurl }}">{{ site.data.2501.2501[25010101].name }}</a>. (Medium)</li>
-        <li><a href="{{ site.data.2501.2501[25010102].link | prepend: baseurl }}">{{ site.data.2501.2501[25010102].name }}</a>. (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Mouse</li>
-        <li>Touchscreen</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G215">G215: Providing controls to achieve the same result as path based or multipoint gestures</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G216">G216: Providing single point activation for a control slider</a></li>
+                <li><a href="{{ checkpoint_data["25010101"].link | prepend: baseurl }}">{{ checkpoint_data["25010101"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["25010102"].link | prepend: baseurl }}">{{ checkpoint_data["25010102"].name }}</a></li>
             </ul>
-        </li>
-     </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://medium.com/c2-group/wcag-2-1-guidelines-explained-with-examples-5c7c5d8b69eb">WCAG 2.1 Guidelines Explained with Examples</a></li>
-    </ul>
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Mouse</li>
+                <li>Touchscreen</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G215">G215: Providing controls to achieve the same result as path based or multipoint gestures</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G216">G216: Providing single point activation for a control slider</a></li>
+                    </ul>
+                </li>
+             </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://medium.com/c2-group/wcag-2-1-guidelines-explained-with-examples-5c7c5d8b69eb">WCAG 2.1 Guidelines Explained with Examples</a></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/2501checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

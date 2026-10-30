@@ -2,12 +2,15 @@
 layout: default
 current: "140401"
 criterion: "1404"
+guideline: perceivable
+level: aa
 last-modified: June 29, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1404.1404[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1404.1404[page.criterion] %}
+{% assign checkpoint_data = site.data["1404"]["1404"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -17,22 +20,19 @@ last-modified: June 29, 2026
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text content must be resizable to 200% without the use of assistive technology.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Resizing must not be disabled using <code>&lt;meta name="viewport" content="user-scalable=no"&gt;</code>.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Resizing must not be disabled using <code>&lt;meta name="viewport" content="maximum-scale=</code>[&lt;2 or yes]<code>"&gt;</code>.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Text must not be clipped, truncated, or obscured when resized to 200%.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All content must be available within one click or tap when resized to 200%.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> All functionality must be retained when resized to 200%.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Text content should be resizable to 500%.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Mobile apps should use the mobile platform's dynamic text accessibility feature.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Text content must be resizable to 200% without the use of assistive technology.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Resizing must not be disabled using <code>&lt;meta name="viewport" content="user-scalable=no"&gt;</code>.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Resizing must not be disabled using <code>&lt;meta name="viewport" content="maximum-scale=</code>[&lt;2 or yes]<code>"&gt;</code>.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Text must not be clipped, truncated, or obscured when resized to 200%.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> All content must be available within one click or tap when resized to 200%.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> All functionality must be retained when resized to 200%.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Text content should be resizable to 500%.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Mobile apps should use the mobile platform's dynamic text accessibility feature.</li>
             </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a user with a visual impairment, I want text to be zoomable and remain readable and functional up to 200% so that I can more easily read it.</div>
-
-            <div class="success"><strong>Success:</strong> If you had a visual impairment, when you enlarged text up to 200%, you would be able to read it and use its functionality.</div>
         </div>
 
         <div class="block">
@@ -54,24 +54,24 @@ last-modified: June 29, 2026
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes;</strong> Is there an indication that this information can be accessed (other than the fact that it is truncated, such as “…”)?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1404.1404[14040104].link | prepend: baseurl }}">{{ site.data.1404.1404[14040104].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14040104"].link | prepend: baseurl }}">{{ checkpoint_data["14040104"].name }}.</a></span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="{{ site.data.1404.1404[14040103].link | prepend: baseurl }}">{{ site.data.1404.1404[14040103].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="{{ checkpoint_data["14040103"].link | prepend: baseurl }}">{{ checkpoint_data["14040103"].name }}.</a></span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is all content still available?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes;</strong> PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1404.1404[14040105].link | prepend: baseurl }}">{{ site.data.1404.1404[14040105].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14040105"].link | prepend: baseurl }}">{{ checkpoint_data["14040105"].name }}.</a></span></li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the viewport <code>meta</code> element prevent user scaling (<code>user-scalable=no</code> or <code>maximum-scale</code> set to yes or a number less than 2)?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1404.1404[14040102].link | prepend: baseurl }}">{{ site.data.1404.1404[14040102].name }}</a></span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1404.1404[14040101].link | prepend: baseurl }}">{{ site.data.1404.1404[14040101].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["14040102"].link | prepend: baseurl }}">{{ checkpoint_data["14040102"].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14040101"].link | prepend: baseurl }}">{{ checkpoint_data["14040101"].name }}</a></span></li>
                             </ul>
                         </li>
                     </ul>
@@ -112,11 +112,11 @@ last-modified: June 29, 2026
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1404.1404[14040101].link | prepend: baseurl }}">{{ site.data.1404.1404[14040101].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1404.1404[14040102].link | prepend: baseurl }}">{{ site.data.1404.1404[14040102].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1404.1404[14040103].link | prepend: baseurl }}">{{ site.data.1404.1404[14040103].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1404.1404[14040104].link | prepend: baseurl }}">{{ site.data.1404.1404[14040104].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1404.1404[14040105].link | prepend: baseurl }}">{{ site.data.1404.1404[14040105].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["14040101"].link | prepend: baseurl }}">{{ checkpoint_data["14040101"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["14040102"].link | prepend: baseurl }}">{{ checkpoint_data["14040102"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["14040103"].link | prepend: baseurl }}">{{ checkpoint_data["14040103"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["14040104"].link | prepend: baseurl }}">{{ checkpoint_data["14040104"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["14040105"].link | prepend: baseurl }}">{{ checkpoint_data["14040105"].name }}.</a></li>
             </ul>
         </div>
 
@@ -170,5 +170,5 @@ last-modified: June 29, 2026
         </div>
     </div>
     {% include checkpoints/1404checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

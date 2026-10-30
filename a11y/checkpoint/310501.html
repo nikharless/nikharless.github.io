@@ -2,121 +2,115 @@
 layout: default
 current: "310501"
 criterion: "3105"
+guideline: understandable
+level: aaa
+last-modified: October 29, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.3105.3105[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.3105.3105[page.criterion] %}
+{% assign checkpoint_data = site.data["3105"]["3105"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>In order to reduce the complexity of text and lower the required reading level, you can implement the following:</p>
-    <ul>
-        <li>Cover a single topic or subtopic in each paragraph.</li>
-        <li>Use the simplest sentence forms consistent with the purpose of the content. For example, the simplest sentence form for English consists of Subject-Verb-Object, as in John hit the ball or The Web site conforms to WCAG 2.1.</li>
-        <li>Use sentences that are no longer than 25 words.</li>
-        <li>Divide longer sentences into two where possible.</li>
-        <li>Use no more than two conjunctions per sentence.</li>
-        <li>Indicate logical relationships between phrases, sentences, paragraphs, or sections of the text.</li>
-        <li>Avoid professional jargon, slang, and other terms with a specialized meaning that may not be clear to people.</li>
-        <li>Replace long or unfamiliar words with shorter, more common terms.</li>
-        <li>Remove redundant words.</li>
-        <li>Use single nouns or short noun phrases.</li>
-        <li>Replace complex words or phrases with more commonly used words without changing the meaning of the sentence.</li>
-        <li>Use bulleted or numbered lists instead of paragraphs that contain long series of words or phrases separated by commas.</li>
-        <li>Make clear pronoun references and references to other points in the document.</li>
-        <li>Use the active voice, unless there is a specific reason for using passive voice. Sentences in the active voice are often shorter and easier to understand than those in the passive voice.</li>
-        <li>Use verb tenses consistently.</li>
-        <li>Use names and labels consistently.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When text requires more than a 9th grade reading level to understand, supplemental content must be provided.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Use the clearest and simplest language that is appropriate.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a reading disability, I want a version of difficult text that is easier to read so that I can understand the content.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a user with a reading disability, when you encountered difficult text, you would have additional or alternate content that is easier to understand.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the content, excluding any proper names and titles, contain any difficult text which requires more than a 9th grade reading level?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there supplemental content such as explanatory graphics, audio, or an alternate version of the text that is easier to read?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3105.3105[31050101].link | prepend: baseurl }}">{{ site.data.3105.3105[31050101].name }}</a>.</span></li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-
-    <ol>
-        <li>Remove proper nouns and titles from the text.</li>
-        <li>Evaluate the text for reading level.</li>
-        <li>If the reading level is higher than 9th grade, verify that there is supplemental content to explain the text or an alternate version that is easier to read.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3105.3105[31050101].link | prepend: baseurl }}">{{ site.data.3105.3105[31050101].name }}</a>. (Low)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G79">G79: Providing a spoken version of the text</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G86">G86: Providing a text summary that can be understood by people with lower secondary education level reading ability</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G103">G103: Providing visual illustrations, pictures, and symbols to help explain ideas, events, and processes</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G153">G153: Making the text easier to read</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G160">G160: Providing sign language versions of information, ideas, and processes that must be understood in order to use the content</a></li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> When text requires more than a 9th grade reading level to understand, supplemental content must be provided.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Use the clearest and simplest language that is appropriate.</li>
             </ul>
-        </li>
-     </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://readabilityformulas.com/readability-scoring-system.php">Readability Scoring System</a></li>
-    </ul>
-</div>
-</div>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>In order to reduce the complexity of text and lower the required reading level, you can implement the following:</p>
+            <ul>
+                <li>Cover a single topic or subtopic in each paragraph.</li>
+                <li>Use the simplest sentence forms consistent with the purpose of the content. For example, the simplest sentence form for English consists of Subject-Verb-Object, as in John hit the ball or The Web site conforms to WCAG 2.1.</li>
+                <li>Use sentences that are no longer than 25 words.</li>
+                <li>Divide longer sentences into two where possible.</li>
+                <li>Use no more than two conjunctions per sentence.</li>
+                <li>Indicate logical relationships between phrases, sentences, paragraphs, or sections of the text.</li>
+                <li>Avoid professional jargon, slang, and other terms with a specialized meaning that may not be clear to people.</li>
+                <li>Replace long or unfamiliar words with shorter, more common terms.</li>
+                <li>Remove redundant words.</li>
+                <li>Use single nouns or short noun phrases.</li>
+                <li>Replace complex words or phrases with more commonly used words without changing the meaning of the sentence.</li>
+                <li>Use bulleted or numbered lists instead of paragraphs that contain long series of words or phrases separated by commas.</li>
+                <li>Make clear pronoun references and references to other points in the document.</li>
+                <li>Use the active voice, unless there is a specific reason for using passive voice. Sentences in the active voice are often shorter and easier to understand than those in the passive voice.</li>
+                <li>Use verb tenses consistently.</li>
+                <li>Use names and labels consistently.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Does the content, excluding any proper names and titles, contain any difficult text which requires more than a 9th grade reading level?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there supplemental content such as explanatory graphics, audio, or an alternate version of the text that is easier to read?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["31050101"].link | prepend: baseurl }}">{{ checkpoint_data["31050101"].name }}</a>.</span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+
+            <ol>
+                <li>Remove proper nouns and titles from the text.</li>
+                <li>Evaluate the text for reading level.</li>
+                <li>If the reading level is higher than 9th grade, verify that there is supplemental content to explain the text or an alternate version that is easier to read.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ checkpoint_data["31050101"].link | prepend: baseurl }}">{{ checkpoint_data["31050101"].name }}</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G79">G79: Providing a spoken version of the text</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G86">G86: Providing a text summary that can be understood by people with lower secondary education level reading ability</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G103">G103: Providing visual illustrations, pictures, and symbols to help explain ideas, events, and processes</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G153">G153: Making the text easier to read</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G160">G160: Providing sign language versions of information, ideas, and processes that must be understood in order to use the content</a></li>
+                    </ul>
+                </li>
+             </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://readabilityformulas.com/readability-scoring-system.php">Readability Scoring System</a></li>
+            </ul>
+        </div>
+    </div>
     {% include checkpoints/3105checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

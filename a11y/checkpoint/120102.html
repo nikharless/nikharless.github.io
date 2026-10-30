@@ -2,17 +2,38 @@
 layout: default
 current: "120102"
 criterion: "1201"
+guideline: perceivable
+level: a
+last-modified: October 24, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1201.1201[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1201.1201[page.criterion] %}
+{% assign checkpoint_data = site.data["1201"]["1201"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Prerecorded video-only content must have a text (transcript) or audio (audio descriptions) alternative that includes all of the information presented in the video.
+                    <ul>
+                        <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> If there are multiple characters in the video, the alternative must identify which character is associated with each action.</li>
+                    </ul>
+                </li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> If video-only media is used as a media alternative to text, it must be clearly labeled as such.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> A text transcript should be provided for the benefit of deafblind users.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> The text or audio description should be presented next to the video and be easy to find.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -22,26 +43,6 @@ criterion: "1201"
                 <li>Video with only music</li>
                 <li>Animation illustrating information presented in text</li>
             </ul>
-        </div>
-
-        <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Prerecorded video-only content must have a text (transcript) or audio (audio descriptions) alternative that includes all of the information presented in the video.
-                    <ul>
-                        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If there are multiple characters in the video, the alternative must identify which character is associated with each action.</li>
-                    </ul>
-                </li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If video-only media is used as a media alternative to text, it must be clearly labeled as such.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A text transcript should be provided for the benefit of deafblind users.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The text or audio description should be presented next to the video and be easy to find.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a blind user, I want to listen to an audio description along with the video or read a transcript with my screen reader so that I can get all of the same information that is conveyed visually.</div>
-
-            <div class="success"><strong>Success:</strong> If you could not see the video, when you listen to the audio description or read the transcript, you would get all of the information conveyed in the video content.</div>
         </div>
 
         <div class="block">
@@ -57,7 +58,7 @@ criterion: "1201"
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it clearly labeled as such?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010204].link | prepend: baseurl }}">{{ site.data.1201.1201[12010204].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12010204"].link | prepend: baseurl }}">{{ checkpoint_data["12010204"].name }}.</a></span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the video-only content have an audio description?</span>
@@ -65,7 +66,7 @@ criterion: "1201"
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio description include all the important actions, visuals, and text in the video?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010202].link | prepend: baseurl }}">{{ site.data.1201.1201[12010202].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12010202"].link | prepend: baseurl }}">{{ checkpoint_data["12010202"].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the video-only content have an accompanying text transcript?</span>
@@ -73,11 +74,11 @@ criterion: "1201"
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the transcript include all the important actions, visuals, and text in the video?</span>
                                                     <ul role="group">
                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010203].link | prepend: baseurl }}">{{ site.data.1201.1201[12010203].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12010203"].link | prepend: baseurl }}">{{ checkpoint_data["12010203"].name }}.</a></span></li>
                                                     </ul>
                                                 </li>
                                                 
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1201.1201[12010201].link | prepend: baseurl }}">{{ site.data.1201.1201[12010201].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12010201"].link | prepend: baseurl }}">{{ checkpoint_data["12010201"].name }}.</a></span></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -109,10 +110,10 @@ criterion: "1201"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1201.1201[12010201].link | prepend: baseurl }}">{{ site.data.1201.1201[12010201].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1201.1201[12010202].link | prepend: baseurl }}">{{ site.data.1201.1201[12010202].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1201.1201[12010203].link | prepend: baseurl }}">{{ site.data.1201.1201[12010203].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1201.1201[12010204].link | prepend: baseurl }}">{{ site.data.1201.1201[12010204].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["12010201"].link | prepend: baseurl }}">{{ checkpoint_data["12010201"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["12010202"].link | prepend: baseurl }}">{{ checkpoint_data["12010202"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["12010203"].link | prepend: baseurl }}">{{ checkpoint_data["12010203"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["12010204"].link | prepend: baseurl }}">{{ checkpoint_data["12010204"].name }}.</a></li>
             </ul>
         </div>
 
@@ -144,5 +145,5 @@ criterion: "1201"
         </div>
     </div>
     {% include checkpoints/1201checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

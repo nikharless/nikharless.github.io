@@ -2,11 +2,15 @@
 layout: default
 current: "120401"
 criterion: "1204"
+guideline: perceivable
+level: aa
+last-modified: October 24, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1204.1204[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1204.1204[page.criterion] %}
+{% assign checkpoint_data = site.data["1204"]["1204"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -15,28 +19,25 @@ criterion: "1204"
         {% include breadcrumbs/bc-checkpoint.html %}
 
         <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Live video with audio must have captions.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Live captions must be accurate.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Live captions must be synchronized.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Live captions must include all spoken dialogue and narration.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Live captions must include all important sounds.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Live captions must identify speakers.</li>
+            </ul>
+        </div>
+
+        <div class="block">
             <h2>Overview</h2>
             <p>This criterion applies to the broadcast of synchronized media, including web casts and live streams. It does not apply to two-way multimedia calls through web apps.</p>
             <p>Live captions can be provided by professional real-time captioners or Communication Access Realtime Translation (CART) providers. They may be provided on site or remotely.</p>  
             <p>Lower accuracy for live broadcasts is acceptable due to limitations, but they must be as accurate as possible and retain the meaning of the audio.</p>
-        </div>
-
-        <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Live video with audio must have captions.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Live captions must be accurate.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Live captions must be synchronized.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Live captions must include all spoken dialogue and narration.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Live captions must include all important sounds.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Live captions must identify speakers.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a deaf user, I want to read synchronized captions on a video so that I can get all of the same information that is conveyed through the audio.</div>
-
-            <div class="success"><strong>Success:</strong> If you could not hear the video, when you read the captions, you would get all of the information conveyed in the audio part of the content.</div>
         </div>
 
         <div class="block">
@@ -57,22 +58,22 @@ criterion: "1204"
                                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the captions identify the speakers?</span>
                                                             <ul role="group">
                                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1204.1204[12040106].link | prepend: baseurl }}">{{ site.data.1204.1204[12040106].name }}.</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12040106"].link | prepend: baseurl }}">{{ checkpoint_data["12040106"].name }}.</a></span></li>
                                                             </ul>
                                                         </li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1204.1204[12040105].link | prepend: baseurl }}">{{ site.data.1204.1204[12040105].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12040105"].link | prepend: baseurl }}">{{ checkpoint_data["12040105"].name }}.</a></span></li>
                                                     </ul>
                                                 </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1204.1204[12040104].link | prepend: baseurl }}">{{ site.data.1204.1204[12040104].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12040104"].link | prepend: baseurl }}">{{ checkpoint_data["12040104"].name }}.</a></span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1204.1204[12040103].link | prepend: baseurl }}">{{ site.data.1204.1204[12040103].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12040103"].link | prepend: baseurl }}">{{ checkpoint_data["12040103"].name }}.</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1204.1204[12040102].link | prepend: baseurl }}">{{ site.data.1204.1204[12040102].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12040102"].link | prepend: baseurl }}">{{ checkpoint_data["12040102"].name }}.</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1204.1204[12040101].link | prepend: baseurl }}">{{ site.data.1204.1204[12040101].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12040101"].link | prepend: baseurl }}">{{ checkpoint_data["12040101"].name }}.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
@@ -93,12 +94,12 @@ criterion: "1204"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1204.1204[12040101].link | prepend: baseurl }}">{{ site.data.1204.1204[12040101].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1204.1204[12040102].link | prepend: baseurl }}">{{ site.data.1204.1204[12040102].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1204.1204[12040103].link | prepend: baseurl }}">{{ site.data.1204.1204[12040103].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1204.1204[12040104].link | prepend: baseurl }}">{{ site.data.1204.1204[12040104].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1204.1204[12040105].link | prepend: baseurl }}">{{ site.data.1204.1204[12040105].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1204.1204[12040106].link | prepend: baseurl }}">{{ site.data.1204.1204[12040106].name }}.</a> (Low)</li>
+                <li><a href="{{ checkpoint_data["12040101"].link | prepend: baseurl }}">{{ checkpoint_data["12040101"].name }}.</a> (High)</li>
+                <li><a href="{{ checkpoint_data["12040102"].link | prepend: baseurl }}">{{ checkpoint_data["12040102"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["12040103"].link | prepend: baseurl }}">{{ checkpoint_data["12040103"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["12040104"].link | prepend: baseurl }}">{{ checkpoint_data["12040104"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["12040105"].link | prepend: baseurl }}">{{ checkpoint_data["12040105"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["12040106"].link | prepend: baseurl }}">{{ checkpoint_data["12040106"].name }}.</a> (Low)</li>
             </ul>
         </div>
 
@@ -134,5 +135,5 @@ criterion: "1204"
         </div>
     </div>
     {% include checkpoints/1204checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

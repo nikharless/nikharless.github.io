@@ -2,160 +2,155 @@
 layout: default
 current: "250301"
 criterion: "2503"
+guideline: perceivable
+level: a
+last-modified: October 28, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2503.2503[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2503.2503[page.criterion] %}
+{% assign checkpoint_data = site.data["2503"]["2503"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>For the purpose of this criterion, the label is only a single string of text next to the control. Any other text that should be read along with the control, such as instructions and group labels, is part of the description.</p>
-
-    <p><em>Note: If the control fails <a href="/a11y/sc/4102.html">4.1.2 Name, Role, Value</a> due to not having an accessible name and it has a visible label, it also fails this criterion.</em></p>
-
-    <p>Programmatic names are determined in the following order of priority:</p>
-    <ul>
-        <li><code>aria-labelledby</code> value</li>
-        <li><code>aria-label</code> value</li>
-        <li><code>&lt;label&gt;</code> text</li>
-        <li><code>title</code> attribute value</li>
-        <li>control text:
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li>textbox value</li>
-                <li>button text</li>
-                <li>combobox or listbox selected option text</li>
-                <li>range (spinbutton or slider)
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Accessible (programmatic) names must contain the text in the visible label.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> The text of the label should be at the start of the accessible name.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Overview</h2>
+            <p>For the purpose of this criterion, the label is only a single string of text next to the control. Any other text that should be read along with the control, such as instructions and group labels, is part of the description.</p>
+
+            <p><em>Note: If the control fails <a href="/a11y/sc/4102.html">4.1.2 Name, Role, Value</a> due to not having an accessible name and it has a visible label, it also fails this criterion.</em></p>
+
+            <p>Programmatic names are determined in the following order of priority:</p>
+            <ul>
+                <li><code>aria-labelledby</code> value</li>
+                <li><code>aria-label</code> value</li>
+                <li><code>&lt;label&gt;</code> text</li>
+                <li><code>title</code> attribute value</li>
+                <li>control text:
                     <ul>
-                        <li><code>aria-valuetext</code> value</li>
-                        <li><code>aria-valuenow</code> value</li>
-                        <li>value</li>
+                        <li>textbox value</li>
+                        <li>button text</li>
+                        <li>combobox or listbox selected option text</li>
+                        <li>range (spinbutton or slider)
+                            <ul>
+                                <li><code>aria-valuetext</code> value</li>
+                                <li><code>aria-valuenow</code> value</li>
+                                <li>value</li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
+                <li>pseudo elements (<code>:before</code>, <code>:after</code>)</li>
             </ul>
-        </li>
-        <li>pseudo elements (<code>:before</code>, <code>:after</code>)</li>
-    </ul>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Accessible (programmatic) names must contain the text in the visible label.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The text of the label should be at the start of the accessible name.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a voice control user, I want the accessible name to match the visible label so that I know what to say to activate the control.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a voice control user, when you wanted to activate a control, you would know the name of the control by the visible label.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Are there controls on the page with visible labels made up of human language text (not symbols) or images of text?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the control have an accessible name?</span>
-            <ul role="group">
-                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the accessible name include the text that is presented visually?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Are there controls on the page with visible labels made up of human language text (not symbols) or images of text?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the control have an accessible name?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2503.2503[25030101].link | prepend: baseurl }}">{{ site.data.2503.2503[25030101].name }}</a>.</span></li>
+                        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the accessible name include the text that is presented visually?</span>
+                            <ul role="group">
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["25030101"].link | prepend: baseurl }}">{{ checkpoint_data["25030101"].name }}</a>.</span></li>
+                            </ul>
+                        </li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["25030102"].link | prepend: baseurl }}">{{ checkpoint_data["25030102"].name }}</a>.</span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2503.2503[25030102].link | prepend: baseurl }}">{{ site.data.2503.2503[25030102].name }}</a>.</span></li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop</h3>
+            <ol>
+                <li>Locate all controls with a visible text label.
+                    <ul>
+                        <li>For the purposes of this checkpoint, when a text field has placeholder text as its only programmatic label, consider the placeholder value to be the field’s visible label.</li>
+                    </ul>
+                </li>
+                <li>Compare the accessible name of the element to the visible text and verify that the entire visible text label is either:
+                    <ul>
+                        <li>An exact match to the accessible text, <strong>OR</strong></li>
+                        <li>Is contained within the accessible text (in the same order presented visually with no words inserted in between)</li>
+                    </ul>
+                </li>
+            </ol>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop</h3>
-    <ol>
-        <li>Locate all controls with a visible text label.
+            <h3>Mobile</h3>
+            <ol>
+                <li>Locate all controls with a visible text label.
+                    <ul>
+                        <li>For the purposes of this checkpoint, when a text field has placeholder text as its only programmatic label, consider the placeholder value to be the field’s visible label.</li>
+                    </ul>
+                </li>
+                <li>Using the screen reader, place focus on each control.</li>
+                <li>Compare the accessible name of the element to the visible text and verify that the entire visible text label is either:
+                    <ul>
+                        <li>An exact match to the accessible text, <strong>OR</strong></li>
+                        <li>Is contained within the accessible text (in the same order presented visually with no words inserted in between)</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h2>Mobile App Test Procedure</h2>
+            <p>Follow the Mobile Web test procedure.</p>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li>For the purposes of this checkpoint, when a text field has placeholder text as its only programmatic label, consider the placeholder value to be the field’s visible label.</li>
+                <li><a href="{{ checkpoint_data["25030101"].link | prepend: baseurl }}">{{ checkpoint_data["25030101"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["25030102"].link | prepend: baseurl }}">{{ checkpoint_data["25030102"].name }}</a></li>
             </ul>
-        </li>
-        <li>Compare the accessible name of the element to the visible text and verify that the entire visible text label is either:
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
             <ul>
-                <li>An exact match to the accessible text, <strong>OR</strong></li>
-                <li>Is contained within the accessible text (in the same order presented visually with no words inserted in between)</li>
+                <li>Chrome Developer Tools > <a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Accessibility Pane</a></li>
+                <li>Firefox Web Developer Tools > <a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Accessibility Inspector</a></li>
             </ul>
-        </li>
-    </ol>
+        </div>
 
-    <h3>Mobile</h3>
-    <ol>
-        <li>Locate all controls with a visible text label.
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
             <ul>
-                <li>For the purposes of this checkpoint, when a text field has placeholder text as its only programmatic label, consider the placeholder value to be the field’s visible label.</li>
-            </ul>
-        </li>
-        <li>Using the screen reader, place focus on each control.</li>
-        <li>Compare the accessible name of the element to the visible text and verify that the entire visible text label is either:
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G208">G208: Including the text of the visible label as part of the accessible name</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G211">G211: Matching the accessible name to the visible label</a></li>
+                    </ul>
+                </li>
+             </ul>
+
+            <h3>Additional Information</h3>
             <ul>
-                <li>An exact match to the accessible text, <strong>OR</strong></li>
-                <li>Is contained within the accessible text (in the same order presented visually with no words inserted in between)</li>
+                
             </ul>
-        </li>
-    </ol>
-
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the Mobile Web test procedure.</p>
-
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2503.2503[25030101].link | prepend: baseurl }}">{{ site.data.2503.2503[25030101].name }}</a>. (High)</li>
-        <li><a href="{{ site.data.2503.2503[25030102].link | prepend: baseurl }}">{{ site.data.2503.2503[25030102].name }}</a>. (High)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Chrome Developer Tools > <a href="https://developer.chrome.com/docs/devtools/accessibility/reference/#pane">Accessibility Pane</a></li>
-        <li>Firefox Web Developer Tools > <a href="https://firefox-source-docs.mozilla.org/devtools-user/accessibility_inspector/index.html">Accessibility Inspector</a></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G208">G208: Including the text of the visible label as part of the accessible name</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G211">G211: Matching the accessible name to the visible label</a></li>
-            </ul>
-        </li>
-     </ul>
-
-    <h3>Additional Information</h3>
-    <ul>
-        
-    </ul>
-    </div>
-</div>
     {% include checkpoints/2503checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

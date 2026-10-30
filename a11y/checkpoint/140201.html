@@ -2,11 +2,15 @@
 layout: default
 current: "140201"
 criterion: "1402"
+guideline: perceivable
+level: a
+last-modified: October 26, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1402.1402[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1402.1402[page.criterion] %}
+{% assign checkpoint_data = site.data["1402"]["1402"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -15,28 +19,25 @@ criterion: "1402"
         {% include breadcrumbs/bc-checkpoint.html %}
 
         <div class="block">
-            <h2>Overview</h2>
-            <p>Auto-playing content may include sounds, music, and alerts.</p>
-            <p>Because automatically playing audio interferes with the ability to hear a screen reader and may make it difficult to find any mechanism to make it stop, it is highly recommended to avoid automatically playing audio at all. Instead, allow the user to choose to play the audio or not.</p>
-        </div>
-
-        <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The user must be able to control automatic audio that plays for more than 3 seconds.
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The user must be able to control automatic audio that plays for more than 3 seconds.
                     <ul>
                         <li>The user must be able to pause or stop the audio, <strong>OR</strong></li>
                         <li>The user must be able to adjust the volume of the audio independently of the system volume control</li>
                     </ul>
                 </li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The mechanism for pausing, stopping, or controlling the volume must itself pass all applicable Success Criteria.</li> 
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The mechanism for pausing, stopping, or controlling the volume must itself pass all applicable Success Criteria.</li> 
             </ul>
+        </div>
 
-            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want to be able to control automatically playing audio so that I can hear my screen reader.</div>
-
-            <div class="success"><strong>Success:</strong> If you used a screen reader to read the page, when audio automatically played for more than 3 seconds, you would be able to turn it off or adjust the volume independently of the system volume control.</div>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Auto-playing content may include sounds, music, and alerts.</p>
+            <p>Because automatically playing audio interferes with the ability to hear a screen reader and may make it difficult to find any mechanism to make it stop, it is highly recommended to avoid automatically playing audio at all. Instead, allow the user to choose to play the audio or not.</p>
         </div>
 
         <div class="block">
@@ -54,10 +55,10 @@ criterion: "1402"
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the mechanism pass all applicable Success Criteria?</span>
                                             <ul>
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1402.1402[14020102].link | prepend: baseurl }}">{{ site.data.1402.1402[14020102].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14020102"].link | prepend: baseurl }}">{{ checkpoint_data["14020102"].name }}.</a></span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1402.1402[14020101].link | prepend: baseurl }}">{{ site.data.1402.1402[14020101].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14020101"].link | prepend: baseurl }}">{{ checkpoint_data["14020101"].name }}.</a></span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -82,8 +83,8 @@ criterion: "1402"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1402.1402[14020101].link | prepend: baseurl }}">{{ site.data.1402.1402[14020101].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.1402.1402[14020102].link | prepend: baseurl }}">{{ site.data.1402.1402[14020102].name }}.</a> (High)</li>
+                <li><a href="{{ checkpoint_data["14020101"].link | prepend: baseurl }}">{{ checkpoint_data["14020101"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["14020102"].link | prepend: baseurl }}">{{ checkpoint_data["14020102"].name }}.</a></li>
             </ul>
         </div>
 
@@ -123,5 +124,5 @@ criterion: "1402"
         </div>
     </div>
     {% include checkpoints/1402checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

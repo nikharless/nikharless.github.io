@@ -2,59 +2,59 @@
 layout: default
 current: "330701"
 criterion: "3307"
+guideline: understandable
+level: aaa
+last-modified: October 29, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.3307.3307[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.3307.3307[page.criterion] %}
+{% assign checkpoint_data = site.data["3307"]["3307"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Previously entered information that is required to be entered again in the same process is auto-populated or available for selection.</li>
+            </ul>
+        </div>
 
+        <div class="block">
+            <h2>Overview</h2>
+        </div>
 
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Previously entered information that is required to be entered again in the same process is auto-populated or available for selection.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a motor impairment, I want previously entered information to be auto-populated or selectable so that I don't have to manually enter it again.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a user with a motor impairment, when having to re-enter previously entered information, the information would be auto-populated or available for selection.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/js/tree.js"></script>
-    <h3 id="test1">Is the same information required to be re-entered by the user in the same process?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the previously entered or provided information auto-populated?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the previously entered or provided information available for selection?</span>
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/js/tree.js"></script>
+            <h3 id="test1">Is the same information required to be re-entered by the user in the same process?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the previously entered or provided information auto-populated?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is re-entering the information essential (e.g., a memory game)?</span>
+                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the previously entered or provided information available for selection?</span>
                             <ul role="group">
-                                <li role="treeitem" class="na"><span><strong>Yes</strong>; Not applicable</span></li>
-                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the information required to ensure the security of the content (e.g., passwords)?</span>
+                                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is re-entering the information essential (e.g., a memory game)?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="na"><span><strong>Yes</strong>; Not applicable</span></li>
-                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the previous information still valid?</span>
+                                        <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the information required to ensure the security of the content (e.g., passwords)?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3307.3307[33070101].link | prepend: baseurl }}">{{ site.data.3307.3307[33070101].name }}</a>.</span></li>
-                                                <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
+                                                <li role="treeitem" class="na"><span><strong>Yes</strong>; Not applicable</span></li>
+                                                <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the previous information still valid?</span>
+                                                    <ul role="group">
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["33070101"].link | prepend: baseurl }}">{{ checkpoint_data["33070101"].name }}</a>.</span></li>
+                                                        <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
+                                                    </ul>
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -63,58 +63,52 @@ criterion: "3307"
                         </li>
                     </ul>
                 </li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
             </ul>
-        </li>
-        <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
-    </ul>
+        </div>
 
-    </div>
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Locate any instances where previously entered or provided information must be entered again.</li>
+                <li>Verify that there is a way to fill in the repeated information without typing it again.</li>
+            </ol>
 
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>Locate any instances where previously entered or provided information must be entered again.</li>
-        <li>Verify that there is a way to fill in the repeated information without typing it again.</li>
-    </ol>
+            <h2>Mobile App Test Procedure</h2>
+            <p>Follow the procedure for Web.</p>
+        </div>
 
-    <h2>Mobile App Test Procedure</h2>
-    <p>Follow the procedure for Web.</p>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3307.3307[33070101].link | prepend: baseurl }}">{{ site.data.3307.3307[33070101].name }}</a>.</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Screen reader</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>Failures</h2>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G221">G221: Provide data from a previous step in a process</a></li>
+                <li><a href="{{ checkpoint_data["33070101"].link | prepend: baseurl }}">{{ checkpoint_data["33070101"].name }}</a></li>
             </ul>
-        </li>
-     </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-    </ul>
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Screen reader</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G221">G221: Provide data from a previous step in a process</a></li>
+                    </ul>
+                </li>
+             </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/3307checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

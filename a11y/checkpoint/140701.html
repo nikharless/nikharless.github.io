@@ -2,12 +2,15 @@
 layout: default
 current: "140701"
 criterion: "1407"
+guideline: perceivable
+level: aaa
 last-modified: June 30, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1407.1407[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1407.1407[page.criterion] %}
+{% assign checkpoint_data = site.data["1407"]["1407"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -17,16 +20,13 @@ last-modified: June 30, 2026
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> 
                 Audio that is mostly speech must have low or no background sound or the background sound must be able to be turned off.</li>
             </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a user who is hard of hearing, I want dialog to have low or no background sounds so that I can understand the dialog.</div>
-
-            <div class="success"><strong>Success:</strong> If you were hard of hearing, when you listen to audio that is mostly speech, you would be able to understand the dialog.</div>
         </div>
 
         <div class="block">
@@ -47,7 +47,7 @@ last-modified: June 30, 2026
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism to turn off the background sounds?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1407.1407[14070101].link | prepend: baseurl }}">{{ site.data.1407.1407[14070101].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14070101"].link | prepend: baseurl }}">{{ checkpoint_data["14070101"].name }}.</a></span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -79,7 +79,7 @@ last-modified: June 30, 2026
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1407.1407[14070101].link | prepend: baseurl }}">{{ site.data.1407.1407[14070101].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["14070101"].link | prepend: baseurl }}">{{ checkpoint_data["14070101"].name }}.</a></li>
             </ul>
         </div>
 
@@ -113,5 +113,5 @@ last-modified: June 30, 2026
         </div>
     </div>
     {% include checkpoints/1407checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

@@ -2,17 +2,32 @@
 layout: default
 current: "230101"
 criterion: "2301"
+guideline: perceivable
+level: a
+last-modified: October 28, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2301.2301[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2301.2301[page.criterion] %}
+{% assign checkpoint_data = site.data["2301"]["2301"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Content must not flash more than 3 times per second, OR the flash must be below the flash thresholds.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Content should not flash at all.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -27,20 +42,6 @@ criterion: "2301"
         </div>
 
         <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content must not flash more than 3 times per second, OR the flash must be below the flash thresholds.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Content should not flash at all.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a user with a seizure disorder, I want to view content that does not flash so that it does not trigger seizures.</div>
-
-            <div class="success"><strong>Success:</strong> If you had a seizure disorder, when viewing flashing content, you would not have seizures.</div>
-        </div>
-
-        <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
             <h3 id="test1">Is there any flashing content on the page?</h3>
@@ -51,7 +52,7 @@ criterion: "2301"
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the flashing area smaller than 341 x 256 pixels?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2301.2301[23010101].link | prepend: baseurl }}">{{ site.data.2301.2301[23010101].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["23010101"].link | prepend: baseurl }}">{{ checkpoint_data["23010101"].name }}.</a></span></li>
                             </ul>
                         </li>
                     </ul>
@@ -89,7 +90,7 @@ criterion: "2301"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.2301.2301[23010101].link | prepend: baseurl }}">{{ site.data.2301.2301[23010101].name }}.</a> (Critical)</li>
+                <li><a href="{{ checkpoint_data["23010101"].link | prepend: baseurl }}">{{ checkpoint_data["23010101"].name }}.</a></li>
             </ul>
         </div>
 
@@ -119,5 +120,5 @@ criterion: "2301"
         </div>
     </div>
     {% include checkpoints/2301checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

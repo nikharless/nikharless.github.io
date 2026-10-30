@@ -2,97 +2,92 @@
 layout: default
 current: "241201"
 criterion: "2412"
+guideline: perceivable
+level: aaa
+last-modified: October 28, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2412.2412[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2412.2412[page.criterion] %}
+{% assign checkpoint_data = site.data["2412"]["2412"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>Some examples of content that may hide focus include:</p>
-    <ul>
-        <li>Sticky footers</li>
-        <li>Sticky headers</li>
-        <li>Modeless dialogs</li>
-    </ul> 
-
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> No part of a focused element may be hidden by other content.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a sighted keyboard user, I want the focus indictor to not be hidden so that I can see where I'm at on the page.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a sighted keyboard user, when navigate through a page, you could see what element was in focus.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">As you navigate through the page using the keyboard, is any part of the keyboard focus hidden behind other content?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.2412.2412[24120101].link | prepend: baseurl }}">{{ site.data.2412.2412[24120101].name }}</a>.</span></li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>Using only the keyboard, navigate to and interact with all interactive elements and widgets.</li>
-        <li>Verify that the element in focus is never obscured by other author-created content.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2412.2412[24120101].link | prepend: baseurl }}">{{ site.data.2412.2412[24120101].name }}</a>. (Low)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li>Keyboard</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>CSS:
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C43">C43: Using CSS scroll-padding to un-obscure content</a></li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> No part of a focused element may be hidden by other content.</li>
             </ul>
-        </li>
-     </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://knowbility.org/blog/2020/accessible-slide-menus">Knowbility: Let’s Focus on Slide-Out Navigation</a></li>
-    </ul>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Some examples of content that may hide focus include:</p>
+            <ul>
+                <li>Sticky footers</li>
+                <li>Sticky headers</li>
+                <li>Modeless dialogs</li>
+            </ul> 
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">As you navigate through the page using the keyboard, is any part of the keyboard focus hidden behind other content?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["24120101"].link | prepend: baseurl }}">{{ checkpoint_data["24120101"].name }}</a>.</span></li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Using only the keyboard, navigate to and interact with all interactive elements and widgets.</li>
+                <li>Verify that the element in focus is never obscured by other author-created content.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ checkpoint_data["24120101"].link | prepend: baseurl }}">{{ checkpoint_data["24120101"].name }}</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li>Keyboard</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>CSS:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C43">C43: Using CSS scroll-padding to un-obscure content</a></li>
+                    </ul>
+                </li>
+             </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://knowbility.org/blog/2020/accessible-slide-menus">Knowbility: Let’s Focus on Slide-Out Navigation</a></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/2412checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

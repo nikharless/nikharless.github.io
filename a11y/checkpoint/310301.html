@@ -2,115 +2,110 @@
 layout: default
 current: "310301"
 criterion: "3103"
+guideline: perceivable
+level: aaa
+last-modified: October 29, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.3103.3103[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.3103.3103[page.criterion] %}
+{% assign checkpoint_data = site.data["3103"]["3103"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>Unusual words may include:</p>
-    <ul>
-        <li>Idioms</li>
-        <li>Jargon</li>
-        <li>Rare, archaic, or obsolete word usage</li>
-        <li>Words with multiple definitions where only one applies in context</li>
-        <li>New author-created definitions</li>
-        <li>Unfamiliar words from other languages</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Definitions must be provided for unusual words.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a cognitive disability, I want words used in unusual ways to be defined so that I can understand the content.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a user with a cognitive disability, when you encountered words used in unusual ways, you would have definitions provided to help you understand the content.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Does the text contain any words or phrases used in an unusual or restricted way, such as idioms and jargon?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are definitions provided for these words or phrases?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3103.3103[31030101].link | prepend: baseurl }}">{{ site.data.3103.3103[31030101].name }}</a>.</span></li>
-            </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-
-    <ol>
-        <li>Read the text of the page to identify any words or phrases used in an unusual or restricted way.</li>
-        <li>Verify that definitions are provided.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.3103.3103[31030101].link | prepend: baseurl }}">{{ site.data.3103.3103[31030101].name }}</a>. (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Unusual words may include:</p>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G101">G101: Providing the definition of a word or phrase used in an unusual or restricted way</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G55">G55: Linking to definitions</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G62">G62: Providing a glossary</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G70">G70: Providing a function to search an online dictionary</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G112">G112: Using inline definitions</a></li>
+                <li>Idioms</li>
+                <li>Jargon</li>
+                <li>Rare, archaic, or obsolete word usage</li>
+                <li>Words with multiple definitions where only one applies in context</li>
+                <li>New author-created definitions</li>
+                <li>Unfamiliar words from other languages</li>
             </ul>
-        </li>
-        <li>HTML:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H40">H40: Using description lists</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H54">H54: Using the dfn element to identify the defining instance of a word</a></li>
-            </ul>
-        </li>
-     </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-        
-    </ul>
-</div>
-</div>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Definitions must be provided for unusual words.</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Does the text contain any words or phrases used in an unusual or restricted way, such as idioms and jargon?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are definitions provided for these words or phrases?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["31030101"].link | prepend: baseurl }}">{{ checkpoint_data["31030101"].name }}</a>.</span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+
+            <ol>
+                <li>Read the text of the page to identify any words or phrases used in an unusual or restricted way.</li>
+                <li>Verify that definitions are provided.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ checkpoint_data["31030101"].link | prepend: baseurl }}">{{ checkpoint_data["31030101"].name }}</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G101">G101: Providing the definition of a word or phrase used in an unusual or restricted way</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G55">G55: Linking to definitions</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G62">G62: Providing a glossary</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G70">G70: Providing a function to search an online dictionary</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G112">G112: Using inline definitions</a></li>
+                    </ul>
+                </li>
+                <li>HTML:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H40">H40: Using description lists</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H54">H54: Using the dfn element to identify the defining instance of a word</a></li>
+                    </ul>
+                </li>
+             </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
     {% include checkpoints/3103checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

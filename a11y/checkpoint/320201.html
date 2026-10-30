@@ -2,17 +2,32 @@
 layout: default
 current: "320201"
 criterion: "3202"
+guideline: understandable
+level: a
+last-modified: October 29, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.3202.3202[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.3202.3202[page.criterion] %}
+{% assign checkpoint_data = site.data["3202"]["3202"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> When the value or state of a control is changed, it must not result in a change of context unless there is a warning beforehand.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> A submit button should be provided on forms, even if the form can be implicitly submitted.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -34,20 +49,6 @@ criterion: "3202"
         </div>
 
         <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> When the value or state of a control is changed, it must not result in a change of context unless there is a warning beforehand.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> A submit button should be provided on forms, even if the form can be implicitly submitted.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a screen reader user, I want the context to not change unexpectedly so that I know where I am.</div>
-
-            <div class="success"><strong>Success:</strong> If you were a screen reader user, when you change the state or value of a control, the context would not unexpectedly change.</div>
-        </div>
-
-        <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
             <h3 id="test1">Does the page contain form elements?</h3>
@@ -59,17 +60,17 @@ criterion: "3202"
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the focus automatically removed or redirected?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3202.3202[32020101].link | prepend: baseurl }}">{{ site.data.3202.3202[32020101].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["32020101"].link | prepend: baseurl }}">{{ checkpoint_data["32020101"].name }}.</a></span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a new window, tab, or dialog launched?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3202.3202[32020102].link | prepend: baseurl }}">{{ site.data.3202.3202[32020102].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["32020102"].link | prepend: baseurl }}">{{ checkpoint_data["32020102"].name }}.</a></span></li>
                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a significant change of content before the current focus?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3202.3202[32020103].link | prepend: baseurl }}">{{ site.data.3202.3202[32020103].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["32020103"].link | prepend: baseurl }}">{{ checkpoint_data["32020103"].name }}.</a></span></li>
                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is a form automatically submitted?</span>
                                                             <ul role="group">
-                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.3202.3202[32020104].link | prepend: baseurl }}">{{ site.data.3202.3202[32020104].name }}.</a></span></li>
-                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3202.3202[32020105].link | prepend: baseurl }}">{{ site.data.3202.3202[32020105].name }}.</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["32020104"].link | prepend: baseurl }}">{{ checkpoint_data["32020104"].name }}.</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["32020105"].link | prepend: baseurl }}">{{ checkpoint_data["32020105"].name }}.</a></span></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
@@ -108,17 +109,17 @@ criterion: "3202"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.3202.3202[32020101].link | prepend: baseurl }}">{{ site.data.3202.3202[32020101].name }}.</a></li>
-                <li><a href="{{ site.data.3202.3202[32020102].link | prepend: baseurl }}">{{ site.data.3202.3202[32020102].name }}.</a></li>
-                <li><a href="{{ site.data.3202.3202[32020103].link | prepend: baseurl }}">{{ site.data.3202.3202[32020103].name }}.</a></li>
-                <li><a href="{{ site.data.3202.3202[32020104].link | prepend: baseurl }}">{{ site.data.3202.3202[32020104].name }}.</a></li>
-                <li><a href="{{ site.data.3202.3202[32020105].link | prepend: baseurl }}">{{ site.data.3202.3202[32020105].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["32020101"].link | prepend: baseurl }}">{{ checkpoint_data["32020101"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["32020102"].link | prepend: baseurl }}">{{ checkpoint_data["32020102"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["32020103"].link | prepend: baseurl }}">{{ checkpoint_data["32020103"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["32020104"].link | prepend: baseurl }}">{{ checkpoint_data["32020104"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["32020105"].link | prepend: baseurl }}">{{ checkpoint_data["32020105"].name }}</a></li>
             </ul>
 
-            </div>
+        </div>
 
-            <div class="block">
-                <h2>Testing Tools</h2>
+        <div class="block">
+            <h2>Testing Tools</h2>
             <ul>
                 <li>Keyboard</li>
                 <li>Mobile screen reader</li>
@@ -160,5 +161,5 @@ criterion: "3202"
         </div>
     </div>
     {% include checkpoints/3202checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

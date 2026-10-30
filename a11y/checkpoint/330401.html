@@ -2,17 +2,31 @@
 layout: default
 current: "330401"
 criterion: "3304"
+guideline: understandable
+level: aa
+last-modified: October 29, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.3304.3304[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.3304.3304[page.criterion] %}
+{% assign checkpoint_data = site.data["3304"]["3304"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> If the user can carry out legal or financial transactions, submit test responses, or change or delete stored data, the submissions must be reversible, verifiable, or confirmable.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -23,19 +37,6 @@ criterion: "3304"
                 <li>Deleting user profile data</li>
                 <li>Modifying login information</li>
             </ul>
-        </div>
-
-        <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If the user can carry out legal or financial transactions, submit test responses, or change or delete stored data, the submissions must be reversible, verifiable, or confirmable.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to be able to check, confirm, or reverse transactions so that I can avoid serious consequences of mistakes.</div>
-
-            <div class="success"><strong>Success:</strong> If you were a user with a disability, when submitting transactions with serious consequences, you would have the opportunity to check, confirm, or reverse the transaction.</div>
         </div>
 
         <div class="block">
@@ -54,7 +55,7 @@ criterion: "3304"
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the submission reversible?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3304.3304[33040101].link | prepend: baseurl }}">{{ site.data.3304.3304[33040101].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["33040101"].link | prepend: baseurl }}">{{ checkpoint_data["33040101"].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -69,7 +70,7 @@ criterion: "3304"
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the submission reversible?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3304.3304[33040102].link | prepend: baseurl }}">{{ site.data.3304.3304[33040102].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["33040102"].link | prepend: baseurl }}">{{ checkpoint_data["33040102"].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -79,7 +80,7 @@ criterion: "3304"
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user given the opportunity to review and confirm the answers before final submission?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3304.3304[33040103].link | prepend: baseurl }}">{{ site.data.3304.3304[33040103].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["33040103"].link | prepend: baseurl }}">{{ checkpoint_data["33040103"].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                         <li role="treeitem" class="na"><span><strong>No</strong>;</span> This checkpoint is not applicable.</li>
@@ -128,9 +129,9 @@ criterion: "3304"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.3304.3304[33040101].link | prepend: baseurl }}">{{ site.data.3304.3304[33040101].name }}.</a></li>
-                <li><a href="{{ site.data.3304.3304[33040102].link | prepend: baseurl }}">{{ site.data.3304.3304[33040102].name }}.</a></li>
-                <li><a href="{{ site.data.3304.3304[33040103].link | prepend: baseurl }}">{{ site.data.3304.3304[33040103].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["33040101"].link | prepend: baseurl }}">{{ checkpoint_data["33040101"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["33040102"].link | prepend: baseurl }}">{{ checkpoint_data["33040102"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["33040103"].link | prepend: baseurl }}">{{ checkpoint_data["33040103"].name }}</a></li>
             </ul>
         </div>
 
@@ -168,5 +169,5 @@ criterion: "3304"
         </div>
     </div>
     {% include checkpoints/3304checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

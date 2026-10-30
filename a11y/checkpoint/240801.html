@@ -2,107 +2,102 @@
 layout: default
 current: "240801"
 criterion: "2408"
+guideline: perceivable
+level: aaa
+last-modified: October 28, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2408.2408[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2408.2408[page.criterion] %}
+{% assign checkpoint_data = site.data["2408"]["2408"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>Methods of providing location context include:</p>
-    <ul>
-        <li>Site map</li>
-        <li>Breadcrumbs</li>
-        <li>Links to parent web pages</li>
-        <li>Indicators of current location within navigation areas</li>
-        <li>Hierarchy information in page titles</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Information about the user's location within a set of web pages must be available.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a cognitive disability, I want have information about my location within a set of web pages so that I can orient myself.</div>
-
-    <div class="success"><strong>Success:</strong> If you were a user with a cognitive disability, when viewing a web page, you would have information about your location within the set of web pages.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is there information available to indicate the user's current location within the site?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2408.2408[24080101].link | prepend: baseurl }}">{{ site.data.2408.2408[24080101].name }}</a>.</span></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <ol>
-        <li>Check if the web page provides any context for where the page is located within its set of web pages.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2408.2408[24080101].link | prepend: baseurl }}">{{ site.data.2408.2408[24080101].name }}</a>. (Low)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li>General:
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G63">G63: Providing a site map</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G65">G65: Providing a breadcrumb trail</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G127">G127: Identifying a Web page's relationship to a larger collection of Web pages</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G128">G128: Indicating current location within navigation bars</a></li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Information about the user's location within a set of web pages must be available.</li>
             </ul>
-        </li>
-        <li>PDF:
-            <ul>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF14">PDF14: Providing running headers and footers in PDF documents</a></li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF17">PDF17: Specifying consistent page numbering for PDF documents</a></li>
-            </ul>
-        </li>
-    </ul>
+        </div>
 
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://www.standards-schmandards.com/2004/title-text-separators/">Standards Schmandards: The Sound of the Accessible Title Text Separator</a></li>
-    </ul>
+        <div class="block">
+            <h2>Overview</h2>
+            <p>Methods of providing location context include:</p>
+            <ul>
+                <li>Site map</li>
+                <li>Breadcrumbs</li>
+                <li>Links to parent web pages</li>
+                <li>Indicators of current location within navigation areas</li>
+                <li>Hierarchy information in page titles</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is there information available to indicate the user's current location within the site?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24080101"].link | prepend: baseurl }}">{{ checkpoint_data["24080101"].name }}</a>.</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <ol>
+                <li>Check if the web page provides any context for where the page is located within its set of web pages.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ checkpoint_data["24080101"].link | prepend: baseurl }}">{{ checkpoint_data["24080101"].name }}</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li>General:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G63">G63: Providing a site map</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G65">G65: Providing a breadcrumb trail</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G127">G127: Identifying a Web page's relationship to a larger collection of Web pages</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G128">G128: Indicating current location within navigation bars</a></li>
+                    </ul>
+                </li>
+                <li>PDF:
+                    <ul>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF14">PDF14: Providing running headers and footers in PDF documents</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF17">PDF17: Specifying consistent page numbering for PDF documents</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://www.standards-schmandards.com/2004/title-text-separators/">Standards Schmandards: The Sound of the Accessible Title Text Separator</a></li>
+            </ul>
+        </div>
     </div>
-</div>
     {% include checkpoints/2408checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

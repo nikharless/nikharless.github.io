@@ -2,12 +2,15 @@
 layout: default
 current: "130103"
 criterion: "1301"
+guideline: perceivable
+level: a
 last-modified: March 11, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1301.1301[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1301.1301[page.criterion] %}
+{% assign checkpoint_data = site.data["1301"]["1301"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -17,16 +20,16 @@ last-modified: March 11, 2026
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-            <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+            <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Form controls which require a group label to be fully understood must be programmatically associated with the group label.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Form controls which require a group label to be fully understood must be programmatically associated with the group label.</li>
             </ul>
+        </div>
 
-            <div class="userstory"><strong>User Story:</strong> As a blind user, I want grouped form controls to be programmatically associated with the group label so that I know the context of the individual form controls.</div>
-
-            <div class="success"><strong>Success:</strong> If you could not see a group of form controls, when you read each control with a screen reader, you understand the context of the control.</div>
-
+        <div class="block">
+            <h2>Overview</h2>
+            <p></p>
         </div>
 
         <div class="block">
@@ -43,14 +46,14 @@ last-modified: March 11, 2026
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are the controls checkboxes?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010301].link | prepend: baseurl }}">{{ site.data.1301.1301[13010301].name }}</a>.</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["13010301"].link | prepend: baseurl }}">{{ checkpoint_data["13010301"].name }}</a>.</span></li>
                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are the controls radio buttons?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010302].link | prepend: baseurl }}">{{ site.data.1301.1301[13010302].name }}</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["13010302"].link | prepend: baseurl }}">{{ checkpoint_data["13010302"].name }}</a></span></li>
                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are the controls <code>&lt;select&gt;</code> control options?</span>
                                                             <ul role="group">
-                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010304].link | prepend: baseurl }}">{{ site.data.1301.1301[13010304].name }}</a></span></li>
-                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010303].link | prepend: baseurl }}">{{ site.data.1301.1301[13010303].name }}</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["13010304"].link | prepend: baseurl }}">{{ checkpoint_data["13010304"].name }}</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010303"].link | prepend: baseurl }}">{{ checkpoint_data["13010303"].name }}</a></span></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
@@ -59,10 +62,10 @@ last-modified: March 11, 2026
                                         </li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.3302.3302[330201].link | prepend: baseurl }}">{{ site.data.3302.3302[330201].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["330201"].link | prepend: baseurl }}">{{ checkpoint_data["330201"].name }}</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010305].link | prepend: baseurl }}">{{ site.data.1301.1301[13010305].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010305"].link | prepend: baseurl }}">{{ checkpoint_data["13010305"].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -95,11 +98,11 @@ last-modified: March 11, 2026
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1301.1301[13010301].link | prepend: baseurl }}">{{ site.data.1301.1301[13010301].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1301.1301[13010302].link | prepend: baseurl }}">{{ site.data.1301.1301[13010302].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1301.1301[13010303].link | prepend: baseurl }}">{{ site.data.1301.1301[13010303].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1301.1301[13010304].link | prepend: baseurl }}">{{ site.data.1301.1301[13010304].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1301.1301[13010305].link | prepend: baseurl }}">{{ site.data.1301.1301[13010305].name }}</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["13010301"].link | prepend: baseurl }}">{{ checkpoint_data["13010301"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["13010302"].link | prepend: baseurl }}">{{ checkpoint_data["13010302"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["13010303"].link | prepend: baseurl }}">{{ checkpoint_data["13010303"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["13010304"].link | prepend: baseurl }}">{{ checkpoint_data["13010304"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["13010305"].link | prepend: baseurl }}">{{ checkpoint_data["13010305"].name }}</a></li>
             </ul>
         </div>
 
@@ -144,5 +147,5 @@ last-modified: March 11, 2026
         </div>
     </div>
     {% include checkpoints/1301checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

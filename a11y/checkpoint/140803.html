@@ -2,12 +2,15 @@
 layout: default
 current: "140803"
 criterion: "1408"
+guideline: perceivable
+level: aaa
 last-modified: July 6, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1408.1408[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1408.1408[page.criterion] %}
+{% assign checkpoint_data = site.data["1408"]["1408"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -17,16 +20,12 @@ last-modified: July 6, 2026
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p aria-hidden="true"><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> 
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> 
                 Text must not be justified.</li>
             </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a user with a cognitive disability, I want text to be evenly spaced so that I can more easily read the content.</div>
-
-            <div class="success"><strong>Success:</strong> If you had difficulty reading unevenly spaced text, when you encountered blocks of text, you would be able to easily read it.</div>
         </div>
 
         <div class="block">
@@ -41,7 +40,7 @@ last-modified: July 6, 2026
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a mechanism on the page to remove the justification?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1408.1408[14080301].link | prepend: baseurl }}">{{ site.data.1408.1408[14080301].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14080301"].link | prepend: baseurl }}">{{ checkpoint_data["14080301"].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -61,7 +60,7 @@ last-modified: July 6, 2026
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1408.1408[14080301].link | prepend: baseurl }}">{{ site.data.1408.1408[14080301].name }}</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["14080301"].link | prepend: baseurl }}">{{ checkpoint_data["14080301"].name }}</a></li>
             </ul>
         </div>
 
@@ -101,5 +100,5 @@ last-modified: July 6, 2026
         </div>
     </div>
     {% include checkpoints/1408checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

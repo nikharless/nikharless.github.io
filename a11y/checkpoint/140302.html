@@ -2,12 +2,15 @@
 layout: default
 current: "140302"
 criterion: "1403"
+guideline: perceivable
+level: aa
 last-modified: June 29, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1403.1403[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1403.1403[page.criterion] %}
+{% assign checkpoint_data = site.data["1403"]["1403"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -17,17 +20,14 @@ last-modified: June 29, 2026
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Large text, including images of large text, must have a contrast ratio of at least 3:1 with the background.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> If either background or text color is specified, the other must also be specified.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Large synchronized media captions must have a contrast ratio of at least 3:1 with the background, or the player must allow the user to adjust the appearance of captions.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Large text, including images of large text, must have a contrast ratio of at least 3:1 with the background.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> If either background or text color is specified, the other must also be specified.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Large synchronized media captions must have a contrast ratio of at least 3:1 with the background, or the player must allow the user to adjust the appearance of captions.</li>
             </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a user with a visual impairment, I want text to have good contrast so that I can more easily read it.</div>
-
-            <div class="success"><strong>Success:</strong> If you had a visual impairment, when you viewed text, you would be able to see it well enough to read it.</div>
         </div>
 
         <div class="block">
@@ -53,14 +53,14 @@ last-modified: June 29, 2026
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes;</strong> Does the text have a contrast ratio of at least 3:1 with the area of the background with the least contrast?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1403.1403[14030203].link | prepend: baseurl }}">{{ site.data.1403.1403[14030203].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14030203"].link | prepend: baseurl }}">{{ checkpoint_data["14030203"].name }}.</a></span></li>
                             </ul>
                         <li role="treeitem" aria-expanded="false"><span><strong>No;</strong> Is the text placeholder text?</span>
                             <ul role="group">
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the placeholder text have a contrast ratio of at least 3:1 with its background?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes;</strong> PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="{{ site.data.1403.1403[14030204].link | prepend: baseurl }}">{{ site.data.1403.1403[14030204].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="{{ checkpoint_data["14030204"].link | prepend: baseurl }}">{{ checkpoint_data["14030204"].name }}.</a></span></li>
                                     </ul>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the text a link?</span>
                                     <ul role="group">
@@ -69,16 +69,16 @@ last-modified: June 29, 2026
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text in the hover and focus states have a contrast ratio of at least 3:1 with its background?</span>
                                                     <ul role="group">
                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1403.1403[14030202].link | prepend: baseurl }}">{{ site.data.1403.1403[14030202].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14030202"].link | prepend: baseurl }}">{{ checkpoint_data["14030202"].name }}.</a></span></li>
                                                     </ul>
                                                 </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1403.1403[14030201].link | prepend: baseurl }}">{{ site.data.1403.1403[14030201].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14030201"].link | prepend: baseurl }}">{{ checkpoint_data["14030201"].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the text have a contrast ratio of at least 3:1 with its background?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1403.1403[14030201].link | prepend: baseurl }}">{{ site.data.1403.1403[14030201].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14030201"].link | prepend: baseurl }}">{{ checkpoint_data["14030201"].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -164,12 +164,12 @@ last-modified: June 29, 2026
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1403.1403[14030201].link | prepend: baseurl }}">{{ site.data.1403.1403[14030201].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1403.1403[14030202].link | prepend: baseurl }}">{{ site.data.1403.1403[14030202].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1403.1403[14030203].link | prepend: baseurl }}">{{ site.data.1403.1403[14030203].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1403.1403[14030204].link | prepend: baseurl }}">{{ site.data.1403.1403[14030204].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1403.1403[14030205].link | prepend: baseurl }}">{{ site.data.1403.1403[14030205].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1403.1403[14030206].link | prepend: baseurl }}">{{ site.data.1403.1403[14030206].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["14030201"].link | prepend: baseurl }}">{{ checkpoint_data["14030201"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["14030202"].link | prepend: baseurl }}">{{ checkpoint_data["14030202"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["14030203"].link | prepend: baseurl }}">{{ checkpoint_data["14030203"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["14030204"].link | prepend: baseurl }}">{{ checkpoint_data["14030204"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["14030205"].link | prepend: baseurl }}">{{ checkpoint_data["14030205"].name }}.</a></li>
+                <li><a href="{{ checkpoint_data["14030206"].link | prepend: baseurl }}">{{ checkpoint_data["14030206"].name }}.</a></li>
             </ul>
         </div>
 
@@ -229,5 +229,5 @@ last-modified: June 29, 2026
         </div>
     </div>
     {% include checkpoints/1403checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

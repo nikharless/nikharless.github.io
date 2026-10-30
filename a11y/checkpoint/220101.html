@@ -2,17 +2,33 @@
 layout: default
 current: "220101"
 criterion: "2201"
+guideline: perceivable
+level: a
+last-modified: October 26, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2201.2201[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2201.2201[page.criterion] %}
+{% assign checkpoint_data = site.data["2201"]["2201"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The user must be given a means to turn off, adjust, or extend time limits controlled by a script on the page.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The user must be given a means to extend or turn off session time limits.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The user must be given a means to turn off or pause and restart reading time limits or provided a means to view the text in a static area.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -29,26 +45,11 @@ criterion: "2201"
             <p>This checkpoint does not apply to:</p>
             <ul>
                 <li>Content which is available elsewhere on the page in static format</li>
-                <li>Video captions (Test against <a href="{{ site.data.2202.2202[2202].link | prepend: baseurl }}">{{ site.data.2202.2202[2202].name }}.</a>)</li>
-                <li>Carousels (Test against <a href="{{ site.data.2202.2202[2202].link | prepend: baseurl }}">{{ site.data.2202.2202[2202].name }}.</a>)</li>
+                <li>Video captions (Test against <a href="{{ checkpoint_data["2202"].link | prepend: baseurl }}">{{ checkpoint_data["2202"].name }}.</a>)</li>
+                <li>Carousels (Test against <a href="{{ checkpoint_data["2202"].link | prepend: baseurl }}">{{ checkpoint_data["2202"].name }}.</a>)</li>
                 <li>Scrolling text that repeats</li>
                 <li>Non-timed server redirects (e.g., 3xx response codes)</li>
             </ul>
-        </div>
-
-        <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The user must be given a means to turn off, adjust, or extend time limits controlled by a script on the page.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The user must be given a means to extend or turn off session time limits.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> The user must be given a means to turn off or pause and restart reading time limits or provided a means to view the text in a static area.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a user with a disability, I want to be able to adjust time limits so that I have adequate time to complete tasks.</div>
-
-            <div class="success"><strong>Success:</strong> If you had a physical disability, when you encounter a time limit, you are able to adjust it to allow you adequate time to complete the task.</div>
         </div>
 
         <div class="block">
@@ -70,7 +71,7 @@ criterion: "2201"
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a means to turn off the time limit before time expires?</span>
                                                     <ul role="group">
                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2201.2201[22010104].link | prepend: baseurl }}">{{ site.data.2201.2201[22010104].name }}</a>.</span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22010104"].link | prepend: baseurl }}">{{ checkpoint_data["22010104"].name }}</a>.</span></li>
                                                     </ul>
                                                 </li>
                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the time limit controlled by a script on the page?</span>
@@ -88,13 +89,13 @@ criterion: "2201"
                                                                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the user extend the time limit at least ten times?</span>
                                                                                             <ul role="group">
                                                                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2201.2201[22010103].link | prepend: baseurl }}">{{ site.data.2201.2201[22010103].name }}</a>.</span></li>
+                                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22010103"].link | prepend: baseurl }}">{{ checkpoint_data["22010103"].name }}</a>.</span></li>
                                                                                             </ul>
                                                                                         </li>
-                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2201.2201[22010102].link | prepend: baseurl }}">{{ site.data.2201.2201[22010102].name }}</a>.</span></li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22010102"].link | prepend: baseurl }}">{{ checkpoint_data["22010102"].name }}</a>.</span></li>
                                                                                     </ul>
                                                                                 </li>
-                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2201.2201[22010101].link | prepend: baseurl }}">{{ site.data.2201.2201[22010101].name }}</a>.</span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22010101"].link | prepend: baseurl }}">{{ checkpoint_data["22010101"].name }}</a>.</span></li>
                                                                             </ul>
                                                                         </li>
                                                                     </ul>
@@ -112,7 +113,7 @@ criterion: "2201"
                                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a means to view the content in a static area?</span>
                                                                                     <ul role="group">
                                                                                         <li role="treeitem" class="na"><span><strong>Yes</strong>; This checkpoint is not applicable.</span></li>
-                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.2201.2201[22010105].link | prepend: baseurl }}">{{ site.data.2201.2201[22010105].name }}</a>.</span></li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22010105"].link | prepend: baseurl }}">{{ checkpoint_data["22010105"].name }}</a>.</span></li>
                                                                                     </ul>
                                                                                 </li>
                                                                             </ul>
@@ -160,11 +161,11 @@ criterion: "2201"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.2201.2201[22010101].link | prepend: baseurl }}">{{ site.data.2201.2201[22010101].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.2201.2201[22010102].link | prepend: baseurl }}">{{ site.data.2201.2201[22010102].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.2201.2201[22010103].link | prepend: baseurl }}">{{ site.data.2201.2201[22010103].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.2201.2201[22010104].link | prepend: baseurl }}">{{ site.data.2201.2201[22010104].name }}.</a> (High)</li>
-                <li><a href="{{ site.data.2201.2201[22010105].link | prepend: baseurl }}">{{ site.data.2201.2201[22010105].name }}.</a> (High)</li>
+                <li><a href="{{ checkpoint_data["22010101"].link | prepend: baseurl }}">{{ checkpoint_data["22010101"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["22010102"].link | prepend: baseurl }}">{{ checkpoint_data["22010102"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["22010103"].link | prepend: baseurl }}">{{ checkpoint_data["22010103"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["22010104"].link | prepend: baseurl }}">{{ checkpoint_data["22010104"].name }}</a></li>
+                <li><a href="{{ checkpoint_data["22010105"].link | prepend: baseurl }}">{{ checkpoint_data["22010105"].name }}</a></li>
             </ul>
         </div>
 
@@ -210,5 +211,5 @@ criterion: "2201"
         </div>
     </div>
     {% include checkpoints/2201checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

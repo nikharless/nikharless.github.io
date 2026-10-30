@@ -2,100 +2,95 @@
 layout: default
 current: "230201"
 criterion: "2302"
+guideline: perceivable
+level: aaa
+last-modified: October 28, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.2302.2302[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.2302.2302[page.criterion] %}
+{% assign checkpoint_data = site.data["2302"]["2302"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-checkpoint.html %}
+        <h1>{{ currentpg.name }}</h1>
+        {% include breadcrumbs/bc-checkpoint.html %}
 
-    <div class="block">
-        <h2>Overview</h2>
-    <p>This criterion only applies to web content, not flashing caused by user agents. Examples include:</p>
-    <ul>
-        <li>Video</li>
-        <li>Animations</li>
-        <li>Blinking elements</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Basic Requirements and Best Practices</h2>
-    <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-        <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-    <ul>
-        <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Content must not flash more than 3 times per second.</li>
-        <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> Content should not flash at all.</li>
-    </ul>
-
-    <div class="userstory"><strong>User Story:</strong> As a user with a seizure disorder, I want to view content that does not flash so that it does not trigger seizures.</div>
-
-    <div class="success"><strong>Success:</strong> If you had a seizure disorder, when viewing flashing content, you would not have seizures.</div>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Logic</h2>
-    <script src="{{ baseurl }}/assets/js/tree.js"></script>
-    <h3 id="test1">Is there any flashing content on the page?</h3>
-    <ul role="tree" aria-labelledby="test1">
-        <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the content flash more than 3 times per second?</span>
-            <ul role="group">
-                <li role="treeitem" class="pass"><span><strong>Yes</strong>; See <a href="{{ site.data.2302.2302[23020101].link | prepend: baseurl }}">{{ site.data.2302.2302[23020101].name }}</a>.</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; PASS</span></li>
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Content must not flash more than 3 times per second.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Content should not flash at all.</li>
             </ul>
-        </li>
-        <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
-    </ul>
+        </div>
 
+        <div class="block">
+            <h2>Overview</h2>
+            <p>This criterion only applies to web content, not flashing caused by user agents. Examples include:</p>
+            <ul>
+                <li>Video</li>
+                <li>Animations</li>
+                <li>Blinking elements</li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Logic</h2>
+            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <h3 id="test1">Is there any flashing content on the page?</h3>
+            <ul role="tree" aria-labelledby="test1">
+                <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the content flash more than 3 times per second?</span>
+                    <ul role="group">
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["23020101"].link | prepend: baseurl }}">{{ checkpoint_data["23020101"].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; PASS</span></li>
+                    </ul>
+                </li>
+                <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Web Test Procedure</h2>
+            <h3>Desktop and Mobile</h3>
+            <ol>
+                <li>Locate any flashing content.</li>
+                <li>Count the number of flashes per second.</li>
+                <li>Verify that there are no more than 3 flashes per second.</li>
+            </ol>
+        </div>
+
+        <div class="block">
+            <h2>Failures</h2>
+            <ul>
+                <li><a href="{{ checkpoint_data["23020101"].link | prepend: baseurl }}">{{ checkpoint_data["23020101"].name }}</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>Testing Tools</h2>
+            <ul>
+                <li><a href="https://trace.umd.edu/peat/">PEAT (Photosensitive Epilepsy Analysis Tool)</a></li>
+            </ul>
+        </div>
+
+        <div class="block">
+            <h2>References</h2>
+            <h3>WCAG</h3>
+            <ul>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G19">G19: Ensuring that no component of the content flashes more than three times in any 1-second period</a></li>
+            </ul>
+            <h3>Additional Information</h3>
+            <ul>
+                <li><a href="https://trace.umd.edu/photosensitive-epilepsy-analysis-tool-peat-user-guide/">Photosensitive Epilepsy Analysis Tool (PEAT) User Guide</a></li>
+            </ul>
+        </div>
     </div>
-
-    <div class="block">
-        <h2>Web Test Procedure</h2>
-    <h3>Desktop and Mobile</h3>
-    <ol>
-        <li>Locate any flashing content.</li>
-        <li>Count the number of flashes per second.</li>
-        <li>Verify that there are no more than 3 flashes per second.</li>
-    </ol>
-
-    </div>
-
-    <div class="block">
-        <h2>Failures</h2>
-    <ul>
-        <li><a href="{{ site.data.2302.2302[23020101].link | prepend: baseurl }}">{{ site.data.2302.2302[23020101].name }}</a>. (Medium)</li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>Testing Tools</h2>
-    <ul>
-        <li><a href="https://trace.umd.edu/peat/">PEAT (Photosensitive Epilepsy Analysis Tool)</a></li>
-    </ul>
-
-    </div>
-
-    <div class="block">
-        <h2>References</h2>
-    <h3>WCAG</h3>
-    <ul>
-        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
-        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G19">G19: Ensuring that no component of the content flashes more than three times in any 1-second period</a></li>
-    </ul>
-    <h3>Additional Information</h3>
-    <ul>
-        <li><a href="https://trace.umd.edu/photosensitive-epilepsy-analysis-tool-peat-user-guide/">Photosensitive Epilepsy Analysis Tool (PEAT) User Guide</a></li>
-    </ul>
-    </div>
-</div>
     {% include checkpoints/2302checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

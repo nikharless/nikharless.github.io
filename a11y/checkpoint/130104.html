@@ -2,17 +2,36 @@
 layout: default
 current: "130104"
 criterion: "1301"
+guideline: perceivable
+level: a
+last-modified: October 26, 2026
 ---
 {% assign root=site.data.site.root %}
 {% assign currentpg=site.data.1301.1301[page.current] %}
 {% assign baseurl=site.data.site.base %}
 {% assign sc=site.data.1301.1301[page.criterion] %}
+{% assign checkpoint_data = site.data["1301"]["1301"] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
     <div class="cpcontent {{ sc.level }}link">
         <h1>{{ currentpg.name }}</h1>
         {% include breadcrumbs/bc-checkpoint.html %}
+
+        <div class="block">
+            <h2>Basic Requirements and Best Practices</h2>
+            <p><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+            <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
+            <ul>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Visual headings must be marked up programmatically as headings.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Headings must be marked up hierarchically.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Heading markup must not be used on text which does not function as a heading.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Programmatic headings must not be empty.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> The page should be divided up into sections with headings.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> There should be a level 1 heading (<code>&lt;h1&gt;</code>) on every page.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> There should only be one level 1 heading (<code>&lt;h1&gt;</code>) on each page.</li>
+            </ul>
+        </div>
 
         <div class="block">
             <h2>Overview</h2>
@@ -28,25 +47,6 @@ criterion: "1301"
         </div>
 
         <div class="block">
-            <h2>Basic Requirements and Best Practices</h2>
-            <p><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-            <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
-            <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Visual headings must be marked up programmatically as headings.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Headings must be marked up hierarchically.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Heading markup must not be used on text which does not function as a heading.</li>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Programmatic headings must not be empty.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> The page should be divided up into sections with headings.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> There should be a level 1 heading (<code>&lt;h1&gt;</code>) on every page.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> There should only be one level 1 heading (<code>&lt;h1&gt;</code>) on each page.</li>
-            </ul>
-
-            <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want headings to be marked up programmatically so that I can easily navigate the page and understand the structure of the content.</div>
-
-            <div class="success"><strong>Success:</strong> If you could not see the web page, when you use a screen reader, you could navigate by headings and understand the structure of the page.</div>
-        </div>
-
-        <div class="block">
             <h2>Testing Logic</h2>
             <script src="{{ baseurl }}/assets/js/tree.js"></script>
             <h3 id="test1">Are there visible headings on the page?</h3>
@@ -56,10 +56,10 @@ criterion: "1301"
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the headings marked up hierarchically?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010402].link | prepend: baseurl }}">{{ site.data.1301.1301[13010402].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010402"].link | prepend: baseurl }}">{{ checkpoint_data["13010402"].name }}.</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1301.1301[13010401].link | prepend: baseurl }}">{{ site.data.1301.1301[13010401].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010401"].link | prepend: baseurl }}">{{ checkpoint_data["13010401"].name }}.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
@@ -67,7 +67,7 @@ criterion: "1301"
 
             <h3 id="test2">Are there programmatically identified headings that do not function as headings?</h3>
             <ul role="tree" aria-labelledby="test2">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data.1301.1301[13010403].link | prepend: baseurl }}">{{ site.data.1301.1301[13010403].name }}.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["13010403"].link | prepend: baseurl }}">{{ checkpoint_data["13010403"].name }}.</a></span></li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
             </ul>
         </div>
@@ -157,12 +157,12 @@ criterion: "1301"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1301.1301[13010401].link | prepend: baseurl }}">{{ site.data.1301.1301[13010401].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1301.1301[13010402].link | prepend: baseurl }}">{{ site.data.1301.1301[13010402].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1301.1301[13010403].link | prepend: baseurl }}">{{ site.data.1301.1301[13010403].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1301.1301[13010404].link | prepend: baseurl }}">{{ site.data.1301.1301[13010404].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1301.1301[13010405].link | prepend: baseurl }}">{{ site.data.1301.1301[13010405].name }}.</a> (Medium)</li>
-                <li><a href="{{ site.data.1301.1301[13010406].link | prepend: baseurl }}">{{ site.data.1301.1301[13010406].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["13010401"].link | prepend: baseurl }}">{{ checkpoint_data["13010401"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["13010402"].link | prepend: baseurl }}">{{ checkpoint_data["13010402"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["13010403"].link | prepend: baseurl }}">{{ checkpoint_data["13010403"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["13010404"].link | prepend: baseurl }}">{{ checkpoint_data["13010404"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["13010405"].link | prepend: baseurl }}">{{ checkpoint_data["13010405"].name }}.</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["13010406"].link | prepend: baseurl }}">{{ checkpoint_data["13010406"].name }}.</a> (Medium)</li>
             </ul>
         </div>
 
@@ -237,5 +237,5 @@ criterion: "1301"
         </div>
     </div>
     {% include checkpoints/1301checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>

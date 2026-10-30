@@ -2,11 +2,19 @@
 layout: default
 current: "110106"
 criterion: "1101"
+guideline: perceivable
+level: a
+last-modified: October 24, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1101.1101[page.criterion] %}
+{% assign root = site.data.site.root %}
+{% assign baseurl = site.data.site.base %}
+
+{% assign criterion_id = page.criterion | append: "" %}
+{% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
+{% assign current_id = page.current | append: "" %}
+
+{% assign currentpg = checkpoint_data[current_id] %}
+{% assign sc = checkpoint_data[criterion_id] %}
 
 {% include sidebar.html %}
 <div class="content row {{ sc.level }}" id="main">
@@ -16,16 +24,17 @@ criterion: "1101"
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> = Best Practice</p>
+            <p aria-hidden="true">
+                <span role="img" class="fa-solid fa-circle-exclamation requirement" aria-label="Requirement"></span> = Requirement<br />
+                <span role="img" class="fa-solid fa-circle-check best-practice" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
-                <li><span role="img" class="fa-solid fa-circle-exclamation" style="color: #e00000;" aria-label="Requirement"></span> Each audio and video element must have a text alternative which summarizes its purpose.</li>
-                <li><span role="img" class="fa-solid fa-circle-check" style="color: #28a228;" aria-label="Best Practice"></span> If there is text in the audio/video preview, that exact text should be included in the text alternative.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Each audio and video element must have a text alternative which summarizes its purpose.</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> If there is text in the audio/video preview, that exact text should be included in the text alternative.</li>
             </ul>
+        </div>
 
-            <div class="userstory"><strong>User Story:</strong> As a blind screen reader user, I want to hear a summary description of the audio or video content so that I know whether I want to explore it further.</div>
-
-            <div class="success"><strong>Success:</strong> If you could not see the audio or video element, when you read it with a screen reader, you would hear a summary description of the media.</div>
+        <div class="block">
+            <h2>Overview</h2>
         </div>
 
         <div class="block">
@@ -38,20 +47,20 @@ criterion: "1101"
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently summarize the content of the audio?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010605].link | prepend: baseurl }}">{{ site.data.1101.1101[11010605].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010605"].link | prepend: baseurl }}">{{ checkpoint_data["11010605"].name }}</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010601].link | prepend: baseurl }}">{{ site.data.1101.1101[11010601].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010601"].link | prepend: baseurl }}">{{ checkpoint_data["11010601"].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
             </ul>
 
             <h3 id="test2">Does the text alternative for the audio-only content refer to the accompanying transcript?</h3>
-            <p><em>If a transcript does not exist, see <a href="{{ site.data.1201.1201[1201].link | prepend: baseurl }}">{{ site.data.1201.1201[1201].name }}</a>.</em></p>
+            <p><em>If a transcript does not exist, see <a href="{{ checkpoint_data["1201"].link | prepend: baseurl }}">{{ checkpoint_data["1201"].name }}</a>.</em></p>
             <ul role="tree" aria-labelledby="test2">
                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010605].link | prepend: baseurl }}">{{ site.data.1101.1101[11010605].name }}</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010605"].link | prepend: baseurl }}">{{ checkpoint_data["11010605"].name }}</a></span></li>
             </ul>
 
             <h3 id="test3">Is there video content on the page?</h3>
@@ -61,10 +70,10 @@ criterion: "1101"
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text alternative sufficiently summarize the content of the video?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010604].link | prepend: baseurl }}">{{ site.data.1101.1101[11010604].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010604"].link | prepend: baseurl }}">{{ checkpoint_data["11010604"].name }}</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data.1101.1101[11010602].link | prepend: baseurl }}">{{ site.data.1101.1101[11010602].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010602"].link | prepend: baseurl }}">{{ checkpoint_data["11010602"].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -101,11 +110,11 @@ criterion: "1101"
         <div class="block">
             <h2>Failures</h2>
             <ul>
-                <li><a href="{{ site.data.1101.1101[11010601].link | prepend: baseurl }}">{{ site.data.1101.1101[11010601].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1101.1101[11010602].link | prepend: baseurl }}">{{ site.data.1101.1101[11010602].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1101.1101[11010603].link | prepend: baseurl }}">{{ site.data.1101.1101[11010603].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1101.1101[11010604].link | prepend: baseurl }}">{{ site.data.1101.1101[11010604].name }}</a> (Medium)</li>
-                <li><a href="{{ site.data.1101.1101[11010605].link | prepend: baseurl }}">{{ site.data.1101.1101[11010605].name }}</a> (Low)</li>
+                <li><a href="{{ checkpoint_data["11010601"].link | prepend: baseurl }}">{{ checkpoint_data["11010601"].name }}</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["11010602"].link | prepend: baseurl }}">{{ checkpoint_data["11010602"].name }}</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["11010603"].link | prepend: baseurl }}">{{ checkpoint_data["11010603"].name }}</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["11010604"].link | prepend: baseurl }}">{{ checkpoint_data["11010604"].name }}</a> (Medium)</li>
+                <li><a href="{{ checkpoint_data["11010605"].link | prepend: baseurl }}">{{ checkpoint_data["11010605"].name }}</a> (Low)</li>
             </ul>
         </div>
 
@@ -151,5 +160,5 @@ criterion: "1101"
         </div>
     </div>
     {% include checkpoints/1101checkpoints.html %}
-    <script>document.title = "{{ currentpg.name }}";</script>
+    
 </div>
