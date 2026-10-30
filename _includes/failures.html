@@ -1,0 +1,23 @@
+{% assign criterion_id = page.criterion | append: "" %}
+{% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
+{% assign current_id = page.current | append: "" %}
+{% assign expected_length = current_id.size | plus: 2 %}
+
+<div class="block">
+  <h2>Failures</h2>
+  <ul>
+    {% assign checkpoint_ids = checkpoint_data | keys | sort %}
+    {% for id in checkpoint_ids %}
+      {% assign id_string = id | append: "" %}
+      {% assign id_length = id_string.size %}
+      {% assign id_prefix = id_string | slice: 0, current_id.size %}
+
+      {% if id_length == expected_length and id_prefix == current_id %}
+        {% assign item = checkpoint_data[id] %}
+        <li>
+          <a href="{{ item.link | relative_url }}">{{ item.name }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
