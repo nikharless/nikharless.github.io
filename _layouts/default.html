@@ -1,10 +1,16 @@
 <!doctype html>
+{% assign root = site.data.site.root %}
+{% assign baseurl = site.data.site.base %}
+
+{% assign criterion_id = page.criterion | append: "" %}
+{% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
+{% assign current_id = page.current | append: "" %}
+
+{% assign currentpg = checkpoint_data[current_id] %}
+{% assign sc = checkpoint_data[criterion_id] %}
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		{% assign data_folder = page.criterion | append: "" %}
-		{% assign checkpoint_data = site.data[data_folder][data_folder] %}
-		{% assign currentpg = checkpoint_data[page.current] %}
 		<title>{{ currentpg.name | escape }}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="/a11y/assets/css/styles.css">
