@@ -37,8 +37,26 @@
         			
 					{{ content }}
 
-					{% include checkpoints/{{ page.criterion }}checkpoints.html %}
-				
+					{% assign checkpoint_list_key = criterion_id | append: "-checkpoints" %}
+					{% assign checkpoint_list = site.data[criterion_id][checkpoint_list_key] %}
+					{% assign current_url = currentpg.link | relative_url %}
+
+					{% if checkpoint_list %}
+					  <nav class="checkpoints {{ sc.level }}" id="checkpoints" aria-label="Checkpoints">
+					    <h2>Checkpoints</h2>
+					    <ul>
+					      {% for item in checkpoint_list %}
+					        {% assign item_url = item.link | relative_url %}
+					        <li>
+					          <a href="{{ item_url }}"
+					             {% if current_url == item_url %}class="current" aria-current="page"{% endif %}>
+					            {{ item.name }}
+					          </a>
+					        </li>
+					      {% endfor %}
+					    </ul>
+					  </nav>
+					{% endif %}
 				</div>
 			</div>
 			<script src="{{ '/assets/js/accordion.js' | relative_url }}"></script>
