@@ -3,91 +3,82 @@ layout: default
 current: "11010304"
 criterion: "1101"
 checkpoint: "110103"
+last-modified: October 31, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1101.1101[page.criterion] %}
-{% assign cp=site.data.1101.1101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Long text alternatives for complex images convey all the information provided by the image.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Long text alternatives for complex images convey all the information provided by the image.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A complex image has a long text alternative, but it does not convey all the information provided by the image.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Change the long text alternative to include all the information provided by the image.</div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Painting</h3>
-                    <img src="{{ baseurl }}/assets/images/11010303-arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" aria-describedby="description">
-                    <p id="description">An oil painting by Georges Hanna Sabbagh</p>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A complex image has a long text alternative, but it does not convey all the information provided by the image.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Change the long text alternative to include all the information provided by the image.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Painting</h3>
+                <img src="{{ '/assets/images/11010303-arab-mothers.jpg' | relative_url }}" alt="Arab Motherhood by Georges Hanna Sabbagh" aria-describedby="description">
+                <p id="description">An oil painting by Georges Hanna Sabbagh</p>
                     <pre><code>&lt;img src="arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" aria-describedby="description"&gt;
 
 &lt;p id="description"&gt;An oil painting by Georges Hanna Sabbagh&lt;/p&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Painting</h3>
-                    <img src="{{ baseurl }}/assets/images/11010303-arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" aria-describedby="description">
-                    <p id="description">An oil painting of three Egyptian women in white dresses with six naked children in a Mediterranean landscape. The woman on the left is standing, holding a child on her shoulders, and another child stands in front of her pointing off the left side of the canvas. The woman in the center is also standing and holding a child on her shoulders while holding his hand on the top of her head. The woman on the right is sitting cross-legged on the ground breastfeeding a baby while 2 more children play behind her.</p>
-                    <pre><code>&lt;img src="arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" aria-describedby="description"&gt;
-
-&lt;p id="description"&gt;An oil painting of three Egyptian women in white dresses with six naked children in a Mediterranean landscape. The woman on the left is standing, holding a child on her shoulders, and another child stands in front of her pointing off the left side of the canvas. The woman in the center is also standing and holding a child on her shoulders while holding his hand on the top of her head. The woman on the right is sitting cross-legged on the ground breastfeeding a baby while 2 more children play behind her.&lt;/p&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Meaningful non-interactive images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110101"].link | relative_url }}">{{ checkpoint_data["110101"].name }}.</a></li>
-                        <li><strong>Functional images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110102"].link | relative_url }}">{{ checkpoint_data["110102"].name }}.</a></li>
-                        <li><strong>Decorative images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110104"].link | relative_url }}">{{ checkpoint_data["110104"].name }}.</a></li>
-                        <li><strong>CAPTCHA:</strong><br>
-                            File under <a href="{{ checkpoint_data["110105"].link | relative_url }}">{{ checkpoint_data["110105"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F67">F67: Failure of Success Criterion 1.1.1 and 1.2.1 due to providing long descriptions for non-text content that does not serve the same purpose or does not present the same information</a></li>
-                        <li><a href="https://www.w3.org/WAI/tutorials/images/complex/">W3: Complex Images</a></li>
-                        <li><a href="https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81">Writing Alt Text for Data Visualization</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
-    </div>
 
-    
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Painting</h3>
+                <img src="{{ '/assets/images/11010303-arab-mothers.jpg' | relative_url }}" alt="Arab Motherhood by Georges Hanna Sabbagh" aria-describedby="description">
+                <p id="description">An oil painting of three Egyptian women in white dresses with six naked children in a Mediterranean landscape. The woman on the left is standing, holding a child on her shoulders, and another child stands in front of her pointing off the left side of the canvas. The woman in the center is also standing and holding a child on her shoulders while holding his hand on the top of her head. The woman on the right is sitting cross-legged on the ground breastfeeding a baby while 2 more children play behind her.</p>
+                <pre><code>&lt;img src="arab-mothers.jpg" alt="Arab Motherhood by Georges Hanna Sabbagh" aria-describedby="description"&gt;
+
+&lt;p id="description"&gt;An oil painting of three Egyptian women in white dresses with six naked children in a Mediterranean landscape. The woman on the left is standing, holding a child on her shoulders, and another child stands in front of her pointing off the left side of the canvas. The woman in the center is also standing and holding a child on her shoulders while holding his hand on the top of her head. The woman on the right is sitting cross-legged on the ground breastfeeding a baby while 2 more children play behind her.&lt;/p&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Meaningful non-interactive images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110101"].name }}.</a></li>
+                    <li><strong>Functional images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110102"].name }}.</a></li>
+                    <li><strong>Decorative images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110104"].name }}.</a></li>
+                    <li><strong>CAPTCHA:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110105"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F67">F67: Failure of Success Criterion 1.1.1 and 1.2.1 due to providing long descriptions for non-text content that does not serve the same purpose or does not present the same information</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/images/complex/">W3: Complex Images</a></li>
+                    <li><a href="https://medium.com/nightingale/writing-alt-text-for-data-visualization-2a218ef43f81">Writing Alt Text for Data Visualization</a></li>
+                </ul>
+            </div>
+        </div>
