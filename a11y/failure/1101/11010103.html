@@ -3,103 +3,92 @@ layout: default
 current: "11010103"
 criterion: "1101"
 checkpoint: "110101"
+last-modified: October 30, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1101.1101[page.criterion] %}
-{% assign cp=site.data.1101.1101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+        <div class="block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>Meaningful images are not CSS background images.</div>
+        </div>
 
-        <div class="failure">
-    <div class="block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Meaningful images are not CSS background images.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>Meaningful image is a CSS background image.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <ol>
-                        <li>Mark up the image as a regular <code>&lt;img&gt;</code> element.</li>
-                        <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag.</li>
-                        <li>Use CSS to position other elements over the image.</li>
-                    </ol>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Example</h2>
-                <div>
-                    <h3>Background Image with Text</h3>
-                    <p>Assume this background image's text relates to the text content placed on top of it. In this case, the background image is meaningful and needs a text alternative.</p>
-                    <p>If the element with the background image did not have other content inside it, you could use <code>role="img"</code> and <code>aria-label</code> to give it a text alternative. However, in that case, there's no reason not to just use the simpler <code>&lt;img alt="..."&gt;</code> markup.</p>
-                    <p>Since the element does contain other content, it cannot have a text alternative. The screen reader will not read both. The image needs to be marked up as an image, and the block of text as a separate element positioned with CSS.</p>
-                    <div style="width: 649px; height: 427px;">
-                        <img src="/a11y/assets/images/11010203-time-for-change.jpg" alt="Time for Change">
-                        <div id="divText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.</div>
-                    </div>
-        <pre><code>&lt;div style="width: 649px; height: 427px;"&gt;
-    &lt;img src="time-for-change.jpg" alt="Time for Change"&gt;
-    &lt;div id="divText">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.
-    &lt;/div&gt;
-&lt;/div&gt;
+        <div class="block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>Meaningful image is a CSS background image.</div>
+        </div>
 
-#divText {
-  width: 249;
-  margin-right: 400px;
-  margin-top: -350px;
-  padding: 80px 0 20px 20px;
-  color: white;
-  background-color: rgba(0,0,0,0.5);
-}
-</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Functional images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110102"].link | relative_url }}">{{ checkpoint_data["110102"].name }}.</a></li>
-                        <li><strong>Complex images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110103"].link | relative_url }}">{{ checkpoint_data["110103"].name }}.</a></li>
-                        <li><strong>Decorative images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110104"].link | relative_url }}">{{ checkpoint_data["110104"].name }}.</a></li>
-                        <li><strong>CAPTCHA:</strong><br>
-                            File under <a href="{{ checkpoint_data["110105"].link | relative_url }}">{{ checkpoint_data["110105"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F3">Failure of Success Criterion 1.1.1 due to using CSS to include images that convey important information</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+                <ol>
+                    <li>Mark up the image as a regular <code>&lt;img&gt;</code> element.</li>
+                    <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag.</li>
+                    <li>Use CSS to position other elements over the image.</li>
+                </ol>
             </div>
         </div>
-    </div>
 
-    
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Example</h2>
+            <div>
+                <h3>Background Image with Text</h3>
+                <p>Assume this background image's text relates to the text content placed on top of it. In this case, the background image is meaningful and needs a text alternative.</p>
+                <p>If the element with the background image did not have other content inside it, you could use <code>role="img"</code> and <code>aria-label</code> to give it a text alternative. However, in that case, there's no reason not to just use the simpler <code>&lt;img alt="..."&gt;</code> markup.</p>
+                <p>Since the element does contain other content, it cannot have a text alternative. The screen reader will not read both. The image needs to be marked up as an image, and the block of text as a separate element positioned with CSS.</p>
+                <div style="width: 649px; height: 427px;">
+                    <img src="{{ 'assets/images/11010203-time-for-change.jpg' | relative_url }}" alt="Time for Change">
+                    <div id="divText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.</div>
+                </div>
+                <pre><code>&lt;div style="width: 649px; height: 427px;"&gt;
+        &lt;img src="time-for-change.jpg" alt="Time for Change"&gt;
+        &lt;div id="divText">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    #divText {
+      width: 249;
+      margin-right: 400px;
+      margin-top: -350px;
+      padding: 80px 0 20px 20px;
+      color: white;
+      background-color: rgba(0,0,0,0.5);
+    }
+    </code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Functional images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110102"].name }}.</a></li>
+                    <li><strong>Complex images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110103"].name }}.</a></li>
+                    <li><strong>Decorative images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110104"].name }}.</a></li>
+                    <li><strong>CAPTCHA:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110105"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F3">Failure of Success Criterion 1.1.1 due to using CSS to include images that convey important information</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                </ul>
+            </div>
+        </div>
