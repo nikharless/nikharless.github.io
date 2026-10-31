@@ -3,94 +3,85 @@ layout: default
 current: "11010401"
 criterion: "1101"
 checkpoint: "110104"
+last-modified: October 31, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1101.1101[page.criterion] %}
-{% assign cp=site.data.1101.1101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Decorative images using the <code>&lt;img&gt;</code> tag have a null <code>alt</code> attribute.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Decorative images using the <code>&lt;img&gt;</code> tag have a null <code>alt</code> attribute.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A decorative <code>&lt;img&gt;</code> does not have a null <code>alt</code> attribute.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    Add <code>alt=""</code> to the <code>&lt;img&gt;</code> element.</li>
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>JPG Image</h3>
-                    <div style="border: 1px solid black; padding: 5px; overflow: hidden;">
-                        <p><img src="{{ baseurl }}/assets/images/11010401-smiling-child.jpg" style="float: left; padding-right: 20px;"></p>
-                        <p>If your children need health coverage, they may be eligible for the Children's Health Insurance Program (CHIP).</p>
-                        <p>CHIP provides low-cost health coverage to children in families that earn too much money to qualify for Medicaid. In some states, CHIP covers pregnant women. Each state offers CHIP coverage, and works closely with its state Medicaid program.</p>
-                    </div>
-        <pre style="clear: both;"><code>&lt;img src="smiling-child.jpg"&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>JPG Image</h3>
-                    <div style="border: 1px solid black; padding: 5px; overflow: hidden;">
-                        <p><img src="{{ baseurl }}/assets/images/11010401-smiling-child.jpg" alt="" style="float: left; padding-right: 20px;"></p>
-                        <p>If your children need health coverage, they may be eligible for the Children's Health Insurance Program (CHIP).</p>
-                        <p>CHIP provides low-cost health coverage to children in families that earn too much money to qualify for Medicaid. In some states, CHIP covers pregnant women. Each state offers CHIP coverage, and works closely with its state Medicaid program.</p>
-                    </div>
-        <pre style="clear: both;"><code>&lt;img src="smiling-child.jpg" <strong>alt=""</strong>&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Meaningful non-interactive images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110101"].link | relative_url }}">{{ checkpoint_data["110101"].name }}.</a></li>
-                        <li><strong>Functional images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110102"].link | relative_url }}">{{ checkpoint_data["110102"].name }}.</a></li>
-                        <li><strong>Complex images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110103"].link | relative_url }}">{{ checkpoint_data["110103"].name }}.</a></li>
-                        <li><strong>CAPTCHA:</strong><br>
-                            File under <a href="{{ checkpoint_data["110105"].link | relative_url }}">{{ checkpoint_data["110105"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users want decorative images hidden so that the images can be ignored by assistive technology such as screen readers and braille devices.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F38">Failure of Success Criterion 1.1.1 due to not marking up decorative images in HTML in a way that allows assistive technology to ignore them</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H67">Using null alt text and no title attribute on img elements for images that assistive technology should ignore</a></li>
-                        <li><a href="https://www.w3.org/WAI/tutorials/images/decorative/">W3: Decorative Images</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A decorative <code>&lt;img&gt;</code> does not have a null <code>alt</code> attribute.</div>
+    	</div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                Add <code>alt=""</code> to the <code>&lt;img&gt;</code> element.</li>
             </div>
         </div>
-    </div>
 
-    
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>JPG Image</h3>
+                <div style="border: 1px solid black; padding: 5px; overflow: hidden;">
+                    <p><img src="{{ '/assets/images/11010401-smiling-child.jpg' | relative_url" }} style="float: left; padding-right: 20px;"></p>
+                    <p>If your children need health coverage, they may be eligible for the Children's Health Insurance Program (CHIP).</p>
+                    <p>CHIP provides low-cost health coverage to children in families that earn too much money to qualify for Medicaid. In some states, CHIP covers pregnant women. Each state offers CHIP coverage, and works closely with its state Medicaid program.</p>
+                </div>
+                <pre style="clear: both;"><code>&lt;img src="smiling-child.jpg"&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>JPG Image</h3>
+                <div style="border: 1px solid black; padding: 5px; overflow: hidden;">
+                    <p><img src="{{ '/assets/images/11010401-smiling-child.jpg' | relative_url }}" alt="" style="float: left; padding-right: 20px;"></p>
+                    <p>If your children need health coverage, they may be eligible for the Children's Health Insurance Program (CHIP).</p>
+                    <p>CHIP provides low-cost health coverage to children in families that earn too much money to qualify for Medicaid. In some states, CHIP covers pregnant women. Each state offers CHIP coverage, and works closely with its state Medicaid program.</p>
+                </div>
+                <pre style="clear: both;"><code>&lt;img src="smiling-child.jpg" <strong>alt=""</strong>&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Meaningful non-interactive images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110101"].name }}.</a></li>
+                    <li><strong>Functional images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110102"].name }}.</a></li>
+                    <li><strong>Complex images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110103"].name }}.</a></li>
+                    <li><strong>CAPTCHA:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110105"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users want decorative images hidden so that the images can be ignored by assistive technology such as screen readers and braille devices.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F38">Failure of Success Criterion 1.1.1 due to not marking up decorative images in HTML in a way that allows assistive technology to ignore them</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H67">Using null alt text and no title attribute on img elements for images that assistive technology should ignore</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/images/decorative/">W3: Decorative Images</a></li>
+                </ul>
+            </div>
+        </div>
