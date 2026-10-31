@@ -6,11 +6,7 @@ guideline: perceivable
 level: a
 last-modified: October 24, 2026
 ---
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
@@ -43,14 +39,14 @@ last-modified: October 24, 2026
             <p>This is a complex image with a short alt text and a link to the long description below it. Note: this is a sample link and is non-functional.</p>
 
             <figure>
-                <img src="{{ baseurl }}/assets/images/110103-constellations_640.png" height="300" width="300" alt="Historical chart of constellations.">
+                <img src="{{ '/assets/images/110103-constellations_640.png' | relative_url }}" height="300" width="300" alt="Historical chart of constellations.">
                 <figcaption><a href="#">Follow this link for a description of the chart.</a></figcaption>
             </figure>
         </div>
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Are there complex images on the page that cannot be sufficiently described with a short text alternative?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each complex image have a standard short text alternative?</span>
@@ -64,19 +60,19 @@ last-modified: October 24, 2026
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the long text alternative sufficiently describe all visual complexities and relationships conveyed visually?</span>
                                                     <ul role="group">
                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010304"].link | relative_url }}">{{ checkpoint_data["11010304"].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["11010304"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010304"].name }}.</a></span></li>
                                                     </ul>
                                                 </li>
                                                 <li role="treeitem" class="fail"><span><strong>No</strong>; Place the long text description in context or via an adjacent link.</span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010303"].link | relative_url }}">{{ checkpoint_data["11010303"].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["11010303"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010303"].name }}.</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010302"].link | relative_url }}">{{ checkpoint_data["11010302"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["11010302"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010302"].name }}.</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010301"].link | relative_url }}">{{ checkpoint_data["11010301"].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["11010301"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010301"].name }}.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
@@ -126,15 +122,7 @@ last-modified: October 24, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["11010301"].link | relative_url }}">{{ checkpoint_data["11010301"].name }}.</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["11010302"].link | relative_url }}">{{ checkpoint_data["11010302"].name }}.</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["11010303"].link | relative_url }}">{{ checkpoint_data["11010303"].name }}.</a> (High)</li>
-                <li><a href="{{ checkpoint_data["11010304"].link | relative_url }}">{{ checkpoint_data["11010304"].name }}.</a> (Medium)</li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -197,7 +185,3 @@ last-modified: October 24, 2026
                 <li><a href="https://uxdesign.cc/how-to-write-an-image-description-2f30d3bf5546">How to write an image description</a></li>
             </ul>
         </div>
-    </div>
-    
-    
-</div>
