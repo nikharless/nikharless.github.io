@@ -3,48 +3,41 @@ layout: default
 current: "11010205"
 criterion: "1101"
 checkpoint: "110102"
+last-modified: October 31, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1101.1101[page.criterion] %}
-{% assign cp=site.data.1101.1101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Client-side image map <code>&lt;area&gt;</code> elements have an <code>alt</code> attribute with alternative text describing the purpose of the link.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Client-side image map <code>&lt;area&gt;</code> elements have an <code>alt</code> attribute with alternative text describing the purpose of the link.</div>
-        	</div>
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A client-side image map <code>&lt;area&gt;</code> element does not have an <code>alt</code> attribute.</div>
-        	</div>
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Add an <code>alt</code> attribute to each <code>&lt;area&gt;</code> tag in the image map.</li>
-                        <li>Set it to a concise text alternative describing the purpose of the link.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Client-Side Image Map</h3>
-                    <img src="{{ baseurl }}/assets/images/110101-infographic.png" style="max-width: 480px;" alt="Steps of the Process" usemap="#csimapf">
-                    <map id="csimapf" name="csimapf">
-                        <area shape="rect" coords="0,0,168,334" href="#" onclick="alert('Step 1')">
-                        <area shape="rect" coords="168,0,319,334" href="#" onclick="alert('Step 2')">
-                        <area shape="rect" coords="319,0,471,334" href="#" onclick="alert('Step 3')">
-                        <area shape="rect" coords="471,0,640,334" href="#" onclick="alert('Step 4')">
-                    </map>
-                    <pre><code>&lt;img src="infographic.png"
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A client-side image map <code>&lt;area&gt;</code> element does not have an <code>alt</code> attribute.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Add an <code>alt</code> attribute to each <code>&lt;area&gt;</code> tag in the image map.</li>
+                    <li>Set it to a concise text alternative describing the purpose of the link.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Client-Side Image Map</h3>
+                <img src="{{ '/assets/images/110101-infographic.png' | relative_url }}" style="max-width: 480px;" alt="Steps of the Process" usemap="#csimapf">
+                <map id="csimapf" name="csimapf">
+                    <area shape="rect" coords="0,0,168,334" href="#" onclick="alert('Step 1')">
+                    <area shape="rect" coords="168,0,319,334" href="#" onclick="alert('Step 2')">
+                    <area shape="rect" coords="319,0,471,334" href="#" onclick="alert('Step 3')">
+                    <area shape="rect" coords="471,0,640,334" href="#" onclick="alert('Step 4')">
+                </map>
+                <pre><code>&lt;img src="infographic.png"
     alt="Steps of the Process"
     usemap="#csimap"&gt;
 &lt;map id="csimap" name="Sample Image Map"&gt; 
@@ -53,20 +46,21 @@ checkpoint: "110102"
         href="step1.html"&gt;
         ...
 &lt;/map&gt;</code></pre>
-                </div>
             </div>
-    <div class="block">
+        </div>
+
+        <div class="block">
             <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Client-Side Image Map</h3>
-                    <img src="{{ baseurl }}/assets/images/110101-infographic.png" style="max-width: 480px;" alt="Steps of the Process" usemap="#csimap">
-                    <map id="csimap" name="csimap">
-                        <area shape="rect" coords="0,0,168,334" href="#" onclick="alert('Step 1')" alt="Step 1 Details">
-                        <area shape="rect" coords="168,0,319,334" href="#" onclick="alert('Step 2')" alt="Step 2 Details">
-                        <area shape="rect" coords="319,0,471,334" href="#" onclick="alert('Step 3')" alt="Step 3 Details">
-                        <area shape="rect" coords="471,0,640,334" href="#" onclick="alert('Step 4')" alt="Step 4 Details">
-                    </map>
-                    <pre><code>&lt;img src="infographic.png"
+            <div>
+                <h3>Client-Side Image Map</h3>
+                <img src="{{ '/assets/images/110101-infographic.png' | relative_url }}" style="max-width: 480px;" alt="Steps of the Process" usemap="#csimap">
+                <map id="csimap" name="csimap">
+                    <area shape="rect" coords="0,0,168,334" href="#" onclick="alert('Step 1')" alt="Step 1 Details">
+                    <area shape="rect" coords="168,0,319,334" href="#" onclick="alert('Step 2')" alt="Step 2 Details">
+                    <area shape="rect" coords="319,0,471,334" href="#" onclick="alert('Step 3')" alt="Step 3 Details">
+                    <area shape="rect" coords="471,0,640,334" href="#" onclick="alert('Step 4')" alt="Step 4 Details">
+                </map>
+                <pre><code>&lt;img src="infographic.png"
     alt="Steps of the Process"
     usemap="#csimap"&gt;
 &lt;map id="csimap" name="Sample Image Map"&gt; 
@@ -76,48 +70,45 @@ checkpoint: "110102"
         <strong>alt="Step 1 Details"</strong>&gt;
         ...
 &lt;/map&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Server-side image maps:</strong><br>
-                            File under <a href="{{ checkpoint_data["11010206"].link | relative_url }}">{{ checkpoint_data["11010206"].name }}.</a></li>
-                        <li><strong>Meaningful non-interactive images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110101"].link | relative_url }}">{{ checkpoint_data["110101"].name }}.</a></li>
-                        <li><strong>Complex images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110103"].link | relative_url }}">{{ checkpoint_data["110103"].name }}.</a></li>
-                        <li><strong>Decorative images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110104"].link | relative_url }}">{{ checkpoint_data["110104"].name }}.</a></li>
-                        <li><strong>CAPTCHA:</strong><br>
-                            File under <a href="{{ checkpoint_data["110105"].link | relative_url }}">{{ checkpoint_data["110105"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F65">F65: Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H24">H24: Providing text alternatives for the area elements of image maps</a></li>
-                        <li><a href="https://www.w3.org/WAI/tutorials/images/imagemap/">W3: Image Maps</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
-    </div>
 
-    
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Server-side image maps:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["11010206"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010206"].name }}.</a></li>
+                    <li><strong>Meaningful non-interactive images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110101"].name }}.</a></li>
+                    <li><strong>Complex images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110103"].name }}.</a></li>
+                    <li><strong>Decorative images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110104"].name }}.</a></li>
+                    <li><strong>CAPTCHA:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110105"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F65">F65: Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H24">H24: Providing text alternatives for the area elements of image maps</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/images/imagemap/">W3: Image Maps</a></li>
+                </ul>
+            </div>
+        </div>
