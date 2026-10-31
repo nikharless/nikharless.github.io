@@ -3,108 +3,98 @@ layout: default
 current: "11010108"
 criterion: "1101"
 checkpoint: "110101"
+last-modified: October 30, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1101.1101[page.criterion] %}
-{% assign cp=site.data.1101.1101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>When a meaningful image changes dynamically, the text alternative updates to match.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>When a meaningful image changes dynamically, the text alternative updates to match.</div>
-        	</div>
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>When a meaningful image changes dynamically, the text alternative does not update to match.</div>
-        	</div>
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Code the page to update the text alternative whenever the image changes.</div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Example</h2>
-                <div>
-                    <h3>Button Changes Image</h3>
-                    <p>This button uses JavaScript to change the <code>alt</code> value along with the displayed image.</p>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>When a meaningful image changes dynamically, the text alternative does not update to match.</div>
+        </div>
 
-                    <img src="{{ baseurl }}/assets/images/11010207-fish.png" id="myImage" alt="Blue fish" width="320px"><br>
-                    <input type="button" onclick="changeImage()" value="Change Image">
-                    <script>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Code the page to update the text alternative whenever the image changes.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Example</h2>
+            <div>
+                <h3>Button Changes Image</h3>
+                <p>This button uses JavaScript to change the <code>alt</code> value along with the displayed image.</p>
+
+                <img src="{{ '/assets/images/11010207-fish.png' | relative_url }}" id="myImage" alt="Blue fish" width="320px"><br>
+                <input type="button" onclick="changeImage()" value="Change Image">
+                <script>
                       function changeImage() {
                         var image=document.getElementById('myImage');
-                        if (image.src.match("{{ baseurl }}/assets/images/11010207-trout.png")) {
-                          image.src="{{ baseurl }}/assets/images/11010207-fish.png";
+                        if (image.src.match("{{ '/assets/images/11010207-trout.png' | relative_url }}")) {
+                          image.src="{{ '/assets/images/11010207-fish.png' | relative_url }}";
                           image.alt="Blue fish";
                         } else {
-                          image.src="{{ baseurl }}/assets/images/11010207-trout.png";
+                          image.src="{{ '/assets/images/11010207-trout.png' | relative_url }}";
                           image.alt="Trout";
                         }
                       }
-                    </script>
+                </script>
 
-                    <pre><code>&lt;img src="fish.png" id="myImage" alt="Blue fish"&gt;
-    &lt;input type="button" onclick="changeImage()" value="Change Image"&gt;
-    &lt;script&gt;
-        function changeImage() {
-            var image=document.getElementById('myImage');
-            if (image.src.match("trout.png")) {
-                image.src="fish.png";
-                <strong>image.alt="Blue fish";</strong>
-            } else {
-                image.src="trout.png";
-                <strong>image.alt="Trout";</strong>
-            }
+                <pre><code>&lt;img src="fish.png" id="myImage" alt="Blue fish"&gt;
+&lt;input type="button" onclick="changeImage()" value="Change Image"&gt;
+&lt;script&gt;
+    function changeImage() {
+        var image=document.getElementById('myImage');
+        if (image.src.match("trout.png")) {
+            image.src="fish.png";
+            <strong>image.alt="Blue fish";</strong>
+        } else {
+            image.src="trout.png";
+            <strong>image.alt="Trout";</strong>
         }
-    &lt;/script&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Functional images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110102"].link | relative_url }}">{{ checkpoint_data["110102"].name }}.</a></li>
-                        <li><strong>Complex images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110103"].link | relative_url }}">{{ checkpoint_data["110103"].name }}.</a></li>
-                        <li><strong>Decorative images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110104"].link | relative_url }}">{{ checkpoint_data["110104"].name }}.</a></li>
-                        <li><strong>CAPTCHA:</strong><br>
-                            File under <a href="{{ checkpoint_data["110105"].link | relative_url }}">{{ checkpoint_data["110105"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F20">Failure of Success Criterion 1.1.1 and 4.1.2 due to not updating text alternatives when changes to non-text content occur</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G82">G82: Providing a text alternative that identifies the purpose of the non-text content</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
-                    </ul>
-                </div>
+    }
+&lt;/script&gt;</code></pre>
             </div>
         </div>
-    </div>
 
-    
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Functional images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110102"].name }}.</a></li>
+                    <li><strong>Complex images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110103"].name }}.</a></li>
+                    <li><strong>Decorative images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110104"].name }}.</a></li>
+                    <li><strong>CAPTCHA:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110105"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F20">Failure of Success Criterion 1.1.1 and 4.1.2 due to not updating text alternatives when changes to non-text content occur</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G82">G82: Providing a text alternative that identifies the purpose of the non-text content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                </ul>
+            </div>
+        </div>
