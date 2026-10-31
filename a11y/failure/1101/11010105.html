@@ -3,75 +3,64 @@ layout: default
 current: "11010105"
 criterion: "1101"
 checkpoint: "110101"
+last-modified: October 30, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1101.1101[page.criterion] %}
-{% assign cp=site.data.1101.1101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][criterion_id] %}
+        <div class="block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>Meaningful images have a text alternative.</div>
+        </div>
 
-        <div class="failure">
-    <div class="block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Meaningful images have a text alternative.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>Meaningful image does not have a text alternative.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>Add a text alternative.
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Example</h2>
-                <div>
-                    
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Functional images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110102"].link | relative_url }}">{{ checkpoint_data["110102"].name }}.</a></li>
-                        <li><strong>Complex images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110103"].link | relative_url }}">{{ checkpoint_data["110103"].name }}.</a></li>
-                        <li><strong>Decorative images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110104"].link | relative_url }}">{{ checkpoint_data["110104"].name }}.</a></li>
-                        <li><strong>CAPTCHA:</strong><br>
-                            File under <a href="{{ checkpoint_data["110105"].link | relative_url }}">{{ checkpoint_data["110105"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G94">G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>Meaningful image does not have a text alternative.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>Add a text alternative.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Example</h2>
+            <div>
+                        
             </div>
         </div>
-    </div>
 
-    
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Functional images:</strong><br>
+                        File under <a href="{{ checkpoint_data["110102"].link | relative_url }}">{{ checkpoint_data["110102"].name }}.</a></li>
+                    <li><strong>Complex images:</strong><br>
+                        File under <a href="{{ checkpoint_data["110103"].link | relative_url }}">{{ checkpoint_data["110103"].name }}.</a></li>
+                    <li><strong>Decorative images:</strong><br>
+                        File under <a href="{{ checkpoint_data["110104"].link | relative_url }}">{{ checkpoint_data["110104"].name }}.</a></li>
+                    <li><strong>CAPTCHA:</strong><br>
+                        File under <a href="{{ checkpoint_data["110105"].link | relative_url }}">{{ checkpoint_data["110105"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G94">G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                </ul>
+            </div>
+        </div>
