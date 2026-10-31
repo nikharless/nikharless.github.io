@@ -2,11 +2,11 @@
 {% assign root = site.data.site.root %}
 
 {% assign criterion_id = page.criterion | append: "" %}
+{% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
 {% if page.checkpoint %}
 	{% assign checkpoint_id = page.checkpoint | append: "" %}
 	{% assign cp = checkpoint_data[checkpoint_id] %}
 {% endif %}
-{% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
 {% assign current_id = page.current | append: "" %}
 {% assign current_length = current_id | size %}
 
@@ -25,7 +25,7 @@
 	<body>
 		<!-- Header -->
 		  	{% include navigation.html %}
-{{ page.checkpoint }}
+
 		<!-- The flexible grid (content) -->
 		<main id="main-container" class="row">
 			{% include sidebar.html %}
