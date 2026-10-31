@@ -6,72 +6,73 @@ checkpoint: "110102"
 last-modified: October 31, 2026
 ---
 {% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Text alternatives for functional images describe the control's purpose.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A functional image has a text alternative, but it does not describe the control's purpose.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Change the text alternative to describe the control's purpose. The literal description of the image is usually irrelevant.</div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Search Button</h3>
-                    <p><input type="image" name="submit" src="{{ baseurl }}/assets/images/11010107-search.png" alt="magnifying glass"></p>
-                    <pre><code>&lt;input type="image" src="submit.png" <strong>alt="magnifying glass"</strong>&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Search Button</h3>
-                    <p><input type="image" name="submit" src="{{ baseurl }}/assets/images/11010107-search.png" alt="Search"></p>
-                    <pre><code>&lt;input type="image" src="submit.png" <strong>alt="Search"</strong>&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Meaningful non-interactive images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110101"].link | relative_url }}">{{ checkpoint_data["110101"].name }}.</a></li>
-                        <li><strong>Complex images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110103"].link | relative_url }}">{{ checkpoint_data["110103"].name }}.</a></li>
-                        <li><strong>Decorative images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110104"].link | relative_url }}">{{ checkpoint_data["110104"].name }}.</a></li>
-                        <li><strong>CAPTCHA:</strong><br>
-                            File under <a href="{{ checkpoint_data["110105"].link | relative_url }}">{{ checkpoint_data["110105"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F13">Failure of Success Criterion 1.1.1 and 1.4.1 due to having a text alternative that does not include information that is conveyed by color differences in the image</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F30">Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)</a></li>
-                        <li><a href="https://webaim.org/techniques/alttext/">WebAIM: Alternative Text</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Text alternatives for functional images describe the control's purpose.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A functional image has a text alternative, but it does not describe the control's purpose.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Change the text alternative to describe the control's purpose. The literal description of the image is usually irrelevant.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Search Button</h3>
+                <p><input type="image" name="submit" src="{{ '/assets/images/11010107-search.png' | relative_url }}" alt="magnifying glass"></p>
+                <pre><code>&lt;input type="image" src="submit.png" <strong>alt="magnifying glass"</strong>&gt;</code></pre>
             </div>
         </div>
-    </div>
 
-    
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Search Button</h3>
+                <p><input type="image" name="submit" src="{{ '/assets/images/11010107-search.png' | relative_url }}" alt="Search"></p>
+                <pre><code>&lt;input type="image" src="submit.png" <strong>alt="Search"</strong>&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Meaningful non-interactive images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110101"].name }}.</a></li>
+                    <li><strong>Complex images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110103"].name }}.</a></li>
+                    <li><strong>Decorative images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110104"].name }}.</a></li>
+                    <li><strong>CAPTCHA:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110105"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F13">Failure of Success Criterion 1.1.1 and 1.4.1 due to having a text alternative that does not include information that is conveyed by color differences in the image</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F30">Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)</a></li>
+                    <li><a href="https://webaim.org/techniques/alttext/">WebAIM: Alternative Text</a></li>
+                </ul>
+            </div>
+        </div>
