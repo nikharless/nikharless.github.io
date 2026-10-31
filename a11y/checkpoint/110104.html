@@ -6,11 +6,7 @@ guideline: perceivable
 level: a
 last-modified: October 24, 2026
 ---
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
@@ -38,18 +34,18 @@ last-modified: October 24, 2026
             <p>Decorative images serve only an aesthetic purpose, provide no information, and have no functionality.</p>
 
             <h3>Decorative Example</h3>
-            <img src="{{ baseurl }}/assets/images/110104-fake-website.png" alt="Website with a decorative graphic of 3-D shapes">
+            <img src="{{ '/assets/images/110104-fake-website.png' | relative_url }}" alt="Website with a decorative graphic of 3-D shapes">
             <p>The image of 3-D shapes is purely decorative and must be hidden from assistive technology.</p>
 
             <h3>Redundant Example</h3>
-            <img src="{{ baseurl }}/assets/images/110104-bates-pettet.jpg" alt="">
+            <img src="{{ '/assets/images/110104-bates-pettet.jpg' | relative_url }}" alt="">
             <p style="font-weight: bold;">Alan Bates and Joanna Pettet on Broadway in "Poor Richard"</p>
             <p>This image has adjacent text describing its content. Repeating this in the alt text would be redundant, so <code>alt=""</code> is appropriate here.</p>
         </div>
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Are there images on the page which are purely decorative?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the image an <code>&lt;img&gt;</code> element?</span>
@@ -63,7 +59,7 @@ last-modified: October 24, 2026
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the <code>&lt;img&gt;</code> element have an <code>aria-hidden="true"</code> property?</span>
                                                     <ul role="group">
                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010402"].link | relative_url }}">{{ checkpoint_data["11010402"].name }}</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["11010402"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010402"].name }}</a></span></li>
                                                     </ul>
                                                 </li>
                                                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -72,7 +68,7 @@ last-modified: October 24, 2026
                                         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010401"].link | relative_url }}">{{ checkpoint_data["11010401"].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["11010401"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010401"].name }}</a>.</span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the image hidden from assistive technologies?</span>
@@ -80,11 +76,11 @@ last-modified: October 24, 2026
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the image have a text alternative?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["11010403"].link | relative_url }}">{{ checkpoint_data["11010403"].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["11010403"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010403"].name }}</a></span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the image have a <code>title</code> attribute?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["11010405"].link | relative_url }}">{{ checkpoint_data["11010405"].name }}</a></span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010402"].link | relative_url }}">{{ checkpoint_data["11010402"].name }}</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["11010405"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010405"].name }}</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["11010402"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010402"].name }}</a></span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -102,11 +98,11 @@ last-modified: October 24, 2026
                     <ul role="group">
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image have a text alternative?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["11010404"].link | relative_url }}">{{ checkpoint_data["11010404"].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["11010404"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010404"].name }}</a></span></li>
                                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; Test under <a href="{{ checkpoint_data["110102"].link | relative_url }}">{{ checkpoint_data["110102"].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; Test under <a href="{{ site.data[page.criterion][page.criterion]["110102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110102"].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This test is not applicable.</span></li>
@@ -160,17 +156,7 @@ last-modified: October 24, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["11010401"].link | relative_url }}">{{ checkpoint_data["11010401"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["11010402"].link | relative_url }}">{{ checkpoint_data["11010402"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["11010403"].link | relative_url }}">{{ checkpoint_data["11010403"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["11010404"].link | relative_url }}">{{ checkpoint_data["11010404"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["11010405"].link | relative_url }}">{{ checkpoint_data["11010405"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["11010406"].link | relative_url }}">{{ checkpoint_data["11010406"].name }}.</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -232,7 +218,3 @@ last-modified: October 24, 2026
                 <li><a href="https://learn.levelaccess.com/l/487581/2018-04-18/28w4fc">Level Access: Accessibility Basics Webinar Series #3 - Non-text Elements</a> (0:00 - 13:30)</li>
             </ul>
         </div>
-    </div>
-    
-    
-</div>
