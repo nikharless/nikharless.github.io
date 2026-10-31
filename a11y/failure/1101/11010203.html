@@ -3,93 +3,84 @@ layout: default
 current: "11010203"
 criterion: "1101"
 checkpoint: "110102"
+last-modified: October 30, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1101.1101[page.criterion] %}
-{% assign cp=site.data.1101.1101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div><code>&lt;input type="image"&gt;</code> elements have an <code>alt</code> attribute with a text alternative that describes the control's purpose.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div><code>&lt;input type="image"&gt;</code> elements have an <code>alt</code> attribute with a text alternative that describes the control's purpose.</div>
-        	</div>
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>An <code>&lt;input type="image"&gt;</code> control does not have an <code>alt</code> tag with a text alternative.</div>
-        	</div>
-        	<div class="row block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    Add an <code>alt</code> attribute to the <code>&lt;input&gt;</code> tag.
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Submit Button</h3>
-                    <p><input type="image" name="submit" src="{{ baseurl }}/assets/images/11010103-submit.png"></p>
-                    <pre><code>&lt;input type="image" name="submit" src="submit.png"&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Submit Button</h3>
-                    <p><input type="image" name="submit" src="{{ baseurl }}/assets/images/11010103-submit.png" alt="Submit"></p>
-                    <pre><code>&lt;input type="image" name="submit" src="submit.png"
-    <strong>alt="Submit"</strong>&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Functional <code>&lt;img&gt;</code> images:</strong><br>
-                            File under <a href="{{ checkpoint_data["11010201"].link | relative_url }}">{{ checkpoint_data["11010201"].name }}.</a></li>
-                        <li><strong>Functional <code>&lt;svg&gt;</code> images:</strong><br>
-                            File under <a href="{{ checkpoint_data["11010202"].link | relative_url }}">{{ checkpoint_data["11010202"].name }}.</a></li>
-                        <li><strong>Functional CSS background images:</strong><br>
-                            File under <a href="{{ checkpoint_data["11010204"].link | relative_url }}">{{ checkpoint_data["11010204"].name }}.</a></li>
-                        <li><strong>Meaningful non-interactive images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110101"].link | relative_url }}">{{ checkpoint_data["110101"].name }}.</a></li>
-                        <li><strong>Complex images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110103"].link | relative_url }}">{{ checkpoint_data["110103"].name }}.</a></li>
-                        <li><strong>Decorative images:</strong><br>
-                            File under <a href="{{ checkpoint_data["110104"].link | relative_url }}">{{ checkpoint_data["110104"].name }}.</a></li>
-                        <li><strong>CAPTCHA:</strong><br>
-                            File under <a href="{{ checkpoint_data["110105"].link | relative_url }}">{{ checkpoint_data["110105"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F65">F65: Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H36">H37: Using alt attributes on images used as submit buttons</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>An <code>&lt;input type="image"&gt;</code> control does not have an <code>alt</code> tag with a text alternative.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                Add an <code>alt</code> attribute to the <code>&lt;input&gt;</code> tag.
             </div>
         </div>
-    </div>
 
-    
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Submit Button</h3>
+                <p><input type="image" name="submit" src="{{ '/assets/images/11010103-submit.png' | relative_url }}"></p>
+                <pre><code>&lt;input type="image" name="submit" src="submit.png"&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Submit Button</h3>
+                <p><input type="image" name="submit" src="{{ '/assets/images/11010103-submit.png' | relative_url }}" alt="Submit"></p>
+                <pre><code>&lt;input type="image" name="submit" src="submit.png"
+    <strong>alt="Submit"</strong>&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Functional <code>&lt;img&gt;</code> images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["11010201"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010201"].name }}.</a></li>
+                    <li><strong>Functional <code>&lt;svg&gt;</code> images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["11010202"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010202"].name }}.</a></li>
+                    <li><strong>Functional CSS background images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["11010204"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010204"].name }}.</a></li>
+                    <li><strong>Meaningful non-interactive images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110101"].name }}.</a></li>
+                    <li><strong>Complex images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110103"].name }}.</a></li>
+                    <li><strong>Decorative images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110104"].name }}.</a></li>
+                    <li><strong>CAPTCHA:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110105"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for functional images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F65">F65: Failure of Success Criterion 1.1.1 due to omitting the alt attribute or text alternative on img elements, area elements, and input elements of type "image"</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H36">H37: Using alt attributes on images used as submit buttons</a></li>
+                </ul>
+            </div>
+        </div>
