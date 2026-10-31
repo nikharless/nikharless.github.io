@@ -3,28 +3,18 @@ layout: default
 current: "11010208"
 criterion: "1101"
 checkpoint: "110102"
+last-modified: October 31, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1101.1101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1101.1101[page.criterion] %}
-{% assign cp=site.data.1101.1101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
-
-        <div class="failure">
-        	<div class="row block">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        	<div class="block">
         		<h2 class="{{ sc.level }}">Expected Result</h2>
         		<div>Text alternatives for functional images describe the control's purpose.</div>
         	</div>
-        	<div class="row block">
+        	<div class="block">
         		<h2 class="{{ sc.level }}">Actual Result</h2>
         		<div>A functional image has a text alternative, but it does not describe the control's purpose.</div>
         	</div>
-        	<div class="row block">
+        	<div class="block">
         		<h2 class="{{ sc.level }}">Solution</h2>
         		<div>Change the text alternative to describe the control's purpose. The literal description of the image is usually irrelevant.</div>
         	</div>
