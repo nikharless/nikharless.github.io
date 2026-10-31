@@ -6,22 +6,17 @@
 <div class="block">
   <h2>Failures</h2>
   <ul>
-    {% assign checkpoint_ids = checkpoint_data | keys | sort %}
-    {% for id in checkpoint_ids %} 
-    <p>id: {{ id }}</p>
-      {% assign id_string = id | append: "" %}
-    <p>id_string: {{ id_string }}</p>
-      {% assign id_length = id_string.size %}
-    <p>id_length: {{ id_length }}</p>
-      {% assign id_prefix = id_string | slice: 0, current_id.size %}
-    <p>id_prefix: {{ id_prefix }}</p>
 
-      {% if id_length == expected_length and id_prefix == current_id %}
-        {% assign item = checkpoint_data[id] %}
-        <li>
-          <a href="{{ item.link | relative_url }}">{{ item.name }}</a>
-        </li>
-      {% endif %}
-    {% endfor %}
+{% for pair in checkpoint_data %}
+  {% assign checkpoint_id = pair[0] | append: "" %}
+  {% assign item = pair[1] %}
+  {% assign id_length = checkpoint_id.size %}
+  {% assign id_prefix = checkpoint_id | slice: 0, current_id.size %}
+
+  {% if id_length == expected_length and id_prefix == current_id %}
+    <li><a href="{{ item.link | relative_url }}">{{ item.name }}</a></li>
+  {% endif %}
+{% endfor %}
+
   </ul>
 </div>
