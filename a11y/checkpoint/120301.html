@@ -2,15 +2,9 @@
 layout: default
 current: "120301"
 criterion: "1203"
-guideline: perceivable
-level: a
-last-modified: October 24, 2026
+last-modified: October 31, 2026
 ---
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
@@ -34,7 +28,7 @@ last-modified: October 24, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page contain synchronized media (e.g., video with dialogue)?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the synchronized media itself a media alternative for text?</span>
@@ -42,7 +36,7 @@ last-modified: October 24, 2026
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is it clearly labeled as such?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12030104"].link | relative_url }}">{{ checkpoint_data["12030104"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["12030104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["12030104"].name }}.</a></span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No;</strong> Is all of the information in the video track already provided in the audio track?</span>
@@ -53,7 +47,7 @@ last-modified: October 24, 2026
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio description include all the important actions, visuals, and text in the video?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12030102"].link | relative_url }}">{{ checkpoint_data["12030102"].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["12030102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["12030102"].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the video accompanied by a text transcript?</span>
@@ -61,10 +55,10 @@ last-modified: October 24, 2026
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the transcript include all the important actions, visuals, and text in the video?</span>
                                                     <ul role="group">
                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12030103"].link | relative_url }}">{{ checkpoint_data["12030103"].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["12030103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["12030103"].name }}.</a></span></li>
                                                     </ul>
                                                 </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12030101"].link | relative_url }}">{{ checkpoint_data["12030101"].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["12030101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["12030101"].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -91,15 +85,7 @@ last-modified: October 24, 2026
             </ul>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["12030101"].link | relative_url }}">{{ checkpoint_data["12030101"].name }}.</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["12030102"].link | relative_url }}">{{ checkpoint_data["12030102"].name }}.</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["12030103"].link | relative_url }}">{{ checkpoint_data["12030103"].name }}.</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["12030104"].link | relative_url }}">{{ checkpoint_data["12030104"].name }}.</a> (Medium)</li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>References</h2>
@@ -130,7 +116,3 @@ last-modified: October 24, 2026
                 <li><a href="https://ableplayer.github.io/ableplayer/">Able Player</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1203checkpoints.html %}
-    
-</div>
