@@ -3,76 +3,64 @@ layout: default
 current: "12040102"
 criterion: "1204"
 checkpoint: "120401"
-last-modified: March 10, 2026
+last-modified: October 31, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1204.1204[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1204.1204[page.criterion] %}
-{% assign cp=site.data.1204.1204[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Live captions are accurate.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Live captions are accurate.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Live video has captions, but they are inaccurate.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>If you are using automatic captions, switch to manually written ones. Use a professional CART provider, if possible.</div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good">Passing Example<br>
-                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
-                <div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Audio-only:</strong><br>
-                            File under <a href="{{ checkpoint_data["12090103"].link | relative_url }}">{{ checkpoint_data["12090103"].name }}</a>.</a></li>
-                        <li><strong>Prerecorded synchronized media:</strong><br>
-                            File under <a href="{{ checkpoint_data["12020102"].link | relative_url }}">{{ checkpoint_data["12020102"].name }}</a>.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to access the same information provided in the audio portion of the broadcast.</li>
-                        <li><strong>Information processing:</strong> People who have the ability to hear use captions to more easily process the auditory information.</li>
-                        <li><strong>Non-native speakers:</strong> Captions help non-native speakers of the audio language understand the content.</li>
-                        <li><strong>Environment:</strong> Captions allow all users to access the auditory information in environments where sound can't be used or cannot be heard.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G9">G9: Creating captions for live synchronized media</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G87">G87: Providing closed captions</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G93">G93: Providing open (always visible) captions</a></li>
-                        <li><a href="https://www.w3.org/WAI/media/av/captions/">W3: Captions</a></li>
-                        <li><a href="https://www.rev.com/blog/communication-access-real-time-translation">rev: Communication Access Real-Time Translation (CART Captioning) 101</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Live video has captions, but they are inaccurate.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>If you are using automatic captions, switch to manually written ones. Use a professional CART provider, if possible.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1204checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Audio-only:</strong><br>
+                        File under <a href="{{ site.data["1209"]["1209"]["12090103"].link | relative_url }}">{{ site.data["1209"]["1209"]["12090103"].name }}</a>.</a></li>
+                    <li><strong>Prerecorded synchronized media:</strong><br>
+                        File under <a href="{{ site.data["1202"]["1202"]["12020102"].link | relative_url }}">{{ site.data["1202"]["1202"]["12020102"].name }}</a>.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to access the same information provided in the audio portion of the broadcast.</li>
+                    <li><strong>Information processing:</strong> People who have the ability to hear use captions to more easily process the auditory information.</li>
+                    <li><strong>Non-native speakers:</strong> Captions help non-native speakers of the audio language understand the content.</li>
+                    <li><strong>Environment:</strong> Captions allow all users to access the auditory information in environments where sound can't be used or cannot be heard.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G9">G9: Creating captions for live synchronized media</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G87">G87: Providing closed captions</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G93">G93: Providing open (always visible) captions</a></li>
+                    <li><a href="https://www.w3.org/WAI/media/av/captions/">W3: Captions</a></li>
+                    <li><a href="https://www.rev.com/blog/communication-access-real-time-translation">rev: Communication Access Real-Time Translation (CART Captioning) 101</a></li>
+                </ul>
+            </div>
+        </div>
