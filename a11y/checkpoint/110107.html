@@ -4,13 +4,9 @@ current: "110107"
 criterion: "1101"
 guideline: perceivable
 level: a
-last-modified: October 24, 2026
+last-modified: October 31, 2026
 ---
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
@@ -35,14 +31,14 @@ last-modified: October 24, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Are there text look-alike characters on the page?</h3>
             <p><em>For example, the characters <code>U+0033</code> (or <code>&amp;#x0033;</code>) and <code>U+04E0</code> (or <code>&amp;#x04E0</code>) both look like the number "3", but the latter is a letter from the Cyrillic alphabet and will not be read as a "3".</em></p>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the characters have a text alternative which represents their meaning?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010701"].link | relative_url }}">{{ checkpoint_data["11010701"].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["11010701"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010701"].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -53,7 +49,7 @@ last-modified: October 24, 2026
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text image have a text alternative which describes its meaning?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["11010702"].link | relative_url }}">{{ checkpoint_data["11010702"].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["11010702"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010702"].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -69,13 +65,7 @@ last-modified: October 24, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["11010701"].link | relative_url }}">{{ checkpoint_data["11010701"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["11010702"].link | relative_url }}">{{ checkpoint_data["11010702"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -112,7 +102,3 @@ last-modified: October 24, 2026
                 </li>
             </ul>
         </div>
-    </div>
-    
-    
-</div>
