@@ -3,75 +3,65 @@ layout: default
 current: "12020107"
 criterion: "1202"
 checkpoint: "120201"
-last-modified: March 9, 2026
+last-modified: October 31, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1202.1202[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1202.1202[page.criterion] %}
-{% assign cp=site.data.1202.1202[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Synchronized media used as a media alternative to text is clearly labeled as such.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Synchronized media used as a media alternative to text is clearly labeled as such.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A video is an alternative to text on the page, but it is not clearly labeled as such.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Clearly label the video as an alternative to text on the page.</div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Audio-only:</strong><br>
-                            File under <a href="{{ checkpoint_data["12010106"].link | relative_url }}">{{ checkpoint_data["12010106"].name }}</a>.</a></li>
-                        <li><strong>Video-only:</strong><br>
-                            File under <a href="{{ checkpoint_data["12010204"].link | relative_url }}">{{ checkpoint_data["12010204"].name }}</a>.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blind/vision impaired:</strong> People who are blind or vision impaired need to be able to find the video alternative.</li>
-                        <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to find the video alternative.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F74">F74: Failure of Success Criterion 1.2.2 and 1.2.8 due to not labeling a synchronized media alternative to text as an alternative</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A video is an alternative to text on the page, but it is not clearly labeled as such.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Clearly label the video as an alternative to text on the page.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1202checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                    
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Audio-only:</strong><br>
+                        File under <a href="{{ site.data["1201"]["1201"]["12010106"].link | relative_url }}">{{ site.data["1201"]["1201"]["12010106"].name }}</a>.</a></li>
+                    <li><strong>Video-only:</strong><br>
+                        File under <a href="{{ site.data["1201"]["1201"]["12010204"].link | relative_url }}">{{ site.data["1201"]["1201"]["12010204"].name }}</a>.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blind/vision impaired:</strong> People who are blind or vision impaired need to be able to find the video alternative.</li>
+                    <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to find the video alternative.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F74">F74: Failure of Success Criterion 1.2.2 and 1.2.8 due to not labeling a synchronized media alternative to text as an alternative</a></li>
+                </ul>
+            </div>
+        </div>
