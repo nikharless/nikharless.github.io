@@ -2,15 +2,9 @@
 layout: default
 current: "120401"
 criterion: "1204"
-guideline: perceivable
-level: aa
-last-modified: October 24, 2026
+last-modified: October 31, 2026
 ---
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
 
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
@@ -36,7 +30,7 @@ last-modified: October 24, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page contain any live video broadcasts?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the video broadcast have a procedure in place to provide real-time captions?</span>
@@ -52,22 +46,22 @@ last-modified: October 24, 2026
                                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the captions identify the speakers?</span>
                                                             <ul role="group">
                                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12040106"].link | relative_url }}">{{ checkpoint_data["12040106"].name }}.</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["12040106"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["12040106"].name }}.</a></span></li>
                                                             </ul>
                                                         </li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12040105"].link | relative_url }}">{{ checkpoint_data["12040105"].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["12040105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["12040105"].name }}.</a></span></li>
                                                     </ul>
                                                 </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12040104"].link | relative_url }}">{{ checkpoint_data["12040104"].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["12040104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["12040104"].name }}.</a></span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12040103"].link | relative_url }}">{{ checkpoint_data["12040103"].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["12040103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["12040103"].name }}.</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12040102"].link | relative_url }}">{{ checkpoint_data["12040102"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["12040102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["12040102"].name }}.</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["12040101"].link | relative_url }}">{{ checkpoint_data["12040101"].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["12040101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["12040101"].name }}.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
@@ -85,17 +79,7 @@ last-modified: October 24, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["12040101"].link | relative_url }}">{{ checkpoint_data["12040101"].name }}.</a> (High)</li>
-                <li><a href="{{ checkpoint_data["12040102"].link | relative_url }}">{{ checkpoint_data["12040102"].name }}.</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["12040103"].link | relative_url }}">{{ checkpoint_data["12040103"].name }}.</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["12040104"].link | relative_url }}">{{ checkpoint_data["12040104"].name }}.</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["12040105"].link | relative_url }}">{{ checkpoint_data["12040105"].name }}.</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["12040106"].link | relative_url }}">{{ checkpoint_data["12040106"].name }}.</a> (Low)</li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>References</h2>
@@ -127,7 +111,3 @@ last-modified: October 24, 2026
                 <li><a href="https://support.microsoft.com/en-us/office/accessibility-tools-for-microsoft-teams-2d4009e7-1300-4766-87e8-7a217496c3d5?ui=en-us&rs=en-us&ad=us">Microsoft: Accessibility tools for Microsoft Teams</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1204checkpoints.html %}
-    
-</div>
