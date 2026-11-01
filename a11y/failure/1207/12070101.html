@@ -3,61 +3,49 @@ layout: default
 current: "12070101"
 criterion: "1207"
 checkpoint: "120701"
-last-modified: March 10, 2026
+last-modified: November 1, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1207.1207[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1207.1207[page.criterion] %}
-{% assign cp=site.data.1207.1207[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Prerecorded synchronized media that does not have sufficient audio pauses to fit all the important visual information has an extended audio description of the visual content.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Prerecorded synchronized media that does not have sufficient audio pauses to fit all the important visual information has an extended audio description of the visual content.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Prerecorded synchronized media content does not have an audio description for the video portion, but it doesn't contain sufficient pauses in the audio to insert descriptions.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Provide an extended audio description that includes all key visual elements necessary to understand the video content. Pause the video where necessary to fit all the information.</div>
-        	</div>
-    <div class="block">
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Prerecorded synchronized media content does not have an audio description for the video portion, but it doesn't contain sufficient pauses in the audio to insert descriptions.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Provide an extended audio description that includes all key visual elements necessary to understand the video content. Pause the video where necessary to fit all the information.</div>
+        </div>
+
+        <div class="block">
             <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Extended Audio Description</h3>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/4gAIERMr39I?si=iq_Wf6lGn7ktMdox" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blind/vision impaired:</strong> People who are blind or vision impaired need to be able to access the same information provided in the video track.</li>
-                        <li><strong>Information processing:</strong> People who have the ability to see use alternatives to more easily process the visual information.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G8">G8: Providing a movie with extended audio descriptions</a></li>
-                        <li><a href="https://www.w3.org/WAI/media/av/av-content/">Audio Content and Video Content</a></li>
-                    </ul>
-                </div>
+            <div>
+                <h3>Extended Audio Description</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/4gAIERMr39I?si=iq_Wf6lGn7ktMdox" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
-    </div>
 
-     {% include checkpoints/1207checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blind/vision impaired:</strong> People who are blind or vision impaired need to be able to access the same information provided in the video track.</li>
+                    <li><strong>Information processing:</strong> People who have the ability to see use alternatives to more easily process the visual information.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G8">G8: Providing a movie with extended audio descriptions</a></li>
+                    <li><a href="https://www.w3.org/WAI/media/av/av-content/">Audio Content and Video Content</a></li>
+                </ul>
+            </div>
+        </div>
