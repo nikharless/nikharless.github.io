@@ -2,16 +2,10 @@
 layout: default
 current: "1207"
 criterion: "1207"
+last-modified: November 1, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1207.1207[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href="{{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Where pauses in foreground audio are insufficient to allow audio descriptions to convey the sense of the video, extended audio description is provided for all prerecorded video content in synchronized media.</p>
@@ -43,7 +37,3 @@ criterion: "1207"
                 <li><a href="https://dequeuniversity.com/class/multimedia-part-1/toc">Deque University: Multimedia, Animations, and Motion: The Basics</a> (requires account)</li>
             </ul>
         </div>
-    </div>
-     {% include checkpoints/1207checkpoints.html %}
-    
-</div>
