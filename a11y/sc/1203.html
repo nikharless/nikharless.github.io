@@ -2,16 +2,10 @@
 layout: default
 current: "1203"
 criterion: "1203"
+last-modified: October 31, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1203.1203[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
@@ -48,7 +42,3 @@ criterion: "1203"
                 <li><a href="https://www.section508.gov/create/synchronized-media/">Section508.gov: Create Accessible Synchronized Media Content</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1203checkpoints.html %}
-    
-</div>
