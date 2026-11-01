@@ -3,83 +3,72 @@ layout: default
 current: "12010101"
 criterion: "1201"
 checkpoint: "120101"
-last-modified: March 9, 2026
+last-modified: October 31, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1201.1201[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1201.1201[page.criterion] %}
-{% assign cp=site.data.1201.1201[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Prerecorded audio-only content has a text transcript that includes all of the information presented in the audio.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Prerecorded audio-only content has a text transcript that includes all of the information presented in the audio.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Prerecorded audio-only content does not have a text transcript.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Add a text transcript that includes all of the information presented in the audio using one of the following methods:
-                    <ul>
-                        <li>Place the text transcript directly on the page, adjacent to the audio content, <strong>OR</strong></li>
-                        <li>Place the transcript on a separate page, and place a visible link adjacent to the image</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Adjacent Transcript</h3>
-                    <img src="{{ baseurl }}/assets/images/120101-this-am-life.png" style="max-width: 550px; border: 1px solid black;" alt="Screenshot of an episode of the This American Life podcast with the audio player at the top and the transcript underneath">
-                    <p>The text transcript for this audio podcast can be read while the audio is playing.</p>
-                    <p><a href="https://www.thisamericanlife.org/775/transcript">This American Life podcast episode transcript</a></p>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Prerecorded Synchronized Media:</strong><br>
-                            File under <a href="{{ checkpoint_data["12020101"].link | relative_url }}">{{ checkpoint_data["12020101"].name }}.</a></li>
-                        <li><strong>Live Synchronized Media:</strong><br>
-                            File under <a href="{{ checkpoint_data["12040101"].link | relative_url }}">{{ checkpoint_data["12040101"].name }}.</a></li>
-                        <li><strong>Notification Sounds</strong></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to access the same information provided in the audio.</li>
-                        <li><strong>Information processing:</strong> People who have the ability to hear use transcripts to more easily process the auditory information.</li>
-                        <li><strong>Non-native speakers:</strong> Transcripts help non-native speakers of the audio language understand the content.</li>
-                        <li><strong>Environment:</strong> Transcripts allow all users to access the auditory information in environments where sound can't be used or cannot be heard.</li>
-                        <li><strong>SEO:</strong> Transcripts allow search engines to catalog the information contained in audio.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G158">G158: Providing an alternative for time-based media for audio-only content</a></li>
-                        <li><a href="https://www.w3.org/WAI/media/av/transcripts/">W3: Transcripts</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Prerecorded audio-only content does not have a text transcript.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Add a text transcript that includes all of the information presented in the audio using one of the following methods:
+                <ul>
+                    <li>Place the text transcript directly on the page, adjacent to the audio content, <strong>OR</strong></li>
+                    <li>Place the transcript on a separate page, and place a visible link adjacent to the image</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1201checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Adjacent Transcript</h3>
+                <img src="{{ baseurl }}/assets/images/120101-this-am-life.png" style="max-width: 550px; border: 1px solid black;" alt="Screenshot of an episode of the This American Life podcast with the audio player at the top and the transcript underneath">
+                <p>The text transcript for this audio podcast can be read while the audio is playing.</p>
+                <p><a href="https://www.thisamericanlife.org/775/transcript">This American Life podcast episode transcript</a></p>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Prerecorded Synchronized Media:</strong><br>
+                        File under <a href="{{ checkpoint_data["12020101"].link | relative_url }}">{{ checkpoint_data["12020101"].name }}.</a></li>
+                    <li><strong>Live Synchronized Media:</strong><br>
+                        File under <a href="{{ checkpoint_data["12040101"].link | relative_url }}">{{ checkpoint_data["12040101"].name }}.</a></li>
+                    <li><strong>Notification Sounds</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to access the same information provided in the audio.</li>
+                    <li><strong>Information processing:</strong> People who have the ability to hear use transcripts to more easily process the auditory information.</li>
+                    <li><strong>Non-native speakers:</strong> Transcripts help non-native speakers of the audio language understand the content.</li>
+                    <li><strong>Environment:</strong> Transcripts allow all users to access the auditory information in environments where sound can't be used or cannot be heard.</li>
+                    <li><strong>SEO:</strong> Transcripts allow search engines to catalog the information contained in audio.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G158">G158: Providing an alternative for time-based media for audio-only content</a></li>
+                    <li><a href="https://www.w3.org/WAI/media/av/transcripts/">W3: Transcripts</a></li>
+                </ul>
+            </div>
+        </div>
