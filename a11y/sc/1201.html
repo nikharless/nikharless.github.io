@@ -2,18 +2,14 @@
 layout: default
 current: "1201"
 criterion: "1201"
+guideline: perceivable
+level: a
+last-modified: October 31, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1201.1201[page.current] %}
-{% assign sc=currentpg %}
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
 
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-
-        <div class="block">
+        <div class="block sc {{ currentpg.level }}">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>For prerecorded audio-only and prerecorded video-only media, the following are true, except when the audio or video is a media alternative for text and is clearly labeled as such:</p>
 
@@ -52,7 +48,3 @@ criterion: "1201"
                 <li><a href="https://www.section508.gov/create/synchronized-media/creating-accessible-media/">Section508.gov: Creating Accessible Media</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1201checkpoints.html %}
-    
-</div>
