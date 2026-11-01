@@ -3,87 +3,76 @@ layout: default
 current: "12010104"
 criterion: "1201"
 checkpoint: "120101"
-last-modified: March 9, 2026
+last-modified: October 31, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1201.1201[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1201.1201[page.criterion] %}
-{% assign cp=site.data.1201.1201[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Text transcripts include important sounds.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Text transcripts include important sounds.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Prerecorded audio-only content has a text transcript, but it doesn't include important sound effects.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Update the text transcript to include all important sound effects in the audio.</div>
-        	</div>
-    <div class="block">
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Prerecorded audio-only content has a text transcript, but it doesn't include important sound effects.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Update the text transcript to include all important sound effects in the audio.</div>
+        </div>
+
+        <div class="block">
             <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Transcript</h3>
-                    <p><a href="https://www.npr.org/transcripts/809336135">This example from the Invisibilia podcast</a> includes descriptions of significant sounds.</p>
+            <div>
+                <h3>Transcript</h3>
+                <p><a href="https://www.npr.org/transcripts/809336135">This example from the Invisibilia podcast</a> includes descriptions of significant sounds.</p>
 
-                    <div style="border: 1px solid black; padding: 10px;">
-                        <p>ALIX SPIEGEL, HOST:</p>
-                        <p>The human animal averages 60 to 100 heartbeats a minute. To me, that’s like the Goldilocks heartbeat - not too fast, not too slow, just right - you know, as heartbeats go.</p>
-                        <p>(SOUNDBITE OF HUMAN HEART BEATING)</p>
-                        <p>SPIEGEL: So steady and reassuring.</p>
-                        <p>(SOUNDBITE OF HUMAN HEART BEATING)</p>
-                        <p>SPIEGEL: But then there’s the black-capped chickadee, which beats 480 times a minute - a tempo so fast just listening to it makes me feel nervous.</p>
-                        <p>(SOUNDBITE OF BIRD HEART BEATING)</p>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Prerecorded Synchronized Media:</strong><br>
-                            File under <a href="{{ checkpoint_data["12020105"].link | relative_url }}">{{ checkpoint_data["12020105"].name }}.</a></li>
-                        <li><strong>Live Synchronized Media:</strong><br>
-                            File under <a href="{{ checkpoint_data["12040105"].link | relative_url }}">{{ checkpoint_data["12040105"].name }}.</a></li>
-                        <li><strong>Notification Sounds</strong></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to access the same information provided in the audio.</li>
-                        <li><strong>Information processing:</strong> People who have the ability to hear use transcripts to more easily process the auditory information.</li>
-                        <li><strong>Non-native speakers:</strong> Transcripts help non-native speakers of the audio language understand the content.</li>
-                        <li><strong>Environment:</strong> Transcripts allow all users to access the auditory information in environments where sound can't be used or cannot be heard.</li>
-                        <li><strong>SEO:</strong> Transcripts allow search engines to catalog the information contained in audio.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F67">F67: Failure of Success Criterion 1.1.1 and 1.2.1 due to providing long descriptions for non-text content that does not serve the same purpose or does not present the same information</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G158">G158: Providing an alternative for time-based media for audio-only content</a></li>
-                        <li><a href="https://www.w3.org/WAI/media/av/transcripts/">W3: Transcripts</a></li>
-                    </ul>
+                <div style="border: 1px solid black; padding: 10px;">
+                    <p>ALIX SPIEGEL, HOST:</p>
+                    <p>The human animal averages 60 to 100 heartbeats a minute. To me, that’s like the Goldilocks heartbeat - not too fast, not too slow, just right - you know, as heartbeats go.</p>
+                    <p>(SOUNDBITE OF HUMAN HEART BEATING)</p>
+                    <p>SPIEGEL: So steady and reassuring.</p>
+                    <p>(SOUNDBITE OF HUMAN HEART BEATING)</p>
+                    <p>SPIEGEL: But then there’s the black-capped chickadee, which beats 480 times a minute - a tempo so fast just listening to it makes me feel nervous.</p>
+                    <p>(SOUNDBITE OF BIRD HEART BEATING)</p>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1201checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Prerecorded Synchronized Media:</strong><br>
+                        File under <a href="{{ site.data["1202"]["1202"]["12020105"].link | relative_url }}">{{ site.data["1202"]["1202"]["12020105"].name }}.</a></li>
+                    <li><strong>Live Synchronized Media:</strong><br>
+                        File under <a href="{{ site.data["1204"]["1204"]["12040105"].link | relative_url }}">{{ site.data["1204"]["1204"]["12040105"].name }}.</a></li>
+                    <li><strong>Notification Sounds</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Deaf/hard of hearing:</strong> People who are deaf or hard of hearing need to be able to access the same information provided in the audio.</li>
+                    <li><strong>Information processing:</strong> People who have the ability to hear use transcripts to more easily process the auditory information.</li>
+                    <li><strong>Non-native speakers:</strong> Transcripts help non-native speakers of the audio language understand the content.</li>
+                    <li><strong>Environment:</strong> Transcripts allow all users to access the auditory information in environments where sound can't be used or cannot be heard.</li>
+                    <li><strong>SEO:</strong> Transcripts allow search engines to catalog the information contained in audio.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F67">F67: Failure of Success Criterion 1.1.1 and 1.2.1 due to providing long descriptions for non-text content that does not serve the same purpose or does not present the same information</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G158">G158: Providing an alternative for time-based media for audio-only content</a></li>
+                    <li><a href="https://www.w3.org/WAI/media/av/transcripts/">W3: Transcripts</a></li>
+                </ul>
+            </div>
+        </div>
