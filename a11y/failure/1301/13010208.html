@@ -3,70 +3,62 @@ layout: default
 current: "13010208"
 criterion: "1301"
 checkpoint: "130102"
-last-modified: March 11, 2026
+last-modified: November 1, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1301.1301[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1301.1301[page.criterion] %}
-{% assign cp=site.data.1301.1301[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Data cells reference header cells within the same table.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Data cells reference header cells within the same table.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Data cells reference header cells in another table, so screen readers do not read them correctly.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Change the references in the data cells to point to header cells in the same table.</div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Nested Tables</h3>
-                    <p>In this table, the second header row is in a nested table, so even though it has <code>scope="col"</code> it will not associate the data in the parent table with the headers</p>
-                    <div class="example">
-                        <table style="background-color: #ffe9e4; border: solid red 2px;">
-                            <caption>Do not do this.</caption>
-                            <tr>
-                                <td></td>
-                                <th colspan="3">Time</th>
-                            </tr>
-                            <tr>
-                                <th colspan="4" style="padding: 0;">
-                                    <table>
-                                        <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Attempt 1</th>
-                                            <th scope="col">Attempt 2</th>
-                                            <th scope="col">Attempt 3</th>
-                                        </tr>
-                                    </table>
-                                </th>
-                            </tr>
-                            <tr>
-                                <td>John</td>
-                                <td>22 minutes</td>
-                                <td>21 minutes</td>
-                                <td>18 minutes</td>
-                            </tr>
-                            <tr>
-                                <td>Jane</td>
-                                <td>20 minutes</td>
-                                <td>18 minutes</td>
-                                <td>20 minutes</td>
-                            </tr>
-                        </table>
-                        <pre><code>&lt;table&gt;
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Data cells reference header cells in another table, so screen readers do not read them correctly.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Change the references in the data cells to point to header cells in the same table.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Nested Tables</h3>
+                <p>In this table, the second header row is in a nested table, so even though it has <code>scope="col"</code> it will not associate the data in the parent table with the headers</p>
+                <div class="example">
+                    <table style="background-color: #ffe9e4; border: solid red 2px;">
+                        <caption>Do not do this.</caption>
+                        <tr>
+                            <td></td>
+                            <th colspan="3">Time</th>
+                        </tr>
+                        <tr>
+                            <th colspan="4" style="padding: 0;">
+                                <table>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Attempt 1</th>
+                                        <th scope="col">Attempt 2</th>
+                                        <th scope="col">Attempt 3</th>
+                                    </tr>
+                                </table>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>John</td>
+                            <td>22 minutes</td>
+                            <td>21 minutes</td>
+                            <td>18 minutes</td>
+                        </tr>
+                        <tr>
+                            <td>Jane</td>
+                            <td>20 minutes</td>
+                            <td>18 minutes</td>
+                            <td>20 minutes</td>
+                        </tr>
+                    </table>
+                    <pre><code>&lt;table&gt;
     &lt;tr&gt;
         &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;
@@ -90,39 +82,40 @@ last-modified: March 11, 2026
     &lt;/tr&gt;
     ...
 &lt;/table&gt;</code></pre>
-                    </div>
                 </div>
             </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <div class="example">
-                        <table>
-                            <caption>This table has correct header associations.</caption>
-                            <tr>
-                                <th rowspan="2" scope="col">Park</th>
-                                <th colspan="3" scope="colgroup">Information</th>
-                            </tr>
-                            <tr>
-                                <th scope="col">Weather</th>
-                                <th scope="col">Top Feature</th>
-                                <th scope="col">Top Trail</th>
-                            </tr>
-                            <tr>
-                                <td>Denali National Park</td>
-                                <td>Extremely unpredictable; be prepared for rapid changes</td>
-                                <td>Denali - North America's highest peak</td>
-                                <td>West Buttress</td>
-                            </tr>
-                            <tr>
-                                <td>Kenai Fjords National Park</td>
-                                <td>Can have quickly changing and unpredictable weather; waterproof and layered clothing is advisable</td>
-                                <td>Drive Exit Glacier Road</td>
-                                <td>Harding Icefield Trail</td>
-                            </tr>
-                        </table>
-                        <p><a href="https://ourparks.org/">Source</a></p>
-                        <pre><code>&lt;table&gt;
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <div class="example">
+                    <table>
+                        <caption>This table has correct header associations.</caption>
+                        <tr>
+                            <th rowspan="2" scope="col">Park</th>
+                            <th colspan="3" scope="colgroup">Information</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Weather</th>
+                            <th scope="col">Top Feature</th>
+                            <th scope="col">Top Trail</th>
+                        </tr>
+                        <tr>
+                            <td>Denali National Park</td>
+                            <td>Extremely unpredictable; be prepared for rapid changes</td>
+                            <td>Denali - North America's highest peak</td>
+                            <td>West Buttress</td>
+                        </tr>
+                        <tr>
+                            <td>Kenai Fjords National Park</td>
+                            <td>Can have quickly changing and unpredictable weather; waterproof and layered clothing is advisable</td>
+                            <td>Drive Exit Glacier Road</td>
+                            <td>Harding Icefield Trail</td>
+                        </tr>
+                    </table>
+                    <p><a href="https://ourparks.org/">Source</a></p>
+                    <pre><code>&lt;table&gt;
     &lt;tr&gt;
         &lt;th rowspan="2" <strong>scope="col"</strong>&gt;Park&lt;/th&gt;
         &lt;th colspan="3" <strong>scope="colgroup"</strong>&gt;Information&lt;/th&gt;
@@ -145,41 +138,38 @@ last-modified: March 11, 2026
         &lt;td&gt;Harding Icefield Trail&lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Layout tables</strong></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Table relationships are visible at a glance for sighted users. Assistive technology users need to get this relationship information from the programmatic structure and to be able to easily navigate the data.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F91">F91: Failure of Success Criterion 1.3.1 for not correctly marking up table headers</a></li>
-                        <li><a href="https://dequeuniversity.com/checklists/web/tables">Deque: Tables checklist</a></li>
-                        <li><a href="https://www.w3.org/WAI/tutorials/tables/multi-level/">W3: Tables with Multi-Level Headers</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced#nesting_tables">MDN: Nesting Tables</a></li>
-                        <li><a href="https://allabouthtml.com/guide-to-tables-in-html5-creating-structured-data/">All About HTML: A Comprehensive Guide to Tables in HTML5</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Layout tables</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Table relationships are visible at a glance for sighted users. Assistive technology users need to get this relationship information from the programmatic structure and to be able to easily navigate the data.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F91">F91: Failure of Success Criterion 1.3.1 for not correctly marking up table headers</a></li>
+                    <li><a href="https://dequeuniversity.com/checklists/web/tables">Deque: Tables checklist</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/tables/multi-level/">W3: Tables with Multi-Level Headers</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced#nesting_tables">MDN: Nesting Tables</a></li>
+                    <li><a href="https://allabouthtml.com/guide-to-tables-in-html5-creating-structured-data/">All About HTML: A Comprehensive Guide to Tables in HTML5</a></li>
+                </ul>
+            </div>
+        </div>
