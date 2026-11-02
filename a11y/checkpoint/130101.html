@@ -2,16 +2,9 @@
 layout: default
 current: "130101"
 criterion: "1301"
-guideline: perceivable
-level: a
-last-modified: March 10, 2026
+last-modified: November 1, 2026
 ---
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true"><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
@@ -36,7 +29,7 @@ last-modified: March 10, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Is the page visually divided into distinct regions such as header, footer, navigation, and main content?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the essential regions (header, footer, navigation, and main) marked up as landmarks?</span>
@@ -51,43 +44,33 @@ last-modified: March 10, 2026
                                                     <ul role="group">
                                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the landmark a header or footer?</span>
                                                             <ul role="group">
-                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["13010105"].link | relative_url }}">{{ checkpoint_data["13010105"].name }}.</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010105"].name }}.</a></span></li>
                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does each instance have a unique name?</span>
                                                                     <ul role="group">
                                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010106"].link | relative_url }}">{{ checkpoint_data["13010106"].name }}.</a></span></li>
+                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010106"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010106"].name }}.</a></span></li>
                                                                     </ul>
                                                                 </li>
                                                             </ul>
                                                         </li>
                                                         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                                     </ul>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010104"].link | relative_url }}">{{ checkpoint_data["13010104"].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010104"].name }}.</a></span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010103"].link | relative_url }}">{{ checkpoint_data["13010103"].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010103"].name }}.</a></span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010102"].link | relative_url }}">{{ checkpoint_data["13010102"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010102"].name }}.</a></span></li>
                             </ul>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010101"].link | relative_url }}">{{ checkpoint_data["13010101"].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010101"].name }}.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable.</span></li>
             </ul>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["13010101"].link | relative_url }}">{{ checkpoint_data["13010101"].name }}</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["13010102"].link | relative_url }}">{{ checkpoint_data["13010102"].name }}</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["13010103"].link | relative_url }}">{{ checkpoint_data["13010103"].name }}</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["13010104"].link | relative_url }}">{{ checkpoint_data["13010104"].name }}</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["13010105"].link | relative_url }}">{{ checkpoint_data["13010105"].name }}</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["13010106"].link | relative_url }}">{{ checkpoint_data["13010106"].name }}</a> (Medium)</li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -124,7 +107,3 @@ last-modified: March 10, 2026
                 <li><a href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/">W3: Landmark Regions</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>

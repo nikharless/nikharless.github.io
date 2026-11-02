@@ -2,15 +2,10 @@
 layout: default
 current: "1301"
 criterion: "1301"
+last-modified: November 1, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1301.1301[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href="{{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.</p>
@@ -69,7 +64,3 @@ criterion: "1301"
             <li><a href="https://www.w3schools.com/html/html_tables.asp">W3: HTML Tables</a></li>
         </ul>
         </div>
-    </div>
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>
