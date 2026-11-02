@@ -4,59 +4,50 @@ current: "13010201"
 criterion: "1301"
 checkpoint: "130102"
 css: table
-last-modified: March 10, 2026
+last-modified: November 1, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1301.1301[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1301.1301[page.criterion] %}
-{% assign cp=site.data.1301.1301[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Data tables are identified programmatically as tables.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Data tables are identified programmatically as tables.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A data table is not identified programmatically as a table.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Mark up data tables as programmatic tables.
-                    <ul>
-                        <li>Use native HTML tables, preferred (e.g., <code>&lt;table&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code>), <strong>OR</strong></li>
-                        <li>Use ARIA to assign table roles (e.g., <code>role="table"</code>, <code>role="columnheader"</code>, <code>role="rowheader"</code>, and <code>role="cell"</code>).</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad">Failing Example<br>
-                    <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
-                <div>
-                    <h3>Data Table without Table Markup</h3>
-                    <div class="example">
-                        <div class="divTable">
-                            <div class="divTableRow">
-                                <div class="divTableHead">Park</div>
-                                <div class="divTableHead">Top Feature</div>
-                            </div>
-                            <div class="divTableRow">
-                                <div class="divTableCell">Denali National Park</div>
-                                <div class="divTableCell">Denali - North America's highest peak</div>
-                            </div>
-                            <div class="divTableRow">
-                                <div class="divTableCell">Great Smoky Mountains National Park</div>
-                                <div class="divTableCell">Clingmans Dome</div>
-                            </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A data table is not identified programmatically as a table.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Mark up data tables as programmatic tables.
+                <ul>
+                    <li>Use native HTML tables, preferred (e.g., <code>&lt;table&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code>), <strong>OR</strong></li>
+                    <li>Use ARIA to assign table roles (e.g., <code>role="table"</code>, <code>role="columnheader"</code>, <code>role="rowheader"</code>, and <code>role="cell"</code>).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Data Table without Table Markup</h3>
+                <div class="example">
+                    <div class="divTable">
+                        <div class="divTableRow">
+                            <div class="divTableHead">Park</div>
+                            <div class="divTableHead">Top Feature</div>
                         </div>
-                        <p><a href="https://ourparks.org/">Source</a></p>
-                        <pre><code>&lt;div class="divTable"&gt;
+                        <div class="divTableRow">
+                            <div class="divTableCell">Denali National Park</div>
+                            <div class="divTableCell">Denali - North America's highest peak</div>
+                        </div>
+                        <div class="divTableRow">
+                            <div class="divTableCell">Great Smoky Mountains National Park</div>
+                            <div class="divTableCell">Clingmans Dome</div>
+                        </div>
+                    </div>
+                    <p><a href="https://ourparks.org/">Source</a></p>
+                    <pre><code>&lt;div class="divTable"&gt;
     &lt;div class="divTableRow"&gt;
         &lt;div class="divTableHead"&gt;Park&lt;/div&gt;
         &lt;div class="divTableHead"&gt;Top Feature&lt;/div&gt;
@@ -70,31 +61,31 @@ last-modified: March 10, 2026
         &lt;div class="divTableCell"&gt;Clingmans Dome&lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
                 </div>
             </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good">Passing Examples<br>
-                    <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
-                <div>
-                    <h3>Native HTML (preferred)</h3>
-                    <div class="example">
-                        <table>
-                            <tr>
-                                <th>Park</th>
-                                <th>Top Feature</th>
-                            </tr>
-                            <tr>
-                                <td>Denali National Park</td>
-                                <td>Denali - North America's highest peak</td>
-                            </tr>
-                            <tr>
-                                <td>Great Smoky Mountains National Park</td>
-                                <td>Clingmans Dome</td>
-                            </tr>
-                        </table>
-                        <p><a href="https://ourparks.org/">Source</a></p>
-                        <pre><code>&lt;table&gt;
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Native HTML (preferred)</h3>
+                <div class="example">
+                    <table>
+                        <tr>
+                            <th>Park</th>
+                            <th>Top Feature</th>
+                        </tr>
+                        <tr>
+                            <td>Denali National Park</td>
+                            <td>Denali - North America's highest peak</td>
+                        </tr>
+                        <tr>
+                            <td>Great Smoky Mountains National Park</td>
+                            <td>Clingmans Dome</td>
+                        </tr>
+                    </table>
+                    <p><a href="https://ourparks.org/">Source</a></p>
+                    <pre><code>&lt;table&gt;
     &lt;tr&gt;
         &lt;th&gt;Park&lt;/th&gt;
         &lt;th&gt;Top Feature&lt;/th&gt;
@@ -108,25 +99,25 @@ last-modified: March 10, 2026
         &lt;td&gt;Clingmans Dome&lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;</code></pre>
-                    </div>
-                    <h3>ARIA</h3>
-                    <div class="example">
-                        <div role="table" aria-label="National Parks" class="divTable">
-                            <div role="row" class="divTableRow">
-                                <span role="columnheader" class="divTableHead">Park</span>
-                                <span role="columnheader" class="divTableHead">Top Feature</span>
-                            </div>
-                            <div role="row" class="divTableRow">
-                                <span role="cell" class="divTableCell">Denali National Park</span>
-                                <span role="cell" class="divTableCell">Denali - North America's highest peak</span>
-                            </div>
-                            <div role="row" class="divTableRow">
-                                <span role="cell" class="divTableCell">Great Smoky Mountains National Park</span>
-                                <span role="cell" class="divTableCell">Clingmans Dome</span>
-                            </div>
+                </div>
+                <h3>ARIA</h3>
+                <div class="example">
+                    <div role="table" aria-label="National Parks" class="divTable">
+                        <div role="row" class="divTableRow">
+                            <span role="columnheader" class="divTableHead">Park</span>
+                            <span role="columnheader" class="divTableHead">Top Feature</span>
                         </div>
-                        <p><a href="https://ourparks.org/">Source</a></p>
-                        <pre><code>&lt;div role="table" aria-label="National Parks"&gt;
+                        <div role="row" class="divTableRow">
+                            <span role="cell" class="divTableCell">Denali National Park</span>
+                            <span role="cell" class="divTableCell">Denali - North America's highest peak</span>
+                        </div>
+                        <div role="row" class="divTableRow">
+                            <span role="cell" class="divTableCell">Great Smoky Mountains National Park</span>
+                            <span role="cell" class="divTableCell">Clingmans Dome</span>
+                        </div>
+                    </div>
+                    <p><a href="https://ourparks.org/">Source</a></p>
+                    <pre><code>&lt;div role="table" aria-label="National Parks"&gt;
     &lt;div role="row"&gt;
         &lt;span role="columnheader"&gt;Park&lt;/span&gt;
         &lt;span role="columnheader"&gt;Top Feature&lt;/span&gt;
@@ -140,39 +131,36 @@ last-modified: March 10, 2026
         &lt;span role="cell"&gt;Clingmans Dome&lt;/span&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Layout tables</strong></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Table relationships are visible at a glance for sighted users. Assistive technology users need to get this relationship information from the programmatic structure and to be able to easily navigate the data.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H51">H51: Using table markup to present tabular information</a></li>
-                        <li><a href="https://www.w3schools.com/html/html_tables.asp">W3 Schools: HTML tables</a></li>
-                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">W3: ARIA Table Pattern</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Layout tables</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Table relationships are visible at a glance for sighted users. Assistive technology users need to get this relationship information from the programmatic structure and to be able to easily navigate the data.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H51">H51: Using table markup to present tabular information</a></li>
+                    <li><a href="https://www.w3schools.com/html/html_tables.asp">W3 Schools: HTML tables</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/table/">W3: ARIA Table Pattern</a></li>
+                </ul>
+            </div>
+        </div>
