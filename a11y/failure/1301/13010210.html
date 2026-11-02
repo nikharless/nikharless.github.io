@@ -3,58 +3,50 @@ layout: default
 current: "13010210"
 criterion: "1301"
 checkpoint: "130102"
-last-modified: March 11, 2026
+last-modified: November 1, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1301.1301[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1301.1301[page.criterion] %}
-{% assign cp=site.data.1301.1301[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Table captions are programmatically associated with the table they describe.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Table captions are programmatically associated with the table they describe.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A table caption is not programmatically associated with the table it describes.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Use the <code>&lt;caption&gt;</code> tag immediately inside the <code>&lt;table&gt;</code> tag to mark up the caption, <strong>OR</strong></li>
-                        <li>Use <code>aria-labelledby</code> to associate a caption provided outside of the table.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Table with <code>&lt;caption&gt;</code></h3>
-                    <div class="example">
-                        <table>
-                            <caption>National Parks</caption>
-                            <tr>
-                                <th>Park</th>
-                                <th>Top Feature</th>
-                            </tr>
-                            <tr>
-                                <td>Denali National Park</td>
-                                <td>Denali - North America's highest peak</td>
-                            </tr>
-                            <tr>
-                                <td>Great Smoky Mountains National Park </td>
-                                <td>Clingmans Dome</td>
-                            </tr>
-                        </table>
-                        <pre><code>&lt;table&gt;
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A table caption is not programmatically associated with the table it describes.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Use the <code>&lt;caption&gt;</code> tag immediately inside the <code>&lt;table&gt;</code> tag to mark up the caption, <strong>OR</strong></li>
+                    <li>Use <code>aria-labelledby</code> to associate a caption provided outside of the table.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Table with <code>&lt;caption&gt;</code></h3>
+                <div class="example">
+                    <table>
+                        <caption>National Parks</caption>
+                        <tr>
+                            <th>Park</th>
+                            <th>Top Feature</th>
+                        </tr>
+                        <tr>
+                            <td>Denali National Park</td>
+                            <td>Denali - North America's highest peak</td>
+                        </tr>
+                        <tr>
+                            <td>Great Smoky Mountains National Park </td>
+                            <td>Clingmans Dome</td>
+                        </tr>
+                    </table>
+                    <pre><code>&lt;table&gt;
     <strong>&lt;caption&gt;National Parks&lt;/caption&gt;</strong>
     &lt;tr&gt;
         &lt;th&gt;Park&lt;/th&gt;
@@ -66,25 +58,25 @@ last-modified: March 11, 2026
     &lt;/tr&gt;
     ...
 &lt;/table&gt;</code></pre>
-                    </div>
+                </div>
 
-                    <h3>Table with Associated Label</h3>
-                    <div class="example">
-                        <table aria-labelledby="tableLabel">
-                            <tr>
-                                <th>Park</th>
-                                <th>Top Feature</th>
-                            </tr>
-                            <tr>
-                                <td>Denali National Park</td>
-                                <td>Denali - North America's highest peak</td>
-                            </tr>
-                            <tr>
-                                <td>Great Smoky Mountains National Park </td>
-                                <td>Clingmans Dome</td>
-                            </tr>
-                        </table>
-                        <div id="tableLabel" style="font-size: small; font-style: italic; font-weight: 700; width: 100%; margin: auto;">National Parks</div>
+                <h3>Table with Associated Label</h3>
+                <div class="example">
+                    <table aria-labelledby="tableLabel">
+                        <tr>
+                            <th>Park</th>
+                            <th>Top Feature</th>
+                        </tr>
+                        <tr>
+                            <td>Denali National Park</td>
+                            <td>Denali - North America's highest peak</td>
+                        </tr>
+                        <tr>
+                            <td>Great Smoky Mountains National Park </td>
+                            <td>Clingmans Dome</td>
+                        </tr>
+                    </table>
+                    <div id="tableLabel" style="font-size: small; font-style: italic; font-weight: 700; width: 100%; margin: auto;">National Parks</div>
                     <pre><code>&lt;table <strong>aria-labelledby="tableLabel"</strong>&gt;
     &lt;tr&gt;
         &lt;th&gt;Park&lt;/th&gt;
@@ -97,38 +89,35 @@ last-modified: March 11, 2026
     ...
 &lt;/table&gt;
 &lt;div <strong>id="tableLabel"</strong>&gt;National Parks&lt;/div&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Layout tables</strong></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Table relationships are visible at a glance for sighted users. Assistive technology users need to get this relationship information from the programmatic structure and to be able to easily navigate the data.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H39">H39: Using caption elements to associate data table captions with data tables</a></li>
-                        <li><a href="https://www.w3schools.com/tags/tag_caption.asp">W3: HTML &lt;caption&gt; Tag</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Layout tables</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Table relationships are visible at a glance for sighted users. Assistive technology users need to get this relationship information from the programmatic structure and to be able to easily navigate the data.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H39">H39: Using caption elements to associate data table captions with data tables</a></li>
+                    <li><a href="https://www.w3schools.com/tags/tag_caption.asp">W3: HTML &lt;caption&gt; Tag</a></li>
+                </ul>
+            </div>
+        </div>
