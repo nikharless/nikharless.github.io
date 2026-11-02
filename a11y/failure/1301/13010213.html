@@ -4,78 +4,70 @@ current: "13010213"
 criterion: "1301"
 checkpoint: "130102"
 css: table
-last-modified: March 11, 2026
+last-modified: November 1, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1301.1301[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1301.1301[page.criterion] %}
-{% assign cp=site.data.1301.1301[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Layout tables do not have ARIA table roles.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Layout tables do not have ARIA table roles.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A layout table has ARIA table roles.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Change the role to <code>role="presentation"</code></li>
-                        <li>Remove any of the following from the markup:
-                            <ul>
-                                <li><code>role="row"</code></li>
-                                <li><code>role="rowgroup"</code></li>
-                                <li><code>role="columnheader"</code></li>
-                                <li><code>role="rowheader"</code></li>
-                                <li><code>role="cell"</code></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Layout Table with <code>role="table"</code></h3>
-                    <p>Using ARIA table roles causes assistive technology to read the layout as a table.</p>
-                    <div class="example">
-                        <div role="table" class="divTable">
-                            <div role="row" class="divTableRow">
-                                <div role="cell" class="divTableCell" style="vertical-align: top; border: 0;">
-                                    <p>Alaska National Parks</p>
-                                    <ul>
-                                        <li>Denali National Park</li>
-                                        <li>Gates of the Arctic National Park</li>
-                                        <li>Glacier Bay National Park</li>
-                                        <li>Katmai National Park</li>
-                                        <li>Kenai Fjords National Park</li>
-                                        <li>Kobuk Valley National park</li>
-                                        <li>Lake Clark National Park</li>
-                                        <li>Wrangell-St. Elias National Park</li>
-                                    </ul>
-                                </div>
-                                <div role="cell" class="divTableCell" style="vertical-align: top; border: 0;">
-                                    <p>Arizona National Parks</p>
-                                    <ul>
-                                        <li>Grand Canyon National Park</li>
-                                        <li>Petrified Forest National Park</li>
-                                        <li>Saguaro National Park</li>
-                                    </ul>
-                                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A layout table has ARIA table roles.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Change the role to <code>role="presentation"</code></li>
+                    <li>Remove any of the following from the markup:
+                        <ul>
+                            <li><code>role="row"</code></li>
+                            <li><code>role="rowgroup"</code></li>
+                            <li><code>role="columnheader"</code></li>
+                            <li><code>role="rowheader"</code></li>
+                            <li><code>role="cell"</code></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Layout Table with <code>role="table"</code></h3>
+                <p>Using ARIA table roles causes assistive technology to read the layout as a table.</p>
+                <div class="example">
+                    <div role="table" class="divTable">
+                        <div role="row" class="divTableRow">
+                            <div role="cell" class="divTableCell" style="vertical-align: top; border: 0;">
+                                <p>Alaska National Parks</p>
+                                <ul>
+                                    <li>Denali National Park</li>
+                                    <li>Gates of the Arctic National Park</li>
+                                    <li>Glacier Bay National Park</li>
+                                    <li>Katmai National Park</li>
+                                    <li>Kenai Fjords National Park</li>
+                                    <li>Kobuk Valley National park</li>
+                                    <li>Lake Clark National Park</li>
+                                    <li>Wrangell-St. Elias National Park</li>
+                                </ul>
+                            </div>
+                            <div role="cell" class="divTableCell" style="vertical-align: top; border: 0;">
+                                <p>Arizona National Parks</p>
+                                <ul>
+                                    <li>Grand Canyon National Park</li>
+                                    <li>Petrified Forest National Park</li>
+                                    <li>Saguaro National Park</li>
+                                </ul>
                             </div>
                         </div>
-                        <p><a href="https://ourparks.org/">Source</a></p>
-                        <pre><code>&lt;div <strong>role="table"</strong> class="divTable"&gt;
+                    </div>
+                    <p><a href="https://ourparks.org/">Source</a></p>
+                    <pre><code>&lt;div <strong>role="table"</strong> class="divTable"&gt;
     &lt;div <strong>role="row"</strong> class="divTableRow"&gt;
         &lt;div <strong>role="cell"</strong> class="divTableCell"&gt;
             &lt;p&gt;Alaska National Parks&lt;/p&gt;
@@ -95,41 +87,42 @@ last-modified: March 11, 2026
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
                 </div>
             </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Layout Table with <code>role="presentation"</code></h3>
-                    <div class="example">
-                        <div role="presentation" class="divTable">
-                            <div class="divTableRow">
-                                <div class="divTableCell" style="vertical-align: top; border: 0;">
-                                    <p>Alaska National Parks</p>
-                                    <ul>
-                                        <li>Denali National Park</li>
-                                        <li>Gates of the Arctic National Park</li>
-                                        <li>Glacier Bay National Park</li>
-                                        <li>Katmai National Park</li>
-                                        <li>Kenai Fjords National Park</li>
-                                        <li>Kobuk Valley National park</li>
-                                        <li>Lake Clark National Park</li>
-                                        <li>Wrangell-St. Elias National Park</li>
-                                    </ul>
-                                </div>
-                                <div class="divTableCell" style="vertical-align: top; border: 0;">
-                                    <p>Arizona National Parks</p>
-                                    <ul>
-                                        <li>Grand Canyon National Park</li>
-                                        <li>Petrified Forest National Park</li>
-                                        <li>Saguaro National Park</li>
-                                    </ul>
-                                </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Layout Table with <code>role="presentation"</code></h3>
+                <div class="example">
+                    <div role="presentation" class="divTable">
+                        <div class="divTableRow">
+                            <div class="divTableCell" style="vertical-align: top; border: 0;">
+                                <p>Alaska National Parks</p>
+                                <ul>
+                                    <li>Denali National Park</li>
+                                    <li>Gates of the Arctic National Park</li>
+                                    <li>Glacier Bay National Park</li>
+                                    <li>Katmai National Park</li>
+                                    <li>Kenai Fjords National Park</li>
+                                    <li>Kobuk Valley National park</li>
+                                    <li>Lake Clark National Park</li>
+                                    <li>Wrangell-St. Elias National Park</li>
+                                </ul>
+                            </div>
+                            <div class="divTableCell" style="vertical-align: top; border: 0;">
+                                <p>Arizona National Parks</p>
+                                <ul>
+                                    <li>Grand Canyon National Park</li>
+                                    <li>Petrified Forest National Park</li>
+                                    <li>Saguaro National Park</li>
+                                </ul>
                             </div>
                         </div>
-                        <p><a href="https://ourparks.org/">Source</a></p>
-                        <pre><code>&lt;div <strong>role="presentation"</strong> class="divTable"&gt;
+                    </div>
+                    <p><a href="https://ourparks.org/">Source</a></p>
+                    <pre><code>&lt;div <strong>role="presentation"</strong> class="divTable"&gt;
     &lt;div class="divTableRow"&gt;
         &lt;div class="divTableCell"&gt;
             &lt;p&gt;Alaska National Parks&lt;/p&gt;
@@ -149,37 +142,34 @@ last-modified: March 11, 2026
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Data tables</strong></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Assistive technology conveys data table information differently from regular content, which can cause confusion if layout tables are read as tables.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://webaim.org/techniques/tables/">WebAIM: Creating Accessible Tables</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Data tables</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Assistive technology conveys data table information differently from regular content, which can cause confusion if layout tables are read as tables.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://webaim.org/techniques/tables/">WebAIM: Creating Accessible Tables</a></li>
+                </ul>
+            </div>
+        </div>
