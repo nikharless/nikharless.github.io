@@ -4,116 +4,106 @@ current: "13020203"
 criterion: "1302"
 checkpoint: "130202"
 css: menu-button-links
-last-modified: March 15, 2026
+last-modified: November 2, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1302.1302[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1302.1302[page.criterion] %}
-{% assign cp=site.data.1302.1302[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Content which is meant to be hidden from all users is not readable by assistive technology.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Content which is meant to be hidden from all users is not readable by assistive technology.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Content which is meant to be hidden from all users can be read by assistive technology.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <p>Use one of the following to hide content from all users:</p>
-                    <ul>
-                        <li>CSS <code>display: none</code></li>
-                        <li>CSS <code>visibility: hidden</code></li>
-                        <li>HTML <code>hidden</code> attribute</li>
-                        <li>CSS <code>width: 0; height: 0</code></li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Off-screen Menu</h3>
-                    <p>This menu is visually hidden by positioning it off-screen. However, it is not hidden from assistive technology.</p>
-                    <p>Note: This button example does not open when activated. It's only purpose is to demonstrate that assistive technology reads the menu when closed.</p>
-                    <div class="example">
-                        <div class="menu-button-links-fail">
-                            <button type="button" id="menubutton" aria-haspopup="true" aria-controls="menu" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i><span class="sr-only">Failing Menu</span></button>
-                            <ul id="menu" role="menu" aria-labelledby="menubutton">
-                                <li role="none"><a role="menuitem" href="https://duckduckgo.com">DuckDuckGo</a></li>
-                                <li role="none"><a role="menuitem" href="https://search.brave.com">Brave</a></li>
-                                <li role="none"><a role="menuitem" href="https://ecosia.org">Ecosia</a></li>
-                                <li role="none"><a role="menuitem" href="https://gibiru.com">Gibiru</a></li>
-                            </ul>
-                        </div>
-                        <span class="sr-only">Code Example</span>
-                        <pre><code>.menu-button-links-fail [role="menu"] {
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Content which is meant to be hidden from all users can be read by assistive technology.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <p>Use one of the following to hide content from all users:</p>
+                <ul>
+                    <li>CSS <code>display: none</code></li>
+                    <li>CSS <code>visibility: hidden</code></li>
+                    <li>HTML <code>hidden</code> attribute</li>
+                    <li>CSS <code>width: 0; height: 0</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Off-screen Menu</h3>
+                <p>This menu is visually hidden by positioning it off-screen. However, it is not hidden from assistive technology.</p>
+                <p>Note: This button example does not open when activated. It's only purpose is to demonstrate that assistive technology reads the menu when closed.</p>
+                <div class="example">
+                    <div class="menu-button-links-fail">
+                        <button type="button" id="menubutton" aria-haspopup="true" aria-controls="menu" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i><span class="sr-only">Failing Menu</span></button>
+                        <ul id="menu" role="menu" aria-labelledby="menubutton">
+                            <li role="none"><a role="menuitem" href="https://duckduckgo.com">DuckDuckGo</a></li>
+                            <li role="none"><a role="menuitem" href="https://search.brave.com">Brave</a></li>
+                            <li role="none"><a role="menuitem" href="https://ecosia.org">Ecosia</a></li>
+                            <li role="none"><a role="menuitem" href="https://gibiru.com">Gibiru</a></li>
+                        </ul>
+                    </div>
+                    <span class="sr-only">Code Example</span>
+                    <pre><code>.menu-button-links-fail [role="menu"] {
     <strong>left: -2000px;</strong>
     position: absolute;
 }</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Menu Hidden from All Users</h3>
-                    <p>This menu is hidden from all users with <code>display: none</code>.</p>
-                    <div class="example">
-                        <div class="menu-button-links">
-                            <button type="button" id="menubutton2" aria-haspopup="true" aria-controls="menu2" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i><span class="sr-only">Passing Menu</span></button>
-                            <ul id="menu2" role="menu" aria-labelledby="menubutton2">
-                                <li role="none"><a role="menuitem" href="https://duckduckgo.com">DuckDuckGo</a></li>
-                                <li role="none"><a role="menuitem" href="https://search.brave.com">Brave</a></li>
-                                <li role="none"><a role="menuitem" href="https://ecosia.org">Ecosia</a></li>
-                                <li role="none"><a role="menuitem" href="https://gibiru.com">Gibiru</a></li>
-                            </ul>
-                            <script src="{{ baseurl }}/assets/js/menu-button-links.js"></script>
-                        </div>
-                        <span class="sr-only">Code Example</span>
-                        <pre><code>.menu-button-links [role="menu"] {
-    <strong>display: none;</strong>
-    position: absolute;
-}</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Keyboard focus order:</strong><br>
-                            File under <a href="{{ checkpoint_data["2403"].link | relative_url }}">{{ checkpoint_data["2403"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users of assistive technology need to get the information in a sequence that makes sense.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1302checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Menu Hidden from All Users</h3>
+                <p>This menu is hidden from all users with <code>display: none</code>.</p>
+                <div class="example">
+                    <div class="menu-button-links">
+                        <button type="button" id="menubutton2" aria-haspopup="true" aria-controls="menu2" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i><span class="sr-only">Passing Menu</span></button>
+                        <ul id="menu2" role="menu" aria-labelledby="menubutton2">
+                            <li role="none"><a role="menuitem" href="https://duckduckgo.com">DuckDuckGo</a></li>
+                            <li role="none"><a role="menuitem" href="https://search.brave.com">Brave</a></li>
+                            <li role="none"><a role="menuitem" href="https://ecosia.org">Ecosia</a></li>
+                            <li role="none"><a role="menuitem" href="https://gibiru.com">Gibiru</a></li>
+                        </ul>
+                        <script src="{{ baseurl }}/assets/js/menu-button-links.js"></script>
+                    </div>
+                    <span class="sr-only">Code Example</span>
+                    <pre><code>.menu-button-links [role="menu"] {
+    <strong>display: none;</strong>
+    position: absolute;
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Keyboard focus order:</strong><br>
+                        File under <a href="{{ site.data["2403"]["2403"]["2403"].link | relative_url }}">{{ site.data["2403"]["2403"]["2403"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users of assistive technology need to get the information in a sequence that makes sense.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                </ul>
+            </div>
+        </div>
