@@ -2,16 +2,9 @@
 layout: default
 current: "130106"
 criterion: "1301"
-guideline: perceivable
-level: a
-last-modified: October 26, 2026
+last-modified: November 2, 2026
 ---
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -34,7 +27,7 @@ last-modified: October 26, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page contain form elements?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Do the form elements have visible labels and/or instructions?</span>
@@ -42,7 +35,7 @@ last-modified: October 26, 2026
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the labels and/or instructions programmatically associated with the corresponding form elements?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010601"].link | relative_url }}">{{ checkpoint_data["13010601"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010601"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010601"].name }}.</a></span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Do the form elements have associated table row or column headers?</span>
@@ -50,7 +43,7 @@ last-modified: October 26, 2026
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the table headers marked up as header cells?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010602"].link | relative_url }}">{{ checkpoint_data["13010602"].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010602"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010602"].name }}.</a></span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Do the form elements have any other visible associations that describe their purpose?</span>
@@ -58,7 +51,7 @@ last-modified: October 26, 2026
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the visible associations programmatically associated with the corresponding form elements?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010603"].link | relative_url }}">{{ checkpoint_data["13010603"].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010603"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010603"].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                         <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
@@ -101,14 +94,7 @@ last-modified: October 26, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["13010601"].link | relative_url }}">{{ checkpoint_data["13010601"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["13010602"].link | relative_url }}">{{ checkpoint_data["13010602"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["13010603"].link | relative_url }}">{{ checkpoint_data["13010603"].name }}.</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -158,7 +144,3 @@ last-modified: October 26, 2026
                 </li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>
