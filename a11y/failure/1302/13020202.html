@@ -3,84 +3,74 @@ layout: default
 current: "13020202"
 criterion: "1302"
 checkpoint: "130202"
-last-modified: March 14, 2026
+last-modified: November 2, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1302.1302[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1302.1302[page.criterion] %}
-{% assign cp=site.data.1302.1302[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>All meaningful content is readable with assistive technology.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>All meaningful content is readable with assistive technology.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Meaningful content is not readable with assistive technology.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    Don't use <code>aria-hidden="true"</code> on meaningful content or its container elements.      
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>aria-hidden="true" on Container</h3>
-                    <p>The paragraph below includes a redundant image. The entire paragraph has been hidden from assistive technology with <code>aria-hidden="true"</code>. Assistive technology skips the entire thing, because <code>aria-hidden="true"</code> hides all non-interactive child elements of whatever element it is placed on.</p>
-                    <div class="example">
-                        <p aria-hidden="true"><img src="{{ baseurl }}/assets/images/11010404-norway-flag.png"> Norway</p>
-                        <pre><code>&lt;p <strong>aria-hidden="true"</strong>&gt;&lt;img src="norway-flag.png"&gt; Norway&lt;/p&gt;</code></pre>
-                    </div>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Meaningful content is not readable with assistive technology.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                Don't use <code>aria-hidden="true"</code> on meaningful content or its container elements.      
             </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Hidden Redundant Image Only</h3>
-                    <p>This is the same paragraph as above, but the redundant image alone has been hidden from assistive technology with <code>alt=""</code>.</p>
-                    <div class="example">
-                        <p><img src="{{ baseurl }}/assets/images/11010404-norway-flag.png" alt=""> Norway</p>
-                        <pre><code>&lt;p&gt;&lt;img src="norway-flag.png" <strong>alt=""</strong>&gt; Norway&lt;/p&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Keyboard focus order:</strong><br>
-                            File under <a href="{{ checkpoint_data["2403"].link | relative_url }}">{{ checkpoint_data["2403"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users of assistive technology need to get the information in a sequence that makes sense.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    </ul>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>aria-hidden="true" on Container</h3>
+                <p>The paragraph below includes a redundant image. The entire paragraph has been hidden from assistive technology with <code>aria-hidden="true"</code>. Assistive technology skips the entire thing, because <code>aria-hidden="true"</code> hides all non-interactive child elements of whatever element it is placed on.</p>
+                <div class="example">
+                    <p aria-hidden="true"><img src="{{ '/assets/images/11010404-norway-flag.png' | relative_url }}"> Norway</p>
+                    <pre><code>&lt;p <strong>aria-hidden="true"</strong>&gt;&lt;img src="norway-flag.png"&gt; Norway&lt;/p&gt;</code></pre>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1302checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Hidden Redundant Image Only</h3>
+                <p>This is the same paragraph as above, but the redundant image alone has been hidden from assistive technology with <code>alt=""</code>.</p>
+                <div class="example">
+                    <p><img src="{{ '/assets/images/11010404-norway-flag.png' | relative_url }}" alt=""> Norway</p>
+                    <pre><code>&lt;p&gt;&lt;img src="norway-flag.png" <strong>alt=""</strong>&gt; Norway&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Keyboard focus order:</strong><br>
+                        File under <a href="{{ site.data["2403"]["2403"]["2403"].link | relative_url }}">{{ site.data["2403"]["2403"]["2403"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users of assistive technology need to get the information in a sequence that makes sense.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                </ul>
+            </div>
+        </div>
