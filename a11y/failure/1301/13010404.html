@@ -3,90 +3,79 @@ layout: default
 current: "13010404"
 criterion: "1301"
 checkpoint: "130104"
-last-modified: March 11, 2026
+last-modified: November 2, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1301.1301[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1301.1301[page.criterion] %}
-{% assign cp=site.data.1301.1301[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>Programmatic headings have visible text.</div>
+        </div>
 
-        <div class="failure">
-    <div class="block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Programmatic headings have visible text.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A programmatic heading is empty.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <ul>
-                        <li>Place visible text inside the heading tags, <strong>OR</strong></li>
-                        <li>Remove the extraneous heading code.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad">Failing Examples<br>
-                    <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
-                <div>
-                    <h4></h4>
-                    <pre><code>&lt;h4&gt;&lt;/h4&gt;</code></pre>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>A programmatic heading is empty.</div>
+        </div>
 
-                    <h4 aria-label="Invisible Heading"></h4>
-                    <pre><code>&lt;h4 aria-label="Invisible Heading"&gt;&lt;/h4&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h4>Visible Heading</h4>
-                    <pre><code>&lt;h4&gt;Visible Heading&lt;/h4&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Programmatic headings</strong><br>
-                            File under <a href="{{ checkpoint_data["13010401"].link | relative_url }}">{{ checkpoint_data["13010401"].name }}.</a></li>
-                        <li><strong>Heading level</strong><br>
-                            File under <a href="{{ checkpoint_data["13010402"].link | relative_url }}">{{ checkpoint_data["13010402"].name }}.</a></li>
-                        <li><strong>Existence of headings:</strong><br>
-                            File under <a href="{{ checkpoint_data["2410"].link | relative_url }}">{{ checkpoint_data["2410"].name }}.</a></li>
-                        <li><strong>Descriptive headings:</strong><br>
-                            File under <a href="{{ checkpoint_data["2406"].link | relative_url }}">{{ checkpoint_data["2406"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Screen readers also allow users to navigate through the page with headings.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F43">F43: Failure of Success Criterion 1.3.1 due to using structural markup in a way that does not represent relationships in the content</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+                <ul>
+                    <li>Place visible text inside the heading tags, <strong>OR</strong></li>
+                    <li>Remove the extraneous heading code.</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h4></h4>
+                <pre><code>&lt;h4&gt;&lt;/h4&gt;</code></pre>
+
+                <h4 aria-label="Invisible Heading"></h4>
+                <pre><code>&lt;h4 aria-label="Invisible Heading"&gt;&lt;/h4&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h4>Visible Heading</h4>
+                <pre><code>&lt;h4&gt;Visible Heading&lt;/h4&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Programmatic headings</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["13010401"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010401"].name }}.</a></li>
+                    <li><strong>Heading level</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["13010402"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010402"].name }}.</a></li>
+                    <li><strong>Existence of headings:</strong><br>
+                        File under <a href="{{ site.data["2410"]["2410"]["2410"].link | relative_url }}">{{ site.data["2410"]["2410"]["2410"].name }}.</a></li>
+                    <li><strong>Descriptive headings:</strong><br>
+                        File under <a href="{{ site.data["2406"]["2406"]["2406"].link | relative_url }}">{{ site.data["2406"]["2406"]["2406"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Screen readers also allow users to navigate through the page with headings.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F43">F43: Failure of Success Criterion 1.3.1 due to using structural markup in a way that does not represent relationships in the content</a></li>
+                </ul>
+            </div>
+        </div>
