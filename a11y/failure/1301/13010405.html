@@ -3,76 +3,65 @@ layout: default
 current: "13010405"
 criterion: "1301"
 checkpoint: "130104"
+last-modified: November 2, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1301.1301[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1301.1301[page.criterion] %}
-{% assign cp=site.data.1301.1301[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Headings in PDF are tagged as headings.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Headings in PDF are tagged as headings.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Headings in PDF are not tagged as headings.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <h3>Adobe Acrobat Pro</h3>
-                    <h4>No Tag</h4>
-                    <ol>
-                        <li>Select <strong>Tools > Accessibility > Reading Order</strong> to open the Reading Order dialog.</li>
-                        <li>Draw a rectangle around the heading. It should highlight with a pink outline.</li>
-                        <li>Activate the appropriate <strong>Heading</strong> button in the Reading Order dialog.</li>
-                    </ol>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Headings in PDF are not tagged as headings.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <h3>Adobe Acrobat Pro</h3>
+                <h4>No Tag</h4>
+                <ol>
+                    <li>Select <strong>Tools > Accessibility > Reading Order</strong> to open the Reading Order dialog.</li>
+                    <li>Draw a rectangle around the heading. It should highlight with a pink outline.</li>
+                    <li>Activate the appropriate <strong>Heading</strong> button in the Reading Order dialog.</li>
+                </ol>
                     
-                    <h4>Incorrect Tag</h4>
-                    <ol>
-                        <li>In the Tags panel, right-click the incorrectly tagged heading or open the Options menu and select <strong>Properties...</strong>.</li>
-                        <li>In the Object Properties dialog, select the correct heading tag from the <strong>Type</strong> drop-down.</li>
-                    </ol>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
-                    <h3>Adobe Acrobat Pro</h3>
-                    <h4>No Tag</h4>
-                    <img src="{{ baseurl }}/assets/images/13010404-pdf-tag-heading.png" alt="Screenshot of Acrobat Reading Order dialog and a heading highlighted on the document" style="max-width: 380px;">
-
-                    <h4>Incorrect Tag</h4>
-                    <img src="{{ baseurl }}/assets/images/13010404-pdf-obj-prop-heading.png" alt="Screenshot of Acrobat Object Properties dialog with Type drop-down highlighted" style="max-width: 380px;">
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Screen readers also allow users to navigate through the page with headings.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF9">PDF9: Providing headings by marking content with heading tags in PDF documents</a></li>
-                    </ul>
-                </div>
+                <h4>Incorrect Tag</h4>
+                <ol>
+                    <li>In the Tags panel, right-click the incorrectly tagged heading or open the Options menu and select <strong>Properties...</strong>.</li>
+                    <li>In the Object Properties dialog, select the correct heading tag from the <strong>Type</strong> drop-down.</li>
+                </ol>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+                <h3>Adobe Acrobat Pro</h3>
+                <h4>No Tag</h4>
+                <img src="{{ '/assets/images/13010404-pdf-tag-heading.png' | relative_url }}" alt="Screenshot of Acrobat Reading Order dialog and a heading highlighted on the document" style="max-width: 380px;">
+
+                <h4>Incorrect Tag</h4>
+                <img src="{{ '/assets/images/13010404-pdf-obj-prop-heading.png' | relative_url }}" alt="Screenshot of Acrobat Object Properties dialog with Type drop-down highlighted" style="max-width: 380px;">
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. Screen readers also allow users to navigate through the page with headings.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF9">PDF9: Providing headings by marking content with heading tags in PDF documents</a></li>
+                </ul>
+            </div>
+        </div>
