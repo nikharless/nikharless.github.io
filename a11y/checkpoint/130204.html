@@ -2,22 +2,9 @@
 layout: default
 current: "130204"
 criterion: "1302"
-guideline: perceivable
-level: a
-last-modified: October 26, 2026
+last-modified: November 2, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1302.1302[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1302.1302[page.criterion] %}
-{% assign checkpoint_data = site.data["1302"]["1302"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -36,12 +23,12 @@ last-modified: October 26, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test4">Are there modals on the page?</h3>
             <ul role="tree" aria-labelledby="test4">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When the modal is open, can assistive technology read content outside the modal?</span>
                     <ul role="group">
-                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["13020401"].link | relative_url }}">{{ checkpoint_data["13020401"].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13020401"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13020401"].name }}</a></span></li>
                         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                     </ul>
                 </li>
@@ -60,12 +47,7 @@ last-modified: October 26, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["13020401"].link | relative_url }}">{{ checkpoint_data["13020401"].name }}.</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -113,7 +95,3 @@ last-modified: October 26, 2026
                 <li><a href="https://helpx.adobe.com/acrobat/using/touch-reading-order-tool-pdfs.html">Adobe: Reading Order tool for PDFS (Acrobat Pro)</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1302checkpoints.html %}
-    
-</div>
