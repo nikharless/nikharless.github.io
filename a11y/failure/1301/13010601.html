@@ -3,158 +3,148 @@ layout: default
 current: "13010601"
 criterion: "1301"
 checkpoint: "130106"
-last-modified: March 14, 2026
+last-modified: November 2, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1301.1301[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1301.1301[page.criterion] %}
-{% assign cp=site.data.1301.1301[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Form elements are programmatically associated with their visible labels or instructions.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Form elements are programmatically associated with their visible labels or instructions.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A form element is not programmatically associated with its visible label or instruction</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Use explicit labels (<code>&lt;label for="[form element id]"&gt;</code>), OR</li>
-                        <li>Use implicit labels (enclose form element within <code>&lt;label&gt;</code> tags), OR</li>
-                        <li>Use <code>aria-labelledby</code> (for labels) or <code>aria-describedby</code> (for additional instructions).</li>
-                    </ul>
-                    <p>Native HTML is the preferred solution and should be used whenever possible.</p>
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Unmarked Labels</h3>
-                    <p>This form does not use <code>&lt;label&gt;</code> tags.</p>
-                    <div class="example" style="width: 80%;">
-                        <p style="display:block;">First Name</p>
-                        <input type="text" id="fnamef" autocomplete="given-name">
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A form element is not programmatically associated with its visible label or instruction</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Use explicit labels (<code>&lt;label for="[form element id]"&gt;</code>), OR</li>
+                    <li>Use implicit labels (enclose form element within <code>&lt;label&gt;</code> tags), OR</li>
+                    <li>Use <code>aria-labelledby</code> (for labels) or <code>aria-describedby</code> (for additional instructions).</li>
+                </ul>
+                <p>Native HTML is the preferred solution and should be used whenever possible.</p>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Unmarked Labels</h3>
+                <p>This form does not use <code>&lt;label&gt;</code> tags.</p>
+                <div class="example" style="width: 80%;">
+                    <p style="display:block;">First Name</p>
+                    <input type="text" id="fnamef" autocomplete="given-name">
                         
-                        <p style="display:block;">Last Name</p>
-                        <input type="text" id="lnamef" autocomplete="family-name">
-                        <br>
-                        <input type="checkbox" id="terms"> I agree to the terms and conditions.
+                    <p style="display:block;">Last Name</p>
+                    <input type="text" id="lnamef" autocomplete="family-name">
+                    <br>
+                    <input type="checkbox" id="terms"> I agree to the terms and conditions.
 
-                        <pre><code>First Name&lt;br&gt;
+                    <pre><code>First Name&lt;br&gt;
 &lt;input type="text" id="fname"&gt;</code></pre>
-                    </div>
+                </div>
 
-                    <h3>Unassociated Labels</h3>
-                    <p>This form uses <code>&lt;label&gt;</code> tags, but they are not programmatically associated with the input fields.</p>
-                    <div class="example" style="width: 80%;">
-                        <label style="display:block;">First Name</label>
-                        <input type="text" id="fname" autocomplete="given-name">
+                <h3>Unassociated Labels</h3>
+                <p>This form uses <code>&lt;label&gt;</code> tags, but they are not programmatically associated with the input fields.</p>
+                <div class="example" style="width: 80%;">
+                    <label style="display:block;">First Name</label>
+                    <input type="text" id="fname" autocomplete="given-name">
                         
-                        <label style="display:block;">Last Name</label>
-                        <input type="text" id="lname" autocomplete="family-name">
-                        <br>
-                        <input type="checkbox" id="terms"> <label style="display:inline;">I agree to the terms and conditions.</label>
+                    <label style="display:block;">Last Name</label>
+                    <input type="text" id="lname" autocomplete="family-name">
+                    <br>
+                    <input type="checkbox" id="terms"> <label style="display:inline;">I agree to the terms and conditions.</label>
 
-                        <pre><code>&lt;label &gt;First Name&lt;/label&gt;
+                    <pre><code>&lt;label &gt;First Name&lt;/label&gt;
 &lt;input type="text" id="fname"&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Explicit Labels</h3>
-                    <div class="example" style="width: 80%;">
-                        <label for="fname" style="display:block;">First Name</label>
-                        <input type="text" id="fname2" autocomplete="given-name">
-                        
-                        <label for="lname" style="display:block;">Last Name</label>
-                        <input type="text" id="lname2" autocomplete="family-name">
-                        <br>
-                        <input type="checkbox" id="terms2"> <label for="terms" style="display:inline;">I agree to the terms and conditions.</label>
-
-                        <pre><code><strong>&lt;label for="fname"&gt;First Name&lt;/label&gt;</strong>
-&lt;input type="text" id="fname"&gt;</code></pre>
-                    </div>
-
-                    <h3>Implicit Labels</h3>
-                    <div class="example" style="width: 80%;">
-                        <label style="display:block;">First Name<br>
-                            <input type="text" id="fname3" autocomplete="given-name">
-                        </label>
-                        <label style="display:block;">Last Name<br>
-                            <input type="text" id="lname3" autocomplete="family-name">
-                        </label>
-                        <label style="display:block;">
-                            <input type="checkbox" id="terms3"> I agree to the terms and conditions.
-                        </label>
-
-                        <pre><code><strong>&lt;label&gt;</strong>First Name
-    &lt;input type="text"&gt;
-<strong>&lt;/label&gt;</strong></code></pre>
-                    </div>
-
-                    <h3>ARIA</h3>
-                    <div class="example" style="width: 80%;">
-                        <div><span id="fname4">First Name</span><br>
-                            <input type="text" aria-labelledby="fname3" autocomplete="given-name">
-                        </div>
-                        <div><span id="lname4">Last Name</span><br>
-                            <input type="text" aria-labelledby="lname3" autocomplete="family-name">
-                        </div>
-                        <div>
-                            <input type="checkbox" aria-labelledby="terms4"> <span id="terms3">I agree to the terms and conditions.</span>
-                        </div>
-
-                        <pre><code>&lt;span <strong>id="fname"</strong>&gt;First Name&gt;/span&gt;
-&lt;input type="text" <strong>aria-labelledby="fname"&gt;</strong></code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Visible labels:</strong><br>
-                        File under <a href="{{ checkpoint_data["33020101"].link | relative_url }}">{{ checkpoint_data["33020101"].name }}.</a></li>
-                        <li><strong>Table headers:</strong><br>
-                        File under <a href="{{ checkpoint_data["13010602"].link | relative_url }}">{{ checkpoint_data["13010602"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blind/visual impairment:</strong> Screen reader users hear the label when they navigate to the form element without having to search around to find it.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F111">F111: Failure of Success Criteria 1.3.1, 2.5.3, and 4.1.2 due to a control with visible label text but no accessible name</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H44">H44: Using label elements to associate text labels with form controls</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H65">H65: Using the title attribute to identify form controls when the label element cannot be used</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Explicit Labels</h3>
+                <div class="example" style="width: 80%;">
+                    <label for="fname" style="display:block;">First Name</label>
+                    <input type="text" id="fname2" autocomplete="given-name">
+                        
+                    <label for="lname" style="display:block;">Last Name</label>
+                    <input type="text" id="lname2" autocomplete="family-name">
+                    <br>
+                    <input type="checkbox" id="terms2"> <label for="terms" style="display:inline;">I agree to the terms and conditions.</label>
+
+                    <pre><code><strong>&lt;label for="fname"&gt;First Name&lt;/label&gt;</strong>
+&lt;input type="text" id="fname"&gt;</code></pre>
+                </div>
+
+                <h3>Implicit Labels</h3>
+                <div class="example" style="width: 80%;">
+                    <label style="display:block;">First Name<br>
+                        <input type="text" id="fname3" autocomplete="given-name">
+                    </label>
+                    <label style="display:block;">Last Name<br>
+                        <input type="text" id="lname3" autocomplete="family-name">
+                    </label>
+                    <label style="display:block;">
+                        <input type="checkbox" id="terms3"> I agree to the terms and conditions.
+                    </label>
+
+                    <pre><code><strong>&lt;label&gt;</strong>First Name
+    &lt;input type="text"&gt;
+<strong>&lt;/label&gt;</strong></code></pre>
+                </div>
+
+                <h3>ARIA</h3>
+                <div class="example" style="width: 80%;">
+                    <div><span id="fname4">First Name</span><br>
+                        <input type="text" aria-labelledby="fname3" autocomplete="given-name">
+                    </div>
+                    <div><span id="lname4">Last Name</span><br>
+                        <input type="text" aria-labelledby="lname3" autocomplete="family-name">
+                    </div>
+                    <div>
+                        <input type="checkbox" aria-labelledby="terms4"> <span id="terms3">I agree to the terms and conditions.</span>
+                    </div>
+
+                    <pre><code>&lt;span <strong>id="fname"</strong>&gt;First Name&gt;/span&gt;
+&lt;input type="text" <strong>aria-labelledby="fname"&gt;</strong></code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Visible labels:</strong><br>
+                    File under <a href="{{ site.data["3302"]["3302"]["33020101"].link | relative_url }}">{{ site.data["3302"]["3302"]["33020101"].name }}.</a></li>
+                    <li><strong>Table headers:</strong><br>
+                    File under <a href="{{ site.data[page.criterion][page.criterion]["13010602"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010602"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blind/visual impairment:</strong> Screen reader users hear the label when they navigate to the form element without having to search around to find it.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F111">F111: Failure of Success Criteria 1.3.1, 2.5.3, and 4.1.2 due to a control with visible label text but no accessible name</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H44">H44: Using label elements to associate text labels with form controls</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H65">H65: Using the title attribute to identify form controls when the label element cannot be used</a></li>
+                </ul>
+            </div>
+        </div>
