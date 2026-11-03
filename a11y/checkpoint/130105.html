@@ -2,16 +2,9 @@
 layout: default
 current: "130105"
 criterion: "1301"
-guideline: perceivable
-level: a
-last-modified: October 26, 2026
+last-modified: November 2, 2026
 ---
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -29,7 +22,7 @@ last-modified: October 26, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Are there any visually apparent lists on the page?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are these elements marked up programmatically as lists?</span>
@@ -37,16 +30,16 @@ last-modified: October 26, 2026
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the list contain only allowed nested elements?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010504"].link | relative_url }}">{{ checkpoint_data["13010504"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010504"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010504"].name }}.</a></span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the list an unordered (bullet) list?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["13010501"].link | relative_url }}">{{ checkpoint_data["13010501"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010501"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010501"].name }}.</a></span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the list an ordered (numbered) list?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["13010502"].link | relative_url }}">{{ checkpoint_data["13010502"].name }}.</a></span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13010503"].link | relative_url }}">{{ checkpoint_data["13010503"].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010502"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010502"].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13010503"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010503"].name }}.</a></span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -119,7 +112,7 @@ last-modified: October 26, 2026
                 <li>If it is, activate the <strong>Results in Detail</strong> button.</li>
                 <li>Under <strong>PDF/UA > Logical Structure > Structure Tree</strong>, check if <strong>"L" structure elements</strong>, <strong>"LI" structure elements</strong>, <strong>"Lbl" structure elements</strong>, or <strong>"LBody" structure elements</strong> are marked as failures.</li>
             </ol>
-            <img src="{{ baseurl }}/assets/images/130105-pac-list-failure.png" style="max-width: 380px;" alt="Screenshot of PAC report with list tag results highlighted">
+            <img src="{{ '/assets/images/130105-pac-list-failure.png' | relative_url }}" style="max-width: 380px;" alt="Screenshot of PAC report with list tag results highlighted">
 
             <h3>Adobe Acrobat Pro</h3>
             <h4>Accessibility Check</h4>
@@ -140,7 +133,7 @@ last-modified: October 26, 2026
                             <ol>
                                 <li>Select <strong>All tools > Prepare for accessibility > Fix reading order</strong> to open the Reading Order dialog.</li>
                                 <li>Make sure the <strong>Show page content groups</strong> checkbox is checked, and select the <strong>Structure types</strong> radio button. This will display the tag value of every tagged object in the Document pane.<br>
-                                    <img src="{{ baseurl }}/assets/images/130105-pdf-list-reading-order.png" alt="Screenshot of Acrobat Reading Order panel with Structure types selected and tags displayed in the document pane" style="max-width: 380px;">
+                                    <img src="{{ '/assets/images/130105-pdf-list-reading-order.png' | relative_url }}" alt="Screenshot of Acrobat Reading Order panel with Structure types selected and tags displayed in the document pane" style="max-width: 380px;">
                                 </li>
                                 <li>Uncheck <strong>Display like elements in a single block</strong>, so you can see the individual list tags.</li>
                                 <li>Scroll through the document to locate lists.</li>
@@ -181,18 +174,7 @@ last-modified: October 26, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["13010501"].link | relative_url }}">{{ checkpoint_data["13010501"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["13010502"].link | relative_url }}">{{ checkpoint_data["13010502"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["13010503"].link | relative_url }}">{{ checkpoint_data["13010503"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["13010504"].link | relative_url }}">{{ checkpoint_data["13010504"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["13010505"].link | relative_url }}">{{ checkpoint_data["13010505"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["13010506"].link | relative_url }}">{{ checkpoint_data["13010506"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["13010507"].link | relative_url }}">{{ checkpoint_data["13010507"].name }}.</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -250,7 +232,3 @@ last-modified: October 26, 2026
                 <li><a href="https://helpx.adobe.com/acrobat/using/create-verify-pdf-accessibility.html">Adobe: Create and verify PDF accessibility (Acrobat Pro)</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>
