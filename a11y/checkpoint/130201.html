@@ -2,16 +2,9 @@
 layout: default
 current: "130201"
 criterion: "1302"
-guideline: perceivable
-level: a
-last-modified: October 26, 2026
+last-modified: November 2, 2026
 ---
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -37,13 +30,13 @@ last-modified: October 26, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Is there content on the page that is positioned with CSS?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the content presented in a logical order when CSS is turned off?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13020101"].link | relative_url }}">{{ checkpoint_data["13020101"].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13020101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13020101"].name }}.</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
@@ -80,15 +73,10 @@ last-modified: October 26, 2026
                 <li>In the Reading Order dialog, check <strong>Show page content groups</strong> and <strong>Page content order</strong>. This displays numbers on tagged elements showing the reading order.</li>
                 <li>Verify that the reading order follows the intended meaning of the content.</li>
             </ol>
-            <img src="{{ baseurl }}/assets/images/130201-pdf-reading-order.png" alt="Screenshot of Acrobat Reading Order dialog with indicated options selected and numbers on tagged elements in the document pane" style="max-width: 380px;">
+            <img src="{{ '/assets/images/130201-pdf-reading-order.png' | relative_url }}" alt="Screenshot of Acrobat Reading Order dialog with indicated options selected and numbers on tagged elements in the document pane" style="max-width: 380px;">
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["13020101"].link | relative_url }}">{{ checkpoint_data["13020101"].name }}.</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -142,7 +130,3 @@ last-modified: October 26, 2026
                 <li><a href="https://helpx.adobe.com/acrobat/using/touch-reading-order-tool-pdfs.html">Adobe: Reading Order tool for PDFS (Acrobat Pro)</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1302checkpoints.html %}
-    
-</div>
