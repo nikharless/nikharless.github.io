@@ -3,60 +3,51 @@ layout: default
 current: "13010303"
 criterion: "1301"
 checkpoint: "130103"
-last-modified: March 11, 2026
+last-modified: November 1, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1301.1301[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1301.1301[page.criterion] %}
-{% assign cp=site.data.1301.1301[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>If the label for an individual form control in a group of controls does not provide enough context to understand the purpose of the control, the control group is programmatically associated with the group label.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>If the label for an individual form control in a group of controls does not provide enough context to understand the purpose of the control, the control group is programmatically associated with the group label.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The label for an individual form control in a group of controls does not provide enough context to understand the purpose of the control, and the control group is not programmatically associated with the group label.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <h3>Native HTML (Preferred Method)</h3>
-                    <p>Place the group label inside a <code>&lt;legend&gt;</code> element as a child of the <code>&lt;fieldset&gt;</code> element.</p>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>The label for an individual form control in a group of controls does not provide enough context to understand the purpose of the control, and the control group is not programmatically associated with the group label.</div>
+        </div>
 
-                    <strong>OR</strong>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <h3>Native HTML (Preferred Method)</h3>
+                <p>Place the group label inside a <code>&lt;legend&gt;</code> element as a child of the <code>&lt;fieldset&gt;</code> element.</p>
 
-                    <h3>ARIA</h3>
-                    <ul>
-                        <li>Add an <code>id</code> attribute to the tag containing the group label text, and set it to a unique value.</li>
-                        <li>Add an <code>aria-labelledby</code> attribute to the <code>role="group"</code> element and point it to the <code>id</code> of the group label tag.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good">Passing Examples<br>
-                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
-                <div>
-                    <h3>Native HTML (Preferred Method)</h3>
-                    <fieldset>
-                        <legend>Shipping Address</legend>
-                        <label class="block_label" for="streetAddress">Street address:</label>
-                        <input type="text" id="streetAddress"><br>
-                        <label class="block_label" for="city">City:</label>
-                        <input type="text" id="city"><br>
-                        <label class="block_label" for="state">State:</label>
-                        <input type="text" id="state"><br>
-                        <label class="block_label" for="zip">Zip:</label>
-                        <input type="text" id="zip">
-                    </fieldset>
-                    <pre><code>&lt;fieldset&gt;
+                <strong>OR</strong>
+
+                <h3>ARIA</h3>
+                <ul>
+                    <li>Add an <code>id</code> attribute to the tag containing the group label text, and set it to a unique value.</li>
+                    <li>Add an <code>aria-labelledby</code> attribute to the <code>role="group"</code> element and point it to the <code>id</code> of the group label tag.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Native HTML (Preferred Method)</h3>
+                <fieldset>
+                    <legend>Shipping Address</legend>
+                    <label class="block_label" for="streetAddress">Street address:</label>
+                    <input type="text" id="streetAddress"><br>
+                    <label class="block_label" for="city">City:</label>
+                    <input type="text" id="city"><br>
+                    <label class="block_label" for="state">State:</label>
+                    <input type="text" id="state"><br>
+                    <label class="block_label" for="zip">Zip:</label>
+                    <input type="text" id="zip">
+                </fieldset>
+                <pre><code>&lt;fieldset&gt;
     <strong>&lt;legend&gt;Shipping Address&lt;/legend&gt;</strong>
     &lt;label for="streetAddress"&gt;Street address:&lt;/label&gt;
     &lt;input type="text" id="streetAddress"&gt;&lt;br&gt;
@@ -68,19 +59,19 @@ last-modified: March 11, 2026
     &lt;input type="text" id="zip"&gt;
 &lt;/fieldset&gt;</code></pre>
 
-                    <h3>ARIA</h3>
-                    <p id="shippingLabel">Shipping Address</p>
-                    <div role="group" aria-labelledby="shippingLabel">
-                        <label class="block_label" for="streetAddress2">Street address:</label>
-                        <input type="text" id="streetAddress2"><br>
-                        <label class="block_label" for="city2">City:</label>
-                        <input type="text" id="city2"><br>
-                        <label class="block_label" for="state2">State:</label>
-                        <input type="text" id="state2"><br>
-                        <label class="block_label" for="zip2">Zip:</label>
-                        <input type="text" id="zip2">
-                    </div>
-                    <pre><code>&lt;p <strong>id="shippingLabel"</strong>&gt;Shipping Address&lt;/p&gt;
+                <h3>ARIA</h3>
+                <p id="shippingLabel">Shipping Address</p>
+                <div role="group" aria-labelledby="shippingLabel">
+                    <label class="block_label" for="streetAddress2">Street address:</label>
+                    <input type="text" id="streetAddress2"><br>
+                    <label class="block_label" for="city2">City:</label>
+                    <input type="text" id="city2"><br>
+                    <label class="block_label" for="state2">State:</label>
+                    <input type="text" id="state2"><br>
+                    <label class="block_label" for="zip2">Zip:</label>
+                    <input type="text" id="zip2">
+                </div>
+                <pre><code>&lt;p <strong>id="shippingLabel"</strong>&gt;Shipping Address&lt;/p&gt;
 &lt;div role="group" <strong>aria-labelledby="shippingLabel"</strong>&gt;
     &lt;label for="streetAddress"&gt;Street address:&lt;/label&gt;&lt;br&gt;
     &lt;input type="text" id="streetAddress"&gt;
@@ -91,31 +82,27 @@ last-modified: March 11, 2026
     &lt;label for="zip"&gt;Zip:&lt;/label&gt;
     &lt;input type="text" id="zip"&gt;    
 &lt;/div&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Assistive technology users browsing through a form will not hear group labels unless they are programmatically associated. Screen readers in forms mode will ignore any text that is not programmatically associated with form controls.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H71">H71: Providing a description for groups of form controls using fieldset and legend elements</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA17">ARIA17: Using grouping roles to identify related form controls</a></li>
-                        <li><a href="https://www.w3.org/WAI/tutorials/forms/grouping/">W3: Grouping Controls</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Assistive technology users browsing through a form will not hear group labels unless they are programmatically associated. Screen readers in forms mode will ignore any text that is not programmatically associated with form controls.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.1: Info and Relationships</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H71">H71: Providing a description for groups of form controls using fieldset and legend elements</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA17">ARIA17: Using grouping roles to identify related form controls</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/forms/grouping/">W3: Grouping Controls</a></li>
+                </ul>
+            </div>
+        </div>
