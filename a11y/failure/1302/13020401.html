@@ -4,107 +4,97 @@ current: "13020401"
 criterion: "1302"
 checkpoint: "130204"
 css: alertdialog
-last-modified: March 15, 2026
+last-modified: November 2, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1302.1302[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1302.1302[page.criterion] %}
-{% assign cp=site.data.1302.1302[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>When a modal is open, assistive technology is restricted to reading only the content inside it.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>When a modal is open, assistive technology is restricted to reading only the content inside it.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>When a modal is open, assistive technology is able to read content outside of it.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ol>
-                        <li>Use <code>role="dialog"</code> or <code>role="alertdialog"</code> to assign the modal a role.</li>
-                        <li>Add <code>aria-modal="true"</code> to the element containing the modal.</li>
-                        <li>When the modal is open, assign <code>aria-hidden="true"</code> to the elements outside the modal.</li>
-                        <li>When the modal is closed, remove <code>aria-hidden="true"</code> from the elements outside the modal.</li>
-                    </ol>      
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>ARIA Attributes Not Set</h3>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>When a modal is open, assistive technology is able to read content outside of it.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ol>
+                    <li>Use <code>role="dialog"</code> or <code>role="alertdialog"</code> to assign the modal a role.</li>
+                    <li>Add <code>aria-modal="true"</code> to the element containing the modal.</li>
+                    <li>When the modal is open, assign <code>aria-hidden="true"</code> to the elements outside the modal.</li>
+                    <li>When the modal is closed, remove <code>aria-hidden="true"</code> from the elements outside the modal.</li>
+                </ol>      
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>ARIA Attributes Not Set</h3>
                     
-                    <div class="example">
-                        <button id="openBadModalBtn">Open Failing Modal</button>
-                        <div id="badModal" aria-labelledby="badModalLabel" aria-describedby="badModalDesc" style="display: none;">
-                            <h2 id="badModalLabel" class="dialog_label">Bad Modal</h2>
-                            <div id="badModalDesc" class="dialog_desc"><p>You can read outside this modal with assistive technology.</p></div>
-                            <div><button type="button" class="dialog_close_button" id="badModalClose" aria-label="Close">X</button></div>
-                        </div>
-                        <pre><code></code></pre>
-                        <script src="{{ baseurl }}/assets/js/modal-at-visibility.js"></script>
+                <div class="example">
+                    <button id="openBadModalBtn">Open Failing Modal</button>
+                    <div id="badModal" aria-labelledby="badModalLabel" aria-describedby="badModalDesc" style="display: none;">
+                        <h2 id="badModalLabel" class="dialog_label">Bad Modal</h2>
+                        <div id="badModalDesc" class="dialog_desc"><p>You can read outside this modal with assistive technology.</p></div>
+                        <div><button type="button" class="dialog_close_button" id="badModalClose" aria-label="Close">X</button></div>
                     </div>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>ARIA Attributes Hide Content</h3>
-                    <div class="example">
-                        <button id="openModalBtn" onclick="openAlertDialog('goodModal',this)">Open Passing Modal</button>
-                        <div class="dialog-backdrop no-scroll">
-                            <div id="goodModal" role="alertdialog" aria-modal="true" aria-labelledby="goodModalLabel" aria-describedby="goodModalDesc" class="hidden">
-                                <h2 id="goodModalLabel" class="dialog_label">Good Modal</h2>
-                                <div id="goodModalDesc" class="dialog_desc">
-                                    <p>You cannot read outside this modal with assistive technology.</p>
-                                </div>
-                                <div>
-                                    <button type="button" class="dialog_close_button" id="modalClose" aria-label="Close" onclick="closeDialog(this)">X</button>
-                                </div>
-                            </div>
-                        </div>
-                        <pre><code></code></pre>
-                    </div>
-                    <script src="{{ baseurl }}/assets/js/utils.js"></script>
-                    <script src="{{ baseurl }}/assets/js/alertdialog.js"></script>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Keyboard focus order:</strong><br>
-                            File under <a href="{{ checkpoint_data["2403"].link | relative_url }}">{{ checkpoint_data["2403"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users of assistive technology need to get the information in a sequence that makes sense.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    </ul>
+                    <pre><code></code></pre>
+                    <script src="{{ '/assets/js/modal-at-visibility.js' | relative_url }}"></script>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1302checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>ARIA Attributes Hide Content</h3>
+                <div class="example">
+                    <button id="openModalBtn" onclick="openAlertDialog('goodModal',this)">Open Passing Modal</button>
+                    <div class="dialog-backdrop no-scroll">
+                        <div id="goodModal" role="alertdialog" aria-modal="true" aria-labelledby="goodModalLabel" aria-describedby="goodModalDesc" class="hidden">
+                            <h2 id="goodModalLabel" class="dialog_label">Good Modal</h2>
+                            <div id="goodModalDesc" class="dialog_desc">
+                                <p>You cannot read outside this modal with assistive technology.</p>
+                            </div>
+                            <div>
+                                <button type="button" class="dialog_close_button" id="modalClose" aria-label="Close" onclick="closeDialog(this)">X</button>
+                            </div>
+                        </div>
+                    </div>
+                    <pre><code></code></pre>
+                </div>
+                <script src="{{ '/assets/js/utils.js' | relative_url }}"></script>
+                <script src="{{ '/assets/js/alertdialog.js' | relative_url }}"></script>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Keyboard focus order:</strong><br>
+                        File under <a href="{{ site.data["2403"]["2403"]["2403"].link | relative_url }}">{{ site.data["2403"]["2403"]["2403"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users of assistive technology need to get the information in a sequence that makes sense.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                </ul>
+            </div>
+        </div>
