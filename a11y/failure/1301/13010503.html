@@ -3,110 +3,99 @@ layout: default
 current: "13010503"
 criterion: "1301"
 checkpoint: "130105"
-last-modified: March 11, 2026
+last-modified: November 2, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1301.1301[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1301.1301[page.criterion] %}
-{% assign cp=site.data.1301.1301[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Description lists are marked up as description lists.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Description lists are marked up as description lists.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A description list is not marked up as a description list.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <h3>Native HTML (Preferred Method)</h3>
-                    <p>Use the <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, and <code>&lt;dd&gt;</code> tags to mark up description lists.</p>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A description list is not marked up as a description list.</div>
+        </div>
 
-                    <strong>OR</strong>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <h3>Native HTML (Preferred Method)</h3>
+                <p>Use the <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, and <code>&lt;dd&gt;</code> tags to mark up description lists.</p>
 
-                    <h3>ARIA</h3>
-                    <p>Use ARIA to mark up the list.</p>
-                    <ul>
-                        <li>Add the <code>role="term"</code> attribute to the term element.</li>
-                        <li>Add the <code>role="definition"</code> attribute to the description element.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                </div>
+                <strong>OR</strong>
+
+                <h3>ARIA</h3>
+                <p>Use ARIA to mark up the list.</p>
+                <ul>
+                    <li>Add the <code>role="term"</code> attribute to the term element.</li>
+                    <li>Add the <code>role="definition"</code> attribute to the description element.</li>
+                </ul>
             </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good">Passing Examples<br>
-                <span class="fa-solid fa-circle-check lgIcon" style="color: #28a228;"></span></h2>
-                <div>
-                    <h3>Native HTML (Preferred Method)</h3>
-                    <dl>
-                        <dt>Accessibility</dt>
-                        <dd>The practice of making your website usable by as many people as possible.</dd>
-                    </dl>
-                    <pre><code>&lt;dl&gt;
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Native HTML (Preferred Method)</h3>
+                <dl>
+                    <dt>Accessibility</dt>
+                    <dd>The practice of making your website usable by as many people as possible.</dd>
+                </dl>
+                <pre><code>&lt;dl&gt;
     &lt;dt&gt;Accessibility&lt;/dt&gt;
     &lt;dd&gt;The practice of making your website usable by as many people as possible.&lt;/dd&gt;
 &lt;dl&gt;</code></pre>
 
-                    <h3>ARIA</h3>
-                    <div>
-                        <div role="term" style="font-weight: bold;">Accessibility</div>
-                        <div role="definition" style="margin-left: 1.3em;">The practice of making your website usable by as many people as possible.</div>
-                    </div>
-                    <pre><code>&lt;div&gt;
+                <h3>ARIA</h3>
+                <div>
+                    <div role="term" style="font-weight: bold;">Accessibility</div>
+                    <div role="definition" style="margin-left: 1.3em;">The practice of making your website usable by as many people as possible.</div>
+                </div>
+                <pre><code>&lt;div&gt;
     &lt;div role="term" style="font-weight: bold;"&gt;Accessibility&lt;/div&gt;
     &lt;div role="definition" style="margin-left: 1.3em;"&gt;The practice of making your website usable by as many people as possible.&lt;/div&gt;
 &lt;div&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Comma-separated lists</strong></li>
-                        <li><strong>Non-list items marked up as lists</strong></li>
-                        <li><strong>Unordered lists:</strong><br>
-                            File under <a href="{{ checkpoint_data["13010501"].link | relative_url }}">{{ checkpoint_data["13010501"].name }}.</a></li>
-                        <li><strong>Ordered lists:</strong><br>
-                            File under <a href="{{ checkpoint_data["13010502"].link | relative_url }}">{{ checkpoint_data["13010502"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. When lists are properly marked up, screen readers inform users of the structure and how many items are in the list.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H48">H48: Using ol, ul and dl for lists or groups of links</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/definition_role">MDN: ARIA: definition role</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/term_role">MDN: ARIA: term role</a></li>
-                        <li><a href="https://www.w3schools.com/tags/tag_dl.asp">W3: HTML &lt;dl&gt; Tag</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1301checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Comma-separated lists</strong></li>
+                    <li><strong>Non-list items marked up as lists</strong></li>
+                    <li><strong>Unordered lists:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["13010501"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010501"].name }}.</a></li>
+                    <li><strong>Ordered lists:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["13010502"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13010502"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Screen reader users rely on programmatic markup to understand how content is arranged. When lists are properly marked up, screen readers inform users of the structure and how many items are in the list.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H48">H48: Using ol, ul and dl for lists or groups of links</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/definition_role">MDN: ARIA: definition role</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/term_role">MDN: ARIA: term role</a></li>
+                    <li><a href="https://www.w3schools.com/tags/tag_dl.asp">W3: HTML &lt;dl&gt; Tag</a></li>
+                </ul>
+            </div>
+        </div>
