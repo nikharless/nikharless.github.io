@@ -4,95 +4,85 @@ current: "13030101"
 criterion: "1303"
 checkpoint: "130301"
 css: link-examples
-last-modified: March 15, 2026
+last-modified: November 3, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1303.1303[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1303.1303[page.criterion] %}
-{% assign cp=site.data.1303.1303[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Instructions do not rely on visual characteristics such as shape, color, size, visual location, or orientation to be understood.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Instructions do not rely on visual characteristics such as shape, color, size, visual location, or orientation to be understood.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Instructions rely on visual characteristics to be understood.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Add an additional non-visual reference, such as a text label, that can be accessed by color blind and assistive technology users.</div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Shape</h3>
-                    <p>The instructions refer to the shield graphic within the link, but the text alternative does not identify the image as a shield.</p>
-                    <div class="example" style="max-width: 400px; text-align: center;">
-                        <a href="#" class="example-link"><img src="{{ baseurl }}/assets/images/130301-shield.png" alt="Click here" style="max-width: 200px;"></a>
-                        <p>Click the shield above to participate in the Customer Protection Program.</p>
-                    </div>
-                    <pre><code>&lt;a href="#"&gt;&lt;img src="shield.png" <strong>alt="Customer Protection Program"</strong>&gt;&lt;/a&gt;</code></pre>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Instructions rely on visual characteristics to be understood.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Add an additional non-visual reference, such as a text label, that can be accessed by color blind and assistive technology users.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Shape</h3>
+                <p>The instructions refer to the shield graphic within the link, but the text alternative does not identify the image as a shield.</p>
+                <div class="example" style="max-width: 400px; text-align: center;">
+                    <a href="#" class="example-link"><img src="{{ '/assets/images/130301-shield.png' | relative_url }}" alt="Click here" style="max-width: 200px;"></a>
+                    <p>Click the shield above to participate in the Customer Protection Program.</p>
                 </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Shape</h3>
-                    <p>One possible solution is to include the word “shield” in the text alternative. This will identify the shape for screen reader users, as well as for users who have images turned off.</p>
-                    <div class="example" style="max-width: 400px; text-align: center;">
-                        <a href="#" class="example-link"><img src="{{ baseurl }}/assets/images/130301-shield.png" alt="Customer Protection Program shield" style="max-width: 200px;"></a>
-                        <p>Click the shield above to participate in the Customer Protection Program.</p>
-                    </div>
-                    <pre><code>&lt;a href="#"&gt;&lt;img src="shield.png" <strong>alt="Customer Protection Program shield"</strong>&gt;&lt;/a&gt;</code></pre>
-                    <p>Other possible solutions include:</p>
-                    <ul>
-                        <li>Combining the image and the text into a link with the text "Participate in the Customer Protection Program".</li>
-                        <li>Changing the instructions to "Click the Customer Protection Program link above to participate," referring to the original <code>alt</code> text.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Auditory cues:</strong><br>
-                            File under <a href="{{ checkpoint_data["13030201"].link | relative_url }}">{{ checkpoint_data["13030201"].name }}.</a></li>
-                        <li><strong>Color-reliant information that is not instructions:</strong><br>
-                            File under <a href="{{ checkpoint_data["1401"].link | relative_url }}">{{ checkpoint_data["1401"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users may not be able to follow instructions if they rely on a visual description of the content.</li>
-                        <li><strong>Color blindness:</strong> Users may not be able to follow instructions if they rely on references to color.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users may benefit from additional text cues.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F14">F14: Failure of Success Criterion 1.3.3 due to identifying content only by its shape or location</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G96">G96: Providing textual identification of items that otherwise rely only on sensory information to be understood</a></li>
-                    </ul>
-                </div>
+                <pre><code>&lt;a href="#"&gt;&lt;img src="shield.png" <strong>alt="Customer Protection Program"</strong>&gt;&lt;/a&gt;</code></pre>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1303checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Shape</h3>
+                <p>One possible solution is to include the word “shield” in the text alternative. This will identify the shape for screen reader users, as well as for users who have images turned off.</p>
+                <div class="example" style="max-width: 400px; text-align: center;">
+                    <a href="#" class="example-link"><img src="{{ '/assets/images/130301-shield.png' | relative_url }}" alt="Customer Protection Program shield" style="max-width: 200px;"></a>
+                    <p>Click the shield above to participate in the Customer Protection Program.</p>
+                </div>
+                <pre><code>&lt;a href="#"&gt;&lt;img src="shield.png" <strong>alt="Customer Protection Program shield"</strong>&gt;&lt;/a&gt;</code></pre>
+                <p>Other possible solutions include:</p>
+                <ul>
+                    <li>Combining the image and the text into a link with the text "Participate in the Customer Protection Program".</li>
+                    <li>Changing the instructions to "Click the Customer Protection Program link above to participate," referring to the original <code>alt</code> text.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Auditory cues:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["13030201"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13030201"].name }}.</a></li>
+                    <li><strong>Color-reliant information that is not instructions:</strong><br>
+                        File under <a href="{{ site.data["1401"]["1401"]["1401"].link | relative_url }}">{{ site.data["1401"]["1401"]["1401"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users may not be able to follow instructions if they rely on a visual description of the content.</li>
+                    <li><strong>Color blindness:</strong> Users may not be able to follow instructions if they rely on references to color.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users may benefit from additional text cues.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F14">F14: Failure of Success Criterion 1.3.3 due to identifying content only by its shape or location</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G96">G96: Providing textual identification of items that otherwise rely only on sensory information to be understood</a></li>
+                </ul>
+            </div>
+        </div>
