@@ -2,22 +2,9 @@
 layout: default
 current: "130401"
 criterion: "1304"
-guideline: perceivable
-level: aa
-last-modified: October 26, 2026
+last-modified: November 3, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1304.1304[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1304.1304[page.criterion] %}
-{% assign checkpoint_data = site.data["1304"]["1304"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
@@ -40,7 +27,7 @@ last-modified: October 26, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the content open in the current orientation of the device (portrait or landscape)?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When the device is rotated, does the content rotate to accommodate the new orientation?</span>
@@ -57,7 +44,7 @@ last-modified: October 26, 2026
                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is it essential for the content to be restricted to a single display orientation?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["13040101"].link | relative_url }}">{{ checkpoint_data["13040101"].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["13040101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["13040101"].name }}</a></span></li>
                     </ul>
                 </li>
             </ul>
@@ -112,13 +99,7 @@ last-modified: October 26, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["13040101"].link | relative_url }}">{{ checkpoint_data["13040101"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["13040102"].link | relative_url }}">{{ checkpoint_data["13040102"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -148,7 +129,3 @@ last-modified: October 26, 2026
                 <li><a href="https://www.w3.org/WAI/WCAG21/working-examples/failure-orientation-message/">W3: Working example of failure</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1304checkpoints.html %}
-    
-</div>
