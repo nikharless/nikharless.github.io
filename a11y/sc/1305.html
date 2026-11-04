@@ -2,15 +2,10 @@
 layout: default
 current: "1305"
 criterion: "1305"
+last-modified: November 3, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1305.1305[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href="{{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>The purpose of each input field collecting information about the user can be programmatically determined when:</p>
@@ -22,12 +17,8 @@ criterion: "1305"
 
         <div class="block">
             <h2>Training</h2>
-        <ul>
-            <li><a href="https://dequeuniversity.com/class/forms/?lang=en">Deque University: Form Labels, Instructions, and Validation</a> (requires account)</li>
-            <li><a href="https://www.w3schools.com/accessibility/accessibility_autocomplete.php">W3: Accessibility Autocomplete</a></li>
-        </ul>
+            <ul>
+                <li><a href="https://dequeuniversity.com/class/forms/?lang=en">Deque University: Form Labels, Instructions, and Validation</a> (requires account)</li>
+                <li><a href="https://www.w3schools.com/accessibility/accessibility_autocomplete.php">W3: Accessibility Autocomplete</a></li>
+            </ul>
         </div>
-    </div>
-    {% include checkpoints/1305checkpoints.html %}
-    
-</div>
