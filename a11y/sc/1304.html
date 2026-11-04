@@ -2,15 +2,10 @@
 layout: default
 current: "1304"
 criterion: "1304"
+last-modified: November 3, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1304.1304[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href="{{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Content does not restrict its view and operation to a single display orientation, such as portrait or landscape, unless a specific display orientation is essential.</p>
@@ -22,11 +17,7 @@ criterion: "1304"
 
         <div class="block">
             <h2>Training</h2>
-        <ul>
-            <li><a href="https://dequeuniversity.com/class/responsive-zoom/?lang=en">Deque University: Responsive Design and Zoom</a> (requires account)</li>
-        </ul>
+            <ul>
+                <li><a href="https://dequeuniversity.com/class/responsive-zoom/?lang=en">Deque University: Responsive Design and Zoom</a> (requires account)</li>
+            </ul>
         </div>
-    </div>
-    {% include checkpoints/1304checkpoints.html %}
-    
-</div>
