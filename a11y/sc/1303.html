@@ -2,15 +2,10 @@
 layout: default
 current: "1303"
 criterion: "1303"
+last-modified: November 2, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1303.1303[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href="{{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Instructions provided for understanding and operating content do not rely solely on sensory characteristics of components such as shape, color, size, visual location, orientation, or sound.</p>
@@ -22,7 +17,3 @@ criterion: "1303"
                 <li><a href="https://dequeuniversity.com/class/forms/?lang=en">Deque University: Form Labels, Instructions, and Validation</a> (requires account)</li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1303checkpoints.html %}
-    
-</div>
