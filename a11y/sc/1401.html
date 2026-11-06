@@ -2,16 +2,10 @@
 layout: default
 current: "1401"
 criterion: "1401"
+last-modified: November 5, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1401.1401[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.</p>
@@ -32,7 +26,3 @@ criterion: "1401"
                 <li><a href="https://www.w3schools.com/accessibility/accessibility_color_meaning.php">W3 Schools: Accessibility Color Alone as Meaning</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1401checkpoints.html %}
-    
-</div>
