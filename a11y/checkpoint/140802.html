@@ -2,29 +2,17 @@
 layout: default
 current: "140802"
 criterion: "1408"
-guideline: perceivable
-level: aaa
-last-modified: July 6, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1408.1408[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1408.1408[page.criterion] %}
-{% assign checkpoint_data = site.data["1408"]["1408"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
-         <div class="block">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
-            <p aria-hidden="true"><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
-                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
+            <p aria-hidden="true">
+                <span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
+                <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice
+            </p>
             <ul>
-                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> 
-                The width of a block of text must be able to be adjusted so that no more than 80 characters are displayed without the need for horizontal scrolling.</li>
+                <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> The width of a block of text must be able to be adjusted so that no more than 80 characters are displayed without the need for horizontal scrolling.</li>
             </ul>
         </div>
 
@@ -34,13 +22,13 @@ last-modified: July 6, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page have blocks of text that are more than 80 characters by default?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the user adjust the width of the text block to no more than 80 characters by resizing?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes;</strong> PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14080201"].link | relative_url }}">{{ checkpoint_data["14080201"].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14080201"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14080201"].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -58,12 +46,7 @@ last-modified: July 6, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["14080201"].link | relative_url }}">{{ checkpoint_data["14080201"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -98,7 +81,3 @@ last-modified: July 6, 2026
                 <li></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1408checkpoints.html %}
-    
-</div>
