@@ -2,16 +2,10 @@
 layout: default
 current: "1403"
 criterion: "1403"
+last-modified: November 5, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1403.1403[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except for the following:</p>
@@ -86,7 +80,3 @@ criterion: "1403"
                 <li><a href="https://www.section508.gov/training/spreadsheets/aed-cop-xlsx02/">Section508.gov: Module 2: Ensuring the Contrast Ratio Between Text and Background is Sufficient (From: How to Author and Test Microsoft Excel Worksheets for Accessibility)</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1403checkpoints.html %}
-    
-</div>
