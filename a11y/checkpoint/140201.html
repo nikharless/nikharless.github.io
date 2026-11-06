@@ -2,22 +2,9 @@
 layout: default
 current: "140201"
 criterion: "1402"
-guideline: perceivable
-level: a
-last-modified: October 26, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1402.1402[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1402.1402[page.criterion] %}
-{% assign checkpoint_data = site.data["1402"]["1402"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -42,7 +29,7 @@ last-modified: October 26, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Is there audio on the page that starts playing automatically?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the audio play for more than 3 seconds?</span>
@@ -55,10 +42,10 @@ last-modified: October 26, 2026
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the mechanism pass all applicable Success Criteria?</span>
                                             <ul>
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14020102"].link | relative_url }}">{{ checkpoint_data["14020102"].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14020102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14020102"].name }}.</a></span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14020101"].link | relative_url }}">{{ checkpoint_data["14020101"].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14020101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14020101"].name }}.</a></span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -80,13 +67,7 @@ last-modified: October 26, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["14020101"].link | relative_url }}">{{ checkpoint_data["14020101"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["14020102"].link | relative_url }}">{{ checkpoint_data["14020102"].name }}.</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -122,7 +103,3 @@ last-modified: October 26, 2026
                 <li><a href="https://ictbaseline.access-board.gov/web-baselines/21TimedEvents/">Section 508 ICT Testing Baseline Portfolio: Timed Events (Web)</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1402checkpoints.html %}
-    
-</div>
