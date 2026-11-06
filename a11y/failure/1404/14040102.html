@@ -3,97 +3,87 @@ layout: default
 current: "14040102"
 criterion: "1404"
 checkpoint: "140401"
-last-modified: June 29, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1404.1404[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1404.1404[page.criterion] %}
-{% assign cp=site.data.1404.1404[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Text content is resizable to 200%.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Text content is resizable to 200%.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Text does not resize due to the use of viewport meta tags which disable zooming.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>In the "viewport" <code>&lt;meta&gt;</code> tag, remove the <code>user-scalable=0</code> or <code>user-scalable=no</code> option, or set it to "yes".</li>
-                        <li>Either remove the <code>maximum-scale</code> option, or set it to at least "2".</li>
-                    </ul>     
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3><code>user-scalable</code> is set to "no"</h3>
-                    <pre><code>&lt;meta name="viewport" content="user-scalable=no"&gt;</code></pre>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Text does not resize due to the use of viewport meta tags which disable zooming.</div>
+        </div>
 
-                    <h3><code>maximum-scale</code> is set to "1"</h3>
-                    <pre><code>&lt;meta name="viewport" content="maximum-scale=1.0"&gt;</code></pre>
-
-                    <h3><code>maximum-scale</code> is set to "yes" which translates to 1</h3>
-                    <pre><code>&lt;meta name="viewport" content="maximum-scale=yes"&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>No <code>user-scalable</code> is set to "yes"</h3>
-                    <pre><code>&lt;meta name="viewport" content="user-scalable=yes"&gt;</code></pre>
-
-                    <h3><code>maximum-scale</code> is set to "2"</h3>
-                    <pre><code>&lt;meta name="viewport" content="maximum-scale=2.0"&gt;</code></pre>
-
-                    <h3>Initial scale</h3>
-                    <p>This fits the initial view of the content to the screen size without disabling zoom capability.</p>
-                    <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li>No <code>&lt;meta name="viewport"&gt;</code> element</li>
-                        <li>No <code>content</code> attribute in the <code>&lt;meta name="viewport"&gt;</code> element</li>
-                        <li><code>&lt;meta name="viewport"&gt;</code> element does not specify <code>maximum-scale</code> or <code>user-scalable</code></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Visual Impairment:</strong> Users must be able to increase the text size of content so that they can read it.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G142">G142: Using a technology that has commonly-available user agents that support zoom</a></li>
-                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/b4f0c3/">Meta viewport allows for zoom</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">MDN: Viewport meta tag</a></li>
-                        <li><a href="https://www.w3schools.com/accessibility/accessibility_page_zoom.php">W3: Accessibility Page Zoom</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>In the "viewport" <code>&lt;meta&gt;</code> tag, remove the <code>user-scalable=0</code> or <code>user-scalable=no</code> option, or set it to "yes".</li>
+                    <li>Either remove the <code>maximum-scale</code> option, or set it to at least "2".</li>
+                </ul>     
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1404checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3><code>user-scalable</code> is set to "no"</h3>
+                <pre><code>&lt;meta name="viewport" content="user-scalable=no"&gt;</code></pre>
+
+                <h3><code>maximum-scale</code> is set to "1"</h3>
+                <pre><code>&lt;meta name="viewport" content="maximum-scale=1.0"&gt;</code></pre>
+
+                <h3><code>maximum-scale</code> is set to "yes" which translates to 1</h3>
+                <pre><code>&lt;meta name="viewport" content="maximum-scale=yes"&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>No <code>user-scalable</code> is set to "yes"</h3>
+                <pre><code>&lt;meta name="viewport" content="user-scalable=yes"&gt;</code></pre>
+
+                <h3><code>maximum-scale</code> is set to "2"</h3>
+                <pre><code>&lt;meta name="viewport" content="maximum-scale=2.0"&gt;</code></pre>
+
+                <h3>Initial scale</h3>
+                <p>This fits the initial view of the content to the screen size without disabling zoom capability.</p>
+                <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li>No <code>&lt;meta name="viewport"&gt;</code> element</li>
+                    <li>No <code>content</code> attribute in the <code>&lt;meta name="viewport"&gt;</code> element</li>
+                    <li><code>&lt;meta name="viewport"&gt;</code> element does not specify <code>maximum-scale</code> or <code>user-scalable</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Visual Impairment:</strong> Users must be able to increase the text size of content so that they can read it.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G142">G142: Using a technology that has commonly-available user agents that support zoom</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/b4f0c3/">Meta viewport allows for zoom</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag">MDN: Viewport meta tag</a></li>
+                    <li><a href="https://www.w3schools.com/accessibility/accessibility_page_zoom.php">W3: Accessibility Page Zoom</a></li>
+                </ul>
+            </div>
+        </div>
