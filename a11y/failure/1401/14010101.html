@@ -3,144 +3,133 @@ layout: default
 current: "14010101"
 criterion: "1401"
 checkpoint: "140101"
-last-modified: March 23, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1401.1401[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1401.1401[page.criterion] %}
-{% assign cp=site.data.1401.1401[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Color is not used as the only visual means of conveying information.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Color is not used as the only visual means of conveying information.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Color is used as the only visual means of conveying information.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <p>Provide a visual means of conveying the information in addition to color. Some ways to convey information without relying on color:</p>
-                    <ul>
-                        <li>Text</li>
-                        <li>A symbol</li>
-                        <li>Font weight</li>
-                        <li>Pattern</li>
-                        <li>Contrast</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad">Failing Examples<br>
-                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
-                <div>
-                    <h3>Required Fields Are Red</h3>
-                    <form>
-                        <p>In this example, red text is the only visual indication that a field is required. While the fields have the <code>required</code> attribute, programmatic indicators don't satisfy this checkpoint.</p>
-                        <label for="firstName">First Name<br>
-                            <input type="text" id="firstName" style="border: 2px solid #888; border-radius: 4px;">
-                        </label><br>
-                        <label for="lastName" style="color: #ee0000;">Last Name<br>
-                            <input required type="text" id="lastName" style="border: 2px solid #888 !important; background-color: white !important; border-radius: 4px;">
-                        </label><br>
-                        <label for="email" style="color: #ee0000;">Email<br>
-                            <input required type="text" id="email" style="border: 2px solid #888 !important; background-color: white !important; border-radius: 4px;">
-                        </label>
-                        <p>* Required fields are in red.</p>
-                    </form>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Color is used as the only visual means of conveying information.</div>
+        </div>
 
-                    <pre><code>&lt;label for="lastName" style="color: #ee0000;"&gt;Last Name
-    &lt;input required type="text" id="lastName"&gt;
-&lt;/label&gt;</code></pre>
-
-                    <h3>Error is in Red</h3>
-                    <p>Fields with errors are highlighted in red, but no other visual indicator exists. The <code>aria-invalid</code> attribute does not count as an additional means because it's not visual.</p>
-                    <p>Note: This example would also fail <a href="{{ checkpoint_data["3301"].link | relative_url }}">{{ checkpoint_data["3301"].name }}</a> due to its lack of an error message.</p>
-                    <form>
-                        <label for="zip">Postal code:</label><br>
-                        <input type="text" name="zip" id="zip" aria-invalid="true" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;">
-                    </form>
-
-                    <pre><code>&lt;label for="zip"&gt;Postal code:&lt;/label&gt;
-&lt;input type="text" name="zip" id="zip" aria-invalid="true" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;"&gt;</code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Required Fields Are Red</h3>
-                    <form>
-                        <p>Adding text to the labels provides a means other than color for indicating required fields.</p>
-                        <label for="firstName">First Name<br>
-                            <input type="text" id="firstName" style="border: 2px solid #888; border-radius: 4px;">
-                        </label><br>
-                        <label for="lastName" style="color: #ee0000;">Last Name (required)<br>
-                            <input required type="text" id="lastName" style="border: 2px solid #888 !important; background-color: white !important; border-radius: 4px;">
-                        </label><br>
-                        <label for="email" style="color: #ee0000;">Email (required)<br>
-                            <input required type="text" id="email" style="border: 2px solid #888 !important; background-color: white !important; border-radius: 4px;"> 
-                        </label>
-                    </form>
-
-                    <pre><code>&lt;label for="lastName" style="color: #ee0000;"&gt;Last Name <strong>(required)</strong>
-    &lt;input required type="text" id="lastName"&gt;
-&lt;/label&gt;</code></pre>
-
-                    <h3>Error is in Red</h3>
-                    <p>In addition to the symbol and the red highlighting, the error is also in text.</p>
-                    <form>
-                        <span class="fa fa-exclamation-triangle" style="color: #ee0000;"></span>
-                        <label for="zip">Postal code:</label><br>
-                        <input type="text" name="zip" id="zip" aria-invalid="true" aria-describedby="errorMsg" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;"><br>
-                        <span id="errorMsg" style="color: #ee0000;">Error: Please enter a valid postal code.</span>
-                    </form>
-                    <pre><code>&lt;label for="zip"&gt;Postal code:&lt;/label&gt;
-&lt;input type="text" name="zip" id="zip" aria-invalid="true" aria-describedby="errorMsg" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;"&gt;
-<strong>&lt;span id="errorMsg" style="color: #ee0000;"&gt;Error: Please enter a valid postal code.&lt;/span&gt;</strong></code></pre>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Link behavior</strong>:<br>
-                            File under <a href="{{ checkpoint_data["14010102"].link | relative_url }}">{{ checkpoint_data["14010102"].name }}</a>.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users cannot see colors or have limited color vision.</li>
-                        <li><strong>Color blindness:</strong> Users cannot distinguish between colors.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users may benefit from additional text cues.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F81">F81: Failure of Success Criterion 1.4.1 due to identifying required or error fields using color differences only</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G14">G14: Ensuring that information conveyed by color differences is also available in text</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G182">G182: Ensuring that additional visual cues are available when text color differences are used to convey information</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G205">G205: Including a text cue for colored form control labels</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <p>Provide a visual means of conveying the information in addition to color. Some ways to convey information without relying on color:</p>
+                <ul>
+                    <li>Text</li>
+                    <li>A symbol</li>
+                    <li>Font weight</li>
+                    <li>Pattern</li>
+                    <li>Contrast</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1401checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Required Fields Are Red</h3>
+                <form>
+                    <p>In this example, red text is the only visual indication that a field is required. While the fields have the <code>required</code> attribute, programmatic indicators don't satisfy this checkpoint.</p>
+                    <label for="firstName">First Name<br>
+                        <input type="text" id="firstName" style="border: 2px solid #888; border-radius: 4px;">
+                    </label><br>
+                    <label for="lastName" style="color: #ee0000;">Last Name<br>
+                        <input required type="text" id="lastName" style="border: 2px solid #888 !important; background-color: white !important; border-radius: 4px;">
+                    </label><br>
+                    <label for="email" style="color: #ee0000;">Email<br>
+                        <input required type="text" id="email" style="border: 2px solid #888 !important; background-color: white !important; border-radius: 4px;">
+                    </label>
+                    <p>* Required fields are in red.</p>
+                </form>
+
+                <pre><code>&lt;label for="lastName" style="color: #ee0000;"&gt;Last Name
+    &lt;input required type="text" id="lastName"&gt;
+&lt;/label&gt;</code></pre>
+
+                <h3>Error is in Red</h3>
+                <p>Fields with errors are highlighted in red, but no other visual indicator exists. The <code>aria-invalid</code> attribute does not count as an additional means because it's not visual.</p>
+                <p>Note: This example would also fail <a href="{{ site.data["3301"]["3301"]["3301"].link | relative_url }}">{{ site.data["3301"]["3301"]["3301"].name }}</a> due to its lack of an error message.</p>
+                <form>
+                    <label for="zip">Postal code:</label><br>
+                    <input type="text" name="zip" id="zip" aria-invalid="true" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;">
+                </form>
+
+                <pre><code>&lt;label for="zip"&gt;Postal code:&lt;/label&gt;
+&lt;input type="text" name="zip" id="zip" aria-invalid="true" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;"&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Required Fields Are Red</h3>
+                <form>
+                    <p>Adding text to the labels provides a means other than color for indicating required fields.</p>
+                    <label for="firstName">First Name<br>
+                        <input type="text" id="firstName" style="border: 2px solid #888; border-radius: 4px;">
+                    </label><br>
+                    <label for="lastName" style="color: #ee0000;">Last Name (required)<br>
+                        <input required type="text" id="lastName" style="border: 2px solid #888 !important; background-color: white !important; border-radius: 4px;">
+                    </label><br>
+                    <label for="email" style="color: #ee0000;">Email (required)<br>
+                        <input required type="text" id="email" style="border: 2px solid #888 !important; background-color: white !important; border-radius: 4px;"> 
+                    </label>
+                </form>
+
+                <pre><code>&lt;label for="lastName" style="color: #ee0000;"&gt;Last Name <strong>(required)</strong>
+    &lt;input required type="text" id="lastName"&gt;
+&lt;/label&gt;</code></pre>
+
+                <h3>Error is in Red</h3>
+                <p>In addition to the symbol and the red highlighting, the error is also in text.</p>
+                <form>
+                    <span class="fa fa-exclamation-triangle" style="color: #ee0000;"></span>
+                    <label for="zip">Postal code:</label><br>
+                    <input type="text" name="zip" id="zip" aria-invalid="true" aria-describedby="errorMsg" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;"><br>
+                    <span id="errorMsg" style="color: #ee0000;">Error: Please enter a valid postal code.</span>
+                </form>
+                <pre><code>&lt;label for="zip"&gt;Postal code:&lt;/label&gt;
+&lt;input type="text" name="zip" id="zip" aria-invalid="true" aria-describedby="errorMsg" style="background-color: #fffafa; border: 2px solid #ee0000; border-radius: 4px;"&gt;
+<strong>&lt;span id="errorMsg" style="color: #ee0000;"&gt;Error: Please enter a valid postal code.&lt;/span&gt;</strong></code></pre>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Link behavior</strong>:<br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["14010102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14010102"].name }}</a>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users cannot see colors or have limited color vision.</li>
+                    <li><strong>Color blindness:</strong> Users cannot distinguish between colors.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users may benefit from additional text cues.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F81">F81: Failure of Success Criterion 1.4.1 due to identifying required or error fields using color differences only</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G14">G14: Ensuring that information conveyed by color differences is also available in text</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G182">G182: Ensuring that additional visual cues are available when text color differences are used to convey information</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G205">G205: Including a text cue for colored form control labels</a></li>
+                </ul>
+            </div>
+        </div>
