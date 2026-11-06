@@ -3,90 +3,80 @@ layout: default
 current: "13060101"
 criterion: "1306"
 checkpoint: "130601"
-last-modified: March 18, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1306.1306[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1306.1306[page.criterion] %}
-{% assign cp=site.data.1306.1306[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>The purpose of user interface components can be programmatically determined.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>The purpose of user interface components can be programmatically determined.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The purpose of a user interface component cannot be programmatically determined.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Use semantic native HTML elements where possible.</li>
-                        <li>Use the ARIA <code>role</code>, <code>aria-label</code>, <code>aria-labelledby</code>, and <code>aria-describedby</code> to specify the purpose.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    Because this checkpoint is largely geared toward future functionality, real-world failures that aren't covered by other criteria are rare. Test Level A and Level AA success criteria first and file any failures accordingly.
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    TBD
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Missing text alternative:</strong><br>
-                            File under <a href="{{ checkpoint_data["1101"].link | relative_url }}">{{ checkpoint_data["1101"].name }}</a>.</li>
-                        <li><strong>Missing name:</strong><br>
-                            File under <a href="{{ checkpoint_data["410201"].link | relative_url }}">{{ checkpoint_data["410201"].name }}</a>.</li>
-                        <li><strong>Missing link destination description:</strong><br>
-                            File under <a href="{{ checkpoint_data["240401"].link | relative_url }}">{{ checkpoint_data["240401"].name }}</a>.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div> 
-                    <ul>
-                        <li><strong>Cognitive Impairment:</strong> Users with language, memory, or executive function issues may implement personalization, such as substituting icons with familiar symbols.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.6 Identify Purpose</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA7">ARIA7: Using aria-labelledby for link purpose</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA8">ARIA8: Using aria-label for link purpose</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA15">ARIA15: Using aria-describedby to provide descriptions of images</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA24">ARIA24: Semantically identifying a font icon with role="img"</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>The purpose of a user interface component cannot be programmatically determined.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Use semantic native HTML elements where possible.</li>
+                    <li>Use the ARIA <code>role</code>, <code>aria-label</code>, <code>aria-labelledby</code>, and <code>aria-describedby</code> to specify the purpose.</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1306checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                Because this checkpoint is largely geared toward future functionality, real-world failures that aren't covered by other criteria are rare. Test Level A and Level AA success criteria first and file any failures accordingly.
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                TBD
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Missing text alternative:</strong><br>
+                        File under <a href="{{ site.data["1101"]["1101"]["1101"].link | relative_url }}">{{ site.data["1101"]["1101"]["1101"].name }}</a>.</li>
+                    <li><strong>Missing name:</strong><br>
+                        File under <a href="{{ site.data["4102"]["4102"]["410201"].link | relative_url }}">{{ site.data["4102"]["4102"]["410201"].name }}</a>.</li>
+                    <li><strong>Missing link destination description:</strong><br>
+                        File under <a href="{{ site.data["2404"]["2404"]["240401"].link | relative_url }}">{{ site.data["2404"]["2404"]["240401"].name }}</a>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div> 
+                <ul>
+                    <li><strong>Cognitive Impairment:</strong> Users with language, memory, or executive function issues may implement personalization, such as substituting icons with familiar symbols.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion 1.3.6 Identify Purpose</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H37">H37: Using alt attributes on img elements</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA7">ARIA7: Using aria-labelledby for link purpose</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA8">ARIA8: Using aria-label for link purpose</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA10">ARIA10: Using aria-labelledby to provide a text alternative for non-text content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA15">ARIA15: Using aria-describedby to provide descriptions of images</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA24">ARIA24: Semantically identifying a font icon with role="img"</a></li>
+                </ul>
+            </div>
+        </div>
