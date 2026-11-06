@@ -3,155 +3,145 @@ layout: default
 current: "14010104"
 criterion: "1401"
 checkpoint: "140101"
-last-modified: March 26, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1401.1401[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1401.1401[page.criterion] %}
-{% assign cp=site.data.1401.1401[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Color is not used as the only means of distinguishing a visual element.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Color is not used as the only means of distinguishing a visual element.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Color is used as the only means of distinguishing a visual element.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div><p>Provide a visual means of conveying the information in addition to color. Possible solutions include, but are not limited to, the following:</p>
-                    <ul>
-                        <li>Instead of using legends on charts and graphs, label the elements directly.</li>
-                        <li>Use shapes and patterns in addition to colors to fill in elements.</li>
-                        <li>Ensure sufficient contrast between each color. (This only works when there's a small number of elements.)</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Stacked Bar Chart</h3>
-                    <p>This bar chart relies on color to distinguish between elements.</p>
-                    <img src="{{ baseurl }}/assets/images/14010104-bar-chart-fail.png" style="max-width: 600px;" alt="Bar chart showing fruits used">
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Color is used as the only means of distinguishing a visual element.</div>
+        </div>
 
-                    <p>Without color vision, it's impossible to decipher the information.</p>
-                    <img src="{{ baseurl }}/assets/images/14010104-bar-chart-fail-grayscale.png" style="max-width: 600px;" alt="Bar chart showing fruits used">
-
-                    <h3>Pie Chart</h3>
-                    <p>This pie chart relies on color to distinguish between slices.</p>
-                    <img src="{{ baseurl }}/assets/images/14010104-pie-chart-fail.png" style="max-width: 600px;" alt="Pie chart showing 2025 market share of different browsers.">
-
-                    <p>Without color vision, it's impossible to tell what slice corresponds to which browser.</p>
-                    <img src="{{ baseurl }}/assets/images/14010104-pie-chart-fail-grayscale.png" style="max-width: 600px;" alt="Pie chart showing 2025 market share of different browsers.">
-
-                    <h3>Test Question</h3>
-                    <p>This example relies on the user being able to see the colors of the triangles.</p>
-                    <svg version="1.1" width="153" height="154" aria-labelledby="inaccessible-triangles-title" role="img">
-                        <g>
-                            <title id="inaccessible-triangles-title">Four triangles with different angles</title>
-                            <path d="m2.06902,49.92402l91.82715,-48.2264l-42.35869,75.85164l-49.46846,-27.62524z" fill="#09610D"></path>
-                            <path d="m147.18413,95.39555l-41.64554,-80.62148l43.24728,27.76369l-1.60175,52.85779z" fill="#0000CC"></path>
-                            <path d="m110.9136,148.01692l-27.57392,-82.3039l69.97661,50.70448l-42.40269,31.59943z" fill="#AA0402"></path>
-                            <path d="m21.07534,112.17733l48.69831,-22.53485l-4.90304,52.17411l-43.79528,-29.63926z" fill="#DDDD00"></path>
-                        </g>
-                    </svg>
-                    <form action="#" method="post">
-                        <fieldset>
-                            <legend style="width: 100%;">Which is the right-angled triangle?</legend>
-                            <input id="answer-green1" name="answer1" value="green" type="radio"> <label for="answer-green1">Green</label><br>
-                            <input id="answer-blue1" name="answer1" value="blue" type="radio"> <label for="answer-blue1">Blue</label><br>
-                            <input id="answer-red1" name="answer1" value="red" type="radio"> <label for="answer-red1">Red</label><br>
-                            <input id="answer-yellow1" name="answer1" value="yellow" type="radio"> <label for="answer-yellow1">Yellow</label><br>
-                            <input id="answer-pass1" name="answer1" value="pass" type="radio"> <label for="answer-pass1">Don't know</label>
-                        </fieldset>
-                    </form>
-                    <p><a href="https://www.w3.org/WAI/tips/designing/#dont-use-color-alone-to-convey-information">Source</a></p>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Bar Chart</h3>
-                    <p>Rather than relying on the color of the bars, each bar is labeled with text.</p>
-                    <img src="{{ baseurl }}/assets/images/14010104-bar-chart-pass.png" style="max-width: 600px;" alt="Bar chart showing fruits used">
-
-                    <h3>Pie Chart</h3>
-                    <p>Rather than relying on the color of the wedges, each wedge of this pie chart is labeled with text.</p>
-                    <img src="{{ baseurl }}/assets/images/14010104-pie-chart-pass.png" style="max-width: 600px;" alt="Pie chart showing 2025 market share of different browsers.">
-
-                    <h3>Test Question</h3>
-                    <p>In addition to colors, this test question is labeled with numbers corresponding to the answers.</p>
-                    <svg version="1.1" width="153" height="154">
-                        <g>
-                          <path d="m2.06902,49.92402l91.82715,-48.2264l-42.35869,75.85164l-49.46846,-27.62524z" fill="#09610D"></path>
-                          <text fill="#f4f4f4" y="51" x="44"><tspan>1</tspan><tspan dx="100" style="opacity:0">Green triangle: Angles are 30°, 60°, 90°</tspan></text>
-                          <path d="m147.18413,95.39555l-41.64554,-80.62148l43.24728,27.76369l-1.60175,52.85779z" fill="#0000CC"></path>
-                          <text fill="#f4f4f4" y="54" x="132"><tspan>2</tspan><tspan dx="100" style="opacity:0"> Blue triangle: Angles are 30°, 30°, 120°</tspan></text>
-                          <path d="m110.9136,148.01692l-27.57392,-82.3039l69.97661,50.70448l-42.40269,31.59943z" fill="#AA0402"></path>
-                          <text fill="#f4f4f4" y="114" x="110"><tspan>3</tspan><tspan dx="100" style="opacity:0"> Red triangle: Angles are 40°, 70°, 70°</tspan></text>
-                          <path d="m21.07534,112.17733l48.69831,-22.53485l-4.90304,52.17411l-43.79528,-29.63926z" fill="#DDDD00"></path>
-                          <text fill="#333" y="118" x="48"><tspan>4</tspan><tspan dx="100" style="opacity:0"> Yellow triangle: Angles are 60°, 60°, 60°</tspan></text>
-                        </g>
-                    </svg>
-                    <form action="#" method="post">
-                    <fieldset>
-                      <legend style="width: 100%;">Which is the right-angled triangle?</legend>
-                      <label for="answer-green2"><input id="answer-green2" name="answer2" value="green" type="radio"> Green (1)</label><br>
-                      <label for="answer-blue2"><input id="answer-blue2" name="answer2" value="blue" type="radio"> Blue (2)</label><br>
-                      <label for="answer-red2"><input id="answer-red2" name="answer2" value="red" type="radio"> Red (3)</label><br>
-                      <label for="answer-yellow2"><input id="answer-yellow2" name="answer2" value="yellow" type="radio"> Yellow (4)</label><br>
-                      <label for="answer-pass2"><input id="answer-pass2" name="answer2" value="pass" type="radio"> Don't know</label>
-                    </fieldset>
-                  </form>
-                  <p><a href="https://www.w3.org/WAI/tips/designing/#dont-use-color-alone-to-convey-information">Source</a></p>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Error messages</strong>:<br>
-                            File under <a href="{{ checkpoint_data["14010101"].link | relative_url }}">{{ checkpoint_data["14010101"].name }}</a>.</li>
-                        <li><strong>Required fields</strong>:<br>
-                            File under <a href="{{ checkpoint_data["14010101"].link | relative_url }}">{{ checkpoint_data["14010101"].name }}</a>.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users cannot see colors or have limited color vision.</li>
-                        <li><strong>Color blindness:</strong> Users cannot distinguish between colors.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users may benefit from additional text cues.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F13">F13: Failure of Success Criterion 1.1.1 and 1.4.1 due to having a text alternative that does not include information that is conveyed by color differences in the image</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G14">G14: Ensuring that information conveyed by color differences is also available in text</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G111">G111: Using color and pattern</a></li>
-                        <li><a href="https://www.w3.org/WAI/tips/designing/#dont-use-color-alone-to-convey-information">W3: Don’t use color alone to convey information</a></li>
-                        <li><a href="https://observablehq.com/@frankelavsky/no-use-of-color-alone-in-data-visualization">What is "No Use of Color Alone" in Data Visualization? (with examples)</a></li>
-                        <li><a href="https://www.smashingmagazine.com/2024/02/accessibility-standards-empower-better-chart-visual-design/">How Accessibility Standards Can Empower Better Chart Visual Design</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div><p>Provide a visual means of conveying the information in addition to color. Possible solutions include, but are not limited to, the following:</p>
+                <ul>
+                    <li>Instead of using legends on charts and graphs, label the elements directly.</li>
+                    <li>Use shapes and patterns in addition to colors to fill in elements.</li>
+                    <li>Ensure sufficient contrast between each color. (This only works when there's a small number of elements.)</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1401checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Stacked Bar Chart</h3>
+                <p>This bar chart relies on color to distinguish between elements.</p>
+                <img src="{{ '/assets/images/14010104-bar-chart-fail.png' | relative_url }}" style="max-width: 600px;" alt="Bar chart showing fruits used">
+
+                <p>Without color vision, it's impossible to decipher the information.</p>
+                <img src="{{ '/assets/images/14010104-bar-chart-fail-grayscale.png' | relative_url }}" style="max-width: 600px;" alt="Bar chart showing fruits used">
+
+                <h3>Pie Chart</h3>
+                <p>This pie chart relies on color to distinguish between slices.</p>
+                <img src="{{ '/assets/images/14010104-pie-chart-fail.png' | relative_url }}" style="max-width: 600px;" alt="Pie chart showing 2025 market share of different browsers.">
+
+                <p>Without color vision, it's impossible to tell what slice corresponds to which browser.</p>
+                <img src="{{ '/assets/images/14010104-pie-chart-fail-grayscale.png' | relative_url }}" style="max-width: 600px;" alt="Pie chart showing 2025 market share of different browsers.">
+
+                <h3>Test Question</h3>
+                <p>This example relies on the user being able to see the colors of the triangles.</p>
+                <svg version="1.1" width="153" height="154" aria-labelledby="inaccessible-triangles-title" role="img">
+                    <g>
+                        <title id="inaccessible-triangles-title">Four triangles with different angles</title>
+                        <path d="m2.06902,49.92402l91.82715,-48.2264l-42.35869,75.85164l-49.46846,-27.62524z" fill="#09610D"></path>
+                        <path d="m147.18413,95.39555l-41.64554,-80.62148l43.24728,27.76369l-1.60175,52.85779z" fill="#0000CC"></path>
+                        <path d="m110.9136,148.01692l-27.57392,-82.3039l69.97661,50.70448l-42.40269,31.59943z" fill="#AA0402"></path>
+                        <path d="m21.07534,112.17733l48.69831,-22.53485l-4.90304,52.17411l-43.79528,-29.63926z" fill="#DDDD00"></path>
+                    </g>
+                </svg>
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend style="width: 100%;">Which is the right-angled triangle?</legend>
+                        <input id="answer-green1" name="answer1" value="green" type="radio"> <label for="answer-green1">Green</label><br>
+                        <input id="answer-blue1" name="answer1" value="blue" type="radio"> <label for="answer-blue1">Blue</label><br>
+                        <input id="answer-red1" name="answer1" value="red" type="radio"> <label for="answer-red1">Red</label><br>
+                        <input id="answer-yellow1" name="answer1" value="yellow" type="radio"> <label for="answer-yellow1">Yellow</label><br>
+                        <input id="answer-pass1" name="answer1" value="pass" type="radio"> <label for="answer-pass1">Don't know</label>
+                    </fieldset>
+                </form>
+                <p><a href="https://www.w3.org/WAI/tips/designing/#dont-use-color-alone-to-convey-information">Source</a></p>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Bar Chart</h3>
+                <p>Rather than relying on the color of the bars, each bar is labeled with text.</p>
+                <img src="{{ '/assets/images/14010104-bar-chart-pass.png' | relative_url }}" style="max-width: 600px;" alt="Bar chart showing fruits used">
+
+                <h3>Pie Chart</h3>
+                <p>Rather than relying on the color of the wedges, each wedge of this pie chart is labeled with text.</p>
+                <img src="{{ '/assets/images/14010104-pie-chart-pass.png' | relative_url }}" style="max-width: 600px;" alt="Pie chart showing 2025 market share of different browsers.">
+
+                <h3>Test Question</h3>
+                <p>In addition to colors, this test question is labeled with numbers corresponding to the answers.</p>
+                <svg version="1.1" width="153" height="154">
+                    <g>
+                        <path d="m2.06902,49.92402l91.82715,-48.2264l-42.35869,75.85164l-49.46846,-27.62524z" fill="#09610D"></path>
+                        <text fill="#f4f4f4" y="51" x="44"><tspan>1</tspan><tspan dx="100" style="opacity:0">Green triangle: Angles are 30°, 60°, 90°</tspan></text>
+                        <path d="m147.18413,95.39555l-41.64554,-80.62148l43.24728,27.76369l-1.60175,52.85779z" fill="#0000CC"></path>
+                        <text fill="#f4f4f4" y="54" x="132"><tspan>2</tspan><tspan dx="100" style="opacity:0"> Blue triangle: Angles are 30°, 30°, 120°</tspan></text>
+                        <path d="m110.9136,148.01692l-27.57392,-82.3039l69.97661,50.70448l-42.40269,31.59943z" fill="#AA0402"></path>
+                        <text fill="#f4f4f4" y="114" x="110"><tspan>3</tspan><tspan dx="100" style="opacity:0"> Red triangle: Angles are 40°, 70°, 70°</tspan></text>
+                        <path d="m21.07534,112.17733l48.69831,-22.53485l-4.90304,52.17411l-43.79528,-29.63926z" fill="#DDDD00"></path>
+                        <text fill="#333" y="118" x="48"><tspan>4</tspan><tspan dx="100" style="opacity:0"> Yellow triangle: Angles are 60°, 60°, 60°</tspan></text>
+                    </g>
+                </svg>
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend style="width: 100%;">Which is the right-angled triangle?</legend>
+                        <label for="answer-green2"><input id="answer-green2" name="answer2" value="green" type="radio"> Green (1)</label><br>
+                        <label for="answer-blue2"><input id="answer-blue2" name="answer2" value="blue" type="radio"> Blue (2)</label><br>
+                        <label for="answer-red2"><input id="answer-red2" name="answer2" value="red" type="radio"> Red (3)</label><br>
+                        <label for="answer-yellow2"><input id="answer-yellow2" name="answer2" value="yellow" type="radio"> Yellow (4)</label><br>
+                        <label for="answer-pass2"><input id="answer-pass2" name="answer2" value="pass" type="radio"> Don't know</label>
+                    </fieldset>
+                </form>
+                <p><a href="https://www.w3.org/WAI/tips/designing/#dont-use-color-alone-to-convey-information">Source</a></p>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Error messages</strong>:<br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["14010101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14010101"].name }}</a>.</li>
+                    <li><strong>Required fields</strong>:<br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["14010101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14010101"].name }}</a>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users cannot see colors or have limited color vision.</li>
+                    <li><strong>Color blindness:</strong> Users cannot distinguish between colors.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users may benefit from additional text cues.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F13">F13: Failure of Success Criterion 1.1.1 and 1.4.1 due to having a text alternative that does not include information that is conveyed by color differences in the image</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G14">G14: Ensuring that information conveyed by color differences is also available in text</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G111">G111: Using color and pattern</a></li>
+                    <li><a href="https://www.w3.org/WAI/tips/designing/#dont-use-color-alone-to-convey-information">W3: Don’t use color alone to convey information</a></li>
+                    <li><a href="https://observablehq.com/@frankelavsky/no-use-of-color-alone-in-data-visualization">What is "No Use of Color Alone" in Data Visualization? (with examples)</a></li>
+                    <li><a href="https://www.smashingmagazine.com/2024/02/accessibility-standards-empower-better-chart-visual-design/">How Accessibility Standards Can Empower Better Chart Visual Design</a></li>
+                </ul>
+            </div>
+        </div>
