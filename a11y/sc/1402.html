@@ -2,16 +2,10 @@
 layout: default
 current: "1402"
 criterion: "1402"
+last-modified: November 5, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1402.1402[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.</p>
@@ -42,7 +36,3 @@ criterion: "1402"
               <li><a href="https://dequeuniversity.com/class/multimedia-part-2/toc">Deque University: Multimedia, Animations, and Motion: Advanced</a> (account required)</li>
         </ul>
         </div>
-    </div>
-    {% include checkpoints/1402checkpoints.html %}
-    
-</div>
