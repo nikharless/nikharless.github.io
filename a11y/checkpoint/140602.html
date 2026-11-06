@@ -2,22 +2,9 @@
 layout: default
 current: "140602"
 criterion: "1406"
-guideline: perceivable
-level: aaa
-last-modified: June 29, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1406.1406[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1406.1406[page.criterion] %}
-{% assign checkpoint_data = site.data["1406"]["1406"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -50,7 +37,7 @@ last-modified: June 29, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page have text that is at least 18pt (24px) or 14pt (19px) bold?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the text background an image or gradient?</span>
@@ -58,14 +45,14 @@ last-modified: June 29, 2026
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes;</strong> Does the text have a contrast ratio of at least 4.5:1 with the area of the background with the least contrast?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14060203"].link | relative_url }}">{{ checkpoint_data["14060203"].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14060203"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14060203"].name }}</a></span></li>
                             </ul>
                         <li role="treeitem" aria-expanded="false"><span><strong>No;</strong> Is the text placeholder text?</span>
                             <ul role="group">
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the placeholder text have a contrast ratio of at least 4.5:1 with its background?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes;</strong> PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="{{ checkpoint_data["14060204"].link | relative_url }}">{{ checkpoint_data["14060204"].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No;</strong> See <a href="{{ site.data[page.criterion][page.criterion]["14060204"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14060204"].name }}</a></span></li>
                                     </ul>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the text a link?</span>
                                     <ul role="group">
@@ -74,16 +61,16 @@ last-modified: June 29, 2026
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the text in the hover and focus states have a contrast ratio of at least 4.5:1 with its background?</span>
                                                     <ul role="group">
                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14060202"].link | relative_url }}">{{ checkpoint_data["14060202"].name }}</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14060202"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14060202"].name }}</a></span></li>
                                                     </ul>
                                                 </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14060201"].link | relative_url }}">{{ checkpoint_data["14060201"].name }}</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14060201"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14060201"].name }}</a></span></li>
                                             </ul>
                                         </li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the text have a contrast ratio of at least 4.5:1 with its background?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14060201"].link | relative_url }}">{{ checkpoint_data["14060201"].name }}</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14060201"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14060201"].name }}</a></span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -102,7 +89,7 @@ last-modified: June 29, 2026
             <h3>Desktop</h3>
 
             <h4>ANDI</h4>
-            <p>Note: ANDI only highlights failures for <a href="{{ checkpoint_data["1403"].link | relative_url }}">{{ checkpoint_data["1403"].name }}</a>, so it's necessary to also check the elements that it rates as PASS.</p>
+            <p>Note: ANDI only highlights failures for <a href="{{ site.data["1403"]["1403"]["1403"].link | relative_url }}">{{ site.data["1403"]["1403"]["1403"].name }}</a>, so it's necessary to also check the elements that it rates as PASS.</p>
 
             <ol>
                 <li>Use ANDI: color contrast to automatically check for text contrast issues.</li>
@@ -160,15 +147,7 @@ last-modified: June 29, 2026
             <p>Use a manual tool such as one listed in the Testing Tools below to manually check any large text.</p>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["14060201"].link | relative_url }}">{{ checkpoint_data["14060201"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["14060202"].link | relative_url }}">{{ checkpoint_data["14060202"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["14060203"].link | relative_url }}">{{ checkpoint_data["14060203"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["14060204"].link | relative_url }}">{{ checkpoint_data["14060204"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -218,7 +197,3 @@ last-modified: June 29, 2026
                 <li><a href="https://bootcamp.uxdesign.cc/mastering-color-contrast-a-beginners-guide-to-wcag-guidelines-and-contrast-checkers-d6cd7de6c373">Mastering Color Contrast: A Beginner's Guide to WCAG Guidelines and Contrast Checkers</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1406checkpoints.html %}
-    
-</div>
