@@ -1,16 +1,10 @@
 ---
 layout: default
 current: "1306"
-criterion: "1306"
+last-modified: November 3, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1306.1306[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href="{{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>In content implemented using markup languages, the purpose of user interface components, icons, and regions can be programmatically determined.</p>
@@ -22,7 +16,3 @@ criterion: "1306"
             <li></li>
         </ul>
         </div>
-    </div>
-    {% include checkpoints/1306checkpoints.html %}
-    
-</div>
