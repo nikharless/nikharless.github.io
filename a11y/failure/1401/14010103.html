@@ -3,117 +3,106 @@ layout: default
 current: "14010103"
 criterion: "1401"
 checkpoint: "140101"
-last-modified: March 23, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1401.1401[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1401.1401[page.criterion] %}
-{% assign cp=site.data.1401.1401[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Color is not used as the only visual means of prompting a response.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Color is not used as the only visual means of prompting a response.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Color is used as the only visual means of prompting a response.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Provide a visual means of conveying the information in addition to color. Some ways to convey information without relying on color:</p>
-                    <ul>
-                        <li>Text</li>
-                        <li>A symbol</li>
-                        <li>Font weight</li>
-                        <li>Pattern</li>
-                        <li>Contrast</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad">Failing Examples<br>
-                <span class="fa-solid fa-circle-xmark lgIcon" style="color: #e00000;"></span></h2>
-                <div>
-                    <h3>Highlighted Fields</h3>
-                    <p>This example uses yellow highlighting to indicate how to begin the process, but this information is not conveyed to users who can't distinguish color.</p>
-                    <div style="border: 2px solid black; padding: 1em;">
-                        <form>
-                            <label for="idno">ID <span style="color: #888;"><em>(e.g. 123456)</em></span><br>
-                                <input type="text" id="idno" style="background-color: #ffffb3; border: 2px solid #cccc00; border-radius: 4px;">
-                            </label>
-                            <button>Search</button><br>
-                            <label for="owner">Owner<br>
-                                <input type="text" id="owner" style="border-radius: 4px;">
-                            </label><br>
-                            <label for="dept">Department<br>
-                                <input type="text" id="dept" style="border-radius: 4px;">
-                            </label>
-                        </form>
-                    </div>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Color is used as the only visual means of prompting a response.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Provide a visual means of conveying the information in addition to color. Some ways to convey information without relying on color:</p>
+                <ul>
+                    <li>Text</li>
+                    <li>A symbol</li>
+                    <li>Font weight</li>
+                    <li>Pattern</li>
+                    <li>Contrast</li>
+                </ul>
             </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Highlighted Fields</h3>
-                    <p>In addition to the yellow highlighting, instructions name the field.</p>
-                    <div style="border: 2px solid black; padding: 1em;">
-                        <p>Begin by entering the 6-digit ID number into the ID field and clicking Search.</p>
-                        <form>
-                            <label for="idno1">ID <span style="color: #888;"><em>(e.g. 123456)</em></span><br>
-                                <input type="text" id="idno1" style="background-color: #ffffb3; border: 2px solid #cccc00; border-radius: 4px;">
-                            </label>
-                            <button>Search</button><br>
-                            <label for="owner1">Owner<br>
-                                <input type="text" id="owner1" style="border-radius: 4px;">
-                            </label><br>
-                            <label for="dept1">Department<br>
-                                <input type="text" id="dept1" style="border-radius: 4px;">
-                            </label>
-                        </form>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Error messages</strong>:<br>
-                            File under <a href="{{ checkpoint_data["14010101"].link | relative_url }}">{{ checkpoint_data["14010101"].name }}</a>.</li>
-                        <li><strong>Required fields</strong>:<br>
-                            File under <a href="{{ checkpoint_data["14010101"].link | relative_url }}">{{ checkpoint_data["14010101"].name }}</a>.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users cannot see colors or have limited color vision.</li>
-                        <li><strong>Color blindness:</strong> Users cannot distinguish between colors.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users may benefit from additional text cues.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G14">G14: Ensuring that information conveyed by color differences is also available in text</a></li>
-                    </ul>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Highlighted Fields</h3>
+                <p>This example uses yellow highlighting to indicate how to begin the process, but this information is not conveyed to users who can't distinguish color.</p>
+                <div style="border: 2px solid black; padding: 1em;">
+                    <form>
+                        <label for="idno">ID <span style="color: #888;"><em>(e.g. 123456)</em></span><br>
+                            <input type="text" id="idno" style="background-color: #ffffb3; border: 2px solid #cccc00; border-radius: 4px;">
+                        </label>
+                        <button>Search</button><br>
+                        <label for="owner">Owner<br>
+                            <input type="text" id="owner" style="border-radius: 4px;">
+                        </label><br>
+                        <label for="dept">Department<br>
+                            <input type="text" id="dept" style="border-radius: 4px;">
+                        </label>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1401checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Highlighted Fields</h3>
+                <p>In addition to the yellow highlighting, instructions name the field.</p>
+                <div style="border: 2px solid black; padding: 1em;">
+                    <p>Begin by entering the 6-digit ID number into the ID field and clicking Search.</p>
+                    <form>
+                        <label for="idno1">ID <span style="color: #888;"><em>(e.g. 123456)</em></span><br>
+                            <input type="text" id="idno1" style="background-color: #ffffb3; border: 2px solid #cccc00; border-radius: 4px;">
+                        </label>
+                        <button>Search</button><br>
+                        <label for="owner1">Owner<br>
+                            <input type="text" id="owner1" style="border-radius: 4px;">
+                        </label><br>
+                        <label for="dept1">Department<br>
+                            <input type="text" id="dept1" style="border-radius: 4px;">
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Error messages</strong>:<br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["14010101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14010101"].name }}</a>.</li>
+                    <li><strong>Required fields</strong>:<br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["14010101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14010101"].name }}</a>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users cannot see colors or have limited color vision.</li>
+                    <li><strong>Color blindness:</strong> Users cannot distinguish between colors.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users may benefit from additional text cues.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G14">G14: Ensuring that information conveyed by color differences is also available in text</a></li>
+                </ul>
+            </div>
+        </div>
