@@ -2,23 +2,10 @@
 layout: default
 current: "141101"
 criterion: "1411"
-guideline: perceivable
-level: aa
 css: 1411
-last-modified: October 24, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1411.1411[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1411.1411[page.criterion] %}
-{% assign checkpoint_data = site.data["1411"]["1411"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true"><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
@@ -48,36 +35,36 @@ last-modified: October 24, 2026
 
             <h4>Border against background</h4>
             <ul>
-                <li><img src="{{ baseurl }}/assets/images/checkbox-empty.png" width="36" height="36" style="vertical-align: middle;" alt="">The checkbox border (gray in this example) must have 3:1 contrast with the page background.</li>
-                <li><img src="{{ baseurl }}/assets/images/radio-empty.png" width="36" height="36" style="vertical-align: middle;" alt="">The radio button border (gray in this example) must have 3:1 contrast with the page background.</li>
+                <li><img src="{{ '/assets/images/checkbox-empty.png' | relative_url }}" width="36" height="36" style="vertical-align: middle;" alt="">The checkbox border (gray in this example) must have 3:1 contrast with the page background.</li>
+                <li><img src="{{ '/assets/images/radio-empty.png' | relative_url }}" width="36" height="36" style="vertical-align: middle;" alt="">The radio button border (gray in this example) must have 3:1 contrast with the page background.</li>
                 <li>The text box border (gray in this example) must have 3:1 contrast with the page background.<br>
-                    <img src="{{ baseurl }}/assets/images/text-field-border.png" alt="" height="56" width="255"></li>
+                    <img src="{{ '/assets/images/text-field-border.png' | relative_url }}" alt="" height="56" width="255"></li>
                 <li>The switch border (gray in this example) must have 3:1 contrast with the page background.<br>
-                    <img src="{{ baseurl }}/assets/images/switch-border.png" alt="" width="58" height="34"></li>
+                    <img src="{{ '/assets/images/switch-border.png' | relative_url }}" alt="" width="58" height="34"></li>
                 <li>The switch toggle border (white in this example) must have 3:1 contrast with the switch fill (blue).<br>
-                    <img src="{{ baseurl }}/assets/images/switch-toggle-border.png" alt=""></li>
+                    <img src="{{ '/assets/images/switch-toggle-border.png' | relative_url }}" alt=""></li>
                 <li>The slider button border (white in this example) must have 3:1 contrast with both colors of the slider fill. It doesn't need to have contrast with the page background, as this is not necessary to distinguish it.<br>
-                    <img src="{{ baseurl }}/assets/images/slider-fill.png" alt="" style="max-width: 600px;"></li>
+                    <img src="{{ '/assets/images/slider-fill.png' | relative_url }}" alt="" style="max-width: 600px;"></li>
             </ul>
 
             <h4>Fill against background</h4>
             <ul>
-                <li><img src="{{ baseurl }}/assets/images/checkbox-empty-fill.png" width="48" height="48" style="vertical-align: middle;" alt="">The checkbox fill in this example must have 3:1 contrast with the background, since there is no border.</li>
-                <li><img src="{{ baseurl }}/assets/images/radio-empty-fill.png" width="48" height="48" style="vertical-align: middle;" alt="">The radio button fill in this example must have 3:1 contrast with the background, since there is no border.</li>
+                <li><img src="{{ '/assets/images/checkbox-empty-fill.png' | relative_url }}" width="48" height="48" style="vertical-align: middle;" alt="">The checkbox fill in this example must have 3:1 contrast with the background, since there is no border.</li>
+                <li><img src="{{ '/assets/images/radio-empty-fill.png' | relative_url }}" width="48" height="48" style="vertical-align: middle;" alt="">The radio button fill in this example must have 3:1 contrast with the background, since there is no border.</li>
                 <li>The text box fill in this example must have 3:1 contrast with the background, since there is no border.<br>
-                    <img src="{{ baseurl }}/assets/images/text-field-fill.png" alt=""></li>
+                    <img src="{{ '/assets/images/text-field-fill.png' | relative_url }}" alt=""></li>
                 <li>If there is both a fill and a border, the border does not have to have 3:1 contrast with both the fill and the background. In this example, the contrast between the fill and the background is enough, and the border can be ignored.<br>
-                    <img src="{{ baseurl }}/assets/images/text-field-border-fill.png" alt=""></li>
+                    <img src="{{ '/assets/images/text-field-border-fill.png' | relative_url }}" alt=""></li>
                 <li>The switch fill (blue in this example) must have 3:1 contrast with the page background, since it has no border.<br>
-                    <img src="{{ baseurl }}/assets/images/switch-fill.png" alt=""></li>
+                    <img src="{{ '/assets/images/switch-fill.png' | relative_url }}" alt=""></li>
                 <li>Both colors of the slider fill (blue and gray in this example) must have 3:1 contrast with the page background, since it has no border.<br>
-                    <img src="{{ baseurl }}/assets/images/slider-fill.png" alt="" style="max-width: 600px;"></li>
+                    <img src="{{ '/assets/images/slider-fill.png' | relative_url }}" alt="" style="max-width: 600px;"></li>
             </ul>
 
             <h4>Icon as functionality indicator</h4>
             <ul>
                 <li>The arrow indicates that this is a drop-down, so it must have 3:1 contrast with its background.<br>
-                    <img src="{{ baseurl }}/assets/images/dropdown-arrow.png" alt=""></li>
+                    <img src="{{ '/assets/images/dropdown-arrow.png' | relative_url }}" alt=""></li>
                 <li>If an icon is the only visible label on a button, the icon itself is the indicator, so it must have 3:1 contrast with the button background. The border can be ignored because it's not necessary to distinguish the control.<br>
                     <i class="fa-solid fa-house" style="color: #1C7AC7; border: 2px solid #ddd; height: 48px; width: 48px; text-align: center; line-height: 42px; font-size: x-large;" aria-hidden="true"></i></li>
             </ul>
@@ -91,7 +78,7 @@ last-modified: October 24, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page include active user interface components which have visual boundaries indicating the hit area?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Are the visual boundaries the only means of distinguishing the control (e.g., no text or icon inside it)?</span>
@@ -107,17 +94,17 @@ last-modified: October 24, 2026
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a checkbox or radio button?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["14110101"].link | relative_url }}">{{ checkpoint_data["14110101"].name }}</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14110101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14110101"].name }}</a></span></li>
                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a text field?</span>
                                                             <ul role="group">
-                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["14110102"].link | relative_url }}">{{ checkpoint_data["14110102"].name }}</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14110102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14110102"].name }}</a></span></li>
                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a switch?</span>
                                                                     <ul role="group">
-                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["14110103"].link | relative_url }}">{{ checkpoint_data["14110103"].name }}</a></span></li>
+                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14110103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14110103"].name }}</a></span></li>
                                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the control a slider?</span>
                                                                             <ul role="group">
-                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["14110104"].link | relative_url }}">{{ checkpoint_data["14110104"].name }}</a></span></li>
-                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14110105"].link | relative_url }}">{{ checkpoint_data["14110105"].name }}</a></span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14110104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14110104"].name }}</a></span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14110105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14110105"].name }}</a></span></li>
                                                                             </ul>
                                                                         </li>
                                                                     </ul>
@@ -186,16 +173,7 @@ last-modified: October 24, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-              <li><a href="{{ checkpoint_data["14110101"].link | relative_url }}">{{ checkpoint_data["14110101"].name }}</a></li>
-              <li><a href="{{ checkpoint_data["14110102"].link | relative_url }}">{{ checkpoint_data["14110102"].name }}</a></li>
-              <li><a href="{{ checkpoint_data["14110103"].link | relative_url }}">{{ checkpoint_data["14110103"].name }}</a></li>
-              <li><a href="{{ checkpoint_data["14110104"].link | relative_url }}">{{ checkpoint_data["14110104"].name }}</a></li>
-              <li><a href="{{ checkpoint_data["14110105"].link | relative_url }}">{{ checkpoint_data["14110105"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -229,7 +207,3 @@ last-modified: October 24, 2026
                 <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast">MDN: Color contrast</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1411checkpoints.html %}
-    
-</div>
