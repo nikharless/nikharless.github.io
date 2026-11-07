@@ -2,16 +2,10 @@
 layout: default
 current: "1412"
 criterion: "1412"
+last-modified: November 5, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1412.1412[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}    
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>In content implemented using markup languages that support the following text style properties, no loss of content or functionality occurs by setting all of the following and by changing no other style property:</p>
@@ -30,11 +24,7 @@ criterion: "1412"
 
         <div class="block">
             <h2>Training</h2>
-        <ul>
-            <li><a href="https://dequeuniversity.com/class/responsive-zoom/">Deque University: Responsive Design and Zoom</a> (requires account)</li>
-        </ul>
+            <ul>
+                <li><a href="https://dequeuniversity.com/class/responsive-zoom/">Deque University: Responsive Design and Zoom</a> (requires account)</li>
+            </ul>
         </div>
-    </div>
-    {% include checkpoints/1412checkpoints.html %}
-    
-</div>
