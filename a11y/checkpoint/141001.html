@@ -2,22 +2,9 @@
 layout: default
 current: "141001"
 criterion: "1410"
-guideline: perceivable
-level: aa
-last-modified: July 6, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1410.1410[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1410.1410[page.criterion] %}
-{% assign checkpoint_data = site.data["1410"]["1410"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true"><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
@@ -49,7 +36,7 @@ last-modified: July 6, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the content scroll vertically?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; When the content is presented at an equivalent width of 320 CSS pixels, does the content require horizontal scrolling?</span>
@@ -57,15 +44,15 @@ last-modified: July 6, 2026
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is two-dimensional scrolling essential for the content (e.g., maps, games, presentations, etc.)?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14100103"].link | relative_url }}">{{ checkpoint_data["14100103"].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14100103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14100103"].name }}</a></span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is any content cropped or unreachable due to not being able to scroll horizontally?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["14100101"].link | relative_url }}">{{ checkpoint_data["14100101"].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14100101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14100101"].name }}</a></span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is any content removed when resized to 320 CSS pixels wide?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["14100102"].link | relative_url }}">{{ checkpoint_data["14100102"].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14100102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14100102"].name }}</a></span></li>
                                         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS </span></li>
                                     </ul>
                                 </li>
@@ -78,15 +65,15 @@ last-modified: July 6, 2026
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is two-dimensional scrolling essential for the content (e.g., maps, games, presentations, etc.)?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14100106"].link | relative_url }}">{{ checkpoint_data["14100106"].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14100106"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14100106"].name }}</a></span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is any content cropped or unreachable due to not being able to scroll vertically?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["14100104"].link | relative_url }}">{{ checkpoint_data["14100104"].name }}</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14100104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14100104"].name }}</a></span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is any content removed when resized to 256 CSS pixels high?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["14100105"].link | relative_url }}">{{ checkpoint_data["14100105"].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14100105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14100105"].name }}</a></span></li>
                                         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS </span></li>
                                     </ul>
                                 </li>
@@ -131,17 +118,7 @@ last-modified: July 6, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["14100101"].link | relative_url }}">{{ checkpoint_data["14100101"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["14100102"].link | relative_url }}">{{ checkpoint_data["14100102"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["14100103"].link | relative_url }}">{{ checkpoint_data["14100103"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["14100104"].link | relative_url }}">{{ checkpoint_data["14100104"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["14100105"].link | relative_url }}">{{ checkpoint_data["14100105"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["14100106"].link | relative_url }}">{{ checkpoint_data["14100106"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -155,7 +132,7 @@ last-modified: July 6, 2026
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li>Related Techniques:
                     <ul>
                         <li>General:
@@ -182,7 +159,3 @@ last-modified: July 6, 2026
                 </li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1410checkpoints.html %}
-    
-</div>
