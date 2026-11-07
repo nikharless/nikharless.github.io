@@ -4,123 +4,106 @@ current: "14110101"
 criterion: "1411"
 checkpoint: "141101"
 css: 1411
-last-modified: July 15, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1411.1411[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1411.1411[page.criterion] %}
-{% assign cp=site.data.1411.1411[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Visual indicators of a checkbox or radio button's boundaries have a contrast ratio of at least 3:1 with the background.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Visual indicators of a checkbox or radio button's boundaries have a contrast ratio of at least 3:1 with the background.</div>
-        	</div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Visual indicators of a checkbox or radio button's boundaries do not have a contrast ratio of at least 3:1 with the background.</div>
+        </div>
 
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Visual indicators of a checkbox or radio button's boundaries do not have a contrast ratio of at least 3:1 with the background.</div>
-        	</div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Change the color of the boundary to have a contrast ratio of at least 3:1 with the background.</div>
+        </div>
 
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Change the color of the boundary to have a contrast ratio of at least 3:1 with the background.</div>
-        	</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
 
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-
-                </div>
             </div>
+        </div>
 
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Border</h3>
-                    <p>The border has a contrast ratio of at least 3:1 with both the fill and the page background.</p>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Border</h3>
+                <p>The border has a contrast ratio of at least 3:1 with both the fill and the page background.</p>
+                <div class="cbExample">
+                    <div role="checkbox" tabindex="0" aria-checked="false">Check this box
+                        <span id="ccbChecked" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                        <span id="ccbNotChecked" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
+                    </div>
+                </div>
+                <script src="{{ '/assets/js/checkbox.js' | relative_url }}"></script>
+
+                <div class="radioExample" role="radiogroup">
+                    <div role="radio" tabindex="0" aria-checked="false">Check this radio button
+                        <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
+                        <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
+                    </div>
+                </div>
+                <script src="{{ '/assets/js/radio.js' | relative_url }}"></script>
+
+                <h3>Fill</h3>
+                <p>The fill of the checkbox or radio button has a contrast ratio of at least 3:1 with the background.</p>
+                <div style="background-color:#5499D1; padding: 1em;">
                     <div class="cbExample">
-                        <div role="checkbox" tabindex="0" aria-checked="false">Check this box
+                        <div role="checkbox" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this box
+                            <span id="ccbChecked" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                            <span id="ccbNotChecked" class="ccbCheckbox ccbNotChecked" style="display: block; border:0;"></span>
+                        </div>
+                    </div>
+
+                    <div class="radioExample" role="radiogroup">
+                        <div role="radio" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this radio button
+                            <span id="crbChecked2" class="crbRadio crbChecked" style="display: none;"></span>
+                            <span id="crbNotChecked2" class="crbRadio crbNotChecked" style="display: block; border:0;"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Fill and Border</h3>
+                <p>The fill of the checkbox or radio button has a contrast ratio of at least 3:1 with the background. The border isn't required to distinguish the control, so it doesn't need to meet the contrast ratio.</p>
+                <div style="background-color:#5499D1; padding: 1em;">
+                    <div class="cbExample">
+                        <div role="checkbox" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this box
                             <span id="ccbChecked" class="ccbCheckbox ccbChecked" style="display: none;"></span>
                             <span id="ccbNotChecked" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
                         </div>
                     </div>
-                    <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
 
                     <div class="radioExample" role="radiogroup">
-                        <div role="radio" tabindex="0" aria-checked="false">Check this radio button
-                            <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
-                            <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
+                        <div role="radio" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this radio button
+                            <span id="crbChecked3" class="crbRadio crbChecked" style="display: none;"></span>
+                            <span id="crbNotChecked3" class="crbRadio crbNotChecked" style="display: block;"></span>
                         </div>
                     </div>
-                    <script src="{{ baseurl }}/assets/js/radio.js"></script>
-
-                    <h3>Fill</h3>
-                    <p>The fill of the checkbox or radio button has a contrast ratio of at least 3:1 with the background.</p>
-                    <div style="background-color:#5499D1; padding: 1em;">
-                        <div class="cbExample">
-                            <div role="checkbox" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this box
-                                <span id="ccbChecked" class="ccbCheckbox ccbChecked" style="display: none;"></span>
-                                <span id="ccbNotChecked" class="ccbCheckbox ccbNotChecked" style="display: block; border:0;"></span>
-                            </div>
-                        </div>
-
-                        <div class="radioExample" role="radiogroup">
-                            <div role="radio" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this radio button
-                                <span id="crbChecked2" class="crbRadio crbChecked" style="display: none;"></span>
-                                <span id="crbNotChecked2" class="crbRadio crbNotChecked" style="display: block; border:0;"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h3>Fill and Border</h3>
-                    <p>The fill of the checkbox or radio button has a contrast ratio of at least 3:1 with the background. The border isn't required to distinguish the control, so it doesn't need to meet the contrast ratio.</p>
-                    <div style="background-color:#5499D1; padding: 1em;">
-                        <div class="cbExample">
-                            <div role="checkbox" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this box
-                                <span id="ccbChecked" class="ccbCheckbox ccbChecked" style="display: none;"></span>
-                                <span id="ccbNotChecked" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
-                            </div>
-                        </div>
-
-                        <div class="radioExample" role="radiogroup">
-                            <div role="radio" tabindex="0" aria-checked="false" style="font-weight: bold;">Check this radio button
-                                <span id="crbChecked3" class="crbRadio crbChecked" style="display: none;"></span>
-                                <span id="crbNotChecked3" class="crbRadio crbNotChecked" style="display: block;"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><b>Color Blindness:</b> Users need to be able to distinguish non-text user controls.</li>
-                        <li><b>Visual Impairment:</b> Users need to be able to distinguish non-text user controls.</li>
-                    </ul>
-                </div>
-            </div>
-
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/1411checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><b>Color Blindness:</b> Users need to be able to distinguish non-text user controls.</li>
+                    <li><b>Visual Impairment:</b> Users need to be able to distinguish non-text user controls.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G174">G174: Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast</a></li>
+                </ul>
+            </div>
+        </div>
