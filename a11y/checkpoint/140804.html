@@ -2,22 +2,9 @@
 layout: default
 current: "140804"
 criterion: "1408"
-guideline: perceivable
-level: aaa
-last-modified: July 6, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1408.1408[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1408.1408[page.criterion] %}
-{% assign checkpoint_data = site.data["1408"]["1408"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true"><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
@@ -36,7 +23,7 @@ last-modified: July 6, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page have blocks of text with line spacing less than 1.5?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a mechanism on the page to adjust the line spacing?</span>
@@ -47,12 +34,12 @@ last-modified: July 6, 2026
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism on the page to adjust the paragraph spacing?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14080402"].link | relative_url }}">{{ checkpoint_data["14080402"].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14080402"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14080402"].name }}</a></span></li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14080401"].link | relative_url }}">{{ checkpoint_data["14080401"].name }}</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14080401"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14080401"].name }}</a></span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -71,13 +58,7 @@ last-modified: July 6, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["14080401"].link | relative_url }}">{{ checkpoint_data["14080401"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["14080402"].link | relative_url }}">{{ checkpoint_data["14080402"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -90,7 +71,7 @@ last-modified: July 6, 2026
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li>Related Techniques:
                     <ul>
                         <li>General:
@@ -112,7 +93,3 @@ last-modified: July 6, 2026
                 <li></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1408checkpoints.html %}
-    
-</div>
