@@ -3,32 +3,25 @@ layout: default
 current: "14110204"
 criterion: "1411"
 checkpoint: "141102"
-css: 1411
+css: "1411"
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1411.1411[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1411.1411[page.criterion] %}
-{% assign cp=site.data.1411.1411[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
     	<div class="block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Visual indicators of a control's invalid state must have at least 3:1 contrast with adjacent colors.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Visual indicators of a control's invalid state do not have at least 3:1 contrast with adjacent colors.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Change the color of the invalid state boundaries to have at least 3:1 contrast with adjacent colors.</div>
     	</div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
@@ -40,7 +33,7 @@ css: 1411
                         <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
                     </div>
                 </div>
-                <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
+                <script src="{{ '/assets/js/checkbox.js' | relative_url }}"></script>
 
                 <h3>Border</h3>
                 <p>The invalid text box border has at least a 3:1 contrast with the external background. The internal background is not required to distinguish the control, so it doesn't need to meet the contrast requirement.</p>
@@ -50,10 +43,12 @@ css: 1411
                 <p id="reqError" style="color:#c00000;">First name is required.</p>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>Color blind and visually impaired users need to be able to distinguish the control in the invalid state.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -62,8 +57,3 @@ css: 1411
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-
-    {% include checkpoints/1411checkpoints.html %}
-    
