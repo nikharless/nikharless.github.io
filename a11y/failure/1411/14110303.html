@@ -3,43 +3,38 @@ layout: default
 current: "14110303"
 criterion: "1411"
 checkpoint: "141103"
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1411.1411[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1411.1411[page.criterion] %}
-{% assign cp=site.data.1411.1411[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
     	<div class="block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Adjacent parts of a graph required to understand the information have 3:1 contrast.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Adjacent parts of a graph required to understand the information do not have 3:1 contrast.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Change the colors of the graph so that parts required to understand the information have at least 3:1 contrast with adjacent colors.</div>
     	</div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
                 <h3>Pie Chart</h3>
                 <p>This pie chart has some wedges which have a contrast ratio of less than 3:1 with each other. However, a white line is visible between them which does have 3:1 contrast with the wedges on either side, so this passes.</p>
-                <img src="{{ baseurl }}/assets/images/11010303-pie-chart.png" style="max-width: 480px;" alt="Pie chart showing severity levels of issues filed">
+                <img src="{{ '/assets/images/11010303-pie-chart.png' |  }}" style="max-width: 480px;" alt="Pie chart showing severity levels of issues filed">
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>Color blind and visually impaired users need to be able to distinguish different parts of graphs required to understand the information it presents.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -48,9 +43,4 @@ checkpoint: "141103"
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G209">G209: Provide sufficient contrast at the boundaries between adjoining colors</a></li>
                 </ul>
             </div>
-        </div>
-    </div>
-</div>
-
-    {% include checkpoints/1411checkpoints.html %}
-    
+        </div> 
