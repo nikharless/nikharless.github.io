@@ -2,38 +2,9 @@
 layout: default
 current: "141201"
 criterion: "1412"
-guideline: perceivable
-level: aa
-last-modified: July 7, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1412.1412[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1412.1412[page.criterion] %}
-{% assign checkpoint_data = site.data["1412"]["1412"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
-        <div class="block">
-            <h2>Overview</h2>
-
-            <p>The spacing between letters, words, lines of text, and paragraphs can be adjusted and still be readable and functional.</p>
-
-            <p>Exceptions include:</p>
-            <ul>
-                <li>Images of text</li>
-                <li>PDF</li>
-                <li>Captions embedded in a video</li>
-                <li>Text within a canvas</li>
-            </ul>
-
-            <h3>Examples</h3>
-        </div>
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true"><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
@@ -52,8 +23,24 @@ last-modified: July 7, 2026
         </div>
 
         <div class="block">
+            <h2>Overview</h2>
+
+            <p>The spacing between letters, words, lines of text, and paragraphs can be adjusted and still be readable and functional.</p>
+
+            <p>Exceptions include:</p>
+            <ul>
+                <li>Images of text</li>
+                <li>PDF</li>
+                <li>Captions embedded in a video</li>
+                <li>Text within a canvas</li>
+            </ul>
+
+            <h3>Examples</h3>
+        </div>
+
+        <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page have blocks of text with line spacing less than 1.5, paragraph spacing less than 2, letter spacing less than .12, or word spacing less than .16?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the text be adjusted to the above settings?</span>
@@ -65,21 +52,21 @@ last-modified: July 7, 2026
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there an indicator that the cropped content can be viewed, such as an ellipsis?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14120104"].link | relative_url }}">{{ checkpoint_data["14120104"].name }}</a>.</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14120104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14120104"].name }}</a>.</span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14120102"].link | relative_url }}">{{ checkpoint_data["14120102"].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14120102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14120102"].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does any of the text overlap other elements when adjusted to the above settings, making it difficult to read?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["14120103"].link | relative_url }}">{{ checkpoint_data["14120103"].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14120103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14120103"].name }}</a></span></li>
                                         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                     </ul>
                                 </li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14120101"].link | relative_url }}">{{ checkpoint_data["14120101"].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14120101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14120101"].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -106,15 +93,7 @@ last-modified: July 7, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["14120101"].link | relative_url }}">{{ checkpoint_data["14120101"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["14120102"].link | relative_url }}">{{ checkpoint_data["14120102"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["14120103"].link | relative_url }}">{{ checkpoint_data["14120103"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["14120104"].link | relative_url }}">{{ checkpoint_data["14120104"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -144,7 +123,3 @@ last-modified: July 7, 2026
             <ul>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1412checkpoints.html %}
-    
-</div>
