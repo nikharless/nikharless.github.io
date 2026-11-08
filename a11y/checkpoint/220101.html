@@ -2,22 +2,9 @@
 layout: default
 current: "220101"
 criterion: "2201"
-guideline: perceivable
-level: a
-last-modified: October 26, 2026
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2201.2201[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2201.2201[page.criterion] %}
-{% assign checkpoint_data = site.data["2201"]["2201"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -45,8 +32,8 @@ last-modified: October 26, 2026
             <p>This checkpoint does not apply to:</p>
             <ul>
                 <li>Content which is available elsewhere on the page in static format</li>
-                <li>Video captions (Test against <a href="{{ checkpoint_data["2202"].link | relative_url }}">{{ checkpoint_data["2202"].name }}.</a>)</li>
-                <li>Carousels (Test against <a href="{{ checkpoint_data["2202"].link | relative_url }}">{{ checkpoint_data["2202"].name }}.</a>)</li>
+                <li>Video captions (Test against <a href="{{ site.data[page.criterion][page.criterion]["2202"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["2202"].name }}.</a>)</li>
+                <li>Carousels (Test against <a href="{{ site.data[page.criterion][page.criterion]["2202"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["2202"].name }}.</a>)</li>
                 <li>Scrolling text that repeats</li>
                 <li>Non-timed server redirects (e.g., 3xx response codes)</li>
             </ul>
@@ -54,7 +41,7 @@ last-modified: October 26, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Are there any instances of content time limits on the page?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the time limit a required part of a real-time event where no alternative to the time limit is possible?</span>
@@ -71,7 +58,7 @@ last-modified: October 26, 2026
                                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a means to turn off the time limit before time expires?</span>
                                                     <ul role="group">
                                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22010104"].link | relative_url }}">{{ checkpoint_data["22010104"].name }}</a>.</span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["22010104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["22010104"].name }}</a>.</span></li>
                                                     </ul>
                                                 </li>
                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the time limit controlled by a script on the page?</span>
@@ -89,13 +76,13 @@ last-modified: October 26, 2026
                                                                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the user extend the time limit at least ten times?</span>
                                                                                             <ul role="group">
                                                                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22010103"].link | relative_url }}">{{ checkpoint_data["22010103"].name }}</a>.</span></li>
+                                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["22010103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["22010103"].name }}</a>.</span></li>
                                                                                             </ul>
                                                                                         </li>
-                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22010102"].link | relative_url }}">{{ checkpoint_data["22010102"].name }}</a>.</span></li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["22010102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["22010102"].name }}</a>.</span></li>
                                                                                     </ul>
                                                                                 </li>
-                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22010101"].link | relative_url }}">{{ checkpoint_data["22010101"].name }}</a>.</span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["22010101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["22010101"].name }}</a>.</span></li>
                                                                             </ul>
                                                                         </li>
                                                                     </ul>
@@ -113,7 +100,7 @@ last-modified: October 26, 2026
                                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a means to view the content in a static area?</span>
                                                                                     <ul role="group">
                                                                                         <li role="treeitem" class="na"><span><strong>Yes</strong>; This checkpoint is not applicable.</span></li>
-                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22010105"].link | relative_url }}">{{ checkpoint_data["22010105"].name }}</a>.</span></li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["22010105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["22010105"].name }}</a>.</span></li>
                                                                                     </ul>
                                                                                 </li>
                                                                             </ul>
@@ -158,16 +145,7 @@ last-modified: October 26, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["22010101"].link | relative_url }}">{{ checkpoint_data["22010101"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["22010102"].link | relative_url }}">{{ checkpoint_data["22010102"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["22010103"].link | relative_url }}">{{ checkpoint_data["22010103"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["22010104"].link | relative_url }}">{{ checkpoint_data["22010104"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["22010105"].link | relative_url }}">{{ checkpoint_data["22010105"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -209,7 +187,3 @@ last-modified: October 26, 2026
                 <li><a href="https://ictbaseline.access-board.gov/web-baselines/21TimedEvents/">Section 508 ICT Testing Baseline Portfolio: Timed Events (Web)</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2201checkpoints.html %}
-    
-</div>
