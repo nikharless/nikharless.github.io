@@ -2,16 +2,10 @@
 layout: default
 current: "2303"
 criterion: "2303"
+last-modified: November 7, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2303.2303[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Motion animation triggered by interaction can be disabled, unless the animation is essential to the functionality or the information being conveyed.</p>
@@ -36,7 +30,3 @@ criterion: "2303"
                 <li><a href="https://dequeuniversity.com/class/multimedia-part-2/toc">Deque University: Multimedia, Animations, and Motion: Advanced</a> (account required)</li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2303checkpoints.html %}
-    
-</div>
