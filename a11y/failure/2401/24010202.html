@@ -3,31 +3,24 @@ layout: default
 current: "24010202"
 criterion: "2401"
 checkpoint: "240102"
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2401.2401[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2401.2401[page.criterion] %}
-{% assign cp=site.data.2401.2401[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
     	<div class="block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div><code>&lt;iframe title&gt;</code> attributes describe the <code>&lt;iframe&gt;</code>'s contents.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div><code>&lt;iframe&gt;</code>s have <code>title</code> attributes, but they do not describe the <code>&lt;iframe&gt;</code>'s contents.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Set the <code>title</code> attribute to a unique value describing the <code>&lt;iframe&gt;</code>'s contents.</div>
     	</div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
@@ -35,10 +28,12 @@ checkpoint: "240102"
 &lt;iframe src="footer.html" name="footer-iframe" title="Footer"&gt;&lt;/iframe&gt;</code></pre>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>Screen reader users need to know what sections they can navigate to.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -48,8 +43,3 @@ checkpoint: "240102"
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-
-    {% include checkpoints/2401checkpoints.html %}
-    
