@@ -3,31 +3,24 @@ layout: default
 current: "22060101"
 criterion: "2206"
 checkpoint: "220601"
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2206.2206[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2206.2206[page.criterion] %}
-{% assign cp=site.data.2206.2206[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
     	<div class="block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>A warning is provided about the length of a time limit that could result in loss of data.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The site has a time limit for inactivity which results in loss of data, but there is no warning informing the user of the length of time they have.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Provide a warning notifying the user of how much time they have before the site times out from inactivity.</div>
     	</div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
@@ -43,10 +36,12 @@ checkpoint: "220601"
                 </form>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>Users with various disabilities often need more time to complete activities.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -54,9 +49,4 @@ checkpoint: "220601"
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 </ul>
             </div>
-        </div>
-    </div>
-</div>
-
-    {% include checkpoints/2206checkpoints.html %}
-    
+        </div>   
