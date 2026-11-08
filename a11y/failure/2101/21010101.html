@@ -3,50 +3,43 @@ layout: default
 current: "21010101"
 criterion: "2101"
 checkpoint: "210101"
-css: 21010101
+css: "21010101"
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2101.2101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2101.2101[page.criterion] %}
-{% assign cp=site.data.2101.2101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>All controls are keyboard focusable.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>All controls are keyboard focusable.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A control cannot be focused using only a keyboard</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Use standard HTML for links and controls. The following elements pass this checkpoint by default.
-                            <ul>
-                                <li><code>&lt;a&gt;</code> (must have <code>href</code> attribute)</li>
-                                <li><code>&lt;button&gt;</code></li>
-                                <li><code>&lt;fieldset&gt;</code></li>
-                                <li><code>&lt;input&gt;</code></li>
-                                <li><code>&lt;select&gt;</code></li>
-                                <li><code>&lt;textarea&gt;</code></li>
-                            </ul>
-                            <strong>OR</strong>
-                        </li>
-                        <li>Use <code>tabindex="0"</code> to add custom controls to the tab order, <strong>AND</strong></li>
-                        <li>Provide keyboard event handlers alongside all mouse event handlers, <strong>OR</strong></li>
-                        <li>Provide alternate, keyboard accessible controls that accomplish the same function</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A control cannot be focused using only a keyboard</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Use standard HTML for links and controls. The following elements pass this checkpoint by default.
+                        <ul>
+                            <li><code>&lt;a&gt;</code> (must have <code>href</code> attribute)</li>
+                            <li><code>&lt;button&gt;</code></li>
+                            <li><code>&lt;fieldset&gt;</code></li>
+                            <li><code>&lt;input&gt;</code></li>
+                            <li><code>&lt;select&gt;</code></li>
+                            <li><code>&lt;textarea&gt;</code></li>
+                        </ul>
+                        <strong>OR</strong>
+                    </li>
+                    <li>Use <code>tabindex="0"</code> to add custom controls to the tab order, <strong>AND</strong></li>
+                    <li>Provide keyboard event handlers alongside all mouse event handlers, <strong>OR</strong></li>
+                    <li>Provide alternate, keyboard accessible controls that accomplish the same function</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
                 <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
                 <div>
                     <p>Custom controls must be manually added to the tab order. If they are not, keyboard users cannot access them.</p>
