@@ -2,22 +2,9 @@
 layout: default
 current: "210301"
 criterion: "2103"
-guideline: perceivable
-level: aaa
-last-modified: October 26, 2026
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2103.2103[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2103.2103[page.criterion] %}
-{% assign checkpoint_data = site.data["2103"]["2103"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true"><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
@@ -32,15 +19,15 @@ last-modified: October 26, 2026
 
         <div class="block">
             <h2>Overview</h2>
-            <p>This criteron is the same as <a href="/a11y/sc/2101.html">2.1.1 Keyboard</a>, except that it allows no exceptions. If the content requires path-dependent input, it cannot pass this checkpoint.</p>
+            <p>This criteron is the same as <a href="{{ '/sc/2101.html' | relative_url }}">2.1.1 Keyboard</a>, except that it allows no exceptions. If the content requires path-dependent input, it cannot pass this checkpoint.</p>
         </div>
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Is there any content that requires path-based input (i.e., drawing) and cannot be implemented any other way?</h3>
             <ul role="tree" aria-labelledby="test1">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["21030101"].link | relative_url }}">{{ checkpoint_data["21030101"].name }}</a>.</span></li>
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["21030101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["21030101"].name }}</a>.</span></li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
             </ul>
         </div>
@@ -118,12 +105,7 @@ last-modified: October 26, 2026
             <p>Follow the procedure for Desktop Web.</p>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["21030101"].link | relative_url }}">{{ checkpoint_data["21030101"].name }}</a>.</li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -142,7 +124,3 @@ last-modified: October 26, 2026
             <ul>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2103checkpoints.html %}
-    
-</div>
