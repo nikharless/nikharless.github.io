@@ -3,90 +3,81 @@ layout: default
 current: "21010107"
 criterion: "2101"
 checkpoint: "210101"
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2101.2101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2101.2101[page.criterion] %}
-{% assign cp=site.data.2101.2101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>Scrollable region can be accessed with a keyboard.</div>
+        </div>
 
-        <div class="failure">
-    <div class="block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Scrollable region can be accessed with a keyboard.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>Content in scrollable area is not viewable with keyboard.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <ul>
-                        <li>Make the scrollable area focusable with <code>tabindex="0"</code>, <strong>OR</strong></li>
-                        <li>Include focusable elements inside the scrollable area.</li>
-                    </ul>      
-                </div>
-            </div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Scrollable Area is Not Focusable</h3>
-                    <p>This scrollable area does not allow keyboard users to scroll the content.</p>
-                    <div class="example">
-                        <div style="width:15em; height:15em; overflow: auto; border: 1px solid #888;" tabindex="-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula eros nec pellentesque fermentum. Donec diam neque, varius ac tellus at, ornare fringilla neque. Proin odio urna, sollicitudin vel est sed, cursus tristique libero. Donec vulputate interdum tellus a gravida. Suspendisse blandit elit ipsum, quis consectetur sem dictum convallis. Sed vehicula vel massa et dapibus. Ut blandit tincidunt neque, sit amet dapibus dolor iaculis quis. Aliquam vitae aliquam metus. Aenean interdum ex non elementum interdum.</div>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Scrollable Area is Focusable</h3>
-                    <p>This scrollable area has <code>tabindex="0"</code>. This allows keyboard users to tab to it and use the arrow keys to scroll.</p>
-                    <div class="example">
-                        <div tabindex="0" style="width:15em; height:15em; overflow: auto; border: 1px solid #888;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula eros nec pellentesque fermentum. Donec diam neque, varius ac tellus at, ornare fringilla neque. Proin odio urna, sollicitudin vel est sed, cursus tristique libero. Donec vulputate interdum tellus a gravida. Suspendisse blandit elit ipsum, quis consectetur sem dictum convallis. Sed vehicula vel massa et dapibus. Ut blandit tincidunt neque, sit amet dapibus dolor iaculis quis. Aliquam vitae aliquam metus. Aenean interdum ex non elementum interdum.</div>
-                    </div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>Content in scrollable area is not viewable with keyboard.</div>
+        </div>
 
-                    <h3>Scrollable Area Contains Focusable Element</h3>
-                    <p>This scrollable area has a focusable button inside it. Once keyboard focus is on the button, the user can then use the arrow keys to scroll the block.</p>
-                    <div class="example">
-                        <div style="width:15em; height:15em; overflow: auto; border: 1px solid #888;"><button>Focusable Button</button><br>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula eros nec pellentesque fermentum. Donec diam neque, varius ac tellus at, ornare fringilla neque. Proin odio urna, sollicitudin vel est sed, cursus tristique libero. Donec vulputate interdum tellus a gravida. Suspendisse blandit elit ipsum, quis consectetur sem dictum convallis. Sed vehicula vel massa et dapibus. Ut blandit tincidunt neque, sit amet dapibus dolor iaculis quis. Aliquam vitae aliquam metus. Aenean interdum ex non elementum interdum.</div>
-                    </div>
-                </div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+                <ul>
+                    <li>Make the scrollable area focusable with <code>tabindex="0"</code>, <strong>OR</strong></li>
+                    <li>Include focusable elements inside the scrollable area.</li>
+                </ul>      
             </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
-                        <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
-                    </ul>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Scrollable Area is Not Focusable</h3>
+                <p>This scrollable area does not allow keyboard users to scroll the content.</p>
+                <div class="example">
+                    <div style="width:15em; height:15em; overflow: auto; border: 1px solid #888;" tabindex="-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula eros nec pellentesque fermentum. Donec diam neque, varius ac tellus at, ornare fringilla neque. Proin odio urna, sollicitudin vel est sed, cursus tristique libero. Donec vulputate interdum tellus a gravida. Suspendisse blandit elit ipsum, quis consectetur sem dictum convallis. Sed vehicula vel massa et dapibus. Ut blandit tincidunt neque, sit amet dapibus dolor iaculis quis. Aliquam vitae aliquam metus. Aenean interdum ex non elementum interdum.</div>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2101checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Scrollable Area is Focusable</h3>
+                <p>This scrollable area has <code>tabindex="0"</code>. This allows keyboard users to tab to it and use the arrow keys to scroll.</p>
+                <div class="example">
+                    <div tabindex="0" style="width:15em; height:15em; overflow: auto; border: 1px solid #888;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula eros nec pellentesque fermentum. Donec diam neque, varius ac tellus at, ornare fringilla neque. Proin odio urna, sollicitudin vel est sed, cursus tristique libero. Donec vulputate interdum tellus a gravida. Suspendisse blandit elit ipsum, quis consectetur sem dictum convallis. Sed vehicula vel massa et dapibus. Ut blandit tincidunt neque, sit amet dapibus dolor iaculis quis. Aliquam vitae aliquam metus. Aenean interdum ex non elementum interdum.</div>
+                </div>
+
+                <h3>Scrollable Area Contains Focusable Element</h3>
+                <p>This scrollable area has a focusable button inside it. Once keyboard focus is on the button, the user can then use the arrow keys to scroll the block.</p>
+                <div class="example">
+                    <div style="width:15em; height:15em; overflow: auto; border: 1px solid #888;"><button>Focusable Button</button><br>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula eros nec pellentesque fermentum. Donec diam neque, varius ac tellus at, ornare fringilla neque. Proin odio urna, sollicitudin vel est sed, cursus tristique libero. Donec vulputate interdum tellus a gravida. Suspendisse blandit elit ipsum, quis consectetur sem dictum convallis. Sed vehicula vel massa et dapibus. Ut blandit tincidunt neque, sit amet dapibus dolor iaculis quis. Aliquam vitae aliquam metus. Aenean interdum ex non elementum interdum.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                    
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                    <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                </ul>
+            </div>
+        </div>
