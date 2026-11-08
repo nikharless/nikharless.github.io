@@ -4,31 +4,24 @@ current: "14130103"
 criterion: "1413"
 checkpoint: "141301"
 css: tooltips
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1413.1413[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1413.1413[page.criterion] %}
-{% assign cp=site.data.1413.1413[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
     	<div class="block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>When additional content is triggered on pointer hover or on keyboard focus, that additional content remains visible until dismissed, hover or focus is removed, or its information is no longer valid.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>When additional content is triggered on pointer hover or on keyboard focus, that additional content disappears automatically.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Code the popup to remain visible until the user dismisses it or its information is no longer valid.</div>
     	</div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
@@ -39,10 +32,16 @@ css: tooltips
                 </div>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-            <div>Users with disabilities may require more time to read the content, to change magnification, to move the pointer, or to bring the content into view.</div>
+            <div>
+                <ul>
+                    <li>Users with disabilities may require more time to read the content, to change magnification, to move the pointer, or to bring the content into view.</li>
+                </ul>
+            </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -54,10 +53,4 @@ css: tooltips
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-
-    {% include checkpoints/1413checkpoints.html %}
-    
-
-    <script src="{{ baseurl }}/assets/js/tooltips.js" defer></script>
+        <script src="{{ '/assets/js/tooltips.js' | relative_url }}" defer></script>
