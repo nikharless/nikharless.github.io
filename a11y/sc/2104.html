@@ -2,16 +2,10 @@
 layout: default
 current: "2104"
 criterion: "2104"
+last-modified: November 7, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2104.2104[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>If a keyboard shortcut is implemented in content using only letter (including upper- and lower-case letters), punctuation, number, or symbol characters, then at least one of the following is true:</p>
@@ -28,11 +22,7 @@ criterion: "2104"
 
         <div class="block">
             <h2>Training</h2>
-        <ul>
-            <li><a href="https://dequeuniversity.com/class/input-methods/">Deque: Device-Independent User Input Methods</a> (account required)</li>
-        </ul>
+            <ul>
+                <li><a href="https://dequeuniversity.com/class/input-methods/">Deque: Device-Independent User Input Methods</a> (account required)</li>
+            </ul>
         </div>
-    </div>
-    {% include checkpoints/2104checkpoints.html %}
-    
-</div>
