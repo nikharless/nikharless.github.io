@@ -3,71 +3,60 @@ layout: default
 current: "22010104"
 criterion: "2201"
 checkpoint: "220101"
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2201.2201[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2201.2201[page.criterion] %}
-{% assign cp=site.data.2201.2201[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Reading time limits can be turned off or paused and restarted.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Reading time limits can be turned off or paused and restarted.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The reading time limit cannot be paused or turned off.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Provide a means to pause and restart the content from where it was paused, <strong>OR</strong></li>
-                        <li>Provide a means to turn off the time limit before time expires, <strong>OR</strong></li>
-                        <li>Provide a means for users to display moving, scrolling, or auto-updating text in a static area.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
-                    <ul>
-                        <li>A site contains a scrolling news banner at the top of the page. Users who need more time to read it can press the Escape key to pause the scrolling. Pressing Escape again restarts it.</li>
-                        <li>An animation includes text that appears and disappears. A pause button is provided so that users who have trouble reading the text before it disappears can read it.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need more time to locate things on screen and to read. Screen reader users need more time to understand screen layouts, find information, and operate controls.</li>
-                        <li><strong>Motion impaired:</strong> Users need more time to react, type, and complete activities.</li>
-                        <li><strong>Cognitive Impairment: Users need more time to read and understand the information.</strong></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G4">G4: Allowing the content to be paused and restarted from where it was paused</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G198">G198: Providing a way for the user to turn the time limit off</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR33">SCR33: Using script to scroll content, and providing a mechanism to pause it</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR36">SCR36: Providing a mechanism to allow users to display moving, scrolling, or auto-updating text in a static window or area</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>The reading time limit cannot be paused or turned off.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Provide a means to pause and restart the content from where it was paused, <strong>OR</strong></li>
+                    <li>Provide a means to turn off the time limit before time expires, <strong>OR</strong></li>
+                    <li>Provide a means for users to display moving, scrolling, or auto-updating text in a static area.</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2201checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+                <ul>
+                    <li>A site contains a scrolling news banner at the top of the page. Users who need more time to read it can press the Escape key to pause the scrolling. Pressing Escape again restarts it.</li>
+                    <li>An animation includes text that appears and disappears. A pause button is provided so that users who have trouble reading the text before it disappears can read it.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users need more time to locate things on screen and to read. Screen reader users need more time to understand screen layouts, find information, and operate controls.</li>
+                    <li><strong>Motion impaired:</strong> Users need more time to react, type, and complete activities.</li>
+                    <li><strong>Cognitive Impairment: Users need more time to read and understand the information.</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G4">G4: Allowing the content to be paused and restarted from where it was paused</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G198">G198: Providing a way for the user to turn the time limit off</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR33">SCR33: Using script to scroll content, and providing a mechanism to pause it</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR36">SCR36: Providing a mechanism to allow users to display moving, scrolling, or auto-updating text in a static window or area</a></li>
+                </ul>
+            </div>
+        </div>
