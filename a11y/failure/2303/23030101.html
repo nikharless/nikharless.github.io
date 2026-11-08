@@ -4,27 +4,19 @@ current: "23030101"
 criterion: "2303"
 checkpoint: "230301"
 css: dialog-animated
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2303.2303[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2303.2303[page.criterion] %}
-{% assign cp=site.data.2303.2303[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
     	<div class="block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The user can disable any animation triggered by interaction.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Animation triggered by interaction cannot be disabled.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
@@ -38,6 +30,7 @@ css: dialog-animated
                 </ul>
             </div>
     	</div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
@@ -56,6 +49,7 @@ css: dialog-animated
     }</code></pre>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>
@@ -64,6 +58,7 @@ css: dialog-animated
                 </ul>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -73,8 +68,3 @@ css: dialog-animated
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-
-    {% include checkpoints/2303checkpoints.html %}
-    
