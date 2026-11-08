@@ -2,16 +2,10 @@
 layout: default
 current: "2102"
 criterion: "2102"
+last-modified: November 7, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2102.2102[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>If keyboard focus can be moved to a component of the page using a keyboard interface, then focus can be moved away from that component using only a keyboard interface, and, if it requires more than unmodified <kbd>arrow</kbd> or <kbd>tab</kbd> keys or other standard exit methods, the user is advised of the method for moving focus away.</p>
@@ -37,7 +31,3 @@ criterion: "2102"
                 <li><a href="https://dequeuniversity.com/class/testing/">Deque: Web Accessibility Testing: Basic Methods and Tools</a> (account required)</li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2102checkpoints.html %}
-    
-</div>
