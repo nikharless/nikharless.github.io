@@ -2,22 +2,9 @@
 layout: default
 current: "220401"
 criterion: "2204"
-guideline: perceivable
-level: aaa
-last-modified: October 26, 2026
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2204.2204[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2204.2204[page.criterion] %}
-{% assign checkpoint_data = site.data["2204"]["2204"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true"><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
@@ -47,7 +34,7 @@ last-modified: October 26, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page automatically refresh with updated content?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the updated content involve an emergency?</span>
@@ -56,7 +43,7 @@ last-modified: October 26, 2026
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism to suppress or postpone non-emergency updates?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22040101"].link | relative_url }}">{{ checkpoint_data["22040101"].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["22040101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["22040101"].name }}</a>.</span></li>
                             </ul>
                         </li>
                     </ul>
@@ -69,7 +56,7 @@ last-modified: October 26, 2026
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism to suppress or postpone non-emergency alerts and notifications?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22040102"].link | relative_url }}">{{ checkpoint_data["22040102"].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["22040102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["22040102"].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -95,13 +82,7 @@ last-modified: October 26, 2026
             <p>Follow the process for Desktop.</p>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["22040101"].link | relative_url }}">{{ checkpoint_data["22040101"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["22040102"].link | relative_url }}">{{ checkpoint_data["22040102"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -114,7 +95,7 @@ last-modified: October 26, 2026
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li>Related Techniques:
                     <ul>
                         <li>General:
@@ -133,7 +114,3 @@ last-modified: October 26, 2026
             </ul>
             <h3>Additional Information</h3>
         </div>
-    </div>
-    {% include checkpoints/2204checkpoints.html %}
-    
-</div>
