@@ -2,22 +2,9 @@
 layout: default
 current: "230201"
 criterion: "2302"
-guideline: perceivable
-level: aaa
-last-modified: October 28, 2026
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2302.2302[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2302.2302[page.criterion] %}
-{% assign checkpoint_data = site.data["2302"]["2302"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -41,12 +28,12 @@ last-modified: October 28, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Is there any flashing content on the page?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the content flash more than 3 times per second?</span>
                     <ul role="group">
-                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["23020101"].link | relative_url }}">{{ checkpoint_data["23020101"].name }}</a>.</span></li>
+                        <li role="treeitem" class="pass"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["23020101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["23020101"].name }}</a>.</span></li>
                         <li role="treeitem" class="fail"><span><strong>No</strong>; PASS</span></li>
                     </ul>
                 </li>
@@ -64,12 +51,7 @@ last-modified: October 28, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["23020101"].link | relative_url }}">{{ checkpoint_data["23020101"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -82,7 +64,7 @@ last-modified: October 28, 2026
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G19">G19: Ensuring that no component of the content flashes more than three times in any 1-second period</a></li>
             </ul>
             <h3>Additional Information</h3>
@@ -90,7 +72,3 @@ last-modified: October 28, 2026
                 <li><a href="https://trace.umd.edu/photosensitive-epilepsy-analysis-tool-peat-user-guide/">Photosensitive Epilepsy Analysis Tool (PEAT) User Guide</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2302checkpoints.html %}
-    
-</div>
