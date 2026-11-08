@@ -4,90 +4,81 @@ current: "21010108"
 criterion: "2101"
 checkpoint: "210101"
 css: tooltips
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2101.2101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2101.2101[page.criterion] %}
-{% assign cp=site.data.2101.2101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>Hover content is available on keyboard focus.</div>
+        </div>
 
-        <div class="failure">
-    <div class="block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Hover content is available on keyboard focus.</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>Content that displays on mouse hover does not display on keyboard focus.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+                <ul>
+                    <li>Add keyboard focus/blur event handlers equivalent to the mouseover/mouseout event handlers, OR</li>
+                    <li>Provide the same information elsewhere on the page.</li>
+                </ul>
             </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>Content that displays on mouse hover does not display on keyboard focus.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <ul>
-                        <li>Add keyboard focus/blur event handlers equivalent to the mouseover/mouseout event handlers, OR</li>
-                        <li>Provide the same information elsewhere on the page.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Button with Tooltip Only Viewable on Mouse Hover</h3>
-                    <div class="example">
-                        <div class="tooltip-container">
-                            <button id="failTip" class="infoButton" type="button" aria-describedby="failDesc" data-tooltip-trigger>i</button>
-                            <p id="failDesc" role="tooltip" class="hidden">This text is not available to keyboard-only users.</p>
-                        </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Button with Tooltip Only Viewable on Mouse Hover</h3>
+                <div class="example">
+                    <div class="tooltip-container">
+                        <button id="failTip" class="infoButton" type="button" aria-describedby="failDesc" data-tooltip-trigger>i</button>
+                        <p id="failDesc" role="tooltip" class="hidden">This text is not available to keyboard-only users.</p>
                     </div>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Button with Tooltip Viewable on Mouse Hover and Keyboard Focus</h3>
-                    <div class="example">
-                        <div class="tooltip-container">
-                            <button class="infoButton" type="button" aria-describedby="description" data-tooltip-trigger>i</button>
-                            <p id="description" role="tooltip" class="hidden">This text appears on hover and on focus.</p>
-                        </div>
-                        <script src="{{ baseurl }}/assets/js/tooltips.js" defer></script>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
-                        <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR2">SCR2: Using redundant keyboard and mouse event handlers</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2101checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Button with Tooltip Viewable on Mouse Hover and Keyboard Focus</h3>
+                <div class="example">
+                    <div class="tooltip-container">
+                        <button class="infoButton" type="button" aria-describedby="description" data-tooltip-trigger>i</button>
+                        <p id="description" role="tooltip" class="hidden">This text appears on hover and on focus.</p>
+                    </div>
+                    <script src="{{ '/assets/js/tooltips.js' | relative_url }}" defer></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                    
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                    <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR2">SCR2: Using redundant keyboard and mouse event handlers</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
+                </ul>
+            </div>
+        </div>
