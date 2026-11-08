@@ -2,16 +2,10 @@
 layout: default
 current: "2301"
 criterion: "2301"
+last-modified: November 7, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2301.2301[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.</p>
@@ -60,7 +54,3 @@ criterion: "2301"
                 <li><a href="https://www.section508.gov/training/spreadsheets/aed-cop-xlsx09/">Section508.gov: Module 9: Excluding Flashing Objects (From: How to Author and Test Microsoft Excel Worksheets for Accessibility)</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2301checkpoints.html %}
-    
-</div>
