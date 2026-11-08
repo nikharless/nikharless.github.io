@@ -3,70 +3,59 @@ layout: default
 current: "22010104"
 criterion: "2201"
 checkpoint: "220101"
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2201.2201[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2201.2201[page.criterion] %}
-{% assign cp=site.data.2201.2201[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Session time limits can be turned off, adjusted, or extended.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Session time limits can be turned off, adjusted, or extended.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The session time limit cannot be extended, adjusted, or turned off.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Provide a checkbox on the first page of a multipart form that allows users to ask for a longer session time limit or no session time limit, <strong>OR</strong></li>
-                        <li>Provide a means to turn off the time limit before time expires</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
-                    <ul>
-                        <li>A web page contains the first part of a five-part form. Immediately following the general instructions for completing the form is a checkbox with the label, "Allow an additional 15 minutes to complete each part of this form."</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users need more time to locate things on screen and to read. Screen reader users need more time to understand screen layouts, find information, and operate controls.</li>
-                        <li><strong>Motion impaired:</strong> Users need more time to react, type, and complete activities.</li>
-                        <li><strong>Cognitive Impairment: Users need more time to read and understand the information.</strong></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F40">F40: Failure due to using meta redirect with a time limit</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F41">F41: Failure of Success Criterion 2.2.1, 2.2.4, and 3.2.5 due to using meta refresh to reload the page</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F58">F58: Failure of Success Criterion 2.2.1 due to using server-side techniques to automatically redirect pages after a time-out</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G133">G133: Providing a checkbox on the first page of a multipart form that allows users to ask for longer session time limit or no session time limit</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G198">G198: Providing a way for the user to turn the time limit off</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>The session time limit cannot be extended, adjusted, or turned off.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Provide a checkbox on the first page of a multipart form that allows users to ask for a longer session time limit or no session time limit, <strong>OR</strong></li>
+                    <li>Provide a means to turn off the time limit before time expires</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2201checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+                <ul>
+                    <li>A web page contains the first part of a five-part form. Immediately following the general instructions for completing the form is a checkbox with the label, "Allow an additional 15 minutes to complete each part of this form."</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users need more time to locate things on screen and to read. Screen reader users need more time to understand screen layouts, find information, and operate controls.</li>
+                    <li><strong>Motion impaired:</strong> Users need more time to react, type, and complete activities.</li>
+                    <li><strong>Cognitive Impairment: Users need more time to read and understand the information.</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F40">F40: Failure due to using meta redirect with a time limit</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F41">F41: Failure of Success Criterion 2.2.1, 2.2.4, and 3.2.5 due to using meta refresh to reload the page</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F58">F58: Failure of Success Criterion 2.2.1 due to using server-side techniques to automatically redirect pages after a time-out</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G133">G133: Providing a checkbox on the first page of a multipart form that allows users to ask for longer session time limit or no session time limit</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G198">G198: Providing a way for the user to turn the time limit off</a></li>
+                </ul>
+            </div>
+        </div>
