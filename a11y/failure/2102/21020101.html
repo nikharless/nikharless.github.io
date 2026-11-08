@@ -3,143 +3,134 @@ layout: default
 current: "21020101"
 criterion: "2102"
 checkpoint: "210201"
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2102.2102[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2102.2102[page.criterion] %}
-{% assign cp=site.data.2102.2102[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Keyboard focus does not get stuck on any component or in a loop.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Keyboard focus does not get stuck on any component or in a loop.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Keyboard focus gets trapped on an element or in a loop.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <p>Ensure keyboard focus is not trapped in any element or area of the page.</p>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Form Trap</h3>
-                    <p>This form traps the keyboard user by cycling the focus within the form inputs, preventing the user from being able to submit the form without filling in all the fields.</p>
-                    <p>To disable the trap, enter something into each field.</p>
-                    <div class="example">
-                        <script>
-                            function checkFields() {
-                                let inputs = document.getElementsByClassName('req');
-                                let isValid = true;
-                                for (var i = 0; i < inputs.length; i++) {
-                                    let changedInput = inputs[i];
-                                    if (changedInput.value.trim() === "" || changedInput.value === null) {
-                                        isValid = false;
-                                        break;
-                                    }
-                                }
-                                if (isValid == true) {
-                                    setFree();
-                                } else {
-                                    itsATrap();
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Keyboard focus gets trapped on an element or in a loop.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <p>Ensure keyboard focus is not trapped in any element or area of the page.</p>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Form Trap</h3>
+                <p>This form traps the keyboard user by cycling the focus within the form inputs, preventing the user from being able to submit the form without filling in all the fields.</p>
+                <p>To disable the trap, enter something into each field.</p>
+                <div class="example">
+                    <script>
+                        function checkFields() {
+                            let inputs = document.getElementsByClassName('req');
+                            let isValid = true;
+                            for (var i = 0; i < inputs.length; i++) {
+                                let changedInput = inputs[i];
+                                if (changedInput.value.trim() === "" || changedInput.value === null) {
+                                    isValid = false;
+                                    break;
                                 }
                             }
-                            function  setFree() {
-                                document.getElementById('email').setAttribute('onblur', 'javascript:void(0);');
-                                document.getElementById('trapt').innerHTML = "Keyboard focus has been set free.";
-                                document.getElementById('results').innerHTML = "isValid: " + isValid;
+                            if (isValid == true) {
+                                setFree();
+                            } else {
+                                itsATrap();
                             }
-                            function itsATrap() {
-                                document.getElementById('email').setAttribute('onblur', 'document.getElementById("fname").focus();');
-                                document.getElementById('trapt').innerHTML = "Keyboard focus has been trapped.";
-                                document.getElementById('results').innerHTML = "isValid: " + isValid;
-                            }
-                        </script>
+                        }
+                        function  setFree() {
+                            document.getElementById('email').setAttribute('onblur', 'javascript:void(0);');
+                            document.getElementById('trapt').innerHTML = "Keyboard focus has been set free.";
+                            document.getElementById('results').innerHTML = "isValid: " + isValid;
+                        }
+                        function itsATrap() {
+                            document.getElementById('email').setAttribute('onblur', 'document.getElementById("fname").focus();');
+                            document.getElementById('trapt').innerHTML = "Keyboard focus has been trapped.";
+                            document.getElementById('results').innerHTML = "isValid: " + isValid;
+                        }
+                    </script>
                         
-                        <p>All fields are required.</p>
-                        <form>
-                            <label for="fname">First Name:</label>
-                            <input id="fname" class="req" onkeyup="checkFields()">
-                            <label for="lname">Last Name:</label>
-                            <input id="lname" class="req" onkeyup="checkFields()">
-                            <label for="email">Email:</label>
-                            <input id="email" class="req" onkeyup="checkFields()">
-                            <p><button>Submit</button></p>
-                        </form>
-                        <div id="results"></div>
-                        <div id="trapt" class="sr-only" aria-live="polite">Keyboard focus is trapped.</div>
-                    </div>
+                    <p>All fields are required.</p>
+                    <form>
+                        <label for="fname">First Name:</label>
+                        <input id="fname" class="req" onkeyup="checkFields()">
+                        <label for="lname">Last Name:</label>
+                        <input id="lname" class="req" onkeyup="checkFields()">
+                        <label for="email">Email:</label>
+                        <input id="email" class="req" onkeyup="checkFields()">
+                        <p><button>Submit</button></p>
+                    </form>
+                    <div id="results"></div>
+                    <div id="trapt" class="sr-only" aria-live="polite">Keyboard focus is trapped.</div>
+                </div>
 
-                    <h3>Context Change Trap</h3>
-                    <p>The page linked below redirects the user to another page when the user tries to navigate away from the first link.</p>
-                    <div class="example">
-                        <p><a href="https://aduggin.github.io/accessibility-fails/keyboardtrap.html">Unreachable Content</a></p>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Disabled Submit</h3>
-                    <p>This form uses a disabled Submit button to prevent form submission without completing the required fields while still allowing the user to navigate past the form.</p>
-                    <div class="example">
-                        <p>All fields are required.</p>
-                        <form>
-                            <label for="fname2">First Name:</label>
-                            <input id="fname2" class="required" onkeyup="enableSubmit()">
-                            <label for="lname2">Last Name:</label>
-                            <input id="lname2" class="required" onkeyup="enableSubmit()">
-                            <label for="email2">Email:</label>
-                            <input id="email2" class="required" onkeyup="enableSubmit()">
-                            <p><input type="submit" value="Submit" disabled></p>
-                        </form>
-                        <script src="{{ baseurl }}/assets/js/disable-submit.js"></script>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Focus out of order:</strong><br>
-                            File under <a href="{{ checkpoint_data["2403"].link | relative_url }}">{{ checkpoint_data["2403"].name }}.</a></li>
-                        <li><strong>Focus goes to hidden content:</strong><br>
-                            File under <a href="{{ checkpoint_data["2403"].link | relative_url }}">{{ checkpoint_data["2403"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
-                        <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F10">F10: Failure of Success Criterion 2.1.2 and Conformance Requirement 5 due to combining multiple content formats in a way that traps users inside one format type</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G21">G21: Ensuring that users are not trapped in content</a></li>
-                    </ul>
+                <h3>Context Change Trap</h3>
+                <p>The page linked below redirects the user to another page when the user tries to navigate away from the first link.</p>
+                <div class="example">
+                    <p><a href="https://aduggin.github.io/accessibility-fails/keyboardtrap.html">Unreachable Content</a></p>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2102checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Disabled Submit</h3>
+                <p>This form uses a disabled Submit button to prevent form submission without completing the required fields while still allowing the user to navigate past the form.</p>
+                <div class="example">
+                    <p>All fields are required.</p>
+                    <form>
+                        <label for="fname2">First Name:</label>
+                        <input id="fname2" class="required" onkeyup="enableSubmit()">
+                        <label for="lname2">Last Name:</label>
+                        <input id="lname2" class="required" onkeyup="enableSubmit()">
+                        <label for="email2">Email:</label>
+                        <input id="email2" class="required" onkeyup="enableSubmit()">
+                        <p><input type="submit" value="Submit" disabled></p>
+                    </form>
+                    <script src="{{ '/assets/js/disable-submit.js' | relative_url }}"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Focus out of order:</strong><br>
+                        File under <a href="{{ site.data["2403"]["2403"]["2403"].link | relative_url }}">{{ site.data["2403"]["2403"]["2403"].name }}.</a></li>
+                    <li><strong>Focus goes to hidden content:</strong><br>
+                        File under <a href="{{ site.data["2403"]["2403"]["2403"].link | relative_url }}">{{ site.data["2403"]["2403"]["2403"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                    <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F10">F10: Failure of Success Criterion 2.1.2 and Conformance Requirement 5 due to combining multiple content formats in a way that traps users inside one format type</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G21">G21: Ensuring that users are not trapped in content</a></li>
+                </ul>
+            </div>
+        </div>
