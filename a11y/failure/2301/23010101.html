@@ -3,73 +3,62 @@ layout: default
 current: "23010101"
 criterion: "2301"
 checkpoint: "230101"
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2301.2301[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2301.2301[page.criterion] %}
-{% assign cp=site.data.2301.2301[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Content does not flash more than 3 times per second, OR the flash is below the flash thresholds.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Content does not flash more than 3 times per second, OR the flash is below the flash thresholds.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Content flashes more than 3 times per second and is above the flash thresholds.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Remove the flashing content, <strong>OR</strong></li>
-                        <li>Reduce the flashing to less than 3 flashes per second, <strong>OR</strong></li>
-                        <li>Ensure the flashing is below the flash thresholds.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
-                    <h3>Fewer than 3 Flashes per Second</h3>
-                    <script>
-                        function showAlert() {
-                            blinker.animate([{opacity:0},{opacity:1}],{duration:500,iterations:8});
-                        }
-                    </script>
-                    <div id="blinker" style="background-color: yellow; width: 200px; height: 40px; padding: 10px; text-align: center; opacity:0;">Time is running out!</div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Content flashes more than 3 times per second and is above the flash thresholds.</div>
+        </div>
 
-                    <p><button onclick="showAlert()">Show Alert</button></p>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Seizure disorders:</strong> Flashing content can cause migraines, dizziness, nausea, and seizures.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G15">G15: Using a tool to ensure that content does not violate the general flash threshold or red flash threshold</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G19">G19: Ensuring that no component of the content flashes more than three times in any 1-second period</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G176">G176: Keeping the flashing area small enough</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Remove the flashing content, <strong>OR</strong></li>
+                    <li>Reduce the flashing to less than 3 flashes per second, <strong>OR</strong></li>
+                    <li>Ensure the flashing is below the flash thresholds.</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2301checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+                <h3>Fewer than 3 Flashes per Second</h3>
+                <script>
+                    function showAlert() {
+                        blinker.animate([{opacity:0},{opacity:1}],{duration:500,iterations:8});
+                    }
+                </script>
+                <div id="blinker" style="background-color: yellow; width: 200px; height: 40px; padding: 10px; text-align: center; opacity:0;">Time is running out!</div>
+
+                <p><button onclick="showAlert()">Show Alert</button></p>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Seizure disorders:</strong> Flashing content can cause migraines, dizziness, nausea, and seizures.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G15">G15: Using a tool to ensure that content does not violate the general flash threshold or red flash threshold</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G19">G19: Ensuring that no component of the content flashes more than three times in any 1-second period</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G176">G176: Keeping the flashing area small enough</a></li>
+                </ul>
+            </div>
+        </div>
