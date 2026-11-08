@@ -40,130 +40,128 @@ last-modified: November 5, 2026
         </div>
 
         <div class="block">
-                <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <p>Custom controls must be manually added to the tab order. If they are not, keyboard users cannot access them.</p>
-                    <h3>Custom Link</h3>
-                    <div class="example">
-                        <div role="link" onclick="window.location.href='https://ourparks.org/'">Our Parks</div>
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <p>Custom controls must be manually added to the tab order. If they are not, keyboard users cannot access them.</p>
+                <h3>Custom Link</h3>
+                <div class="example">
+                    <div role="link" onclick="window.location.href='https://ourparks.org/'">Our Parks</div>
 
-                        <pre><code>&lt;div role="link" onclick="window.location.href='https://ourparks.org/'"&gt;Our Parks&lt;/div&gt;</code></pre>
-                    </div>
+                    <pre><code>&lt;div role="link" onclick="window.location.href='https://ourparks.org/'"&gt;Our Parks&lt;/div&gt;</code></pre>
+                </div>
 
-                    <h3>Custom Checkbox</h3>
-                    <div class="example">
-                        <div class="cbExample">
-                            <div role="checkbox" aria-checked="false">Subscribe to the mailing list
-                                <span id="ccbChecked" class="ccbCheckbox ccbChecked" style="display: none;"></span>
-                                <span id="ccbNotChecked" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
-                            </div>
+                <h3>Custom Checkbox</h3>
+                <div class="example">
+                    <div class="cbExample">
+                        <div role="checkbox" aria-checked="false">Subscribe to the mailing list
+                            <span id="ccbChecked" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                            <span id="ccbNotChecked" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
                         </div>
-                        <script src="{{ baseurl }}/assets/js/checkbox-fail-211.js"></script>
-                        <pre><code>&lt;div role="checkbox" aria-checked="false"&gt; Subscribe to the mailing list</code></pre>
                     </div>
+                    <script src="{{ '/assets/js/checkbox-fail-211.js' | relative_url }}"></script>
+                    <pre><code>&lt;div role="checkbox" aria-checked="false"&gt; Subscribe to the mailing list</code></pre>
+                </div>
 
-                    <h3>Custom Radio Buttons</h3>
-                    <div class="example">
-                       <div class="radioExample" role="radiogroup">
-                            <div role="radio" aria-checked="false">Check this radio button
-                                <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
-                                <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
-                            </div>
+                <h3>Custom Radio Buttons</h3>
+                <div class="example">
+                    <div class="radioExample" role="radiogroup">
+                        <div role="radio" aria-checked="false">Check this radio button
+                            <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
+                            <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
                         </div>
-                        <script src="{{ baseurl }}/assets/js/radio-fail.js"></script>
-                        <pre><code>&lt;div role="radio" aria-checked="false"&gt; Check this radio button</code></pre>
                     </div>
-
-                    <h3>Custom Button</h3>
-                    <div class="example">
-                        <div id="customButton" role="button" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
-                        <pre><code>&lt;div role="button"&gt;Do Stuff&lt;/div&gt;</code></pre>
-                    </div>
+                    <script src="{{ '/assets/js/radio-fail.js' | relative_url }}"></script>
+                    <pre><code>&lt;div role="radio" aria-checked="false"&gt; Check this radio button</code></pre>
                 </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <p>Native HTML is keyboard accessible by default.</p>
-                    <h3>Native HTML Link with <code>href</code></h3>
-                    <div class="example">
-                        <a href="https://ourparks.org">Our Parks</a>
-                        <pre><code>&lt;a href="https://ourparks.org"&gt;Our Parks&lt;/a&gt;</code></pre>
-                    </div>
 
-                    <h3>Native HTML Checkbox</h3>
-                    <div class="example">
-                        <label for="subscribe"> 
-                            <input type="checkbox" id="subscribe"> Subscribe to the mailing list
-                        </label>
-                        <pre><code>&lt;input type="checkbox" id="subscribe"&gt; Subscribe to the mailing list</code></pre>
-                    </div>
-
-                    <h3>Native HTML Radio Buttons</h3>
-                    <div class="example">
-                        <fieldset>
-                            <input type="radio"> Option 1<br>
-                            <input type="radio"> Option 2
-                        </fieldset>
-
-                        <pre><code>&lt;fieldset&gt;
-    &lt;input type="radio"&gt; Option 1
-    &lt;input type="radio"&gt; Option 2
-&lt;/fieldset&gt;</code></pre>
-                    </div>
-
-                    <h3>Custom Button</h3>
-                    <p>Using <code>tabindex="0"</code> allows keyboard focus with the Tab key.</p>
-                    <div class="example">
-                        <div id="customButton2" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
-
-                        <script>
-                            function doStuff() {
-                                window.alert('Doing Stuff');
-                            }
-                            customButton.onclick = function (e) { doStuff(); };
-                            customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-                            customButton2.onclick = function (e) { doStuff(); };
-                            customButton2.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
-                        </script>
-                        <pre><code>&lt;div role="button" <strong>tabindex="0"</strong>&gt;Do Stuff&lt;/div&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong><code>&lt;a&gt;</code> elements without an <code>href</code>:</strong><br>
-                        File under <a href="{{ checkpoint_data["21010103"].link | relative_url }}">{{ checkpoint_data["21010103"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
-                        <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G90">G90: Providing keyboard-triggered event handlers</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR35">SCR35: Making actions keyboard accessible by using the onclick event of anchors and buttons</a></li>
-                    </ul>
+                <h3>Custom Button</h3>
+                <div class="example">
+                    <div id="customButton" role="button" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
+                    <pre><code>&lt;div role="button"&gt;Do Stuff&lt;/div&gt;</code></pre>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2101checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <p>Native HTML is keyboard accessible by default.</p>
+                <h3>Native HTML Link with <code>href</code></h3>
+                <div class="example">
+                    <a href="https://ourparks.org">Our Parks</a>
+                    <pre><code>&lt;a href="https://ourparks.org"&gt;Our Parks&lt;/a&gt;</code></pre>
+                </div>
+
+                <h3>Native HTML Checkbox</h3>
+                <div class="example">
+                    <label for="subscribe"> 
+                        <input type="checkbox" id="subscribe"> Subscribe to the mailing list
+                    </label>
+                    <pre><code>&lt;input type="checkbox" id="subscribe"&gt; Subscribe to the mailing list</code></pre>
+                </div>
+
+                <h3>Native HTML Radio Buttons</h3>
+                <div class="example">
+                    <fieldset>
+                        <input type="radio"> Option 1<br>
+                        <input type="radio"> Option 2
+                    </fieldset>
+
+                    <pre><code>&lt;fieldset&gt;
+    &lt;input type="radio"&gt; Option 1
+    &lt;input type="radio"&gt; Option 2
+&lt;/fieldset&gt;</code></pre>
+                </div>
+
+                <h3>Custom Button</h3>
+                <p>Using <code>tabindex="0"</code> allows keyboard focus with the Tab key.</p>
+                <div class="example">
+                    <div id="customButton2" role="button" tabindex="0" class="exButton" style="width: 5.5em; text-align: center;">Do Stuff</div>
+
+                    <script>
+                        function doStuff() {
+                            window.alert('Doing Stuff');
+                        }
+                        customButton.onclick = function (e) { doStuff(); };
+                        customButton.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
+                        customButton2.onclick = function (e) { doStuff(); };
+                        customButton2.onkeyup = function (e) { if(e.keyCode == 13) { doStuff(); } };
+                    </script>
+                    <pre><code>&lt;div role="button" <strong>tabindex="0"</strong>&gt;Do Stuff&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong><code>&lt;a&gt;</code> elements without an <code>href</code>:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["21010103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["21010103"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                    <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G90">G90: Providing keyboard-triggered event handlers</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR20">SCR20: Using both keyboard and other device-specific functions</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR35">SCR35: Making actions keyboard accessible by using the onclick event of anchors and buttons</a></li>
+                </ul>
+            </div>
+        </div>
