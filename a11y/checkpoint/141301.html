@@ -2,22 +2,9 @@
 layout: default
 current: "141301"
 criterion: "1413"
-guideline: perceivable
-level: aa
-last-modified: October 26, 2026
+last-modified: November 5, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.1413.1413[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.1413.1413[page.criterion] %}
-{% assign checkpoint_data = site.data["1413"]["1413"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true"><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
@@ -38,9 +25,9 @@ last-modified: October 26, 2026
 
             <p>When additional content is triggered on pointer hover or on keyboard focus, that additional content can be visually perceived. The additional content must also be dismissible.</p>
 
-            <p><em>Note: If there is additional content that can only be triggered on hover, it should be marked as a failure of <a href="{{ checkpoint_data["2101"].link | relative_url }}">{{ checkpoint_data["2101"].name }}</a>.</em></p>
+            <p><em>Note: If there is additional content that can only be triggered on hover, it should be marked as a failure of <a href="{{ site.data["2101"]["2101"]["2101"].link | relative_url }}">{{ site.data["2101"]["2101"]["2101"].name }}</a>.</em></p>
 
-            <p><em>Note: Modal dialogs by definition must take keyboard focus and therefore should not appear on hover or focus. See <a href="{{ checkpoint_data["3201"].link | relative_url }}">{{ checkpoint_data["3201"].name }}</a>.</em></p>
+            <p><em>Note: Modal dialogs by definition must take keyboard focus and therefore should not appear on hover or focus. See <a href="{{ site.data["3201"]["3201"]["3201"].link | relative_url }}">{{ site.data["3201"]["3201"]["3201"].name }}</a>.</em></p>
 
             <h3>Examples</h3>
             <ul>
@@ -58,7 +45,7 @@ last-modified: October 26, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page have additional content that is triggered by mouse hover or keyboard focus?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the additional content be dismissed without moving the mouse hover or keyboard focus?</span>
@@ -68,10 +55,10 @@ last-modified: October 26, 2026
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the additional content remain visible until the mouse hover or keyboard focus is removed, the user dismisses it, or its information is no longer valid?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14130103"].link | relative_url }}">{{ checkpoint_data["14130103"].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14130103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14130103"].name }}</a>.</span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["14130102"].link | relative_url }}">{{ checkpoint_data["14130102"].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14130102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14130102"].name }}</a>.</span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the additional content communicate an input error?</span>
@@ -79,7 +66,7 @@ last-modified: October 26, 2026
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the additional content obscure or replace other content?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["14130101"].link | relative_url }}">{{ checkpoint_data["14130101"].name }}</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["14130101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["14130101"].name }}</a></span></li>
                                         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                     </ul>
                                 </li>
@@ -108,14 +95,7 @@ last-modified: October 26, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["14130101"].link | relative_url }}">{{ checkpoint_data["14130101"].name }}</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["14130102"].link | relative_url }}">{{ checkpoint_data["14130102"].name }}</a> (Medium)</li>
-                <li><a href="{{ checkpoint_data["14130103"].link | relative_url }}">{{ checkpoint_data["14130103"].name }}</a> (Medium)</li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -129,7 +109,7 @@ last-modified: October 26, 2026
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li>Related Techniques:
                     <ul>
                         <li>JavaScript:
@@ -146,7 +126,3 @@ last-modified: October 26, 2026
                 <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/">W3: Tooltip Pattern</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/1413checkpoints.html %}
-    
-</div>
