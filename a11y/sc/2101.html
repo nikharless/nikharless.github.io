@@ -2,16 +2,10 @@
 layout: default
 current: "2101"
 criterion: "2101"
+last-modified: November 5, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2101.2101[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes, except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.</p>
@@ -37,13 +31,9 @@ criterion: "2101"
 
         <div class="block">
             <h2>Training</h2>
-        <ul>
-            <li><a href="https://dequeuniversity.com/class/input-methods/">Deque: Device-Independent User Input Methods</a> (account required)</li>
-            <li><a href="https://dequeuniversity.com/class/multimedia-part-2/toc">Deque: Multimedia, Animations, and Motion: Advanced</a></li>
-            <li><a href="https://dequeuniversity.com/class/testing/">Deque: Web Accessibility Testing: Basic Methods and Tools</a> (account required)</li>
-        </ul>
+            <ul>
+                <li><a href="https://dequeuniversity.com/class/input-methods/">Deque: Device-Independent User Input Methods</a> (account required)</li>
+                <li><a href="https://dequeuniversity.com/class/multimedia-part-2/toc">Deque: Multimedia, Animations, and Motion: Advanced</a></li>
+                <li><a href="https://dequeuniversity.com/class/testing/">Deque: Web Accessibility Testing: Basic Methods and Tools</a> (account required)</li>
+            </ul>
         </div>
-    </div>
-    {% include checkpoints/2101checkpoints.html %}
-    
-</div>
