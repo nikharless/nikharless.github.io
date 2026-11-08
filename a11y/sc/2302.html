@@ -2,30 +2,20 @@
 layout: default
 current: "2302"
 criterion: "2302"
+last-modified: November 7, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2302.2302[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-    
-    <div class="block">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>Web pages do not contain anything that flashes more than three times in any one second period.</p>
-    </div>
-
-    <div class="block">
-            <h2>Training</h2>
-    <ul>
-        <li><a href="https://dequeuniversity.com/class/multimedia/">Deque: Multimedia, Animations, and Motion</a> (account required)</li>
-        <li><a href="https://www.section508.gov/training/presentations/aed-cop-pptx12/">Section508.gov: Module 12: Excluding Flashing Objects (From: How to Author and Test Microsoft PowerPoint Presentations for Accessibility)</a></li>
-        <li><a href="https://www.section508.gov/training/spreadsheets/aed-cop-xlsx09/">Section508.gov: Module 9: Excluding Flashing Objects (From: How to Author and Test Microsoft Excel Worksheets for Accessibility)</a></li>
-    </ul>
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
+        <div class="block">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>Web pages do not contain anything that flashes more than three times in any one second period.</p>
         </div>
-    </div>
-    {% include checkpoints/2302checkpoints.html %}
-    
-</div>
+
+        <div class="block">
+            <h2>Training</h2>
+            <ul>
+                <li><a href="https://dequeuniversity.com/class/multimedia/">Deque: Multimedia, Animations, and Motion</a> (account required)</li>
+                <li><a href="https://www.section508.gov/training/presentations/aed-cop-pptx12/">Section508.gov: Module 12: Excluding Flashing Objects (From: How to Author and Test Microsoft PowerPoint Presentations for Accessibility)</a></li>
+                <li><a href="https://www.section508.gov/training/spreadsheets/aed-cop-xlsx09/">Section508.gov: Module 9: Excluding Flashing Objects (From: How to Author and Test Microsoft Excel Worksheets for Accessibility)</a></li>
+            </ul>
+        </div>
