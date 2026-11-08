@@ -4,122 +4,113 @@ current: "21010104"
 criterion: "2101"
 checkpoint: "210101"
 css: dialog
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2101.2101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2101.2101[page.criterion] %}
-{% assign cp=site.data.2101.2101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Modals are dismissible, without submitting data, using only the keyboard.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Modals are dismissible, without submitting data, using only the keyboard.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A modal cannot be dismissed using only the keyboard without submitting data.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Ensure any close buttons in the modal can be activated with the keyboard.</li>
-                        <li>Enable the use of the <kbd>Esc</kbd> key to close the modal.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Modal That Requires Submission</h3>
-                    <p>This modal cannot be closed without submitting the form.</p>
-                    <button type="button" onclick="openDialog('escapeFail', this)">Open Failing Modal</button>
-                    <div id="dialog_layer" class="dialogs">
-                        <div role="dialog" id="escapeFail" aria-labelledby="failModal_label" aria-modal="true" class="hidden">
-                            <h2 id="failModal_label" class="dialog_label">Example Failing Modal</h2>
-                            <p>Sign up for our mailing list.</p>
-                            <p><em>Note: This form does not actually collect any information. Click Submit to close it.</em></p>
-                            <div class="dialog_form">
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span>Email address: </span>
-                                        <input type="text">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_actions">
-                                    <button type="button" onclick="closeDialog(this)">Submit</button>
-                                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A modal cannot be dismissed using only the keyboard without submitting data.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Ensure any close buttons in the modal can be activated with the keyboard.</li>
+                    <li>Enable the use of the <kbd>Esc</kbd> key to close the modal.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Modal That Requires Submission</h3>
+                <p>This modal cannot be closed without submitting the form.</p>
+                <button type="button" onclick="openDialog('escapeFail', this)">Open Failing Modal</button>
+                <div id="dialog_layer" class="dialogs">
+                    <div role="dialog" id="escapeFail" aria-labelledby="failModal_label" aria-modal="true" class="hidden">
+                        <h2 id="failModal_label" class="dialog_label">Example Failing Modal</h2>
+                        <p>Sign up for our mailing list.</p>
+                        <p><em>Note: This form does not actually collect any information. Click Submit to close it.</em></p>
+                        <div class="dialog_form">
+                            <div class="dialog_form_item">
+                                <label>
+                                    <span>Email address: </span>
+                                    <input type="text">
+                                </label>
+                            </div>
+                            <div class="dialog_form_actions">
+                                <button type="button" onclick="closeDialog(this)">Submit</button>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Modal with Cancel Button and <kbd>Esc</kbd> Functionality</h3>
-                    <p>This modal has two methods to close it using only the keyboard.</p>
-                    
-                    <button type="button" onclick="openDialog('passDialog', this)">Open Passing Modal</button>
-                    <div id="dialog_layer" class="dialogs">
-                        <div role="dialog" id="passDialog" aria-labelledby="passDialog_label" aria-modal="true" class="hidden">
-                            <h2 id="passDialog_label" class="dialog_label">Example Passing Modal</h2>
-                            <p>Sign up for our mailing list.</p>
-                            <p><em>Note: This form does not actually collect any information.</em></p>
-                            <div class="dialog_form">
-                                <div class="dialog_form_item">
-                                    <label>
-                                        <span>Email address: </span>
-                                        <input type="text">
-                                    </label>
-                                </div>
-                                <div class="dialog_form_actions">
-                                    <button type="button">Submit</button>
-                                    <button type="button" onclick="closeDialog(this)">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <script src="{{ baseurl }}/assets/js/dialog.js"></script>
-                    <script src="{{ baseurl }}/assets/js/utils.js"></script>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Modal focus:</strong><br>
-                        File under <a href="{{ checkpoint_data["24030104"].link | relative_url }}">{{ checkpoint_data["24030104"].name }},</a> <a href="{{ checkpoint_data["24030105"].link | relative_url }}">{{ checkpoint_data["24030105"].name }},</a> or <a href="{{ checkpoint_data["24030106"].link | relative_url }}">{{ checkpoint_data["24030106"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
-                        <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2101checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Modal with Cancel Button and <kbd>Esc</kbd> Functionality</h3>
+                <p>This modal has two methods to close it using only the keyboard.</p>
+                    
+                <button type="button" onclick="openDialog('passDialog', this)">Open Passing Modal</button>
+                <div id="dialog_layer" class="dialogs">
+                    <div role="dialog" id="passDialog" aria-labelledby="passDialog_label" aria-modal="true" class="hidden">
+                        <h2 id="passDialog_label" class="dialog_label">Example Passing Modal</h2>
+                        <p>Sign up for our mailing list.</p>
+                        <p><em>Note: This form does not actually collect any information.</em></p>
+                        <div class="dialog_form">
+                            <div class="dialog_form_item">
+                                <label>
+                                    <span>Email address: </span>
+                                    <input type="text">
+                                </label>
+                            </div>
+                            <div class="dialog_form_actions">
+                                <button type="button">Submit</button>
+                                <button type="button" onclick="closeDialog(this)">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="{{ '/assets/js/dialog.js' | relative_url }}"></script>
+                <script src="{{ '/assets/js/utils.js' | relative_url }}"></script>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Modal focus:</strong><br>
+                        File under <a href="{{ site.data["2403"]["2403"]["24030104"].link | relative_url }}">{{ site.data["2403"]["2403"]["24030104"].name }},</a> <a href="{{ site.data["2403"]["2403"]["24030105"].link | relative_url }}">{{ site.data["2403"]["2403"]["24030105"].name }},</a> or <a href="{{ site.data["2403"]["2403"]["24030106"].link | relative_url }}">{{ site.data["2403"]["2403"]["24030106"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                    <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                </ul>
+            </div>
+        </div>
