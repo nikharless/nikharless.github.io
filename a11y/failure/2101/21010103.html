@@ -3,95 +3,86 @@ layout: default
 current: "21010103"
 criterion: "2101"
 checkpoint: "210101"
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2101.2101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2101.2101[page.criterion] %}
-{% assign cp=site.data.2101.2101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Links (<code>&lt;a&gt;</code>) have <code>href</code> attributes.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Links (<code>&lt;a&gt;</code>) have <code>href</code> attributes.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A link is not in the tab order, because it's coded without an <code>href</code> attribute.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Provide an <code>href</code> attribute pointing to the target url, <strong>AND</strong></li>
-                        <li>Provide keyboard event handlers for any mouse event handlers.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Scripted Link with no <code>href</code></h3>
-                    <div class="example">
-                        <p><a onclick="return doStuff();">Our Parks</a></p>
-                        <pre><code>&lt;a onclick="return doStuff();"&gt;Our Parks&lt;/a&gt;</code></pre>
-                    </div>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A link is not in the tab order, because it's coded without an <code>href</code> attribute.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Provide an <code>href</code> attribute pointing to the target url, <strong>AND</strong></li>
+                    <li>Provide keyboard event handlers for any mouse event handlers.</li>
+                </ul>
             </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Scripted Link with Inactive <code>href</code></h3>
-                    <div class="example">
-                        <a href="javascript:void(0);" onclick="return doStuff();">Our Parks</a>
-                        <script>
-                            function doStuff() {
-                                window.location="https://ourparks.org/";
-                                return false;
-                            }
-                        </script>
-                        <pre><code>&lt;a <strong>href="javascript:void(0);"</strong> onclick="return doStuff();"&gt;Our Parks&lt;/a&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Custom controls (including links which are not <code>&lt;a&gt;</code> elements):</strong><br>
-                        File under <a href="{{ checkpoint_data["21010101"].link | relative_url }}">{{ checkpoint_data["21010101"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <p>Link anchor tags (<code>&lt;a&gt;</code>) are not placed in the tab order unless they have an <code>href</code> attribute.</p>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
-                        <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F42">F42: Failure of Success Criteria 1.3.1, 2.1.1, 2.1.3, or 4.1.2 when emulating links</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR35">SCR35: Making actions keyboard accessible by using the onclick event of anchors and buttons</a></li>
-                    </ul>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Scripted Link with no <code>href</code></h3>
+                <div class="example">
+                    <p><a onclick="return doStuff();">Our Parks</a></p>
+                    <pre><code>&lt;a onclick="return doStuff();"&gt;Our Parks&lt;/a&gt;</code></pre>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2101checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Scripted Link with Inactive <code>href</code></h3>
+                <div class="example">
+                    <a href="javascript:void(0);" onclick="return doStuff();">Our Parks</a>
+                    <script>
+                        function doStuff() {
+                            window.location="https://ourparks.org/";
+                            return false;
+                        }
+                    </script>
+                    <pre><code>&lt;a <strong>href="javascript:void(0);"</strong> onclick="return doStuff();"&gt;Our Parks&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Custom controls (including links which are not <code>&lt;a&gt;</code> elements):</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["21010101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["21010101"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <p>Link anchor tags (<code>&lt;a&gt;</code>) are not placed in the tab order unless they have an <code>href</code> attribute.</p>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                    <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F42">F42: Failure of Success Criteria 1.3.1, 2.1.1, 2.1.3, or 4.1.2 when emulating links</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR35">SCR35: Making actions keyboard accessible by using the onclick event of anchors and buttons</a></li>
+                </ul>
+            </div>
+        </div>
