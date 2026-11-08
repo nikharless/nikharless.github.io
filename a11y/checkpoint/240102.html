@@ -2,22 +2,9 @@
 layout: default
 current: "240102"
 criterion: "2401"
-guideline: perceivable
-level: a
-last-modified: October 28, 2026
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2401.2401[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2401.2401[page.criterion] %}
-{% assign checkpoint_data = site.data["2401"]["2401"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -35,7 +22,7 @@ last-modified: October 28, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page use <code>&lt;iframe&gt;</code> elements to group blocks of repeated material?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each <code>&lt;iframe&gt;</code> have a <code>title</code> attribute?</span>
@@ -45,13 +32,13 @@ last-modified: October 28, 2026
                                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the title unique?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24010203"].link | relative_url }}">{{ checkpoint_data["24010203"].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["24010203"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["24010203"].name }}</a>.</span></li>
                                     </ul>
                                 </li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24010202"].link | relative_url }}">{{ checkpoint_data["24010202"].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["24010202"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["24010202"].name }}</a>.</span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24010201"].link | relative_url }}">{{ checkpoint_data["24010201"].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["24010201"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["24010201"].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -85,14 +72,7 @@ last-modified: October 28, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["24010201"].link | relative_url }}">{{ checkpoint_data["24010201"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["24010202"].link | relative_url }}">{{ checkpoint_data["24010202"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["24010203"].link | relative_url }}">{{ checkpoint_data["24010203"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -107,7 +87,7 @@ last-modified: October 28, 2026
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li>HTML:
                     <ul>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H64">H64: Using the title attribute of the iframe element</a></li>
@@ -120,7 +100,3 @@ last-modified: October 28, 2026
                 <li><a href="https://www.boia.org/blog/why-are-iframe-titles-important-for-accessibility">BOIA: Why Are iFrame Titles Important for Accessibility?</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2401checkpoints.html %}
-    
-</div>
