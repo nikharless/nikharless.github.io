@@ -3,31 +3,24 @@ layout: default
 current: "22040102"
 criterion: "2204"
 checkpoint: "220401"
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2204.2204[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2204.2204[page.criterion] %}
-{% assign cp=site.data.2204.2204[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
     	<div class="block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>The user is able to postpone or suppress interruptions.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>There are non-emergency notifications or alerts, and the user has no means to postpone or suppress them.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Provide a mechanism to turn off non-emergency notifications and alerts.</div>
     	</div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
@@ -36,10 +29,12 @@ checkpoint: "220401"
                 </ul>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>Users with attention deficits and users of assistive technology are distracted and disrupted by non-essential interruptions.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -49,8 +44,3 @@ checkpoint: "220401"
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-
-    {% include checkpoints/2204checkpoints.html %}
-    
