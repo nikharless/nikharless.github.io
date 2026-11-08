@@ -3,31 +3,24 @@ layout: default
 current: "22050101"
 criterion: "2205"
 checkpoint: "220501"
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2205.2205[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2205.2205[page.criterion] %}
-{% assign cp=site.data.2205.2205[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
     	<div class="block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>There is no loss of data when a user's authenticated session expires and they log back in.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Data is lost when the user's session expires, and they have to start their progress over.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Provide a mechanism to save data between authenticated sessions.</div>
     	</div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
@@ -37,10 +30,12 @@ checkpoint: "220501"
                 </ul>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>Users with various disabilities often need more time to complete activities.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -50,8 +45,3 @@ checkpoint: "220501"
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-
-    {% include checkpoints/2205checkpoints.html %}
-    
