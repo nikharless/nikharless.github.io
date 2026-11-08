@@ -4,118 +4,109 @@ current: "21010106"
 criterion: "2101"
 checkpoint: "210101"
 css: dragdrop
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2101.2101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2101.2101[page.criterion] %}
-{% assign cp=site.data.2101.2101[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>Drag and drop feature has keyboard functionality.</div>
+        </div>
 
-        <div class="failure">
-    <div class="block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Drag and drop feature has keyboard functionality.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>Drag and drop feature does not have keyboard functionality.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <ul>
-                        <li>Ensure that the drag and drop functionality can be controlled with the keyboard, <strong>OR</strong></li>
-                        <li>Provide an alternate mechanism that can be controlled with the keyboard.</li>
-                    </ul>      
-                </div>
-            </div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Drag and Drop</h3>
-                    <p>This interaction cannot be completed using the keyboard.</p>
-                    <div class="example">
-                        <p>Drag the image to the box.</p>
-                        <div style="display: flex;">
-                            <div id="div1" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)" style="width: 180px; height: 180px; padding: 10px; border: 1px solid #aaa;"></div>
-                            <img id="img1" src="{{ baseurl }}/assets/images/21010106_ufo_640.png" draggable="true" ondragstart="dragstartHandler(event)" width="160" height="160">
-                        </div>                        
-                        <script src="{{ baseurl }}/assets/js/dragdrop-fail.js" defer></script>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Drag and Drop</h3>
-                    <p>Drag and drop the artists under the heading where they belong. See keyboard instructions.</p>
-                    <script src="{{ baseurl }}/assets/js/dragdrop.js" defer></script>
-                    <div id="dragdrop">
-                        <h2 id="Favh">Favorite Artists</h2>
-                        <ul id="Fav" class="ddUl">
-                            <li class="draggable">Frida Kahlo</li>
-                            <li class="draggable">Vincent Van Gogh</li>
-                            <li class="draggable">Francis Bacon</li>
-                            <li class="draggable">Pablo Picasso</li>
-                            <li class="draggable">Gustav Klimt</li>
-                            <li class="draggable">Lucian Freud</li>
-                        </ul>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>Drag and drop feature does not have keyboard functionality.</div>
+        </div>
 
-                        <h2 id="Tolh">Tolerable Artists</h2>
-                        <ul id="Tol" class="ddUl">
-                            <li class="empty">None</li>
-                        </ul>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+                <ul>
+                    <li>Ensure that the drag and drop functionality can be controlled with the keyboard, <strong>OR</strong></li>
+                    <li>Provide an alternate mechanism that can be controlled with the keyboard.</li>
+                </ul>      
+            </div>
+        </div>
 
-                        <h2 id="Rejh">Rejected Artists</h2>
-                        <ul id="Rej" class="ddUl">
-                            <li class="empty">None</li>
-                        </ul>
-                    </div>
-
-                    <h2 id="kbdinstructions">Keyboard Instructions</h2>
-                    <ul class="instructions">
-                        <li>Use the <kbd>Tab</kbd> to move to the artist you want to move.</li>
-                        <li>Select the item you want to move with the <kbd>Spacebar</kbd>.</li>
-                        <li>Use the <kbd>Up</kbd> and <kbd>Down</kbd> arrow keys to select a target in the context menu.</li>
-                        <li>Press <kbd>Enter</kbd> to move the artist to the target list.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Dragging alternative:</strong><br>
-                            File under <a href="{{ checkpoint_data["25070101"].link | relative_url }}">{{ checkpoint_data["25070101"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
-                        <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
-                    </ul>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Drag and Drop</h3>
+                <p>This interaction cannot be completed using the keyboard.</p>
+                <div class="example">
+                    <p>Drag the image to the box.</p>
+                    <div style="display: flex;">
+                        <div id="div1" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)" style="width: 180px; height: 180px; padding: 10px; border: 1px solid #aaa;"></div>
+                        <img id="img1" src="{{ '/assets/images/21010106_ufo_640.png' | relative_url }}" draggable="true" ondragstart="dragstartHandler(event)" width="160" height="160">
+                    </div>                        
+                    <script src="{{ '/assets/js/dragdrop-fail.js' | relative_url }}" defer></script>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2101checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Drag and Drop</h3>
+                <p>Drag and drop the artists under the heading where they belong. See keyboard instructions.</p>
+                <script src="{{ '/assets/js/dragdrop.js' | relative_url }}" defer></script>
+                <div id="dragdrop">
+                    <h2 id="Favh">Favorite Artists</h2>
+                    <ul id="Fav" class="ddUl">
+                        <li class="draggable">Frida Kahlo</li>
+                        <li class="draggable">Vincent Van Gogh</li>
+                        <li class="draggable">Francis Bacon</li>
+                        <li class="draggable">Pablo Picasso</li>
+                        <li class="draggable">Gustav Klimt</li>
+                        <li class="draggable">Lucian Freud</li>
+                    </ul>
+
+                    <h2 id="Tolh">Tolerable Artists</h2>
+                    <ul id="Tol" class="ddUl">
+                        <li class="empty">None</li>
+                    </ul>
+
+                    <h2 id="Rejh">Rejected Artists</h2>
+                    <ul id="Rej" class="ddUl">
+                        <li class="empty">None</li>
+                    </ul>
+                </div>
+
+                <h2 id="kbdinstructions">Keyboard Instructions</h2>
+                <ul class="instructions">
+                    <li>Use the <kbd>Tab</kbd> to move to the artist you want to move.</li>
+                    <li>Select the item you want to move with the <kbd>Spacebar</kbd>.</li>
+                    <li>Use the <kbd>Up</kbd> and <kbd>Down</kbd> arrow keys to select a target in the context menu.</li>
+                    <li>Press <kbd>Enter</kbd> to move the artist to the target list.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Dragging alternative:</strong><br>
+                        File under <a href="{{ site.data["2507"]["2507"]["25070101"].link | relative_url }}">{{ site.data["2507"]["2507"]["25070101"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Blind users cannot use devices such as mice which require eye-hand coordination.</li>
+                    <li><strong>Motor Impairment:</strong> Users have difficulty using a mouse and rely on a keyboard.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G202">G202: Ensuring keyboard control for all functionality</a></li>
+                </ul>
+            </div>
+        </div>
