@@ -2,22 +2,9 @@
 layout: default
 current: "220601"
 criterion: "2206"
-guideline: perceivable
-level: aaa
-last-modified: October 26, 2026
+last-modified: November 7, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2206.2206[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2206.2206[page.criterion] %}
-{% assign checkpoint_data = site.data["2206"]["2206"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true"><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
@@ -33,7 +20,7 @@ last-modified: October 26, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Is there a session time limit?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there a warning notifying users of the length of time they can be inactive before the time limit expires?</span>
@@ -45,7 +32,7 @@ last-modified: October 26, 2026
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the data stored at least 20 hours?</span>
                                     <ul role="group">
                                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["22060101"].link | relative_url }}">{{ checkpoint_data["22060101"].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["22060101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["22060101"].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -72,12 +59,7 @@ last-modified: October 26, 2026
             <p>Follow the process for Desktop.</p>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["22060101"].link | relative_url }}">{{ checkpoint_data["22060101"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -93,7 +75,3 @@ last-modified: October 26, 2026
             </ul>
             <h3>Additional Information</h3>
         </div>
-    </div>
-    {% include checkpoints/2206checkpoints.html %}
-    
-</div>
