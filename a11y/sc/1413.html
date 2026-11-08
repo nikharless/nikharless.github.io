@@ -2,16 +2,10 @@
 layout: default
 current: "1413"
 criterion: "1413"
+last-modified: November 5, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.1413.1413[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Where receiving and then removing pointer hover or keyboard focus triggers additional content to become visible and then hidden, the following are true:</p>
@@ -33,7 +27,3 @@ criterion: "1413"
             <h2>Training</h2>
         
         </div>
-    </div>
-    {% include checkpoints/1413checkpoints.html %}
-    
-</div>
