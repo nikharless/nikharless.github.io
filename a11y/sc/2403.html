@@ -2,16 +2,10 @@
 layout: default
 current: "2403"
 criterion: "2403"
+last-modified: November 8, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2403.2403[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability.</p>
@@ -47,7 +41,3 @@ criterion: "2403"
                 <li><a href="https://www.section508.gov/training/pdfs/aed-cop-pdf03/">Section508.gov: Module 3: Remediating PDFs for Accessibility (From: How to Test and Remediate PDFs for Accessibility Using Adobe Acrobat DC)</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2403checkpoints.html %}
-    
-</div>
