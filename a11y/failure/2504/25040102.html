@@ -3,57 +3,46 @@ layout: default
 current: "25040102"
 criterion: "2504"
 checkpoint: "250401"
+last-modified: November 8, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2504.2504[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2504.2504[page.criterion] %}
-{% assign cp=site.data.2504.2504[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Functionality that uses motion actuation can be disabled.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Functionality that uses motion actuation can be disabled.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Motion actuation cannot be disabled.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Provide a control to disable the motion actuation.</div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
-                    <ul>
-                        <li>Shaking a device performs an undo function. A button is also available to do the same thing.</li>
-                        <li>A setting is provided to disable the shake-to-undo functionality.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>Some users cannot hold a device or keep it steady.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F106">F106: Failure due to inability to deactivate motion actuation</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G213">G213: Provide conventional controls and an application setting for motion activated input</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Motion actuation cannot be disabled.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Provide a control to disable the motion actuation.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+                <ul>
+                    <li>Shaking a device performs an undo function. A button is also available to do the same thing.</li>
+                    <li>A setting is provided to disable the shake-to-undo functionality.</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2504checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>Some users cannot hold a device or keep it steady.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F106">F106: Failure due to inability to deactivate motion actuation</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G213">G213: Provide conventional controls and an application setting for motion activated input</a></li>
+                </ul>
+            </div>
+        </div>
