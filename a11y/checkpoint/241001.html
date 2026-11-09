@@ -2,22 +2,9 @@
 layout: default
 current: "241001"
 criterion: "2410"
-guideline: perceivable
-level: aaa
-last-modified: October 28, 2026
+last-modified: November 8, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2410.2410[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2410.2410[page.criterion] %}
-{% assign checkpoint_data = site.data["2410"]["2410"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -25,7 +12,7 @@ last-modified: October 28, 2026
                 <span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> = Best Practice</p>
             <ul>
                 <li><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> Section headings must be used to organize the content.</li>
-                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Section headings should be programmatically determinable. (See <a href="{{ checkpoint_data["130105"].link | relative_url }}">{{ checkpoint_data["130105"].name }}</a> for requirement.)</li>
+                <li><span role="img" class="best-practice fa-solid fa-circle-check" aria-label="Best Practice"></span> Section headings should be programmatically determinable. (See <a href="{{ site.data["1301"]["1301"]["130105"].link | relative_url }}">{{ site.data["1301"]["1301"]["130105"].name }}</a> for requirement.)</li>
             </ul>
         </div>
 
@@ -35,13 +22,13 @@ last-modified: October 28, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Is the content of the page organized into sections?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does each section have a heading?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24100101"].link | relative_url }}">{{ checkpoint_data["24100101"].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["24100101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["24100101"].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -62,12 +49,7 @@ last-modified: October 28, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["24100101"].link | relative_url }}">{{ checkpoint_data["24100101"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -80,7 +62,7 @@ last-modified: October 28, 2026
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li>General:
                     <ul>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G141">G141: Organizing a page using headings</a></li>
@@ -98,7 +80,3 @@ last-modified: October 28, 2026
 
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2410checkpoints.html %}
-    
-</div>
