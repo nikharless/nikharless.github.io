@@ -2,22 +2,9 @@
 layout: default
 current: "241201"
 criterion: "2412"
-guideline: perceivable
-level: aaa
-last-modified: October 28, 2026
+last-modified: November 8, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2412.2412[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2412.2412[page.criterion] %}
-{% assign checkpoint_data = site.data["2412"]["2412"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -40,10 +27,10 @@ last-modified: October 28, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">As you navigate through the page using the keyboard, is any part of the keyboard focus hidden behind other content?</h3>
             <ul role="tree" aria-labelledby="test1">
-                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["24120101"].link | relative_url }}">{{ checkpoint_data["24120101"].name }}</a>.</span></li>
+                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["24120101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["24120101"].name }}</a>.</span></li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
             </ul>
         </div>
@@ -56,12 +43,7 @@ last-modified: October 28, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["24120101"].link | relative_url }}">{{ checkpoint_data["24120101"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -74,7 +56,7 @@ last-modified: October 28, 2026
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li>CSS:
                     <ul>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C43">C43: Using CSS scroll-padding to un-obscure content</a></li>
@@ -87,7 +69,3 @@ last-modified: October 28, 2026
                 <li><a href="https://knowbility.org/blog/2020/accessible-slide-menus">Knowbility: Let’s Focus on Slide-Out Navigation</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2412checkpoints.html %}
-    
-</div>
