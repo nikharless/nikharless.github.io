@@ -3,124 +3,115 @@ layout: default
 current: "24030101"
 criterion: "2403"
 checkpoint: "240301"
+last-modified: November 8, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2403.2403[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2403.2403[page.criterion] %}
-{% assign cp=site.data.2403.2403[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Focus order preserves the meaning and operability of the content.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Focus order preserves the meaning and operability of the content.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Focus order does not preserve the meaning and operability of the content.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Ensure the focus order is logical and preserves the meaning and operability of the content.</div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Form</h3>
-                    <p>This form uses a layout table, which causes the tab order to be illogical.</p>
-                    <div class="example">
-                        <table role="presentation" style="border: 0;">
-                            <tr>
-                                <td style="border: 0;"><label>First Name:<br>
-                                    <input type="text"></label></td>
-                                <td style="border: 0;"><label>Street:<br>
-                                    <input type="text"></label></td>
-                            </tr>
-                            <tr>
-                                <td style="border: 0;"><label>Last Name:<br>
-                                    <input type="text"></label></td>
-                                <td style="border: 0;"><label>City:<br>
-                                    <input type="text"></label></td>
-                            </tr>
-                            <tr>
-                                <td style="border: 0;"><label>Phone:<br>
-                                    <input type="text"></label></td>
-                                <td style="border: 0;"><label>State:<br>
-                                    <input type="text"></label></td>
-                            </tr>
-                            <tr>
-                                <td style="border: 0;"></td>
-                                <td style="border: 0;"><label>Zip:<br>
-                                    <input type="text"></label></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Form</h3>
-                    <p>This form has a logical tab order.</p>
-                    <div class="example" style="display:flex;">
-                        <div style="padding: 5px 10px 5px 5px">
-                            <p><label>First Name:<br>
-                            <input type="text"></label></p>
-                            <p><label>Last Name:<br>
-                            <input type="text"></label></p>
-                            <p><label>Phone:<br>
-                            <input type="text"></label></p>
-                        </div>
-                        <div style="padding: 5px">
-                            <p><label>Street:<br>
-                            <input type="text"></label></p>
-                            <p><label>City:<br>
-                            <input type="text"></label></p>
-                            <p><label>State:<br>
-                            <input type="text"></label></p>
-                            <p><label>Zip:<br>
-                            <input type="text"></label></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Sequence of non-focusable content:</strong><br>
-                            File under <a href="{{ checkpoint_data["1302"].link | relative_url }}">{{ checkpoint_data["1302"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Screen reader and screen magnifier users can become disoriented if tabbing moves the focus in an illogical order.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users can become disoriented if tab focus is in an illogical order.</li>
-                        <li><strong>Motor Impairment:</strong> Users may have a more difficult time navigating a page if tab focus is in an illogical order.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">G59: Placing the interactive elements in an order that follows sequences and relationships within the content</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C27">C27: Making the DOM order match the visual order</a></li>
-                    </ul>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Focus order does not preserve the meaning and operability of the content.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Ensure the focus order is logical and preserves the meaning and operability of the content.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Form</h3>
+                <p>This form uses a layout table, which causes the tab order to be illogical.</p>
+                <div class="example">
+                    <table role="presentation" style="border: 0;">
+                        <tr>
+                            <td style="border: 0;"><label>First Name:<br>
+                                <input type="text"></label></td>
+                            <td style="border: 0;"><label>Street:<br>
+                                <input type="text"></label></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 0;"><label>Last Name:<br>
+                                <input type="text"></label></td>
+                            <td style="border: 0;"><label>City:<br>
+                                <input type="text"></label></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 0;"><label>Phone:<br>
+                                <input type="text"></label></td>
+                            <td style="border: 0;"><label>State:<br>
+                                <input type="text"></label></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 0;"></td>
+                            <td style="border: 0;"><label>Zip:<br>
+                                <input type="text"></label></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2403checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Form</h3>
+                <p>This form has a logical tab order.</p>
+                <div class="example" style="display:flex;">
+                    <div style="padding: 5px 10px 5px 5px">
+                        <p><label>First Name:<br>
+                        <input type="text"></label></p>
+                        <p><label>Last Name:<br>
+                        <input type="text"></label></p>
+                        <p><label>Phone:<br>
+                        <input type="text"></label></p>
+                    </div>
+                    <div style="padding: 5px">
+                        <p><label>Street:<br>
+                        <input type="text"></label></p>
+                        <p><label>City:<br>
+                        <input type="text"></label></p>
+                        <p><label>State:<br>
+                        <input type="text"></label></p>
+                        <p><label>Zip:<br>
+                        <input type="text"></label></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Sequence of non-focusable content:</strong><br>
+                        File under <a href="{{ site.data["1302"]["1302"]["1302"].link | relative_url }}">{{ site.data["1302"]["1302"]["1302"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Screen reader and screen magnifier users can become disoriented if tabbing moves the focus in an illogical order.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users can become disoriented if tab focus is in an illogical order.</li>
+                    <li><strong>Motor Impairment:</strong> Users may have a more difficult time navigating a page if tab focus is in an illogical order.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">G59: Placing the interactive elements in an order that follows sequences and relationships within the content</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/css/C27">C27: Making the DOM order match the visual order</a></li>
+                </ul>
+            </div>
+        </div>
