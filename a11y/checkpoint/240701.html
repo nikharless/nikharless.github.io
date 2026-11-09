@@ -2,22 +2,9 @@
 layout: default
 current: "240701"
 criterion: "2407"
-guideline: perceivable
-level: aa
-last-modified: October 28, 2026
+last-modified: November 8, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2407.2407[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2407.2407[page.criterion] %}
-{% assign checkpoint_data = site.data["2407"]["2407"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -47,7 +34,7 @@ last-modified: October 28, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Are there elements on the page that can receive keyboard focus?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; As you navigate through the page using the keyboard, is it visually apparent which element has focus?</span>
@@ -55,11 +42,11 @@ last-modified: October 28, 2026
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Has the focus indicator been disabled using CSS?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["24070102"].link | relative_url }}">{{ checkpoint_data["24070102"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["24070102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["24070102"].name }}.</a></span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Has the focus been removed using a script?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["24070103"].link | relative_url }}">{{ checkpoint_data["24070103"].name }}.</a></span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24070101"].link | relative_url }}">{{ checkpoint_data["24070101"].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["24070103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["24070103"].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["24070101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["24070101"].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -84,14 +71,7 @@ last-modified: October 28, 2026
             <p>Follow the desktop procedure using a Bluetooth keyboard.</p>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["24070101"].link | relative_url }}">{{ checkpoint_data["24070101"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["24070102"].link | relative_url }}">{{ checkpoint_data["24070102"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["24070103"].link | relative_url }}">{{ checkpoint_data["24070103"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -131,7 +111,3 @@ last-modified: October 28, 2026
                 <li><a href="https://webaim.org/techniques/hypertext/link_text#hover">WebAIM: Links and Hypertext: Hover and focus effects</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2407checkpoints.html %}
-    
-</div>
