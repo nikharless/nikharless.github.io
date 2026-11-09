@@ -2,22 +2,9 @@
 layout: default
 current: "240401"
 criterion: "2404"
-guideline: perceivable
-level: a
-last-modified: October 28, 2026
+last-modified: November 8, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2404.2404[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2404.2404[page.criterion] %}
-{% assign checkpoint_data = site.data["2404"]["2404"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -40,7 +27,7 @@ last-modified: October 28, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Are there links on the page?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the purpose of each link be determined from the link text alone?</span>
@@ -60,10 +47,10 @@ last-modified: October 28, 2026
                                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the image have alternate text which describes the link purpose?</span>
                                                             <ul role="group">
                                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24040102"].link | relative_url }}">{{ checkpoint_data["24040102"].name }}.</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["24040102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["24040102"].name }}.</a></span></li>
                                                             </ul>
                                                         </li>
-                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["24040101"].link | relative_url }}">{{ checkpoint_data["24040101"].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["24040101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["24040101"].name }}.</a></span></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -142,14 +129,7 @@ last-modified: October 28, 2026
             <p>Use the Read Out Loud feature (<strong>Menu > View > Read out loud</strong>) to have the link text read out.</p>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["24040101"].link | relative_url }}">{{ checkpoint_data["24040101"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["24040102"].link | relative_url }}">{{ checkpoint_data["24040102"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["24040103"].link | relative_url }}">{{ checkpoint_data["24040103"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -212,7 +192,3 @@ last-modified: October 28, 2026
                 <li><a href="https://webaim.org/techniques/css/invisiblecontent/">WebAIM: CSS in Action: Invisible Content Just for Screen Reader Users</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2404checkpoints.html %}
-    
-</div>
