@@ -4,121 +4,112 @@ current: "24030102"
 criterion: "2403"
 checkpoint: "240301"
 css: tabs
+last-modified: November 8, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2403.2403[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2403.2403[page.criterion] %}
-{% assign cp=site.data.2403.2403[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Focus is correctly managed during interactions and content updates.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Focus is correctly managed during interactions and content updates.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Focus is lost or incorrectly placed during interaction or content update.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Ensure focus is deliberately placed on the next logical element during interactions and content updates.</div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Focus Reset</h3>
-                    <p>When a tab is selected (<kbd>Tab</kbd> to tab list, arrow to tab, then press <kbd>Enter</kbd>), focus is reset to the top of the page.</p>
-                    <div class="example">
-                        <script src="{{ baseurl }}/assets/js/tabs-manual.js"></script>
-                        <div class="tabs">
-                            <div role="tablist" class="manual">
-                                <button id="tab-1" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1" onkeydown="failTab(event)">
-                                  <span class="focus">Screen Reader</span>
-                                </button>
-                                <button id="tab-2" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2" tabindex="-1" onkeydown="failTab(event)">
-                                  <span class="focus">Braille Device</span>
-                                </button>
-                                <button id="tab-3" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-3" tabindex="-1" onkeydown="failTab(event)">
-                                  <span class="focus">Switch Device</span>
-                                </button>
-                                <button id="tab-4" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-4" tabindex="-1" onkeydown="failTab(event)">
-                                  <span class="focus">Voice Recognition</span>
-                                </button>
-                            </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Focus is lost or incorrectly placed during interaction or content update.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Ensure focus is deliberately placed on the next logical element during interactions and content updates.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Focus Reset</h3>
+                <p>When a tab is selected (<kbd>Tab</kbd> to tab list, arrow to tab, then press <kbd>Enter</kbd>), focus is reset to the top of the page.</p>
+                <div class="example">
+                    <script src="{{ '/assets/js/tabs-manual.js' | relative_url }}"></script>
+                    <div class="tabs">
+                        <div role="tablist" class="manual">
+                            <button id="tab-1" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1" onkeydown="failTab(event)">
+                                <span class="focus">Screen Reader</span>
+                            </button>
+                            <button id="tab-2" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2" tabindex="-1" onkeydown="failTab(event)">
+                                <span class="focus">Braille Device</span>
+                            </button>
+                            <button id="tab-3" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-3" tabindex="-1" onkeydown="failTab(event)">
+                                <span class="focus">Switch Device</span>
+                            </button>
+                            <button id="tab-4" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-4" tabindex="-1" onkeydown="failTab(event)">
+                                <span class="focus">Voice Recognition</span>
+                            </button>
                         </div>
-                        <div id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">Screen Reader</div>
-                        <div id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">Braille Device</div>
-                        <div id="tabpanel-3" role="tabpanel" aria-labelledby="tab-3">Switch Device</div>
-                        <div id="tabpanel-4" role="tabpanel" aria-labelledby="tab-4">Voice Recognition</div>
                     </div>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Focus Remains</h3>
-                    <p>In this example, the focus remains on the tab when selected.</p>
-                    <div class="example">
-                        <div class="tabs">
-                            <div role="tablist" class="manual">
-                                <button id="tab-5" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-5">
-                                  <span class="focus">Screen Reader</span>
-                                </button>
-                                <button id="tab-6" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-6" tabindex="-1">
-                                  <span class="focus">Braille Device</span>
-                                </button>
-                                <button id="tab-7" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-7" tabindex="-1">
-                                  <span class="focus">Switch Device</span>
-                                </button>
-                                <button id="tab-8" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-8" tabindex="-1">
-                                  <span class="focus">Voice Recognition</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div id="tabpanel-5" role="tabpanel" aria-labelledby="tab-5">Screen Reader</div>
-                        <div id="tabpanel-6" role="tabpanel" aria-labelledby="tab-6">Braille Device</div>
-                        <div id="tabpanel-7" role="tabpanel" aria-labelledby="tab-7">Switch Device</div>
-                        <div id="tabpanel-8" role="tabpanel" aria-labelledby="tab-8">Voice Recognition</div>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Sequence of non-focusable content:</strong><br>
-                            File under <a href="{{ checkpoint_data["1302"].link | relative_url }}">{{ checkpoint_data["1302"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Screen reader and screen magnifier users can become disoriented if tabbing moves the focus in an illogical order.</li>
-                        <li><strong>Cognitive impairments:</strong> Users can become disoriented if tab focus is in an illogical order.</li>
-                        <li><strong>Mobility impairments:</strong> Users may have a more difficult time navigating a page if tab focus is in an illogical order.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">G59: Placing the interactive elements in an order that follows sequences and relationships within the content</a></li>
-                    </ul>
+                    <div id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">Screen Reader</div>
+                    <div id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">Braille Device</div>
+                    <div id="tabpanel-3" role="tabpanel" aria-labelledby="tab-3">Switch Device</div>
+                    <div id="tabpanel-4" role="tabpanel" aria-labelledby="tab-4">Voice Recognition</div>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2403checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Focus Remains</h3>
+                <p>In this example, the focus remains on the tab when selected.</p>
+                <div class="example">
+                    <div class="tabs">
+                        <div role="tablist" class="manual">
+                            <button id="tab-5" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-5">
+                                <span class="focus">Screen Reader</span>
+                            </button>
+                            <button id="tab-6" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-6" tabindex="-1">
+                                <span class="focus">Braille Device</span>
+                            </button>
+                            <button id="tab-7" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-7" tabindex="-1">
+                                <span class="focus">Switch Device</span>
+                            </button>
+                            <button id="tab-8" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-8" tabindex="-1">
+                                <span class="focus">Voice Recognition</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="tabpanel-5" role="tabpanel" aria-labelledby="tab-5">Screen Reader</div>
+                    <div id="tabpanel-6" role="tabpanel" aria-labelledby="tab-6">Braille Device</div>
+                    <div id="tabpanel-7" role="tabpanel" aria-labelledby="tab-7">Switch Device</div>
+                    <div id="tabpanel-8" role="tabpanel" aria-labelledby="tab-8">Voice Recognition</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Sequence of non-focusable content:</strong><br>
+                        File under <a href="{{ site.data["1302"]["1302"]["1302"].link | relative_url }}">{{ site.data["1302"]["1302"]["1302"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Screen reader and screen magnifier users can become disoriented if tabbing moves the focus in an illogical order.</li>
+                    <li><strong>Cognitive impairments:</strong> Users can become disoriented if tab focus is in an illogical order.</li>
+                    <li><strong>Mobility impairments:</strong> Users may have a more difficult time navigating a page if tab focus is in an illogical order.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G59">G59: Placing the interactive elements in an order that follows sequences and relationships within the content</a></li>
+                </ul>
+            </div>
+        </div>
