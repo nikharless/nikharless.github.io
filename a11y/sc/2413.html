@@ -2,16 +2,10 @@
 layout: default
 current: "2413"
 criterion: "2413"
+last-modified: November 8, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2413.2413[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>When the keyboard focus indicator is visible, an area of the focus indicator meets all the following:</p>
@@ -37,11 +31,7 @@ criterion: "2413"
 
         <div class="block">
             <h2>Training</h2>
-        <ul>
+            <ul>
 
-        </ul>
+            </ul>
         </div>
-    </div>
-    {% include checkpoints/2413checkpoints.html %}
-    
-</div>
