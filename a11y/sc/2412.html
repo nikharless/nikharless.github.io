@@ -2,16 +2,10 @@
 layout: default
 current: "2412"
 criterion: "2412"
+last-modified: November 8, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2412.2412[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>When a user interface component receives keyboard focus, no part of the component is hidden by author-created content.</p>
@@ -19,11 +13,7 @@ criterion: "2412"
 
         <div class="block">
             <h2>Training</h2>
-        <ul>
+            <ul>
 
-        </ul>
+            </ul>
         </div>
-    </div>
-    {% include checkpoints/2412checkpoints.html %}
-    
-</div>
