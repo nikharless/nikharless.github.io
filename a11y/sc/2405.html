@@ -2,16 +2,10 @@
 layout: default
 current: "2405"
 criterion: "2405"
+last-modified: November 8, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2405.2405[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>More than one way is available to locate a Web page within a set of Web pages except where the Web Page is the result of, or a step in, a process.</p>
@@ -44,7 +38,3 @@ criterion: "2405"
                 <li><a href="https://dequeuniversity.com/class/semantic-structure/?lang=en">Deque: Semantic Structure and Navigation</a> (account required)</li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2405checkpoints.html %}
-    
-</div>
