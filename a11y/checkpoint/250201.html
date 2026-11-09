@@ -2,22 +2,9 @@
 layout: default
 current: "250201"
 criterion: "2502"
-guideline: perceivable
-level: a
-last-modified: October 28, 2026
+last-modified: November 8, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2502.2502[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2502.2502[page.criterion] %}
-{% assign checkpoint_data = site.data["2502"]["2502"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -35,7 +22,7 @@ last-modified: October 28, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does activating a control perform an action that cannot be undone?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the action triggered on the down-event?</span>
@@ -49,7 +36,7 @@ last-modified: October 28, 2026
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is it possible to abort the action before completion (such as by dragging the pointer off of the control)?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["25020101"].link | relative_url }}">{{ checkpoint_data["25020101"].name }}</a>.</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["25020101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["25020101"].name }}</a>.</span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -80,12 +67,7 @@ last-modified: October 28, 2026
             <p>Follow the Web test procedure.</p>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["25020101"].link | relative_url }}">{{ checkpoint_data["25020101"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -99,7 +81,7 @@ last-modified: October 28, 2026
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li>General:
                     <ul>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G210">G210: Ensuring that drag-and-drop actions can be cancelled</a></li>
@@ -113,7 +95,3 @@ last-modified: October 28, 2026
                 
             </ul>
         </div>
-    </div>
-    {% include checkpoints/2502checkpoints.html %}
-    
-</div>
