@@ -4,110 +4,101 @@ current: "24030108"
 criterion: "2403"
 checkpoint: "240301"
 css: disclosure-faq
+last-modified: November 8, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2403.2403[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2403.2403[page.criterion] %}
-{% assign cp=site.data.2403.2403[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Hidden elements do not gain focus.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Hidden elements do not gain focus.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Focus moves to a hidden element.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Ensure hidden elements do not get focus.</div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <p>When the link inside this expandable area is visually hidden, keyboard focus can still move to it.</p>
-                    <div class="example">
-                        <dl class="failfaq">
-                            <dt>
-                                <button type="button" aria-expanded="false" aria-controls="faq2_desc" id="failure_faq" onclick="toggleFailDesc()">
-                                    What will we do with a drunken sailor?
-                                </button>
-                            </dt>
-                            <dd>
-                                <div id="faq2_desc" class="desc sr-only">
-                                    <ul>
-                                        <li>Shave his belly with a rusty razor</li>
-                                        <li>Put him in a long boat until he's sober</li>
-                                        <li>Stick him in a scupper with a hosepipe bottom</li>
-                                        <li>Put him in the bed with the captain's daughter</li>
-                                    </ul>
-                                    <p>...early in the morning.</p>
-                                    <p>See <a href="#">Drunken Sailor Guidelines</a> for more information.</p>
-                                </div>
-                            </dd>
-                        </dl>
-                        <script>
-                            function toggleFailDesc() {
-                                const failDesc = document.getElementById('faq2_desc');
-                                var failVis = failDesc.getAttribute("class");
-                                if (failVis == "desc sr-only") {
-                                    failDesc.setAttribute('class', 'desc');
-                                    failDesc.setAttribute('aria-expanded', 'true');
-                                } else {
-                                    failDesc.setAttribute('class', 'desc sr-only');
-                                    failDesc.setAttribute('aria-expanded', 'false');
-                                }
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Focus moves to a hidden element.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Ensure hidden elements do not get focus.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <p>When the link inside this expandable area is visually hidden, keyboard focus can still move to it.</p>
+                <div class="example">
+                    <dl class="failfaq">
+                        <dt>
+                            <button type="button" aria-expanded="false" aria-controls="faq2_desc" id="failure_faq" onclick="toggleFailDesc()">
+                                What will we do with a drunken sailor?
+                            </button>
+                        </dt>
+                        <dd>
+                            <div id="faq2_desc" class="desc sr-only">
+                                <ul>
+                                    <li>Shave his belly with a rusty razor</li>
+                                    <li>Put him in a long boat until he's sober</li>
+                                    <li>Stick him in a scupper with a hosepipe bottom</li>
+                                    <li>Put him in the bed with the captain's daughter</li>
+                                </ul>
+                                <p>...early in the morning.</p>
+                                <p>See <a href="#">Drunken Sailor Guidelines</a> for more information.</p>
+                            </div>
+                        </dd>
+                    </dl>
+                    <script>
+                        function toggleFailDesc() {
+                            const failDesc = document.getElementById('faq2_desc');
+                            var failVis = failDesc.getAttribute("class");
+                            if (failVis == "desc sr-only") {
+                                failDesc.setAttribute('class', 'desc');
+                                failDesc.setAttribute('aria-expanded', 'true');
+                            } else {
+                                failDesc.setAttribute('class', 'desc sr-only');
+                                failDesc.setAttribute('aria-expanded', 'false');
                             }
-                        </script>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <p>When the link inside this expandable area is hidden, focus doesn't move to it.</p>
-                    <div class="example">
-                        {% include examples/disclosure.html %}
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Sequence of non-focusable content:</strong><br>
-                            File under <a href="{{ checkpoint_data["1302"].link | relative_url }}">{{ checkpoint_data["1302"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Screen reader and screen magnifier users can become disoriented if tabbing moves the focus in an illogical order.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users can become disoriented if tab focus is in an illogical order.</li>
-                        <li><strong>Motor Impairment:</strong> Users may have a more difficult time navigating a page if tab focus is in an illogical order.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    </ul>
+                        }
+                    </script>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2403checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <p>When the link inside this expandable area is hidden, focus doesn't move to it.</p>
+                <div class="example">
+                    {% include examples/disclosure.html %}
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Sequence of non-focusable content:</strong><br>
+                        File under <a href="{{ site.data["1302"]["1302"]["1302"].link | relative_url }}">{{ site.data["1302"]["1302"]["1302"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Screen reader and screen magnifier users can become disoriented if tabbing moves the focus in an illogical order.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users can become disoriented if tab focus is in an illogical order.</li>
+                    <li><strong>Motor Impairment:</strong> Users may have a more difficult time navigating a page if tab focus is in an illogical order.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                </ul>
+            </div>
+        </div>
