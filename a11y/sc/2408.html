@@ -2,28 +2,18 @@
 layout: default
 current: "2408"
 criterion: "2408"
+last-modified: November 8, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2408.2408[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-    
-    <div class="block">
-        <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
-        <p>Information about the user's location within a set of Web pages is available.</p>
-    </div>
-
-    <div class="block">
-            <h2>Training</h2>
-    <ul>
-
-    </ul>
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
+        <div class="block">
+            <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
+            <p>Information about the user's location within a set of Web pages is available.</p>
         </div>
-    </div>
-    {% include checkpoints/2408checkpoints.html %}
-    
-</div>
+
+        <div class="block">
+            <h2>Training</h2>
+            <ul>
+
+            </ul>
+        </div>
