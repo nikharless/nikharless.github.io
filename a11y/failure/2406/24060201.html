@@ -3,83 +3,73 @@ layout: default
 current: "24060201"
 criterion: "2406"
 checkpoint: "240602"
+last-modified: November 8, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2406.2406[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2406.2406[page.criterion] %}
-{% assign cp=site.data.2406.2406[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Labels and instructions clearly and accurately describe the purpose of the associated form elements.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Labels and instructions clearly and accurately describe the purpose of the associated form elements.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Label or instruction does not clearly or accurately describe the purpose of the associated form element.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Change the label or instruction to clearly and accurately describe the purpose of the form element.</div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
-                    <div class="example" style="width: 80%;">
-                        <label for="fname" style="display:block;">First Name<br>
-                            <input type="text" id="fname" autocomplete="given-name">
-                        </label>
-                        <label for="lname" style="display:block;">Last Name<br>
-                            <input type="text" id="lname" autocomplete="family-name">
-                        </label>
-                        <label for="terms" style="display:block;">
-                            <input type="checkbox" id="terms"> I agree to the terms and conditions.
-                        </label>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <p>The following are not applicable to this failure:</p>
-                    <ul>
-                        <li><strong>Existence of visible labels:</strong><br>
-                            File under <a href="{{ checkpoint_data["3302"].link | relative_url }}">{{ checkpoint_data["3302"].name }}.</a></li>
-                        <li><strong>Programmatic association:</strong><br>
-                            File under <a href="{{ checkpoint_data["1301"].link | relative_url }}">{{ checkpoint_data["1301"].name }}.</a></li>
-                        <li><strong>Accessible names:</strong><br>
-                            File under <a href="{{ checkpoint_data["4102"].link | relative_url }}">{{ checkpoint_data["4102"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blind/visual impairments:</strong> Descriptive labels and instructions enable screen reader users to understand what is expected when navigating forms.</li>
-                        <li><strong>Cognitive impairments:</strong> Descriptive labels and instructions help users know how to successfully complete the form.</li>
-                        <li><strong>Mobility impairments:</strong> Descriptive labels and instructions help users avoid mistakes and having to re-enter data in form elements.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
-                    </ul>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Label or instruction does not clearly or accurately describe the purpose of the associated form element.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Change the label or instruction to clearly and accurately describe the purpose of the form element.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+                <div class="example" style="width: 80%;">
+                    <label for="fname" style="display:block;">First Name<br>
+                        <input type="text" id="fname" autocomplete="given-name">
+                    </label>
+                    <label for="lname" style="display:block;">Last Name<br>
+                        <input type="text" id="lname" autocomplete="family-name">
+                    </label>
+                    <label for="terms" style="display:block;">
+                        <input type="checkbox" id="terms"> I agree to the terms and conditions.
+                    </label>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2406checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <p>The following are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Existence of visible labels:</strong><br>
+                        File under <a href="{{ site.data["3302"]["3302"]["3302"].link | relative_url }}">{{ site.data["3302"]["3302"]["3302"].name }}.</a></li>
+                    <li><strong>Programmatic association:</strong><br>
+                        File under <a href="{{ site.data["1301"]["1301"]["1301"].link | relative_url }}">{{ site.data["1301"]["1301"]["1301"].name }}.</a></li>
+                    <li><strong>Accessible names:</strong><br>
+                        File under <a href="{{ site.data["4102"]["4102"]["4102"].link | relative_url }}">{{ site.data["4102"]["4102"]["4102"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blind/visual impairments:</strong> Descriptive labels and instructions enable screen reader users to understand what is expected when navigating forms.</li>
+                    <li><strong>Cognitive impairments:</strong> Descriptive labels and instructions help users know how to successfully complete the form.</li>
+                    <li><strong>Mobility impairments:</strong> Descriptive labels and instructions help users avoid mistakes and having to re-enter data in form elements.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
+                </ul>
+            </div>
+        </div>
