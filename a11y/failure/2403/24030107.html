@@ -3,103 +3,94 @@ layout: default
 current: "24030107"
 criterion: "2403"
 checkpoint: "240301"
+last-modified: November 8, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.2403.2403[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.2403.2403[page.criterion] %}
-{% assign cp=site.data.2403.2403[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>When a page visually scrolls as a result of a scripted action, such as a "go to top" link, the focus also moves to the target location.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>When a page visually scrolls as a result of a scripted action, such as a "go to top" link, the focus also moves to the target location.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Focus does not follow a scripted visual scroll.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Deliberately move the focus to the target location in addition to visually scrolling the page.</div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <p>These links scroll, but the keyboard focus remains on the trigger link.</p>
-                    <div class="example">
-                        <div id="section1f" style="height:600px; padding:10px;">
-                            <h3>Section 1</h3>
-                            <p><a href="javascript:void()" onclick="goTo2()">Click to smooth scroll to Section 2.</a></p>
-                        </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Focus does not follow a scripted visual scroll.</div>
+        </div>
 
-                        <div id="section2f" style="height:300px; padding:10px;">
-                            <h3>Section 2</h3>
-                            <a href="javascript:void()" onclick="goTo1()">Click to smooth scroll to Section 1.</a>
-                        </div>
-                        <script>
-                            function goTo2() {
-                                document.getElementById('section2f').scrollIntoView({ behavior: "smooth"});
-                            }
-                            function goTo1() {
-                                document.getElementById('section1f').scrollIntoView({ behavior: "smooth"});
-                            }
-                        </script>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Deliberately move the focus to the target location in addition to visually scrolling the page.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <p>These links scroll, but the keyboard focus remains on the trigger link.</p>
+                <div class="example">
+                    <div id="section1f" style="height:600px; padding:10px;">
+                        <h3>Section 1</h3>
+                        <p><a href="javascript:void()" onclick="goTo2()">Click to smooth scroll to Section 2.</a></p>
                     </div>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <p>These links visually scroll to the target area and also move the keyboard focus.</p>
-                    <div class="example">
-                        <div id="section1" style="height:600px; padding:10px;">
-                            <h3>Section 1</h3>
-                            <p><a href="#section2">Click to smooth scroll to Section 2.</a></p>
-                        </div>
 
-                        <div id="section2" style="height:300px; padding:10px;">
-                            <h3>Section 2</h3>
-                            <a href="#section1">Click to smooth scroll to Section 1.</a>
-                        </div>
+                    <div id="section2f" style="height:300px; padding:10px;">
+                        <h3>Section 2</h3>
+                        <a href="javascript:void()" onclick="goTo1()">Click to smooth scroll to Section 1.</a>
                     </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Sequence of non-focusable content:</strong><br>
-                            File under <a href="{{ checkpoint_data["1302"].link | relative_url }}">{{ checkpoint_data["1302"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Screen reader and screen magnifier users can become disoriented if tabbing moves the focus in an illogical order.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users can become disoriented if tab focus is in an illogical order.</li>
-                        <li><strong>Motor Impairment:</strong> Users may have a more difficult time navigating a page if tab focus is in an illogical order.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    </ul>
+                    <script>
+                        function goTo2() {
+                            document.getElementById('section2f').scrollIntoView({ behavior: "smooth"});
+                        }
+                        function goTo1() {
+                            document.getElementById('section1f').scrollIntoView({ behavior: "smooth"});
+                        }
+                    </script>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/2403checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <p>These links visually scroll to the target area and also move the keyboard focus.</p>
+                <div class="example">
+                    <div id="section1" style="height:600px; padding:10px;">
+                        <h3>Section 1</h3>
+                        <p><a href="#section2">Click to smooth scroll to Section 2.</a></p>
+                    </div>
+
+                    <div id="section2" style="height:300px; padding:10px;">
+                        <h3>Section 2</h3>
+                        <a href="#section1">Click to smooth scroll to Section 1.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Sequence of non-focusable content:</strong><br>
+                        File under <a href="{{ site.data["1302"]["1302"]["1302"].link | relative_url }}">{{ site.data["1302"]["1302"]["1302"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Screen reader and screen magnifier users can become disoriented if tabbing moves the focus in an illogical order.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users can become disoriented if tab focus is in an illogical order.</li>
+                    <li><strong>Motor Impairment:</strong> Users may have a more difficult time navigating a page if tab focus is in an illogical order.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                </ul>
+            </div>
+        </div>
