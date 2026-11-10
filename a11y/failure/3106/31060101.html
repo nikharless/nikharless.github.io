@@ -3,27 +3,19 @@ layout: default
 current: "31060101"
 criterion: "3106"
 checkpoint: "310601"
+last-modified: November 9, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3106.3106[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3106.3106[page.criterion] %}
-{% assign cp=site.data.3106.3106[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
     	<div class="block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>When the meaning of words depends on the pronunciation, the intended pronunciation is provided.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>The meaning of a word depends on the pronunciation, which is not clear from the context, and the intended pronunciation is not provided.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
@@ -35,6 +27,7 @@ checkpoint: "310601"
                 </ul>      
             </div>
     	</div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
@@ -48,10 +41,12 @@ checkpoint: "310601"
                 </div>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>Some people, including those with cognitive disabilities, may not understand the meaning of content.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -64,8 +59,3 @@ checkpoint: "310601"
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-
-    {% include  checkpoints/3106checkpoints.html %}
-    
