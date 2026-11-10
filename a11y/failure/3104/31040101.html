@@ -3,31 +3,24 @@ layout: default
 current: "31040101"
 criterion: "3104"
 checkpoint: "310401"
+last-modified: November 9, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3104.3104[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3104.3104[page.criterion] %}
-{% assign cp=site.data.3104.3104[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
     	<div class="block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>Abbreviations must have definitions provided.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>Abbreviations do not have definitions provided.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>Add a mechanism for providing definitions for abbreviations.</div>
     	</div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
@@ -58,10 +51,12 @@ checkpoint: "310401"
                 <div class="example">The WCAG (<em>Web Content and Accessibility Guidelines</em>) is an international standard for making web content accessible to users with disabilities. The WCAG 2.2 has 13 guidelines.</div>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>Some people, including those with cognitive disabilities, may not understand the shortened form of words.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -77,8 +72,3 @@ checkpoint: "310401"
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-
-    {% include  checkpoints/3104checkpoints.html %}
-    
