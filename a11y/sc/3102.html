@@ -2,16 +2,10 @@
 layout: default
 current: "3102"
 criterion: "3102"
+last-modified: November 9, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.3102.3102[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>The human language of each passage or phrase in the content can be programmatically determined except for proper names, technical terms, words of indeterminate language, and words or phrases that have become part of the vernacular of the immediately surrounding text.</p>
@@ -33,13 +27,9 @@ criterion: "3102"
         </div>
 
         <div class="block">
-                <h2>Training</h2>
-        <ul>
-            <li><a href="https://dequeuniversity.com/class/semantic-structure/?lang=en">Deque: Semantic Structure and Navigation</a> (account required)</li>
-            <li><a href="https://www.w3schools.com/accessibility/accessibility_screen_readers.php">W3 Schools: Accessibility Screen Readers</a></li>
-        </ul>
+            <h2>Training</h2>
+            <ul>
+                <li><a href="https://dequeuniversity.com/class/semantic-structure/?lang=en">Deque: Semantic Structure and Navigation</a> (account required)</li>
+                <li><a href="https://www.w3schools.com/accessibility/accessibility_screen_readers.php">W3 Schools: Accessibility Screen Readers</a></li>
+            </ul>
         </div>
-    </div>
-    {% include  checkpoints/3102checkpoints.html %}
-    
-</div>
