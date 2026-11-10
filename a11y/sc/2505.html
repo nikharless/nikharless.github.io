@@ -2,16 +2,10 @@
 layout: default
 current: "2505"
 criterion: "2505"
+last-modified: November 9, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2505.2505[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>The size of the target for pointer inputs is at least 44 by 44 CSS pixels except when:</p>
@@ -30,10 +24,6 @@ criterion: "2505"
 
         <div class="block">
             <h2>Training</h2>
-        <ul>
-        </ul>
+            <ul>
+            </ul>
         </div>
-    </div>
-    {% include checkpoints/2505checkpoints.html %}
-    
-</div>
