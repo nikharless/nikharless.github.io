@@ -2,22 +2,9 @@
 layout: default
 current: "310501"
 criterion: "3105"
-guideline: understandable
-level: aaa
-last-modified: October 29, 2026
+last-modified: November 9, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3105.3105[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3105.3105[page.criterion] %}
-{% assign checkpoint_data = site.data["3105"]["3105"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p><span role="img" class="requirement fa-solid fa-circle-exclamation" aria-label="Requirement"></span> = Requirement<br>
@@ -53,13 +40,13 @@ last-modified: October 29, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the content, excluding any proper names and titles, contain any difficult text which requires more than a 9th grade reading level?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there supplemental content such as explanatory graphics, audio, or an alternate version of the text that is easier to read?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["31050101"].link | relative_url }}">{{ checkpoint_data["31050101"].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["31050101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["31050101"].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
@@ -76,12 +63,7 @@ last-modified: October 29, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["31050101"].link | relative_url }}">{{ checkpoint_data["31050101"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -93,7 +75,7 @@ last-modified: October 29, 2026
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li>General:
                     <ul>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G79">G79: Providing a spoken version of the text</a></li>
@@ -110,7 +92,3 @@ last-modified: October 29, 2026
                 <li><a href="https://readabilityformulas.com/readability-scoring-system.php">Readability Scoring System</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/3105checkpoints.html %}
-    
-</div>
