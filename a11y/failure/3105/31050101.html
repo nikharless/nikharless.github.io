@@ -3,27 +3,19 @@ layout: default
 current: "31050101"
 criterion: "3105"
 checkpoint: "310501"
+last-modified: November 9, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3105.3105[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3105.3105[page.criterion] %}
-{% assign cp=site.data.3105.3105[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
     	<div class="block">
     		<h2 class="{{ sc.level }}">Expected Result</h2>
     		<div>When text requires more than a 9th grade reading level to understand, supplemental content explaining the text or an alternate version that is easier to read is provided.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Actual Result</h2>
     		<div>No supplemental content or alternate version is provided.</div>
     	</div>
+
     	<div class="block">
     		<h2 class="{{ sc.level }}">Solution</h2>
     		<div>
@@ -33,6 +25,7 @@ checkpoint: "310501"
                 </ul>      
             </div>
     	</div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
@@ -50,20 +43,22 @@ checkpoint: "310501"
                     <p><em>Grade Level: Sixth Grade</em></p>
 
                     <h3>Illustrations</h3>
-                    <img src="{{ baseurl }}/assets/images/31050101-1.jpg" alt="Ötzi the Iceman’s tattooed left wrist"><br>
+                    <img src="{{ '/assets/images/31050101-1.jpg' | relative_url }}" alt="Ötzi the Iceman’s tattooed left wrist"><br>
                     <p class="caption">Here, you can see tattooed lines on Ötzi the Iceman’s left wrist. These tattoos and others on his body could have been created by poking holes in the skin with a pigment-coated tool.<br>
                     <em>South Tyrol Museum of Archaeology, M. Samadelli/Eurac, G. Staschitz</em></p>
 
-                    <img src="{{ baseurl }}/assets/images/31050101-2.jpg" alt="Bone awl"><br>
+                    <img src="{{ '/assets/images/31050101-2.jpg' | relative_url }}" alt="Bone awl"><br>
                     <p class="caption">A sharpened bone awl from Ötzi’s toolkit (pictured) should be examined for evidence of having been used in tattooing, investigators recommend.<br>
                     <em>Harald Wisthaler, South Tyrol Museum of Archaeology</em></p>
                 </div>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>More people, especially those with cognitive disabilities, can understand the meaning of content.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -78,8 +73,3 @@ checkpoint: "310501"
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-
-    {% include  checkpoints/3105checkpoints.html %}
-    
