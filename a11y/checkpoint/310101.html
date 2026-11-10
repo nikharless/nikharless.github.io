@@ -2,22 +2,9 @@
 layout: default
 current: "310101"
 criterion: "3101"
-guideline: perceivable
-level: a
-last-modified: October 29, 2026
+last-modified: November 9, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3101.3101[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3101.3101[page.criterion] %}
-{% assign checkpoint_data = site.data["3101"]["3101"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -35,7 +22,7 @@ last-modified: October 29, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Is the default page language set using the <code>lang</code> attribute on the <code>&lt;html&gt;</code> tag?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the <code>lang</code> attribute valid (according to the <a href="https://www.iana.org/assignments/language-subtag-registry">IANA Language subtag registry</a>)?</span>
@@ -43,13 +30,13 @@ last-modified: October 29, 2026
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the <code>lang</code> attribute set to the correct language?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["31010103"].link | relative_url }}">{{ checkpoint_data["31010103"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["31010103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["31010103"].name }}.</a></span></li>
                             </ul>
                         </li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["31010102"].link | relative_url }}">{{ checkpoint_data["31010102"].name }}.</a></span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["31010102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["31010102"].name }}.</a></span></li>
                     </ul>
                 </li>
-                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["31010101"].link | relative_url }}">{{ checkpoint_data["31010101"].name }}.</a></span></li>
+                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["31010101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["31010101"].name }}.</a></span></li>
             </ul>
         </div>
 
@@ -108,15 +95,7 @@ last-modified: October 29, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["31010101"].link | relative_url }}">{{ checkpoint_data["31010101"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["31010102"].link | relative_url }}">{{ checkpoint_data["31010102"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["31010103"].link | relative_url }}">{{ checkpoint_data["31010103"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["31010104"].link | relative_url }}">{{ checkpoint_data["31010104"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -152,7 +131,3 @@ last-modified: October 29, 2026
                 <li><a href="https://www.w3schools.com/tags/ref_language_codes.asp">HTML Language Code Reference</a></li>
             </ul>
         </div>
-    </div>
-    {% include  checkpoints/3101checkpoints.html %}
-    
-</div>
