@@ -3,65 +3,54 @@ layout: default
 current: "31020104"
 criterion: "3102"
 checkpoint: "310201"
+last-modified: November 9, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3102.3102[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3102.3102[page.criterion] %}
-{% assign cp=site.data.3102.3102[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>The different language text container tag has the language set to the appropriate language.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>The different language text container tag has the language set to the appropriate language.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>The different language text container tag does not have the language set to the appropriate language.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-            		<ol>
-                        <li>For each instance, locate and select the corresponding tag in the Tags tree.</li>
-                        <li>Right-click the tag or activate the Options menu, and select <strong>Properties…</strong>.</li>
-                        <li>In the Object Properties dialog, select the <strong>Tag</strong> tab.</li>
-                        <li>Select the correct language from the <strong>Language</strong> drop-down.</li>
-                    </ol>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
-                    <img src="{{ baseurl }}/assets/images/3102-pdf-object-properties-language.png" alt="Screenshot of Adobe Acrobat Object Properties dialog Tag tab for a Span tag with German selected from the Language drop-down." style="max-width: 480px; border: 1px solid #ccc;">
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Screen reader users need text read to them with the correct pronunciation.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users of text-to-speech software need content to be read with the correct pronunciation.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF19">PDF19: Specifying the language for a passage or phrase with the Lang entry in PDF documents</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>The different language text container tag does not have the language set to the appropriate language.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+            	<ol>
+                    <li>For each instance, locate and select the corresponding tag in the Tags tree.</li>
+                    <li>Right-click the tag or activate the Options menu, and select <strong>Properties…</strong>.</li>
+                    <li>In the Object Properties dialog, select the <strong>Tag</strong> tab.</li>
+                    <li>Select the correct language from the <strong>Language</strong> drop-down.</li>
+                </ol>
             </div>
         </div>
-    </div>
 
-    {% include  checkpoints/3102checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+                <img src="{{ '/assets/images/3102-pdf-object-properties-language.png' | relative_url }}" alt="Screenshot of Adobe Acrobat Object Properties dialog Tag tab for a Span tag with German selected from the Language drop-down." style="max-width: 480px; border: 1px solid #ccc;">
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Screen reader users need text read to them with the correct pronunciation.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users of text-to-speech software need content to be read with the correct pronunciation.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF19">PDF19: Specifying the language for a passage or phrase with the Lang entry in PDF documents</a></li>
+                </ul>
+            </div>
+        </div>
