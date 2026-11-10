@@ -2,22 +2,9 @@
 layout: default
 current: "310601"
 criterion: "3106"
-guideline: understandable
-level: aaa
-last-modified: October 29, 2026
+last-modified: November 9, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3106.3106[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3106.3106[page.criterion] %}
-{% assign checkpoint_data = site.data["3106"]["3106"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -34,7 +21,7 @@ last-modified: October 29, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the content contain any words where the meaning depends on the pronunciation?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Can the pronunciation be determined from the context?</span>
@@ -43,7 +30,7 @@ last-modified: October 29, 2026
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the pronunciation provided?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["31060101"].link | relative_url }}">{{ checkpoint_data["31060101"].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["31060101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["31060101"].name }}</a>.</span></li>
                             </ul>
                         </li>
                     </ul>
@@ -61,12 +48,7 @@ last-modified: October 29, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["31060101"].link | relative_url }}">{{ checkpoint_data["31060101"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -78,7 +60,7 @@ last-modified: October 29, 2026
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li>General:
                     <ul>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G62">G62: Providing a glossary</a></li>
@@ -99,7 +81,3 @@ last-modified: October 29, 2026
                 
             </ul>
         </div>
-    </div>
-    {% include checkpoints/3106checkpoints.html %}
-    
-</div>
