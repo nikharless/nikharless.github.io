@@ -2,16 +2,10 @@
 layout: default
 current: "2506"
 criterion: "2506"
+last-modified: November 9, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2506.2506[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Web content does not restrict use of input modalities available on a platform except where the restriction is essential, required to ensure the security of the content, or required to respect user settings.</p>
@@ -19,10 +13,6 @@ criterion: "2506"
 
         <div class="block">
             <h2>Training</h2>
-        <ul>
-        </ul>
+            <ul>
+            </ul>
         </div>
-    </div>
-    {% include checkpoints/2506checkpoints.html %}
-    
-</div>

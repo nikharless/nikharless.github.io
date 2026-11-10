@@ -2,16 +2,10 @@
 layout: default
 current: "2507"
 criterion: "2507"
+last-modified: November 9, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.2507.2507[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>All functionality that uses a dragging movement for operation can be achieved by a single pointer without dragging, unless dragging is essential or the functionality is determined by the user agent and not modified by the author.</p>
@@ -21,10 +15,6 @@ criterion: "2507"
 
         <div class="block">
             <h2>Training</h2>
-        <ul>
-        </ul>
+            <ul>
+            </ul>
         </div>
-    </div>
-    {% include checkpoints/2507checkpoints.html %}
-    
-</div>
