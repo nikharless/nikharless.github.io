@@ -3,103 +3,94 @@ layout: default
 current: "32040102"
 criterion: "3204"
 checkpoint: "320401"
+last-modified: November 10, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3204.3204[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3204.3204[page.criterion] %}
-{% assign cp=site.data.3204.3204[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Links that have the same target within a set of web pages are identified consistently.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Links that have the same target within a set of web pages are identified consistently.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Links that have the same target within a set of web pages are not identified consistently.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Ensure links that have the same target within a set of web pages have consistent text and accessible names each time they appear.</div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <p>Each page has a link which performs the same function. However, the link text and accessible names are not consistent.</p>
-                    <h3>Page 1</h3>
-                    <div class="example">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac malesuada nisl, at efficitur metus. Aenean volutpat, dolor non ornare luctus, leo augue venenatis justo, a dignissim dui urna in orci. Nulla sed orci non sem luctus consequat.</p>
-                        <p><a href="#" aria-label="Read more about lorem ipsum">Read more</a></p>
-                        <pre><code>&lt;a href="#" <strong>aria-label="Read more about lorem ipsum"</strong>&gt;Read more&lt;/a&gt;</code></pre>
-                    </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Links that have the same target within a set of web pages are not identified consistently.</div>
+        </div>
 
-                    <h3>Page 2</h3>
-                    <div class="example">
-                        <p>Vestibulum in massa tincidunt, laoreet elit id, molestie ligula. Donec bibendum malesuada nibh sed fringilla.</p>
-                        <p><a href="#" aria-label="Continue to vestibulum article">Continue</a></p>
-                        <pre><code>&lt;a href="#" <strong>aria-label="Continue to vestibulum article"</strong>&gt;Continue&lt;/a&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <p>Each page has a "Read More" link with a consistent, though not identical, accessible name.</p>
-                    <h3>Page 1</h3>
-                    <div class="example">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac malesuada nisl, at efficitur metus. Aenean volutpat, dolor non ornare luctus, leo augue venenatis justo, a dignissim dui urna in orci. Nulla sed orci non sem luctus consequat.</p>
-                        <p><a href="#" aria-label="Read more about lorem ipsum">Read more</a></p>
-                        <pre><code>&lt;a href="#" <strong>aria-label="Read more about lorem ipsum"</strong>&gt;Read more&lt;/a&gt;</code></pre>
-                    </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Ensure links that have the same target within a set of web pages have consistent text and accessible names each time they appear.</div>
+        </div>
 
-                    <h3>Page 2</h3>
-                    <div class="example">
-                        <p>Vestibulum in massa tincidunt, laoreet elit id, molestie ligula. Donec bibendum malesuada nibh sed fringilla.</p>
-                        <p><a href="#" aria-label="Read more about vestibulum">Read more</a></p>
-                        <pre><code>&lt;a href="#" <strong>aria-label="Read more about vestibulum"</strong>&gt;Read more&lt;/a&gt;</code></pre>
-                    </div>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <p>Each page has a link which performs the same function. However, the link text and accessible names are not consistent.</p>
+                <h3>Page 1</h3>
+                <div class="example">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac malesuada nisl, at efficitur metus. Aenean volutpat, dolor non ornare luctus, leo augue venenatis justo, a dignissim dui urna in orci. Nulla sed orci non sem luctus consequat.</p>
+                    <p><a href="#" aria-label="Read more about lorem ipsum">Read more</a></p>
+                    <pre><code>&lt;a href="#" <strong>aria-label="Read more about lorem ipsum"</strong>&gt;Read more&lt;/a&gt;</code></pre>
                 </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Consistent form components:</strong><br>
-                            File under <a href="{{ checkpoint_data["32040101"].link | relative_url }}">{{ checkpoint_data["32040101"].name }}.</a></li>
-                        <li><strong>Link purpose:</strong><br>
-                            File under <a href="{{ checkpoint_data["2404"].link | relative_url }}">{{ checkpoint_data["2404"].name }}.</a></li>
-                    </ul> 
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users can easily predict where links go from page to page.</li>
-                        <li><strong>Motor Impairment:</strong> Users can save time not having to test links to see where they go.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users can easily predict where links go from page to page.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F31">F31: Failure of Success Criterion 3.2.4 due to using two different labels for the same function on different Web pages within a set of Web pages </a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G197">G197: Using labels, names, and text alternatives consistently for content that has the same functionality</a></li>
-                    </ul>
+
+                <h3>Page 2</h3>
+                <div class="example">
+                    <p>Vestibulum in massa tincidunt, laoreet elit id, molestie ligula. Donec bibendum malesuada nibh sed fringilla.</p>
+                    <p><a href="#" aria-label="Continue to vestibulum article">Continue</a></p>
+                    <pre><code>&lt;a href="#" <strong>aria-label="Continue to vestibulum article"</strong>&gt;Continue&lt;/a&gt;</code></pre>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include  checkpoints/3204checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <p>Each page has a "Read More" link with a consistent, though not identical, accessible name.</p>
+                <h3>Page 1</h3>
+                <div class="example">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac malesuada nisl, at efficitur metus. Aenean volutpat, dolor non ornare luctus, leo augue venenatis justo, a dignissim dui urna in orci. Nulla sed orci non sem luctus consequat.</p>
+                    <p><a href="#" aria-label="Read more about lorem ipsum">Read more</a></p>
+                    <pre><code>&lt;a href="#" <strong>aria-label="Read more about lorem ipsum"</strong>&gt;Read more&lt;/a&gt;</code></pre>
+                </div>
+
+                <h3>Page 2</h3>
+                <div class="example">
+                    <p>Vestibulum in massa tincidunt, laoreet elit id, molestie ligula. Donec bibendum malesuada nibh sed fringilla.</p>
+                    <p><a href="#" aria-label="Read more about vestibulum">Read more</a></p>
+                    <pre><code>&lt;a href="#" <strong>aria-label="Read more about vestibulum"</strong>&gt;Read more&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Consistent form components:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["32040101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["32040101"].name }}.</a></li>
+                    <li><strong>Link purpose:</strong><br>
+                        File under <a href="{{ site.data["2404"]["2404"]["2404"].link | relative_url }}">{{ site.data["2404"]["2404"]["2404"].name }}.</a></li>
+                </ul> 
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users can easily predict where links go from page to page.</li>
+                    <li><strong>Motor Impairment:</strong> Users can save time not having to test links to see where they go.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users can easily predict where links go from page to page.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F31">F31: Failure of Success Criterion 3.2.4 due to using two different labels for the same function on different Web pages within a set of Web pages </a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G197">G197: Using labels, names, and text alternatives consistently for content that has the same functionality</a></li>
+                </ul>
+            </div>
+        </div>
