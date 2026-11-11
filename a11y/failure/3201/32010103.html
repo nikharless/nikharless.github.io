@@ -3,114 +3,105 @@ layout: default
 current: "32010103"
 criterion: "3201"
 checkpoint: "320101"
+last-modified: November 9, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3201.3201[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3201.3201[page.criterion] %}
-{% assign cp=site.data.3201.3201[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>When a component gains focus, there is not a significant change of content before the focus.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>When a component gains focus, there is not a significant change of content before the focus.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>When a component gains focus, there is a significant change of content before the focus.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Add new content after the focus, <strong>OR</strong></li>
-                        <li>Notify assistive technology of the change.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Change of Content Before Focus</h3>
-                    <p>When the Email field gains focus, checkboxes are revealed at the top of the form.</p>
-                    <div class="example">
-                        <form name="Failure">
-                            <fieldset id="failContent" style="display:none">
-                                <legend>Select the notifications you would like to receive via email.</legend>
-                                <label><input type="checkbox" checked> All posts</label>
-                                <label><input type="checkbox" checked> Friends' posts</label>
-                                <label><input type="checkbox" checked> Replies to your posts</label>
-                                <label><input type="checkbox" checked> Offers and promotions</label>
-                            </fieldset>
-                            <label>Name: <input type="text" id="name"></label>
-                            <label>Email: <input type="text" id="email" onfocus="showOptions()"></label>
-                            <button>Submit</button>
-                        </form>
-                        <script>
-                            function showOptions() {
-                                document.getElementById("failContent").style.display = "block";
-                            }
-                        </script>
-                    </div>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>When a component gains focus, there is a significant change of content before the focus.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Add new content after the focus, <strong>OR</strong></li>
+                    <li>Notify assistive technology of the change.</li>
+                </ul>
             </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>No Change of Content</h3>
-                    <p>In this example, the checkboxes are always visible and appear after the email field.</p>
-                    <div class="example">
-                        <form name="Pass">
-                            <label>Name: <input type="text" id="name"></label>
-                            <label>Email: <input type="text" id="email"></label>
-                            <fieldset>
-                                <legend>Select the notifications you would like to receive via email.</legend>
-                                <label><input type="checkbox" checked> All posts</label>
-                                <label><input type="checkbox" checked> Friends' posts</label>
-                                <label><input type="checkbox" checked> Replies to your posts</label>
-                                <label><input type="checkbox" checked> Offers and promotions</label>
-                            </fieldset>
-                            <button>Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Context changes on input:</strong><br>
-                            File under <a href="{{ checkpoint_data["3202"].link | relative_url }}">{{ checkpoint_data["3202"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blind/Visual Impairment:</strong> Unexpected changes of context can cause significant confusion if the user can't see what has happened.</li>
-                        <li><strong>Cognitive Impairment:</strong> Unexpected changes of context can cause the user to become disoriented.</li>
-                        <li><strong>Motor Impairment:</strong> Unexpected changes of context can make content significantly more difficult to navigate.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G107">G107: Using "activate" rather than "focus" as a trigger for changes of context</a></li>
-                    </ul>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Change of Content Before Focus</h3>
+                <p>When the Email field gains focus, checkboxes are revealed at the top of the form.</p>
+                <div class="example">
+                    <form name="Failure">
+                        <fieldset id="failContent" style="display:none">
+                            <legend>Select the notifications you would like to receive via email.</legend>
+                            <label><input type="checkbox" checked> All posts</label>
+                            <label><input type="checkbox" checked> Friends' posts</label>
+                            <label><input type="checkbox" checked> Replies to your posts</label>
+                            <label><input type="checkbox" checked> Offers and promotions</label>
+                        </fieldset>
+                        <label>Name: <input type="text" id="name"></label>
+                        <label>Email: <input type="text" id="email" onfocus="showOptions()"></label>
+                        <button>Submit</button>
+                    </form>
+                    <script>
+                        function showOptions() {
+                            document.getElementById("failContent").style.display = "block";
+                        }
+                    </script>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include  checkpoints/3201checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>No Change of Content</h3>
+                <p>In this example, the checkboxes are always visible and appear after the email field.</p>
+                <div class="example">
+                    <form name="Pass">
+                        <label>Name: <input type="text" id="name"></label>
+                        <label>Email: <input type="text" id="email"></label>
+                        <fieldset>
+                            <legend>Select the notifications you would like to receive via email.</legend>
+                            <label><input type="checkbox" checked> All posts</label>
+                            <label><input type="checkbox" checked> Friends' posts</label>
+                            <label><input type="checkbox" checked> Replies to your posts</label>
+                            <label><input type="checkbox" checked> Offers and promotions</label>
+                        </fieldset>
+                        <button>Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Context changes on input:</strong><br>
+                        File under <a href="{{ site.data["3202"]["3202"]["3202"].link | relative_url }}">{{ site.data["3202"]["3202"]["3202"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blind/Visual Impairment:</strong> Unexpected changes of context can cause significant confusion if the user can't see what has happened.</li>
+                    <li><strong>Cognitive Impairment:</strong> Unexpected changes of context can cause the user to become disoriented.</li>
+                    <li><strong>Motor Impairment:</strong> Unexpected changes of context can make content significantly more difficult to navigate.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G107">G107: Using "activate" rather than "focus" as a trigger for changes of context</a></li>
+                </ul>
+            </div>
+        </div>
