@@ -2,16 +2,10 @@
 layout: default
 current: "3303"
 criterion: "3303"
+last-modified: November 11, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.3303.3303[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>If an input error is automatically detected and suggestions for correction are known, then the suggestions are provided to the user, unless it would jeopardize the security or purpose of the content.</p>
@@ -34,7 +28,3 @@ criterion: "3303"
                 <li><a href="https://webdesign.tutsplus.com/best-practices-for-displaying-form-errors--CRS-200950c">Envato: Best Practices for Displaying Form Errors</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/3303checkpoints.html %}
-    
-</div>
