@@ -2,27 +2,17 @@
 layout: default
 current: "3205"
 criterion: "3205"
+last-modified: November 10, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.3205.3205[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-    <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-    
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
     <div class="block">
         <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
         <p>Changes of context are initiated only by user request or a mechanism is available to turn off such changes.</p>
     </div>
 
     <div class="block">
-            <h2>Training</h2>
-    <ul>
-    </ul>
+        <h2>Training</h2>
+        <ul>
+        </ul>
     </div>
-    </div>
-    {% include  checkpoints/3205checkpoints.html %}
-    
-</div>
