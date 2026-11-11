@@ -3,94 +3,85 @@ layout: default
 current: "32040104"
 criterion: "3204"
 checkpoint: "320401"
+last-modified: November 10, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3204.3204[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3204.3204[page.criterion] %}
-{% assign cp=site.data.3204.3204[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Components that have the same function within a set of web pages are identified consistently.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Components that have the same function within a set of web pages are identified consistently.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Components that have the same function within a set of web pages are not identified consistently.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Ensure components that have the same function within a set of web pages have consistent labels and accessible names each time they appear.</div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Page 1</h3>
-                    <div class="example">
-                        
-                    </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Components that have the same function within a set of web pages are not identified consistently.</div>
+        </div>
 
-                    <h3>Page 2</h3>
-                    <div class="example">
-                        
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Page 1</h3>
-                    <div class="example">
-                        
-                    </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Ensure components that have the same function within a set of web pages have consistent labels and accessible names each time they appear.</div>
+        </div>
 
-                    <h3>Page 2</h3>
-                    <div class="example">
-                       
-                    </div>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Page 1</h3>
+                <div class="example">
+                        
                 </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Consistent form controls:</strong><br>
-                            File under <a href="{{ checkpoint_data["32040101"].link | relative_url }}">{{ checkpoint_data["32040101"].name }}.</a></li>
-                        <li><strong>Consistent links:</strong><br>
-                            File under <a href="{{ checkpoint_data["32040102"].link | relative_url }}">{{ checkpoint_data["32040102"].name }}.</a></li>
-                        <li><strong>Consistent icons:</strong><br>
-                            File under <a href="{{ checkpoint_data["32040103"].link | relative_url }}">{{ checkpoint_data["32040103"].name }}.</a></li>
-                    </ul> 
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users can easily predict what components do from page to page.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users can easily predict what components do from page to page.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F31">F31: Failure of Success Criterion 3.2.4 due to using two different labels for the same function on different Web pages within a set of Web pages </a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G197">G197: Using labels, names, and text alternatives consistently for content that has the same functionality</a></li>
-                    </ul>
+
+                <h3>Page 2</h3>
+                <div class="example">
+                        
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include  checkpoints/3204checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Page 1</h3>
+                <div class="example">
+                        
+                </div>
+
+                <h3>Page 2</h3>
+                <div class="example">
+                       
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Consistent form controls:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["32040101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["32040101"].name }}.</a></li>
+                    <li><strong>Consistent links:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["32040102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["32040102"].name }}.</a></li>
+                    <li><strong>Consistent icons:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["32040103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["32040103"].name }}.</a></li>
+                </ul> 
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users can easily predict what components do from page to page.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users can easily predict what components do from page to page.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F31">F31: Failure of Success Criterion 3.2.4 due to using two different labels for the same function on different Web pages within a set of Web pages </a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G197">G197: Using labels, names, and text alternatives consistently for content that has the same functionality</a></li>
+                </ul>
+            </div>
+        </div>
