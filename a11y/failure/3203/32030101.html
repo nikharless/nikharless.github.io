@@ -3,162 +3,153 @@ layout: default
 current: "32030101"
 criterion: "3203"
 checkpoint: "320301"
-css: 24010101
+css: "24010101"
+last-modified: November 10, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3203.3203[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3203.3203[page.criterion] %}
-{% assign cp=site.data.3203.3203[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Navigation mechanisms which appear across multiple web pages appear in the same relative order with regard to other repeated components on each page.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Navigation mechanisms which appear across multiple web pages appear in the same relative order with regard to other repeated components on each page.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Navigation mechanisms which appear across multiple web pages do not appear in the same relative order with regard to other repeated components on each page.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <p>Consistently order navigation that repeats across multiple pages.</p>
-                    <ul>
-                        <li>Do not change the order of menu items between pages.</li>
-                        <li>Do not change the order of navigational elements relative to other content in the DOM.</li>
-                        <li>Removing or inserting items (such as submenus) is allowed.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Navigation Link Order Changes</h3>
-                    <p>Below are example navigation bars for a Home page and an About page for the same site. Each page places the current page first in the menu order. Therefore, the links are <em>not</em> in the same relative order on each page.</p>
-                    <h4>Page 1</h4>
-                    <div class="example">
-                        <div><a href="#mainContent">Skip navigation</a></div>
-                        <div class="short-header"><span class="site-logo">siteLogo</span></div>
-                        <nav aria-label="example home page navigation" class="collapsible-content" style="display: block;">
-                            <ul class="menubar-navigation" role="menubar">
-                                <li role="none"><a role="menuitem" href="javascript:void()" aria-current="page">Home</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">About</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Services</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Contact</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Log In</a></li>
-                            </ul>
-                        </nav>
-                        <div id="mainContent">
-                            <h5>Home Page Example</h5>
-                            <p>This is the main content for the Home page example.</p>
-                            <p>The Home page link is the first link in the menu.</p>
-                        </div>
-                    </div>
-                    <h4>Page 2</h4>
-                    <div class="example">
-                        <div><a href="#mainContent2">Skip navigation</a></div>
-                        <div class="short-header"><span class="site-logo">siteLogo</span></div>
-                        <nav aria-label="example about page navigation" class="collapsible-content" style="display: block;">
-                            <ul class="menubar-navigation" role="menubar">
-                                <li role="none"><a role="menuitem" href="javascript:void()" aria-current="page">About</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Home</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Services</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Contact</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Log In</a></li>
-                            </ul>
-                        </nav>
-                        <div id="mainContent2">
-                            <h5>About Us Example</h5>
-                            <p>This is the main content for the About page example.</p>
-                            <p>The About page link is now the first link in the menu, which is not the same relative position as the Home page.</p>
-                        </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Navigation mechanisms which appear across multiple web pages do not appear in the same relative order with regard to other repeated components on each page.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <p>Consistently order navigation that repeats across multiple pages.</p>
+                <ul>
+                    <li>Do not change the order of menu items between pages.</li>
+                    <li>Do not change the order of navigational elements relative to other content in the DOM.</li>
+                    <li>Removing or inserting items (such as submenus) is allowed.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Navigation Link Order Changes</h3>
+                <p>Below are example navigation bars for a Home page and an About page for the same site. Each page places the current page first in the menu order. Therefore, the links are <em>not</em> in the same relative order on each page.</p>
+                <h4>Page 1</h4>
+                <div class="example">
+                    <div><a href="#mainContent">Skip navigation</a></div>
+                    <div class="short-header"><span class="site-logo">siteLogo</span></div>
+                    <nav aria-label="example home page navigation" class="collapsible-content" style="display: block;">
+                        <ul class="menubar-navigation" role="menubar">
+                            <li role="none"><a role="menuitem" href="javascript:void()" aria-current="page">Home</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">About</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Services</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Contact</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Log In</a></li>
+                        </ul>
+                    </nav>
+                    <div id="mainContent">
+                        <h5>Home Page Example</h5>
+                        <p>This is the main content for the Home page example.</p>
+                        <p>The Home page link is the first link in the menu.</p>
                     </div>
                 </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Navigation Link Order Consistent</h3>
-                    <p>Below are example navigation bars for a Home page and an About page for the same site. Each page places the navigation links in the same order.</p>
-                    <h4>Page 1</h4>
-                    <div class="example">
-                        <div><a href="#mainContent3">Skip navigation</a></div>
-                        <div class="short-header"><span class="site-logo">siteLogo</span></div>
-                        <nav aria-label="example home page navigation" class="collapsible-content" style="display: block;">
-                            <ul class="menubar-navigation" role="menubar">
-                                <li role="none"><a role="menuitem" href="javascript:void()" aria-current="page">Home</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">About</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Services</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Contact</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Log In</a></li>
-                            </ul>
-                        </nav>
-                        <div id="mainContent3">
-                            <h5>Home Page Example</h5>
-                            <p>This is the main content for the Home page example.</p>
-                            <p>The Home page link is the first link in the menu.</p>
-                        </div>
+                <h4>Page 2</h4>
+                <div class="example">
+                    <div><a href="#mainContent2">Skip navigation</a></div>
+                    <div class="short-header"><span class="site-logo">siteLogo</span></div>
+                    <nav aria-label="example about page navigation" class="collapsible-content" style="display: block;">
+                        <ul class="menubar-navigation" role="menubar">
+                            <li role="none"><a role="menuitem" href="javascript:void()" aria-current="page">About</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Home</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Services</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Contact</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Log In</a></li>
+                        </ul>
+                    </nav>
+                    <div id="mainContent2">
+                        <h5>About Us Example</h5>
+                        <p>This is the main content for the About page example.</p>
+                        <p>The About page link is now the first link in the menu, which is not the same relative position as the Home page.</p>
                     </div>
-                    <h4>Page 2</h4>
-                    <div class="example">
-                        <div><a href="#mainContent4">Skip navigation</a></div>
-                        <div class="short-header"><span class="site-logo">siteLogo</span></div>
-                        <nav aria-label="example about page navigation" class="collapsible-content" style="display: block;">
-                            <ul class="menubar-navigation" role="menubar">
-                                <li role="none"><a role="menuitem" href="javascript:void()">Home</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()" aria-current="page">About</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Services</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Contact</a></li>
-                                <li role="none"><a role="menuitem" href="javascript:void()">Log In</a></li>
-                            </ul>
-                        </nav>
-                        <div id="mainContent4">
-                            <h5>About Us Example</h5>
-                            <p>This is the main content for the About page example.</p>
-                            <p>All elements, including the skip link, remain in the same order as the Home page.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li>Navigational mechanisms on a single-page website</li>
-                        <li>Components are inserted or removed</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Visual Impairment:</strong> Users can easily predict where to find things on each page.</li>
-                        <li><strong>Cognitive Impairment:</strong> Users can easily predict where to find things on each page.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F66">F66: Failure of Success Criterion 3.2.3 due to presenting navigation links in a different relative order on different pages</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G61">G61: Presenting repeated components in the same relative order each time they appear</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF14">PDF14: Providing running headers and footers in PDF documents</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF17">PDF17: Specifying consistent page numbering for PDF documents</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/3203checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Navigation Link Order Consistent</h3>
+                <p>Below are example navigation bars for a Home page and an About page for the same site. Each page places the navigation links in the same order.</p>
+                <h4>Page 1</h4>
+                <div class="example">
+                    <div><a href="#mainContent3">Skip navigation</a></div>
+                    <div class="short-header"><span class="site-logo">siteLogo</span></div>
+                    <nav aria-label="example home page navigation" class="collapsible-content" style="display: block;">
+                        <ul class="menubar-navigation" role="menubar">
+                            <li role="none"><a role="menuitem" href="javascript:void()" aria-current="page">Home</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">About</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Services</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Contact</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Log In</a></li>
+                        </ul>
+                    </nav>
+                    <div id="mainContent3">
+                        <h5>Home Page Example</h5>
+                        <p>This is the main content for the Home page example.</p>
+                        <p>The Home page link is the first link in the menu.</p>
+                    </div>
+                </div>
+                <h4>Page 2</h4>
+                <div class="example">
+                    <div><a href="#mainContent4">Skip navigation</a></div>
+                    <div class="short-header"><span class="site-logo">siteLogo</span></div>
+                    <nav aria-label="example about page navigation" class="collapsible-content" style="display: block;">
+                        <ul class="menubar-navigation" role="menubar">
+                            <li role="none"><a role="menuitem" href="javascript:void()">Home</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()" aria-current="page">About</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Services</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Contact</a></li>
+                            <li role="none"><a role="menuitem" href="javascript:void()">Log In</a></li>
+                        </ul>
+                    </nav>
+                    <div id="mainContent4">
+                        <h5>About Us Example</h5>
+                        <p>This is the main content for the About page example.</p>
+                        <p>All elements, including the skip link, remain in the same order as the Home page.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li>Navigational mechanisms on a single-page website</li>
+                    <li>Components are inserted or removed</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Visual Impairment:</strong> Users can easily predict where to find things on each page.</li>
+                    <li><strong>Cognitive Impairment:</strong> Users can easily predict where to find things on each page.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F66">F66: Failure of Success Criterion 3.2.3 due to presenting navigation links in a different relative order on different pages</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G61">G61: Presenting repeated components in the same relative order each time they appear</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF14">PDF14: Providing running headers and footers in PDF documents</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF17">PDF17: Specifying consistent page numbering for PDF documents</a></li>
+                </ul>
+            </div>
+        </div>
