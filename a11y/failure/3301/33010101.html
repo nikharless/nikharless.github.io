@@ -4,162 +4,152 @@ current: "33010101"
 criterion: "3301"
 checkpoint: "330101"
 css: error-block
+last-modified: November 10, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3301.3301[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3301.3301[page.criterion] %}
-{% assign cp=site.data.3301.3301[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Error messages identify the items with the error.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Error messages identify the items with the error.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Error message does not identify the item with the error.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Identify the item with the error in an error message with visible text, <strong>OR</strong></li>
-                        <li>Modify the label of the item in error to indicate it has an error</li>
-                    </ul>      
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
-                    <h3>List of Errors</h3>
-                    <p>It's not required to include links to the fields in error. However, doing so increases accessibility for keyboard users, especially in long forms.</p>
-                    <div class="example">
-                        <div class="error-block">
-                            <div class="card">
-                                <div class="icon"><i class="fa-solid fa-circle-exclamation"></i></div>
-                                <div class="subject">
-                                    <p><strong>Please correct the following errors:</strong></p>
-                                    <ul>
-                                        <li><a role="button" onClick="setFocusToField('fname')">First Name is required.</a></li>
-                                        <li><a role="button" onClick="setFocusToField('dob')">Date of Birth must be in format: mm/dd/yyyy.</a></li>
-                                    </ul>
-                                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Error message does not identify the item with the error.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Identify the item with the error in an error message with visible text, <strong>OR</strong></li>
+                    <li>Modify the label of the item in error to indicate it has an error</li>
+                </ul>      
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+                <h3>List of Errors</h3>
+                <p>It's not required to include links to the fields in error. However, doing so increases accessibility for keyboard users, especially in long forms.</p>
+                <div class="example">
+                    <div class="error-block">
+                        <div class="card">
+                            <div class="icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+                            <div class="subject">
+                                <p><strong>Please correct the following errors:</strong></p>
+                                <ul>
+                                    <li><a role="button" onClick="setFocusToField('fname')">First Name is required.</a></li>
+                                    <li><a role="button" onClick="setFocusToField('dob')">Date of Birth must be in format: mm/dd/yyyy.</a></li>
+                                </ul>
                             </div>
                         </div>
-                        <p>All fields are required.</p>
-                        <form>
-                            <label style="margin-bottom: 10px">First Name:<br>
-                                <input type="text" id="fname" required aria-invalid="true" readonly>
-                            </label>
-                            <label style="margin-bottom: 10px">Last Name:<br>
-                                <input type="text" id="lname" required value="Smith" readonly>
-                            </label>
-                            <label>Date of Birth (mm/dd/yyyy):<br>
-                                <input type="text" id="dob" required aria-invalid="true" value="Jan 1 1999" readonly>
-                            </label>
-                        </form>
                     </div>
-
-                    <h3>Error Next to Field</h3>
-                    <div class="example">
-                        <p>All fields are required.</p>
-                        <form>
-                            <label style="margin-bottom: 10px">First Name:<br>
-                                <input type="text" required aria-invalid="true" aria-describedby="fnameError" readonly><br>
-                                <span id="fnameError" class="error-text">First Name is required.</span><br>
-                            </label>
-                            <label style="margin-bottom: 10px">Last Name:<br>
-                                <input type="text" value="Smith" required value="Smith" readonly>
-                            </label>
-                            <label>Date of Birth (mm/dd/yyyy):<br>
-                                <input type="text" required aria-invalid="true" aria-describedby="dobError" value="Jan 1 1999" readonly><br>
-                                <span id="dobError" class="error-text">Date of Birth must be in format: mm/dd/yyyy</span>
-                            </label>
-                        </form>
-                    </div>
-
-                    <h3>Error Alert</h3>
-                    Submit the form to see the error.
-                    <div class="example">
-                        <p>All fields are required.</p>
-                        <form>
-                            <label style="margin-bottom: 10px">First Name:<br>
-                                <input type="text" required readonly>
-                            </label>
-                            <label style="margin-bottom: 10px">Last Name:<br>
-                                <input type="text" value="Smith" required readonly>
-                            </label>
-                            <label>Date of Birth (mm/dd/yyyy):<br>
-                                <input type="text" required value="Jan 1 1999" readonly>
-                            </label>
-                            <button onclick="window:alert('Error\nFirst Name is required.\nDate of Birth must be in format: mm/dd/yyyy');">Submit</button>
-                        </form>
-                    </div>
-
-                    <h3>Error in Label</h3>
-                    <div class="example">
-                        <p>All fields are required.</p>
-                        <form>
-                            <label style="margin-bottom: 10px; color: #c00000; font-style: italic;">First Name: (This field is required)<br>
-                                <input type="text" required aria-invalid="true" readonly>
-                            </label>
-                            <label style="margin-bottom: 10px">Last Name:<br>
-                                <input type="text" value="Smith" required value="Smith" readonly>
-                            </label>
-                            <label style="color: #c00000; font-style: italic;">Date of Birth (mm/dd/yyyy): (Date of Birth must be in required format)<br>
-                                <input type="text" required aria-invalid="true" value="Jan 1 1999" readonly>
-                            </label>
-                        </form>
-                    </div>
+                    <p>All fields are required.</p>
+                    <form>
+                        <label style="margin-bottom: 10px">First Name:<br>
+                            <input type="text" id="fname" required aria-invalid="true" readonly>
+                        </label>
+                        <label style="margin-bottom: 10px">Last Name:<br>
+                            <input type="text" id="lname" required value="Smith" readonly>
+                        </label>
+                        <label>Date of Birth (mm/dd/yyyy):<br>
+                            <input type="text" id="dob" required aria-invalid="true" value="Jan 1 1999" readonly>
+                        </label>
+                    </form>
                 </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>No error detection:</strong><br>
-                        The form does not check for errors.</li>
-                        <li><strong>Suggestions for fixing errors:</strong><br>
-                            File under <a href="{{ checkpoint_data["3303"].link | relative_url }}">{{ checkpoint_data["3303"].name }}.</a></li>
-                        <li><strong>Programmatic association:</strong><br>
-                            File under <a href="{{ checkpoint_data["1301"].link | relative_url }}">{{ checkpoint_data["1301"].name }}.</a></li>
-                        <li><strong>Assistive technology notification:</strong><br>
-                            File under <a href="{{ checkpoint_data["4103"].link | relative_url }}">{{ checkpoint_data["4103"].name }}.</a></li>
-                    </ul>
+
+                <h3>Error Next to Field</h3>
+                <div class="example">
+                    <p>All fields are required.</p>
+                    <form>
+                        <label style="margin-bottom: 10px">First Name:<br>
+                            <input type="text" required aria-invalid="true" aria-describedby="fnameError" readonly><br>
+                            <span id="fnameError" class="error-text">First Name is required.</span><br>
+                        </label>
+                        <label style="margin-bottom: 10px">Last Name:<br>
+                            <input type="text" value="Smith" required value="Smith" readonly>
+                        </label>
+                        <label>Date of Birth (mm/dd/yyyy):<br>
+                            <input type="text" required aria-invalid="true" aria-describedby="dobError" value="Jan 1 1999" readonly><br>
+                            <span id="dobError" class="error-text">Date of Birth must be in format: mm/dd/yyyy</span>
+                        </label>
+                    </form>
                 </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blind/vision impaired:</strong> Users are able to perceive that an error has occured, where it has occurred, and why.</li>
-                        <li><strong>Colorblind:</strong> Users are able to perceive that an error has occured, where it has occurred, and why.</li>
-                        <li><strong>Cognitive impairments:</strong> Users are able to understand that an error has occured, where it has occurred, and why.</li>
-                    </ul>
+
+                <h3>Error Alert</h3>
+                Submit the form to see the error.
+                <div class="example">
+                    <p>All fields are required.</p>
+                    <form>
+                        <label style="margin-bottom: 10px">First Name:<br>
+                            <input type="text" required readonly>
+                        </label>
+                        <label style="margin-bottom: 10px">Last Name:<br>
+                            <input type="text" value="Smith" required readonly>
+                        </label>
+                        <label>Date of Birth (mm/dd/yyyy):<br>
+                            <input type="text" required value="Jan 1 1999" readonly>
+                        </label>
+                        <button onclick="window:alert('Error\nFirst Name is required.\nDate of Birth must be in format: mm/dd/yyyy');">Submit</button>
+                    </form>
                 </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G83">G83: Providing text descriptions to identify required fields that were not completed</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR32">SCR32: Providing client-side validation and adding error text via the DOM</a></li>
-                    </ul>
+
+                <h3>Error in Label</h3>
+                <div class="example">
+                    <p>All fields are required.</p>
+                    <form>
+                        <label style="margin-bottom: 10px; color: #c00000; font-style: italic;">First Name: (This field is required)<br>
+                            <input type="text" required aria-invalid="true" readonly>
+                        </label>
+                        <label style="margin-bottom: 10px">Last Name:<br>
+                            <input type="text" value="Smith" required value="Smith" readonly>
+                        </label>
+                        <label style="color: #c00000; font-style: italic;">Date of Birth (mm/dd/yyyy): (Date of Birth must be in required format)<br>
+                            <input type="text" required aria-invalid="true" value="Jan 1 1999" readonly>
+                        </label>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/3301checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>No error detection:</strong><br>
+                        The form does not check for errors.</li>
+                    <li><strong>Suggestions for fixing errors:</strong><br>
+                        File under <a href="{{ site.data["3303"]["3303"]["3303"].link | relative_url }}">{{ site.data["3303"]["3303"]["3303"].name }}.</a></li>
+                    <li><strong>Programmatic association:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["1301"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["1301"].name }}.</a></li>
+                    <li><strong>Assistive technology notification:</strong><br>
+                        File under <a href="{{ site.data["4103"]["4103"]["4103"].link | relative_url }}">{{ site.data["4103"]["4103"]["4103"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blind/vision impaired:</strong> Users are able to perceive that an error has occured, where it has occurred, and why.</li>
+                    <li><strong>Colorblind:</strong> Users are able to perceive that an error has occured, where it has occurred, and why.</li>
+                    <li><strong>Cognitive impairments:</strong> Users are able to understand that an error has occured, where it has occurred, and why.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G83">G83: Providing text descriptions to identify required fields that were not completed</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA18">ARIA18: Using aria-alertdialog to Identify Errors</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA19">ARIA19: Using ARIA role=alert or Live Regions to Identify Errors</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR32">SCR32: Providing client-side validation and adding error text via the DOM</a></li>
+                </ul>
+            </div>
+        </div>
