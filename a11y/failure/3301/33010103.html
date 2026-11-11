@@ -3,110 +3,100 @@ layout: default
 current: "33010103"
 criterion: "3301"
 checkpoint: "330101"
+last-modified: November 10, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3301.3301[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3301.3301[page.criterion] %}
-{% assign cp=site.data.3301.3301[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>When an error is automatically detected, the nature of the error is described in visible text.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>When an error is automatically detected, the nature of the error is described in visible text.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>An error is automatically detected, but the nature of the error is not described in visible text.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>Provide a visible error message describing the nature of the error in text.
-                    <p>Note: This checkpoint does not cover whether or not the description sufficiently describes how to fix the error. This is covered under <a href="{{ checkpoint_data["3303"].link | relative_url }}">{{ checkpoint_data["3303"].name }}.</a></p>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
-                    <h3>Required Field</h3>
-                    <div class="example">
-                        <form>
-                            <label style="margin-bottom: 10px">First Name:<br>
-                                <input type="text" required aria-invalid="true" aria-describedby="fnameError" readonly><br>
-                                <span id="fnameError" class="error-text">First Name is required.</span><br>
-                            </label>
-                        </form>
-                    </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>An error is automatically detected, but the nature of the error is not described in visible text.</div>
+        </div>
 
-                    <h3>Invalid Data</h3>
-                    <div class="example">
-                        <form>
-                            <label>State <em>(example: NY)</em>:<br>
-                                <input type="text" required aria-invalid="true" aria-describedby="stateError" value="narnia" readonly><br>
-                                <span id="stateError" class="error-text">State is invalid.</span>
-                            </label>
-                        </form>
-                    </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>Provide a visible error message describing the nature of the error in text.
+                <p>Note: This checkpoint does not cover whether or not the description sufficiently describes how to fix the error. This is covered under <a href="{{ site.data["3303"]["3303"]["3303"].link | relative_url }}">{{ site.data["3303"]["3303"]["3303"].name }}.</a></p>
+            </div>
+        </div>
 
-                    <h3>Incorrect Format</h3>
-                    <div class="example">
-                        <form>
-                            <label>Date of Birth (mm/dd/yyyy):<br>
-                                <input type="text" required aria-invalid="true" aria-describedby="dobError" value="Jan 1 1999" readonly><br>
-                                <span id="dobError" class="error-text">Date of Birth is invalid.</span>
-                            </label>
-                        </form>
-                    </div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+                <h3>Required Field</h3>
+                <div class="example">
+                    <form>
+                        <label style="margin-bottom: 10px">First Name:<br>
+                            <input type="text" required aria-invalid="true" aria-describedby="fnameError" readonly><br>
+                            <span id="fnameError" class="error-text">First Name is required.</span><br>
+                        </label>
+                    </form>
                 </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blind/vision impaired:</strong> Users are able to perceive that an error has occured, where it has occurred, and why.</li>
-                        <li><strong>Colorblind:</strong> Users are able to perceive that an error has occured, where it has occurred, and why.</li>
-                        <li><strong>Cognitive impairments:</strong> Users are able to understand that an error has occured, where it has occurred, and why.</li>
-                    </ul>
+
+                <h3>Invalid Data</h3>
+                <div class="example">
+                    <form>
+                        <label>State <em>(example: NY)</em>:<br>
+                            <input type="text" required aria-invalid="true" aria-describedby="stateError" value="narnia" readonly><br>
+                            <span id="stateError" class="error-text">State is invalid.</span>
+                        </label>
+                    </form>
                 </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>No error detection:</strong><br>
-                            The form does not check for errors.</li>
-                        <li><strong>Suggestions for fixing errors:</strong><br>
-                            File under <a href="{{ checkpoint_data["3303"].link | relative_url }}">{{ checkpoint_data["3303"].name }}.</a></li>
-                        <li><strong>Programmatic association:</strong><br>
-                            File under <a href="{{ checkpoint_data["1301"].link | relative_url }}">{{ checkpoint_data["1301"].name }}.</a></li>
-                        <li><strong>Assistive technology notification:</strong><br>
-                            File under <a href="{{ checkpoint_data["4103"].link | relative_url }}">{{ checkpoint_data["4103"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G83">G83: Providing text descriptions to identify required fields that were not completed</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G84">G84: Providing a text description when the user provides information that is not in the list of allowed values</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G85">G85: Providing a text description when user input falls outside the required format or values</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR32">SCR32: Providing client-side validation and adding error text via the DOM</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF5">PDF5: Indicating required form controls in PDF forms</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF22">PDF22: Indicating when user input falls outside the required format or values in PDF forms</a></li>
-                    </ul>
+
+                <h3>Incorrect Format</h3>
+                <div class="example">
+                    <form>
+                        <label>Date of Birth (mm/dd/yyyy):<br>
+                            <input type="text" required aria-invalid="true" aria-describedby="dobError" value="Jan 1 1999" readonly><br>
+                            <span id="dobError" class="error-text">Date of Birth is invalid.</span>
+                        </label>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/3301checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blind/vision impaired:</strong> Users are able to perceive that an error has occured, where it has occurred, and why.</li>
+                    <li><strong>Colorblind:</strong> Users are able to perceive that an error has occured, where it has occurred, and why.</li>
+                    <li><strong>Cognitive impairments:</strong> Users are able to understand that an error has occured, where it has occurred, and why.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>No error detection:</strong><br>
+                        The form does not check for errors.</li>
+                    <li><strong>Suggestions for fixing errors:</strong><br>
+                        File under <a href="{{ site.data["3303"]["3303"]["3303"].link | relative_url }}">{{ site.data["3303"]["3303"]["3303"].name }}.</a></li>
+                    <li><strong>Programmatic association:</strong><br>
+                        File under <a href="{{ site.data["1301"]["1301"]["1301"].link | relative_url }}">{{ site.data["1301"]["1301"]["1301"].name }}.</a></li>
+                    <li><strong>Assistive technology notification:</strong><br>
+                        File under <a href="{{ site.data["4103"]["4103"]["4103"].link | relative_url }}">{{ site.data["4103"]["4103"]["4103"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G83">G83: Providing text descriptions to identify required fields that were not completed</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G84">G84: Providing a text description when the user provides information that is not in the list of allowed values</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G85">G85: Providing a text description when user input falls outside the required format or values</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR18">SCR18: Providing client-side validation and alert</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR32">SCR32: Providing client-side validation and adding error text via the DOM</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF5">PDF5: Indicating required form controls in PDF forms</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF22">PDF22: Indicating when user input falls outside the required format or values in PDF forms</a></li>
+                </ul>
+            </div>
+        </div>
