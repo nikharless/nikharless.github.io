@@ -2,16 +2,10 @@
 layout: default
 current: "3206"
 criterion: "3206"
+last-modified: November 10, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.3206.3206[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>If a Web page contains any of the following help mechanisms, and those mechanisms are repeated on multiple Web pages within a set of Web pages, they occur in the same order relative to other page content, unless a change is initiated by the user:</p>
@@ -30,10 +24,6 @@ criterion: "3206"
 
         <div class="block">
             <h2>Training</h2>
-        <ul>
-        </ul>
+            <ul>
+            </ul>
         </div>
-    </div>
-    {% include checkpoints/3206checkpoints.html %}
-    
-</div>
