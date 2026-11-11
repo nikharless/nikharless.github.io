@@ -3,91 +3,81 @@ layout: default
 current: "32020102"
 criterion: "3202"
 checkpoint: "320201"
+last-modified: November 10, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3202.3202[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3202.3202[page.criterion] %}
-{% assign cp=site.data.3202.3202[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>When a form element's state or value changes, a new window, tab, or dialog is not automatically launched unless a warning is provided beforehand.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>When a form element's state or value changes, a new window, tab, or dialog is not automatically launched unless a warning is provided beforehand.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>When a form element's state or value changes, a new window, tab, or dialog is automatically launched without warning.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Launch new windows, tabs, or dialogs only on activation, <strong>OR</strong></li>
-                        <li>Provide instructions warning that the change will occur.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>New Window on Radio Button Check</h3>
-                    <p>Selecting a radio button automatically launches a new window. This is an unexpected change of context.</p>
-                    <div class="example">
-                        {% include examples/radio-new-window.html %}
-                    </div>
-                </div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>When a form element's state or value changes, a new window, tab, or dialog is automatically launched without warning.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Launch new windows, tabs, or dialogs only on activation, <strong>OR</strong></li>
+                    <li>Provide instructions warning that the change will occur.</li>
+                </ul>
             </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>New Window on Submit</h3>
-                    <p>The user must activate the Submit button to launch a new window.</p>
-                    <div class="example">
-                        <form name="search_form2" id="search_form2" action="" method="get">
-                            <p>Please select a search engine:</p> 
-                            <p role="radiogroup" aria-label="Search Engines"> 
-                                <input type="radio" name="searchEngine2" id="duckduckgo2" value="duckduckgo.com" checked> <label for="duckduckgo2" style="display: inline;">DuckDuckGo</label><br> 
-                                <input type="radio" name="searchEngine2" id="brave2" value="search.brave.com"> <label for="brave2" style="display: inline;">Brave</label><br> 
-                                <input type="radio" name="searchEngine2" id="ecosia2" value="ecosia.org"> <label for="ecosia2" style="display: inline;">Ecosia</label><br> 
-                                <input type="radio" name="searchEngine2" id="gibiru2" value="gibiru.com"> <label for="gibiru2" style="display: inline;">Gibiru</label><br>
-                                <input type="submit" onclick="goToSearch(getRadioValue());">
-                            </p> 
-                        </form>
-                    </div>                    
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blind/vision impairment:</strong> Users who can't detect changes of context may become disoriented when they occur unexpectedly.</li>
-                        <li><strong>Cognitive impairment:</strong> Users who have difficulty interpreting visual cues may become disoriented when unexpected changes of context occur.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G13">G13: Describing what will happen before a change to a form control that causes a change of context to occur is made</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G80">G80: Providing a submit button to initiate a change of context</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H32">H32: Providing submit buttons</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H84">H84: Using a button with a select element to perform an action</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR19">SCR19: Using an onchange event on a select element without causing a change of context</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF15">PDF15: Providing submit buttons with the submit-form action in PDF forms</a></li>
-                    </ul>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>New Window on Radio Button Check</h3>
+                <p>Selecting a radio button automatically launches a new window. This is an unexpected change of context.</p>
+                <div class="example">
+                    {% include examples/radio-new-window.html %}
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include  checkpoints/3202checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>New Window on Submit</h3>
+                <p>The user must activate the Submit button to launch a new window.</p>
+                <div class="example">
+                    <form name="search_form2" id="search_form2" action="" method="get">
+                        <p>Please select a search engine:</p> 
+                        <p role="radiogroup" aria-label="Search Engines"> 
+                            <input type="radio" name="searchEngine2" id="duckduckgo2" value="duckduckgo.com" checked> <label for="duckduckgo2" style="display: inline;">DuckDuckGo</label><br> 
+                            <input type="radio" name="searchEngine2" id="brave2" value="search.brave.com"> <label for="brave2" style="display: inline;">Brave</label><br> 
+                            <input type="radio" name="searchEngine2" id="ecosia2" value="ecosia.org"> <label for="ecosia2" style="display: inline;">Ecosia</label><br> 
+                            <input type="radio" name="searchEngine2" id="gibiru2" value="gibiru.com"> <label for="gibiru2" style="display: inline;">Gibiru</label><br>
+                            <input type="submit" onclick="goToSearch(getRadioValue());">
+                        </p> 
+                    </form>
+                </div>                    
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blind/vision impairment:</strong> Users who can't detect changes of context may become disoriented when they occur unexpectedly.</li>
+                    <li><strong>Cognitive impairment:</strong> Users who have difficulty interpreting visual cues may become disoriented when unexpected changes of context occur.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G13">G13: Describing what will happen before a change to a form control that causes a change of context to occur is made</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G80">G80: Providing a submit button to initiate a change of context</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H32">H32: Providing submit buttons</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H84">H84: Using a button with a select element to perform an action</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/client-side-script/SCR19">SCR19: Using an onchange event on a select element without causing a change of context</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF15">PDF15: Providing submit buttons with the submit-form action in PDF forms</a></li>
+                </ul>
+            </div>
+        </div>
