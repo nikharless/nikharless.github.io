@@ -2,16 +2,10 @@
 layout: default
 current: "3302"
 criterion: "3302"
+last-modified: November 10, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.3302.3302[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Labels or instructions are provided when content requires user input.</p>
@@ -34,7 +28,3 @@ criterion: "3302"
                 <li><a href="https://dequeuniversity.com/class/forms/">Deque University: Form Labels, Instructions, and Validation</a> (account required)</li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/3302checkpoints.html %}
-    
-</div>
