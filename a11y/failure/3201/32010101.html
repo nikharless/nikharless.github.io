@@ -3,129 +3,120 @@ layout: default
 current: "32010101"
 criterion: "3201"
 checkpoint: "320101"
+last-modified: November 9, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3201.3201[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3201.3201[page.criterion] %}
-{% assign cp=site.data.3201.3201[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>When a component gains focus, focus is not removed or redirected.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>When a component gains focus, focus is not removed or redirected.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>When a component gains focus, focus is removed or redirected.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Do not remove or redirect the focus on focus.</li>
-                        <li>Intentionally place focus if necessary so that it isn't lost.</li>
-                    </ul>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>When a component gains focus, focus is removed or redirected.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Do not remove or redirect the focus on focus.</li>
+                    <li>Intentionally place focus if necessary so that it isn't lost.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Link Focus Removed</h3>
+                <p>When this link receives focus, the focus is removed.</p>
+                <div class="example" style="width: 80%;">
+                    <p><a onFocus="setTimeout(this.blur(), 1000)" href="#">Link</a></p>
                 </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Link Focus Removed</h3>
-                    <p>When this link receives focus, the focus is removed.</p>
-                    <div class="example" style="width: 80%;">
-                        <p><a onFocus="setTimeout(this.blur(), 1000)" href="#">Link</a></p>
-                    </div>
-                    <pre><code>&lt;a onFocus="this.blur()" href="#"&gt;Link&lt;/a&gt;</code></pre>
+                <pre><code>&lt;a onFocus="this.blur()" href="#"&gt;Link&lt;/a&gt;</code></pre>
 
-                    <h3>Focus Moved</h3>
-                    <p>If the Email field is left empty and the user focuses on the checkbox, focus is redirected back to the Email field without an error message. Enter anything in the email field to get past it.</p>
-                    <div class="example" style="width: 80%;">
-                        <script>
-                            function checkForm() {
-                                var email = document.forms["failForm"]["email"].value;
-                                if (email == null || email == "") {
-                                    document.getElementById("email").focus();
-                                }
+                <h3>Focus Moved</h3>
+                <p>If the Email field is left empty and the user focuses on the checkbox, focus is redirected back to the Email field without an error message. Enter anything in the email field to get past it.</p>
+                <div class="example" style="width: 80%;">
+                    <script>
+                        function checkForm() {
+                            var email = document.forms["failForm"]["email"].value;
+                            if (email == null || email == "") {
+                                document.getElementById("email").focus();
                             }
-                        </script>
-                        <form name="failForm">
-                            <label>Email (required): <input type="text" name="email" id="email"></label>
-                            <label><input type="checkbox" onfocus="setTimeout(checkForm, 1000)"> I agree to receive promotional emails.</label>
-                            <button>Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Link Focus Persistent</h3>
-                    <p>When this link receives focus, the focus remains there until manually moved.</p>
-                    <div class="example" style="width: 80%;">
-                        <p><a href="#">Link</a></p>
-                    </div>
-
-                    <h3>Focus Persistent</h3>
-                    <p>If the Email field is left empty and the user focuses on the checkbox, an error message is displayed but the focus remains in place until manually moved.</p>
-                    <div class="example" style="width: 80%;">
-                        <script>
-                            function checkForm2() {
-                                var email2 = document.forms["passForm"]["email"].value;
-                                if (email2 == null || email2 == "") {
-                                    document.getElementById("errMsg").innerHTML = "An email address is required.";
-                                }
-                            }
-                        </script>
-                        <form name="passForm">
-                            <label>Email (required): <input type="text" name="email" id="email"></label>
-                            <div id="errMsg" class="error-text" aria-live="polite"></div>
-                            <label><input type="checkbox" onfocus="checkForm2()"> I agree to receive promotional emails.</label>
-                            <button>Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Context changes on input:</strong><br>
-                            File under <a href="{{ checkpoint_data["3202"].link | relative_url }}">{{ checkpoint_data["3202"].name }}.</a></li>
-                        <li><strong>Links open unexpectedly in new window upon activation:</strong><br>
-                            File under <a href="{{ checkpoint_data["2404"].link | relative_url }}">{{ checkpoint_data["2404"].name }}.</a></li>
-                        <li><strong>Automatic tabs:</strong><br>
-                        Tab content changes when focusing on a tab in a tab list is not a change of context, because the behavior is logical within the tab list context.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blind/Visual Impairment:</strong> Unexpected changes of context can cause significant confusion if the user can't see what has happened.</li>
-                        <li><strong>Cognitive Impairment:</strong> Unexpected changes of context can cause the user to become disoriented.</li>
-                        <li><strong>Motor Impairment:</strong> Unexpected changes of context can make content significantly more difficult to navigate.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G107">G107: Using "activate" rather than "focus" as a trigger for changes of context</a></li>
-                    </ul>
+                        }
+                    </script>
+                    <form name="failForm">
+                        <label>Email (required): <input type="text" name="email" id="email"></label>
+                        <label><input type="checkbox" onfocus="setTimeout(checkForm, 1000)"> I agree to receive promotional emails.</label>
+                        <button>Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include  checkpoints/3201checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Link Focus Persistent</h3>
+                <p>When this link receives focus, the focus remains there until manually moved.</p>
+                <div class="example" style="width: 80%;">
+                    <p><a href="#">Link</a></p>
+                </div>
+
+                <h3>Focus Persistent</h3>
+                <p>If the Email field is left empty and the user focuses on the checkbox, an error message is displayed but the focus remains in place until manually moved.</p>
+                <div class="example" style="width: 80%;">
+                    <script>
+                        function checkForm2() {
+                            var email2 = document.forms["passForm"]["email"].value;
+                            if (email2 == null || email2 == "") {
+                                document.getElementById("errMsg").innerHTML = "An email address is required.";
+                            }
+                        }
+                    </script>
+                    <form name="passForm">
+                        <label>Email (required): <input type="text" name="email" id="email"></label>
+                        <div id="errMsg" class="error-text" aria-live="polite"></div>
+                        <label><input type="checkbox" onfocus="checkForm2()"> I agree to receive promotional emails.</label>
+                        <button>Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Context changes on input:</strong><br>
+                        File under <a href="{{ site.data["3202"]["3202"]["3202"].link | relative_url }}">{{ site.data["3202"]["3202"]["3202"].name }}.</a></li>
+                    <li><strong>Links open unexpectedly in new window upon activation:</strong><br>
+                        File under <a href="{{ site.data["2404"]["2404"]["2404"].link | relative_url }}">{{ site.data["2404"]["2404"]["2404"].name }}.</a></li>
+                    <li><strong>Automatic tabs:</strong><br>
+                        Tab content changes when focusing on a tab in a tab list is not a change of context, because the behavior is logical within the tab list context.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blind/Visual Impairment:</strong> Unexpected changes of context can cause significant confusion if the user can't see what has happened.</li>
+                    <li><strong>Cognitive Impairment:</strong> Unexpected changes of context can cause the user to become disoriented.</li>
+                    <li><strong>Motor Impairment:</strong> Unexpected changes of context can make content significantly more difficult to navigate.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G107">G107: Using "activate" rather than "focus" as a trigger for changes of context</a></li>
+                </ul>
+            </div>
+        </div>
