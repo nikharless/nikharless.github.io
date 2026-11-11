@@ -2,16 +2,10 @@
 layout: default
 current: "3203"
 criterion: "3203"
+last-modified: November 10, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.3203.3203[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages occur in the same relative order each time they are repeated, unless a change is initiated by the user.</p>
@@ -58,7 +52,3 @@ criterion: "3203"
                 <li><a href="https://medium.com/@techycreative/a-guide-to-consistent-navigation-in-web-design-8a4dbcf2bb5c">Medium: A Guide to Consistent Navigation in Web Design: What is Consistent Navigation?</a></li>
             </ul>
         </div>
-    </div>
-    {% include  checkpoints/3203checkpoints.html %}
-    
-</div>
