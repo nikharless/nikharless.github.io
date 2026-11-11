@@ -3,98 +3,88 @@ layout: default
 current: "33020201"
 criterion: "3302"
 checkpoint: "330202"
+last-modified: November 11, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3302.3302[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3302.3302[page.criterion] %}
-{% assign cp=site.data.3302.3302[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>Form provides visible essential instructions such as required format, special conditions, etc.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>Form provides visible essential instructions such as required format, special conditions, etc.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>Form does not provide visible essential instructions.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <ul>
-                        <li>Provide essential instructions within the visible labels, <strong>OR</strong></li>
-                        <li>Provide essential instructions in text elsewhere in the form.</li>
-                    </ul>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>Form does not provide visible essential instructions.</div>
+        </div>
+
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <ul>
+                    <li>Provide essential instructions within the visible labels, <strong>OR</strong></li>
+                    <li>Provide essential instructions in text elsewhere in the form.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+                <h3>Individual Labels</h3>
+                <div class="example">
+                    <label for="dob">Date of Birth (mm/dd/yyyy)<br>
+                        <input type="text" id="dob">
+                    </label>
                 </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
-                    <h3>Individual Labels</h3>
-                    <div class="example">
-                        <label for="dob">Date of Birth (mm/dd/yyyy)<br>
-                            <input type="text" id="dob">
+
+                <h3>Form Instructions</h3>
+                <div class="example">
+                    <fieldset>
+                        <legend>Spouse</legend>
+                        <label for="fname">First Name<br>
+                            <input type="text" id="fname">
                         </label>
-                    </div>
-
-                    <h3>Form Instructions</h3>
-                    <div class="example">
-                        <fieldset>
-                            <legend>Spouse</legend>
-                            <label for="fname">First Name<br>
-                                <input type="text" id="fname">
-                            </label>
-                            <label for="lname">Last Name<br>
-                                <input type="text" id="lname">
-                            </label>
-                        </fieldset>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <p>The following are not applicable to this failure:</p>
-                    <ul>
-                        <li><strong>Accuracy of visual instructions:</strong><br>
-                            File under <a href="{{ checkpoint_data["24060201"].link | relative_url }}">{{ checkpoint_data["24060201"].name }}.</a></li>
-                        <li><strong>Programmatic association:</strong><br>
-                            File under <a href="{{ checkpoint_data["1301"].link | relative_url }}">{{ checkpoint_data["1301"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Cognitive impairments:</strong> Users understand what information should be entered.</li>
-                        <li><strong>Vision impairments:</strong> Labels and instructions help prevent mistakes, which help prevent users having to navigate through the page multiple times.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li>General:
-                            <ul>
-                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G89">G89: Providing expected data format and example</a></li>
-                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
-                                <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G184">G184: Providing text instructions at the beginning of a form or set of fields that describes the necessary input</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                        <label for="lname">Last Name<br>
+                            <input type="text" id="lname">
+                        </label>
+                    </fieldset>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/3302checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <p>The following are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Accuracy of visual instructions:</strong><br>
+                        File under <a href="{{ site.data["2406"]["2406"]["24060201"].link | relative_url }}">{{ site.data["2406"]["2406"]["24060201"].name }}.</a></li>
+                    <li><strong>Programmatic association:</strong><br>
+                        File under <a href="{{ site.data["1301"]["1301"]["1301"].link | relative_url }}">{{ site.data["1301"]["1301"]["1301"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Cognitive impairments:</strong> Users understand what information should be entered.</li>
+                    <li><strong>Vision impairments:</strong> Labels and instructions help prevent mistakes, which help prevent users having to navigate through the page multiple times.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li>General:
+                        <ul>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G89">G89: Providing expected data format and example</a></li>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G131">G131: Providing descriptive labels</a></li>
+                            <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G184">G184: Providing text instructions at the beginning of a form or set of fields that describes the necessary input</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
