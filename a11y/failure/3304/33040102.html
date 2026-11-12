@@ -3,73 +3,63 @@ layout: default
 current: "33040102"
 criterion: "3304"
 checkpoint: "330401"
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3304.3304[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3304.3304[page.criterion] %}
-{% assign cp=site.data.3304.3304[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>The user has the opportunity to confirm or undo user-controlled data edits or deletions.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>The user has the opportunity to confirm or undo user-controlled data edits or deletions.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>User-controlled data is edited or deleted without the ability to confirm or recover it.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <p>Provide at least one of the following:</p>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>User-controlled data is edited or deleted without the ability to confirm or recover it.</div>
+        </div>
 
-                    <ul>
-                        <li>The ability to confirm the edit or deletion before submitting, <strong>OR</strong></li>
-                        <li>The ability for the user to cancel the action for a period of time after it is submitted.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <p>Provide at least one of the following:</p>
 
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Legal or financial transactions:</strong><br>
-                            File under <a href="{{ checkpoint_data["33040101"].link | relative_url }}">{{ checkpoint_data["33040101"].name }}.</a></li>
-                        <li><strong>Submit test answers:</strong><br>
-                            File under <a href="{{ checkpoint_data["33040103"].link | relative_url }}">{{ checkpoint_data["33040103"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>People with disabilities may be more likely to make mistakes, or not notice them.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G99">G99: Providing the ability to recover deleted information</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G155">G155: Providing a checkbox in addition to a submit button</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G168">G168: Requesting confirmation to continue with selected action</a></li>
-                    </ul>
-                </div>
+                <ul>
+                    <li>The ability to confirm the edit or deletion before submitting, <strong>OR</strong></li>
+                    <li>The ability for the user to cancel the action for a period of time after it is submitted.</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/3304checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Legal or financial transactions:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["33040101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["33040101"].name }}.</a></li>
+                    <li><strong>Submit test answers:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["33040103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["33040103"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>People with disabilities may be more likely to make mistakes, or not notice them.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G99">G99: Providing the ability to recover deleted information</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G155">G155: Providing a checkbox in addition to a submit button</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G168">G168: Requesting confirmation to continue with selected action</a></li>
+                </ul>
+            </div>
+        </div>
