@@ -2,16 +2,10 @@
 layout: default
 current: "3304"
 criterion: "3304"
+last-modified: November 12, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.3304.3304[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>For Web pages that cause legal commitments or financial transactions for the user to occur, that modify or delete user-controllable data in data storage systems, or that submit user test responses, at least one of the following is true:</p>
@@ -64,7 +58,3 @@ criterion: "3304"
                 <li><a href="https://dequeuniversity.com/class/forms/">Deque University: Form Labels, Instructions, and Validation</a> (account required)</li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/3304checkpoints.html %}
-    
-</div>
