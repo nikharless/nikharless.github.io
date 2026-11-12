@@ -2,22 +2,9 @@
 layout: default
 current: "330401"
 criterion: "3304"
-guideline: understandable
-level: aa
-last-modified: October 29, 2026
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3304.3304[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3304.3304[page.criterion] %}
-{% assign checkpoint_data = site.data["3304"]["3304"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -41,7 +28,7 @@ last-modified: October 29, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page contain form elements?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does submitting the form result in legal commitments or financial transactions?</span>
@@ -55,7 +42,7 @@ last-modified: October 29, 2026
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the submission reversible?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["33040101"].link | relative_url }}">{{ checkpoint_data["33040101"].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["33040101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["33040101"].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -70,7 +57,7 @@ last-modified: October 29, 2026
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the submission reversible?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["33040102"].link | relative_url }}">{{ checkpoint_data["33040102"].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["33040102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["33040102"].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -80,7 +67,7 @@ last-modified: October 29, 2026
                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the user given the opportunity to review and confirm the answers before final submission?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["33040103"].link | relative_url }}">{{ checkpoint_data["33040103"].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["33040103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["33040103"].name }}.</a></span></li>
                                             </ul>
                                         </li>
                                         <li role="treeitem" class="na"><span><strong>No</strong>;</span> This checkpoint is not applicable.</li>
@@ -126,14 +113,7 @@ last-modified: October 29, 2026
             <p>Using VoiceOver or TalkBack, follow the Desktop Web procedure.</p>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["33040101"].link | relative_url }}">{{ checkpoint_data["33040101"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["33040102"].link | relative_url }}">{{ checkpoint_data["33040102"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["33040103"].link | relative_url }}">{{ checkpoint_data["33040103"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -167,7 +147,3 @@ last-modified: October 29, 2026
                 <li><a href="https://ictbaseline.access-board.gov/web-baselines/10Forms/">Section 508 ICT Testing Baseline Portfolio: Forms (Web)</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/3304checkpoints.html %}
-    
-</div>
