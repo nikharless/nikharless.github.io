@@ -2,16 +2,10 @@
 layout: default
 current: "3307"
 criterion: "3307"
+last-modified: November 12, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.3307.3307[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>Information previously entered by or provided to the user that is required to be entered again in the same process is either:</p>
@@ -32,10 +26,6 @@ criterion: "3307"
 
         <div class="block">
             <h2>Training</h2>
-        <ul>
-        </ul>
+            <ul>
+            </ul>
         </div>
-    </div>
-    {% include checkpoints/3307checkpoints.html %}
-    
-</div>
