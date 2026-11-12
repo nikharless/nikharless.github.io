@@ -3,74 +3,64 @@ layout: default
 current: "33040101"
 criterion: "3304"
 checkpoint: "330401"
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3304.3304[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3304.3304[page.criterion] %}
-{% assign cp=site.data.3304.3304[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Expected Result</h2>
+        	<div>The user has the opportunity to review, confirm, and or undo legal or financial transactions.</div>
+        </div>
 
-        <div class="failure">
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Expected Result</h2>
-        		<div>The user has the opportunity to review, confirm, and or undo legal or financial transactions.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Actual Result</h2>
-        		<div>A legal or financial transaction occurs without the ability to reverse, check, or confirm it.</div>
-        	</div>
-        	<div class="block">
-        		<h2 class="{{ sc.level }}">Solution</h2>
-        		<div>
-                    <p>Provide at least one of the following:</p>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Actual Result</h2>
+        	<div>A legal or financial transaction occurs without the ability to reverse, check, or confirm it.</div>
+        </div>
 
-                    <ul>
-                        <li>The ability for the user to review the information before submitting, <strong>OR</strong></li>
-                        <li>The ability to confirm the information before submitting, <strong>OR</strong></li>
-                        <li>The ability for the user to cancel the transaction for a period of time after it is submitted.</li>
-                    </ul>
-                </div>
-        	</div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Examples</h2>
-                <div>
+        <div class="block">
+        	<h2 class="{{ sc.level }}">Solution</h2>
+        	<div>
+                <p>Provide at least one of the following:</p>
 
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <ul>
-                        <li><strong>Change or delete user data:</strong><br>
-                            File under <a href="{{ checkpoint_data["33040102"].link | relative_url }}">{{ checkpoint_data["33040102"].name }}.</a></li>
-                        <li><strong>Submit test answers:</strong><br>
-                            File under <a href="{{ checkpoint_data["33040103"].link | relative_url }}">{{ checkpoint_data["33040103"].name }}.</a></li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>People with disabilities may be more likely to make mistakes, or not notice them.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G98">G98: Providing the ability for the user to review and correct answers before submitting</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G155">G155: Providing a checkbox in addition to a submit button</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G164">G164: Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request</a></li>
-                    </ul>
-                </div>
+                <ul>
+                    <li>The ability for the user to review the information before submitting, <strong>OR</strong></li>
+                    <li>The ability to confirm the information before submitting, <strong>OR</strong></li>
+                    <li>The ability for the user to cancel the transaction for a period of time after it is submitted.</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/3304checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Examples</h2>
+            <div>
+
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <ul>
+                    <li><strong>Change or delete user data:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["33040102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["33040102"].name }}.</a></li>
+                    <li><strong>Submit test answers:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["33040103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["33040103"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>People with disabilities may be more likely to make mistakes, or not notice them.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G98">G98: Providing the ability for the user to review and correct answers before submitting</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G155">G155: Providing a checkbox in addition to a submit button</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G164">G164: Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request</a></li>
+                </ul>
+            </div>
+        </div>
