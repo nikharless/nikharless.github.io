@@ -2,23 +2,9 @@
 layout: default
 current: "410201"
 criterion: "4102"
-guideline: robust
-level: a
-last-modified: October 29, 2026
-css: disclosure-faq
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.4102.4102[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.4102.4102[page.criterion] %}
-{% assign checkpoint_data = site.data["4102"]["4102"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -67,7 +53,7 @@ css: disclosure-faq
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page contain user interface components?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the name of the component identified by assistive technology when the component receives focus?</span>
@@ -75,33 +61,33 @@ css: disclosure-faq
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the name adequately describe the purpose of the control?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020108"].link | relative_url }}">{{ checkpoint_data["41020108"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020108"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020108"].name }}.</a></span></li>
                             </ul>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a button?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020101"].link | relative_url }}">{{ checkpoint_data["41020101"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020101"].name }}.</a></span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a text field, checkbox, radio button, or select?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020102"].link | relative_url }}">{{ checkpoint_data["41020102"].name }}.</a></span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020102"].name }}.</a></span></li>
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component an image button?</span>
                                             <ul role="group">
-                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020103"].link | relative_url }}">{{ checkpoint_data["41020103"].name }}.</a></span></li>
+                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020103"].name }}.</a></span></li>
                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a link?</span>
                                                     <ul role="group">
-                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020104"].link | relative_url }}">{{ checkpoint_data["41020104"].name }}.</a></span></li>
+                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020104"].name }}.</a></span></li>
                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component an iframe?</span>
                                                             <ul role="group">
-                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020105"].link | relative_url }}">{{ checkpoint_data["41020105"].name }}.</a></span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020105"].name }}.</a></span></li>
                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a dialog?</span>
                                                                     <ul role="group">
-                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020110"].link | relative_url }}">{{ checkpoint_data["41020110"].name }}.</a></span></li>
+                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020110"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020110"].name }}.</a></span></li>
                                                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a frame?</span>
                                                                             <ul role="group">
-                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020109"].link | relative_url }}">{{ checkpoint_data["41020109"].name }}.</a></span></li>
+                                                                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020109"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020109"].name }}.</a></span></li>
                                                                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component part of a group of components?</span>
                                                                                     <ul role="group">
-                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020106"].link | relative_url }}">{{ checkpoint_data["41020106"].name }}.</a></span></li>
-                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020107"].link | relative_url }}">{{ checkpoint_data["41020107"].name }}.</a></span></li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020106"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020106"].name }}.</a></span></li>
+                                                                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020107"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020107"].name }}.</a></span></li>
                                                                                     </ul>
                                                                                 </li>
                                                                             </ul>
@@ -241,7 +227,7 @@ css: disclosure-faq
                     </div>
                 </dd>
             </dl>
-            <script src="{{ baseurl }}/assets/js/disclosureButton.js"></script>
+            <script src="{{ '/assets/js/disclosureButton.js' | relative_url }}"></script>
 
             <h3>Android</h3>
             <ol>
@@ -342,22 +328,7 @@ css: disclosure-faq
                 </dd>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["41020101"].link | relative_url }}">{{ checkpoint_data["41020101"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["41020102"].link | relative_url }}">{{ checkpoint_data["41020102"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["41020103"].link | relative_url }}">{{ checkpoint_data["41020103"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["41020104"].link | relative_url }}">{{ checkpoint_data["41020104"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["41020105"].link | relative_url }}">{{ checkpoint_data["41020105"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["41020106"].link | relative_url }}">{{ checkpoint_data["41020106"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["41020107"].link | relative_url }}">{{ checkpoint_data["41020107"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["41020108"].link | relative_url }}">{{ checkpoint_data["41020108"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["41020109"].link | relative_url }}">{{ checkpoint_data["41020109"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["41020110"].link | relative_url }}">{{ checkpoint_data["41020110"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["41020111"].link | relative_url }}">{{ checkpoint_data["41020111"].name }}.</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -418,7 +389,3 @@ css: disclosure-faq
                 <li><a href="https://a11ysupport.io/">Accessibility Support</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/4102checkpoints.html %}
-    
-</div>
