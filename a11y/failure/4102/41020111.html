@@ -3,115 +3,105 @@ layout: default
 current: "41020111"
 criterion: "4102"
 checkpoint: "410201"
-css: 41020110
-last-modified:
+css: "41020110"
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.4102.4102[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.4102.4102[page.criterion] %}
-{% assign cp=site.data.4102.4102[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>Dialogs have an accessible name.</div>
+        </div>
 
-        <div class="failure">
-    <div class="block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Dialogs have an accessible name.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A dialog does not have an accessible name.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <p>Provide an accessible name for the dialog using one of the following methods:</p>
-                    <ul>
-                        <li>Use the <code>aria-label</code> attribute and set the value to the name, <strong>OR</strong></li>
-                        <li>Use the <code>aria-labelledby</code> attribute and point it to a text element which can function as the accessible name, such as the dialog's heading.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>No Accessible Name</h3>
-                    <p>This modal does not have an accessible name.</p>
-                    <div class="example">
-                        <button id="openModalBtn" aria-haspopup="dialog" onclick="openAlertDialog('badModal',this)">Open Failing Modal</button>
-                        <div class="dialog-backdrop no-scroll">
-                            <div id="badModal" role="alertdialog" aria-modal="true" class="hidden">
-                                <h2 class="dialog_label">Modal with No Accessible Name</h2>
-                                <div class="dialog_desc"><p>This modal does not have an accessible name.</p></div>
-                                <div>
-                                    <button type="button" class="dialog_close_button" id="modalClose" aria-label="Close" onclick="closeDialog(this)">&times;</button>
-                                </div>
-                            </div>
-                        </div>
-                        <pre><code>&lt;div role="alertdialog" aria-modal="true"&gt;</code></pre>
-                    </div>
-                    <script src="{{ baseurl }}/assets/js/utils.js"></script>
-                    <script src="{{ baseurl }}/assets/js/alertdialog.js"></script>
-                </div>
-            </div>
-    <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3><code>aria-labelledby</code></h3>
-                    <p>This modal uses <code>aria-labelledby</code> pointing to the visible modal heading to provide the modal with an accessible name.</p>
-                    <div class="example">
-                        <button class="open-modal" type="button" aria-haspopup="dialog">Open Passing Modal</button>
-                        <dialog id="dialog2" aria-labelledby="dialog-heading">
-                            <h2 id="dialog-heading" class="dialog_label" tabindex="-1">Modal with Accessible Name</h2>
-                            <div class="dialog_desc"><p>This modal uses <code>aria-labelledby</code> pointing to the visible modal heading to provide the modal with an accessible name.</p></div>
-                            <form method="dialog">
-                                <button aria-label="Close" class="dialog_close_button">&times;</button>
-                            </form>
-                        </dialog>
-                        <pre><code>&lt;dialog aria-labelledby="dialog-heading"&gt;
-    &lt;h2 id="dialog-heading" tabindex="-1"&gt;Modal with Accessible Name&lt;/h2&gt;</code></pre>
-                    </div>
-                    <script src="{{ baseurl }}/assets/js/dialog-html.js"></script>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <p>The following items are not applicable to this failure:</p>
-                    <ul>
-                        <li><strong>No dialogs</strong>:<br>
-                            No dialogs on the page</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Programmatic names enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
-                        <li><strong>Motor Impairment:</strong> Programmatic names enable compatibility with assistive technology such as speech recognition software.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H102">H102: Creating modal dialogs with the HTML dialog element</a></li>
-                    </ul>
-                </div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>A dialog does not have an accessible name.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+                <p>Provide an accessible name for the dialog using one of the following methods:</p>
+                <ul>
+                    <li>Use the <code>aria-label</code> attribute and set the value to the name, <strong>OR</strong></li>
+                    <li>Use the <code>aria-labelledby</code> attribute and point it to a text element which can function as the accessible name, such as the dialog's heading.</li>
+                </ul>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/4102checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>No Accessible Name</h3>
+                <p>This modal does not have an accessible name.</p>
+                <div class="example">
+                    <button id="openModalBtn" aria-haspopup="dialog" onclick="openAlertDialog('badModal',this)">Open Failing Modal</button>
+                    <div class="dialog-backdrop no-scroll">
+                        <div id="badModal" role="alertdialog" aria-modal="true" class="hidden">
+                            <h2 class="dialog_label">Modal with No Accessible Name</h2>
+                            <div class="dialog_desc"><p>This modal does not have an accessible name.</p></div>
+                            <div>
+                                <button type="button" class="dialog_close_button" id="modalClose" aria-label="Close" onclick="closeDialog(this)">&times;</button>
+                            </div>
+                        </div>
+                    </div>
+                    <pre><code>&lt;div role="alertdialog" aria-modal="true"&gt;</code></pre>
+                </div>
+                <script src="{{ '/assets/js/utils.js' | relative_url }}"></script>
+                <script src="{{ '/assets/js/alertdialog.js' | relative_url }}"></script>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3><code>aria-labelledby</code></h3>
+                <p>This modal uses <code>aria-labelledby</code> pointing to the visible modal heading to provide the modal with an accessible name.</p>
+                <div class="example">
+                    <button class="open-modal" type="button" aria-haspopup="dialog">Open Passing Modal</button>
+                    <dialog id="dialog2" aria-labelledby="dialog-heading">
+                        <h2 id="dialog-heading" class="dialog_label" tabindex="-1">Modal with Accessible Name</h2>
+                        <div class="dialog_desc"><p>This modal uses <code>aria-labelledby</code> pointing to the visible modal heading to provide the modal with an accessible name.</p></div>
+                        <form method="dialog">
+                            <button aria-label="Close" class="dialog_close_button">&times;</button>
+                        </form>
+                    </dialog>
+                    <pre><code>&lt;dialog aria-labelledby="dialog-heading"&gt;
+    &lt;h2 id="dialog-heading" tabindex="-1"&gt;Modal with Accessible Name&lt;/h2&gt;</code></pre>
+                </div>
+                <script src="{{ '/assets/js/dialog-html.js' | relative_url }}"></script>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>No dialogs</strong>:<br>
+                        No dialogs on the page</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Programmatic names enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                    <li><strong>Motor Impairment:</strong> Programmatic names enable compatibility with assistive technology such as speech recognition software.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H102">H102: Creating modal dialogs with the HTML dialog element</a></li>
+                </ul>
+            </div>
+        </div>
