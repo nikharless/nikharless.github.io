@@ -2,22 +2,9 @@
 layout: default
 current: "330901"
 criterion: "3309"
-guideline: understandable
-level: aaa
-last-modified: October 29, 2026
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3309.3309[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3309.3309[page.criterion] %}
-{% assign checkpoint_data = site.data["3309"]["3309"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -47,7 +34,7 @@ last-modified: October 29, 2026
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Is a cognitive function test (e.g., remembering a password or solving a puzzle) required for any step in an authentication process?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there an alternative authentication method that does not require a cognitive function test (e.g., one-use codes, biometrics, etc.)?</span>
@@ -56,12 +43,12 @@ last-modified: October 29, 2026
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is there a mechanism available to assist the user in completing the cognitive function test (e.g., support for password managers, copy and paste, etc.)?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["33090101"].link | relative_url }}">{{ checkpoint_data["33090101"].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["33090101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["33090101"].name }}</a>.</span></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
+                <li role="treeitem" class="na"><span><strong>No</strong>; This checkpoint is not applicable.</span></li>
             </ul>
         </div>
 
@@ -74,12 +61,7 @@ last-modified: October 29, 2026
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["33090101"].link | relative_url }}">{{ checkpoint_data["33090101"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -91,7 +73,7 @@ last-modified: October 29, 2026
             <h2>References</h2>
             <h3>WCAG</h3>
             <ul>
-                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ page.sctitle }}</a></li>
+                <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                 <li>General:
                     <ul>
                         <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G218">G218: Email link authentication</a></li>
@@ -108,7 +90,3 @@ last-modified: October 29, 2026
             <ul>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/3309checkpoints.html %}
-    
-</div>
