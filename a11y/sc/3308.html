@@ -2,16 +2,10 @@
 layout: default
 current: "3308"
 criterion: "3308"
+last-modified: November 12, 2026
 ---
-{% assign baseurl=site.data.site.base %}
-{% assign currentpg=site.data.3308.3308[page.current] %}
-{% assign sc=currentpg %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ currentpg.level }}link">
-        <h1>{{ currentpg.name }} (Level {{ currentpg.level | upcase }})</h1>
-        
+{% assign checkpoint_data = site.data[page.criterion][page.criterion] %}
+{% assign currentpg = checkpoint_data[page.current] %}
         <div class="block">
             <h2><a href=" {{ currentpg.w3url }}">Success Criterion</a></h2>
             <p>A cognitive function test (such as remembering a password or solving a puzzle) is not required for any step in an authentication process unless that step provides at least one of the following:</p>
@@ -42,7 +36,3 @@ criterion: "3308"
             <ul>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/3308checkpoints.html %}
-    
-</div>
