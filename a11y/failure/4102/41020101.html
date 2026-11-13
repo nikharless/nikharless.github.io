@@ -4,222 +4,212 @@ current: "41020101"
 criterion: "4102"
 checkpoint: "410201"
 css: button-arrows
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.4102.4102[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.4102.4102[page.criterion] %}
-{% assign cp=site.data.4102.4102[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>Buttons have accessible names.</div>
+        </div>
 
-        <div class="failure">
-    <div class="block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Buttons have accessible names.</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>A button does not have an accessible name.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+                <h3>HTML</h3>
+                <p>Provide an accessible name for the button, using one of the following methods:</p>
+                <ul>
+                    <li>Use <code>&lt;button&gt;</code> and place the name between the start and end tags, <strong>OR</strong></li>
+                    <li>Use <code>&lt;input type="button"&gt;</code> and place the name in the <code>value</code> attribute, <strong>OR</strong></li>
+                    <li>Use <code>&lt;input type="submit"&gt;</code> or <code>&lt;input type="reset"&gt;</code> and use the default accessible name, <strong>OR</strong></li>
+                    <li>Use <code>role="button"</code> to create a custom button, and use text within the button element as the accessible name, <strong>OR</strong></li>
+                    <li>Use <code>aria-label</code> to provide an accessible name.</li>
+                </ul>
             </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A button does not have an accessible name.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <h3>HTML</h3>
-                    <p>Provide an accessible name for the button, using one of the following methods:</p>
-                    <ul>
-                        <li>Use <code>&lt;button&gt;</code> and place the name between the start and end tags, <strong>OR</strong></li>
-                        <li>Use <code>&lt;input type="button"&gt;</code> and place the name in the <code>value</code> attribute, <strong>OR</strong></li>
-                        <li>Use <code>&lt;input type="submit"&gt;</code> or <code>&lt;input type="reset"&gt;</code> and use the default accessible name, <strong>OR</strong></li>
-                        <li>Use <code>role="button"</code> to create a custom button, and use text within the button element as the accessible name, <strong>OR</strong></li>
-                        <li>Use <code>aria-label</code> to provide an accessible name.</li>
-                    </ul>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3><code>&lt;button&gt;</code> without text</h3>
+                <p>This example uses the native HTML <code>&lt;button&gt;</code> element, but it does not have any text or image with a text alternative inside it.</p>
+                <p>NVDA: "button"</p>
+                <div class="example">
+                    <button class="arrow-button right-arrow"><span class="arrow"></span></button>
+
+                    <pre><code>&lt;button&gt;&lt;span class="arrow"&gt;&lt;/span&gt;&lt;/button&gt;</code></pre>
                 </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3><code>&lt;button&gt;</code> without text</h3>
-                    <p>This example uses the native HTML <code>&lt;button&gt;</code> element, but it does not have any text or image with a text alternative inside it.</p>
-                    <p>NVDA: "button"</p>
-                    <div class="example">
-                        <button class="arrow-button right-arrow"><span class="arrow"></span></button>
 
-                        <pre><code>&lt;button&gt;&lt;span class="arrow"&gt;&lt;/span&gt;&lt;/button&gt;</code></pre>
-                    </div>
+                <p>This example uses the native HTML <code>&lt;button&gt;</code> element with a <code>value</code> attribute. However, the <code>value</code> attribute is not valid on the <code>&lt;button&gt;</code> element and does not provide an accessible name.</p>
+                <p>NVDA: "button"</p>
+                <div class="example">
+                    <button value="Next" class="arrow-button right-arrow"><span class="arrow"></span></button>
 
-                    <p>This example uses the native HTML <code>&lt;button&gt;</code> element with a <code>value</code> attribute. However, the <code>value</code> attribute is not valid on the <code>&lt;button&gt;</code> element and does not provide an accessible name.</p>
-                    <p>NVDA: "button"</p>
-                    <div class="example">
-                        <button value="Next" class="arrow-button right-arrow"><span class="arrow"></span></button>
-
-                        <pre><code>&lt;button <strong>value="Next"</strong>&gt;&lt;span class="arrow"&gt;&lt;/span&gt;&lt;/button&gt;</code></pre>
-                    </div>
-
-                    <p>This example uses the native HTML <code>&lt;button&gt;</code> element with <code>role="none"</code>. However, because a <code>&lt;button&gt;</code> element is focusable, the <code>role="none"</code> is ignored, leaving the button without an accessible name.</p>
-                    <p>NVDA: "button"</p>
-                    <div class="example">
-                        <button role="none" style="width: 60px; height: 60px;"></button>
-
-                        <pre><code>&lt;button role="none"&gt;&lt;/button&gt;</code></pre>
-                    </div>
-
-                    <h3>Input button without text</h3>
-                    <p>This example uses the native HTML <code>&lt;input type="button"&gt;</code> element, but it does not have a <code>value</code> assigned.</p>
-                    <p>NVDA: "button"</p>
-                    <div class="example">
-                        <input type="button" style="width: 60px; height: 60px;">
-
-                        <pre><code>&lt;input type="button"&gt;</code></pre>
-                    </div>
-
-                    <h3>Custom button</h3>
-                    <p>This example uses a <code>&lt;div&gt;</code> with <code>role="button"</code>, but it does not have any text or image with a text alternative inside it.</p>
-                    <p>NVDA: "button"</p>
-                    <div class="example">
-                        <div role="button" tabindex="0" class="arrow-button right-arrow"><span class="arrow"></span></div>
-
-                        <pre><code>&lt;div role="button" tabindex="0"&gt;<strong>&lt;span class="arrow"&gt;&lt;/span&gt;</strong>&lt;/div&gt;</code></pre>
-                    </div>
+                    <pre><code>&lt;button <strong>value="Next"</strong>&gt;&lt;span class="arrow"&gt;&lt;/span&gt;&lt;/button&gt;</code></pre>
                 </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3><code>&lt;button&gt;</code></h3>
-                    <p>This example uses the text inside the native HTML <code>&lt;button&gt;</code> element as the accessible name.</p>
-                    <p>NVDA: "Next button"</p>
-                    <div class="example">
-                        <button>Next</button>
 
-                        <pre><code>&lt;button&gt;<strong>Next</strong>&lt;/button&gt;</code></pre>
-                    </div>
+                <p>This example uses the native HTML <code>&lt;button&gt;</code> element with <code>role="none"</code>. However, because a <code>&lt;button&gt;</code> element is focusable, the <code>role="none"</code> is ignored, leaving the button without an accessible name.</p>
+                <p>NVDA: "button"</p>
+                <div class="example">
+                    <button role="none" style="width: 60px; height: 60px;"></button>
 
-                    <p>This example uses the text alternative for an image inside the native HTML <code>&lt;button&gt;</code> element as the accessible name.</p>
-                    <p>NVDA: "Submit, graphic, button"</p>
-                    <div class="example">
-                        <button style="background-color: transparent; border: none;"><img src="{{ baseurl }}/assets/images/11010103-submit.png" alt="Submit"></button>
-
-                        <pre><code>&lt;button&gt;&lt;img src="submit.png" <strong>alt="Submit"</strong>&gt;&lt;/button&gt;</code></pre>
-                    </div>
-
-                    <p>This example uses an <code>aria-label</code> value on a CSS image as the accessible name.</p>
-                    <p>NVDA: "Next button"</p>
-                    <div class="example">
-                        <button class="arrow-button right-arrow"><span class="arrow" aria-label="Next"></span></button>
-
-                        <pre><code>&lt;button&gt;&lt;span class="arrow" <strong>aria-label="Next"</strong>&gt;&lt;/span&gt;&lt;/button&gt;</code></pre>
-                    </div>
-
-
-                    <p>This example uses an <code>aria-label</code> value on the <code>&lt;button&gt;</code> element as the accessible name.</p>
-                    <p>NVDA: "Next button"</p>
-                    <div class="example">
-                        <button aria-label="Next" class="arrow-button right-arrow"><span class="arrow"></span></button>
-
-                        <pre><code>&lt;button <strong>aria-label="Next"</strong>&gt;&lt;span class="arrow"&gt;&lt;/span&gt;&lt;/button&gt;</code></pre>
-                    </div>
-
-                    <h3>Input button</h3>
-                    <p>This example uses the <code>value</code> attribute of the native HTML <code>&lt;input type="button"&gt;</code> element as the accessible name.</p>
-                    <p>NVDA: "Next button"</p>
-                    <div class="example">
-                        <input type="button" value="Next">
-
-                        <pre><code>&lt;input type="button" <strong>value="Next"</strong>&gt;</code></pre>
-                    </div>
-
-                    <h3>Submit and Reset buttons</h3>
-                    <p>These examples use the native HTML <code>&lt;input type="submit"&gt;</code> and <code>&lt;input type="reset"&gt;</code>. They have default accessible names of "Submit" and "Reset".</p>
-                    <p>NVDA: "Submit button", "Reset button"</p>
-                    <div class="example">
-                        <input type="submit"> <input type="reset">
-
-                        <pre><code>&lt;input <strong>type="submit"</strong>&gt; &lt;input <strong>type="reset"</strong>&gt;</code></pre>
-                    </div>
-
-                    <h3>Custom button</h3>
-                    <p>This example uses the text inside a <code>&lt;div&gt;</code> with <code>role="button"</code> as the accessible name.</p>
-                    <p>NVDA: "Next button"</p>
-                    <div class="example">
-                        <div role="button" tabindex="0" style="border: 1px solid black; padding: 5px; width: 50px;">Next</div>
-
-                        <pre><code>&lt;div role="button" tabindex="0"&gt;<strong>Next</strong>&lt;/div&gt;</code></pre>
-                    </div>
-
-                    <p>This example uses the text alternative for an image inside a <code>&lt;div&gt;</code> element with <code>role="button"</code> as the accessible name.</p>
-                    <p>NVDA: "Submit, graphic, button"</p>
-                    <div class="example">
-                        <div role="button" tabindex="0"><img src="{{ baseurl }}/assets/images/11010103-submit.png" alt="Submit"></div>
-
-                        <pre><code>&lt;div role="button" tabindex="0"&gt;&lt;img src="submit.png" <strong>alt="Submit"</strong>&gt;&lt;/div&gt;</code></pre>
-                    </div>
-
-                    <p>This example uses an <code>aria-label</code> value as the accessible name.</p>
-                    <p>NVDA: "Next button"</p>
-                    <div class="example">
-                        <div role="button" tabindex="0" aria-label="Next"class="arrow-button right-arrow"><span class="arrow"></span></div>
-
-                        <pre><code>&lt;div role="button" tabindex="0" <strong>aria-label="Next"</strong>&gt;&lt;span class="arrow"&gt;&lt;/span&gt;&lt;/div&gt;</code></pre>
-                    </div>
+                    <pre><code>&lt;button role="none"&gt;&lt;/button&gt;</code></pre>
                 </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <p>The following items are not applicable to this failure:</p>
-                    <ul>
-                        <li><strong>Input type "image"</strong>:<br>
-                            <code>&lt;input type="image" src="search.png" alt="Search"&gt;</code><br>
-                            File under <a href="{{ checkpoint_data["41020103"].link | relative_url }}">{{ checkpoint_data["41020103"].name }}.</a></li>
-                        <li><strong>Link role</strong>:<br>
-                            <code>&lt;button role="link"&gt;Next Page&lt;/button&gt;</code><br>
-                            File under <a href="{{ checkpoint_data["24040101"].link | relative_url }}">{{ checkpoint_data["24040101"].name }}.</a></li>
-                        <li><strong>Hidden</strong>:<br>
-                            <code>&lt;button style="display:none;"&gt;Next&lt;/button&gt;</code><br>
-                            Does not appear in accessibility tree</li>
-                        <li><strong>Disabled button with role of "none"</strong>:<br>
-                            <code>&lt;button role="none" disabled&gt;Next&lt;/button&gt;</code><br>
-                            Does not appear in accessibility tree</li>
-                        <li><strong>No role</strong>:<br>
-                            <code>&lt;div&gt;Search&lt;/div&gt;</code><br>
-                            File under <a href="{{ checkpoint_data["41020201"].link | relative_url }}">{{ checkpoint_data["41020201"].name }}.</a></li>
-                    </ul>
+
+                <h3>Input button without text</h3>
+                <p>This example uses the native HTML <code>&lt;input type="button"&gt;</code> element, but it does not have a <code>value</code> assigned.</p>
+                <p>NVDA: "button"</p>
+                <div class="example">
+                    <input type="button" style="width: 60px; height: 60px;">
+
+                    <pre><code>&lt;input type="button"&gt;</code></pre>
                 </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Programmatic names enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
-                        <li><strong>Motor Impairment:</strong> Programmatic names enable compatibility with assistive technology such as speech recognition software.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F68">F68: Failure of Success Criterion 4.1.2 due to a user interface control not having a programmatically determined name</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G135">G135: Using the accessibility API features of a technology to expose names and notification of changes</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF10">PDF10: Providing labels for interactive form controls in PDF documents</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/97a4e1/">Button has non-empty accessible name</a></li>
-                    </ul>
+
+                <h3>Custom button</h3>
+                <p>This example uses a <code>&lt;div&gt;</code> with <code>role="button"</code>, but it does not have any text or image with a text alternative inside it.</p>
+                <p>NVDA: "button"</p>
+                <div class="example">
+                    <div role="button" tabindex="0" class="arrow-button right-arrow"><span class="arrow"></span></div>
+
+                    <pre><code>&lt;div role="button" tabindex="0"&gt;<strong>&lt;span class="arrow"&gt;&lt;/span&gt;</strong>&lt;/div&gt;</code></pre>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/4102checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3><code>&lt;button&gt;</code></h3>
+                <p>This example uses the text inside the native HTML <code>&lt;button&gt;</code> element as the accessible name.</p>
+                <p>NVDA: "Next button"</p>
+                <div class="example">
+                    <button>Next</button>
+
+                    <pre><code>&lt;button&gt;<strong>Next</strong>&lt;/button&gt;</code></pre>
+                </div>
+
+                <p>This example uses the text alternative for an image inside the native HTML <code>&lt;button&gt;</code> element as the accessible name.</p>
+                <p>NVDA: "Submit, graphic, button"</p>
+                <div class="example">
+                    <button style="background-color: transparent; border: none;"><img src="{{ '/assets/images/11010103-submit.png' | relative_url }}" alt="Submit"></button>
+
+                    <pre><code>&lt;button&gt;&lt;img src="submit.png" <strong>alt="Submit"</strong>&gt;&lt;/button&gt;</code></pre>
+                </div>
+
+                <p>This example uses an <code>aria-label</code> value on a CSS image as the accessible name.</p>
+                <p>NVDA: "Next button"</p>
+                <div class="example">
+                    <button class="arrow-button right-arrow"><span class="arrow" aria-label="Next"></span></button>
+
+                    <pre><code>&lt;button&gt;&lt;span class="arrow" <strong>aria-label="Next"</strong>&gt;&lt;/span&gt;&lt;/button&gt;</code></pre>
+                </div>
+
+                <p>This example uses an <code>aria-label</code> value on the <code>&lt;button&gt;</code> element as the accessible name.</p>
+                <p>NVDA: "Next button"</p>
+                <div class="example">
+                    <button aria-label="Next" class="arrow-button right-arrow"><span class="arrow"></span></button>
+
+                    <pre><code>&lt;button <strong>aria-label="Next"</strong>&gt;&lt;span class="arrow"&gt;&lt;/span&gt;&lt;/button&gt;</code></pre>
+                </div>
+
+                <h3>Input button</h3>
+                <p>This example uses the <code>value</code> attribute of the native HTML <code>&lt;input type="button"&gt;</code> element as the accessible name.</p>
+                <p>NVDA: "Next button"</p>
+                <div class="example">
+                    <input type="button" value="Next">
+
+                    <pre><code>&lt;input type="button" <strong>value="Next"</strong>&gt;</code></pre>
+                </div>
+
+                <h3>Submit and Reset buttons</h3>
+                <p>These examples use the native HTML <code>&lt;input type="submit"&gt;</code> and <code>&lt;input type="reset"&gt;</code>. They have default accessible names of "Submit" and "Reset".</p>
+                <p>NVDA: "Submit button", "Reset button"</p>
+                <div class="example">
+                    <input type="submit"> <input type="reset">
+
+                    <pre><code>&lt;input <strong>type="submit"</strong>&gt; &lt;input <strong>type="reset"</strong>&gt;</code></pre>
+                </div>
+
+                <h3>Custom button</h3>
+                <p>This example uses the text inside a <code>&lt;div&gt;</code> with <code>role="button"</code> as the accessible name.</p>
+                <p>NVDA: "Next button"</p>
+                <div class="example">
+                    <div role="button" tabindex="0" style="border: 1px solid black; padding: 5px; width: 50px;">Next</div>
+
+                    <pre><code>&lt;div role="button" tabindex="0"&gt;<strong>Next</strong>&lt;/div&gt;</code></pre>
+                </div>
+
+                <p>This example uses the text alternative for an image inside a <code>&lt;div&gt;</code> element with <code>role="button"</code> as the accessible name.</p>
+                <p>NVDA: "Submit, graphic, button"</p>
+                <div class="example">
+                    <div role="button" tabindex="0"><img src="{{ '/assets/images/11010103-submit.png' | relative_url }}" alt="Submit"></div>
+
+                    <pre><code>&lt;div role="button" tabindex="0"&gt;&lt;img src="submit.png" <strong>alt="Submit"</strong>&gt;&lt;/div&gt;</code></pre>
+                </div>
+
+                <p>This example uses an <code>aria-label</code> value as the accessible name.</p>
+                <p>NVDA: "Next button"</p>
+                <div class="example">
+                    <div role="button" tabindex="0" aria-label="Next"class="arrow-button right-arrow"><span class="arrow"></span></div>
+
+                    <pre><code>&lt;div role="button" tabindex="0" <strong>aria-label="Next"</strong>&gt;&lt;span class="arrow"&gt;&lt;/span&gt;&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Input type "image"</strong>:<br>
+                        <code>&lt;input type="image" src="search.png" alt="Search"&gt;</code><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["41020103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020103"].name }}.</a></li>
+                    <li><strong>Link role</strong>:<br>
+                        <code>&lt;button role="link"&gt;Next Page&lt;/button&gt;</code><br>
+                        File under <a href="{{ site.data["2404"]["2404"]["24040101"].link | relative_url }}">{{ site.data["2404"]["2404"]["24040101"].name }}.</a></li>
+                    <li><strong>Hidden</strong>:<br>
+                        <code>&lt;button style="display:none;"&gt;Next&lt;/button&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                    <li><strong>Disabled button with role of "none"</strong>:<br>
+                        <code>&lt;button role="none" disabled&gt;Next&lt;/button&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                    <li><strong>No role</strong>:<br>
+                        <code>&lt;div&gt;Search&lt;/div&gt;</code><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["41020201"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020201"].name }}.</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Programmatic names enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                    <li><strong>Motor Impairment:</strong> Programmatic names enable compatibility with assistive technology such as speech recognition software.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F68">F68: Failure of Success Criterion 4.1.2 due to a user interface control not having a programmatically determined name</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G135">G135: Using the accessibility API features of a technology to expose names and notification of changes</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA14">ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA16">ARIA16: Using aria-labelledby to provide a name for user interface controls</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF10">PDF10: Providing labels for interactive form controls in PDF documents</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/97a4e1/">Button has non-empty accessible name</a></li>
+                </ul>
+            </div>
+        </div>
