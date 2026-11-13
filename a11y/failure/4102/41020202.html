@@ -4,184 +4,175 @@ current: "41020202"
 criterion: "4102"
 checkpoint: "410202"
 css: checkbox
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.4102.4102[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.4102.4102[page.criterion] %}
-{% assign cp=site.data.4102.4102[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>Form fields have roles appropriate for their function.</div>
+        </div>
 
-        <div class="failure">
-    <div class="block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>Form fields have roles appropriate for their function.</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>A form field is missing a role.</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+                <p>Assign the correct role to the control, using one of the following methods:</p>
+                <ul>
+                    <li>Use native HTML elements to create the control, <strong>OR</strong></li>
+                    <li>Use the <code>role</code> attribute on the element to assign the appropriate role.</li>
+                </ul>
             </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A form field is missing a role.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <p>Assign the correct role to the control, using one of the following methods:</p>
-                    <ul>
-                        <li>Use native HTML elements to create the control, <strong>OR</strong></li>
-                        <li>Use the <code>role</code> attribute on the element to assign the appropriate role.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Checkbox</h3>
-                    <p>This is a custom checkbox that does not have an assigned ARIA role.</p>
-                    <p>NVDA: "Subscribe to the mailing list</p>
-                    <div class="example">
-                        <div class="cbExample">
-                            <div tabindex="0" aria-checked="false">Subscribe to the mailing list.
-                                <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
-                                <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
-                            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Checkbox</h3>
+                <p>This is a custom checkbox that does not have an assigned ARIA role.</p>
+                <p>NVDA: "Subscribe to the mailing list</p>
+                <div class="example">
+                    <div class="cbExample">
+                        <div tabindex="0" aria-checked="false">Subscribe to the mailing list.
+                            <span id="ccbChecked1" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                            <span id="ccbNotChecked1" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
                         </div>
-                        <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
-
-                        <pre><code>&lt;div tabindex="0" aria-checked="false"&gt; Subscribe to the mailing list.</code></pre>
                     </div>
+                    <script src="{{ '/assets/js/checkbox.js' | relative_url }}"></script>
 
-                    <h3>Radio button</h3>
-                    <p>This is a custom radio button that does not have an assigned ARIA role.</p>
-                    <p>NVDA: "Essential only"</p>
-                    <div class="example">
-                        <div class="radioExample" role="radiogroup">
-                            <div tabindex="0" aria-checked="false">Essential only
-                                <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
-                                <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
-                            </div>
+                    <pre><code>&lt;div tabindex="0" aria-checked="false"&gt; Subscribe to the mailing list.</code></pre>
+                </div>
+
+                <h3>Radio button</h3>
+                <p>This is a custom radio button that does not have an assigned ARIA role.</p>
+                <p>NVDA: "Essential only"</p>
+                <div class="example">
+                    <div class="radioExample" role="radiogroup">
+                        <div tabindex="0" aria-checked="false">Essential only
+                            <span id="crbChecked1" class="crbRadio crbChecked" style="display: none;"></span>
+                            <span id="crbNotChecked1" class="crbRadio crbNotChecked" style="display: block;"></span>
                         </div>
-                        <script src="{{ baseurl }}/assets/js/radio.js"></script>
-
-                        <pre><code>&lt;div tabindex="0" aria-checked="false"&gt;Check this radio button&lt;/div&gt;</code></pre>
                     </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Checkboxes</h3>
-                    <p>This example uses native HTML to provide the checkbox role.</p>
-                    <p>NVDA: "Subscribe to the mailing list, checkbox, not checked"</p>
-                    <div class="example">
-                        <label><input type="checkbox"> Subscribe to the mailing list.</label>
+                    <script src="{{ '/assets/js/radio.js' | relative_url }}"></script>
 
-                        <pre><code>&lt;label&gt;<strong>&lt;input type="checkbox"&gt;</strong> Subscribe to the mailing list.&lt;/label&gt;</code></pre>
-                    </div>
-
-                    <p>This is a custom checkbox with the ARIA role of "checkbox" explicitly assigned.</p>
-                    <p>NVDA: "Subscribe to the mailing list, checkbox, not checked"</p>
-                    <div class="example">
-                        <div class="cbExample">
-                            <div role="checkbox" tabindex="0" aria-checked="false">Subscribe to the mailing list.
-                                <span id="ccbChecked2" class="ccbCheckbox ccbChecked" style="display: none;"></span>
-                                <span id="ccbNotChecked2" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
-                            </div>
-                        </div>
-                        <script src="{{ baseurl }}/assets/js/checkbox.js"></script>
-
-                        <pre><code>&lt;div <strong>role="checkbox"</strong> tabindex="0" aria-checked="false"&gt; Subscribe to the mailing list.</code></pre>
-                    </div>
-
-                    <h3>Radio buttons</h3>
-                    <p>This example uses native HTML to provide the radio role.</p>
-                    <p>NVDA: "Essential only, radio button, not checked, 1 of 1"</p>
-                    <div class="example">
-                        <label><input type="radio"> Essential only</label>
-
-                        <pre><code>&lt;label&gt;<strong>&lt;input type="radio"&gt;</strong> Essential only&lt;/label&gt;</code></pre>
-                    </div>
-
-                    <p>This is a custom radio button with the ARIA role of "radio" explicitly assigned.</p>
-                    <p>NVDA: "Essential only, radio button, not checked, 1 of 1"</p>
-                    <div class="example">
-                        <div class="radioExample" role="radiogroup">
-                            <div role="radio" tabindex="0" aria-checked="false">Essential only
-                                <span id="crbChecked2" class="crbRadio crbChecked" style="display: none;"></span>
-                                <span id="crbNotChecked2" class="crbRadio crbNotChecked" style="display: block;"></span>
-                            </div>
-                        </div>
-
-                        <pre><code>&lt;div <strong>role="radio"</strong> tabindex="0" aria-checked="false"&gt; Essential only&lt;/div&gt;</code></pre>
-                    </div>
-
-                    <h3>Text fields</h3>
-                    <p>This example uses native HTML to provide the textbox role.</p>
-                    <p>NVDA: "Name: edit blank"</p>
-                    <div class="example">
-                        <label>Name: <input type="text"></label>
-
-                        <pre><code>&lt;label&gt;Name: <strong>&lt;input type="text"&gt;</strong>&lt;/label&gt;</code></pre>
-                    </div>
-
-                    <p>This is a custom textbox with the ARIA role of "textbox" explicitly assigned.</p>
-                    <p>NVDA: "Name: edit multiline blank"</p>
-                    <div class="example">
-                        <div id="name">Name: </div><div role="textbox" contenteditable="true" aria-labelledby="name" style="border: 1px solid black; width: 200px;"></div>
-
-                        <pre><code>&lt;div id="name"&gt;Name: &lt;/div&gt;&lt;div <strong>role="textbox"</strong> contenteditable="true" aria-labelledby="name"&gt; Name&lt;/div&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <p>The following items are not applicable to this failure:</p>
-                    <ul>
-                        <li><strong>Buttons</strong>:<br>
-                            File under <a href="{{ checkpoint_data["41020201"].link | relative_url }}">{{ checkpoint_data["41020201"].name }}.</a></li>
-                        <li><strong>Links</strong>:<br>
-                            File under <a href="{{ checkpoint_data["41020203"].link | relative_url }}">{{ checkpoint_data["41020203"].name }}.</a></li>
-                        <li><strong>Comboboxes</strong>:<br>
-                            File under <a href="{{ checkpoint_data["41020205"].link | relative_url }}">{{ checkpoint_data["41020205"].name }}.</a></li>
-                        <li><strong>Hidden</strong>:<br>
-                            <code>&lt;input type="checkbox" style="display:none;&gt;</code><br>
-                            Does not appear in accessibility tree</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Programmatic roles enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
-                        <li><strong>Motor Impairment:</strong> Programmatic roles enable compatibility with assistive technology such as speech recognition software.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F59">Failure of Success Criterion 4.1.2 due to using script to make div or span a user interface control in HTML without providing a role for the control</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                        <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#checkbox">WAI-ARIA: checkbox role</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#radio">WAI-ARIA: radio role</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#textbox">WAI-ARIA: textbox role</a></li>
-                    </ul>
+                    <pre><code>&lt;div tabindex="0" aria-checked="false"&gt;Check this radio button&lt;/div&gt;</code></pre>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/4102checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Checkboxes</h3>
+                <p>This example uses native HTML to provide the checkbox role.</p>
+                <p>NVDA: "Subscribe to the mailing list, checkbox, not checked"</p>
+                <div class="example">
+                    <label><input type="checkbox"> Subscribe to the mailing list.</label>
+
+                    <pre><code>&lt;label&gt;<strong>&lt;input type="checkbox"&gt;</strong> Subscribe to the mailing list.&lt;/label&gt;</code></pre>
+                </div>
+
+                <p>This is a custom checkbox with the ARIA role of "checkbox" explicitly assigned.</p>
+                <p>NVDA: "Subscribe to the mailing list, checkbox, not checked"</p>
+                <div class="example">
+                    <div class="cbExample">
+                        <div role="checkbox" tabindex="0" aria-checked="false">Subscribe to the mailing list.
+                            <span id="ccbChecked2" class="ccbCheckbox ccbChecked" style="display: none;"></span>
+                            <span id="ccbNotChecked2" class="ccbCheckbox ccbNotChecked" style="display: block;"></span>
+                        </div>
+                    </div>
+                    <script src="{{ '/assets/js/checkbox.js' | relative_url }}"></script>
+
+                    <pre><code>&lt;div <strong>role="checkbox"</strong> tabindex="0" aria-checked="false"&gt; Subscribe to the mailing list.</code></pre>
+                </div>
+
+                <h3>Radio buttons</h3>
+                <p>This example uses native HTML to provide the radio role.</p>
+                <p>NVDA: "Essential only, radio button, not checked, 1 of 1"</p>
+                <div class="example">
+                    <label><input type="radio"> Essential only</label>
+
+                    <pre><code>&lt;label&gt;<strong>&lt;input type="radio"&gt;</strong> Essential only&lt;/label&gt;</code></pre>
+                </div>
+
+                <p>This is a custom radio button with the ARIA role of "radio" explicitly assigned.</p>
+                <p>NVDA: "Essential only, radio button, not checked, 1 of 1"</p>
+                <div class="example">
+                    <div class="radioExample" role="radiogroup">
+                        <div role="radio" tabindex="0" aria-checked="false">Essential only
+                            <span id="crbChecked2" class="crbRadio crbChecked" style="display: none;"></span>
+                            <span id="crbNotChecked2" class="crbRadio crbNotChecked" style="display: block;"></span>
+                        </div>
+                    </div>
+
+                    <pre><code>&lt;div <strong>role="radio"</strong> tabindex="0" aria-checked="false"&gt; Essential only&lt;/div&gt;</code></pre>
+                </div>
+
+                <h3>Text fields</h3>
+                <p>This example uses native HTML to provide the textbox role.</p>
+                <p>NVDA: "Name: edit blank"</p>
+                <div class="example">
+                    <label>Name: <input type="text"></label>
+
+                    <pre><code>&lt;label&gt;Name: <strong>&lt;input type="text"&gt;</strong>&lt;/label&gt;</code></pre>
+                </div>
+
+                <p>This is a custom textbox with the ARIA role of "textbox" explicitly assigned.</p>
+                <p>NVDA: "Name: edit multiline blank"</p>
+                <div class="example">
+                    <div id="name">Name: </div><div role="textbox" contenteditable="true" aria-labelledby="name" style="border: 1px solid black; width: 200px;"></div>
+
+                    <pre><code>&lt;div id="name"&gt;Name: &lt;/div&gt;&lt;div <strong>role="textbox"</strong> contenteditable="true" aria-labelledby="name"&gt; Name&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Buttons</strong>:<br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["41020201"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020201"].name }}.</a></li>
+                    <li><strong>Links</strong>:<br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["41020203"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020203"].name }}.</a></li>
+                    <li><strong>Comboboxes</strong>:<br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["41020205"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020205"].name }}.</a></li>
+                    <li><strong>Hidden</strong>:<br>
+                        <code>&lt;input type="checkbox" style="display:none;&gt;</code><br>
+                            Does not appear in accessibility tree</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Programmatic roles enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                    <li><strong>Motor Impairment:</strong> Programmatic roles enable compatibility with assistive technology such as speech recognition software.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F59">Failure of Success Criterion 4.1.2 due to using script to make div or span a user interface control in HTML without providing a role for the control</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/674b10/proposed/">Role attribute has valid value</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria/#checkbox">WAI-ARIA: checkbox role</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria/#radio">WAI-ARIA: radio role</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria/#textbox">WAI-ARIA: textbox role</a></li>
+                </ul>
+            </div>
+        </div>
