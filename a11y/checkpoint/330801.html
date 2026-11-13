@@ -2,23 +2,9 @@
 layout: default
 current: "330801"
 criterion: "3308"
-guideline: understandable
-level: aaa
-last-modified: October 29, 2026
-css: disclosure-faq
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.3308.3308[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.3308.3308[page.criterion] %}
-{% assign checkpoint_data = site.data["3308"]["3308"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Overview</h2>
             <p>Examples of cognitive function tests:</p>
@@ -46,7 +32,7 @@ css: disclosure-faq
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Is a cognitive function test (e.g., remembering a password or solving a puzzle) required for any step in an authentication process?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is there an alternative authentication method that does not require a cognitive function test (e.g., one-use codes, biometrics, etc.)?</span>
@@ -61,7 +47,7 @@ css: disclosure-faq
                                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the cognitive function test identifying non-text content provided by the user?</span>
                                             <ul role="group">
                                                 <li role="treeitem" class="na"><span><strong>Yes</strong>; Not applicable</span></li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["33080101"].link | relative_url }}">{{ checkpoint_data["33080101"].name }}</a>.</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["33080101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["33080101"].name }}</a>.</span></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -84,12 +70,7 @@ css: disclosure-faq
             </ol>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["33080101"].link | relative_url }}">{{ checkpoint_data["33080101"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -114,7 +95,3 @@ css: disclosure-faq
                 </li>
              </ul>
         </div>
-    </div>
-    {% include checkpoints/3308checkpoints.html %}
-    
-</div>
