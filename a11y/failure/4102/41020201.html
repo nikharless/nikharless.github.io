@@ -3,125 +3,116 @@ layout: default
 current: "41020201"
 criterion: "4102"
 checkpoint: "410202"
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.4102.4102[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.4102.4102[page.criterion] %}
-{% assign cp=site.data.4102.4102[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>If a control functions as a button, it has the role of "button". The function of a button is to perform an action.</div>
+        </div>
 
-        <div class="failure">
-    <div class="block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>If a control functions as a button, it has the role of "button". The function of a button is to perform an action.</div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>A button is missing the role of "button".</div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+                <p>Assign the role of "button" to the control, using one of the following methods:</p>
+                <ul>
+                    <li>Use the <code>&lt;button&gt;</code> element to create the button, <strong>OR</strong></li>
+                    <li>Use the <code>&lt;input type="button"&gt;</code> element to create the button, <strong>OR</strong></li>
+                    <li>Use <code>role="button"</code> on the element.</li>
+                </ul>
             </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A button is missing the role of "button".</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <p>Assign the role of "button" to the control, using one of the following methods:</p>
-                    <ul>
-                        <li>Use the <code>&lt;button&gt;</code> element to create the button, <strong>OR</strong></li>
-                        <li>Use the <code>&lt;input type="button"&gt;</code> element to create the button, <strong>OR</strong></li>
-                        <li>Use <code>role="button"</code> on the element.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3><code>&lt;a&gt;</code> element with no <code>role</code></h3>
-                    <p>This example functions as a button, but it has no role because it's coded with an <code>&lt;a&gt;</code> element that has no <code>href</code> attribute.</p>
-                    <p>NVDA: "Open Dialog, link"</p>
-                    <div class="example">
-                        <a onclick="window.alert('Buttons open dialogs!')" tabindex="0">Open Dialog</a>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3><code>&lt;a&gt;</code> element with no <code>role</code></h3>
+                <p>This example functions as a button, but it has no role because it's coded with an <code>&lt;a&gt;</code> element that has no <code>href</code> attribute.</p>
+                <p>NVDA: "Open Dialog, link"</p>
+                <div class="example">
+                    <a onclick="window.alert('Buttons open dialogs!')" tabindex="0">Open Dialog</a>
                         <pre><code>&lt;a onclick="window.alert('Buttons open dialogs!')" tabindex="0"&gt;Open Dialog&lt;/a&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Button</h3>
-                    <p>This example uses the <code>&lt;button&gt;</code> element.</p>
-                    <p>NVDA: "Open Dialog, button"</p>
-                    <div class="example">
-                        <button onclick="window.alert('Buttons open dialogs!')">Open Dialog</button>
-
-                        <pre><code>&lt;button&gt;Open Dialog&lt;/button&gt;</code></pre>
-                    </div>
-
-                    <h3>Input type "button"</h3>
-                    <p>This example uses the <code>&lt;input type="button"&gt;</code> element.</p>
-                    <p>NVDA: "Open Dialog, button"</p>
-                    <div class="example">
-                        <input type="button" value="Open Dialog" onclick="window.alert('Buttons open dialogs!')">
-
-                        <pre><code>&lt;input type="button" value="Open Dialog"&gt;</code></pre>
-                    </div>
-
-                    <h3>Role of "button"</h3>
-                    <p>This is a custom button with ARIA <code>role="button"</code>.</p>
-                    <p>NVDA: "Open Dialog, button"</p>
-                    <div class="example">
-                        <div role="button" tabindex="0" onclick="window.alert('Buttons open dialogs!')" style="color: #D800B8; font-weight: bold; text-decoration: underline;">Open Dialog</div>
-
-                        <pre><code>&lt;div role="button" tabindex="0" onclick="doThis();"&gt;Open Dialog&lt;/div&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <p>The following items are not applicable to this failure:</p>
-                    <ul>
-                        <li><strong>Links</strong>:<br>
-                            <code>&lt;a href="webpage.html" style="border: 1px solid black; padding: 10px;"&gt;</code><br>
-                            Elements which function as links but are styled to look like buttons</li>
-                        <li><strong>Assigned role</strong><br>
-                            <code>&lt;button role="link"&gt;Click Here&lt;/button&gt;</code><br>
-                            Elements which use <code>&lt;button&gt;</code> or <code>&lt;input type="button"&gt;</code> and have a different role assigned using the <code>role</code> attribute</li>
-                        <li><strong>Hidden</strong>:<br>
-                            <code>&lt;button style="display:none;"&gt;Search&lt;/button&gt;</code><br>
-                            Does not appear in accessibility tree</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Programmatic roles enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
-                        <li><strong>Motor Impairment:</strong> Programmatic roles enable compatibility with assistive technology such as speech recognition software.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F59">Failure of Success Criterion 4.1.2 due to using script to make div or span a user interface control in HTML without providing a role for the control</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
-                        <li><a href="https://www.w3.org/TR/wai-aria/#button">WAI-ARIA: button role</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/4102checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Button</h3>
+                <p>This example uses the <code>&lt;button&gt;</code> element.</p>
+                <p>NVDA: "Open Dialog, button"</p>
+                <div class="example">
+                    <button onclick="window.alert('Buttons open dialogs!')">Open Dialog</button>
+
+                    <pre><code>&lt;button&gt;Open Dialog&lt;/button&gt;</code></pre>
+                </div>
+
+                <h3>Input type "button"</h3>
+                <p>This example uses the <code>&lt;input type="button"&gt;</code> element.</p>
+                <p>NVDA: "Open Dialog, button"</p>
+                <div class="example">
+                    <input type="button" value="Open Dialog" onclick="window.alert('Buttons open dialogs!')">
+
+                    <pre><code>&lt;input type="button" value="Open Dialog"&gt;</code></pre>
+                </div>
+
+                <h3>Role of "button"</h3>
+                <p>This is a custom button with ARIA <code>role="button"</code>.</p>
+                <p>NVDA: "Open Dialog, button"</p>
+                <div class="example">
+                    <div role="button" tabindex="0" onclick="window.alert('Buttons open dialogs!')" style="color: #D800B8; font-weight: bold; text-decoration: underline;">Open Dialog</div>
+
+                    <pre><code>&lt;div role="button" tabindex="0" onclick="doThis();"&gt;Open Dialog&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Links</strong>:<br>
+                        <code>&lt;a href="webpage.html" style="border: 1px solid black; padding: 10px;"&gt;</code><br>
+                        Elements which function as links but are styled to look like buttons</li>
+                    <li><strong>Assigned role</strong><br>
+                        <code>&lt;button role="link"&gt;Click Here&lt;/button&gt;</code><br>
+                        Elements which use <code>&lt;button&gt;</code> or <code>&lt;input type="button"&gt;</code> and have a different role assigned using the <code>role</code> attribute</li>
+                    <li><strong>Hidden</strong>:<br>
+                        <code>&lt;button style="display:none;"&gt;Search&lt;/button&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Programmatic roles enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                    <li><strong>Motor Impairment:</strong> Programmatic roles enable compatibility with assistive technology such as speech recognition software.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F59">Failure of Success Criterion 4.1.2 due to using script to make div or span a user interface control in HTML without providing a role for the control</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H88">H88: Using HTML according to spec</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/html/H91">H91: Using HTML form controls and links</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-1.2/#role_definitions">WAI-ARIA roles</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria/#button">WAI-ARIA: button role</a></li>
+                </ul>
+            </div>
+        </div>
