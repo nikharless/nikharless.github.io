@@ -4,152 +4,142 @@ layout: default
 criterion: "4102"
 checkpoint: "410203"
 css: disclosure412
-last-modified: 6 June 2025
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.4102.4102[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.4102.4102[page.criterion] %}
-{% assign cp=site.data.4102.4102[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-failure.html %}
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
+        <div class="block">
+            <h2 class="{{ sc.level }}">Expected Result</h2>
+            <div>If a control functions as a disclosure button, it communicates the expanded/collapsed state to assistive technology.</div>
+        </div>
 
-        <div class="failure">
-    <div class="block">
-                <h2 class="{{ sc.level }}">Expected Result</h2>
-                <div>If a control functions as a disclosure button, it communicates the expanded/collapsed state to assistive technology.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Actual Result</h2>
-                <div>A disclosure button does not communicate the expanded/collapsed state to assistive technology.</div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Solution</h2>
-                <div>
-                    <ul>
-                        <li>Use the native HTML <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements to create the disclosure button, <strong>OR</strong></li>
-                        <li>Use the <code>aria-expanded</code> attribute on a custom disclosure button. Set it to "true" when expanded and to "false" when collapsed.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-<h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-                <div>
-                    <h3>Custom Disclosure Button</h3>
-                    <p>This example does not communicate the expanded/collapsed state to assistive technology.</p>
-                    <p>NVDA: "What will we do with a drunken sailor? button"</p>
-                    <div class="example">
-                        <dl class="faq">
-                            <dt>
-                                <button type="button" aria-controls="faqf_desc" id="disclosure_faqf">
-                                    What will we do with a drunken sailor?
-                                </button>
-                            </dt>
-                            <dd>
-                                <div id="faqf_desc" class="desc">
-                                    <ul>
-                                        <li>Shave his belly with a rusty razor</li>
-                                        <li>Put him in a long boat until he's sober</li>
-                                        <li>Stick him in a scupper with a hosepipe bottom</li>
-                                        <li>Put him in the bed with the captain's daughter</li>
-                                    </ul>
-                                    <p>...early in the morning.</p>
-                                    <p>See <a href="#">Drunken Sailor Guidelines</a> for more information.</p>
-                                </div>
-                            </dd>
-                        </dl>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Actual Result</h2>
+            <div>A disclosure button does not communicate the expanded/collapsed state to assistive technology.</div>
+        </div>
 
-                        <pre><code>&lt;button type="button" aria-controls="faq_desc" id="disclosure_faq"&gt;</code>
-                    </div>
-                </div>
+        <div class="block">
+            <h2 class="{{ sc.level }}">Solution</h2>
+            <div>
+                <ul>
+                    <li>Use the native HTML <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements to create the disclosure button, <strong>OR</strong></li>
+                    <li>Use the <code>aria-expanded</code> attribute on a custom disclosure button. Set it to "true" when expanded and to "false" when collapsed.</li>
+                </ul>
             </div>
-    <div class="block">
-                <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
-                <div>
-                    <h3>Native HTML</h3>
-                    <p>This example uses native HTML <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements, which automatically announce the expanded/collapsed state.</p>
-                    <p>NVDA: "What will we do with a drunken sailor? button, collapsed"</p>
-                    <div class="example">
-                        <details>
-                            <summary>What will we do with a drunken sailor?</summary>
-                            <ul>
-                                <li>Shave his belly with a rusty razor</li>
-                                <li>Put him in a long boat until he's sober</li>
-                                <li>Stick him in a scupper with a hosepipe bottom</li>
-                                <li>Put him in the bed with the captain's daughter</li>
-                            </ul>
-                            <p>...early in the morning.</p>
-                        </details>
+        </div>
 
-                        <pre><code><strong>&lt;details&gt;
-    &lt;summary&gt;</strong>What will we do with a drunken sailor?<strong>&lt;/summary&gt;</strong>
-    ...
-<strong>&lt;/details&gt;</strong></code></pre>
-                    </div>
+        <div class="block">
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <div>
+                <h3>Custom Disclosure Button</h3>
+                <p>This example does not communicate the expanded/collapsed state to assistive technology.</p>
+                <p>NVDA: "What will we do with a drunken sailor? button"</p>
+                <div class="example">
+                    <dl class="faq">
+                        <dt>
+                            <button type="button" aria-controls="faqf_desc" id="disclosure_faqf">
+                                What will we do with a drunken sailor?
+                            </button>
+                        </dt>
+                        <dd>
+                            <div id="faqf_desc" class="desc">
+                                <ul>
+                                    <li>Shave his belly with a rusty razor</li>
+                                    <li>Put him in a long boat until he's sober</li>
+                                    <li>Stick him in a scupper with a hosepipe bottom</li>
+                                    <li>Put him in the bed with the captain's daughter</li>
+                                </ul>
+                                <p>...early in the morning.</p>
+                                <p>See <a href="#">Drunken Sailor Guidelines</a> for more information.</p>
+                            </div>
+                        </dd>
+                    </dl>
 
-                    <h3>ARIA Button</h3>
-                    <p>This FAQ-style disclosure button announces the expanded/collapsed state on focus and on activation.</p>
-                    <p>NVDA: "What will we do with a drunken sailor? button, collapsed"</p>
-                    <div class="example">
-                        {% include examples/disclosure.html %}
-
-                        <pre><code>&lt;button type="button" <strong>aria-expanded="false"</strong> aria-controls="faq1_desc"&gt;</code></pre>
-                    </div>
-
-                    <h3>ARIA Menu</h3>
-                    <p>This menu-style disclosure button announces the expanded/collapsed state on focus and on activation.</p>
-                    <p>NVDA: "About, button, collapsed"</p>
-                    <div class="example">
-                        
-                        {% include examples/disclosure-nav.html %}
-                        <script src="{{ baseurl }}/assets/js/disclosureMenu.js"></script>
-
-                        <pre><code>&lt;button type="button" <strong>aria-expanded="false"</strong> aria-controls="id_about_menu"&gt;</code></pre>
-                    </div>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Not Applicable</h2>
-                <div>
-                    <p>The following items are not applicable to this failure:</p>
-                    <ul>
-                        <li><strong>Toggle button</strong><br>
-                            <code>&lt;a tabindex="0" role="button" id="toggle" aria-pressed="false"&gt;Mute&lt;/a&gt;</code><br>
-                            File under <a href="{{ checkpoint_data["41020301"].link | relative_url }}">{{ checkpoint_data["41020301"].name }}.</a></li>
-                        <li><strong>Hidden</strong>:<br>
-                            <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
-                            Does not appear in accessibility tree</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">Disabilities Affected</h2>
-                <div>
-                    <ul>
-                        <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
-                        <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
-                    </ul>
-                </div>
-            </div>
-    <div class="block">
-                <h2 class="{{ sc.level }}">References</h2>
-                <div>
-                    <ul>
-                        <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
-                        <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details">MDN: &lt;details&gt;: The Details disclosure element</a></li>
-                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">WAI-ARIA: Disclosure (Show/Hide) Pattern</a></li>
-                    </ul>
+                    <pre><code>&lt;button type="button" aria-controls="faq_desc" id="disclosure_faq"&gt;</code>
                 </div>
             </div>
         </div>
-    </div>
 
-    {% include checkpoints/4102checkpoints.html %}
-    
-</div>
+        <div class="block">
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <div>
+                <h3>Native HTML</h3>
+                <p>This example uses native HTML <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements, which automatically announce the expanded/collapsed state.</p>
+                <p>NVDA: "What will we do with a drunken sailor? button, collapsed"</p>
+                <div class="example">
+                    <details>
+                        <summary>What will we do with a drunken sailor?</summary>
+                        <ul>
+                            <li>Shave his belly with a rusty razor</li>
+                            <li>Put him in a long boat until he's sober</li>
+                            <li>Stick him in a scupper with a hosepipe bottom</li>
+                            <li>Put him in the bed with the captain's daughter</li>
+                        </ul>
+                        <p>...early in the morning.</p>
+                    </details>
+
+                    <pre><code><strong>&lt;details&gt;
+    &lt;summary&gt;</strong>What will we do with a drunken sailor?<strong>&lt;/summary&gt;</strong>
+    ...
+<strong>&lt;/details&gt;</strong></code></pre>
+                </div>
+
+                <h3>ARIA Button</h3>
+                <p>This FAQ-style disclosure button announces the expanded/collapsed state on focus and on activation.</p>
+                <p>NVDA: "What will we do with a drunken sailor? button, collapsed"</p>
+                <div class="example">
+                    {% include examples/disclosure.html %}
+
+                    <pre><code>&lt;button type="button" <strong>aria-expanded="false"</strong> aria-controls="faq1_desc"&gt;</code></pre>
+                </div>
+
+                <h3>ARIA Menu</h3>
+                <p>This menu-style disclosure button announces the expanded/collapsed state on focus and on activation.</p>
+                <p>NVDA: "About, button, collapsed"</p>
+                <div class="example">
+                        
+                    {% include examples/disclosure-nav.html %}
+                    <script src="{{ '/assets/js/disclosureMenu.js' | relative_url }}"></script>
+
+                    <pre><code>&lt;button type="button" <strong>aria-expanded="false"</strong> aria-controls="id_about_menu"&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Not Applicable</h2>
+            <div>
+                <p>The following items are not applicable to this failure:</p>
+                <ul>
+                    <li><strong>Toggle button</strong><br>
+                        <code>&lt;a tabindex="0" role="button" id="toggle" aria-pressed="false"&gt;Mute&lt;/a&gt;</code><br>
+                        File under <a href="{{ checkpoint_data["41020321"].link | relative_url }}">{{ checkpoint_data["41020321"].name }}.</a></li>
+                    <li><strong>Hidden</strong>:<br>
+                        <code>&lt;div style="display:none;"&gt;...&lt;/div&gt;</code><br>
+                        Does not appear in accessibility tree</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">Disabilities Affected</h2>
+            <div>
+                <ul>
+                    <li><strong>Blindness/Vision Impairment:</strong> Properties enable compatibility with assistive technology such as screen readers and screen magnifiers.</li>
+                    <li><strong>Motor Impairment:</strong> Properties enable compatibility with assistive technology such as speech recognition software.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2 class="{{ sc.level }}">References</h2>
+            <div>
+                <ul>
+                    <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G108">G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA5">ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/pdf/PDF12">PDF12: Providing name, role, value information for form fields in PDF documents</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details">MDN: &lt;details&gt;: The Details disclosure element</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">WAI-ARIA: Disclosure (Show/Hide) Pattern</a></li>
+                </ul>
+            </div>
+        </div>
