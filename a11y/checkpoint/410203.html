@@ -2,23 +2,10 @@
 layout: default
 current: "410203"
 criterion: "4102"
-guideline: robust
-level: a
-last-modified: October 29, 2026
 css: disclosure-faq
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.4102.4102[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.4102.4102[page.criterion] %}
-{% assign checkpoint_data = site.data["4102"]["4102"] %}
-
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -89,7 +76,7 @@ css: disclosure-faq
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
 
             <h3 id="test3">TEST 3: Does the component have a checked state (e.g., checkbox, radio button, or switch)?</h3>
             <ul role="tree" aria-labelledby="test3">
@@ -98,16 +85,16 @@ css: disclosure-faq
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the checked state spoken when changed?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020126"].link | relative_url }}">{{ checkpoint_data["41020126"].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020126"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020126"].name }}</a>.</span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a checkbox?</span>
                             <ul role="group">
-                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020116"].link | relative_url }}">{{ checkpoint_data["41020116"].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020116"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020116"].name }}</a>.</span></li>
                                 <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Is the component a radio button?</span>
                                     <ul role="group">
-                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ checkpoint_data["41020117"].link | relative_url }}">{{ checkpoint_data["41020117"].name }}</a>.</span></li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020118"].link | relative_url }}">{{ checkpoint_data["41020118"].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>Yes</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020117"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020117"].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020118"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020118"].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -124,7 +111,7 @@ css: disclosure-faq
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the pressed state spoken by the screen reader?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020113"].link | relative_url }}">{{ checkpoint_data["41020113"].name }}</a>.</span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020113"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020113"].name }}</a>.</span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Does the button control expandable content?</span>
@@ -138,16 +125,16 @@ css: disclosure-faq
                                                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the button identified as a menu button?</span>
                                                             <ul role="group">
                                                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020115"].link | relative_url }}">{{ checkpoint_data["41020115"].name }}</a>.</span></li>
+                                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020115"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020115"].name }}</a>.</span></li>
                                                             </ul>
                                                         </li>
                                                         <li role="treeitem" class="pass"><span><strong>No</strong>; PASS</span></li>
                                                     </ul>
                                                 </li>
-                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020126"].link | relative_url }}">{{ checkpoint_data["41020126"].name }}</a>.</span></li>
+                                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020126"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020126"].name }}</a>.</span></li>
                                             </ul>
                                         </li>
-                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020114"].link | relative_url }}">{{ checkpoint_data["41020114"].name }}</a>.</span></li>
+                                        <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020114"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020114"].name }}</a>.</span></li>
                                     </ul>
                                 </li>
                                 <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -163,7 +150,7 @@ css: disclosure-faq
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader announce the disabled state?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ checkpoint_data["41020122"].link | relative_url }}">{{ checkpoint_data["41020122"].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data[page.criterion][page.criterion]["41020122"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020122"].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -174,7 +161,7 @@ css: disclosure-faq
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader announce the required state?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ checkpoint_data["41020123"].link | relative_url }}">{{ checkpoint_data["41020123"].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data[page.criterion][page.criterion]["41020123"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020123"].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -185,7 +172,7 @@ css: disclosure-faq
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Does the screen reader announce the read-only state?</span>
                     <ul role="group">
                         <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ checkpoint_data["41020124"].link | relative_url }}">{{ checkpoint_data["41020124"].name }}</a>.</span></li>
+                        <li role="treeitem" class="fail"><span><strong>No</strong>; <a href="{{ site.data[page.criterion][page.criterion]["41020124"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020124"].name }}</a>.</span></li>
                     </ul>
                 </li>
                 <li role="treeitem" class="na"><span><strong>No</strong>; Not applicable</span></li>
@@ -239,7 +226,7 @@ css: disclosure-faq
                     </div>
                 </dd>
             </dl>
-            <script src="{{ baseurl }}/assets/js/disclosureButton.js"></script> 
+            <script src="{{ '/assets/js/disclosureButton.js' | relative_url }}"></script> 
 
             <h3>Android</h3>
             <ol>
@@ -341,39 +328,7 @@ css: disclosure-faq
             </dl>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["41020301"].link | relative_url }}">{{ checkpoint_data["41020301"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020302"].link | relative_url }}">{{ checkpoint_data["41020302"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020303"].link | relative_url }}">{{ checkpoint_data["41020303"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020304"].link | relative_url }}">{{ checkpoint_data["41020304"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020305"].link | relative_url }}">{{ checkpoint_data["41020305"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020306"].link | relative_url }}">{{ checkpoint_data["41020306"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020307"].link | relative_url }}">{{ checkpoint_data["41020307"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020308"].link | relative_url }}">{{ checkpoint_data["41020308"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020309"].link | relative_url }}">{{ checkpoint_data["41020309"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020310"].link | relative_url }}">{{ checkpoint_data["41020310"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020311"].link | relative_url }}">{{ checkpoint_data["41020311"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020312"].link | relative_url }}">{{ checkpoint_data["41020312"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020313"].link | relative_url }}">{{ checkpoint_data["41020313"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020314"].link | relative_url }}">{{ checkpoint_data["41020314"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020315"].link | relative_url }}">{{ checkpoint_data["41020315"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020316"].link | relative_url }}">{{ checkpoint_data["41020316"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020317"].link | relative_url }}">{{ checkpoint_data["41020317"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020318"].link | relative_url }}">{{ checkpoint_data["41020318"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020319"].link | relative_url }}">{{ checkpoint_data["41020319"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020320"].link | relative_url }}">{{ checkpoint_data["41020320"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020321"].link | relative_url }}">{{ checkpoint_data["41020321"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020322"].link | relative_url }}">{{ checkpoint_data["41020322"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020323"].link | relative_url }}">{{ checkpoint_data["41020323"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020324"].link | relative_url }}">{{ checkpoint_data["41020324"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020325"].link | relative_url }}">{{ checkpoint_data["41020325"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020326"].link | relative_url }}">{{ checkpoint_data["41020326"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020327"].link | relative_url }}">{{ checkpoint_data["41020327"].name }}.</a></li>
-                <li><a href="{{ checkpoint_data["41020328"].link | relative_url }}">{{ checkpoint_data["41020328"].name }}.</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -427,7 +382,3 @@ css: disclosure-faq
                 <li><a href="https://a11ysupport.io/">Accessibility Support</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/4102checkpoints.html %}
-    
-</div>
