@@ -4,6 +4,7 @@
 {% if page.criterion %}
 	{% assign criterion_id = page.criterion | append: "" %}
 	{% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
+	{% assign sc = checkpoint_data[criterion_id] %}
 {% endif %}
 
 {% if page.checkpoint %}
@@ -16,7 +17,6 @@
 
 {% if page.checkpoint %}
 	{% assign currentpg = checkpoint_data[current_id] %}
-	{% assign sc = checkpoint_data[criterion_id] %}
 {% else %}
 	{% assign currentpg = site.data.site[current_id] %}
 {% endif %}
