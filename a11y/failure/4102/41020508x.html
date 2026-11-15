@@ -4,27 +4,19 @@ current: "41020508"
 criterion: "4102"
 checkpoint: "410205"
 css: grid-sortable
+last-modified: November 14, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.4102.4102[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.4102.4102[page.criterion] %}
-{% assign cp=site.data.4102.4102[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
             <div>Grids have all appropriate roles and attributes.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
             <div>A grid does not have all the appropriate roles or attributes.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Solution</h2>
             <div>
@@ -48,6 +40,7 @@ css: grid-sortable
                 </ul>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
@@ -57,6 +50,7 @@ css: grid-sortable
                 </div>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Not Applicable</h2>
             <div>
@@ -68,10 +62,12 @@ css: grid-sortable
                 </ul>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>Assistive technology only works well when code is done properly.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -84,9 +80,4 @@ css: grid-sortable
                     <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/grid/">W3: Grid (Interactive Tabular Data and Layout Containers) Pattern</a></li>
                 </ul>
             </div>
-        </div>
-    </div>
-</div>
-
-    {% include checkpoints/4102checkpoints.html %}
-    
+        </div>  
