@@ -1,17 +1,25 @@
 <!doctype html>
 {% assign root = site.data.site.root %}
 
-{% assign criterion_id = page.criterion | append: "" %}
-{% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
+{% if page.criterion %}
+	{% assign criterion_id = page.criterion | append: "" %}
+	{% assign checkpoint_data = site.data[criterion_id][criterion_id] %}
+{% endif %}
+
 {% if page.checkpoint %}
 	{% assign checkpoint_id = page.checkpoint | append: "" %}
 	{% assign cp = checkpoint_data[checkpoint_id] %}
 {% endif %}
+
 {% assign current_id = page.current | append: "" %}
 {% assign current_length = current_id | size %}
 
-{% assign currentpg = checkpoint_data[current_id] %}
-{% assign sc = checkpoint_data[criterion_id] %}
+{% if page.checkpoint %}
+	{% assign currentpg = checkpoint_data[current_id] %}
+	{% assign sc = checkpoint_data[criterion_id] %}
+{% else %}
+	{% assign currentpg = site.data.site[current_id] %}
+{% endif %}
 
 <html lang="en">
 	<head>
