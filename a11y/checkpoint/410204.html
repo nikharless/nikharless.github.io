@@ -2,24 +2,10 @@
 layout: default
 current: "410204"
 criterion: "4102"
-guideline: robust
-level: a
-last-modified: October 29, 2026
 css: disclosure-faq
+last-modified: November 12, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.4102.4102[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.4102.4102[page.criterion] %}
-{% assign checkpoint_data = site.data["4102"]["4102"] %}
-
-{% include sidebar.html %}
-
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-        <h1>{{ currentpg.name }}</h1>
-        {% include breadcrumbs/bc-checkpoint.html %}
-
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2>Basic Requirements and Best Practices</h2>
             <p aria-hidden="true">
@@ -412,7 +398,7 @@ css: disclosure-faq
 
         <div class="block">
             <h2>Testing Logic</h2>
-            <script src="{{ baseurl }}/assets/js/tree.js"></script>
+            <script src="{{ '/assets/js/tree.js' | relative_url }}"></script>
             <h3 id="test1">Does the page contain user interface components?</h3>
             <ul role="tree" aria-labelledby="test1">
                 <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value of the component communicated by assistive technology when the component receives focus?</span>
@@ -420,13 +406,13 @@ css: disclosure-faq
                         <li role="treeitem" aria-expanded="false"><span><strong>Yes</strong>; Is the value correct?</span>
                             <ul role="group">
                                 <li role="treeitem" class="pass"><span><strong>Yes</strong>; PASS</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020401"].link | relative_url }}">{{ checkpoint_data["41020401"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020401"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020401"].name }}.</a></span></li>
                             </ul>
                         </li>
                         <li role="treeitem" aria-expanded="false"><span><strong>No</strong>; Are the values in the component's attributes valid?</span>
                             <ul role="group">
                                 <li role="treeitem"><span><strong>Yes</strong>:</span></li>
-                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ checkpoint_data["41020402"].link | relative_url }}">{{ checkpoint_data["41020402"].name }}.</a></span></li>
+                                <li role="treeitem" class="fail"><span><strong>No</strong>; See <a href="{{ site.data[page.criterion][page.criterion]["41020402"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["41020402"].name }}.</a></span></li>
                             </ul>
                         </li>
                     </ul>
@@ -505,7 +491,7 @@ css: disclosure-faq
                     </div>
                 </dd>
             </dl>
-            <script src="{{ baseurl }}/assets/js/disclosureButton.js"></script>
+            <script src="{{ '/assets/js/disclosureButton.js' | relative_url }}"></script>
 
             <h3>Android</h3>
             <ol>
@@ -607,13 +593,7 @@ css: disclosure-faq
             </dl>
         </div>
 
-        <div class="block">
-            <h2>Failures</h2>
-            <ul>
-                <li><a href="{{ checkpoint_data["41020401"].link | relative_url }}">{{ checkpoint_data["41020401"].name }}</a></li>
-                <li><a href="{{ checkpoint_data["41020402"].link | relative_url }}">{{ checkpoint_data["41020402"].name }}</a></li>
-            </ul>
-        </div>
+        {% include failures.html %}
 
         <div class="block">
             <h2>Testing Tools</h2>
@@ -659,7 +639,3 @@ css: disclosure-faq
                 <li><a href="https://a11ysupport.io/">Accessibility Support</a></li>
             </ul>
         </div>
-    </div>
-    {% include checkpoints/4102checkpoints.html %}
-    
-</div>
