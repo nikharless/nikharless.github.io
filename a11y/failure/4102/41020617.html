@@ -3,32 +3,25 @@ layout: default
 current: "41020617"
 criterion: "4102"
 checkpoint: "410206"
-css: 41020202
+css: "41020202"
+last-modified: November 14, 2026
 ---
-{% assign root=site.data.site.root %}
-{% assign currentpg=site.data.4102.4102[page.current] %}
-{% assign baseurl=site.data.site.base %}
-{% assign sc=site.data.4102.4102[page.criterion] %}
-{% assign cp=site.data.4102.4102[page.checkpoint] %}
-{% include sidebar.html %}
-<div class="content row {{ sc.level }}" id="main">
-    <div class="cpcontent {{ sc.level }}link">
-    <h1>{{ currentpg.name }}</h1>
-    {% include breadcrumbs/bc-failure.html %}
-
-    <div class="failure">
+{% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
             <div>Custom controls have valid ARIA attributes and values.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
             <div>A custom control has an invalid ARIA attribute or value.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Solution</h2>
             <div>Ensure states, properties, and values are valid.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Examples</h2>
             <div>
@@ -49,17 +42,12 @@ css: 41020202
                 </div>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Not Applicable</h2>
             <div>
                 <p>The following items are not applicable to this failure:</p>
                 <ul>
-                    <li><strong>Native HTML controls</strong>:<br>
-                        <code>&lt;input type="checkbox"&gt; Subscribe to the mailing list</code><br>
-                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
-                    <li><strong>Custom controls that function as native HTML controls</strong>:<br>
-                        <code>&lt;div role="checkbox" tabindex="0" aria-checked="false"&gt;Subscribe to the mailing list</code><br>
-                        File under <a href="/a11y/checkpoint/410201.html">4.1.2.1 Name, Role, Value</a></li>
                     <li><strong>Hidden</strong>:<br>
                         <code>&lt;div style="display:none;"&gt;</code><br>
                         Does not appear in accessibility tree</li>
@@ -69,10 +57,12 @@ css: 41020202
                 </ul>
             </div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>Assistive technology only works well when code is done properly.</div>
         </div>
+
         <div class="block">
             <h2 class="{{ sc.level }}">References</h2>
             <div>
@@ -84,8 +74,3 @@ css: 41020202
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-
-    {% include checkpoints/4102checkpoints.html %}
-    
