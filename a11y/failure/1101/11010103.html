@@ -20,17 +20,30 @@ css: background-image
         <div class="block">
             <h2 class="{{ sc.level }}">Solution</h2>
             <div>
+                Provide the information conveyed by the background image as text in the page content. If the image needs its own text alternative, use a foreground image with appropriate alternative text.
                 <ol>
                     <li>Mark up the image as a regular <code>&lt;img&gt;</code> element.</li>
                     <li>Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag.</li>
-                    <li>Use CSS to position other elements over the image.</li>
+                    <li>Use CSS to position other elements over the image, if applicable.</li>
                 </ol>
             </div>
         </div>
 
         <div class="block">
-            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
+            <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Examples</h2>
             <div>
+                <h3>CSS icons</h3>
+                <p>This icon has meaning, but it is displayed as a background image, so that meaning is not conveyed to assistive technology.</p>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA 2026 / Chrome 158: "This information is out of date."</li>
+                </ul>
+                <p style="display:flex; justify-content: center; align-items: center;">
+                    <i class="fa-solid fa-circle-exclamation bad" style="margin: 8px;"></i> This information is out of date.
+                </p>
+
+                <pre><code>&lt;i class="fa-solid fa-circle-exclamation"&gt;&lt;/i&gt; This information is out of date.</code></pre>
+
                 <h3>Background Image with Text</h3>
                 <p>Assume this background image's text relates to the text content placed on top of it. In this case, the background image is meaningful and needs a text alternative.</p>
                 <p>If the element with the background image did not have other content inside it, you could use <code>role="img"</code> and <code>aria-label</code> to give it a text alternative. However, in that case, there's no reason not to just use the simpler <code>&lt;img alt="..."&gt;</code> markup.</p>
@@ -55,8 +68,20 @@ css: background-image
         </div>
 
         <div class="block">
-            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
+            <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Examples</h2>
             <div>
+                <h3>CSS icon with <code>aria-label</code></h3>
+                <p>Adding an <code>aria-label</code> and <code>role="img"</code> make the meaningful icon accessible.</p>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA 2026 / Chrome 158: "graphic, Alert, This information is out of date."</li>
+                </ul>
+                <p style="display:flex; justify-content: center; align-items: center;">
+                    <i class="fa-solid fa-circle-exclamation bad" style="margin: 8px;" aria-label="Alert" role="img"></i> This information is out of date.
+                </p>
+                <pre><code>&lt;i <strong>aria-label="Alert" role="img"</strong> class="fa-solid fa-circle-exclamation"&gt;&lt;/i&gt; This information is out of date.</code></pre>
+
+
                 <h3>Image with Overlaid Text</h3>
                 <p>The image needs to be marked up as a regular image, and the block of text as a separate element positioned with CSS.</p>
                 <div style="position: relative; width: 649px; height: 427px;">
@@ -107,7 +132,8 @@ css: background-image
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>
                 <ul>
-                    <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                    <li><strong>Blindness/Visual Impairment:</strong> People who cannot perceive the image need to have a text alternative so that the image can be interpreted by assistive technology such as screen readers and braille devices.</li>
+                    <li><strong>Visual Impairment</strong>: People who suppress background images, including some users of high contrast settings, can lose information conveyed only through the background.</li>
                     <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
                 </ul>
             </div>
@@ -120,6 +146,7 @@ css: background-image
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F3">Failure of Success Criterion 1.1.1 due to using CSS to include images that convey important information</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/aria/ARIA6">ARIA6: Using aria-label to provide labels for objects</a></li>
+                    <li><a href="https://docs.fontawesome.com/web/dig-deeper/accessibility">Font Awesome: Accessibility</a></li>
                 </ul>
             </div>
         </div>
