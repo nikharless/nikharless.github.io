@@ -26,9 +26,23 @@ last-modified: October 25, 2026
             <div>
                 <h3>No text alternative</h3>
                 <p>This image has no text alternative.</p>
-                <p>NVDA: "graphic"</p>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA: "graphic"</li>
+                </ul>
                 <p><img src="{{ '/assets/images/11010201-mars-rover.png' | relative_url }}"></p>
         <pre><code>&lt;img src="mars-rover.png"&gt;</code></pre>
+
+                <h3><code>title</code> and <code>alt=""</code></h3>
+                <p>The <code>title</code> attribute is treated as a fallback, so if an empty <code>alt</code> attribute exists, this takes priority over the <code>title</code> text, and the image is treated as decorative.</p>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA: no announcement</li>
+                </ul>
+                <p><img src="{{ '/assets/images/11010201-mars-rover.png' | relative_url }}" alt="" title="An artist's concept of a NASA Mars Exploration Rover on the surface of Mars."></p>
+                <pre><code>&lt;img 
+    src="mars-rover.png" 
+    <strong>alt="" title="An artist's concept of a NASA Mars Exploration Rover on the surface of Mars."</strong>&gt;</code></pre>
             </div>
         </div>
 
@@ -37,8 +51,11 @@ last-modified: October 25, 2026
             <div>
                 <h3><code>alt</code> text</h3>
                 <p>Using the native HTML <code>alt</code> attribute is the preferred method for providing a text alternative for an <code>&lt;img&gt;</code>.</p>
-                <p>NVDA: "graphic, An artist's concept of a NASA Mars Exploration Rover on the surface of Mars.
-"</p>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA: "graphic, An artist's concept of a NASA Mars Exploration Rover on the surface of Mars.
+"</li>
+                </ul>
                 <p><img src="{{ '/assets/images/11010201-mars-rover.png' | relative_url }}" alt="An artist's concept of a NASA Mars Exploration Rover on the surface of Mars."></p>
                 <pre><code>&lt;img 
     src="mars-rover.png" 
@@ -46,21 +63,27 @@ last-modified: October 25, 2026
 
                 <h3><code>aria-label</code></h3>
                 <p>Using the <code>aria-label</code> attribute is also an acceptable method for providing a text alternative.</p>
-                <p>NVDA: "graphic, An artist's concept of a NASA Mars Exploration Rover on the surface of Mars.
-"</p>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA: "graphic, An artist's concept of a NASA Mars Exploration Rover on the surface of Mars.
+"</li>
+                </ul>
                 <p><img src="{{ '/assets/images/11010201-mars-rover.png' | relative_url }}" aria-label="An artist's concept of a NASA Mars Exploration Rover on the surface of Mars."></p>
                 <pre><code>&lt;img 
     src="mars-rover.png" 
     <strong>aria-label="An artist's concept of a NASA Mars Exploration Rover on the surface of Mars."</strong>&gt;</code></pre>
 
                 <h3><code>title</code></h3>
-                <p>The <code>title</code> attribute provides a tooltip.</p>
-                <p>NVDA: "graphic, An artist's concept of a NASA Mars Exploration Rover on the surface of Mars.
-"</p>
+                <p>The <code>title</code> attribute provides a tooltip, and it is generally read by screen readers. However, while it may pass testing with certain screen readers, it is not guaranteed to work across all environments.</p>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA: "graphic, An artist's concept of a NASA Mars Exploration Rover on the surface of Mars.
+"</li>
+                </ul>
                 <p><img src="{{ '/assets/images/11010201-mars-rover.png' | relative_url }}" title="An artist's concept of a NASA Mars Exploration Rover on the surface of Mars."></p>
                 <pre><code>&lt;img 
     src="mars-rover.png" 
-    <strong>aria-label="An artist's concept of a NASA Mars Exploration Rover on the surface of Mars."</strong>&gt;</code></pre>
+    <strong>title="An artist's concept of a NASA Mars Exploration Rover on the surface of Mars."</strong>&gt;</code></pre>
             </div>
         </div>
 
