@@ -36,7 +36,7 @@ css: background-image
                 <p>This icon has meaning, but it is displayed as a background image, so that meaning is not conveyed to assistive technology.</p>
                 <p>How a screen reader reads it:</p>
                 <ul>
-                    <li>NVDA 2026 / Chrome 158: "This information is out of date."</li>
+                    <li>NVDA 2026 / Chrome 158: No announcement</li>
                 </ul>
                 <p style="display:flex; justify-content: center; align-items: center;">
                     <i class="fa-solid fa-circle-exclamation bad" style="margin: 8px;"></i> This information is out of date.
@@ -48,6 +48,10 @@ css: background-image
                 <p>Assume this background image's text relates to the text content placed on top of it. In this case, the background image is meaningful and needs a text alternative.</p>
                 <p>If the element with the background image did not have other content inside it, you could use <code>role="img"</code> and <code>aria-label</code> to give it a text alternative. However, in that case, there's no reason not to just use the simpler <code>&lt;img alt="..."&gt;</code> markup.</p>
                 <p>Since the element does contain other content, it cannot have a text alternative. The screen reader will not read both.</p>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA 2026 / Chrome 158: No announcement</li>
+                </ul>
                 <div id="bg">
                     <div class="divText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus aenean vel elit scelerisque mauris.</div>
                 </div>
@@ -74,7 +78,7 @@ css: background-image
                 <p>Adding an <code>aria-label</code> and <code>role="img"</code> make the meaningful icon accessible.</p>
                 <p>How a screen reader reads it:</p>
                 <ul>
-                    <li>NVDA 2026 / Chrome 158: "graphic, Alert, This information is out of date."</li>
+                    <li>NVDA 2026 / Chrome 158: "graphic, Alert"</li>
                 </ul>
                 <p style="display:flex; justify-content: center; align-items: center;">
                     <i class="fa-solid fa-circle-exclamation bad" style="margin: 8px;" aria-label="Alert" role="img"></i> This information is out of date.
@@ -84,6 +88,10 @@ css: background-image
 
                 <h3>Image with Overlaid Text</h3>
                 <p>The image needs to be marked up as a regular image, and the block of text as a separate element positioned with CSS.</p>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA 2026 / Chrome 158: "graphic, Time for Change"</li>
+                </ul>
                 <div style="position: relative; width: 649px; height: 427px;">
                     <img src="{{ '/assets/images/11010203-time-for-change.jpg' | relative_url }}" alt="Time for Change" class="overlap-image">
                     <div class="divText overlap-image">
