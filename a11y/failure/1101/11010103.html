@@ -76,16 +76,17 @@ css: background-image
             <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Examples</h2>
             <div>
                 <h3>Font Awesome CSS icon with <code>title</code></h3>
-                <p><a href="https://docs-v6.fontawesome.com/web/dig-deeper/accessibility#icons-used-as-semantic-elements">Font Awesome uses auto-accessibility features</a> which automatically add <code>aria-hidden="true"</code> to all instances. In order to get assistive technology to read the icon, you must add a <code>title</code> and <code>role="img"</code>.</p>
+                <p><a href="https://docs-v6.fontawesome.com/web/dig-deeper/accessibility#icons-used-as-semantic-elements">Font Awesome uses auto-accessibility features</a> which automatically add <code>aria-hidden="true"</code> to all instances. While they say to add a <code>title</code> to remedy this, screen readers still do not identify it consistently. In order to get assistive technology to read the icon, enclose it in <code>&lt;span&gt;</code> tags with <code>role="img"</code> and <code>aria-label</code>.</p>
                 <p>How a screen reader reads it:</p>
                 <ul>
-                    <li>NVDA 2026 / Chrome 158: "Alert"</li>
+                    <li>NVDA 2026 / Chrome 158: "graphic, Warning"</li>
                 </ul>
                 <p style="border: solid 1px red; border-radius: 5px;">
-                    <i class="fa-solid fa-circle-exclamation" style="margin: 8px; color: #dc143c;" title="Alert" role="img"></i> This information is out of date.
+                    <span role="img" aria-label="Warning"><i class="fa-solid fa-circle-exclamation" style="margin: 8px; color: #dc143c;"></i></span> This information is out of date.
                 </p>
-                <pre><code>&lt;i <strong>role="img" title="Alert"</strong> class="fa-solid fa-circle-exclamation"&gt;&lt;/i&gt; This information is out of date.</code></pre>
-
+                <pre><code>&lt;span role="img" aria-label="Warning"&gt;>
+    &lt;i class="fa-solid fa-circle-exclamation"&gt;&lt;/i&gt;
+&lt;/span&gt; This information is out of date.</code></pre>
 
                 <h3>Image with Overlaid Text</h3>
                 <p>The image needs to be marked up as a regular image, and the block of text as a separate element positioned with CSS.</p>
@@ -125,14 +126,10 @@ css: background-image
             <h2 class="{{ sc.level }}">Not Applicable</h2>
             <div>
                 <ul>
-                    <li><strong>Functional images:</strong><br>
-                        File under <a href="{{ site.data[page.criterion][page.criterion]["110102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110102"].name }}.</a></li>
-                    <li><strong>Complex images:</strong><br>
-                        File under <a href="{{ site.data[page.criterion][page.criterion]["110103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110103"].name }}.</a></li>
-                    <li><strong>Decorative images:</strong><br>
+                    <li><strong>Functional CSS background images:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["110102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010204"].name }}.</a></li>
+                    <li><strong>Decorative CSS background images:</strong><br>
                         File under <a href="{{ site.data[page.criterion][page.criterion]["110104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110104"].name }}.</a></li>
-                    <li><strong>CAPTCHA:</strong><br>
-                        File under <a href="{{ site.data[page.criterion][page.criterion]["110105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110105"].name }}.</a></li>
                 </ul>
             </div>
         </div>
