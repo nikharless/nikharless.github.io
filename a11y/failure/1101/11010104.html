@@ -3,26 +3,26 @@ layout: default
 current: "11010104"
 criterion: "1101"
 checkpoint: "110101"
-last-modified: October 30, 2026
+last-modified: November 21, 2026
 ---
 {% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
             <h2 class="{{ sc.level }}">Expected Result</h2>
-            <div>Meaningful emojis have a text alternative.</div>
+            <div>A meaningful emoji has a text alternative that conveys the same information as the image.</div>
         </div>
 
         <div class="block">
             <h2 class="{{ sc.level }}">Actual Result</h2>
-            <div>Meaningful emoji does not have a text alternative.</div>
+            <div>Assistive technology users cannot access the meaning conveyed by the emoji.</div>
         </div>
 
         <div class="block">
             <h2 class="{{ sc.level }}">Solution</h2>
-            <div>Add a text alternative which describes the purpose of the meaningful emoji using the following method:
+            <div>Add a text alternative which describes the purpose of the meaningful emoji.
                 <ol>
                     <li>Add a <code>&lt;span&gt;</code> tag around the emoji.</li>
                     <li>Add <code>role="img"</code> to the <code>&lt;span&gt;</code>.</li>
-                    <li>Add an <code>aria-label</code> attribute to the <code>&lt;span&gt;</code>.</li>
+                    <li>Add an <code>aria-label</code> to the <code>&lt;span&gt;</code>.</li>
                     <li>Set the value to a text alternative that makes sense in context.</li>
                 </ol>
             </div>
@@ -30,7 +30,11 @@ last-modified: October 30, 2026
 
         <div class="block">
             <h2 class="{{ sc.level }} bad"><span class="fa-solid fa-circle-xmark"></span> Failing Example</h2>
-            <div>
+            <p>How a screen reader reads it:</p>
+            <ul>
+                <li>NVDA 2026 / Chrome 158: "Globe showing Asia Australia, Peace symbol"</li>
+            </ul>
+            <div class="example">
                 <h3>World Peace</h3>
                 <p>🌏☮️</p>
                 <pre><code>🌏☮️</code></pre>
@@ -41,8 +45,14 @@ last-modified: October 30, 2026
             <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
             <div>
                 <h3>World Peace</h3>
-                <p><span role="img" aria-label="World">🌏</span><span role="img" aria-label="peace">☮️</span></p>
-                <pre><code>&lt;span <strong>role="img" aria-label="World"</strong>&gt;🌏&lt;/span&gt;&lt;span <strong>role="img" aria-label="Peace"</strong>&gt;☮️&lt;/span&gt;</code></pre>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA 2026 / Chrome 158: "graphic"</li>
+                </ul>
+                <div class="example">
+                    <p><span role="img" aria-label="World">🌏</span><span role="img" aria-label="peace">☮️</span></p>
+                    <pre><code>&lt;span <strong>role="img" aria-label="World"</strong>&gt;🌏&lt;/span&gt;&lt;span <strong>role="img" aria-label="Peace"</strong>&gt;☮️&lt;/span&gt;</code></pre>
+                </div>
             </div>
         </div>
 
@@ -50,14 +60,12 @@ last-modified: October 30, 2026
             <h2 class="{{ sc.level }}">Not Applicable</h2>
             <div>
                 <ul>
-                    <li><strong>Functional images:</strong><br>
-                        File under <a href="{{ site.data[page.criterion][page.criterion]["110102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110102"].name }}.</a></li>
-                    <li><strong>Complex images:</strong><br>
-                        File under <a href="{{ site.data[page.criterion][page.criterion]["110103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110103"].name }}.</a></li>
+                    <li><strong>Meaningful <code>&lt;img&gt;</code>:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["11010101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010101"].name }}.</a></li>
+                    <li><strong>Meaningful SVG:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["11010102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010102"].name }}.</a></li>
                     <li><strong>Decorative images:</strong><br>
-                        File under <a href="{{ site.data[page.criterion][page.criterion]["110104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110104"].name }}.</a></li>
-                    <li><strong>CAPTCHA:</strong><br>
-                        File under <a href="{{ site.data[page.criterion][page.criterion]["110105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110105"].name }}.</a></li>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["11010402"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010402"].name }}.</a></li>
                 </ul>
             </div>
         </div>
@@ -65,8 +73,8 @@ last-modified: October 30, 2026
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>
                 <ul>
-                    <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
-                    <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                    <li><strong>Blindness/Visual Impairment:</strong> People who cannot perceive the image need its intended meaning conveyed in text.</li>
+                    <li><strong>Cognitive Impairment:</strong> People who have difficulty understanding images may benefit from having a text description that conveys the intended meaning.</li>
                 </ul>
             </div>
         </div>
