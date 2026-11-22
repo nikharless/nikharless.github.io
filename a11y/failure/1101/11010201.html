@@ -3,27 +3,28 @@ layout: default
 current: "11010201"
 criterion: "1101"
 checkpoint: "110102"
-last-modified: October 30, 2026
+last-modified: November 22, 2026
 ---
 {% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
         	<h2 class="{{ sc.level }}">Expected Result</h2>
         	<div>
-                If a link or button contains only an &lt;img&gt;, AND the link or button itself doesn't have a text alternative, the &lt;img&gt; has an <code>alt</code> attribute with a text alternative that describes the control's purpose.
+                The control has an accessible name that describes its purpose, and the <code>&lt;img&gt;</code> element has an <code>alt</code> attribute. When the control provides the name, the image is hidden from assistive technology with <code>alt=""</code>.
             </div>
         </div>
 
         <div class="block">
         	<h2 class="{{ sc.level }}">Actual Result</h2>
         	<div>
-                A link or button contains only an &lt;img&gt;, but the image does not have an <code>alt</code> attribute, and the link or button does not have an accessible name.
+                Assistive technology does not receive a name that identifies the control’s purpose.
+
             </div>
         </div>
 
         <div class="block">
         	<h2 class="{{ sc.level }}">Solution</h2>
         	<div>
-                Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> tag, and set it to a text alternative that describes the control's purpose.
+                Give the interactive container an accessible name that describes its purpose, and add <code>alt=""</code> to the <code>&lt;img&gt;</code> element so the image does not create a duplicate or unhelpful announcement.
             </div>
         </div>
 
