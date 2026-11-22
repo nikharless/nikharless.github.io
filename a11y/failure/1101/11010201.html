@@ -24,7 +24,7 @@ last-modified: November 22, 2026
         <div class="block">
         	<h2 class="{{ sc.level }}">Solution</h2>
         	<div>
-                Give the interactive container an accessible name that describes its purpose, and add <code>alt=""</code> to the <code>&lt;img&gt;</code> element so the image does not create a duplicate or unhelpful announcement.
+                Add an <code>alt</code> attribute to the <code>&lt;img&gt;</code> that concisely conveys the control's purpose.
             </div>
         </div>
 
@@ -35,7 +35,8 @@ last-modified: November 22, 2026
                 <p>The image is the only content in this link, and neither the link nor the image have an accessible name.</p>
                 <p>How a screen reader reads it:</p>
                 <ul>
-                    <li>NVDA 2026 / Chrome 158: "link"</li>
+                    <li>NVDA 2026 / Chrome 158: "Unlabeled graphic, link"</li>
+                    <li>NVDA 2026 / Firefox 160: "ourparks.org, graphic, link"
                 </ul>
                 <div class="example">
                     <p><a href="https://ourparks.org/"><img src="{{ '/assets/images/1101-our-parks-logo-dark.svg' | relative_url }}"></a></p>
@@ -49,18 +50,19 @@ last-modified: November 22, 2026
         <div class="block">
             <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
             <div>
-                <h3>Preferred: Text alternative on link</h3>
-                <p>This link has an <code>aria-label</code> and the image itself has <code>alt=""</code> so only the link role is exposed.</p>
+                <h3>Preferred: <code>alt</code> text</h3>
+                <p>A text alternative describing the link is added to the image.</p>
                 <p>How a screen reader reads it:</p>
                 <ul>
-                    <li>NVDA 2026 / Chrome 158: "link, Our Parks"</li>
+                    <li>NVDA 2026 / Chrome 158: "Our Parks link"</li>
+                    <li>NVDA 2026 / Firefox 160: "Our Parks link"</li>
                 </ul>
                 <div class="example">
-                    <p><a href="https://ourparks.org/" aria-label="Our Parks"><img src="{{ '/assets/images/1101-our-parks-logo-dark.svg' | relative_url }}" alt=""></a></p>
-                    <pre><code>&lt;a href="https://ourparks.org/" <strong>aria-label="Our Parks"</strong>&gt;
+                    <p><a href="https://ourparks.org/"><img src="{{ '/assets/images/1101-our-parks-logo-dark.svg' | relative_url }}" alt="Our Parks"></a></p>
+                    <pre><code>&lt;a href="https://ourparks.org/"&gt;
     &lt;img 
         src="our-parks-logo-dark.svg" 
-        <strong>alt=""</strong>&gt;
+        <strong>alt="Our Parks"</strong>&gt;
 &lt;/a&gt;</code></pre>
                 </div>
             </div>
