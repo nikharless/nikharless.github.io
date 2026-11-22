@@ -8,17 +8,17 @@ last-modified: November 21, 2026
 {% assign sc = site.data[page.criterion][page.criterion][page.criterion] %}
         <div class="block">
         	<h2 class="{{ sc.level }}">Expected Result</h2>
-        	<div>Text alternatives for meaningful images convey the same information as the image in context.</div>
+        	<div>The text alternative conveys the information or purpose the image provides in context.</div>
         </div>
 
         <div class="block">
         	<h2 class="{{ sc.level }}">Actual Result</h2>
-        	<div>Meaningful image has a text alternative, but it does not convey the same information as the image in context.</div>
+        	<div>Assistive technology users receive a text alternative that does not convey the information or purpose provided by the image.</div>
         </div>
 
         <div class="block">
         	<h2 class="{{ sc.level }}">Solution</h2>
-        	<div>Change the text alternative to text that sufficiently conveys the same information as the image in context.</div>
+        	<div>Revise the text alternative so it conveys the information or purpose the image provides in context.</div>
         </div>
 
         <div class="block">
@@ -26,13 +26,25 @@ last-modified: November 21, 2026
             <div>
                 <h3>Literal description</h3>
                 <p>Often images are used to mean something abstract, so a literal description, such as "exclamation mark in a circle" for the image below, does not provide useful information.</p>
-                <p style="display:flex; justify-content: center; align-items: center; border: 1px solid red; border-radius: 5px;"><img src="{{ '/assets/images/alert.png' | relative_url }}" alt="exclamation mark in a circle" style="width: 24px; height: 24px; margin: 8px;"> This information is out of date.</p>
-                <pre><code>&lt;img src="alert.png" <strong>alt="exclamation mark in a circle"&gt;</strong></code></pre>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA 2026 / Chrome 158: "graphic, exclamation mark in a circle"</li>
+                </ul>
+                <div class="example">
+                    <p style="display:flex; justify-content: center; align-items: center; border: 1px solid red; border-radius: 5px;"><img src="{{ '/assets/images/alert.png' | relative_url }}" alt="exclamation mark in a circle" style="width: 24px; height: 24px; margin: 8px;"> This information is out of date.</p>
+                    <pre><code>&lt;img src="alert.png" <strong>alt="exclamation mark in a circle"&gt;</strong></code></pre>
+                </div>
 
                 <h3>Context matters</h3>
                 <p>The image in the following example might literally be described as "an old photograph of a mustached man in a cap driving an old car with no roof or windows". However, that may not convey the information intended by its context.</p>
-                <img src="{{ '/assets/images/11010205-itala.jpg' | relative_url }}" alt="an old photograph of a mustached man in a cap driving an old car with no roof or windows">
-                <pre><code>&lt;img src="itala.jpg" <strong>alt="an old photograph of a mustached man in a cap driving an old car with no roof or windows"</strong>&gt;</code></pre>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA 2026 / Chrome 158: "graphic, an old photograph of a mustached man in a cap driving an old car with no roof or windows"</li>
+                </ul>
+                <div class="example">
+                    <img src="{{ '/assets/images/11010205-itala.jpg' | relative_url }}" alt="an old photograph of a mustached man in a cap driving an old car with no roof or windows">
+                    <pre><code>&lt;img src="itala.jpg" <strong>alt="an old photograph of a mustached man in a cap driving an old car with no roof or windows"</strong>&gt;</code></pre>
+                </div>
             </div>
 
             <p><strong>Note:</strong> Multiple methods of providing a text alternative applied to the same image may produce unexpected results. For example, if both an <code>alt</code> value and an <code>aria-label</code> are provided, <a href="https://www.w3.org/WAI/ARIA/apg/practices/names-and-descriptions/#name_calculation">the <code>aria-label</code> will override the <code>alt</code> value</a>.</p>
@@ -42,19 +54,37 @@ last-modified: November 21, 2026
             <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Examples</h2>
             <div>
                 <h3>Meaningful description</h3>
-                <p>The image below indicates an alert, so the alt text should convey this information.</p>
-                <p style="display:flex; justify-content: center; align-items: center; border: 1px solid red; border-radius: 5px;"><img src="{{ '/assets/images/alert.png' | relative_url }}" alt="Alert" style="width: 24px; height: 24px; margin: 8px;"> This information is out of date.</p>
-                <pre><code>&lt;img src="alert.png" <strong>alt="Alert"&gt;</strong></code></pre>
+                <p>The image below indicates a warning, so the alt text should convey this information.</p>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA 2026 / Chrome 158: "graphic, Warning"</li>
+                </ul>
+                <div class="example">
+                    <p style="display:flex; justify-content: center; align-items: center; border: 1px solid red; border-radius: 5px;"><img src="{{ '/assets/images/alert.png' | relative_url }}" alt="Warning" style="width: 24px; height: 24px; margin: 8px;"> This information is out of date.</p>
+                    <pre><code>&lt;img src="alert.png" <strong>alt="Warning"&gt;</strong></code></pre>
+                </div>
 
                 <h3>In an article about old cars</h3>
                 <p>If the context of the page is old cars, alt text should probably describe the type of car, such as "1907 Itala motor car."</p>
-                <img src="{{ '/assets/images/11010205-itala.jpg' | relative_url }}" alt="1907 Itala motor car">
-                <pre><code>&lt;img src="itala.jpg" <strong>alt="1907 Itala motor car"</strong>&gt;</code></pre>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA 2026 / Chrome 158: "graphic, 1907 Itala motor car"</li>
+                </ul>
+                <div class="example">
+                    <img src="{{ '/assets/images/11010205-itala.jpg' | relative_url }}" alt="1907 Itala motor car">
+                    <pre><code>&lt;img src="itala.jpg" <strong>alt="1907 Itala motor car"</strong>&gt;</code></pre>
+                </div>
 
                 <h3>In an article about Prince Scipione Borghese</h3>
-                <p>If the context is Prince Scipione Borghese, the type of car is likely irrelevant. Something like "Borghese's chauffeur, Ettore Guizzardi" would be more appropriate.
-                <img src="{{ '/assets/images/11010205-itala.jpg' | relative_url }}" alt="Borghese's chauffeur, Ettore Guizzardi">
-                <pre><code>&lt;img src="itala.jpg" <strong>alt="Borghese's chauffeur, Ettore Guizzardi"</strong>&gt;</code></pre>
+                <p>If the context is Prince Scipione Borghese, the type of car is likely irrelevant. Something like "Borghese's chauffeur, Ettore Guizzardi" would be more appropriate.</p>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA 2026 / Chrome 158: "graphic, Borghese's chauffeur, Ettore Guizzardi"</li>
+                </ul>
+                <div class="example">
+                    <img src="{{ '/assets/images/11010205-itala.jpg' | relative_url }}" alt="Borghese's chauffeur, Ettore Guizzardi">
+                    <pre><code>&lt;img src="itala.jpg" <strong>alt="Borghese's chauffeur, Ettore Guizzardi"</strong>&gt;</code></pre>
+                </div>
             </div>
         </div>
 
@@ -62,14 +92,10 @@ last-modified: November 21, 2026
             <h2 class="{{ sc.level }}">Not Applicable</h2>
             <div>
                 <ul>
-                    <li><strong>Functional images:</strong><br>
-                        File under <a href="{{ site.data[page.criterion][page.criterion]["110102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110102"].name }}.</a></li>
-                    <li><strong>Complex images:</strong><br>
-                        File under <a href="{{ site.data[page.criterion][page.criterion]["110103"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110103"].name }}.</a></li>
-                    <li><strong>Decorative images:</strong><br>
-                        File under <a href="{{ site.data[page.criterion][page.criterion]["110104"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110104"].name }}.</a></li>
-                    <li><strong>CAPTCHA:</strong><br>
-                        File under <a href="{{ site.data[page.criterion][page.criterion]["110105"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["110105"].name }}.</a></li>
+                    <li><strong>Meaningful <code>&lt;img&gt;</code> missing text alternative:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["11010101"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010101"].name }}.</a></li>
+                    <li><strong>Meaningful SVG missing text alternative:</strong><br>
+                        File under <a href="{{ site.data[page.criterion][page.criterion]["11010102"].link | relative_url }}">{{ site.data[page.criterion][page.criterion]["11010102"].name }}.</a></li>
                 </ul>
             </div>
         </div>
@@ -78,8 +104,8 @@ last-modified: November 21, 2026
             <h2 class="{{ sc.level }}">Disabilities Affected</h2>
             <div>
                 <ul>
-                    <li><strong>Blindness/Visual Impairment:</strong> Users need to have a text alternative for meaningful images so that the images can be interpreted by assistive technology such as screen readers and braille devices.</li>
-                    <li><strong>Cognitive Impairment:</strong> Users who have difficulty understanding images may benefit from having a text description.</li>
+                    <li><strong>Blindness/Visual Impairment:</strong> People who cannot perceive the image need its relevant information or purpose conveyed in text.</li>
+                    <li><strong>Cognitive Impairment:</strong> People who have difficulty understanding images may benefit from having a text description that conveys the intended meaning.</li>
                 </ul>
             </div>
         </div>
@@ -89,8 +115,7 @@ last-modified: November 21, 2026
             <div>
                 <ul>
                     <li><a href="{{ sc.w3url }}">Understanding Success Criterion {{ sc.name }}</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F13">Failure of Success Criterion 1.1.1 and 1.4.1 due to having a text alternative that does not include information that is conveyed by color differences in the image</a></li>
-                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F30">Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/failures/F30">F30: Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)</a></li>
                     <li><a href="https://www.w3.org/WAI/WCAG22/Techniques/general/G94">G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content</a></li>
                     <li><a href="https://uxdesign.cc/how-to-write-an-image-description-2f30d3bf5546">How to write an image description</a></li>
                 </ul>
