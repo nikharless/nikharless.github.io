@@ -53,14 +53,16 @@ last-modified: November 22, 2026
                 </ul>
                 <div class="example">
                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" tabindex="0" role="button" class="" width="24" height="24"><path d="M931.7,544.8c-32.2,0-58.3,26.1-58.3,58.3v230.6H126.6V603.1c0-32.2-26.1-58.3-58.3-58.3c-32.2,0-58.3,26.1-58.3,58.3v244v76.6v44.9c0,7.4,6,13.4,13.4,13.4h953.1c7.4,0,13.4-6,13.4-13.4v-44.8c0,0,0,0,0,0V603.1C990,570.9,963.9,544.8,931.7,544.8z" fill="#0273a2"/><path d="M324.7,271.1c-117.3,117.3-117.3,307.5,0,424.8c45.3,45.3,101.5,73.1,160.2,83.4c-45.2-96.9-27.8-215.8,52.3-295.8l185.7,185.7c25.7,25.7,67.3,25.7,93,0c16-16,22.1-38.3,18-59.1l0-520c1.8-18.9-4.5-38.3-18.9-52.8C801.9,24.4,784.9,18,768,18.1l0-0.1H227l0,0.6c-15.6,0.9-30.9,7.2-42.8,19.1c-25.7,25.7-25.7,67.3,0,93L324.7,271.1z" fill="#0273a2"/></svg>
-                    <pre><code></code></pre>
+                    <pre><code>&lt;svg tabindex="0" role="button" width="24" height="24"&gt;
+    &lt;path ...&gt;
+&lt;/svg&gt;</code></pre>
                 </div>
             </div>
         </div>
         <div class="block">
             <h2 class="{{ sc.level }} good"> <span class="fa-solid fa-circle-check"></span> Passing Example</h2>
             <div>
-                <h3>Image as link</h3>
+                <h3>Preferred: Image as link with <code>&lt;title&gt;</code></h3>
                 <p>How a screen reader reads it:</p>
                 <ul>
                     <li>NVDA 2026 / Chrome 158: "Accessibility Policy graphic same page link"</li>
@@ -76,14 +78,29 @@ last-modified: November 22, 2026
 &lt;/a&gt;</code></pre>
                 </div>
 
-                <h3>Button image</h3>
+                <h3>Preferred: Button image with <code>&lt;title&gt;</code></h3>
+                <p>How a screen reader reads it:</p>
+                <ul>
+                    <li>NVDA 2026 / Chrome 158: "Share button"</li>
+                </ul>
+                <div class="example">
+                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" tabindex="0" aria-labelledby="share-title" role="button" class="" width="24" height="24"><title id="share-title">Share</title><path d="M931.7,544.8c-32.2,0-58.3,26.1-58.3,58.3v230.6H126.6V603.1c0-32.2-26.1-58.3-58.3-58.3c-32.2,0-58.3,26.1-58.3,58.3v244v76.6v44.9c0,7.4,6,13.4,13.4,13.4h953.1c7.4,0,13.4-6,13.4-13.4v-44.8c0,0,0,0,0,0V603.1C990,570.9,963.9,544.8,931.7,544.8z" fill="#0273a2"/><path d="M324.7,271.1c-117.3,117.3-117.3,307.5,0,424.8c45.3,45.3,101.5,73.1,160.2,83.4c-45.2-96.9-27.8-215.8,52.3-295.8l185.7,185.7c25.7,25.7,67.3,25.7,93,0c16-16,22.1-38.3,18-59.1l0-520c1.8-18.9-4.5-38.3-18.9-52.8C801.9,24.4,784.9,18,768,18.1l0-0.1H227l0,0.6c-15.6,0.9-30.9,7.2-42.8,19.1c-25.7,25.7-25.7,67.3,0,93L324.7,271.1z" fill="#0273a2"/></svg>
+                    <pre><code>&lt;svg tabindex="0" role="button" width="24" height="24" <strong>aria-labelledby="share-title"</strong>&gt;
+    <strong>&lt;title id="share-title"&gt;</strong>
+    &lt;path ... &gt;
+&lt;/svg&gt;</code></pre>
+                </div>
+
+                <h3>Button image with <code>aria-label</code></h3>
                 <p>How a screen reader reads it:</p>
                 <ul>
                     <li>NVDA 2026 / Chrome 158: "Share button"</li>
                 </ul>
                 <div class="example">
                     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" tabindex="0" aria-label="Share" role="button" class="" width="24" height="24"><path d="M931.7,544.8c-32.2,0-58.3,26.1-58.3,58.3v230.6H126.6V603.1c0-32.2-26.1-58.3-58.3-58.3c-32.2,0-58.3,26.1-58.3,58.3v244v76.6v44.9c0,7.4,6,13.4,13.4,13.4h953.1c7.4,0,13.4-6,13.4-13.4v-44.8c0,0,0,0,0,0V603.1C990,570.9,963.9,544.8,931.7,544.8z" fill="#0273a2"/><path d="M324.7,271.1c-117.3,117.3-117.3,307.5,0,424.8c45.3,45.3,101.5,73.1,160.2,83.4c-45.2-96.9-27.8-215.8,52.3-295.8l185.7,185.7c25.7,25.7,67.3,25.7,93,0c16-16,22.1-38.3,18-59.1l0-520c1.8-18.9-4.5-38.3-18.9-52.8C801.9,24.4,784.9,18,768,18.1l0-0.1H227l0,0.6c-15.6,0.9-30.9,7.2-42.8,19.1c-25.7,25.7-25.7,67.3,0,93L324.7,271.1z" fill="#0273a2"/></svg>
-                    <pre><code></code></pre>
+                    <pre><code>&lt;svg tabindex="0" role="button" width="24" height="24" <strong>aria-label="Share"</strong>&gt;
+    &lt;path ... &gt;
+&lt;/svg&gt;</code></pre>
                 </div>
             </div>
         </div>
